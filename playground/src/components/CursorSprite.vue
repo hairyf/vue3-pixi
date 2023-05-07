@@ -12,9 +12,9 @@ const resolves: AssetsResolvers = {
 
 const hitArea = new Circle(0, 0, 32)
 
-const el = ref()
+const spriteRef = ref()
 
-const hovering = useElementHover(el)
+const hovering = useElementHover(spriteRef)
 
 const scale = computed(() => (hovering.value ? 1.25 : 1))
 
@@ -40,7 +40,7 @@ function progress(p: number) {
     <Assets :resolves="resolves" @progress="progress">
       <template #default="{ textures }">
         <sprite
-          ref="el"
+          ref="spriteRef"
           :texture="textures.cursor"
           :hit-area="hitArea"
           :scale="scaleAnimated"

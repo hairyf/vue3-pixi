@@ -79,24 +79,22 @@ The Vue Plugin detects any texture props containing the path to an image and rep
 
 ## Components
 
-The following PixiJS objects are supported out of the box:
-
-- Container
-- Sprite
-- Graphics
-- Text
-- BitmapText
-- TilingSprite
-- AnimatedSprite
-- Mesh
-- NineSlicePlane
-- SimpleMesh
-- SimplePlane
-- SimpleRope
+- [Container](http://pixijs.download/release/docs/PIXI.Container.html)
+- [Sprite](http://pixijs.download/release/docs/PIXI.Sprite.html)
+- [Graphics](http://pixijs.download/release/docs/PIXI.Graphics.html)
+- [Text](http://pixijs.download/release/docs/PIXI.Text.html)
+- [BitmapText](http://pixijs.download/release/docs/PIXI.BitmapText.html)
+- [AnimatedSprite](http://pixijs.download/release/docs/PIXI.AnimatedSprite.html)
+- [SimpleMesh](http://pixijs.download/release/docs/PIXI.SimpleMesh.html)
+- [SimplePlane](http://pixijs.download/release/docs/PIXI.SimplePlane.html)
+- [TilingSprite](http://pixijs.download/release/docs/PIXI.TilingSprite.html)
+- [NineSlicePlane](http://pixijs.download/release/docs/PIXI.NineSlicePlane.html)
+- [SimpleRope](http://pixijs.download/release/docs/PIXI.SimpleRope.html)
+- [Mesh](http://pixijs.download/release/docs/PIXI.AnimatedSprite.html)
 
 ## Props
 
-Most props will work just as the properties on the corresponding PixiJS objects. However, props that accept a `Point` are handeled a bit different. They can also be used with X/Y suffix (except for the `position` prop, which just uses the `x`/`y` props instead).
+Most props will work just as the properties on the corresponding PixiJS objects. in addition, They can also be used with X/Y suffix (except for the `position` prop, which just uses the `x`/`y` props instead).
 
 ```html
 <container :scale-x="10" :skew-y="0.5" />
@@ -104,11 +102,14 @@ Most props will work just as the properties on the corresponding PixiJS objects.
 
 ## Events
 
-All events emitted by pixi objects are supported. *Some* of vue's event modifiers will work, like `@click.left`, however more often than not using them will cause an error. Adding an event listener to an element will currently automatically set the element's `eventMode` to `static`.
+All events emitted by pixi objects are supported. Some of vue's event modifiers will work, like `@click.left`.
+
+> adding an event listener to an element will currently automatically set the element's `eventMode` to `static`.
 
 ### Graphics
 
 When using `<grahpics />` there is a special `@draw` event.
+
 This will set up a `watchEffect` internally that will automatically call the event handler again if any dependencies on the draw method have changed.
 
 ```html
