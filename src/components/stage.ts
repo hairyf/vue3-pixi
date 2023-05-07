@@ -1,5 +1,6 @@
 /* eslint-disable vue/one-component-per-file */
 import { defineComponent, h, onBeforeUnmount, onMounted, ref, renderSlot, warn, watch } from 'vue-demi'
+import { throttle } from '@antfu/utils'
 import type { Container } from 'pixi.js'
 import { Application } from 'pixi.js'
 import type { App, PropType } from 'vue-demi'
@@ -29,7 +30,8 @@ const Stage = defineComponent({
     const canvas = ref<HTMLCanvasElement>()
     let pixiApp: Application | undefined
     let app: App<Container> | undefined
-    onMounted(() => {
+
+    function mount() {
       const context = canvas.value?.getContext('webgl', {
         alpha: props.alpha,
         antialias: props.antialias,
@@ -40,12 +42,14 @@ const Stage = defineComponent({
         preserveDrawingBuffer: props.preserveDrawingBuffer,
         stencil: props.stencil,
       })
+
       if (!context)
         warn('could not crate webgl context')
 
       pixiApp = new Application({
         view: canvas.value,
         width: props.width,
+        height: props.height,
       })
 
       app = createApp({
@@ -53,19 +57,32 @@ const Stage = defineComponent({
       })
 
       app.mount(pixiApp.stage)
-    })
+    }
 
-    onBeforeUnmount(() => {
+    function unmount() {
       app?.unmount()
       app = undefined
 
       pixiApp?.destroy()
       pixiApp = undefined
-    })
+    }
+
+    function resize() {
+      pixiApp?.renderer.resize(
+        props.width || pixiApp.renderer.width,
+        props.height || pixiApp.renderer.height,
+      )
+    }
+
     watch(
       () => [props.width, props.height],
-      () => pixiApp?.resize(),
+      throttle(50, resize),
     )
+
+    onMounted(mount)
+
+    onBeforeUnmount(unmount)
+
     return () => h('canvas', { ref: canvas })
   },
 })
