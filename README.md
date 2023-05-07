@@ -7,7 +7,7 @@ Use Vue 3 to create [PixiJS](https://pixijs.com/) applications
 - 📦 Supports all PixiJS objects, such as `Container`, `Sprite`, `Graphics`, `Text`, etc
 - 🧑‍💻 Support specifying `texture` paths in templates to load texture objects
 - ✨ All [events](https://pixijs.download/release/docs/PIXI.Sprite.html#onclick) emitted by PixiJS objects are supported
-- 🗃️ Offers a `Assets` component for bundling assets.
+- 🗃️ Offers a [Assets](#assets) component for bundling assets.
 
 ## Try it Online
 
