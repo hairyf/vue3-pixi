@@ -19,14 +19,11 @@ jobs:
         with:
           node-version: 16.x
 
-      - name: Setup
-        run: npm i -g @antfu/ni
-
       - name: Install
-        run: nci
+        run: npm i
 
       - name: Lint
-        run: nr lint
+        run: npm run lint
 
   test:
     runs-on: ${{ matrix.os }}
@@ -44,14 +41,11 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
-      - name: Setup
-        run: npm i -g @antfu/ni
-
       - name: Install
-        run: nci
+        run: npm i
 
       - name: Build
-        run: nr build
+        run: npm run build
 
       - name: Test
-        run: nr test
+        run: npm run test

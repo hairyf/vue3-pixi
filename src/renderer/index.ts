@@ -70,24 +70,16 @@ export function createPixiRenderer(options: CreatePixiRendererOptions = {}) {
       else
         parent.addChild(child)
     },
-    remove: (child) => {
-      child.destroy()
-    },
-    createText: (text) => {
-      return new Text(text)
-    },
-    createComment: () => {
-      return new Container()
-    },
+    remove: child => child.destroy(),
+    createText: text => new Text(text),
+    createComment: () => new Container(),
     nextSibling: (node) => {
       const index = node.parent.getChildIndex(node)
       if (node.parent.children.length <= index + 1)
         return null
       return (node.parent.getChildAt(index + 1) as Container) ?? null
     },
-    parentNode: (node) => {
-      return node.parent
-    },
+    parentNode: node => node.parent,
     setElementText: (node, text) => {
       if (node instanceof Text)
         node.text = text
