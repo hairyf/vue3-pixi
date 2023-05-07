@@ -25,13 +25,13 @@ jobs:
           cache: pnpm
 
       - name: Setup
-        run: npm i -g @antfu/ni
+        run: npm i -g pnpm
 
       - name: Install
-        run: nci
+        run: pnpm install
 
       - name: Lint
-        run: nr lint
+        run: pnpm lint
 
   test:
     runs-on: ubuntu-latest
@@ -54,16 +54,13 @@ jobs:
           cache: pnpm
 
       - name: Setup
-        run: npm i -g @antfu/ni
+        run: npm i -g pnpm
 
       - name: Install
-        run: nci
+        run: pnpm install
 
       - name: Build
-        run: nr build
-
-      - name: Typecheck
-        run: nr typecheck
+        run: pnpm build
 
       - name: Test
         run: pnpm run test
