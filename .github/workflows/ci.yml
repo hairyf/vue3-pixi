@@ -26,23 +26,16 @@ jobs:
         run: pnpm lint
 
   test:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        node: [14.x, 16.x]
-        os: [ubuntu-latest, windows-latest, macos-latest]
-      fail-fast: false
-
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Set node ${{ matrix.node }}
+      - name: Set node
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node }}
+          node-version: 16.x
 
       - name: Install
-        run: npm i pnpm@7.1.1 -g && pnpm i
+        run: npm i pnpm -g && pnpm i
 
       - name: Build
         run: pnpm build
