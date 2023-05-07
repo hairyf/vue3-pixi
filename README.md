@@ -1,5 +1,3 @@
-帮我优化下面的文档：
-
 # vue3-pixi-renderer
 
 Use Vue 3 to create PixiJS applications
