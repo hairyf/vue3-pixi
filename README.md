@@ -27,7 +27,7 @@ function onClick() {
 
 ## Try it Online
 
-> TODO
+[![StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/edit/vue-pixi-renderer)
 
 ## Install
 
