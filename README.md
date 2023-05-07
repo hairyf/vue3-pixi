@@ -1,29 +1,15 @@
+帮我优化下面的文档：
+
 # vue3-pixi-renderer
 
-> Use Vue 3 to create PixiJS applications
+Use Vue 3 to create PixiJS applications
 
-This library provides it's own vue renderer that will create PixiJS objects instead of html elements.
-
-```html
-<script setup lang="ts">
-import { State } from "vue3-pixi-renderer";
-import textureUrl from "@/assets/myTexture.png";
-
-const hitArea = new Rectangle(0, 0, 64, 64);
-
-function onClick() {
-  console.log('sprite was clicked!');
-}
-</script>
-
-<template>
-  <state :width="640" :height="480">
-    <container>
-      <sprite :texture="textureUrl" :hit-area="hitArea" @click="onClick" />
-    </container>
-  </state>
-</template>
-```
+- 💚 Lightweight and flexible Vue 3 library for creating PixiJS applications.
+- ✏️ Provides a custom Vue renderer that creates PixiJS objects instead of HTML elements.
+- 📦 Supports all PixiJS objects, such as Container, Sprite, Graphics, Text, etc
+- 🧑‍💻 Support specifying texture paths in templates to load texture objects
+- ✨ All events emitted by PixiJS objects are supported
+- 🗃️ Offers a `Assets` component for bundling assets.
 
 ## Try it Online
 
@@ -39,12 +25,34 @@ pnpm add @overlays/vue
 yarn add @overlays/vue
 ```
 
+## Usage
+
+```html
+<script setup lang="ts">
+import { State } from "vue3-pixi-renderer";
+import textureUrl from "@/assets/myTexture.png";
+
+const hitArea = new Rectangle(0, 0, 64, 64);
+
+function onClick() {
+  console.log('sprite clicked!');
+}
+</script>
+
+<template>
+  <state :width="640" :height="480">
+    <container>
+      <sprite :texture="textureUrl" :hit-area="hitArea" @click="onClick" />
+    </container>
+  </state>
+</template>
+```
+
 ## Initialize vue plugin
 
 The vite plugin adds the ability to specify texture paths on sprites & other components that use textures, the same way as the `src` attribute on an image.
 
 ```ts
-// vite.config.ts
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { compilerOptions, transformAssetUrls } from 'vue3-pixi-renderer/compiler'
@@ -65,7 +73,7 @@ export default defineConfig({
 
 ### Usage in template
 
-The vue plugin will detect any texture props containing the path to an image, and will replace it with a reference to a texture object.
+The Vue Plugin detects any texture props containing the path to an image and replaces it with a reference to a texture object:
 
 ```html
 <sprite texture="@/assets/myTexture.png" />
@@ -162,7 +170,7 @@ const resolves: AssetsResolvers = {
 </template>
 ```
 
-## Creating an application manually
+## Creating an pixi application manually
 
 Using the custom renderer inside `vue3-pixi-renderer`
 
