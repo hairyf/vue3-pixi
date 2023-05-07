@@ -20,10 +20,10 @@ jobs:
           node-version: 16.x
 
       - name: Install
-        run: npm i
+        run: npm i pnpm -g && pnpm i
 
       - name: Lint
-        run: npm run lint
+        run: pnpm lint
 
   test:
     runs-on: ${{ matrix.os }}
@@ -42,10 +42,10 @@ jobs:
           node-version: ${{ matrix.node }}
 
       - name: Install
-        run: npm i
+        run: npm i pnpm -g && pnpm i
 
       - name: Build
-        run: npm run build
+        run: pnpm build
 
       - name: Test
-        run: npm run test
+        run: pnpm test
