@@ -1,0 +1,70 @@
+{
+  "name": "vue3-pixi-renderer",
+  "type": "module",
+  "version": "0.0.0",
+  "packageManager": "pnpm@7.1.1",
+  "description": "Register global imports on demand for Vite and Webpack",
+  "license": "MIT",
+  "homepage": "https://github.com/hairyf/vue3-pixi-renderer#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hairyf/vue3-pixi-renderer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hairyf/vue3-pixi-renderer/issues"
+  },
+  "keywords": [
+    "pixi.js",
+    "vue"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js"
+    },
+    "./compiler": {
+      "types": "./dist/compiler.d.ts",
+      "require": "./dist/compiler.cjs",
+      "import": "./dist/compiler.js"
+    },
+    "./*": "./*"
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./*"
+      ]
+    }
+  },
+  "files": [
+    "dist",
+    "global.d.ts"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch src",
+    "lint": "eslint .",
+    "play": "npm -C playground run dev",
+    "prepublishOnly": "npm run build",
+    "release": "bumpp && npm publish",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "pixi.js": "^7.2.4",
+    "vue-demi": "^0.14.0"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.33.1",
+    "@types/node": "^18.11.13",
+    "@vue/runtime-core": "^3",
+    "bumpp": "^8.2.1",
+    "eslint": "^8.29.0",
+    "tsup": "^6.5.0",
+    "typescript": "^4.9.4"
+  }
+}
