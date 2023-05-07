@@ -1,6 +1,21 @@
-# vue3-pixi-renderer
+<h1 align="center">Vue 3 Pixi Renderer</h1>
 
-Use Vue 3 to create [PixiJS](https://pixijs.com/) applications
+<p align="center">
+  <strong>Vue createRenderer for PixiJS</strong>
+</p>
+
+<br />
+
+<p align="center">
+  <img src="https://img.shields.io/github/forks/hairyf/vue3-pixi-renderer.svg?style=flat-square" />
+  <img src="https://img.shields.io/github/stars/hairyf/vue3-pixi-renderer.svg?style=flat-square" />
+  <img src="https://img.shields.io/npm/dm/vue3-pixi-renderer.svg?style=flat-square" />
+  <img src="https://img.shields.io/badge/license-MIT-green.svg?style=flat-square" alt="license" />
+  <img src="https://img.shields.io/badge/pixi-v7+-ff69b4.svg?style=flat-square" alt="pixi version" />
+</p>
+
+
+###### Features
 
 - 💚 Lightweight and flexible [Vue 3](https://vuejs.org/) library for creating [PixiJS](https://pixijs.com/) applications.
 - ✏️ Provides a [Custom Vue Renderer](https://vuejs.org/api/custom-renderer.html#custom-renderer-api) that creates PixiJS objects instead of HTML elements.
