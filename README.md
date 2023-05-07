@@ -27,7 +27,7 @@ yarn add vue3-pixi-renderer
 
 ```html
 <script setup lang="ts">
-import { State } from "vue3-pixi-renderer";
+import { Stage } from "vue3-pixi-renderer";
 import textureUrl from "@/assets/myTexture.png";
 
 const hitArea = new Rectangle(0, 0, 64, 64);
@@ -38,11 +38,11 @@ function onClick() {
 </script>
 
 <template>
-  <state :width="640" :height="480">
+  <Stage :width="640" :height="480">
     <container>
       <sprite :texture="textureUrl" :hit-area="hitArea" @click="onClick" />
     </container>
-  </state>
+  </Stage>
 </template>
 ```
 
@@ -142,7 +142,7 @@ function draw(g: Graphics) {
 
 ```html
 <script setup lang="ts">
-import { State, Assets, AssetsResolvers } from "vue3-pixi-renderer";
+import { Stage, Assets, AssetsResolvers } from "vue3-pixi-renderer";
 import textureUrl from "@/assets/myTexture.png";
 
 const resolves: AssetsResolvers = {
@@ -153,7 +153,7 @@ const resolves: AssetsResolvers = {
 </script>
 
 <template>
-  <State :width="640" :height="480">
+  <Stage :width="640" :height="480">
     <Assets :resolves="resolves">
       <template #default={ textures }>
         <container>
@@ -164,7 +164,7 @@ const resolves: AssetsResolvers = {
         <!-- Loading... -->
       </template>
     </Assets>
-  </State>
+  </Stage>
 </template>
 ```
 

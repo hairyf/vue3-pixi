@@ -14,8 +14,8 @@ const enabled = ref(true)
 
       <span style="margin-left: 10px"> Sprite visible: {{ enabled }} </span>
     </p>
-    <state :width="640" :height="480">
+    <Stage :width="640" :height="480">
       <CursorSprite v-if="enabled" :x="100" :y="100" />
-    </state>
+    </Stage>
   </div>
 </template>

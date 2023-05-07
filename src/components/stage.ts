@@ -5,7 +5,7 @@ import { Application } from 'pixi.js'
 import type { App, PropType } from 'vue-demi'
 import { createApp } from '../renderer'
 
-const State = defineComponent({
+const Stage = defineComponent({
   props: {
     width: Number,
     height: Number,
@@ -70,4 +70,4 @@ const State = defineComponent({
   },
 })
 
-export default State
+export default Stage

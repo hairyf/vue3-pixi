@@ -1,11 +1,11 @@
 import type { App, Plugin } from 'vue-demi'
-import { State } from './components'
+import { Stage } from './components'
 
 export * from './components'
 export * from './renderer'
 
 function install(app: App<any>) {
-  app.component('State', State)
+  app.component('Stage', Stage)
 }
 
 export { install }
