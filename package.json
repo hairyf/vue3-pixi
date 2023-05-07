@@ -62,7 +62,7 @@
     "@antfu/eslint-config": "^0.33.1",
     "@types/node": "^18.11.13",
     "@vue/runtime-core": "^3",
-    "bumpp": "^8.2.1",
+    "bumpp": "^9.0.0",
     "eslint": "^8.29.0",
     "tsup": "^6.5.0",
     "typescript": "^5.0.0",
