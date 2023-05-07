@@ -14,17 +14,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+
       - name: Set node
         uses: actions/setup-node@v3
         with:
           node-version: 18.x
           cache: pnpm
 
+      - name: Setup
+        run: npm i -g @antfu/ni
+
       - name: Install
-        run: npm i pnpm -g && pnpm i
+        run: nci
 
       - name: Lint
-        run: pnpm lint
+        run: nr lint
 
   test:
     runs-on: ubuntu-latest
@@ -36,16 +43,27 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+
       - name: Set node version to ${{ matrix.node }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
+          cache: pnpm
+
+      - name: Setup
+        run: npm i -g @antfu/ni
 
       - name: Install
-        run: npm i pnpm -g && pnpm i
+        run: nci
 
       - name: Build
-        run: pnpm build
+        run: nr build
+
+      - name: Typecheck
+        run: nr typecheck
 
       - name: Test
-        run: pnpm test
+        run: pnpm run test
