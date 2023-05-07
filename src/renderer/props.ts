@@ -12,12 +12,19 @@ import {
   TilingSprite,
 } from 'pixi.js'
 
-const defaultBooleanProps = [
-  'accessible',
-  'cullable',
-  'renderable',
-  'visible',
-] as const
+const defaultBooleanProps = ['accessible', 'cullable', 'renderable', 'visible'] as const
+const bitmapBooleanProps = ['dirty', 'roundPixels'] as const
+const tilingSpriteProps = ['uvRespectAnchor'] as const
+const animatedSpriteBooleanProps = ['loop', 'updateAnchor'] as const
+const meshBooleanProps = ['roundPixels'] as const
+const simplePlaneBooleanProps = ['roundPixels', 'autoResize'] as const
+
+enum SpritePropKey {
+  Texture = 'texture',
+  Anchor = 'anchor',
+  AnchorX = 'anchorX',
+  AnchorY = 'anchorY',
+}
 
 export function patchProp(
   el: Container,
@@ -27,146 +34,75 @@ export function patchProp(
 ) {
   key = camelize(key)
 
-  if (el instanceof Sprite && patchSpriteProp(el, key, prevValue, nextValue))
-    return
-  else if (
-    el instanceof Graphics
-    && patchGraphicsProps(el, key, prevValue, nextValue)
-  )
-    return
-  else if (
-    el instanceof BitmapText
-    && patchBitmapTextProps(el, key, prevValue, nextValue)
-  )
-    return
-  else if (
-    el instanceof TilingSprite
-    && patchTilingSpriteProps(el, key, prevValue, nextValue)
-  )
-    return
-  else if (
-    el instanceof AnimatedSprite
-    && patchAnimatedSpriteProps(el, key, prevValue, nextValue)
-  )
-    return
-  else if (el instanceof Mesh && patchMeshProps(el, key, prevValue, nextValue))
-    return
-  else if (
-    el instanceof SimplePlane
-    && patchSimplePlaneProps(el, key, prevValue, nextValue)
-  )
-    return
+  const patches = [
+    { element: Sprite, patch: patchSpriteProps },
+    { element: Graphics, patch: patchGraphicsProps },
+    { element: BitmapText, patch: patchBitmapTextProps },
+    { element: TilingSprite, patch: patchTilingSpriteProps },
+    { element: AnimatedSprite, patch: patchAnimatedSpriteProps },
+    { element: Mesh, patch: patchMeshProps },
+    { element: SimplePlane, patch: patchSimplePlaneProps },
+  ]
 
-  if (setBooleanProp(el, defaultBooleanProps, key, nextValue))
-    return
-
-  switch (key) {
-    case 'position':
-      el.position.copyFrom(nextValue)
-      break
-    case 'scale':
-      if (typeof nextValue === 'number')
-        el.scale.set(nextValue, nextValue)
-      else el.scale.copyFrom(nextValue)
-      break
-    case 'scaleX':
-      el.scale.x = nextValue
-      break
-    case 'scaleY':
-      el.scale.y = nextValue
-      break
-    case 'pivot':
-      if (typeof nextValue === 'number')
-        el.pivot.set(nextValue, nextValue)
-      else el.pivot.copyFrom(nextValue)
-      break
-    case 'pivotX':
-      el.pivot.x = nextValue
-      break
-
-    case 'pivotY':
-      el.pivot.y = nextValue
-      break
-    default: {
-      if (key.startsWith('on')) {
-        const eventName = key.slice(2).toLowerCase()
-        if (prevValue)
-          el.off(eventName as any, prevValue)
-        el.on(eventName as any, nextValue)
-        return
-      }
-
-      Reflect.set(el, key, nextValue)
-    }
+  for (const { element, patch } of patches) {
+    if (el instanceof element && patch(el as any, key, prevValue, nextValue))
+      return
   }
+
+  if (patchBooleanProps(el, defaultBooleanProps, key, nextValue))
+    return
+
+  if (patchDefaultProps(el, key, prevValue, nextValue))
+    return
+
+  if (patchEventProps(el, key, prevValue, nextValue))
+    return
+
+  Reflect.set(el, key, nextValue)
 }
 
-export function patchSpriteProp(
-  el: Sprite,
-  key: string,
-  prevValue: any,
-  nextValue: any,
-): boolean {
+export function patchSpriteProps(el: Sprite, key: string, prevValue: any, nextValue: any): boolean {
   switch (key) {
-    case 'texture': {
+    case SpritePropKey.Texture: {
       el.texture = normalizeTexture(nextValue)
       return true
     }
-    case 'anchor': {
+    case SpritePropKey.Anchor: {
       if (typeof nextValue === 'number')
         el.anchor.set(nextValue, nextValue)
-      else el.anchor.copyFrom(nextValue)
+      else
+        el.anchor.copyFrom(nextValue)
       return true
     }
-    case 'anchorX': {
+    case SpritePropKey.AnchorX: {
       el.anchor.x = nextValue
       return true
     }
-    case 'anchorY': {
+    case SpritePropKey.AnchorY: {
       el.anchor.y = nextValue
       return true
     }
   }
-
   return false
 }
 
-export function patchGraphicsProps(
-  el: Graphics,
-  key: string,
-  prevValue: any,
-  nextValue: any,
-): boolean {
+export function patchGraphicsProps(el: Graphics, key: string, prevValue: any, nextValue: any): boolean {
   if (key === 'onDraw' && !prevValue && typeof nextValue === 'function') {
-    /*
-      Sets up a watchEffect that will automatically re-render the content if any deps change
-    */
     const scope = effectScope()
-    scope.run(() => {
-      watchEffect(() => nextValue(el))
-    })
-
+    scope.run(() => watchEffect(() => nextValue(el)))
     el.on('destroyed', () => scope.stop())
-
     return true
   }
-
   return false
 }
 
-const bitmapBooleanProps = ['dirty', 'roundPixels'] as const
-
-export function patchBitmapTextProps(
-  el: BitmapText,
-  key: string,
-  prevValue: any,
-  nextValue: any,
-): boolean {
+export function patchBitmapTextProps(el: BitmapText, key: string, prevValue: any, nextValue: any): boolean {
   switch (key) {
     case 'anchor': {
       if (typeof nextValue === 'number')
         el.anchor.set(nextValue, nextValue)
-      else el.anchor.copyFrom(nextValue)
+      else
+        el.anchor.copyFrom(nextValue)
       return true
     }
     case 'anchorX': {
@@ -178,55 +114,26 @@ export function patchBitmapTextProps(
       return true
     }
   }
-
-  return setBooleanProp(el, bitmapBooleanProps, key, nextValue)
+  return patchBooleanProps(el, bitmapBooleanProps, key, nextValue)
 }
 
-const tilingSpriteProps = ['uvRespectAnchor'] as const
-
-export function patchTilingSpriteProps(
-  el: TilingSprite,
-  key: string,
-  prevValue: any,
-  nextValue: any,
-): boolean {
-  return setBooleanProp(el, tilingSpriteProps, key, nextValue)
+export function patchTilingSpriteProps(el: TilingSprite, key: string, prevValue: any, nextValue: any): boolean {
+  return patchBooleanProps(el, tilingSpriteProps, key, nextValue)
 }
 
-const animatedSpriteBooleanProps = ['loop', 'updateAnchor'] as const
-
-export function patchAnimatedSpriteProps(
-  el: AnimatedSprite,
-  key: string,
-  prevValue: any,
-  nextValue: any,
-): boolean {
-  return setBooleanProp(el, animatedSpriteBooleanProps, key, nextValue)
+export function patchAnimatedSpriteProps(el: AnimatedSprite, key: string, prevValue: any, nextValue: any): boolean {
+  return patchBooleanProps(el, animatedSpriteBooleanProps, key, nextValue)
 }
 
-const meshBooleanProps = ['roundPixels'] as const
-
-export function patchMeshProps(
-  el: Mesh,
-  key: string,
-  prevValue: any,
-  nextValue: any,
-): boolean {
-  return setBooleanProp(el, meshBooleanProps, key, nextValue)
+export function patchMeshProps(el: Mesh, key: string, prevValue: any, nextValue: any): boolean {
+  return patchBooleanProps(el, meshBooleanProps, key, nextValue)
 }
 
-const simplePlaneBooleanProps = ['roundPixels', 'autoResize'] as const
-
-export function patchSimplePlaneProps(
-  el: SimplePlane,
-  key: string,
-  prevValue: any,
-  nextValue: any,
-): boolean {
-  return setBooleanProp(el, simplePlaneBooleanProps, key, nextValue)
+export function patchSimplePlaneProps(el: SimplePlane, key: string, prevValue: any, nextValue: any): boolean {
+  return patchBooleanProps(el, simplePlaneBooleanProps, key, nextValue)
 }
 
-function setBooleanProp<T extends Container>(
+export function patchBooleanProps<T extends Container>(
   el: T,
   props: readonly (keyof T)[],
   key: string,
@@ -235,6 +142,50 @@ function setBooleanProp<T extends Container>(
   if (props.includes(key as keyof T) && nextValue === '') {
     // @ts-expect-error
     el[key] = true
+    return true
+  }
+  return false
+}
+
+export function patchDefaultProps<T extends Container>(el: T, key: string, prevValue: any, nextValue: any) {
+  switch (key) {
+    case 'position':
+      el.position.copyFrom(nextValue)
+      return true
+    case 'scale':
+      if (typeof nextValue === 'number')
+        el.scale.set(nextValue, nextValue)
+      else
+        el.scale.copyFrom(nextValue)
+      return true
+    case 'scaleX':
+      el.scale.x = nextValue
+      return true
+    case 'scaleY':
+      el.scale.y = nextValue
+      return true
+    case 'pivot':
+      if (typeof nextValue === 'number')
+        el.pivot.set(nextValue, nextValue)
+      else
+        el.pivot.copyFrom(nextValue)
+      return true
+    case 'pivotX':
+      el.pivot.x = nextValue
+      return true
+    case 'pivotY':
+      el.pivot.y = nextValue
+      return true
+  }
+  return false
+}
+
+export function patchEventProps<T extends Container>(el: T, key: string, prevValue: any, nextValue: any) {
+  if (key.startsWith('on')) {
+    const eventName = key.slice(2).toLowerCase()
+    if (prevValue)
+      el.off(eventName as any, prevValue)
+    el.on(eventName as any, nextValue)
     return true
   }
   return false
