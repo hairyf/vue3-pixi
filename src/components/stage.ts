@@ -1,5 +1,5 @@
 /* eslint-disable vue/one-component-per-file */
-import { defineComponent, h, markRaw, onMounted, onUnmounted, ref, renderSlot, toRef, warn, watch } from 'vue-demi'
+import { defineComponent, h, markRaw, onMounted, onUnmounted, ref, renderSlot, warn, watch } from 'vue-demi'
 import { throttle } from '@antfu/utils'
 import type { Container } from 'pixi.js'
 import { Application } from 'pixi.js'
@@ -90,7 +90,7 @@ const Stage = defineComponent({
     return { canvas, app: pixiApp }
   },
   render() {
-    return h('canvas', { ref: toRef(this, 'canvas') })
+    return h('canvas', { ref: 'canvas' })
   },
 })
 
