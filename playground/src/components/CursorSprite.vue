@@ -10,6 +10,11 @@ const resolves: AssetsResolvers = {
   cursor: import('../assets/cursor.png'),
 }
 
+const position = ref({
+  y: 60,
+  x: 10,
+})
+
 const hitArea = new Circle(0, 0, 32)
 
 const spriteRef = ref()
@@ -31,12 +36,11 @@ function drawOutline(g: Graphics) {
 }
 
 function progress(p: number) {
-  console.log(p)
 }
 </script>
 
 <template>
-  <container>
+  <container :position-x="position.x">
     <Assets :resolves="resolves" @progress="progress">
       <template #default="{ textures }">
         <sprite
