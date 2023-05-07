@@ -1,8 +1,10 @@
 <script lang="ts" setup>
-import { ref, watchEffect } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useWindowSize } from '@vueuse/core'
+import type { StageInst } from 'vue3-pixi-renderer'
 import CursorSprite from './components/CursorSprite.vue'
 
+const stageRef = ref<StageInst>()
 const enabled = ref(true)
 const { width, height } = useWindowSize()
 </script>
@@ -16,7 +18,7 @@ const { width, height } = useWindowSize()
 
       <span style="margin-left: 10px"> Sprite visible: {{ enabled }} </span>
     </p>
-    <Stage :style="{ width: `${width / 2}px` }" :width="width - 80" :height="height">
+    <Stage ref="stageRef" :style="{ width: `${width / 2}px` }" :width="width - 80" :height="height">
       <CursorSprite v-if="enabled" :x="100" :y="100" />
     </Stage>
   </div>

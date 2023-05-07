@@ -1,10 +1,14 @@
 /* eslint-disable vue/one-component-per-file */
-import { defineComponent, h, onBeforeUnmount, onMounted, ref, renderSlot, warn, watch } from 'vue-demi'
+import { defineComponent, h, markRaw, onMounted, onUnmounted, ref, renderSlot, toRef, warn, watch } from 'vue-demi'
 import { throttle } from '@antfu/utils'
 import type { Container } from 'pixi.js'
 import { Application } from 'pixi.js'
 import type { App, PropType } from 'vue-demi'
 import { createApp } from '../renderer'
+
+export interface StageInst {
+  app?: Application
+}
 
 const Stage = defineComponent({
   props: {
@@ -28,7 +32,7 @@ const Stage = defineComponent({
   },
   setup(props, { slots }) {
     const canvas = ref<HTMLCanvasElement>()
-    let pixiApp: Application | undefined
+    const pixiApp = ref<Application>()
     let app: App<Container> | undefined
 
     function mount() {
@@ -46,31 +50,31 @@ const Stage = defineComponent({
       if (!context)
         warn('could not crate webgl context')
 
-      pixiApp = new Application({
+      pixiApp.value = markRaw(new Application({
         view: canvas.value,
         width: props.width,
         height: props.height,
-      })
+      }))
 
       app = createApp({
         render: () => renderSlot(slots, 'default'),
       })
 
-      app.mount(pixiApp.stage)
+      app.mount(pixiApp.value.stage)
     }
 
     function unmount() {
       app?.unmount()
       app = undefined
 
-      pixiApp?.destroy()
-      pixiApp = undefined
+      pixiApp.value?.destroy()
+      pixiApp.value = undefined
     }
 
     function resize() {
-      pixiApp?.renderer.resize(
-        props.width || pixiApp.renderer.width,
-        props.height || pixiApp.renderer.height,
+      pixiApp.value?.renderer.resize(
+        props.width || pixiApp.value.renderer.width,
+        props.height || pixiApp.value.renderer.height,
       )
     }
 
@@ -81,9 +85,12 @@ const Stage = defineComponent({
 
     onMounted(mount)
 
-    onBeforeUnmount(unmount)
+    onUnmounted(unmount)
 
-    return () => h('canvas', { ref: canvas })
+    return { canvas, app: pixiApp }
+  },
+  render() {
+    return h('canvas', { ref: toRef(this, 'canvas') })
   },
 })
 

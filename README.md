@@ -169,6 +169,57 @@ const resolves: AssetsResolvers = {
 </template>
 ```
 
+## Composables
+
+`vue3-pixi-renderer` provides a set of composable hooks for operating a Pixi application.
+
+### onMountTicker
+
+This composable hook adds a ticker to the Pixi application during mounting and returns a stop function.
+
+```html
+<script setup lang="ts">
+import { StageInst, Stage, onMountTicker } from "vue3-pixi-renderer";
+
+const stageRef = ref<StageInst>()
+
+const removeTicker = onMountTicker(stageRef, (delta) => {
+  // ...
+})
+</script>
+
+<template>
+  <Stage ref="stageRef" :width="640" :height="480">
+    <!-- ... -->
+  </Stage>
+</template>
+```
+
+### useApplication
+
+This composable hook is used to obtain the current Pixi application instance.
+
+```html
+<script setup lang="ts">
+import { StageInst, Stage, useApplication } from "vue3-pixi-renderer";
+import { onMounted } from 'vue'
+
+const stageRef = ref<StageInst>()
+const pixiApp = useApplication(stageRef)
+
+onMounted(() => {
+  pixiApp.value.screen // { ... }
+})
+</script>
+
+<template>
+  <Stage ref="stageRef" :width="640" :height="480">
+    <!-- ... -->
+  </Stage>
+</template>
+```
+
+
 ## Creating an pixi application manually
 
 Using the custom renderer inside `vue3-pixi-renderer`
