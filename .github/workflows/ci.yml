@@ -17,7 +17,8 @@ jobs:
       - name: Set node
         uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 18.x
+          cache: pnpm
 
       - name: Install
         run: npm i pnpm -g && pnpm i
@@ -27,12 +28,18 @@ jobs:
 
   test:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node: [16.x, 18.x]
+      fail-fast: false
+
     steps:
       - uses: actions/checkout@v3
-      - name: Set node
+      - name: Set node version to ${{ matrix.node }}
         uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: ${{ matrix.node }}
 
       - name: Install
         run: npm i pnpm -g && pnpm i
