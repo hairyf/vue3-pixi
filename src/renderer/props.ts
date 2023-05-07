@@ -150,12 +150,21 @@ export function patchDefaultProps(el: Container, key: string, prevValue: any, ne
       return setValueProp(el.scale, 'y', nextValue)
     case 'pivot':
       if (typeof nextValue === 'number')
-        return setPointNumber(el, 'scale', nextValue)
+        return setPointNumber(el, 'pivot', nextValue)
       else
         return setPointObject(el, 'pivot', prevValue, nextValue)
     case 'pivotX':
       return setValueProp(el.pivot, 'x', nextValue)
     case 'pivotY':
+      return setValueProp(el.pivot, 'y', nextValue)
+    case 'skew':
+      if (typeof nextValue === 'number')
+        return setPointNumber(el, 'skew', nextValue)
+      else
+        return setPointObject(el, 'skew', prevValue, nextValue)
+    case 'skewX':
+      return setValueProp(el.skew, 'x', nextValue)
+    case 'skewY':
       return setValueProp(el.pivot, 'y', nextValue)
   }
   return false
