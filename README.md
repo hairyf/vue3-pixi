@@ -2,11 +2,11 @@
 
 Use Vue 3 to create [PixiJS](https://pixijs.com/) applications
 
-- 💚 Lightweight and flexible Vue 3 library for creating PixiJS applications.
-- ✏️ Provides a custom Vue renderer that creates PixiJS objects instead of HTML elements.
-- 📦 Supports all PixiJS objects, such as Container, Sprite, Graphics, Text, etc
-- 🧑‍💻 Support specifying texture paths in templates to load texture objects
-- ✨ All events emitted by PixiJS objects are supported
+- 💚 Lightweight and flexible [Vue 3](https://vuejs.org/) library for creating [PixiJS](https://pixijs.com/) applications.
+- ✏️ Provides a [Custom Vue Renderer](https://vuejs.org/api/custom-renderer.html#custom-renderer-api) that creates PixiJS objects instead of HTML elements.
+- 📦 Supports all PixiJS objects, such as `Container`, `Sprite`, `Graphics`, `Text`, etc
+- 🧑‍💻 Support specifying `texture` paths in templates to load texture objects
+- ✨ All [events](https://pixijs.download/release/docs/PIXI.Sprite.html#onclick) emitted by PixiJS objects are supported
 - 🗃️ Offers a `Assets` component for bundling assets.
 
 ## Try it Online
@@ -77,7 +77,7 @@ The Vue Plugin detects any texture props containing the path to an image and rep
 <sprite texture="@/assets/myTexture.png" />
 ```
 
-## Components
+## Elements
 
 - [Container](http://pixijs.download/release/docs/PIXI.Container.html)
 - [Sprite](http://pixijs.download/release/docs/PIXI.Sprite.html)
