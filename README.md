@@ -1,6 +1,6 @@
 # vue3-pixi-renderer
 
-Use Vue 3 to create PixiJS applications
+Use Vue 3 to create [PixiJS](https://pixijs.com/) applications
 
 - 💚 Lightweight and flexible Vue 3 library for creating PixiJS applications.
 - ✏️ Provides a custom Vue renderer that creates PixiJS objects instead of HTML elements.
@@ -94,7 +94,7 @@ The Vue Plugin detects any texture props containing the path to an image and rep
 
 ## Props
 
-Most props will work just as the properties on the corresponding PixiJS objects. in addition, They can also be used with X/Y suffix (except for the `position` prop, which just uses the `x`/`y` props instead).
+Most props will work just as the properties on the corresponding [PixiJS](https://pixijs.com/) objects. in addition, They can also be used with X/Y suffix (except for the `position` prop, which just uses the `x`/`y` props instead).
 
 ```html
 <container :scale-x="10" :skew-y="0.5" />
