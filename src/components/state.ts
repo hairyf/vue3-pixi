@@ -9,7 +9,6 @@ const State = defineComponent({
   props: {
     width: Number,
     height: Number,
-
     alpha: Boolean,
     antialias: {
       type: Boolean,

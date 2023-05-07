@@ -2,7 +2,7 @@
 
 > Use Vue 3 to create PixiJS applications
 
-This library provides it's own vue renderer that will create PixiJS objects instead of html elments. It's still pretty early in development, but should already support a great amount of features from PixiJS.
+This library provides it's own vue renderer that will create PixiJS objects instead of html elements.
 
 ```html
 <script setup lang="ts">
@@ -32,11 +32,11 @@ function onClick() {
 ## Install
 
 ```sh
-# install with npm
-npm install vue3-pixi-renderer
+# with pnpm
+pnpm add @overlays/vue
 
-# install with yarn
-yarn add vue3-pixi-renderer
+# with yarn
+yarn add @overlays/vue
 ```
 
 ## Initialize vue plugin
@@ -75,22 +75,23 @@ The vue plugin will detect any texture props containing the path to an image, an
 
 The following PixiJS objects are supported out of the box:
 
-* Container
-* Sprite
-* Graphics
-* Text
-* BitmapText
-* TilingSprite
-* AnimatedSprite
-* Mesh
-* NineSlicePlane
-* SimpleMesh
-* SimplePlane
-* SimpleRope
+- Container
+- Sprite
+- Graphics
+- Text
+- BitmapText
+- TilingSprite
+- AnimatedSprite
+- Mesh
+- NineSlicePlane
+- SimpleMesh
+- SimplePlane
+- SimpleRope
 
 ## Props
 
 Most props will work just as the properties on the corresponding PixiJS objects. However, props that accept a `Point` are handeled a bit different. They can also be used with X/Y suffix (except for the `position` prop, which just uses the `x`/`y` props instead).
+
 ```html
 <container :scale-x="10" :skew-y="0.5" />
 ```
@@ -99,7 +100,8 @@ Most props will work just as the properties on the corresponding PixiJS objects.
 
 All events emitted by pixi objects are supported. *Some* of vue's event modifiers will work, like `@click.left`, however more often than not using them will cause an error. Adding an event listener to an element will currently automatically set the element's `eventMode` to `static`.
 
-### Graphics @draw event
+### Graphics
+
 When using `<grahpics />` there is a special `@draw` event.
 This will set up a `watchEffect` internally that will automatically call the event handler again if any dependencies on the draw method have changed.
 
@@ -125,6 +127,38 @@ function draw(g: Graphics) {
 
 <template>
   <graphics @draw="draw" />
+</template>
+```
+
+## Assets
+
+`vue3-pixi-renderer` provides a special component for bundling resources and obtaining resources from plugins.
+
+```html
+<script setup lang="ts">
+import { State, Assets, AssetsResolvers } from "vue3-pixi-renderer";
+import textureUrl from "@/assets/myTexture.png";
+
+const resolves: AssetsResolvers = {
+  flowerTop: import('./examples/assets/flowerTop.png'),
+  eggHead: import('./examples/assets/eggHead.png'),
+  bunny: 'https://pixijs.io/examples/examples/assets/bunny.png'
+}
+</script>
+
+<template>
+  <State :width="640" :height="480">
+    <Assets :resolves="resolves">
+      <template #default={ textures }>
+        <container>
+          <sprite :texture="textures.flowerTop" />
+        </container>
+      </template>
+      <template #fallback={ progress }>
+        <!-- Loading... -->
+      </template>
+    </Assets>
+  </State>
 </template>
 ```
 
