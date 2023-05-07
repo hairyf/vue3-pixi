@@ -12,7 +12,7 @@ const resolves: AssetsResolvers = {
 
 const position = ref({
   y: 60,
-  x: 10,
+  x: 60,
 })
 
 const hitArea = new Circle(0, 0, 32)

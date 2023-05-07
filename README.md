@@ -173,17 +173,17 @@ const resolves: AssetsResolvers = {
 
 `vue3-pixi-renderer` provides a set of composable hooks for operating a Pixi application.
 
-### onMountTicker
+### tryMountTicker
 
 This composable hook adds a ticker to the Pixi application during mounting and returns a stop function.
 
 ```html
 <script setup lang="ts">
-import { StageInst, Stage, onMountTicker } from "vue3-pixi-renderer";
+import { StageInst, Stage, tryMountTicker } from "vue3-pixi-renderer";
 
 const stageRef = ref<StageInst>()
 
-const removeTicker = onMountTicker(stageRef, (delta) => {
+const removeTicker = tryMountTicker(stageRef, (delta) => {
   // ...
 })
 </script>

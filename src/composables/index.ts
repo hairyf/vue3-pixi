@@ -1,2 +1,2 @@
-export * from './onMountTicker'
+export * from './tryMountTicker'
 export * from './useApplication'

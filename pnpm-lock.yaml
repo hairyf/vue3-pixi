@@ -7,6 +7,9 @@ importers:
       '@antfu/utils':
         specifier: ^0.7.2
         version: 0.7.2
+      '@vueuse/core':
+        specifier: ^10.1.2
+        version: 10.1.2(vue@3.2.47)
       nanoid:
         specifier: ^4.0.2
         version: 4.0.2

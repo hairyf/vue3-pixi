@@ -1,11 +1,10 @@
 import type { Ref } from 'vue-demi'
-import { onBeforeUnmount, onMounted } from 'vue-demi'
-
+import { tryOnBeforeUnmount, tryOnMounted } from '@vueuse/core'
 import type { TickerCallback } from 'pixi.js'
 import type { StageInst } from '../components'
 import { useApplication } from './useApplication'
 
-export function onMountTicker(stageRef: Ref<StageInst | undefined> | StageInst | undefined, fn: TickerCallback<any>) {
+export function tryMountTicker(stageRef: Ref<StageInst | undefined> | StageInst | undefined, fn: TickerCallback<any>) {
   const app = useApplication(stageRef)
 
   function insert() {
@@ -15,8 +14,8 @@ export function onMountTicker(stageRef: Ref<StageInst | undefined> | StageInst |
     app.value?.ticker.remove(fn)
   }
 
-  onMounted(insert)
-  onBeforeUnmount(remove)
+  tryOnMounted(insert)
+  tryOnBeforeUnmount(remove)
 
   return remove
 }
