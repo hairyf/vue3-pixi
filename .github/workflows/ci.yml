@@ -42,7 +42,7 @@ jobs:
           node-version: ${{ matrix.node }}
 
       - name: Install
-        run: pnpm i
+        run: npm i pnpm@7.1.1 -g && pnpm i
 
       - name: Build
         run: pnpm build
