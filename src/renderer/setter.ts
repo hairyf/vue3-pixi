@@ -51,17 +51,3 @@ export function setValueProp(inst: any, keys: string, value: any) {
   }
   return true
 }
-
-export function setPointValue(name: string, el: any, key: string, prevValue: any, nextValue: any) {
-  if (key === `${name}X`)
-    return setValueProp(el.position, 'x', nextValue)
-  if (key === `${name}Y`)
-    return setValueProp(el.position, 'y', nextValue)
-  if (key === name) {
-    if (typeof nextValue === 'number')
-      return setPointNumber(el, 'position', nextValue)
-    else
-      return setPointObject(el, 'position', prevValue, nextValue)
-  }
-  return false
-}
