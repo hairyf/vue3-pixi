@@ -4,8 +4,9 @@ import { defineComponent, onBeforeUnmount, ref, renderSlot, watch } from 'vue-de
 
 import * as PIXI from 'pixi.js'
 
+export type AssetsResolver = string | { default: string } | PIXI.ResolveAsset
 export interface AssetsResolvers {
-  [key: string]: any | Promise<any>
+  [key: string]: AssetsResolver | Promise<AssetsResolver>
 }
 
 const Assets = defineComponent({
@@ -24,7 +25,7 @@ const Assets = defineComponent({
     const progress = ref(0)
 
     async function load() {
-      PIXI.Assets.addBundle(bundle, await waitResolves(props.resolves))
+      PIXI.Assets.addBundle(bundle, await waitResolvesAssets(props.resolves))
       textures.value = await PIXI.Assets.loadBundle(bundle, onProgress)
     }
 
@@ -50,6 +51,7 @@ const Assets = defineComponent({
       },
       { deep: true, immediate: true },
     )
+
     onBeforeUnmount(unload)
 
     return () => loading.value
@@ -58,11 +60,11 @@ const Assets = defineComponent({
   },
 })
 
-async function waitResolves(resolves: AssetsResolvers) {
-  const result: Record<string, PIXI.ResolveAsset | string> = {}
+async function waitResolvesAssets(resolves: AssetsResolvers): Promise<PIXI.ResolverAssetsObject> {
+  const result: Record<string, any> = {}
   for (const key in resolves) {
     result[key] = await resolves[key]
-    result[key] = (result as any)[key].default || result[key]
+    result[key] = result[key].default || result[key]
   }
   return result
 }
