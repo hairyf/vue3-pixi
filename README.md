@@ -17,10 +17,10 @@ Use Vue 3 to create PixiJS applications
 
 ```sh
 # with pnpm
-pnpm add @overlays/vue
+pnpm add vue3-pixi-renderer
 
 # with yarn
-yarn add @overlays/vue
+yarn add vue3-pixi-renderer
 ```
 
 ## Usage
