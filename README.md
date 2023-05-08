@@ -40,6 +40,8 @@ yarn add vue3-pixi-renderer
 
 ## Usage
 
+The `<Stage>` component can be used to embed a pixi app into an existing vue app.
+
 ```html
 <script setup lang="ts">
 import { Stage } from "vue3-pixi-renderer";
