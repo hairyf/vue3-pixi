@@ -13,6 +13,7 @@ import type { PixiBitmapTextComponent } from './elements/bitmapText'
 import type { PixiFilterComponent } from './elements/filter'
 import type { PixiBlurFilterComponent } from './elements/blurFilter'
 import type { PixiAlphaFilterComponent } from './elements/alphaFilter'
+import type { PixiDisplacementFilterComponent } from './elements/displacementFilter'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
@@ -24,6 +25,9 @@ declare module '@vue/runtime-core' {
 
     AlphaFilter: PixiAlphaFilterComponent
     PixiAlphaFilter: PixiAlphaFilterComponent
+
+    DisplacementFilter: PixiDisplacementFilterComponent
+    PixiDisplacementFilter: PixiDisplacementFilterComponent
 
     Container: PixiContainerComponent
     PixiContainer: PixiContainerComponent
