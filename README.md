@@ -313,7 +313,7 @@ const pixiApp = useApplication(stageRef)
 
 ## useScreen
 
-with responsive `screen` information
+obtain responsive `screen` information of `pixiApp.screen`
 
 ```html
 <script setup lang="ts">
