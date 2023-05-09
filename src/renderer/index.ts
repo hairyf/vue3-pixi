@@ -86,9 +86,7 @@ function insertContainer(child: Container, parent: Container, anchor?: Container
 
 function insertFilter(child: any, parent: Container, _anchor: any) {
   function remove() {
-    const index = parent.filters!.indexOf(child)
-    if (index !== -1)
-      parent.filters?.splice(index, 1)
+    parent.filters?.splice(parent.filters.indexOf(child) >>> 0, 1)
   }
   child.parent = parent
   child.destroy = remove

@@ -211,7 +211,7 @@ To avoid conflicts with other tags, such as `<filter>`, you can use the `pixi-` 
 <Filter /> <!-- or --> <pixi-filter />
 ```
 
-> Other components also support the `pixi-` prefix, so you can choose according to your personal preference.
+> Other components also support the `pixi-` prefix, so you can choose according to you personal preference.
 
 ## Assets
 
