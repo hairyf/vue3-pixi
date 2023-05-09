@@ -1,3 +1,4 @@
+import '@vue/runtime-core'
 import type { PixiSimpleRopeComponent } from './elements/simpleRope'
 import type { PixiSimplePlaneComponent } from './elements/simplePlane'
 import type { PixiNineSlicePlaneComponent } from './elements/nineSlicePlane'
@@ -9,14 +10,16 @@ import type { PixiGraphicsComponent } from './elements/graphics'
 import type { PixiContainerComponent } from './elements/container'
 import type { PixiSpriteComponent } from './elements/sprite'
 import type { PixiBitmapTextComponent } from './elements/bitmapText'
-
-import '@vue/runtime-core'
 import type { PixiFilterComponent } from './elements/filter'
+import type { PixiBlurFilterComponent } from './elements/blurFilter'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Filter: PixiFilterComponent
     PixiFilter: PixiFilterComponent
+
+    BlurFilter: PixiBlurFilterComponent
+    PixiBlurFilter: PixiBlurFilterComponent
 
     Container: PixiContainerComponent
     PixiContainer: PixiContainerComponent

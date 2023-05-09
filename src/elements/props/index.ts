@@ -67,3 +67,5 @@ export interface AllowedPixiProps {
 export interface AllowedFilterProps extends Partial<Omit<Filter, 'destroy'>> {
   is?: (props: any) => Filter
 }
+
+export type ExtractFilterProps<T> = Partial<Omit<T, keyof AllowedFilterProps | 'destroy'>>
