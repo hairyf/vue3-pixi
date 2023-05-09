@@ -1,9 +1,10 @@
 import { computed, inject, provide, ref, unref } from 'vue-demi'
 import type { MaybeRef } from '@vueuse/core'
+import { createSharedComposable } from '@vueuse/core'
 import type { StageInst } from '../components'
 import { applicationInjectionKey } from './internal'
 
-export function useApplication(stageRef?: MaybeRef<StageInst>) {
+function _useApplication(stageRef?: MaybeRef<StageInst>) {
   const app = inject(applicationInjectionKey, ref())
 
   if (stageRef)
@@ -14,3 +15,4 @@ export function useApplication(stageRef?: MaybeRef<StageInst>) {
   return app
 }
 
+export const useApplication = createSharedComposable(_useApplication)
