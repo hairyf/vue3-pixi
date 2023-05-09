@@ -10,6 +10,7 @@ const elementNames = [
   'simple-plane',
   'nine-slice-plane',
   'simple-rope',
+
   'filter',
   'blur-filter',
   'alpha-filter',
