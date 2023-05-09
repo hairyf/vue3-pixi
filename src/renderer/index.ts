@@ -6,7 +6,7 @@ import {
 } from 'pixi.js'
 import { patchProp } from './patch'
 import { elements } from './elements'
-import { isCustomFilter } from './utils'
+import { isCustomFilter, isExistsEvent } from './utils'
 
 interface CreatePixiRendererOptions {
   prefix?: string
@@ -21,8 +21,11 @@ export function createPixiRenderer(options: CreatePixiRendererOptions = {}) {
         ? props?.is?.(props)
         : createPixiElement(prefix, name, props)
 
-      if (element instanceof Container)
+      if (element instanceof Container) {
         element.filters = []
+        if (isExistsEvent(props) && element.eventMode === 'auto')
+          element.eventMode = 'static'
+      }
 
       return element
     },

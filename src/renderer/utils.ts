@@ -15,3 +15,7 @@ export function isCustomFilter(prefix: string, name: string) {
     isPrefix && name.slice(prefix.length) === 'Filter'
   ) || name === 'Filter'
 }
+
+export function isExistsEvent(props: any = {}) {
+  return Object.keys(props).some(p => p.startsWith('on'))
+}

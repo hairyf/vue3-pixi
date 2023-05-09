@@ -175,7 +175,8 @@ export function patchEventProps(el: Container, key: string, prevValue: any, next
     const eventName = key.slice(2).toLowerCase()
     if (prevValue)
       el.off(eventName as any, prevValue)
-    el.on(eventName as any, nextValue)
+    if (nextValue)
+      el?.on(eventName as any, nextValue)
     return true
   }
   return false
