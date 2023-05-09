@@ -311,6 +311,20 @@ const pixiApp = useApplication(stageRef)
 </template>
 ```
 
+## useScreen
+
+obtain responsive `screen` information
+
+```html
+<script setup lang="ts">
+const screen = useScreen()
+</script>
+
+<template>
+  <sprite :x="screen.width / 2" :texture="textures.flowerTop" />
+</template>
+```
+
 ## Creating an pixi application manually
 
 Using the custom renderer inside `vue3-pixi-renderer`

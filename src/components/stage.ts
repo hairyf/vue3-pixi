@@ -109,7 +109,7 @@ const Stage = defineComponent({
 
     onUnmounted(unmount)
 
-    return { canvas }
+    return { canvas, app: pixiApp }
   },
   render() {
     return h('canvas', { ref: 'canvas' })
