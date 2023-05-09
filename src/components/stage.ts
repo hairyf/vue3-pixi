@@ -74,7 +74,7 @@ const Stage = defineComponent({
         () => pixiApp.value?.screen,
       )
 
-      ;(pixiApp.value as any).__computed_screen = screen
+      pixiApp.value._v_screen = screen
 
       app = createApp({
         render: () => renderSlot(slots, 'default'),

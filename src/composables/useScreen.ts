@@ -1,8 +1,15 @@
-import { computed, reactive } from 'vue-demi'
+import type { Ref } from 'vue-demi'
+import { computed, unref } from 'vue-demi'
+
+import { Rectangle } from 'pixi.js'
 import { useApplication } from './useApplication'
 
-export function useScreen() {
+export function useScreen(): Ref<Rectangle> {
   const app = useApplication()
-  return computed(() => reactive((app.value as any)?.__computed_screen))
+  const defaultRectangle = new Rectangle()
+  const screenRef = computed(() =>
+    unref((app.value as any)?._v_screen),
+  )
+  return computed(() => unref(screenRef) || defaultRectangle)
 }
 

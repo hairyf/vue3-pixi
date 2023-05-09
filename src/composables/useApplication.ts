@@ -8,8 +8,8 @@ import { applicationInjectionKey } from './internal'
 export function useApplication(stageRef?: MaybeRef<StageInst>): Ref<Application | undefined> {
   const inst = getCurrentInstance() as any
 
-  if (inst.pixi_app)
-    return inst.pixi_app
+  if (inst.pixiAppRef)
+    return inst.pixiAppRef
   if (stageRef)
     return computed(() => unref(stageRef).app)
 
@@ -18,7 +18,7 @@ export function useApplication(stageRef?: MaybeRef<StageInst>): Ref<Application 
   // not found, search down
   if (app.value) {
     provide(applicationInjectionKey, app)
-    inst.pixi_app = app
+    inst.pixiAppRef = app
   }
 
   return app
