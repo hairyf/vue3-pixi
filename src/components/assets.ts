@@ -1,6 +1,6 @@
 import { nanoid } from 'nanoid'
 import type { PropType } from 'vue-demi'
-import { defineComponent, onBeforeUnmount, ref, renderSlot, watch } from 'vue-demi'
+import { Fragment, defineComponent, h, onBeforeUnmount, ref, renderSlot, watch } from 'vue-demi'
 
 import * as PIXI from 'pixi.js'
 
@@ -54,9 +54,12 @@ const Assets = defineComponent({
 
     onBeforeUnmount(unload)
 
-    return () => loading.value
-      ? renderSlot(slots, 'fallback', { progress: progress.value })
-      : renderSlot(slots, 'default', { textures: textures.value })
+    return () => h(Fragment, [
+      renderSlot(slots, 'default', { textures: textures.value, progress: progress.value }),
+      loading.value
+        ? renderSlot(slots, 'fallback', { progress: progress.value })
+        : renderSlot(slots, 'resolved', { textures: textures.value }),
+    ])
   },
 })
 

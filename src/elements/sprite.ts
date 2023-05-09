@@ -11,10 +11,6 @@ import type { PixiEvents } from './events'
 interface Props {
   texture: string | PIXI.Texture
 
-  anchor?: PIXI.IPointData | number
-  anchorX?: number
-  anchorY?: number
-
   blendMode?: PIXI.BLEND_MODES
 
   width?: number
