@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
 import { useWindowSize } from '@vueuse/core'
 import BasicText from './components/BasicText.vue'
 // import Basic from './components/Basic.vue'

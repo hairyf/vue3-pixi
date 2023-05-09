@@ -1,18 +1,26 @@
-import { computed, inject, provide, ref, unref } from 'vue-demi'
+import type { Ref } from 'vue-demi'
+import { computed, getCurrentInstance, inject, provide, ref, unref } from 'vue-demi'
 import type { MaybeRef } from '@vueuse/core'
-import { createSharedComposable } from '@vueuse/core'
+import type { Application } from 'pixi.js'
 import type { StageInst } from '../components'
 import { applicationInjectionKey } from './internal'
 
-function _useApplication(stageRef?: MaybeRef<StageInst>) {
-  const app = inject(applicationInjectionKey, ref())
+export function useApplication(stageRef?: MaybeRef<StageInst>): Ref<Application | undefined> {
+  const inst = getCurrentInstance() as any
 
+  if (inst.pixiAppRef)
+    return inst.pixiAppRef
   if (stageRef)
     return computed(() => unref(stageRef).app)
 
-  provide(applicationInjectionKey, app)
+  const app = inject(applicationInjectionKey, ref())
+
+  // not found, search down
+  if (app.value) {
+    provide(applicationInjectionKey, app)
+    inst.pixiAppRef = app
+  }
 
   return app
 }
 
-export const useApplication = createSharedComposable(_useApplication)
