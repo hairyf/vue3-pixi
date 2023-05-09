@@ -36,15 +36,15 @@ export interface AllowedPixiProps {
 
   x?: number
   y?: number
-  position?: IPointData | number
+  position?: Partial<IPointData> | number
   positionY?: number
   positionX?: number
 
-  anchor?: IPointData | number
+  anchor?: Partial<IPointData> | number
   anchorX?: number
   anchorY?: number
 
-  pivot?: IPointData | number
+  pivot?: Partial<IPointData> | number
   pivotX?: number
   pivotY?: number
 
@@ -53,13 +53,13 @@ export interface AllowedPixiProps {
   rotation?: number
   angle?: number
 
-  scale?: number | IPointData
+  scale?: Partial<IPointData> | number
   scaleX?: number
   scaleY?: number
   width?: number
   height?: number
 
-  skew?: IPointData
+  skew?: Partial<IPointData> | number
   skewX?: number
   skewY?: number
 

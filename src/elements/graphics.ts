@@ -13,6 +13,7 @@ interface Props {
   pluginName?: string
   shader?: PIXI.Shader
   tint?: PIXI.ColorSource
+  geometry?: PIXI.GraphicsGeometry
 }
 
 type Events = PixiEvents & {

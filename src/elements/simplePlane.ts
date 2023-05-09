@@ -10,8 +10,7 @@ import type { PixiEvents } from './events'
 
 interface Props {
   texture: string | PIXI.Texture
-  verticesX?: number
-  verticesY?: number
+  points: PIXI.IPoint[]
 
   shader?: PIXI.Shader | PIXI.MeshMaterial
   blendMode?: PIXI.BLEND_MODES

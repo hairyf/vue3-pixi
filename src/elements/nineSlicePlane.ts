@@ -14,6 +14,8 @@ interface Props {
   rightWidth?: number
   topHeight?: number
   bottomHeight?: number
+  verticesX?: number
+  verticesY?: number
 
   shader?: PIXI.Shader | PIXI.MeshMaterial
   blendMode?: PIXI.BLEND_MODES

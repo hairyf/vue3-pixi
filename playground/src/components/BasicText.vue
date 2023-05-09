@@ -6,7 +6,7 @@ const screen = useScreen()
 </script>
 
 <template>
-  <Text :position="60" text="我这个人走得很慢，但是我从不后退。" :style="{ fill: '#fff' }" />
+  <Text :position="80" text="我这个人走得很慢，但是我从不后退。" :style="{ fill: '#fff' }" />
   <Text :x="60" :y="160" :style="{ fill: '#fff' }">
     意志命运往往背道而驰，决心到最后会全部推倒。——莎士比亚
   </Text>
