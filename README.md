@@ -153,7 +153,7 @@ function draw(g: Graphics) {
 </template>
 ```
 
-## Filter
+## Filters
 
 To use `filter`, you need to place the Filter tag under the `<Container>` that sets the filter. Currently, the following filters are supported by default:
 
@@ -176,7 +176,7 @@ const showBlur = ref(true)
 </container>
 ```
 
-### Custom Filter
+### Custom Filters
 
 To use other filters, you can use the is attribute of `<Filter>`. For example, to use the `ShockwaveFilter` in [pixi-filters](https://github.com/pixijs/filters):
 
