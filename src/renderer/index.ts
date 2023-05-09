@@ -50,7 +50,7 @@ export function createPixiRenderer(options: CreatePixiRendererOptions = {}) {
     },
     setElementText: (node, text) => {
       node instanceof Text
-        ? node.text = text
+        ? node.text = text.trim()
         : warn(`Text is only supported with ${prefix}-text element`)
     },
     setText: (node, text) => {
