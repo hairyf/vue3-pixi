@@ -4,18 +4,16 @@ import type {
   DefineComponent,
   VNodeProps,
 } from 'vue-demi'
-import type { BlurFilter } from 'pixi.js'
+import type { AlphaFilter } from 'pixi.js'
 import type { AllowedFilterProps, ExtractFilterProps } from './props'
 
-interface Props extends ExtractFilterProps<BlurFilter> {
-  strength?: number
-  resolution?: number
-  kernelSize?: number
+interface Props extends ExtractFilterProps<AlphaFilter> {
+
 }
 
 interface Events {}
 
-export type PixiBlurFilterComponent = DefineComponent<
+export type PixiAlphaFilterComponent = DefineComponent<
   Props,
   {},
   unknown,
