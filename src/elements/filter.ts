@@ -2,21 +2,33 @@ import type {
   ComponentCustomProps,
   ComponentOptionsMixin,
   DefineComponent,
+  VNodeProps,
 } from 'vue-demi'
+import type { AllowedFilterProps } from './props'
 
-export type Props<T = {}> = { is: (props: any) => T } & T
+interface Props {
 
-export type PixiFilterComponent<T = {}> = DefineComponent<
-  Props<T>,
+}
+
+interface Events {
+
+}
+
+export type PixiFilterComponent = DefineComponent<
+  Props,
   {},
   unknown,
   {},
   {},
   ComponentOptionsMixin,
   ComponentOptionsMixin,
-  [],
-  string,
-  T & ComponentCustomProps,
-  Readonly<Props<T>>,
+  (keyof Events)[],
+  keyof Events,
+  VNodeProps & AllowedFilterProps & ComponentCustomProps,
+  Readonly<Props> & {
+    [key in keyof Events as `on${Capitalize<key>}`]?:
+    | ((...args: Events[key]) => any)
+    | undefined;
+  },
   {}
 >
