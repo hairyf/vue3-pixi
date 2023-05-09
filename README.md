@@ -14,12 +14,11 @@
   <img src="https://img.shields.io/badge/pixi-v7+-ff69b4.svg?style=flat-square" alt="pixi version" />
 </p>
 
-
 ###### Features
 
 - 💚 Lightweight and flexible [Vue 3](https://vuejs.org/) library for creating [PixiJS](https://pixijs.com/) applications.
 - ✏️ Provides a [Custom Vue Renderer](https://vuejs.org/api/custom-renderer.html#custom-renderer-api) that creates PixiJS objects instead of HTML elements.
-- 📦 Supports all PixiJS objects, such as `Container`, `Sprite`, `Graphics`, `Text`, etc
+- 📦 Supports all PixiJS objects, such as `Filter`, `Container`, `Sprite`, `Graphics`, `Text`, etc
 - 🧑‍💻 Support specifying `texture` paths in templates to load texture objects
 - ✨ All [events](https://pixijs.download/release/docs/PIXI.Sprite.html#onclick) emitted by PixiJS objects are supported
 - 🗃️ Offers a [Assets](#assets) component for bundling assets.
@@ -154,6 +153,66 @@ function draw(g: Graphics) {
 </template>
 ```
 
+## Filter
+
+To use `filter`, you need to place the Filter tag under the `<Container>` that sets the filter. Currently, the following filters are supported by default:
+
+- [BlurFilter](https://pixijs.download/release/docs/PIXI.BlurFilter.html)
+- [AlphaFilter](https://pixijs.download/release/docs/PIXI.AlphaFilter.html)
+- [DisplacementFilter](https://pixijs.download/release/docs/PIXI.DisplacementFilter.html)
+- [ColorMatrixFilter](https://pixijs.download/release/docs/PIXI.ColorMatrixFilter.html)
+- [NoiseFilter](https://pixijs.download/release/docs/PIXI.NoiseFilter.html)
+- [FXAAFilter](https://pixijs.download/release/docs/PIXI.FXAAFilter.html)
+
+Example of using `BlurFilter` with a Container:
+
+```html
+<script setup>
+const showBlur = ref(true)
+</script>
+
+<container>
+  <blur-filter :quality="3" :blur="5" v-if="showBlur" />
+</container>
+```
+
+### Custom Filter
+
+To use other filters, you can use the is attribute of `<Filter>`. For example, to use the `ShockwaveFilter` in [pixi-filters](https://github.com/pixijs/filters):
+
+```html
+<script setup>
+import { ShockwaveFilter } from 'pixi-filters'
+function renderShockwaveFilter(props: any) {
+  return new ShockwaveFilter(
+    props.center,
+    {
+      radius: props.radius,wavelength: props.wavelength,
+      amplitude: props.amplitude, speed: props.speed,
+    },
+    props.time,
+  )
+}
+
+const time = ref(0)
+const center = ref([20, 30])
+</script>
+
+<container>
+  <filter :is="renderShockwaveFilter" :center="center" :time="time" />
+</container>
+```
+
+## Namespaces
+
+To avoid conflicts with other tags, such as `<filter>`, you can use the `pixi-` prefix or capitalize the first letter with `<Filter>`.
+
+```html
+<Filter /> <!-- or --> <pixi-filter />
+```
+
+> Other components also support the `pixi-` prefix, so you can choose according to your personal preference.
+
 ## Assets
 
 `vue3-pixi-renderer` provides a special component for bundling resources and obtaining resources from plugins.
@@ -235,7 +294,6 @@ onMounted(() => {
   </Stage>
 </template>
 ```
-
 
 ## Creating an pixi application manually
 
