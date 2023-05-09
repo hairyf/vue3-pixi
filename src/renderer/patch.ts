@@ -8,10 +8,10 @@ import {
   Mesh,
   SimplePlane,
   Sprite,
-  Texture,
   TilingSprite,
 } from 'pixi.js'
 import { setPointNumber, setPointObject, setValueProp } from './setter'
+import { normalizeTexture } from './utils'
 
 const defaultBooleanProps = ['accessible', 'cullable', 'renderable', 'visible'] as const
 const bitmapBooleanProps = ['dirty', 'roundPixels'] as const
@@ -193,10 +193,4 @@ export function patchBooleanProps<T extends Container>(
     return true
   }
   return false
-}
-
-export function normalizeTexture(value: Texture | string): Texture {
-  if (typeof value === 'string')
-    return Texture.from(value)
-  return value
 }

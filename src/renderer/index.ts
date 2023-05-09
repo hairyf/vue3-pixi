@@ -1,61 +1,30 @@
 import { camelize, createRenderer, warn } from 'vue-demi'
 import {
-  AnimatedSprite,
-  BitmapText,
   Container,
-  Graphics,
-  Mesh,
-  NineSlicePlane,
-  SimpleMesh,
-  SimplePlane,
-  SimpleRope,
-  Sprite,
+  Filter,
   Text,
-  TilingSprite,
 } from 'pixi.js'
-import { patchProp } from './props'
+import { patchProp } from './patch'
+import { elements } from './elements'
+import { isCustomFilter } from './utils'
 
 interface CreatePixiRendererOptions {
   prefix?: string
 }
-
-const elements = {
-  Container,
-  Sprite,
-  Graphics,
-  Text,
-  BitmapText,
-  TilingSprite,
-  AnimatedSprite,
-  Mesh,
-  NineSlicePlane,
-  SimpleMesh,
-  SimplePlane,
-  SimpleRope,
-} as Record<string, new (...args: any) => Container>
 
 export function createPixiRenderer(options: CreatePixiRendererOptions = {}) {
   const { prefix = 'pixi' } = options
 
   return createRenderer<Container, Container>({
     createElement: (name, _, __, props) => {
-      const Constructor = findConstructor(prefix, name)
+      const element = isCustomFilter(prefix, name)
+        ? props?.is?.(props)
+        : createPixiElement(prefix, name, props)
 
-      if (!Constructor) {
-        warn(`Unknown element ${name}`)
-        return new Container()
-      }
+      if (element instanceof Container)
+        element.filters = []
 
-      switch (Constructor) {
-        case Graphics:
-          return new Constructor(props?.geometry)
-        case Text:
-          return new Constructor(props?.text, props?.style, props?.canvas)
-        case BitmapText:
-          return new Constructor(props?.text, props?.style)
-        default:
-          return new Constructor()
-      }
+      return element
     },
 
     patchProp,
@@ -65,16 +34,16 @@ export function createPixiRenderer(options: CreatePixiRendererOptions = {}) {
     createComment: () => new Container(),
     remove: child => child.destroy(),
     insert: (child, parent, anchor) => {
-      if (anchor)
-        parent.addChildAt(child, parent.getChildIndex(anchor))
+      if (child instanceof Filter)
+        insertFilter(child, parent, anchor)
       else
-        parent.addChild(child)
+        insertContainer(child, parent, anchor)
     },
     nextSibling: (node) => {
-      const index = node.parent.getChildIndex(node)
-      if (node.parent.children.length <= index + 1)
-        return null
-      return node.parent.getChildAt(index + 1) as Container ?? null
+      if (node instanceof Filter)
+        return nextSiblingFilter(node)
+      else
+        return nextSiblingContainer(node)
     },
     setElementText: (node, text) => {
       node instanceof Text
@@ -87,18 +56,54 @@ export function createPixiRenderer(options: CreatePixiRendererOptions = {}) {
   })
 }
 
-function findConstructor(prefix: string, name: string) {
-  let c
+function createPixiElement(prefix: string, name: string, props: any = {}) {
+  let is
   if (name.startsWith(prefix)) {
     name = camelize(name)
-    c = elements[name.slice(prefix.length)]
+    is = elements[name.slice(prefix.length)]
   }
   else {
     name = camelize(name)
     name = name.charAt(0).toUpperCase() + name.slice(1)
-    c = elements[name]
+    is = elements[name]
   }
-  return c as undefined | (new (...args: any) => Container)
+  if (!is) {
+    warn(`Unknown element ${name}`)
+    return new Container()
+  }
+  return is(props)
+}
+
+function insertContainer(child: Container, parent: Container, anchor?: Container | null) {
+  if (anchor)
+    parent.addChildAt(child, parent.getChildIndex(anchor))
+  else
+    parent.addChild(child)
+}
+
+function insertFilter(child: any, parent: Container, _anchor: any) {
+  function remove() {
+    const index = parent.filters!.indexOf(child)
+    if (index !== -1)
+      parent.filters?.splice(index, 1)
+  }
+  child.parent = parent
+  child.destroy = remove
+  parent.filters!.push(child)
+}
+
+function nextSiblingFilter(node: any) {
+  const index = node.parent.filters!.indexOf(node)
+  if (node.parent.filters!.length <= index + 1)
+    return null
+  return node
+}
+
+function nextSiblingContainer(node: Container) {
+  const index = node.parent.getChildIndex(node)
+  if (node.parent.children.length <= index + 1)
+    return null
+  return node.parent.getChildAt(index + 1) as Container ?? null
 }
 
 export const { createApp, render } = createPixiRenderer()

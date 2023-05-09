@@ -1,3 +1,4 @@
+import '@vue/runtime-core'
 import type { PixiSimpleRopeComponent } from './elements/simpleRope'
 import type { PixiSimplePlaneComponent } from './elements/simplePlane'
 import type { PixiNineSlicePlaneComponent } from './elements/nineSlicePlane'
@@ -9,11 +10,33 @@ import type { PixiGraphicsComponent } from './elements/graphics'
 import type { PixiContainerComponent } from './elements/container'
 import type { PixiSpriteComponent } from './elements/sprite'
 import type { PixiBitmapTextComponent } from './elements/bitmapText'
-
-import '@vue/runtime-core'
+import type { PixiFilterComponent } from './elements/filter'
+import type { PixiBlurFilterComponent } from './elements/blurFilter'
+import type { PixiAlphaFilterComponent } from './elements/alphaFilter'
+import type { PixiDisplacementFilterComponent } from './elements/displacementFilter'
+import type { PixiColorMatrixFilterComponent } from './elements/colorMatrixFilter'
+import type { PixiFXAAFilterComponent } from './elements/FXAAFilter'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    Filter: PixiFilterComponent
+    PixiFilter: PixiFilterComponent
+
+    BlurFilter: PixiBlurFilterComponent
+    PixiBlurFilter: PixiBlurFilterComponent
+
+    AlphaFilter: PixiAlphaFilterComponent
+    PixiAlphaFilter: PixiAlphaFilterComponent
+
+    DisplacementFilter: PixiDisplacementFilterComponent
+    PixiDisplacementFilter: PixiDisplacementFilterComponent
+
+    ColorMatrixFilter: PixiColorMatrixFilterComponent
+    PixiColorMatrixFilter: PixiColorMatrixFilterComponent
+
+    FXAAFilter: PixiFXAAFilterComponent
+    PixiFXAAFilter: PixiFXAAFilterComponent
+
     Container: PixiContainerComponent
     PixiContainer: PixiContainerComponent
 

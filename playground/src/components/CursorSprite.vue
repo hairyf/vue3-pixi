@@ -1,14 +1,7 @@
-<!-- eslint-disable no-console -->
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import { Circle, Graphics } from 'pixi.js'
-import type { AssetsResolvers } from 'vue3-pixi-renderer'
-import { Assets } from 'vue3-pixi-renderer'
+import { BlurFilter, Circle, Graphics } from 'pixi.js'
 import { TransitionPresets, useElementHover, useTransition } from '@vueuse/core'
-
-const resolves: AssetsResolvers = {
-  cursor: import('../assets/cursor.png'),
-}
 
 const position = ref({
   y: 60,
@@ -35,28 +28,31 @@ function drawOutline(g: Graphics) {
   g.drawCircle(0, 0, 32 * scaleAnimated.value)
 }
 
-function progress(p: number) {
+function renderBlurFilter(props: any) {
+  return new BlurFilter(
+    props.strength,
+    props.quality,
+    props.resolution,
+    props.kernelSize,
+  )
 }
+
+const show = ref(false)
 </script>
 
 <template>
-  <container :position-x="position.x">
-    <Assets :resolves="resolves" @progress="progress">
-      <template #default="{ textures }">
-        <sprite
-          ref="spriteRef"
-          :texture="textures.cursor"
-          :hit-area="hitArea"
-          :scale="scaleAnimated"
-          :anchor="0.5"
-          event-mode="static"
-          tint="orange"
-        />
-        <Graphics @draw="drawOutline" />
-      </template>
-      <template #fallback>
-        <!-- loading... -->
-      </template>
-    </Assets>
-  </container>
+  <Container :position-x="position.x">
+    <Filter :is="renderBlurFilter" v-if="show" :quality="3" :blur="5" />
+    <Sprite
+      ref="spriteRef"
+      texture="../assets/cursor.png"
+      :hit-area="hitArea"
+      :scale="scaleAnimated"
+      :anchor="0.5"
+      event-mode="static"
+      tint="orange"
+      @click="show = !show"
+    />
+    <Graphics @draw="drawOutline" />
+  </Container>
 </template>
