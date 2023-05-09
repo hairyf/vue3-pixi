@@ -41,7 +41,7 @@ const show = ref(false)
 </script>
 
 <template>
-  <Container :position-x="position.x">
+  <Container :position-x="position.x" :y="position.y">
     <Filter :is="renderBlurFilter" v-if="show" :quality="3" :blur="5" />
     <Sprite
       ref="spriteRef"
@@ -49,7 +49,6 @@ const show = ref(false)
       :hit-area="hitArea"
       :scale="scaleAnimated"
       :anchor="0.5"
-      event-mode="static"
       tint="orange"
       @click="show = !show"
     />
