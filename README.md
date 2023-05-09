@@ -219,8 +219,7 @@ To avoid conflicts with other tags, such as `<filter>`, you can use the `pixi-` 
 
 ```html
 <script setup lang="ts">
-import { Stage, Assets, AssetsResolvers } from "vue3-pixi-renderer";
-import textureUrl from "@/assets/myTexture.png";
+import { Assets, AssetsResolvers } from "vue3-pixi-renderer";
 
 const resolves: AssetsResolvers = {
   flowerTop: import('./examples/assets/flowerTop.png'),
@@ -230,19 +229,24 @@ const resolves: AssetsResolvers = {
 </script>
 
 <template>
-  <Stage :width="640" :height="480">
-    <Assets :resolves="resolves">
-      <template #default={ textures }>
-        <container>
-          <sprite :texture="textures.flowerTop" />
-        </container>
-      </template>
-      <template #fallback={ progress }>
-        <!-- Loading... -->
-      </template>
-    </Assets>
-  </Stage>
+  <Assets :resolves="resolves" #default="{ textures, progress }">
+    <container v-if="textures">
+      <sprite :texture="textures.flowerTop" />
+    </container>
+    <text v-else>
+      Loading...
+    </text>
+  </Assets>
 </template>
+```
+
+You can also use the `resolved` and `fallback` slots separately to handle successful and loaded content independently:
+
+```html
+<Assets :resolves="resolves">
+  <template #resolved="{ textures }"><!-- ... --></template>
+  <template #fallback="{ progress }"><!-- ... --></template>
+</Assets>
 ```
 
 ## Composables
