@@ -1,28 +1,26 @@
-import type { Container } from 'pixi.js'
+import { isNumber } from '@antfu/utils'
 import { effectScope, nextTick, watchEffect } from 'vue-demi'
 
-export function setPointObject(el: Container, key: string, prevValue: any, nextValue: any) {
-  const inst = el as any
+export function setPointObject(inst: any, key: string, prevValue: any, nextValue: any) {
   const scope = effectScope()
   function update() {
-    if (prevValue && nextValue !== prevValue)
+    if (prevValue && nextValue !== prevValue) {
       inst[`__${key}_scope`]?.stop()
-    if (typeof nextValue.x !== 'undefined')
-      (el as any)[key].x = nextValue.x
-    if (typeof nextValue.y !== 'undefined')
-      (el as any)[key].y = nextValue.y
+      delete inst[`__${key}_scope`]
+    }
+    for (const [setKey, value] of Object.entries(nextValue))
+      inst[key][setKey] = value
   }
   scope.run(() => {
     watchEffect(update)
     nextTick(update)
   })
-  el.on('destroyed', () => scope.stop())
+  inst.on('destroyed', () => scope.stop())
   inst[`__${key}_scope`] = scope
   return true
 }
 
-export function setPointNumber(el: Container, key: string, value: any) {
-  const inst = el as any
+export function setPointNumber(inst: any, key: string, value: any) {
   const initKey = `__${key}_init`
   function update() {
     return inst[key].set(value, value)
@@ -37,12 +35,12 @@ export function setPointNumber(el: Container, key: string, value: any) {
   return true
 }
 
-export function setValueProp(inst: any, keys: string, value: any) {
-  const initKey = `__${keys}_init`
+export function setPointField(inst: any, key: string, value: any) {
+  const initKey = `__${key}_init`
   function update() {
-    Reflect.set(inst, keys, value)
+    Reflect.set(inst, key, value)
   }
-  if (!(inst as any)[initKey]) {
+  if (!inst[initKey]) {
     Reflect.set(inst, initKey, true)
     nextTick(update)
   }
@@ -50,4 +48,19 @@ export function setValueProp(inst: any, keys: string, value: any) {
     update()
   }
   return true
+}
+
+export function setPointValue(inst: any, name: string, key: string, prevValue: any, nextValue: any) {
+  switch (key) {
+    case name:
+      if (isNumber(nextValue))
+        return setPointNumber(inst, name, nextValue)
+      else
+        return setPointObject(inst, name, prevValue, nextValue)
+    case `${name}X`:
+      return setPointField(inst[name], 'x', nextValue)
+    case `${name}Y`:
+      return setPointField(inst[name], 'y', nextValue)
+  }
+  return false
 }
