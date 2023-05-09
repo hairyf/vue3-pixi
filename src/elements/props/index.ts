@@ -40,7 +40,7 @@ export interface AllowedPixiProps {
   positionY?: number
   positionX?: number
 
-  pivot?: IPointData
+  pivot?: IPointData | number
   pivotX?: number
   pivotY?: number
 
