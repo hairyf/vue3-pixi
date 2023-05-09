@@ -4,6 +4,7 @@ import { throttle } from '@antfu/utils'
 import type { ColorSource, Container } from 'pixi.js'
 import { Application } from 'pixi.js'
 import type { App, PropType } from 'vue-demi'
+import { computedWithControl } from '@vueuse/core'
 import { createApp } from '../renderer'
 import { applicationInjectionKey } from '../composables/internal'
 
@@ -68,6 +69,13 @@ const Stage = defineComponent({
 
       pixiApp.value = markRaw(inst)
 
+      const screen = computedWithControl(
+        () => [props.width, props.height],
+        () => pixiApp.value?.screen,
+      )
+
+      ;(pixiApp.value as any).__computed_screen = screen
+
       app = createApp({
         render: () => renderSlot(slots, 'default'),
       })
@@ -84,7 +92,9 @@ const Stage = defineComponent({
     }
 
     function resize() {
-      pixiApp.value?.renderer.resize(
+      if (!pixiApp.value)
+        return
+      pixiApp.value.renderer.resize(
         props.width || pixiApp.value.renderer.width,
         props.height || pixiApp.value.renderer.height,
       )
