@@ -1,7 +1,7 @@
 /* eslint-disable vue/one-component-per-file */
 import { defineComponent, h, inject, markRaw, onMounted, onUnmounted, ref, renderSlot, warn, watch } from 'vue-demi'
 import { throttle } from '@antfu/utils'
-import type { Container } from 'pixi.js'
+import type { ColorSource, Container } from 'pixi.js'
 import { Application } from 'pixi.js'
 import type { App, PropType } from 'vue-demi'
 import { createApp } from '../renderer'
@@ -30,6 +30,12 @@ const Stage = defineComponent({
       type: Boolean,
       default: true,
     },
+    background: [Number, String, Array] as PropType<ColorSource>,
+    backgroundColor: [Number, String, Array] as PropType<ColorSource>,
+    backgroundAlpha: {
+      type: Number,
+      default: 1,
+    },
   },
   setup(props, { slots }) {
     const canvas = ref<HTMLCanvasElement>()
@@ -51,17 +57,22 @@ const Stage = defineComponent({
       if (!context)
         warn('could not crate webgl context')
 
-      pixiApp.value = markRaw(new Application({
+      const inst = new Application({
         view: canvas.value,
         width: props.width,
         height: props.height,
-      }))
+        background: props.background,
+        backgroundColor: props.backgroundColor,
+        backgroundAlpha: props.backgroundAlpha,
+      })
+
+      pixiApp.value = markRaw(inst)
 
       app = createApp({
         render: () => renderSlot(slots, 'default'),
       })
       app.provide(applicationInjectionKey, pixiApp)
-      app.mount(pixiApp.value.stage)
+      app.mount(pixiApp.value!.stage)
     }
 
     function unmount() {
