@@ -1,7 +1,6 @@
 import { computed, inject, provide, ref, unref } from 'vue-demi'
 import type { MaybeRef } from '@vueuse/core'
 import type { StageInst } from '../components'
-
 import { applicationInjectionKey } from './internal'
 
 export function useApplication(stageRef?: MaybeRef<StageInst>) {
