@@ -198,9 +198,9 @@ const time = ref(0)
 const center = ref([20, 30])
 </script>
 
-<container>
+<sprite texture="@/assets/background.png">
   <filter :is="renderShockwaveFilter" :center="center" :time="time" />
-</container>
+</sprite>
 ```
 
 ## Namespaces
