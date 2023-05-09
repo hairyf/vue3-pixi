@@ -1,10 +1,11 @@
 /* eslint-disable vue/one-component-per-file */
-import { defineComponent, h, markRaw, onMounted, onUnmounted, ref, renderSlot, warn, watch } from 'vue-demi'
+import { defineComponent, h, inject, markRaw, onMounted, onUnmounted, provide, ref, renderSlot, warn, watch } from 'vue-demi'
 import { throttle } from '@antfu/utils'
 import type { Container } from 'pixi.js'
 import { Application } from 'pixi.js'
 import type { App, PropType } from 'vue-demi'
 import { createApp } from '../renderer'
+import { applicationInjectionKey } from '../composables/internal'
 
 export interface StageInst {
   app?: Application
@@ -32,7 +33,7 @@ const Stage = defineComponent({
   },
   setup(props, { slots }) {
     const canvas = ref<HTMLCanvasElement>()
-    const pixiApp = ref<Application>()
+    const pixiApp = injectApplication()
     let app: App<Container> | undefined
 
     function mount() {
@@ -83,15 +84,24 @@ const Stage = defineComponent({
       throttle(50, resize),
     )
 
+    provide(applicationInjectionKey, pixiApp)
+
     onMounted(mount)
 
     onUnmounted(unmount)
 
-    return { canvas, app: pixiApp }
+    return { canvas }
   },
   render() {
     return h('canvas', { ref: 'canvas' })
   },
 })
+
+function injectApplication() {
+  let pixiApp = inject(applicationInjectionKey, ref())
+  if (pixiApp?.value)
+    pixiApp = ref()
+  return pixiApp
+}
 
 export default Stage

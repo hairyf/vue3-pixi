@@ -257,15 +257,13 @@ This composable hook adds a ticker to the Pixi application during mounting and r
 <script setup lang="ts">
 import { StageInst, Stage, tryMountTicker } from "vue3-pixi-renderer";
 
-const stageRef = ref<StageInst>()
-
-const removeTicker = tryMountTicker(stageRef, (delta) => {
+const removeTicker = tryMountTicker((delta) => {
   // ...
 })
 </script>
 
 <template>
-  <Stage ref="stageRef" :width="640" :height="480">
+  <Stage :width="640" :height="480">
     <!-- ... -->
   </Stage>
 </template>
@@ -280,12 +278,26 @@ This composable hook is used to obtain the current Pixi application instance.
 import { StageInst, Stage, useApplication } from "vue3-pixi-renderer";
 import { onMounted } from 'vue'
 
-const stageRef = ref<StageInst>()
-const pixiApp = useApplication(stageRef)
+const pixiApp = useApplication()
 
 onMounted(() => {
   pixiApp.value.screen // { ... }
 })
+</script>
+
+<template>
+  <Stage :width="640" :height="480">
+    <!-- ... -->
+  </Stage>
+</template>
+```
+
+You can pass a `ref` to specify a PIXI application. By default, it will automatically look for the nearest PIXI application in the current hierarchy.
+
+```html
+<script setup lang="ts">
+const stageRef = ref()
+const pixiApp = useApplication(stageRef)
 </script>
 
 <template>

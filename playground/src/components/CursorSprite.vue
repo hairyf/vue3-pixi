@@ -45,7 +45,7 @@ const show = ref(false)
     <Filter :is="renderBlurFilter" v-if="show" :quality="3" :blur="5" />
     <Sprite
       ref="spriteRef"
-      texture="../assets/cursor.png"
+      texture="/cursor.png"
       :hit-area="hitArea"
       :scale="scaleAnimated"
       :anchor="0.5"

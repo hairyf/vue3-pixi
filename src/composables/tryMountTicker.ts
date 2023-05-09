@@ -1,11 +1,9 @@
-import type { Ref } from 'vue-demi'
 import { tryOnBeforeUnmount, tryOnMounted } from '@vueuse/core'
 import type { TickerCallback } from 'pixi.js'
-import type { StageInst } from '../components'
 import { useApplication } from './useApplication'
 
-export function tryMountTicker(stageRef: Ref<StageInst | undefined> | StageInst | undefined, fn: TickerCallback<any>) {
-  const app = useApplication(stageRef)
+export function tryMountTicker(fn: TickerCallback<any>) {
+  const app = useApplication()
 
   function insert() {
     app.value?.ticker.add(fn)
