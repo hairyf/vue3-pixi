@@ -60,7 +60,7 @@ const Stage = defineComponent({
       app = createApp({
         render: () => renderSlot(slots, 'default'),
       })
-
+      app.provide(applicationInjectionKey, pixiApp)
       app.mount(pixiApp.value.stage)
     }
 
@@ -83,8 +83,6 @@ const Stage = defineComponent({
       () => [props.width, props.height],
       throttle(50, resize),
     )
-
-    provide(applicationInjectionKey, pixiApp)
 
     onMounted(mount)
 
