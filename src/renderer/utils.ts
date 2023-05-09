@@ -16,6 +16,6 @@ export function isCustomFilter(prefix: string, name: string) {
   ) || name === 'Filter'
 }
 
-export function isExistsEvent(props: any = {}) {
-  return Object.keys(props).some(p => p.startsWith('on'))
+export function isExistsEvent(props?: any) {
+  return Object.keys(props || {}).some(p => p.startsWith('on'))
 }
