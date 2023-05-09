@@ -15,6 +15,7 @@ import type { PixiBlurFilterComponent } from './elements/blurFilter'
 import type { PixiAlphaFilterComponent } from './elements/alphaFilter'
 import type { PixiDisplacementFilterComponent } from './elements/displacementFilter'
 import type { PixiColorMatrixFilterComponent } from './elements/colorMatrixFilter'
+import type { PixiFXAAFilterComponent } from './elements/FXAAFilter'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
@@ -32,6 +33,9 @@ declare module '@vue/runtime-core' {
 
     ColorMatrixFilter: PixiColorMatrixFilterComponent
     PixiColorMatrixFilter: PixiColorMatrixFilterComponent
+
+    FXAAFilter: PixiFXAAFilterComponent
+    PixiFXAAFilter: PixiFXAAFilterComponent
 
     Container: PixiContainerComponent
     PixiContainer: PixiContainerComponent
