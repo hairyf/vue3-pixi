@@ -330,7 +330,7 @@ const screen = useScreen()
 Using the custom renderer inside `vue3-pixi-renderer`
 
 ```ts
-import { createApp } from 'vue3-pixi-renderer'
+import { appInjectKey, createApp } from 'vue3-pixi-renderer'
 import App from './App.vue'
 
 const pixiApp = new PIXI.Application()
@@ -339,6 +339,7 @@ document.body.appendChild(pixiApp.view)
 
 const app = createApp(App)
 
+app.provide(appInjectKey, pixiApp)
 app.mount(pixiApp.stage)
 ```
 

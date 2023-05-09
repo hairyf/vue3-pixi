@@ -6,7 +6,7 @@ import { Application } from 'pixi.js'
 import type { App, PropType } from 'vue-demi'
 import { computedWithControl } from '@vueuse/core'
 import { createApp } from '../renderer'
-import { applicationInjectionKey } from '../composables/internal'
+import { appInjectKey } from '../composables/internal'
 
 export interface StageInst {
   app?: Application
@@ -79,7 +79,7 @@ const Stage = defineComponent({
       app = createApp({
         render: () => renderSlot(slots, 'default'),
       })
-      app.provide(applicationInjectionKey, pixiApp)
+      app.provide(appInjectKey, pixiApp)
       app.mount(pixiApp.value!.stage)
     }
 
@@ -117,7 +117,7 @@ const Stage = defineComponent({
 })
 
 function injectApplication() {
-  let pixiApp = inject(applicationInjectionKey, ref())
+  let pixiApp = inject(appInjectKey, ref())
   if (pixiApp?.value)
     pixiApp = ref()
   return pixiApp

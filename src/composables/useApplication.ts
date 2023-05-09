@@ -3,7 +3,7 @@ import { computed, getCurrentInstance, inject, provide, ref, unref } from 'vue-d
 import type { MaybeRef } from '@vueuse/core'
 import type { Application } from 'pixi.js'
 import type { StageInst } from '../components'
-import { applicationInjectionKey } from './internal'
+import { appInjectKey } from './internal'
 
 export function useApplication(stageRef?: MaybeRef<StageInst>): Ref<Application | undefined> {
   const inst = getCurrentInstance() as any
@@ -13,11 +13,11 @@ export function useApplication(stageRef?: MaybeRef<StageInst>): Ref<Application 
   if (stageRef)
     return computed(() => unref(stageRef).app)
 
-  const app = inject(applicationInjectionKey, ref())
+  const app = ref(inject(appInjectKey, ref()))
 
   // not found, search down
   if (app.value) {
-    provide(applicationInjectionKey, app)
+    provide(appInjectKey, app)
     inst.pixiAppRef = app
   }
 
