@@ -63,3 +63,7 @@ export interface AllowedPixiProps {
 
   zIndex?: number
 }
+
+export interface AllowedFilterProps extends Partial<Omit<Filter, 'destroy'>> {
+  is?: (props: any) => Filter
+}
