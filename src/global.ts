@@ -11,9 +11,13 @@ import type { PixiSpriteComponent } from './elements/sprite'
 import type { PixiBitmapTextComponent } from './elements/bitmapText'
 
 import '@vue/runtime-core'
+import type { PixiFilterComponent } from './elements/filter'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    Filter: PixiFilterComponent
+    PixiFilter: PixiFilterComponent
+
     Container: PixiContainerComponent
     PixiContainer: PixiContainerComponent
 
