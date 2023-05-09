@@ -1,5 +1,5 @@
 /* eslint-disable vue/one-component-per-file */
-import { defineComponent, h, inject, markRaw, onMounted, onUnmounted, provide, ref, renderSlot, warn, watch } from 'vue-demi'
+import { defineComponent, h, inject, markRaw, onMounted, onUnmounted, ref, renderSlot, warn, watch } from 'vue-demi'
 import { throttle } from '@antfu/utils'
 import type { Container } from 'pixi.js'
 import { Application } from 'pixi.js'
