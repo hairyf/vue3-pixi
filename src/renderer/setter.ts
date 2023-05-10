@@ -1,7 +1,7 @@
-import { isNumber } from '@antfu/utils'
+import { isObject } from '@antfu/utils'
 import { effectScope, nextTick, watchEffect } from 'vue-demi'
 
-export function setPointObject(inst: any, key: string, prevValue: any, nextValue: any) {
+export function patchObject(inst: any, key: string, prevValue: any, nextValue: any) {
   const scope = effectScope()
   function update() {
     if (prevValue && nextValue !== prevValue) {
@@ -20,10 +20,11 @@ export function setPointObject(inst: any, key: string, prevValue: any, nextValue
   return true
 }
 
-export function setPointNumber(inst: any, key: string, value: any) {
+export function patchPointSet(inst: any, key: string, value: any | any[]) {
+  const [v1, v2] = Array.isArray(value) ? value : [value, value]
   const initKey = `__${key}_init`
   function update() {
-    return inst[key].set(value, value)
+    return inst[key].set(v1, v2)
   }
   if (!inst[initKey]) {
     Reflect.set(inst, initKey, true)
@@ -35,7 +36,7 @@ export function setPointNumber(inst: any, key: string, value: any) {
   return true
 }
 
-export function setPointField(inst: any, key: string, value: any) {
+export function patchField(inst: any, key: string, value: any) {
   const initKey = `__${key}_init`
   function update() {
     Reflect.set(inst, key, value)
@@ -50,17 +51,17 @@ export function setPointField(inst: any, key: string, value: any) {
   return true
 }
 
-export function setPointValue(inst: any, name: string, key: string, prevValue: any, nextValue: any) {
+export function patchPoint(inst: any, name: string, key: string, prevValue: any, nextValue: any) {
   switch (key) {
     case name:
-      if (isNumber(nextValue))
-        return setPointNumber(inst, name, nextValue)
+      if (isObject(nextValue))
+        return patchObject(inst, name, prevValue, nextValue)
       else
-        return setPointObject(inst, name, prevValue, nextValue)
+        return patchPointSet(inst, name, nextValue)
     case `${name}X`:
-      return setPointField(inst[name], 'x', nextValue)
+      return patchField(inst[name], 'x', nextValue)
     case `${name}Y`:
-      return setPointField(inst[name], 'y', nextValue)
+      return patchField(inst[name], 'y', nextValue)
   }
   return false
 }
