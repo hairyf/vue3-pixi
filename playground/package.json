@@ -5,6 +5,7 @@
   },
   "dependencies": {
     "@vueuse/core": "^10.1.2",
+    "pixi-filters": "^5.2.1",
     "vue": "^3.2.47",
     "vue3-pixi-renderer": "workspace:^"
   },

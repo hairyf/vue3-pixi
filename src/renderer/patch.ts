@@ -19,6 +19,7 @@ const tilingSpriteProps = ['uvRespectAnchor'] as const
 const animatedSpriteBooleanProps = ['loop', 'updateAnchor'] as const
 const meshBooleanProps = ['roundPixels'] as const
 const simplePlaneBooleanProps = ['roundPixels', 'autoResize'] as const
+const pointProps = ['position', 'scale', 'pivot', 'skew', 'anchor'] as const
 
 export function patchProp(
   el: Container,
@@ -46,7 +47,7 @@ export function patchProp(
   if (patchBooleanProps(el, defaultBooleanProps, key, nextValue))
     return
 
-  if (patchDefaultProps(el, key, prevValue, nextValue))
+  if (patchPointProps(el, key, prevValue, nextValue))
     return
 
   if (patchEventProps(el, key, prevValue, nextValue))
@@ -93,30 +94,23 @@ export function patchSimplePlaneProps(el: SimplePlane, key: string, prevValue: a
   return patchBooleanProps(el, simplePlaneBooleanProps, key, nextValue)
 }
 
-export function patchDefaultProps(el: Container, key: string, prevValue: any, nextValue: any) {
-  if (key.startsWith('position'))
-    return setPointValue(el, 'position', key, prevValue, nextValue)
-  if (key.startsWith('scale'))
-    return setPointValue(el, 'scale', key, prevValue, nextValue)
-  if (key.startsWith('pivot'))
-    return setPointValue(el, 'pivot', key, prevValue, nextValue)
-  if (key.startsWith('skew'))
-    return setPointValue(el, 'skew', key, prevValue, nextValue)
-  if (key.startsWith('anchor'))
-    return setPointValue(el, 'anchor', key, prevValue, nextValue)
+export function patchPointProps(el: Container, key: string, prevValue: any, nextValue: any) {
+  for (const name of pointProps) {
+    if (key.startsWith(name))
+      return setPointValue(el, name, key, prevValue, nextValue)
+  }
   return false
 }
 
 export function patchEventProps(el: Container, key: string, prevValue: any, nextValue: any) {
-  if (key.startsWith('on')) {
-    const eventName = key.slice(2).toLowerCase()
-    if (prevValue)
-      el.off(eventName as any, prevValue)
-    if (nextValue)
-      el?.on(eventName as any, nextValue)
-    return true
-  }
-  return false
+  if (!key.startsWith('on'))
+    return false
+  const eventName = key.slice(2).toLowerCase()
+  if (prevValue)
+    el.off(eventName as any, prevValue)
+  if (nextValue)
+    el?.on(eventName as any, nextValue)
+  return true
 }
 
 export function patchBooleanProps<T extends Container>(

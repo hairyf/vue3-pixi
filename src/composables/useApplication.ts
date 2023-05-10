@@ -10,6 +10,7 @@ export function useApplication(stageRef?: MaybeRef<StageInst>): Ref<Application 
 
   if (inst.pixiAppRef)
     return inst.pixiAppRef
+
   if (stageRef)
     return computed(() => unref(stageRef).app)
 
