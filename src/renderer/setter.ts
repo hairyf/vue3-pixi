@@ -1,7 +1,7 @@
 import { isObject } from '@antfu/utils'
 import { effectScope, nextTick, watchEffect } from 'vue-demi'
 
-export function patchObject(inst: any, key: string, prevValue: any, nextValue: any) {
+export function setObject(inst: any, key: string, prevValue: any, nextValue: any) {
   const scope = effectScope()
   function update() {
     if (prevValue && nextValue !== prevValue) {
@@ -20,7 +20,7 @@ export function patchObject(inst: any, key: string, prevValue: any, nextValue: a
   return true
 }
 
-export function patchPointSet(inst: any, key: string, value: any | any[]) {
+export function setPoint(inst: any, key: string, value: any | any[]) {
   const [v1, v2] = Array.isArray(value) ? value : [value, value]
   const initKey = `__${key}_init`
   function update() {
@@ -36,7 +36,7 @@ export function patchPointSet(inst: any, key: string, value: any | any[]) {
   return true
 }
 
-export function patchField(inst: any, key: string, value: any) {
+export function setField(inst: any, key: string, value: any) {
   const initKey = `__${key}_init`
   function update() {
     Reflect.set(inst, key, value)
@@ -51,17 +51,17 @@ export function patchField(inst: any, key: string, value: any) {
   return true
 }
 
-export function patchPoint(inst: any, name: string, key: string, prevValue: any, nextValue: any) {
+export function setPointValue(inst: any, name: string, key: string, prevValue: any, nextValue: any) {
   switch (key) {
     case name:
       if (isObject(nextValue))
-        return patchObject(inst, name, prevValue, nextValue)
+        return setObject(inst, name, prevValue, nextValue)
       else
-        return patchPointSet(inst, name, nextValue)
+        return setPoint(inst, name, nextValue)
     case `${name}X`:
-      return patchField(inst[name], 'x', nextValue)
+      return setField(inst[name], 'x', nextValue)
     case `${name}Y`:
-      return patchField(inst[name], 'y', nextValue)
+      return setField(inst[name], 'y', nextValue)
   }
   return false
 }
