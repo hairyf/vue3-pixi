@@ -30,6 +30,7 @@
 
 ## Install
 
+
 ```sh
 # with pnpm
 pnpm add vue3-pixi-renderer
