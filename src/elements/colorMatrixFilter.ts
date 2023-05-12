@@ -7,12 +7,12 @@ import type {
 import type { ColorMatrixFilter } from 'pixi.js'
 import type { AllowedFilterProps, ExtractFilterProps } from './props'
 
-interface Props extends ExtractFilterProps<ColorMatrixFilter> {}
+export interface ColorMatrixFilterProps extends ExtractFilterProps<ColorMatrixFilter> {}
 
 interface Events {}
 
-export type PixiColorMatrixFilterComponent = DefineComponent<
-  Props,
+export type ColorMatrixFilterComponent = DefineComponent<
+ColorMatrixFilterProps,
   {},
   unknown,
   {},
@@ -22,7 +22,7 @@ export type PixiColorMatrixFilterComponent = DefineComponent<
   (keyof Events)[],
   keyof Events,
   VNodeProps & AllowedFilterProps & ComponentCustomProps,
-  Readonly<Props> & {
+  Readonly<ColorMatrixFilterProps> & {
     [key in keyof Events as `on${Capitalize<key>}`]?:
     | ((...args: Events[key]) => any)
     | undefined;

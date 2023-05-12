@@ -7,12 +7,12 @@ import type {
 import type { FXAAFilter } from 'pixi.js'
 import type { AllowedFilterProps, ExtractFilterProps } from './props'
 
-interface Props extends ExtractFilterProps<FXAAFilter> {}
+export interface FXAAFilterProps extends ExtractFilterProps<FXAAFilter> {}
 
 interface Events {}
 
-export type PixiFXAAFilterComponent = DefineComponent<
-  Props,
+export type FXAAFilterComponent = DefineComponent<
+FXAAFilterProps,
   {},
   unknown,
   {},
@@ -22,7 +22,7 @@ export type PixiFXAAFilterComponent = DefineComponent<
   (keyof Events)[],
   keyof Events,
   VNodeProps & AllowedFilterProps & ComponentCustomProps,
-  Readonly<Props> & {
+  Readonly<FXAAFilterProps> & {
     [key in keyof Events as `on${Capitalize<key>}`]?:
     | ((...args: Events[key]) => any)
     | undefined;

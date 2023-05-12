@@ -1,74 +1,74 @@
 import '@vue/runtime-core'
-import type { PixiSimpleRopeComponent } from './elements/simpleRope'
-import type { PixiSimplePlaneComponent } from './elements/simplePlane'
-import type { PixiNineSlicePlaneComponent } from './elements/nineSlicePlane'
-import type { PixiMeshComponent } from './elements/mesh'
-import type { PixiAnimatedSpriteComponent } from './elements/animatedSprite'
-import type { PixiTilingSpriteComponent } from './elements/tilingSprite'
-import type { PixiTextComponent } from './elements/text'
-import type { PixiGraphicsComponent } from './elements/graphics'
-import type { PixiContainerComponent } from './elements/container'
-import type { PixiSpriteComponent } from './elements/sprite'
-import type { PixiBitmapTextComponent } from './elements/bitmapText'
-import type { PixiFilterComponent } from './elements/filter'
-import type { PixiBlurFilterComponent } from './elements/blurFilter'
-import type { PixiAlphaFilterComponent } from './elements/alphaFilter'
-import type { PixiDisplacementFilterComponent } from './elements/displacementFilter'
-import type { PixiColorMatrixFilterComponent } from './elements/colorMatrixFilter'
-import type { PixiFXAAFilterComponent } from './elements/FXAAFilter'
+import type { SimpleRopeComponent } from './elements/simpleRope'
+import type { SimplePlaneComponent } from './elements/simplePlane'
+import type { NineSlicePlaneComponent } from './elements/nineSlicePlane'
+import type { MeshComponent } from './elements/mesh'
+import type { AnimatedSpriteComponent } from './elements/animatedSprite'
+import type { TilingSpriteComponent } from './elements/tilingSprite'
+import type { TextComponent } from './elements/text'
+import type { GraphicsComponent } from './elements/graphics'
+import type { ContainerComponent } from './elements/container'
+import type { SpriteComponent } from './elements/sprite'
+import type { BitmapTextComponent } from './elements/bitmapText'
+import type { FilterComponent } from './elements/filter'
+import type { BlurFilterComponent } from './elements/blurFilter'
+import type { AlphaFilterComponent } from './elements/alphaFilter'
+import type { DisplacementFilterComponent } from './elements/displacementFilter'
+import type { ColorMatrixFilterComponent } from './elements/colorMatrixFilter'
+import type { FXAAFilterComponent } from './elements/FXAAFilter'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    Filter: PixiFilterComponent
-    PixiFilter: PixiFilterComponent
+    Filter: FilterComponent
+    PixiFilter: FilterComponent
 
-    BlurFilter: PixiBlurFilterComponent
-    PixiBlurFilter: PixiBlurFilterComponent
+    BlurFilter: BlurFilterComponent
+    PixiBlurFilter: BlurFilterComponent
 
-    AlphaFilter: PixiAlphaFilterComponent
-    PixiAlphaFilter: PixiAlphaFilterComponent
+    AlphaFilter: AlphaFilterComponent
+    PixiAlphaFilter: AlphaFilterComponent
 
-    DisplacementFilter: PixiDisplacementFilterComponent
-    PixiDisplacementFilter: PixiDisplacementFilterComponent
+    DisplacementFilter: DisplacementFilterComponent
+    PixiDisplacementFilter: DisplacementFilterComponent
 
-    ColorMatrixFilter: PixiColorMatrixFilterComponent
-    PixiColorMatrixFilter: PixiColorMatrixFilterComponent
+    ColorMatrixFilter: ColorMatrixFilterComponent
+    PixiColorMatrixFilter: ColorMatrixFilterComponent
 
-    FXAAFilter: PixiFXAAFilterComponent
-    PixiFXAAFilter: PixiFXAAFilterComponent
+    FXAAFilter: FXAAFilterComponent
+    PixiFXAAFilter: FXAAFilterComponent
 
-    Container: PixiContainerComponent
-    PixiContainer: PixiContainerComponent
+    Container: ContainerComponent
+    PixiContainer: ContainerComponent
 
-    Sprite: PixiSpriteComponent
-    PixiSprite: PixiSpriteComponent
+    Sprite: SpriteComponent
+    PixiSprite: SpriteComponent
 
-    Graphics: PixiGraphicsComponent
-    PixiGraphics: PixiGraphicsComponent
+    Graphics: GraphicsComponent
+    PixiGraphics: GraphicsComponent
 
-    Text: PixiTextComponent
-    PixiText: PixiTextComponent
+    Text: TextComponent
+    PixiText: TextComponent
 
-    BitmapText: PixiBitmapTextComponent
-    PixiBitmapText: PixiBitmapTextComponent
+    BitmapText: BitmapTextComponent
+    PixiBitmapText: BitmapTextComponent
 
-    TilingSprite: PixiTilingSpriteComponent
-    PixiTilingSprite: PixiTilingSpriteComponent
+    TilingSprite: TilingSpriteComponent
+    PixiTilingSprite: TilingSpriteComponent
 
-    AnimatedSprite: PixiAnimatedSpriteComponent
-    PixiAnimatedSprite: PixiAnimatedSpriteComponent
+    AnimatedSprite: AnimatedSpriteComponent
+    PixiAnimatedSprite: AnimatedSpriteComponent
 
-    Mesh: PixiMeshComponent
-    PixiMesh: PixiMeshComponent
+    Mesh: MeshComponent
+    PixiMesh: MeshComponent
 
-    SimplePlane: PixiSimplePlaneComponent
-    PixiSimplePlane: PixiSimplePlaneComponent
+    SimplePlane: SimplePlaneComponent
+    PixiSimplePlane: SimplePlaneComponent
 
-    NineSlicePlane: PixiNineSlicePlaneComponent
-    PixiNineSlicePlane: PixiNineSlicePlaneComponent
+    NineSlicePlane: NineSlicePlaneComponent
+    PixiNineSlicePlane: NineSlicePlaneComponent
 
-    SimpleRope: PixiSimpleRopeComponent
-    PixiSimpleRope: PixiSimpleRopeComponent
+    SimpleRope: SimpleRopeComponent
+    PixiSimpleRope: SimpleRopeComponent
   }
 }
 

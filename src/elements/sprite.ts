@@ -8,7 +8,7 @@ import type * as PIXI from 'pixi.js'
 import type { AllowedPixiProps } from './props'
 import type { PixiEvents } from './events'
 
-interface Props {
+export interface SpriteProps {
   texture: string | PIXI.Texture
 
   blendMode?: PIXI.BLEND_MODES
@@ -23,8 +23,8 @@ interface Props {
 
 type Events = PixiEvents
 
-export type PixiSpriteComponent = DefineComponent<
-  Props,
+export type SpriteComponent = DefineComponent<
+  SpriteProps,
   {},
   unknown,
   {},
@@ -34,7 +34,7 @@ export type PixiSpriteComponent = DefineComponent<
   (keyof Events)[],
   keyof Events,
   VNodeProps & AllowedPixiProps & ComponentCustomProps,
-  Readonly<Props> & {
+  Readonly<SpriteProps> & {
     [key in keyof Events as `on${Capitalize<key>}`]?:
     | ((...args: Events[key]) => any)
     | undefined;

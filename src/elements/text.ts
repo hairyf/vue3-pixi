@@ -8,7 +8,7 @@ import type * as PIXI from 'pixi.js'
 import type { AllowedPixiProps } from './props'
 import type { PixiEvents } from './events'
 
-interface Props {
+export interface TextProps {
   text?: string | number
   style?: PIXI.TextStyle | Partial<PIXI.ITextStyle>
 
@@ -21,8 +21,8 @@ interface Props {
 
 type Events = PixiEvents & {}
 
-export type PixiTextComponent = DefineComponent<
-  Props,
+export type TextComponent = DefineComponent<
+TextProps,
   {},
   unknown,
   {},
@@ -32,7 +32,7 @@ export type PixiTextComponent = DefineComponent<
   (keyof Events)[],
   keyof Events,
   VNodeProps & AllowedPixiProps & ComponentCustomProps,
-  Readonly<Props> & {
+  Readonly<TextProps> & {
     [key in keyof Events as `on${Capitalize<key>}`]?:
     | ((...args: Events[key]) => any)
     | undefined;

@@ -8,7 +8,7 @@ import type * as PIXI from 'pixi.js'
 import type { AllowedPixiProps } from './props'
 import type { PixiEvents } from './events'
 
-interface Props {
+export interface BitmapTextProps {
   text?: string | number
   style?: Partial<PIXI.IBitmapTextStyle>
 
@@ -34,8 +34,8 @@ type Events = PixiEvents & {
   'update:dirty': [boolean]
 }
 
-export type PixiBitmapTextComponent = DefineComponent<
-  Props,
+export type BitmapTextComponent = DefineComponent<
+BitmapTextProps,
   {},
   unknown,
   {},
@@ -45,7 +45,7 @@ export type PixiBitmapTextComponent = DefineComponent<
   (keyof Events)[],
   keyof Events,
   VNodeProps & AllowedPixiProps & ComponentCustomProps,
-  Readonly<Props> & {
+  Readonly<BitmapTextProps> & {
     [key in keyof Events as `on${Capitalize<key>}`]?:
     | ((...args: Events[key]) => any)
     | undefined;

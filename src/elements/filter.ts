@@ -6,7 +6,7 @@ import type {
 } from 'vue-demi'
 import type { AllowedFilterProps } from './props'
 
-interface Props {
+export interface FilterProps {
 
 }
 
@@ -14,8 +14,8 @@ interface Events {
 
 }
 
-export type PixiFilterComponent = DefineComponent<
-  Props,
+export type FilterComponent = DefineComponent<
+FilterProps,
   {},
   unknown,
   {},
@@ -25,7 +25,7 @@ export type PixiFilterComponent = DefineComponent<
   (keyof Events)[],
   keyof Events,
   VNodeProps & AllowedFilterProps & ComponentCustomProps,
-  Readonly<Props> & {
+  Readonly<FilterProps> & {
     [key in keyof Events as `on${Capitalize<key>}`]?:
     | ((...args: Events[key]) => any)
     | undefined;

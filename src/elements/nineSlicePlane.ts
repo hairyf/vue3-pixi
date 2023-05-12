@@ -8,7 +8,7 @@ import type * as PIXI from 'pixi.js'
 import type { AllowedPixiProps } from './props'
 import type { PixiEvents } from './events'
 
-interface Props {
+export interface NineSlicePlaneProps {
   texture: PIXI.Texture | string
   leftWidth?: number
   rightWidth?: number
@@ -34,8 +34,8 @@ interface Props {
 
 type Events = PixiEvents
 
-export type PixiNineSlicePlaneComponent = DefineComponent<
-  Props,
+export type NineSlicePlaneComponent = DefineComponent<
+NineSlicePlaneProps,
   {},
   unknown,
   {},
@@ -45,7 +45,7 @@ export type PixiNineSlicePlaneComponent = DefineComponent<
   (keyof Events)[],
   keyof Events,
   VNodeProps & AllowedPixiProps & ComponentCustomProps,
-  Readonly<Props> & {
+  Readonly<NineSlicePlaneProps> & {
     [key in keyof Events as `on${Capitalize<key>}`]?:
     | ((...args: Events[key]) => any)
     | undefined;

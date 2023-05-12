@@ -8,7 +8,7 @@ import type * as PIXI from 'pixi.js'
 import type { AllowedPixiProps } from './props'
 import type { PixiEvents } from './events'
 
-interface Props {
+export interface SimpleRopeProps {
   texture: string | PIXI.Texture
   points: PIXI.IPoint[]
   textureScale?: number
@@ -27,8 +27,8 @@ interface Props {
 
 type Events = PixiEvents
 
-export type PixiSimpleRopeComponent = DefineComponent<
-  Props,
+export type SimpleRopeComponent = DefineComponent<
+SimpleRopeProps,
   {},
   unknown,
   {},
@@ -38,7 +38,7 @@ export type PixiSimpleRopeComponent = DefineComponent<
   (keyof Events)[],
   keyof Events,
   VNodeProps & AllowedPixiProps & ComponentCustomProps,
-  Readonly<Props> & {
+  Readonly<SimpleRopeProps> & {
     [key in keyof Events as `on${Capitalize<key>}`]?:
     | ((...args: Events[key]) => any)
     | undefined;

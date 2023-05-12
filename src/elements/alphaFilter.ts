@@ -7,14 +7,14 @@ import type {
 import type { AlphaFilter } from 'pixi.js'
 import type { AllowedFilterProps, ExtractFilterProps } from './props'
 
-interface Props extends ExtractFilterProps<AlphaFilter> {
+export interface AlphaFilterProps extends ExtractFilterProps<AlphaFilter> {
 
 }
 
 interface Events {}
 
-export type PixiAlphaFilterComponent = DefineComponent<
-  Props,
+export type AlphaFilterComponent = DefineComponent<
+AlphaFilterProps,
   {},
   unknown,
   {},
@@ -24,7 +24,7 @@ export type PixiAlphaFilterComponent = DefineComponent<
   (keyof Events)[],
   keyof Events,
   VNodeProps & AllowedFilterProps & ComponentCustomProps,
-  Readonly<Props> & {
+  Readonly<AlphaFilterProps> & {
     [key in keyof Events as `on${Capitalize<key>}`]?:
     | ((...args: Events[key]) => any)
     | undefined;

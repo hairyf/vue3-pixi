@@ -7,14 +7,14 @@ import type {
 import type { AllowedPixiProps } from './props'
 import type { PixiEvents } from './events'
 
-interface Props {
+export interface ContainerProps {
 
 }
 
 type Events = PixiEvents
 
-export type PixiContainerComponent = DefineComponent<
-  Props,
+export type ContainerComponent = DefineComponent<
+  ContainerProps,
   {},
   unknown,
   {},
@@ -24,7 +24,7 @@ export type PixiContainerComponent = DefineComponent<
   (keyof Events)[],
   keyof Events,
   VNodeProps & AllowedPixiProps & ComponentCustomProps,
-  Readonly<Props> & {
+  Readonly<ContainerProps> & {
     [key in keyof Events as `on${Capitalize<key>}`]?:
     | ((...args: Events[key]) => any)
     | undefined;

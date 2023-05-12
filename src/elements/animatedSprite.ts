@@ -8,7 +8,7 @@ import type * as PIXI from 'pixi.js'
 import type { AllowedPixiProps } from './props'
 import type { PixiEvents } from './events'
 
-interface Props {
+export interface AnimatedSpriteProps {
   textures: PIXI.Texture[]
   width?: number
   height?: number
@@ -47,8 +47,8 @@ type Events = PixiEvents & {
   loop: []
 }
 
-export type PixiAnimatedSpriteComponent = DefineComponent<
-  Props,
+export type AnimatedSpriteComponent = DefineComponent<
+  AnimatedSpriteProps,
   {},
   unknown,
   {},
@@ -58,7 +58,7 @@ export type PixiAnimatedSpriteComponent = DefineComponent<
   (keyof Events)[],
   keyof Events,
   VNodeProps & AllowedPixiProps & ComponentCustomProps,
-  Readonly<Props> & {
+  Readonly<AnimatedSpriteProps> & {
     [key in keyof Events as `on${Capitalize<key>}`]?:
     | ((...args: Events[key]) => any)
     | undefined;

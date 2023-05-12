@@ -7,7 +7,7 @@ import type {
 import type { BlurFilter } from 'pixi.js'
 import type { AllowedFilterProps, ExtractFilterProps } from './props'
 
-interface Props extends ExtractFilterProps<BlurFilter> {
+export interface BlurFilterProps extends ExtractFilterProps<BlurFilter> {
   strength?: number
   resolution?: number
   kernelSize?: number
@@ -15,8 +15,8 @@ interface Props extends ExtractFilterProps<BlurFilter> {
 
 interface Events {}
 
-export type PixiBlurFilterComponent = DefineComponent<
-  Props,
+export type BlurFilterComponent = DefineComponent<
+BlurFilterProps,
   {},
   unknown,
   {},
@@ -26,7 +26,7 @@ export type PixiBlurFilterComponent = DefineComponent<
   (keyof Events)[],
   keyof Events,
   VNodeProps & AllowedFilterProps & ComponentCustomProps,
-  Readonly<Props> & {
+  Readonly<BlurFilterProps> & {
     [key in keyof Events as `on${Capitalize<key>}`]?:
     | ((...args: Events[key]) => any)
     | undefined;

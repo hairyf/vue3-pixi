@@ -8,7 +8,7 @@ import type * as PIXI from 'pixi.js'
 import type { AllowedPixiProps } from './props'
 import type { PixiEvents } from './events'
 
-interface Props {
+export interface MeshProps {
   geometry: PIXI.Geometry
   shader: PIXI.Shader | PIXI.MeshMaterial
   blendMode?: PIXI.BLEND_MODES
@@ -25,8 +25,8 @@ interface Props {
 
 type Events = PixiEvents
 
-export type PixiMeshComponent = DefineComponent<
-  Props,
+export type MeshComponent = DefineComponent<
+MeshProps,
   {},
   unknown,
   {},
@@ -36,7 +36,7 @@ export type PixiMeshComponent = DefineComponent<
   (keyof Events)[],
   keyof Events,
   VNodeProps & AllowedPixiProps & ComponentCustomProps,
-  Readonly<Props> & {
+  Readonly<MeshProps> & {
     [key in keyof Events as `on${Capitalize<key>}`]?:
     | ((...args: Events[key]) => any)
     | undefined;
