@@ -30,7 +30,7 @@ export interface BitmapTextProps {
   tint?: PIXI.ColorSource
 }
 
-type Events = PixiEvents & {
+export type BitmapTextEvents = PixiEvents & {
   'update:dirty': [boolean]
 }
 
@@ -42,12 +42,12 @@ BitmapTextProps,
   {},
   ComponentOptionsMixin,
   ComponentOptionsMixin,
-  (keyof Events)[],
-  keyof Events,
+  (keyof BitmapTextEvents)[],
+  keyof BitmapTextEvents,
   VNodeProps & AllowedPixiProps & ComponentCustomProps,
   Readonly<BitmapTextProps> & {
-    [key in keyof Events as `on${Capitalize<key>}`]?:
-    | ((...args: Events[key]) => any)
+    [key in keyof BitmapTextEvents as `on${Capitalize<key>}`]?:
+    | ((...args: BitmapTextEvents[key]) => any)
     | undefined;
   },
   {}

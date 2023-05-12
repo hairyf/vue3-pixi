@@ -40,7 +40,7 @@ export interface AnimatedSpriteProps {
   updateAnchor?: boolean
 }
 
-type Events = PixiEvents & {
+type AnimatedSpriteEvents = PixiEvents & {
   complete: []
   frameChange: [number]
   'update:currentFrame': [number]
@@ -55,12 +55,12 @@ export type AnimatedSpriteComponent = DefineComponent<
   {},
   ComponentOptionsMixin,
   ComponentOptionsMixin,
-  (keyof Events)[],
-  keyof Events,
+  (keyof AnimatedSpriteEvents)[],
+  keyof AnimatedSpriteEvents,
   VNodeProps & AllowedPixiProps & ComponentCustomProps,
   Readonly<AnimatedSpriteProps> & {
-    [key in keyof Events as `on${Capitalize<key>}`]?:
-    | ((...args: Events[key]) => any)
+    [key in keyof AnimatedSpriteEvents as `on${Capitalize<key>}`]?:
+    | ((...args: AnimatedSpriteEvents[key]) => any)
     | undefined;
   },
   {}
