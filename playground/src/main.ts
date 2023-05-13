@@ -1,7 +1,7 @@
 import { appInjectKey, createApp } from 'vue3-pixi-renderer'
 import { Application } from 'pixi.js'
-import { ref } from 'vue'
 import App from './App.vue'
+import './style.css'
 
 const pixiApp = new Application({
   resizeTo: window,
@@ -12,5 +12,5 @@ document.body.appendChild(pixiApp.view as any)
 
 const app = createApp(App)
 
-app.provide(appInjectKey, ref(pixiApp))
+app.provide(appInjectKey, pixiApp)
 app.mount(pixiApp.stage)
