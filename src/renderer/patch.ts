@@ -10,7 +10,7 @@ import {
   Sprite,
   TilingSprite,
 } from 'pixi.js'
-import { setPointValue } from './setter'
+import { setPoint, setValue } from './setter'
 import { normalizeTexture } from './utils'
 
 const defaultBooleanProps = ['accessible', 'cullable', 'renderable', 'visible'] as const
@@ -83,6 +83,9 @@ export function patchTilingSpriteProps(el: TilingSprite, key: string, prevValue:
 }
 
 export function patchAnimatedSpriteProps(el: AnimatedSprite, key: string, prevValue: any, nextValue: any): boolean {
+  if (key === 'play')
+    return setValue(el, key, () => nextValue ? el.play() : el.stop())
+
   return patchBooleanProps(el, animatedSpriteBooleanProps, key, nextValue)
 }
 
@@ -97,7 +100,7 @@ export function patchSimplePlaneProps(el: SimplePlane, key: string, prevValue: a
 export function patchPointProps(el: Container, key: string, prevValue: any, nextValue: any) {
   for (const name of pointProps) {
     if (key.startsWith(name))
-      return setPointValue(el, name, key, prevValue, nextValue)
+      return setPoint(el, name, key, prevValue, nextValue)
   }
   return false
 }
