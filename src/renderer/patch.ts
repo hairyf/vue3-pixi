@@ -19,7 +19,7 @@ const tilingSpriteProps = ['uvRespectAnchor'] as const
 const animatedSpriteBooleanProps = ['loop', 'updateAnchor'] as const
 const meshBooleanProps = ['roundPixels'] as const
 const simplePlaneBooleanProps = ['roundPixels', 'autoResize'] as const
-const pointProps = ['position', 'scale', 'pivot', 'skew', 'anchor'] as const
+const pointProps = ['position', 'scale', 'pivot', 'skew', 'anchor', 'tilePosition', 'tileScale'] as const
 
 export function patchProp(
   el: Container,
