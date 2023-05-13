@@ -1,11 +1,12 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { useWindowSize } from '@vueuse/core'
+import Game from './components/Game.vue'
 
 // import BasicFilter from './components/BasicFilter.vue'
 // import BasicMask from './components/BasicMask.vue'
 // import BasicText from './components/BasicText.vue'
-import ShockwaveFilter from './components/ShockwaveFilter.vue'
+// import ShockwaveFilter from './components/ShockwaveFilter.vue'
 // import Basic from './components/Basic.vue'
 // import BasicGraphics from './components/BasicGraphics.vue'
 // import CursorSprite from './components/CursorSprite.vue'
@@ -31,7 +32,7 @@ const { width, height } = useWindowSize()
       :height="height"
     >
       <template v-if="enabled">
-        <ShockwaveFilter />
+        <Game />
       </template>
     </Stage>
   </div>

@@ -13,6 +13,8 @@ export interface AnimatedSpriteProps {
   width?: number
   height?: number
 
+  play?: boolean
+
   anchor?: PIXI.IPointData | number
   anchorX?: number
   anchorY?: number
