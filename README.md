@@ -263,7 +263,7 @@ This composable hook adds a ticker to the Pixi application during mounting and r
 <script setup lang="ts">
 import { StageInst, Stage, tryMountTicker } from "vue3-pixi-renderer";
 
-const removeTicker = tryMountTicker((delta) => {
+tryMountTicker((delta) => {
   // ...
 })
 </script>
@@ -287,7 +287,7 @@ import { onMounted } from 'vue'
 const pixiApp = useApplication()
 
 onMounted(() => {
-  pixiApp.value.screen // { ... }
+  pixiApp.value.ticker // { ... }
 })
 </script>
 
