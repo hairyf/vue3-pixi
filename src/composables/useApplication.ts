@@ -14,7 +14,7 @@ export function useApplication(stageRef?: MaybeRef<StageInst>): Ref<Application 
   if (stageRef)
     return computed(() => unref(stageRef).app)
 
-  const app = ref(inject(appInjectKey, ref())) as Ref<any>
+  const app = ref(inject(appInjectKey, ref())) as Ref<Application | undefined>
 
   // not found, search down
   if (!app.value) {

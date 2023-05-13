@@ -3,7 +3,7 @@ import { defineComponent, h, inject, markRaw, onMounted, onUnmounted, ref, rende
 import { throttle } from '@antfu/utils'
 import type { ColorSource, Container } from 'pixi.js'
 import { Application } from 'pixi.js'
-import type { App, PropType } from 'vue-demi'
+import type { App, PropType, Ref } from 'vue-demi'
 import { createApp } from '../renderer'
 import { appInjectKey } from '../composables/internal'
 
@@ -105,10 +105,10 @@ const Stage = defineComponent({
 })
 
 function injectApplication() {
-  let pixiApp = inject(appInjectKey, ref())
+  let pixiApp = ref(inject(appInjectKey, ref()))
   if (pixiApp?.value)
     pixiApp = ref()
-  return pixiApp
+  return pixiApp as Ref<Application | undefined>
 }
 
 export default Stage

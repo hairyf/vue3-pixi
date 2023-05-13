@@ -333,11 +333,15 @@ Using the custom renderer inside `vue3-pixi-renderer`
 
 ```ts
 import { appInjectKey, createApp } from 'vue3-pixi-renderer'
+import { Application } from 'pixi.js'
 import App from './App.vue'
 
-const pixiApp = new PIXI.Application()
+const pixiApp = new Application({
+  resizeTo: window,
+  antialias: true,
+})
 
-document.body.appendChild(pixiApp.view)
+document.body.appendChild(pixiApp.view as HTMLCanvasElement)
 
 const app = createApp(App)
 
