@@ -17,7 +17,7 @@ export function useApplication(stageRef?: MaybeRef<StageInst>): Ref<Application 
   const app = ref(inject(appInjectKey, ref())) as Ref<any>
 
   // not found, search down
-  if (app.value) {
+  if (!app.value) {
     provide(appInjectKey, app)
     inst.pixiAppRef = app
   }
