@@ -14,6 +14,7 @@ export interface GraphicsProps {
   shader?: PIXI.Shader
   tint?: PIXI.ColorSource
   geometry?: PIXI.GraphicsGeometry
+  isMask?: boolean
 }
 
 type Events = PixiEvents & {

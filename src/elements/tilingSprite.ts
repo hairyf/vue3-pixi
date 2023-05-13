@@ -25,8 +25,14 @@ export interface TilingSpriteProps {
 
   clampMargin?: number
 
-  tilePosition?: PIXI.IPointData
-  tileScale?: PIXI.IPointData
+  tilePosition?: Partial<PIXI.IPointData> | number | [number, number]
+  tilePositionX?: number
+  tilePositionY?: number
+
+  tileScale?: Partial<PIXI.IPointData> | number | [number, number]
+  tileScaleX?: number
+  tileScaleY?: number
+
   tileTransform?: PIXI.Transform
 
   uvMatrix?: PIXI.TextureMatrix
