@@ -112,7 +112,7 @@ The Vue Plugin detects any texture props containing the path to an image and rep
 
 ## Props
 
-Most props will work just as the properties on the corresponding [PixiJS](https://pixijs.com/) objects. in addition, They can also be used with X/Y suffix (except for the `position` prop, which just uses the `x`/`y` props instead).
+Most props will work just as the properties on the corresponding [PixiJS](https://pixijs.com/) objects. in addition, They can also be used with X/Y suffix
 
 ```html
 <container :scale-x="10" :skew-y="0.5" />
