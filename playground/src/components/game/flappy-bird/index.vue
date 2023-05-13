@@ -8,10 +8,8 @@ const blur = ref(false)
 </script>
 
 <template>
-  <Main>
-    <Container @click="blur = !blur">
-      <Background :blur="blur" />
-      <Ground />
-    </Container>
+  <Main @click="blur = !blur">
+    <Background :blur="blur" />
+    <Ground />
   </Main>
 </template>
