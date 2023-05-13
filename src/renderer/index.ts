@@ -59,7 +59,7 @@ export function createPixiRenderer(options: CreatePixiRendererOptions = {}) {
   })
 }
 
-function createPixiElement(prefix: string, name: string, props: any = {}) {
+function createPixiElement(prefix: string, name: string, props: any) {
   let is
   if (name.startsWith(prefix)) {
     name = camelize(name)
@@ -74,7 +74,7 @@ function createPixiElement(prefix: string, name: string, props: any = {}) {
     warn(`Unknown element ${name}`)
     return new Container()
   }
-  return is(props)
+  return is(props ?? {})
 }
 
 function insertContainer(child: Container, parent: Container, anchor?: Container | null) {

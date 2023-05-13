@@ -13,7 +13,7 @@ import {
 import { setPoint, setValue } from './setter'
 import { normalizeTexture } from './utils'
 
-const defaultBooleanProps = ['accessible', 'cullable', 'renderable', 'visible'] as const
+const defaultBooleanProps = ['accessible', 'cullable', 'renderable', 'visible', 'is-mask'] as const
 const bitmapBooleanProps = ['dirty', 'roundPixels'] as const
 const tilingSpriteProps = ['uvRespectAnchor'] as const
 const animatedSpriteBooleanProps = ['loop', 'updateAnchor'] as const
