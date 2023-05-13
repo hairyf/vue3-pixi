@@ -3,7 +3,7 @@ import type {
 } from 'vue-demi'
 import type { AllowedFilterProps } from './props'
 
-export interface FilterProps<T> { is: () => T }
+export interface FilterProps<T> { is: (props: any) => T }
 
 interface Events {
 
@@ -19,4 +19,5 @@ export type FilterComponent = <T extends AllowedFilterProps>(
   & Partial<T>
   & ComponentCustomProps
   & EventsProps
+  & Record<string, any>
   ) => any
