@@ -14,29 +14,23 @@ export interface StageInst {
 
 const Stage = defineComponent({
   props: {
-    width: Number,
-    height: Number,
+
     alpha: Boolean,
-    antialias: {
-      type: Boolean,
-      default: true,
-    },
+    antialias: { type: Boolean, default: true },
     depth: Boolean,
     desynchronized: Boolean,
     failIfMajorPerformanceCaveat: Boolean,
     powerPreference: String as PropType<WebGLPowerPreference>,
     premultipliedAlpha: Boolean,
     preserveDrawingBuffer: Boolean,
-    stencil: {
-      type: Boolean,
-      default: true,
-    },
+    stencil: { type: Boolean, default: true },
+
+    width: Number,
+    height: Number,
     background: [Number, String, Array] as PropType<ColorSource>,
     backgroundColor: [Number, String, Array] as PropType<ColorSource>,
-    backgroundAlpha: {
-      type: Number,
-      default: 1,
-    },
+    backgroundAlpha: { type: Number, default: 1 },
+    resolution: Number,
   },
   setup(props, { slots }) {
     const canvas = ref<HTMLCanvasElement>()
@@ -50,6 +44,7 @@ const Stage = defineComponent({
         depth: props.depth,
         desynchronized: props.desynchronized,
         failIfMajorPerformanceCaveat: props.failIfMajorPerformanceCaveat,
+        powerPreference: props.powerPreference,
         premultipliedAlpha: props.premultipliedAlpha,
         preserveDrawingBuffer: props.preserveDrawingBuffer,
         stencil: props.stencil,
@@ -65,6 +60,7 @@ const Stage = defineComponent({
         background: props.background,
         backgroundColor: props.backgroundColor,
         backgroundAlpha: props.backgroundAlpha,
+        resolution: props.resolution,
       })
 
       pixiApp.value = markRaw(inst)
@@ -80,7 +76,7 @@ const Stage = defineComponent({
         render: () => renderSlot(slots, 'default'),
       })
       app.provide(appInjectKey, pixiApp)
-      app.mount(pixiApp.value!.stage)
+      app.mount(pixiApp.value.stage)
     }
 
     function unmount() {

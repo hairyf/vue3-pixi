@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { Stage } from 'vue3-pixi-renderer'
 import { useWindowSize } from '@vueuse/core'
 import Game from './components/Game.vue'
 
@@ -13,27 +13,33 @@ import Game from './components/Game.vue'
 // import BasicSprite from './components/BasicSprite.vue'
 // import CursorSprite from './components/CursorSprite.vue'
 
-const enabled = ref(true)
-
+const resolution = window.devicePixelRatio || 1
 const { width, height } = useWindowSize()
 </script>
 
 <template>
-  <div>
-    <p>
-      <button @click="enabled = !enabled">
-        Toggle
-      </button>
-      <span style="margin-left: 10px"> Sprite visible: {{ enabled }} </span>
-    </p>
+  <div class="warp">
     <Stage
-      :style="{ width: `${width / 2}px` }"
-      :width="width - 80"
+      class="full"
+      background="#fff"
+      :width="width"
       :height="height"
+      :resolution="resolution"
+      :background-alpha="0"
     >
-      <template v-if="enabled">
-        <Game />
-      </template>
+      <Game />
     </Stage>
   </div>
 </template>
+
+<style>
+.warp {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.full {
+  width: 100%;
+  height: 100%;
+}
+</style>
