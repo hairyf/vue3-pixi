@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { TransitionPresets, useTransition } from '@vueuse/core'
 import { useScreen } from 'vue3-pixi-renderer'
+import { SCALE_MODES } from 'pixi.js'
 import texture from '../assets/sprites/background-day.png'
 import { useTilePosition } from '../composables/useTilePosition'
 
@@ -21,7 +22,13 @@ const blurValue = useTransition(
 </script>
 
 <template>
-  <tiling-sprite :tile-position-x="x" :width="screen.width * 2" :height="480" :texture="texture">
+  <tiling-sprite
+    :tile-position-x="x"
+    :width="screen.width * 2"
+    :height="480"
+    :texture="texture"
+    :texture-options="{ scaleMode: SCALE_MODES.NEAREST }"
+  >
     <blur-filter :strength="10" :blur="blurValue" />
   </tiling-sprite>
 </template>
