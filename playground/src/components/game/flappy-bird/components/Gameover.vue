@@ -1,7 +1,8 @@
 <script lang="ts" setup>
-import { TransitionPresets, useElementHover, useRafFn, useTransition } from '@vueuse/core'
 import { SCALE_MODES, Texture } from 'pixi.js'
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
+import { useElementHoverScale } from '../composables/useElementHoverScale'
+import { useCosineAmplitude } from '../composables/useCosineAmplitude'
 import gameoverPNG from '../assets/sprites/gameover.png'
 import Score from './Score.vue'
 
@@ -10,25 +11,10 @@ const emit = defineEmits(['restart'])
 const texture = Texture.from(gameoverPNG, {
   scaleMode: SCALE_MODES.NEAREST,
 })
-
-const time = ref(0)
-const speed = 2
-const amplitude = 10
 const containerRef = ref()
 
-const hovering = useElementHover(containerRef)
-const offsetY = computed(() =>
-  Math.cos((time.value / 1000) * speed) * amplitude,
-)
-const scale = useTransition(
-  () => (hovering.value ? 1.1 : 1),
-  {
-    transition: TransitionPresets.easeOutBack,
-    duration: 150,
-  },
-)
-
-useRafFn(({ delta }) => (time.value += delta))
+const offsetY = useCosineAmplitude()
+const scale = useElementHoverScale(containerRef)
 </script>
 
 <template>
