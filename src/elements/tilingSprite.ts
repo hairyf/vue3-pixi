@@ -10,6 +10,7 @@ import type { PixiEvents } from './events'
 
 export interface TilingSpriteProps {
   texture: string | PIXI.Texture
+  textureOptions?: PIXI.IBaseTextureOptions
   width?: number
   height?: number
 

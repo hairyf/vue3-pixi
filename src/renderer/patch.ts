@@ -10,10 +10,11 @@ import {
   Sprite,
   TilingSprite,
 } from 'pixi.js'
+import { setTextureOptions } from '../utils'
 import { setPoint, setValue } from './setter'
 import { normalizeTexture } from './utils'
 
-const defaultBooleanProps = ['accessible', 'cullable', 'renderable', 'visible', 'is-mask'] as const
+const defaultBooleanProps = ['accessible', 'cullable', 'renderable', 'visible', 'isMask'] as const
 const bitmapBooleanProps = ['dirty', 'roundPixels'] as const
 const tilingSpriteProps = ['uvRespectAnchor'] as const
 const animatedSpriteBooleanProps = ['loop', 'updateAnchor'] as const
@@ -61,6 +62,10 @@ export function patchSpriteProps(el: Sprite, key: string, prevValue: any, nextVa
     el.texture = normalizeTexture(nextValue)
     return true
   }
+  if (key === 'textureOptions') {
+    setTextureOptions(el.texture, nextValue)
+    return true
+  }
   return false
 }
 
@@ -79,6 +84,14 @@ export function patchBitmapTextProps(el: BitmapText, key: string, prevValue: any
 }
 
 export function patchTilingSpriteProps(el: TilingSprite, key: string, prevValue: any, nextValue: any): boolean {
+  if (key === 'texture') {
+    el.texture = normalizeTexture(nextValue)
+    return true
+  }
+  if (key === 'textureOptions') {
+    setTextureOptions(el.texture, nextValue)
+    return true
+  }
   return patchBooleanProps(el, tilingSpriteProps, key, nextValue)
 }
 
@@ -108,11 +121,13 @@ export function patchPointProps(el: Container, key: string, prevValue: any, next
 export function patchEventProps(el: Container, key: string, prevValue: any, nextValue: any) {
   if (!key.startsWith('on'))
     return false
+
   const eventName = key.slice(2).toLowerCase()
   if (prevValue)
     el.off(eventName as any, prevValue)
   if (nextValue)
     el?.on(eventName as any, nextValue)
+
   return true
 }
 

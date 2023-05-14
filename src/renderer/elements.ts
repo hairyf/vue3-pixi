@@ -25,7 +25,7 @@ export type PixiCustomElement = (props: (VNodeProps & { [key: string]: any })) =
 
 export const elements: Record<string, PixiCustomElement> = {
   Container: () => new Container(),
-  Sprite: () => new Sprite(),
+  Sprite: props => new Sprite(normalizeTexture(props!.texture)),
   SimpleMesh: () => new SimpleMesh(),
   Graphics: props => new Graphics(props?.geometry),
   Text: props => new Text(

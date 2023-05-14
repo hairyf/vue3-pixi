@@ -3,6 +3,7 @@ import type { PropType } from 'vue-demi'
 import { Fragment, defineComponent, h, onBeforeUnmount, ref, renderSlot, watch } from 'vue-demi'
 
 import * as PIXI from 'pixi.js'
+import { setTextureOptions } from '../utils'
 
 export type AssetsResolver = string | { default: string } | PIXI.ResolveAsset
 export interface AssetsResolvers {
@@ -11,22 +12,29 @@ export interface AssetsResolvers {
 
 const Assets = defineComponent({
   props: {
+    onResolved: Function as PropType<(textures: Record<string, PIXI.Texture>) => void>,
+    onProgress: Function as PropType<(progress: number) => void>,
     resolves: {
       type: Object as PropType<AssetsResolvers>,
       required: true,
     },
     bundleIds: String,
-    onProgress: Function as PropType<(progress: number) => void>,
+    options: {
+      type: Object as PropType<PIXI.IBaseTextureOptions>,
+      default: () => ({}),
+    },
   },
   setup(props, { slots }) {
     const loading = ref(false)
     const bundle = props.bundleIds || nanoid(5)
-    const textures = ref<any>()
+    const textures = ref<Record<string, PIXI.Texture>>()
     const progress = ref(0)
 
     async function load() {
       PIXI.Assets.addBundle(bundle, await waitResolvesAssets(props.resolves))
       textures.value = await PIXI.Assets.loadBundle(bundle, onProgress)
+      props.onResolved?.(textures.value!)
+      loadOptions(textures.value)
     }
 
     async function unload() {
@@ -36,6 +44,10 @@ const Assets = defineComponent({
         delete _assetMap[`${bundle}-${key}`]
       }
       await PIXI.Assets.unloadBundle(bundle)
+    }
+    async function loadOptions(textures: any) {
+      for (const key in textures)
+        setTextureOptions(textures[key], props.options)
     }
 
     function onProgress(p: number) {

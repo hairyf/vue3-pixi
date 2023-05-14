@@ -7,9 +7,9 @@ import type {
 import type * as PIXI from 'pixi.js'
 import type { AllowedPixiProps } from './props'
 import type { PixiEvents } from './events'
-
 export interface SpriteProps {
   texture: string | PIXI.Texture
+  textureOptions?: PIXI.IBaseTextureOptions
 
   blendMode?: PIXI.BLEND_MODES
 
