@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { Graphics } from 'pixi.js'
-import { useApplication } from 'vue3-pixi-renderer'
 
 function drawRectangle(e: Graphics) {
   e.lineStyle(2, '#674196', 1)

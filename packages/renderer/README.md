@@ -33,10 +33,10 @@
 
 ```sh
 # with pnpm
-pnpm add vue3-pixi
+pnpm add vue3-pixi-renderer
 
 # with yarn
-yarn add vue3-pixi
+yarn add vue3-pixi-renderer
 ```
 
 ## Usage
@@ -45,7 +45,7 @@ The `<Stage>` component can be used to embed a pixi app into an existing vue app
 
 ```html
 <script setup lang="ts">
-import { Stage } from "vue3-pixi";
+import { Stage } from "vue3-pixi-renderer";
 import textureUrl from "@/assets/myTexture.png";
 
 const hitArea = new Rectangle(0, 0, 64, 64);
@@ -71,7 +71,7 @@ The vite plugin adds the ability to specify texture paths on sprites & other com
 ```ts
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import { compilerOptions, transformAssetUrls } from 'vue3-pixi'
+import { compilerOptions, transformAssetUrls } from 'vue3-pixi-renderer/compiler'
 
 export default defineConfig({
   plugins: [
@@ -217,11 +217,11 @@ To avoid conflicts with other tags, such as `<filter>`, you can use the `pixi-` 
 
 ## Assets
 
-`vue3-pixi` provides a special component for bundling resources and obtaining resources from plugins.
+`vue3-pixi-renderer` provides a special component for bundling resources and obtaining resources from plugins.
 
 ```html
 <script setup lang="ts">
-import { Assets, AssetsResolvers } from "vue3-pixi";
+import { Assets, AssetsResolvers } from "vue3-pixi-renderer";
 
 const resolves: AssetsResolvers = {
   flowerTop: import('./examples/assets/flowerTop.png'),
@@ -253,7 +253,7 @@ You can also use the `resolved` and `fallback` slots separately to handle succes
 
 ## Composables
 
-`vue3-pixi` provides a set of composable hooks for operating a Pixi application.
+`vue3-pixi-renderer` provides a set of composable hooks for operating a Pixi application.
 
 ### tryMountTicker
 
@@ -261,7 +261,7 @@ This composable hook adds a ticker to the Pixi application during mounting and r
 
 ```html
 <script setup lang="ts">
-import { StageInst, Stage, tryMountTicker } from "vue3-pixi";
+import { StageInst, Stage, tryMountTicker } from "vue3-pixi-renderer";
 
 tryMountTicker((delta) => {
   // ...
@@ -281,7 +281,7 @@ This composable hook is used to obtain the current Pixi application instance.
 
 ```html
 <script setup lang="ts">
-import { StageInst, Stage, useApplication } from "vue3-pixi";
+import { StageInst, Stage, useApplication } from "vue3-pixi-renderer";
 import { onMounted } from 'vue'
 
 const pixiApp = useApplication()
@@ -329,7 +329,7 @@ const screen = useScreen()
 
 ## Creating an pixi application manually
 
-Using the custom renderer inside `vue3-pixi`
+Using the custom renderer inside `vue3-pixi-renderer`
 
 ```ts
 import { appInjectKey, createApp } from 'vue3-pixi'

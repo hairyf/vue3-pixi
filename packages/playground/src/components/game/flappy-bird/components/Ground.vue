@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useScreen } from 'vue3-pixi-renderer'
+import { useScreen } from 'vue3-pixi'
 import { SCALE_MODES } from 'pixi.js'
 import { useTilePosition } from '../composables/useTilePosition'
 import texture from '../assets/sprites/base.png'

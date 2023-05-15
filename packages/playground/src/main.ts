@@ -1,4 +1,4 @@
-import { appInjectKey, createApp } from 'vue3-pixi-renderer'
+import { appInjectKey, createApp } from 'vue3-pixi'
 import { Application } from 'pixi.js'
 import App from './App.vue'
 import './style.css'

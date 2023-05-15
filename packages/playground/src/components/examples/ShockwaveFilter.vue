@@ -5,7 +5,7 @@ import { Texture, WRAP_MODES } from 'pixi.js'
 import { ShockwaveFilter } from 'pixi-filters'
 
 import { computed, reactive, ref } from 'vue'
-import { tryMountTicker, useApplication, useScreen } from 'vue3-pixi-renderer'
+import { tryMountTicker, useApplication, useScreen } from 'vue3-pixi'
 
 interface ShockwaveItem {
   radius: number

@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 import Inspect from 'vite-plugin-inspect'
 import Vue from '@vitejs/plugin-vue'
-import { compilerOptions, transformAssetUrls } from 'vue3-pixi-renderer/compiler'
+import { compilerOptions, transformAssetUrls } from 'vue3-pixi'
 
 export default defineConfig({
   plugins: [

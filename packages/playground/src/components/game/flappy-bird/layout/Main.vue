@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { Graphics } from 'pixi.js'
 import { computed, ref } from 'vue'
-import { useScreen } from 'vue3-pixi-renderer'
+import { useScreen } from 'vue3-pixi'
 
 const screen = useScreen()
 

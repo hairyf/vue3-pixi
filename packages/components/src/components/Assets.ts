@@ -1,9 +1,9 @@
-import { setTextureOptions } from '../utils'
 import { nanoid } from 'nanoid'
 import type { PropType } from 'vue-demi'
 import { Fragment, defineComponent, h, onBeforeUnmount, ref, renderSlot, watch } from 'vue-demi'
 
 import * as PIXI from 'pixi.js'
+import { setTextureOptions } from '../utils'
 
 export type AssetsResolver = string | { default: string } | PIXI.ResolveAsset
 export interface AssetsResolvers {

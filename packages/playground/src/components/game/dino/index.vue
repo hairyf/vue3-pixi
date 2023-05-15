@@ -3,7 +3,7 @@ import { onKeyDown, onKeyUp, useMagicKeys } from '@vueuse/core'
 import type { Resource } from 'pixi.js'
 import { BaseTexture, Rectangle, Texture } from 'pixi.js'
 import { computed, ref } from 'vue'
-import { tryMountTicker, useScreen } from 'vue3-pixi-renderer'
+import { tryMountTicker, useScreen } from 'vue3-pixi'
 import image from './assets/game.png'
 
 const screen = useScreen()

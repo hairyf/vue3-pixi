@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { Text as TextInst, TextStyle } from 'pixi.js'
 import { reactive, ref } from 'vue'
-import { useScreen } from 'vue3-pixi-renderer'
+import { useScreen } from 'vue3-pixi'
 
 const spriteRef = ref<TextInst>()
 

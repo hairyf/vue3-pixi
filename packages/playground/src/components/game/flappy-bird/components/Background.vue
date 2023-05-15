@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { TransitionPresets, useTransition } from '@vueuse/core'
-import { useScreen } from 'vue3-pixi-renderer'
+import { useScreen } from 'vue3-pixi'
 import { SCALE_MODES } from 'pixi.js'
 import texture from '../assets/sprites/background-day.png'
 import { useTilePosition } from '../composables/useTilePosition'

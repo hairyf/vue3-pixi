@@ -8,8 +8,7 @@
     "@vueuse/core": "^10.1.2",
     "pixi-filters": "^5.2.1",
     "vue": "^3.3.2",
-    "vue3-pixi-renderer": "workspace:^",
-    "vue3-pixi-transition": "^0.1.3"
+    "vue3-pixi": "workspace:^"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.1",

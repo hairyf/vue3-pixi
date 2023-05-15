@@ -1,5 +1,5 @@
 {
-  "name": "@vue3-pixi/renderer",
+  "name": "@vue3-pixi/components",
   "type": "module",
   "version": "0.6.3",
   "description": "Vue createRenderer for PixiJS",
@@ -53,5 +53,14 @@
     "build": "tsup",
     "dev": "tsup --watch src",
     "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@antfu/utils": "^0.7.2",
+    "@vue3-pixi/composables": "workspace:^",
+    "@vue3-pixi/renderer": "workspace:^",
+    "@vueuse/core": "^10.1.2",
+    "nanoid": "^4.0.2",
+    "pixi.js": "^7.2.4",
+    "vue-demi": "^0.14.1"
   }
 }

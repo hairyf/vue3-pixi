@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { Graphics } from 'pixi.js'
-import { ref, watchEffect } from 'vue-demi'
-import { tryMountTicker } from 'vue3-pixi-renderer'
+import { ref } from 'vue-demi'
+import { tryMountTicker } from 'vue3-pixi'
 
 const rotation = ref(Math.PI / 2)
 
