@@ -1,7 +1,7 @@
 {
   "name": "vue3-pixi-monorepo",
   "type": "module",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "private": true,
   "packageManager": "pnpm@8.5.0",
   "description": "Register global imports on demand for Vite and Webpack",
