@@ -9,7 +9,7 @@
 ## Installation
 
 ```bash
-pnpm install @vue3-pixi/components
+pnpm install @vue-pixi/components
 ```
 
 ### Build

@@ -1,3 +1,4 @@
-export * from '@vue3-pixi/components'
-export * from '@vue3-pixi/composables'
-export * from '@vue3-pixi/renderer'
+export * from '@vue-pixi/components'
+export * from '@vue-pixi/composables'
+export * from '@vue-pixi/renderer'
+export * from '@vue-pixi/transition'

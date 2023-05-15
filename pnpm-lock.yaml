@@ -26,9 +26,6 @@ importers:
       '@types/node':
         specifier: ^18.11.13
         version: 18.11.13
-      '@vue/runtime-core':
-        specifier: ^3
-        version: 3.2.47
       bumpp:
         specifier: ^9.0.0
         version: 9.0.0
@@ -50,15 +47,12 @@ importers:
       '@antfu/utils':
         specifier: ^0.7.2
         version: 0.7.2
-      '@vue3-pixi/composables':
+      '@vue-pixi/composables':
         specifier: workspace:^
         version: link:../composables
-      '@vue3-pixi/renderer':
+      '@vue-pixi/renderer':
         specifier: workspace:^
         version: link:../renderer
-      '@vueuse/core':
-        specifier: ^10.1.2
-        version: 10.1.2(vue@3.3.2)
       nanoid:
         specifier: ^4.0.2
         version: 4.0.2
@@ -83,6 +77,9 @@ importers:
 
   packages/playground:
     dependencies:
+      '@vue-pixi/transition':
+        specifier: workspace:^
+        version: link:../transition
       '@vueuse/core':
         specifier: ^10.1.2
         version: 10.1.2(vue@3.3.2)
@@ -109,34 +106,48 @@ importers:
         specifier: ^0.7.10
         version: 0.7.10(vite@4.0.0)
 
-  packages/renderer: {}
-
-  packages/vue3-pixi:
+  packages/renderer:
     dependencies:
       '@antfu/utils':
         specifier: ^0.7.2
         version: 0.7.2
-      '@vue3-pixi/components':
-        specifier: workspace:^
-        version: link:../components
-      '@vue3-pixi/composables':
-        specifier: workspace:^
-        version: link:../composables
-      '@vue3-pixi/renderer':
-        specifier: workspace:^
-        version: link:../renderer
-      '@vueuse/core':
-        specifier: ^10.1.2
-        version: 10.1.2(vue@3.3.2)
-      nanoid:
-        specifier: ^4.0.2
-        version: 4.0.2
       pixi.js:
         specifier: ^7.2.4
         version: 7.2.4(@pixi/utils@7.2.4)
       vue-demi:
         specifier: ^0.14.1
         version: 0.14.1(vue@3.3.2)
+    devDependencies:
+      '@vue/runtime-core':
+        specifier: ^3
+        version: 3.2.47
+
+  packages/transition:
+    dependencies:
+      '@antfu/utils':
+        specifier: ^0.7.2
+        version: 0.7.2
+      pixi.js:
+        specifier: ^7.2.4
+        version: 7.2.4(@pixi/utils@7.2.4)
+      vue-demi:
+        specifier: ^0.14.1
+        version: 0.14.1(vue@3.3.2)
+
+  packages/vue3-pixi:
+    dependencies:
+      '@vue-pixi/components':
+        specifier: workspace:^
+        version: link:../components
+      '@vue-pixi/composables':
+        specifier: workspace:^
+        version: link:../composables
+      '@vue-pixi/renderer':
+        specifier: workspace:^
+        version: link:../renderer
+      '@vue-pixi/transition':
+        specifier: workspace:^
+        version: link:../transition
 
 packages:
 

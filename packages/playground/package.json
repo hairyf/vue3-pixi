@@ -5,6 +5,7 @@
     "dev": "nodemon -w '../src/**/*.ts' -e .ts -x vite"
   },
   "dependencies": {
+    "@vue-pixi/transition": "workspace:^",
     "@vueuse/core": "^10.1.2",
     "pixi-filters": "^5.2.1",
     "vue": "^3.3.2",

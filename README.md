@@ -7,9 +7,9 @@
 <br />
 
 <p align="center">
-  <img src="https://img.shields.io/github/forks/hairyf/vue3-pixi-renderer.svg?style=flat-square" />
-  <img src="https://img.shields.io/github/stars/hairyf/vue3-pixi-renderer.svg?style=flat-square" />
-  <img src="https://img.shields.io/npm/dm/vue3-pixi-renderer.svg?style=flat-square" />
+  <img src="https://img.shields.io/github/forks/hairyf/vue3-pixi.svg?style=flat-square" />
+  <img src="https://img.shields.io/github/stars/hairyf/vue3-pixi.svg?style=flat-square" />
+  <img src="https://img.shields.io/npm/dm/vue3-pixi.svg?style=flat-square" />
   <img src="https://img.shields.io/badge/license-MIT-green.svg?style=flat-square" alt="license" />
   <img src="https://img.shields.io/badge/pixi-v7+-ff69b4.svg?style=flat-square" alt="pixi version" />
 </p>
@@ -22,7 +22,7 @@
 - 🧑‍💻 Support specifying `texture` paths in templates to load texture objects
 - ✨ All [events](https://pixijs.download/release/docs/PIXI.Sprite.html#onclick) emitted by PixiJS objects are supported
 - 🗃️ Offers [Assets](#assets) component for bundling assets and Feature Rich [Composition Utilities](#composables).
-- 💫 Create different transition effects in conjunction with [vue3-pixi-transition](https://github.com/hairyf/vue3-pixi-transition).
+- 💫 Create different transition effects in conjunction with [@vue-pixi/transition](https://github.com/hairyf/vue3-pixi/tree/main/packages/transition).
 
 ## Try it Online
 

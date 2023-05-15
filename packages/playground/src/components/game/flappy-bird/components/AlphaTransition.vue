@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { PTransition } from 'vue3-pixi-transition'
+import { PTransition } from 'vue3-pixi'
 </script>
 
 <template>

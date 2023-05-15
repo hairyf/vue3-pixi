@@ -4,13 +4,13 @@
   "version": "0.6.3",
   "description": "Vue createRenderer for PixiJS",
   "license": "MIT",
-  "homepage": "https://github.com/hairyf/vue3-pixi-renderer#readme",
+  "homepage": "https://github.com/hairyf/vue3-pixi#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hairyf/vue3-pixi-renderer.git"
+    "url": "git+https://github.com/hairyf/vue3-pixi.git"
   },
   "bugs": {
-    "url": "https://github.com/hairyf/vue3-pixi-renderer/issues"
+    "url": "https://github.com/hairyf/vue3-pixi/issues"
   },
   "keywords": [
     "pixi.js",
@@ -40,13 +40,9 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@antfu/utils": "^0.7.2",
-    "@vue3-pixi/components": "workspace:^",
-    "@vue3-pixi/composables": "workspace:^",
-    "@vue3-pixi/renderer": "workspace:^",
-    "@vueuse/core": "^10.1.2",
-    "nanoid": "^4.0.2",
-    "pixi.js": "^7.2.4",
-    "vue-demi": "^0.14.1"
+    "@vue-pixi/components": "workspace:^",
+    "@vue-pixi/composables": "workspace:^",
+    "@vue-pixi/renderer": "workspace:^",
+    "@vue-pixi/transition": "workspace:^"
   }
 }

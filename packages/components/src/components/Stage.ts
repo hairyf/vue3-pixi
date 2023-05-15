@@ -4,8 +4,8 @@ import { throttle } from '@antfu/utils'
 import type { ColorSource, Container } from 'pixi.js'
 import { Application } from 'pixi.js'
 import type { App, PropType, Ref } from 'vue-demi'
-import { createApp } from '@vue3-pixi/renderer'
-import { appInjectKey } from '@vue3-pixi/composables'
+import { createApp } from '@vue-pixi/renderer'
+import { appInjectKey } from '@vue-pixi/composables'
 
 export interface StageInst {
   app?: Application
