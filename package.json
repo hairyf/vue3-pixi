@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "lint": "eslint .",
-    "play": "npm -C packages/playground run dev",
+    "play": "npm -C playground run dev",
     "release": "bumpp -r && pnpm -r publish",
     "test": "vitest"
   },

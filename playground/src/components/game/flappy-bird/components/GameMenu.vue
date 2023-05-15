@@ -1,13 +1,11 @@
 <script lang="ts" setup>
-import { useRafFn } from '@vueuse/core'
 import { SCALE_MODES, Texture } from 'pixi.js'
-import type { Ref } from 'vue'
-import { inject, ref } from 'vue'
+import { ref } from 'vue'
 import gameoverPNG from '../assets/sprites/message.png'
 import { useElementHoverScale } from '../composables/useElementHoverScale'
 import { useCosineAmplitude } from '../composables/useCosineAmplitude'
 
-const emit = defineEmits(['restart'])
+const emit = defineEmits(['start'])
 
 const texture = Texture.from(gameoverPNG, {
   scaleMode: SCALE_MODES.NEAREST,
@@ -15,7 +13,6 @@ const texture = Texture.from(gameoverPNG, {
 
 const containerRef = ref()
 
-const score = inject<Ref<number>>('score')!
 const offsetY = useCosineAmplitude()
 const scale = useElementHoverScale(containerRef)
 </script>
@@ -25,11 +22,18 @@ const scale = useElementHoverScale(containerRef)
     ref="containerRef"
     :x="320" :y="180"
     :scale="1.35"
-    @click="emit('restart')"
+    @click="emit('start')"
   >
-    -
+    <tiling-sprite
+      :y="offsetY"
+      :texture="texture"
+      :width="184"
+      :height="60"
+      :anchor="0.5"
+      :scale="scale"
+      :tile-position="{ x: 0, y: -1 }"
+    />
   </container>
-  <Score :x="600" :y="30" :score="score" />
 </template>
 
 <style lang="scss" scoped></style>
