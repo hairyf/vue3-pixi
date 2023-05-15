@@ -1,4 +1,4 @@
-<h1 align="center">Vue 3 Pixi</h1>
+<h1 align="center">Vue 3 Pixi Renderer</h1>
 
 <p align="center">
   <strong>Vue createRenderer for PixiJS</strong>
@@ -23,7 +23,7 @@
 - 🧑‍💻 Support specifying `texture` paths in templates to load texture objects
 - ✨ All [events](https://pixijs.download/release/docs/PIXI.Sprite.html#onclick) emitted by PixiJS objects are supported
 - 🗃️ Offers [Assets](#assets) component for bundling assets and Feature Rich [Composition Utilities](#composables).
-- 💫 Create different transition effects in conjunction with [@vue-pixi/transition](https://github.com/hairyf/vue3-pixi/tree/main/packages/transition).
+- 💫 Create different transition effects in conjunction with [@vue3-pixi-transition](https://github.com/hairyf/vue3-pixi/tree/main/packages/transition).
 
 ## Try it Online
 
