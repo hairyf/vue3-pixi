@@ -1,3 +1,5 @@
+import type { AllowedPixiProps } from './props'
+import type { PixiEvents } from './events'
 import type {
   ComponentCustomProps,
   ComponentOptionsMixin,
@@ -5,8 +7,6 @@ import type {
   VNodeProps,
 } from 'vue-demi'
 import type * as PIXI from 'pixi.js'
-import type { AllowedPixiProps } from './props'
-import type { PixiEvents } from './events'
 
 export interface AnimatedSpriteProps {
   textures: PIXI.Texture[]

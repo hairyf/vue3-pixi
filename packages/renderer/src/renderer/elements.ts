@@ -1,3 +1,4 @@
+import { normalizeTexture } from './utils'
 import type { VNodeProps } from 'vue-demi'
 import {
   AlphaFilter,
@@ -19,7 +20,6 @@ import {
   Text,
   TilingSprite,
 } from 'pixi.js'
-import { normalizeTexture } from './utils'
 
 export type PixiCustomElement = (props: (VNodeProps & { [key: string]: any })) => any
 

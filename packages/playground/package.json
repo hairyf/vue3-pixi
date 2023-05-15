@@ -1,4 +1,5 @@
 {
+  "version": "0.6.3",
   "private": true,
   "scripts": {
     "dev": "nodemon -w '../src/**/*.ts' -e .ts -x vite"
@@ -15,6 +16,5 @@
     "nodemon": "^2.0.20",
     "vite": "^4.0.0",
     "vite-plugin-inspect": "^0.7.10"
-  },
-  "version": "0.6.3"
+  }
 }

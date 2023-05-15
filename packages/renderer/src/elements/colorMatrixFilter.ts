@@ -1,3 +1,4 @@
+import type { AllowedFilterProps, ExtractFilterProps } from './props'
 import type {
   ComponentCustomProps,
   ComponentOptionsMixin,
@@ -5,7 +6,6 @@ import type {
   VNodeProps,
 } from 'vue-demi'
 import type { ColorMatrixFilter } from 'pixi.js'
-import type { AllowedFilterProps, ExtractFilterProps } from './props'
 
 export interface ColorMatrixFilterProps extends ExtractFilterProps<ColorMatrixFilter> {}
 

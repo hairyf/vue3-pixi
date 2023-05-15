@@ -1,6 +1,6 @@
 /* eslint-disable import/export */
-import type { App, Plugin } from 'vue-demi'
 import { Stage } from './components'
+import type { App, Plugin } from 'vue-demi'
 
 export * from './global'
 export * from './components'

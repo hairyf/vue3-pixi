@@ -1,7 +1,7 @@
+import type { AllowedFilterProps } from './props'
 import type {
   ComponentCustomProps,
 } from 'vue-demi'
-import type { AllowedFilterProps } from './props'
 
 export interface FilterProps<T> { is: (props: any) => T }
 

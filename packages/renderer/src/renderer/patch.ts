@@ -1,4 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
+import { setTextureOptions } from '../utils'
+import { setPoint, setValue } from './setter'
+import { normalizeTexture } from './utils'
 import { camelize, effectScope, watchEffect } from 'vue-demi'
 import type { Container } from 'pixi.js'
 import {
@@ -10,9 +13,6 @@ import {
   Sprite,
   TilingSprite,
 } from 'pixi.js'
-import { setTextureOptions } from '../utils'
-import { setPoint, setValue } from './setter'
-import { normalizeTexture } from './utils'
 
 const defaultBooleanProps = ['accessible', 'cullable', 'renderable', 'visible', 'isMask'] as const
 const bitmapBooleanProps = ['dirty', 'roundPixels'] as const

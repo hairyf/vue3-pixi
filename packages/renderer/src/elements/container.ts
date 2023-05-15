@@ -1,11 +1,11 @@
+import type { AllowedPixiProps } from './props'
+import type { PixiEvents } from './events'
 import type {
   ComponentCustomProps,
   ComponentOptionsMixin,
   DefineComponent,
   VNodeProps,
 } from 'vue-demi'
-import type { AllowedPixiProps } from './props'
-import type { PixiEvents } from './events'
 
 export interface ContainerProps {
 

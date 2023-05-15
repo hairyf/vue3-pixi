@@ -1,11 +1,11 @@
 /* eslint-disable vue/one-component-per-file */
+import { createApp } from '../renderer'
+import { appInjectKey } from '../composables/internal'
 import { defineComponent, h, inject, markRaw, onMounted, onUnmounted, ref, renderSlot, warn, watch } from 'vue-demi'
 import { throttle } from '@antfu/utils'
 import type { ColorSource, Container } from 'pixi.js'
 import { Application } from 'pixi.js'
 import type { App, PropType, Ref } from 'vue-demi'
-import { createApp } from '../renderer'
-import { appInjectKey } from '../composables/internal'
 
 export interface StageInst {
   app?: Application
