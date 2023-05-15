@@ -1,7 +1,7 @@
 {
   "name": "@vue-pixi/renderer",
   "type": "module",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "description": "Vue createRenderer for PixiJS",
   "license": "MIT",
   "homepage": "https://github.com/hairyf/vue3-pixi#readme",
@@ -41,9 +41,17 @@
     "types": "dist/index.d.ts"
   },
   "typesVersions": {
-    "*": { "*": ["./dist/*", "./*"] }
+    "*": {
+      "*": [
+        "./dist/*",
+        "./*"
+      ]
+    }
   },
-  "files": ["dist", "global.d.ts"],
+  "files": [
+    "dist",
+    "global.d.ts"
+  ],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch src",
