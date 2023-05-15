@@ -75,37 +75,6 @@ importers:
         specifier: ^0.14.1
         version: 0.14.1(vue@3.3.2)
 
-  packages/playground:
-    dependencies:
-      '@vue-pixi/transition':
-        specifier: workspace:^
-        version: link:../transition
-      '@vueuse/core':
-        specifier: ^10.1.2
-        version: 10.1.2(vue@3.3.2)
-      pixi-filters:
-        specifier: ^5.2.1
-        version: 5.2.1(@pixi/core@7.2.4)(@pixi/filter-alpha@7.2.4)(@pixi/filter-blur@7.2.4)
-      vue:
-        specifier: ^3.3.2
-        version: 3.3.2
-      vue3-pixi:
-        specifier: workspace:^
-        version: link:../vue3-pixi
-    devDependencies:
-      '@vitejs/plugin-vue':
-        specifier: ^4.2.1
-        version: 4.2.1(vite@4.0.0)(vue@3.3.2)
-      nodemon:
-        specifier: ^2.0.20
-        version: 2.0.20
-      vite:
-        specifier: ^4.0.0
-        version: 4.0.0(@types/node@18.11.13)
-      vite-plugin-inspect:
-        specifier: ^0.7.10
-        version: 0.7.10(vite@4.0.0)
-
   packages/renderer:
     dependencies:
       '@antfu/utils':
@@ -148,6 +117,34 @@ importers:
       '@vue-pixi/transition':
         specifier: workspace:^
         version: link:../transition
+
+  playground:
+    dependencies:
+      '@vueuse/core':
+        specifier: ^10.1.2
+        version: 10.1.2(vue@3.3.2)
+      pixi-filters:
+        specifier: ^5.2.1
+        version: 5.2.1(@pixi/core@7.2.4)(@pixi/filter-alpha@7.2.4)(@pixi/filter-blur@7.2.4)
+      vue:
+        specifier: ^3.3.2
+        version: 3.3.2
+      vue3-pixi:
+        specifier: workspace:^
+        version: link:../packages/vue3-pixi
+    devDependencies:
+      '@vitejs/plugin-vue':
+        specifier: ^4.2.1
+        version: 4.2.1(vite@4.0.0)(vue@3.3.2)
+      nodemon:
+        specifier: ^2.0.20
+        version: 2.0.20
+      vite:
+        specifier: ^4.0.0
+        version: 4.0.0(@types/node@18.11.13)
+      vite-plugin-inspect:
+        specifier: ^0.7.10
+        version: 0.7.10(vite@4.0.0)
 
 packages:
 
