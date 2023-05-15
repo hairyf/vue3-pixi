@@ -1,5 +1,5 @@
 {
-  "name": "vue3-pixi-monorepo",
+  "name": "vue3-pixi-renderer",
   "type": "module",
   "version": "0.6.2",
   "packageManager": "pnpm@8.5.0",
@@ -51,10 +51,9 @@
     "global.d.ts"
   ],
   "scripts": {
-    "dev": "pnpm -r dev",
-    "lint": "eslint .",
-    "play": "npm -C packages/playground run dev",
-    "release": "bumpp -r && pnpm -r publish",
+    "build": "tsup",
+    "dev": "tsup --watch src",
+    "prepublishOnly": "npm run build",
     "test": "vitest"
   },
   "dependencies": {
@@ -63,15 +62,5 @@
     "nanoid": "^4.0.2",
     "pixi.js": "^7.2.4",
     "vue-demi": "^0.14.1"
-  },
-  "devDependencies": {
-    "@antfu/eslint-config": "^0.33.1",
-    "@types/node": "^18.11.13",
-    "@vue/runtime-core": "^3",
-    "bumpp": "^9.0.0",
-    "eslint": "^8.29.0",
-    "tsup": "^6.7.0",
-    "typescript": "^5.0.0",
-    "vitest": "^0.31.0"
   }
 }
