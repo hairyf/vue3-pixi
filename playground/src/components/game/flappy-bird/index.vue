@@ -8,32 +8,34 @@ import GameMenu from './components/GameMenu.vue'
 import Game from './components/Game.vue'
 import AlphaTransition from './components/AlphaTransition.vue'
 
-const isStart = ref(false)
-const isGaming = ref(false)
-const isOver = ref(false)
+const start = ref(false)
+const gaming = ref(false)
+const gameover = ref(false)
+
 const score = ref(0)
 
-provide('score', score)
-
-function start() {
+function onStart() {
   score.value = 0
-  isStart.value = true
-  isGaming.value = true
-  isOver.value = false
+  start.value = true
+  gaming.value = true
+  gameover.value = false
 }
-function over() {
-  isGaming.value = false
-  setTimeout(() => isGaming.value = true, 500)
+
+function onOver() {
+  gaming.value = false
+  setTimeout(() => gameover.value = true, 500)
 }
+
+provide('score', score)
 </script>
 
 <template>
   <Main>
-    <Background :blur="!isGaming" />
+    <Background :blur="!gaming" />
     <AlphaTransition>
-      <GameMenu v-if="!isStart" @start="start" />
-      <Game v-if="isGaming" @over="over" />
-      <GameOver v-if="isOver" @restart="start" />
+      <GameMenu v-if="!start" @start="onStart" />
+      <Game v-if="gaming" @over="onOver" />
+      <GameOver v-if="gameover" @restart="onStart" />
     </AlphaTransition>
     <Ground />
   </Main>
