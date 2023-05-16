@@ -2,7 +2,6 @@
 import { TransitionPresets, useElementHover, useTransition } from '@vueuse/core'
 import { Graphics } from 'pixi.js'
 import { computed, ref } from 'vue'
-
 const graphicsRef = ref()
 const hovering = useElementHover(graphicsRef)
 const blur = computed(() => (hovering.value ? 4 : 0))
@@ -21,7 +20,7 @@ function drawRectangle(e: Graphics) {
 
 <template>
   <Graphics ref="graphicsRef" :x="200" :y="60" :rotation="0.5" :pivot="0" @draw="drawRectangle">
-    <BlurFilter :strength="2" :blur="blurAnimated" />
+    <blur-filter :strength="2" :blur="blurAnimated" />
   </Graphics>
 </template>
 

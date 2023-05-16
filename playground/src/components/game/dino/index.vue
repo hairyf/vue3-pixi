@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { onKeyDown, onKeyUp, useMagicKeys } from '@vueuse/core'
+import { onKeyDown, useMagicKeys } from '@vueuse/core'
 import type { Resource } from 'pixi.js'
 import { BaseTexture, Rectangle, Texture } from 'pixi.js'
 import { computed, ref } from 'vue'
