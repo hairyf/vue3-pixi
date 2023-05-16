@@ -52,5 +52,8 @@
     "@vue-pixi/composables": "workspace:^",
     "@vue-pixi/renderer": "workspace:^",
     "@vue-pixi/transition": "workspace:^"
+  },
+  "devDependencies": {
+    "@vue/runtime-core": "^3"
   }
 }

@@ -1,4 +1,3 @@
-import type { AllowedFilterProps, ExtractFilterProps } from './props'
 import type {
   ComponentCustomProps,
   ComponentOptionsMixin,
@@ -6,6 +5,7 @@ import type {
   VNodeProps,
 } from 'vue-demi'
 import type { BlurFilter } from 'pixi.js'
+import type { AllowedFilterProps, ExtractFilterProps } from './props'
 
 export interface BlurFilterProps extends ExtractFilterProps<BlurFilter> {
   strength?: number

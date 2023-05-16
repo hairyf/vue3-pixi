@@ -1,12 +1,12 @@
-import { patchProp } from './patch'
-import { elements } from './elements'
-import { isCustomFilter, isExistsEvent } from './utils'
 import {
   Container,
   Filter,
   Text,
 } from 'pixi.js'
 import { camelize, createRenderer, warn } from 'vue-demi'
+import { patchProp } from './patch'
+import { elements } from './elements'
+import { isCustomFilter, isExistsEvent } from './utils'
 
 interface CreatePixiRendererOptions {
   prefix?: string

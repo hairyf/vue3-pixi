@@ -72,4 +72,22 @@ declare module '@vue/runtime-core' {
   }
 }
 
-export {}
+export type {
+  SimplePlaneComponent,
+  SimpleRopeComponent,
+  NineSlicePlaneComponent,
+  MeshComponent,
+  AnimatedSpriteComponent,
+  TilingSpriteComponent,
+  TextComponent,
+  GraphicsComponent,
+  ContainerComponent,
+  SpriteComponent,
+  BitmapTextComponent,
+  FilterComponent,
+  BlurFilterComponent,
+  AlphaFilterComponent,
+  DisplacementFilterComponent,
+  ColorMatrixFilterComponent,
+  FXAAFilterComponent,
+}
