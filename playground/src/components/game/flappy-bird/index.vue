@@ -11,8 +11,9 @@ import AlphaTransition from './components/AlphaTransition.vue'
 const isStart = ref(false)
 const isGaming = ref(false)
 const isOver = ref(false)
-
 const score = ref(0)
+
+provide('score', score)
 
 function start() {
   score.value = 0
@@ -20,13 +21,10 @@ function start() {
   isGaming.value = true
   isOver.value = false
 }
-
 function over() {
   isGaming.value = false
   setTimeout(() => isGaming.value = true, 500)
 }
-
-provide('score', score)
 </script>
 
 <template>
