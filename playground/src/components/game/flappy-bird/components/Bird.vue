@@ -64,7 +64,6 @@ whenever(
   () => {
     y.value = 379
     velocity.value = 0
-    audios.hit.play()
     emit('die')
     remove()
   },
