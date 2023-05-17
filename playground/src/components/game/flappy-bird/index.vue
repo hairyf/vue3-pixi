@@ -7,6 +7,7 @@ import GameOver from './components/GameOver.vue'
 import GameMenu from './components/GameMenu.vue'
 import Game from './components/Game.vue'
 import AlphaTransition from './components/AlphaTransition.vue'
+import './config'
 
 const start = ref(false)
 const gaming = ref(false)

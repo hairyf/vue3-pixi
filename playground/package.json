@@ -7,6 +7,7 @@
   "dependencies": {
     "@vueuse/core": "^10.1.2",
     "pixi-filters": "^5.2.1",
+    "ts-audio": "^0.7.4",
     "vue": "^3.3.2",
     "vue3-pixi": "workspace:^"
   },

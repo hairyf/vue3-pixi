@@ -130,6 +130,9 @@ importers:
       pixi-filters:
         specifier: ^5.2.1
         version: 5.2.1(@pixi/core@7.2.4)(@pixi/filter-alpha@7.2.4)(@pixi/filter-blur@7.2.4)
+      ts-audio:
+        specifier: ^0.7.4
+        version: 0.7.4
       vue:
         specifier: ^3.3.2
         version: 3.3.2
@@ -4347,6 +4350,10 @@ packages:
     resolution: {integrity: sha512-L0Orpi8qGpRG//Nd+H90vFB+3iHnue1zSSGmNOOCh1GLJ7rUKVwV2HvijphGQS2UmhUZewS9VgvxYIdgr+fG1A==}
     hasBin: true
     dev: true
+
+  /ts-audio@0.7.4:
+    resolution: {integrity: sha512-isNkEwCeToncNgK8mSZQDnToC/EHGFa63bPB4047qeZSwMyb11Zw7uGfwG8gdCXBlxub5/CbXPjBWdhnAQU91Q==}
+    dev: false
 
   /ts-interface-checker@0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}

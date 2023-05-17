@@ -6,6 +6,7 @@ import { tryMountTicker } from 'vue3-pixi'
 import downPNG from '../assets/sprites/redbird-downflap.png'
 import midPNG from '../assets/sprites/redbird-midflap.png'
 import upPNG from '../assets/sprites/redbird-upflap.png'
+import { audios } from '../config'
 
 const props = defineProps<{
   x: number
@@ -49,6 +50,7 @@ const remove = tryMountTicker((dt) => {
 function jump() {
   if (props.disabled)
     return
+  audios.wing.play()
   // 点击一下往上跳, 负数表示往上
   velocity.value = -11
 }
@@ -62,6 +64,7 @@ whenever(
   () => {
     y.value = 379
     velocity.value = 0
+    audios.hit.play()
     emit('die')
     remove()
   },
