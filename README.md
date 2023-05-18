@@ -1,4 +1,4 @@
-<h1 align="center">Vue 3 Pixi Renderer</h1>
+<h1 align="center">Vue 3 Pixi</h1>
 
 <p align="center">
   <strong>Vue createRenderer for PixiJS</strong>
