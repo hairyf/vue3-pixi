@@ -5,6 +5,7 @@ import './style.css'
 
 const pixiApp = new Application({
   resizeTo: window,
+  background: '#fff',
   antialias: true,
 })
 

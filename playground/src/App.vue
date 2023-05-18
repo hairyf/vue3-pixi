@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import Game from './components/game/flappy-bird/index.vue'
+import Game from './components/game/dino/index.vue'
 </script>
 
 <template>
