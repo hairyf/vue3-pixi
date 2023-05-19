@@ -72,22 +72,22 @@ declare module '@vue/runtime-core' {
   }
 }
 
-export type {
-  SimplePlaneComponent,
-  SimpleRopeComponent,
-  NineSlicePlaneComponent,
-  MeshComponent,
-  AnimatedSpriteComponent,
-  TilingSpriteComponent,
-  TextComponent,
-  GraphicsComponent,
-  ContainerComponent,
-  SpriteComponent,
-  BitmapTextComponent,
-  FilterComponent,
-  BlurFilterComponent,
-  AlphaFilterComponent,
-  DisplacementFilterComponent,
-  ColorMatrixFilterComponent,
-  FXAAFilterComponent,
-}
+export * from './elements/simpleRope'
+export * from './elements/simplePlane'
+export * from './elements/nineSlicePlane'
+export * from './elements/mesh'
+export * from './elements/animatedSprite'
+export * from './elements/tilingSprite'
+export * from './elements/text'
+export * from './elements/graphics'
+export * from './elements/container'
+export * from './elements/sprite'
+export * from './elements/bitmapText'
+export * from './elements/filter'
+export * from './elements/blurFilter'
+export * from './elements/alphaFilter'
+export * from './elements/displacementFilter'
+export * from './elements/colorMatrixFilter'
+export * from './elements/FXAAFilter'
+export * from './elements/props'
+export * from './elements/events'

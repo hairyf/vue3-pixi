@@ -63,4 +63,4 @@ export function createPixiRenderer(options: CreatePixiRendererOptions = {}) {
 }
 
 export const { createApp, render } = createPixiRenderer()
-export { setObject, setValue } from './setter'
+export { setObject, setValue, setSkipFirstValue, setPoint } from './setter'
