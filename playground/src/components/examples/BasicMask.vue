@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { useScreen } from 'vue3-pixi'
 import type { Graphics as GraphicsIns, Sprite as SpriteInst } from 'pixi.js'
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
 
 const screen = useScreen()
 const arcRef = ref<GraphicsIns>()

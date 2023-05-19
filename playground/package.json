@@ -5,8 +5,10 @@
     "dev": "nodemon -w '../src/**/*.ts' -e .ts -x vite"
   },
   "dependencies": {
+    "@vue-pixi/projection": "workspace:^",
     "@vueuse/core": "^10.1.2",
     "pixi-filters": "^5.2.1",
+    "pixi-projection": "^1.0.0",
     "ts-audio": "^0.7.4",
     "vue": "^3.3.2",
     "vue3-pixi": "workspace:^"

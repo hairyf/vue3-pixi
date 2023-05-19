@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import Game from './components/game/dino/index.vue'
+import BasicProjection from './components/examples/BasicProjection.vue'
 </script>
 
 <template>
-  <Game />
+  <BasicProjection />
 </template>
 
