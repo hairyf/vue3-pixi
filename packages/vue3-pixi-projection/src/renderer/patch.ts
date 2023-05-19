@@ -1,9 +1,10 @@
 import type { Container2d } from 'pixi-projection'
 import { Camera3d } from 'pixi-projection'
+import { setSkipFirstValue, setValue } from '@vue-pixi/renderer'
 import { setPoint } from './setter'
 
-const pointProps = ['position3d'] as const
-const callProps = ['convertSubtreeTo2d', 'convertSubtreeTo2s', 'convertSubtreeTo3d', 'convertTo2d', 'convertTo2s', 'convertTo3d']
+const pointProps = ['position3d', 'euler'] as const
+const projProps = ['affine']
 export function pathProp(el: any, key: string, prevValue: any, nextValue: any) {
   const patches = [
     { element: Camera3d, patch: patchCamera3dProps },
@@ -14,13 +15,10 @@ export function pathProp(el: any, key: string, prevValue: any, nextValue: any) {
       return true
   }
 
+  if (patchProjProps(el, key, prevValue, nextValue))
+    return true
+
   if (patchPointProps(el, key, prevValue, nextValue))
-    return true
-
-  if (patchAxisProps(el, key, prevValue, nextValue))
-    return true
-
-  if (patchCallProps(el, key, prevValue, nextValue))
     return true
 }
 
@@ -32,36 +30,27 @@ export function patchPointProps(el: Container2d, key: string, prevValue: any, ne
   return false
 }
 
-export function patchAxisProps(el: Container2d, key: string, _: any, nextValue: any) {
-  if (key === 'axisY' && el.proj?.setAxisY) {
-    el.proj.setAxisY(nextValue)
-    return true
-  }
-  if (key === 'axisX' && el.proj?.setAxisX) {
-    el.proj.setAxisX(nextValue)
-    return true
-  }
+export function patchCamera3dProps(el: any, key: string, _: any, nextValue: any) {
+  const props = ['focus', 'near', 'far', 'orthographic']
 
-  return false
-}
-
-export function patchCamera3dProps(el: Camera3d, key: string, _: any, nextValue: any) {
-  if (key === 'planes') {
+  function setPlanes(config: any) {
     el.setPlanes(
-      nextValue.focus,
-      nextValue.near,
-      nextValue.far,
-      nextValue.orthographic,
+      config.focus || el._focus,
+      config.near || el.near,
+      config.far || el.far,
+      config.orthographic || el._orthographic,
     )
-    return true
   }
+
+  if (props.includes(key))
+    return setSkipFirstValue(el, key, () => setPlanes({ [key]: nextValue }))
 
   return false
 }
 
-export function patchCallProps(el: any, key: string, _: any, nextValue: any) {
-  if (callProps.includes(key) && el[key] && nextValue) {
-    el[key]()
+export function patchProjProps(el: any, key: string, _: any, nextValue: any) {
+  if (projProps.includes(key)) {
+    setValue(el, key, () => el.proj[key] = nextValue)
     return true
   }
 

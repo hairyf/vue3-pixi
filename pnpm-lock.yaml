@@ -130,9 +130,6 @@ importers:
       pixi-projection:
         specifier: ^1.0.0
         version: 1.0.0(@pixi-spine/base@4.0.3)(@pixi/core@7.2.4)(@pixi/display@7.2.4)(@pixi/graphics@7.2.4)(@pixi/mesh-extras@7.2.4)(@pixi/mesh@7.2.4)(@pixi/sprite-tiling@7.2.4)(@pixi/sprite@7.2.4)(@pixi/text@7.2.4)
-      vue3-pixi:
-        specifier: workspace:^
-        version: link:../vue3-pixi
     devDependencies:
       '@vue/runtime-core':
         specifier: ^3
@@ -140,12 +137,18 @@ importers:
 
   playground:
     dependencies:
+      '@vue-pixi/projection':
+        specifier: workspace:^
+        version: link:../packages/vue3-pixi-projection
       '@vueuse/core':
         specifier: ^10.1.2
         version: 10.1.2(vue@3.3.2)
       pixi-filters:
         specifier: ^5.2.1
         version: 5.2.1(@pixi/core@7.2.4)(@pixi/filter-alpha@7.2.4)(@pixi/filter-blur@7.2.4)
+      pixi-projection:
+        specifier: ^1.0.0
+        version: 1.0.0(@pixi-spine/base@4.0.3)(@pixi/core@7.2.4)(@pixi/display@7.2.4)(@pixi/graphics@7.2.4)(@pixi/mesh-extras@7.2.4)(@pixi/mesh@7.2.4)(@pixi/sprite-tiling@7.2.4)(@pixi/sprite@7.2.4)(@pixi/text@7.2.4)
       ts-audio:
         specifier: ^0.7.4
         version: 0.7.4

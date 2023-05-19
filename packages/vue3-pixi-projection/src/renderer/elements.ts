@@ -16,16 +16,30 @@ import {
 } from 'pixi-projection'
 import type { Renderer } from '@vue-pixi/renderer'
 import { normalizeTexture } from '@vue-pixi/renderer'
+import { isUndefined } from '@antfu/utils'
 
+// axis-x-point
+// axis-x-factor
+// _axis_x_point
+// _axis_x_factor
+// axis-y-point
+// axis-y-factor
+// _axis_y_point
+// _axis_y_factor
 export const elements: Renderer['elements'] = {
-  Container2d: () => new Container2d(),
+  Container2d: () => new Container2d().proj,
   Container3d: () => new Container3d(),
 
   Sprite2d: props => new Sprite2d(normalizeTexture(props.texture)),
   Sprite3d: props => new Sprite3d(normalizeTexture(props.texture)),
   Sprite2s: props => new Sprite2s(normalizeTexture(props.texture)),
 
-  Camera3d: () => new Camera3d().setPlanes,
+  Camera3d: (props) => {
+    const camera = new Camera3d()
+    if (!isUndefined(props.focus))
+      camera.setPlanes(props.focus, props.near, props.far, props.orthographic)
+    return camera
+  },
 
   Text2d: props => new Text2d(
     props.text,
