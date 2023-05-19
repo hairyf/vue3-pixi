@@ -1,12 +1,13 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import {
   Container,
   Filter,
   Text,
 } from 'pixi.js'
-import { camelize, createRenderer, warn } from 'vue-demi'
+import { createRenderer, warn } from 'vue-demi'
+import { isCustomFilter, isExistsEvent } from '../utils'
+import { createPixiElement, insertContainer, insertFilter, nextSiblingContainer, nextSiblingFilter } from './options'
 import { patchProp } from './patch'
-import { elements } from './elements'
-import { isCustomFilter, isExistsEvent } from './utils'
 
 interface CreatePixiRendererOptions {
   prefix?: string
@@ -23,7 +24,9 @@ export function createPixiRenderer(options: CreatePixiRendererOptions = {}) {
 
       if (element instanceof Container) {
         element.filters = []
+        // @ts-expect-error
         if (isExistsEvent(props) && element.eventMode === 'auto')
+        // @ts-expect-error
           element.eventMode = 'static'
       }
 
@@ -59,52 +62,5 @@ export function createPixiRenderer(options: CreatePixiRendererOptions = {}) {
   })
 }
 
-function createPixiElement(prefix: string, name: string, props: any) {
-  let is
-  if (name.startsWith(prefix)) {
-    name = camelize(name)
-    is = elements[name.slice(prefix.length)]
-  }
-  else {
-    name = camelize(name)
-    name = name.charAt(0).toUpperCase() + name.slice(1)
-    is = elements[name]
-  }
-  if (!is) {
-    warn(`Unknown element ${name}`)
-    return new Container()
-  }
-  return is(props ?? {})
-}
-
-function insertContainer(child: Container, parent: Container, anchor?: Container | null) {
-  if (anchor)
-    parent.addChildAt(child, parent.getChildIndex(anchor))
-  else
-    parent.addChild(child)
-}
-
-function insertFilter(child: any, parent: Container, _anchor: any) {
-  function remove() {
-    parent.filters?.splice(parent.filters.indexOf(child) >>> 0, 1)
-  }
-  child.parent = parent
-  child.destroy = remove
-  parent.filters!.push(child)
-}
-
-function nextSiblingFilter(node: any) {
-  const index = node.parent.filters!.indexOf(node)
-  if (node.parent.filters!.length <= index + 1)
-    return null
-  return node
-}
-
-function nextSiblingContainer(node: Container) {
-  const index = node.parent.getChildIndex(node)
-  if (node.parent.children.length <= index + 1)
-    return null
-  return node.parent.getChildAt(index + 1) as Container ?? null
-}
-
 export const { createApp, render } = createPixiRenderer()
+export { setObject, setValue } from './setter'

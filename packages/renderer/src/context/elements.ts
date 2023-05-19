@@ -19,11 +19,11 @@ import {
   Text,
   TilingSprite,
 } from 'pixi.js'
-import { normalizeTexture } from './utils'
+import { normalizeTexture } from '../utils'
 
-export type PixiCustomElement = (props: (VNodeProps & { [key: string]: any })) => any
+export type CustomElement = (props: (VNodeProps & { [key: string]: any })) => any
 
-export const elements: Record<string, PixiCustomElement> = {
+export const elements: Record<string, CustomElement> = {
   Container: () => new Container(),
   Sprite: props => new Sprite(normalizeTexture(props!.texture)),
   SimpleMesh: () => new SimpleMesh(),
