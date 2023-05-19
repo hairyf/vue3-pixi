@@ -1,5 +1,4 @@
 import type {
-  ComponentCustomProps,
   ComponentOptionsMixin,
   DefineComponent,
   VNodeProps,
@@ -37,7 +36,7 @@ SimpleRopeProps,
   ComponentOptionsMixin,
   (keyof Events)[],
   keyof Events,
-  VNodeProps & AllowedPixiProps & ComponentCustomProps,
+  VNodeProps & AllowedPixiProps,
   Readonly<SimpleRopeProps> & {
     [key in keyof Events as `on${Capitalize<key>}`]?:
     | ((...args: Events[key]) => any)

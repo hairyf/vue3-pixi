@@ -1,5 +1,4 @@
 import type {
-  ComponentCustomProps,
   ComponentOptionsMixin,
   DefineComponent,
   VNodeProps,
@@ -44,7 +43,7 @@ NineSlicePlaneProps,
   ComponentOptionsMixin,
   (keyof Events)[],
   keyof Events,
-  VNodeProps & AllowedPixiProps & ComponentCustomProps,
+  VNodeProps & AllowedPixiProps,
   Readonly<NineSlicePlaneProps> & {
     [key in keyof Events as `on${Capitalize<key>}`]?:
     | ((...args: Events[key]) => any)

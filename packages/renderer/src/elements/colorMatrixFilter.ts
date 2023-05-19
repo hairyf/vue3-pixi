@@ -1,5 +1,4 @@
 import type {
-  ComponentCustomProps,
   ComponentOptionsMixin,
   DefineComponent,
   VNodeProps,
@@ -21,7 +20,7 @@ ColorMatrixFilterProps,
   ComponentOptionsMixin,
   (keyof Events)[],
   keyof Events,
-  VNodeProps & AllowedFilterProps & ComponentCustomProps,
+  VNodeProps & AllowedFilterProps,
   Readonly<ColorMatrixFilterProps> & {
     [key in keyof Events as `on${Capitalize<key>}`]?:
     | ((...args: Events[key]) => any)

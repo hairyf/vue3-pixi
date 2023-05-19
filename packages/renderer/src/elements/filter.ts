@@ -1,5 +1,4 @@
 import type {
-  ComponentCustomProps,
 } from 'vue-demi'
 import type { AllowedFilterProps } from './props'
 
@@ -17,7 +16,7 @@ export type FilterComponent = <T extends AllowedFilterProps>(
   props:
   & FilterProps<T>
   & Partial<T>
-  & ComponentCustomProps
+ 
   & EventsProps
   & Record<string, any>
   ) => any

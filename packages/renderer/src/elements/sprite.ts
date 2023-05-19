@@ -1,5 +1,4 @@
 import type {
-  ComponentCustomProps,
   ComponentOptionsMixin,
   DefineComponent,
   VNodeProps,
@@ -33,7 +32,7 @@ export type SpriteComponent = DefineComponent<
   ComponentOptionsMixin,
   (keyof Events)[],
   keyof Events,
-  VNodeProps & AllowedPixiProps & ComponentCustomProps,
+  VNodeProps & AllowedPixiProps,
   Readonly<SpriteProps> & {
     [key in keyof Events as `on${Capitalize<key>}`]?:
     | ((...args: Events[key]) => any)

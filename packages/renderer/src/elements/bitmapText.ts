@@ -1,5 +1,4 @@
 import type {
-  ComponentCustomProps,
   ComponentOptionsMixin,
   DefineComponent,
   VNodeProps,
@@ -44,7 +43,7 @@ BitmapTextProps,
   ComponentOptionsMixin,
   (keyof BitmapTextEvents)[],
   keyof BitmapTextEvents,
-  VNodeProps & AllowedPixiProps & ComponentCustomProps,
+  VNodeProps & AllowedPixiProps,
   Readonly<BitmapTextProps> & {
     [key in keyof BitmapTextEvents as `on${Capitalize<key>}`]?:
     | ((...args: BitmapTextEvents[key]) => any)

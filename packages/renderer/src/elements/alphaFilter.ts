@@ -1,5 +1,4 @@
 import type {
-  ComponentCustomProps,
   ComponentOptionsMixin,
   DefineComponent,
   VNodeProps,
@@ -23,7 +22,7 @@ AlphaFilterProps,
   ComponentOptionsMixin,
   (keyof Events)[],
   keyof Events,
-  VNodeProps & AllowedFilterProps & ComponentCustomProps,
+  VNodeProps & AllowedFilterProps,
   Readonly<AlphaFilterProps> & {
     [key in keyof Events as `on${Capitalize<key>}`]?:
     | ((...args: Events[key]) => any)
