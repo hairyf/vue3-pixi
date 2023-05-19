@@ -1,5 +1,4 @@
 import type {
-  ComponentCustomProps,
   ComponentOptionsMixin,
   DefineComponent,
   VNodeProps,
@@ -27,7 +26,7 @@ export type Camera3dComponent = DefineComponent<
   ComponentOptionsMixin,
   (keyof Events)[],
   keyof Events,
-  VNodeProps & AllowedPixiProps & ComponentCustomProps,
+  VNodeProps & AllowedPixiProps,
   Readonly<Camera3dProps> & {
     [key in keyof Events as `on${Capitalize<key>}`]?:
     | ((...args: Events[key]) => any)
