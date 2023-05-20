@@ -102,7 +102,8 @@ export function patchTilingSpriteProps(el: TilingSprite, key: string, _: any, ne
 export function patchAnimatedSpriteProps(el: AnimatedSprite, key: string, _: any, nextValue: any): boolean {
   if (key === 'play')
     return setValue(el, key, () => nextValue ? el.play() : el.stop())
-
+  if (key === 'gotoAndPlay')
+    return setValue(el, key, () => el.gotoAndPlay(nextValue))
   return patchBooleanProps(el, animatedSpriteBooleanProps, key, nextValue)
 }
 
@@ -111,6 +112,8 @@ export function patchMeshProps(el: Mesh, key: string, _: any, nextValue: any): b
 }
 
 export function patchSimplePlaneProps(el: SimplePlane, key: string, _: any, nextValue: any): boolean {
+  if (key === 'verticesX' || key === 'verticesY')
+    return true
   return patchBooleanProps(el, simplePlaneBooleanProps, key, nextValue)
 }
 

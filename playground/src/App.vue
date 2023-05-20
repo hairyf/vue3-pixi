@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import ParticleContainerComp from './components/basic/ParticleContainerComp.vue'
+import AnimatedSpriteExplosion from './components/sprite/AnimatedSpriteExplosion.vue'
 </script>
 
 <template>
-  <ParticleContainerComp />
+  <AnimatedSpriteExplosion />
 </template>
 

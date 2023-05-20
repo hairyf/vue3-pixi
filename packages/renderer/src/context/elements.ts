@@ -26,7 +26,10 @@ export type CustomElement = (props: (VNodeProps & { [key: string]: any })) => an
 
 export const elements: Record<string, CustomElement> = {
   Container: () => new Container(),
-  ParticleContainer: props => new ParticleContainer(props.maxSize, props.properties),
+  ParticleContainer: props => new ParticleContainer(
+    props['max-size'] || props.maxSize,
+    props.properties,
+  ),
   Sprite: props => new Sprite(normalizeTexture(props!.texture)),
   SimpleMesh: () => new SimpleMesh(),
   Graphics: props => new Graphics(props?.geometry),
@@ -44,10 +47,12 @@ export const elements: Record<string, CustomElement> = {
     props.width,
     props.height,
   ),
-  AnimatedSprite: props => new AnimatedSprite(
-    props.textures,
-    props.autoUpdate,
-  ),
+  AnimatedSprite: (props) => {
+    return new AnimatedSprite(
+      props.textures,
+      props['auto-update'] || props.autoUpdate,
+    )
+  },
   Mesh: props => new Mesh(
     props.geometry,
     props.shader,
@@ -57,15 +62,17 @@ export const elements: Record<string, CustomElement> = {
   NineSlicePlane: props => new NineSlicePlane(
     normalizeTexture(props.texture),
   ),
-  SimplePlane: props => new SimplePlane(
-    normalizeTexture(props.texture),
-    props.verticesX,
-    props.verticesY,
-  ),
+  SimplePlane: (props) => {
+    return new SimplePlane(
+      normalizeTexture(props.texture),
+      props['vertices-x'] || props.verticesX,
+      props['vertices-y'] || props.verticesY,
+    )
+  },
   SimpleRope: props => new SimpleRope(
     normalizeTexture(props.texture),
     props.points,
-    props.textureScale,
+    props['texture-scale'] || props.textureScale,
   ),
   BlurFilter: props => new BlurFilter(
     props.strength,

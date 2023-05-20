@@ -1,6 +1,7 @@
 {
   "extends": "@antfu",
   "rules": {
-    "vue/no-deprecated-html-element-is": "off"
+    "vue/no-deprecated-html-element-is": "off",
+    "vue/no-deprecated-filter": "off"
   }
 }
