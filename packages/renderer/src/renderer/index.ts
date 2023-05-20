@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import {
+  BitmapText,
   Container,
   Filter,
   Text,
@@ -52,12 +53,16 @@ export function createPixiRenderer(options: CreatePixiRendererOptions = {}) {
         return nextSiblingContainer(node)
     },
     setElementText: (node, text) => {
-      node instanceof Text
+      text = text.replace('\\n', '\n')
+      node instanceof Text || node instanceof BitmapText
         ? node.text = text.trim()
         : warn(`Text is only supported with ${prefix}-text element`)
     },
     setText: (node, text) => {
-      node instanceof Text && (node.text = text)
+      text = text.replace('\\n', '\n')
+      node instanceof Text || node instanceof BitmapText
+        ? node.text = text.trim()
+        : warn(`Text is only supported with ${prefix}-text element`)
     },
   })
 }

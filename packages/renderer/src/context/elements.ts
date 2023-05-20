@@ -30,9 +30,9 @@ export const elements: Record<string, CustomElement> = {
     props['max-size'] || props.maxSize,
     props.properties,
   ),
-  Sprite: props => new Sprite(normalizeTexture(props!.texture)),
-  SimpleMesh: () => new SimpleMesh(),
-  Graphics: props => new Graphics(props?.geometry),
+  Sprite: props => new Sprite(normalizeTexture(props.texture)),
+  SimpleMesh: props => new SimpleMesh(normalizeTexture(props.texture)),
+  Graphics: props => new Graphics(props.geometry),
   Text: props => new Text(
     props.text,
     props.style,

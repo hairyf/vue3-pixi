@@ -3,18 +3,19 @@ import { camelize, effectScope, watchEffect } from 'vue-demi'
 import type { Container } from 'pixi.js'
 import {
   AnimatedSprite,
-
   BitmapText,
+
   Graphics,
   Mesh,
   ParticleContainer,
   SimplePlane,
+  Text,
   TilingSprite,
 } from 'pixi.js'
 
 import { normalizeTexture, setTextureOptions } from '../utils'
 import { context } from '../context'
-import { setPoint, setValue } from './setter'
+import { setObject, setPoint, setSkipFirstValue, setValue } from './setter'
 
 const defaultBooleanProps = ['accessible', 'cullable', 'renderable', 'visible', 'isMask'] as const
 const bitmapBooleanProps = ['dirty', 'roundPixels'] as const
@@ -42,6 +43,7 @@ export function patchProp(
   const patches = [
     { element: Graphics, patch: patchGraphicsProps },
     { element: BitmapText, patch: patchBitmapTextProps },
+    { element: Text, patch: patchTextProps },
     { element: TilingSprite, patch: patchTilingSpriteProps },
     { element: AnimatedSprite, patch: patchAnimatedSpriteProps },
     { element: Mesh, patch: patchMeshProps },
@@ -70,10 +72,9 @@ export function patchProp(
 }
 
 export function patchTextureProps(el: any, key: string, _: any, nextValue: any): boolean {
-  if (key === 'texture') {
-    el.texture = normalizeTexture(nextValue)
-    return true
-  }
+  if (key === 'texture')
+    return setSkipFirstValue(el, key, () => el.texture = normalizeTexture(nextValue))
+
   if (key === 'textureOptions') {
     setTextureOptions(el.texture, nextValue)
     return true
@@ -90,12 +91,24 @@ export function patchGraphicsProps(el: any, key: string, prevValue: any, nextVal
   }
   return false
 }
-
+export function patchTextProps(el: Text, key: string, prevValue: any, nextValue: any): boolean {
+  if (key === 'text')
+    return setSkipFirstValue(el, key, () => el.text = nextValue)
+  if (key === 'style')
+    return setSkipFirstValue(el, key, () => setObject(el.style, key, prevValue, nextValue))
+  return false
+}
 export function patchBitmapTextProps(el: BitmapText, key: string, _: any, nextValue: any): boolean {
+  if (key === 'text')
+    return setSkipFirstValue(el, key, () => el.text = nextValue)
+  if (key === 'style')
+    return true
   return patchBooleanProps(el, bitmapBooleanProps, key, nextValue)
 }
 
-export function patchTilingSpriteProps(el: TilingSprite, key: string, _: any, nextValue: any): boolean {
+export function patchTilingSpriteProps(el: any, key: string, _: any, nextValue: any): boolean {
+  if (['width', 'height'].includes(key))
+    return setSkipFirstValue(el, key, () => el[key] = nextValue)
   return patchBooleanProps(el, tilingSpriteProps, key, nextValue)
 }
 

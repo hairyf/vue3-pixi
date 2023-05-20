@@ -7,12 +7,13 @@ import type * as PIXI from 'pixi.js'
 import type { AllowedPixiProps } from './props'
 import type { PixiEvents } from './events'
 
-export interface AnimatedSpriteProps {
+export interface AnimatedSpriteProps extends AllowedPixiProps {
   textures: PIXI.Texture[]
   width?: number
   height?: number
 
   play?: boolean
+  gotoAndPlay?: number
 
   anchor?: PIXI.IPointData | number
   anchorX?: number
@@ -64,7 +65,7 @@ export type AnimatedSpriteComponent = DefineComponent<
   ComponentOptionsMixin,
   (keyof AnimatedSpriteEvents)[],
   keyof AnimatedSpriteEvents,
-  VNodeProps & AllowedPixiProps,
+  VNodeProps,
   Readonly<AnimatedSpriteProps> & {
     [key in keyof AnimatedSpriteEvents as `on${Capitalize<key>}`]?:
     | ((...args: AnimatedSpriteEvents[key]) => any)

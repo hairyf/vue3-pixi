@@ -16,6 +16,10 @@ export function normalizeTexture(value: Texture | string): Texture {
   return value
 }
 
+export function encodeText(text: string) {
+  return text.replace('\n', '&amp;')
+}
+
 export function isCustomFilter(prefix: string, name: string) {
   const isPrefix = name.startsWith(prefix)
   name = camelize(name)
