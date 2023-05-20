@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import ContainerComp from './components/basic/Container.vue'
+import ParticleContainerComp from './components/basic/ParticleContainerComp.vue'
 </script>
 
 <template>
-  <ContainerComp />
+  <ParticleContainerComp />
 </template>
 

@@ -12,6 +12,7 @@ import {
   Mesh,
   NineSlicePlane,
   NoiseFilter,
+  ParticleContainer,
   SimpleMesh,
   SimplePlane,
   SimpleRope,
@@ -25,6 +26,7 @@ export type CustomElement = (props: (VNodeProps & { [key: string]: any })) => an
 
 export const elements: Record<string, CustomElement> = {
   Container: () => new Container(),
+  ParticleContainer: props => new ParticleContainer(props.maxSize, props.properties),
   Sprite: props => new Sprite(normalizeTexture(props!.texture)),
   SimpleMesh: () => new SimpleMesh(),
   Graphics: props => new Graphics(props?.geometry),

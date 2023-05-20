@@ -16,6 +16,7 @@ import type { AlphaFilterComponent } from './elements/alphaFilter'
 import type { DisplacementFilterComponent } from './elements/displacementFilter'
 import type { ColorMatrixFilterComponent } from './elements/colorMatrixFilter'
 import type { FXAAFilterComponent } from './elements/FXAAFilter'
+import type { ParticleContainerComponent } from './elements/particleContainer'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
@@ -39,6 +40,9 @@ declare module '@vue/runtime-core' {
 
     Container: ContainerComponent
     PixiContainer: ContainerComponent
+
+    ParticleContainer: ParticleContainerComponent
+    PixiParticleContainer: ParticleContainerComponent
 
     Sprite: SpriteComponent
     PixiSprite: SpriteComponent
@@ -91,3 +95,4 @@ export * from './elements/colorMatrixFilter'
 export * from './elements/FXAAFilter'
 export * from './elements/props'
 export * from './elements/events'
+export * from './elements/particleContainer'

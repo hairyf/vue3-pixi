@@ -1,16 +1,17 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { camelize, effectScope, watchEffect } from 'vue-demi'
-import type {
-  Container,
-} from 'pixi.js'
+import type { Container } from 'pixi.js'
 import {
   AnimatedSprite,
+
   BitmapText,
   Graphics,
   Mesh,
+  ParticleContainer,
   SimplePlane,
   TilingSprite,
 } from 'pixi.js'
+
 import { normalizeTexture, setTextureOptions } from '../utils'
 import { context } from '../context'
 import { setPoint, setValue } from './setter'
@@ -45,6 +46,7 @@ export function patchProp(
     { element: AnimatedSprite, patch: patchAnimatedSpriteProps },
     { element: Mesh, patch: patchMeshProps },
     { element: SimplePlane, patch: patchSimplePlaneProps },
+    { element: ParticleContainer, patch: patchParticleContainerProps },
   ]
 
   for (const { element, patch } of patches) {
@@ -110,6 +112,10 @@ export function patchMeshProps(el: Mesh, key: string, _: any, nextValue: any): b
 
 export function patchSimplePlaneProps(el: SimplePlane, key: string, _: any, nextValue: any): boolean {
   return patchBooleanProps(el, simplePlaneBooleanProps, key, nextValue)
+}
+
+export function patchParticleContainerProps(_el: any, key: string, _: any, _1: any): boolean {
+  return ['maxSize', 'properties'].includes(key)
 }
 
 export function patchPointProps(el: Container, key: string, prevValue: any, nextValue: any) {
