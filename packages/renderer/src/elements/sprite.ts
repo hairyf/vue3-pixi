@@ -6,7 +6,7 @@ import type {
 import type * as PIXI from 'pixi.js'
 import type { AllowedPixiProps } from './props'
 import type { PixiEvents } from './events'
-export interface SpriteProps {
+export interface SpriteProps extends AllowedPixiProps {
   texture: string | PIXI.Texture
   textureOptions?: PIXI.IBaseTextureOptions
 
@@ -19,7 +19,6 @@ export interface SpriteProps {
 
   tint?: PIXI.ColorSource
 }
-
 type Events = PixiEvents
 
 export type SpriteComponent = DefineComponent<
@@ -32,7 +31,7 @@ export type SpriteComponent = DefineComponent<
   ComponentOptionsMixin,
   (keyof Events)[],
   keyof Events,
-  VNodeProps & AllowedPixiProps,
+  VNodeProps,
   Readonly<SpriteProps> & {
     [key in keyof Events as `on${Capitalize<key>}`]?:
     | ((...args: Events[key]) => any)

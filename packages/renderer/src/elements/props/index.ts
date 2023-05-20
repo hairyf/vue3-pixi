@@ -17,7 +17,7 @@ export interface AllowedPixiProps {
   accessibleType?: string
   alpha?: number
 
-  cacheAsBitmap?: number
+  cacheAsBitmap?: boolean
   cacheAsBitmapMultisample?: number | unknown
   cacheAsBitmapResolution?: number | unknown
 
