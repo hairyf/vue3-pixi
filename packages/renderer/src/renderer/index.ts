@@ -36,13 +36,13 @@ export function createPixiRenderer(options: CreatePixiRendererOptions = {}) {
     patchProp,
 
     parentNode: node => node.parent,
-    createText: text => new Text(text),
+    createText: (text): any => text && new Text(text),
     createComment: () => new Container(),
     remove: child => child.destroy(),
     insert: (child, parent, anchor) => {
       if (child instanceof Filter)
         insertFilter(child, parent, anchor)
-      else
+      else if (child)
         insertContainer(child, parent, anchor)
     },
     nextSibling: (node) => {

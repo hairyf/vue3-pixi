@@ -16,7 +16,7 @@ export function createPixiElement(prefix: string, name: string, props: any) {
   }
   if (!is) {
     warn(`Unknown element ${name}`)
-    return new Container()
+    is = () => new Container()
   }
   return is(props ?? {})
 }

@@ -12,7 +12,7 @@ const pixiApp = new Application({
   antialias: true,
 })
 
-document.body.appendChild(pixiApp.view as any)
+document.body.appendChild(pixiApp.view as HTMLCanvasElement)
 
 const app = createApp(App)
 

@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import BasicProjection from './components/examples/BasicProjection.vue'
+import ContainerComp from './components/basic/Container.vue'
 </script>
 
 <template>
-  <BasicProjection />
+  <ContainerComp />
 </template>
 
