@@ -1,30 +1,26 @@
 <script lang="ts" setup>
-import type { FrameObject } from 'pixi.js'
 import { Assets, Texture } from 'pixi.js'
 
 import { ref } from 'vue'
 import { useScreen } from 'vue3-pixi'
 
 const screen = useScreen()
-const textures = ref<FrameObject[]>([])
+const textures = ref<Texture[]>([])
 
-function onAssetsLoaded(spritesheet: any) {
-  const frames: any[] = []
+function onAssetsLoaded() {
   for (let i = 0; i < 10; i++) {
-    const frame = `0123456789 ${i}.ase`
+    const frame = `Explosion_Sequence_A ${i + 1}.png`
     const texture = Texture.from(frame)
-    const time = spritesheet.data.frames[frame].duration
-    frames.push({ texture, time })
+    textures.value.push(texture)
   }
-  textures.value = frames
 }
 
-Assets.load('https://beta.pixijs.com/assets/spritesheet/0123456789.json')
+Assets.load('https://beta.pixijs.com/assets/spritesheet/mc.json')
   .then(onAssetsLoaded)
 </script>
 
 <template>
-  <template v-for="(_) in 50" :key="_">
+  <template v-for="(_) in 100" :key="_">
     <AnimatedSprite
       v-if="textures.length"
       :textures="textures"
@@ -32,7 +28,8 @@ Assets.load('https://beta.pixijs.com/assets/spritesheet/0123456789.json')
       :y="Math.random() * screen.height"
       :anchor="0.5"
       :rotation="Math.random() * Math.PI"
-      :goto-and-play="Math.random() * 2.6 | 0"
+      :goto-and-play="Math.floor(Math.random() * 9) + 1"
+      :animation-speed="0.5"
     />
   </template>
 </template>

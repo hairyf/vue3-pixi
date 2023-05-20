@@ -1,8 +1,10 @@
 <script lang="ts" setup>
-import AnimatedSpriteExplosion from './components/sprite/AnimatedSpriteExplosion.vue'
+import WebFont from './components/text/WebFont.vue'
 </script>
 
 <template>
-  <AnimatedSpriteExplosion />
+  <Suspense>
+    <WebFont />
+  </Suspense>
 </template>
 
