@@ -48,7 +48,7 @@ export function createPixiRenderer(options: CreatePixiRendererOptions = {}) {
     nextSibling: (node) => {
       if (node instanceof Filter)
         return nextSiblingFilter(node)
-      else
+      else if (node)
         return nextSiblingContainer(node)
     },
     setElementText: (node, text) => {
