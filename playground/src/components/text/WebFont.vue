@@ -1,16 +1,18 @@
 <script lang="ts" setup>
-import { useScriptTag } from '@vueuse/core';
+import { useScriptTag } from '@vueuse/core'
+import { createDeferred } from '../../utils'
+const deferred = createDeferred()
 
 // Load them google fonts before starting...
-(window as any).WebFontConfig = {
+window.WebFontConfig = {
   google: { families: ['Snippet'] },
+  active: deferred.resolve,
 }
-const protocol = location.protocol === 'https:'
-  ? 'https'
-  : 'http'
 
-const script = useScriptTag(`${protocol}://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js`, undefined, { async: true })
-await script.load()
+const leapis = `${location.protocol}//ajax.googleapis.com/ajax/libs/webfont/1/webfont.js`
+useScriptTag(leapis).load()
+
+await deferred.then()
 </script>
 
 <template>
@@ -19,7 +21,6 @@ await script.load()
     :style="{
       fontFamily: 'Snippet',
       fontSize: 50,
-      fill: 'white',
       align: 'left',
     }"
   >
