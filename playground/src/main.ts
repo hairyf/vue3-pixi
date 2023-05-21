@@ -7,8 +7,8 @@ import './style.css'
 use(ProjectionRenderer)
 
 const pixiApp = new Application({
-  resizeTo: window,
-  background: '#fff',
+  antialias: true,
+  background: '#1099bb',
 })
 
 document.body.appendChild(pixiApp.view as HTMLCanvasElement)

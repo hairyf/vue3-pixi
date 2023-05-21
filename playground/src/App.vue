@@ -1,10 +1,8 @@
 <script lang="ts" setup>
-import WebFont from './components/text/WebFont.vue'
+import PointerTracker from './components/events/PointerTracker.vue'
 </script>
 
 <template>
-  <Suspense>
-    <WebFont />
-  </Suspense>
+  <PointerTracker />
 </template>
 
