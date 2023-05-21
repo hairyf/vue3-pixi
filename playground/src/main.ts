@@ -8,6 +8,7 @@ use(ProjectionRenderer)
 
 const pixiApp = new Application({
   antialias: true,
+  resizeTo: window,
   background: '#1099bb',
 })
 
