@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import PointerTracker from './components/events/PointerTracker.vue'
+import FilterBase from './components/masks/FilterBase.vue'
 </script>
 
 <template>
-  <PointerTracker />
+  <FilterBase />
 </template>
 
