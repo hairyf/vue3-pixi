@@ -89,6 +89,8 @@ export function patchGraphicsProps(el: any, key: string, prevValue: any, nextVal
     el.on('destroyed', () => scope.stop())
     return true
   }
+  if (key.startsWith('anchor'))
+    return true
   return false
 }
 export function patchTextProps(el: Text, key: string, prevValue: any, nextValue: any): boolean {
