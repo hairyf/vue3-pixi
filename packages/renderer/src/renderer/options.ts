@@ -24,7 +24,7 @@ export function createPixiElement(prefix: string, name: string, props: any) {
 export function insertContainer(child: Container, parent: Container, anchor?: Container | null) {
   if (anchor)
     parent.addChildAt(child, parent.getChildIndex(anchor))
-  else
+  else if (child)
     parent.addChild(child)
 }
 

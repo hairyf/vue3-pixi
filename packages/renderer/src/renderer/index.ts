@@ -38,7 +38,7 @@ export function createPixiRenderer(options: CreatePixiRendererOptions = {}) {
 
     parentNode: node => node.parent,
     createText: (text): any => text && new Text(text),
-    createComment: () => new Container(),
+    createComment: (): any => {},
     remove: child => child.destroy(),
     insert: (child, parent, anchor) => {
       if (child instanceof Filter)
@@ -53,7 +53,7 @@ export function createPixiRenderer(options: CreatePixiRendererOptions = {}) {
         return nextSiblingContainer(node)
     },
     setElementText: (node, text) => {
-      text = text.replace('\\n', '\n')
+      text = text.replace(/\\n/g, '\n')
       node instanceof Text || node instanceof BitmapText
         ? node.text = text.trim()
         : warn(`Text is only supported with ${prefix}-text element`)
