@@ -1,5 +1,6 @@
 import type {
   Container,
+  Cursor,
   EventMode,
   Filter,
   IHitArea,
@@ -16,6 +17,7 @@ export interface AllowedPixiProps {
   accessibleTitle?: string
   accessibleType?: string
   alpha?: number
+  cursor?: Cursor
 
   cacheAsBitmap?: boolean
   cacheAsBitmapMultisample?: number | unknown
