@@ -1,10 +1,9 @@
 <script lang="ts" setup>
-import FilterBase from './components/masks/FilterBase.vue'
-import GraphicsBase from './components/masks/GraphicsBase.vue'
-import SpriteBase from './components/masks/SpriteBase.vue'
+import RenderTextureBasic from './components/textures/RenderTextureBasic.vue'
+import TextureRotate from './components/textures/TextureRotate.vue'
 </script>
 
 <template>
-  <SpriteBase />
+  <TextureRotate />
 </template>
 

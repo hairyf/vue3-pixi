@@ -155,6 +155,9 @@ importers:
       vue:
         specifier: ^3.3.2
         version: 3.3.2
+      vue3-local-scope:
+        specifier: ^0.0.1
+        version: 0.0.1(vue@3.3.2)
       vue3-pixi:
         specifier: workspace:^
         version: link:../packages/vue3-pixi
@@ -4726,6 +4729,21 @@ packages:
       vue: 3.3.2
     dev: false
 
+  /vue-demi@0.14.5(vue@3.3.2):
+    resolution: {integrity: sha512-o9NUVpl/YlsGJ7t+xuqJKx8EBGf1quRhCiT6D/J0pfwmk9zUwYkC7yrF4SZCe6fETvSM3UNL2edcbYrSyc4QHA==}
+    engines: {node: '>=12'}
+    hasBin: true
+    requiresBuild: true
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^3.0.0-0 || ^2.6.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      vue: 3.3.2
+    dev: false
+
   /vue-eslint-parser@9.2.1(eslint@8.29.0):
     resolution: {integrity: sha512-tPOex4n6jit4E7h68auOEbDMwE58XiP4dylfaVTCOVCouR45g+QFDBjgIdEU52EXJxKyjgh91dLfN2rxUcV0bQ==}
     engines: {node: ^14.17.0 || >=16.0.0}
@@ -4743,6 +4761,15 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /vue3-local-scope@0.0.1(vue@3.3.2):
+    resolution: {integrity: sha512-MDG0Fr7RA/BriQI17F6DhrYVmrWtP+MARdRyLoh1MRCwoPFOELcNs7V+irwycQwDSYI221SwDXbHBSwTkxy0Eg==}
+    dependencies:
+      vue-demi: 0.14.5(vue@3.3.2)
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
+    dev: false
 
   /vue@3.3.2:
     resolution: {integrity: sha512-98hJcAhyDwZoOo2flAQBSPVYG/o0HA9ivIy2ktHshjE+6/q8IMQ+kvDKQzOZTFPxvnNMcGM+zS2A00xeZMA7tA==}

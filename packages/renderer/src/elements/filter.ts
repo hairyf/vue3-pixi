@@ -16,7 +16,6 @@ export type FilterComponent = <T extends AllowedFilterProps>(
   props:
   & FilterProps<T>
   & Partial<T>
- 
   & EventsProps
   & Record<string, any>
   ) => any

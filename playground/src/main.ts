@@ -9,7 +9,6 @@ use(ProjectionRenderer)
 const pixiApp = new Application({
   antialias: true,
   resizeTo: window,
-  background: '#1099bb',
 })
 
 document.body.appendChild(pixiApp.view as HTMLCanvasElement)
