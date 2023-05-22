@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { ColorSource } from 'pixi.js'
-import { Rectangle } from 'pixi.js'
+import { Rectangle, Sprite } from 'pixi.js'
 import { reactive } from 'vue'
 import { tryMountTicker, useScreen } from 'vue3-pixi'
 

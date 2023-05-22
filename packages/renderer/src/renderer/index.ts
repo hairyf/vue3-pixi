@@ -1,26 +1,20 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import type { } from 'pixi.js'
 import {
   BitmapText,
   Container,
   DisplayObject,
   Filter,
   Text,
+  Texture,
 } from 'pixi.js'
-import { createRenderer, warn } from 'vue-demi'
+import { createRenderer, markRaw, warn } from 'vue-demi'
 import { isCustomFilter, isOn } from '../utils'
 import { isCustomElement } from '../compiler'
-import { createPixiElement, insertContainer, insertFilter, nextSiblingContainer, nextSiblingFilter, parentNode } from './options'
+import { Empty, createPixiElement, insertContainer, insertFilter, nextSiblingContainer, nextSiblingFilter, parentNode } from './options'
 import { patchProp } from './patch'
 
 export interface CreatePixiRendererOptions {
   prefix?: string
-}
-
-class Empty extends Container {
-  render() {}
-  visible = false
-  renderable = false
 }
 
 export function createPixiRenderer(options: CreatePixiRendererOptions = {}) {
@@ -39,6 +33,8 @@ export function createPixiRenderer(options: CreatePixiRendererOptions = {}) {
         // @ts-expect-error
           element.eventMode = 'static'
       }
+
+      markRaw(element)
       return element
     },
 
@@ -46,7 +42,7 @@ export function createPixiRenderer(options: CreatePixiRendererOptions = {}) {
 
     parentNode,
     createText: (text): any => text ? new Text(text) : null,
-    createComment: () => new Empty(),
+    createComment: () => new Empty(Texture.EMPTY),
     remove: child => child.destroy(),
     insert: (child, parent, anchor) => {
       if (child instanceof Filter)

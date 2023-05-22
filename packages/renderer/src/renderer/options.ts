@@ -1,6 +1,12 @@
-import { Container } from 'pixi.js'
+import { Container, Sprite } from 'pixi.js'
 import { camelize, warn } from 'vue-demi'
 import { context } from '../context'
+
+export class Empty extends Sprite {
+  render() {}
+  visible = false
+  renderable = false
+}
 
 export function createPixiElement(prefix: string, name: string, props: any) {
   const { elements } = context
@@ -29,8 +35,11 @@ export function parentNode(node: any) {
 export function insertContainer(child: Container, parent: Container, anchor?: Container | null) {
   if (anchor)
     parent?.addChildAt(child, parent.getChildIndex(anchor))
+  // fix particle-container insert far comment error
+  else if (child instanceof Empty)
+    setTimeout(() => parent.addChild(child))
   else if (child)
-    parent?.addChild(child)
+    parent.addChild(child)
 }
 
 export function insertFilter(child: any, parent: Container, _anchor: any) {
