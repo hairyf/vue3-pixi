@@ -17,7 +17,7 @@ interface CreatePixiRendererOptions {
 export function createPixiRenderer(options: CreatePixiRendererOptions = {}) {
   const { prefix = 'pixi' } = options
 
-  return createRenderer<Container, Container>({
+  const renderer = createRenderer<Container, Container>({
     createElement: (name, _, __, props) => {
       const element = isCustomFilter(prefix, name)
         ? props?.is?.(props)
@@ -30,16 +30,15 @@ export function createPixiRenderer(options: CreatePixiRendererOptions = {}) {
         // @ts-expect-error
           element.eventMode = 'static'
       }
-
       return element
     },
 
     patchProp,
 
-    parentNode: node => node.parent,
+    parentNode: node => node?.parent,
     createText: (text): any => text && new Text(text),
     createComment: (): any => {},
-    remove: child => child.destroy(),
+    remove: child => child?.destroy(),
     insert: (child, parent, anchor) => {
       if (child instanceof Filter)
         insertFilter(child, parent, anchor)
@@ -65,6 +64,8 @@ export function createPixiRenderer(options: CreatePixiRendererOptions = {}) {
         : warn(`Text is only supported with ${prefix}-text element`)
     },
   })
+
+  return renderer
 }
 
 export const { createApp, render } = createPixiRenderer()
