@@ -48,11 +48,9 @@ const center = computed(() => ({
 </script>
 
 <template>
-  <!-- scenario 1 -->
   <template v-if="bundle === 'load-screen'">
     <sprite v-bind="center" :texture="textures?.flowerTop" @click="bundle = 'game-screen'" />
   </template>
-  <!-- scenario 2 -->
   <template v-if="bundle === 'game-screen'">
     <sprite v-bind="center" :texture="textures?.eggHead" @click="bundle = 'load-screen'" />
   </template>

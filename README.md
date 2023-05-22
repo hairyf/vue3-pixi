@@ -72,14 +72,12 @@ The vite plugin adds the ability to specify texture paths on sprites & other com
 ```ts
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import { compilerOptions, transformAssetUrls } from 'vue3-pixi'
+import { transformAssetUrls } from 'vue3-pixi'
 
 export default defineConfig({
   plugins: [
     vue({
       template: {
-        // remove the unknown element warnings
-        compilerOptions,
         // support for asset url conversion
         transformAssetUrls,
       },
