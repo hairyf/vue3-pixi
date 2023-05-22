@@ -20,7 +20,7 @@ const screen = useScreen()
 // create an array to store all the sprites
 const maggots: DudeIte[] = reactive([])
 
-for (let index = 0; index < 3000; index++) {
+for (let index = 0; index < 5000; index++) {
   const scale = 0.8 + Math.random() * 0.3
   // finally we push the dude into the maggots array so it it can be easily accessed later
   maggots.push({

@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
+import type { } from 'pixi.js'
 import {
   BitmapText,
   Container,
@@ -12,8 +13,14 @@ import { isCustomElement } from '../compiler'
 import { createPixiElement, insertContainer, insertFilter, nextSiblingContainer, nextSiblingFilter, parentNode } from './options'
 import { patchProp } from './patch'
 
-interface CreatePixiRendererOptions {
+export interface CreatePixiRendererOptions {
   prefix?: string
+}
+
+class Empty extends Container {
+  render() {}
+  visible = false
+  renderable = false
 }
 
 export function createPixiRenderer(options: CreatePixiRendererOptions = {}) {
@@ -38,8 +45,8 @@ export function createPixiRenderer(options: CreatePixiRendererOptions = {}) {
     patchProp,
 
     parentNode,
-    createText: text => new Text(text),
-    createComment: () => new Container(),
+    createText: (text): any => text ? new Text(text) : null,
+    createComment: () => new Empty(),
     remove: child => child.destroy(),
     insert: (child, parent, anchor) => {
       if (child instanceof Filter)
