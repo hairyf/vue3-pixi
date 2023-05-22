@@ -41,4 +41,3 @@ tryMountTicker((delta) => {
   </Container>
 </template>
 
-

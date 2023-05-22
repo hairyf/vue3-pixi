@@ -96,4 +96,3 @@ tryMountTicker(() => {
   </particle-container>
 </template>
 
-

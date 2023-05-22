@@ -43,20 +43,20 @@ Assets.load('https://beta.pixijs.com/assets/flowerTop.png').then(onAssetsLoaded)
 <template>
   <container>
     <LocalScope
-      v-for="(item, i) in textures"
+      v-for="(it, i) in textures"
       :key="i"
       v-slot="{ x, y }"
       :x="offset.x + grid.w * (i % 4)"
       :y="offset.y + grid.h * (i / 4 | 0)"
     >
       <sprite
-        :texture="item"
+        :texture="it"
         :scale="0.5"
         :x="x"
         :y="y"
       />
       <text :x="x" :y="y - 40" :style="{ fontFamily: 'Courier New', fontSize: '12px', fill: 'white' }">
-        {{ `rotate = ${item.rotate}` }}
+        {{ `rotate = ${it.rotate}` }}
       </text>
     </LocalScope>
   </container>
