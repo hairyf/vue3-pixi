@@ -1,5 +1,6 @@
 export * from './tryMountTicker'
 export * from './useApplication'
+export * from './useRenderer'
 export * from './useScreen'
 export * from './useStage'
 export * from './onReady'
