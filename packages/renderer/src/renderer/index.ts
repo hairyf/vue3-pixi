@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
+import { noop } from '@antfu/utils'
 import {
   BitmapText,
   Container,
@@ -35,11 +36,15 @@ export function createPixiRenderer(options: CreatePixiRendererOptions = {}) {
 
     patchProp,
 
-    parentNode: node => node?.parent,
+    parentNode: (node) => {
+      return node?.parent
+    },
     createText: (text): any => text && new Text(text),
-    createComment: (): any => {},
+    createComment: noop as any,
     remove: child => child?.destroy(),
     insert: (child, parent, anchor) => {
+      if (typeof child === 'string')
+        return
       if (child instanceof Filter)
         insertFilter(child, parent, anchor)
       else if (child)
@@ -69,4 +74,5 @@ export function createPixiRenderer(options: CreatePixiRendererOptions = {}) {
 }
 
 export const { createApp, render } = createPixiRenderer()
+
 export { setObject, setValue, setSkipFirstValue, setPoint } from './setter'
