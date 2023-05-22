@@ -8,7 +8,7 @@ import {
 } from 'pixi.js'
 import { createRenderer, warn } from 'vue-demi'
 import { isCustomFilter, isExistsEvent } from '../utils'
-import { createPixiElement, insertContainer, insertFilter, nextSiblingContainer, nextSiblingFilter } from './options'
+import { createPixiElement, insertContainer, insertFilter, nextSiblingContainer, nextSiblingFilter, parentNode } from './options'
 import { patchProp } from './patch'
 
 interface CreatePixiRendererOptions {
@@ -36,15 +36,15 @@ export function createPixiRenderer(options: CreatePixiRendererOptions = {}) {
 
     patchProp,
 
-    parentNode: (node) => {
-      return node?.parent
-    },
+    parentNode,
     createText: (text): any => text && new Text(text),
     createComment: noop as any,
-    remove: child => child?.destroy(),
+    remove: (child) => {
+      child?.parent
+        ? child.parent.removeChild(child)
+        : child?.destroy()
+    },
     insert: (child, parent, anchor) => {
-      if (typeof child === 'string')
-        return
       if (child instanceof Filter)
         insertFilter(child, parent, anchor)
       else if (child)
@@ -68,6 +68,10 @@ export function createPixiRenderer(options: CreatePixiRendererOptions = {}) {
         ? node.text = text.trim()
         : warn(`Text is only supported with ${prefix}-text element`)
     },
+    querySelector: () => {
+      throw new Error('querySelector not supported in test renderer.')
+    },
+    setScopeId: (el: any, id) => el._v_id = id,
   })
 
   return renderer
