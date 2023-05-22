@@ -38,4 +38,3 @@ onBeforeUnmount(() => ticker.destroy())
   />
 </template>
 
-<style lang="scss" scoped></style>

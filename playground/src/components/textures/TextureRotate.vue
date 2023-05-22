@@ -61,5 +61,3 @@ Assets.load('https://beta.pixijs.com/assets/flowerTop.png').then(onAssetsLoaded)
     </LocalScope>
   </container>
 </template>
-
-<style lang="scss" scoped></style>

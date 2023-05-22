@@ -41,4 +41,4 @@ tryMountTicker((delta) => {
   </Container>
 </template>
 
-<style lang="scss" scoped></style>
+

@@ -31,4 +31,3 @@ function swap() {
   />
 </template>
 
-<style lang="scss" scoped></style>

@@ -96,4 +96,4 @@ tryMountTicker(() => {
   </particle-container>
 </template>
 
-<style lang="scss" scoped></style>
+

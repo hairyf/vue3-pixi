@@ -55,4 +55,3 @@ const texture = new Texture(gradBaseTexture)
   <sprite :position="100" :rotation="Math.PI / 8" :width="500" :height="50" :texture="texture" />
 </template>
 
-<style lang="scss" scoped></style>

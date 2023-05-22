@@ -56,4 +56,3 @@ useEventListener(stage as any, 'pointermove', (e: any) => Object.assign(position
   />
 </template>
 
-<style lang="scss" scoped></style>

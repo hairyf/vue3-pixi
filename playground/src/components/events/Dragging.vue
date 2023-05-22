@@ -65,4 +65,3 @@ useEventListener(stage as any, 'pointerupoutside', onDragEnd)
   </Container>
 </template>
 
-<style lang="scss" scoped></style>

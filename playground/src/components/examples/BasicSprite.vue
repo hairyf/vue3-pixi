@@ -32,4 +32,3 @@ function drawRectangle(e: Graphics) {
   <Graphics :x="200" :y="60" :rotation="0.5" :pivot="0" @draw="drawRectangle" />
 </template>
 
-<style lang="scss" scoped></style>

@@ -81,4 +81,3 @@ tryMountTicker(() => {
   </container>
 </template>
 
-<style lang="scss" scoped></style>

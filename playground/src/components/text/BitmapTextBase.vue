@@ -17,4 +17,3 @@ const screen = useScreen()
   </bitmap-text>
 </template>
 
-<style lang="scss" scoped></style>

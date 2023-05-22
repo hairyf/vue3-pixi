@@ -79,4 +79,3 @@ function onDraw(graphics: Graphics) {
   <Graphics @draw="onDraw" />
 </template>
 
-<style lang="scss" scoped></style>

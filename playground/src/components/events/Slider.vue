@@ -83,4 +83,3 @@ function onDragEnd() {
   />
 </template>
 
-<style lang="scss" scoped></style>

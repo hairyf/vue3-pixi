@@ -19,4 +19,3 @@ tryMountTicker(() => rotation.value += 0.01)
   />
 </template>
 
-<style lang="scss" scoped></style>

@@ -67,4 +67,3 @@ function onDrawBeatifulRect(beatifulRect: Graphics) {
   <Graphics @draw="onDrawBeatifulRect" />
 </template>
 
-<style lang="scss" scoped></style>

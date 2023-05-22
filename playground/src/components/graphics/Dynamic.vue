@@ -94,4 +94,3 @@ tryMountTicker(() => thingRef.value && onDrawThing(thingRef.value))
   <Graphics ref="thingRef" :x="400" :y="300" @draw="onDrawThing" />
 </template>
 
-<style lang="scss" scoped></style>

@@ -29,4 +29,3 @@ tryMountTicker(() => {
   </camera-3d>
 </template>
 
-<style lang="scss" scoped></style>

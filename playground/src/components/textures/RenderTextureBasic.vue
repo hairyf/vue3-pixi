@@ -40,4 +40,3 @@ onReady((app) => {
   </container>
 </template>
 
-<style lang="scss" scoped></style>

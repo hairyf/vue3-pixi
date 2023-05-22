@@ -69,4 +69,3 @@ const tBind = {
   </Text>
 </template>
 
-<style lang="scss" scoped></style>

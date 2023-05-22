@@ -155,4 +155,3 @@ onKeyDown(' ', () => gaming.value && !jump.value && (jump.value = true))
   </Container>
 </template>
 
-<style lang="scss" scoped></style>
