@@ -2,6 +2,7 @@
   "extends": "@antfu",
   "rules": {
     "vue/no-deprecated-html-element-is": "off",
+    "vue/component-name-in-template-casing": "off",
     "vue/no-deprecated-filter": "off"
   }
 }

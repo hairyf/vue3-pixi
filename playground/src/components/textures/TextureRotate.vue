@@ -42,7 +42,7 @@ Assets.load('https://beta.pixijs.com/assets/flowerTop.png').then(onAssetsLoaded)
 
 <template>
   <container>
-    <LocalScope
+    <local-scope
       v-for="(it, i) in textures"
       :key="i"
       v-slot="{ x, y }"
@@ -58,6 +58,6 @@ Assets.load('https://beta.pixijs.com/assets/flowerTop.png').then(onAssetsLoaded)
       <text :x="x" :y="y - 40" :style="{ fontFamily: 'Courier New', fontSize: '12px', fill: 'white' }">
         {{ `rotate = ${it.rotate}` }}
       </text>
-    </LocalScope>
+    </local-scope>
   </container>
 </template>
