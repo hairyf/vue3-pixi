@@ -3,10 +3,8 @@ import { useEventListener } from '@vueuse/core'
 import type { FederatedPointerEvent } from 'pixi.js'
 import { Container, SCALE_MODES, Sprite, Texture } from 'pixi.js'
 import { ref } from 'vue'
-import type { SpriteProps } from 'vue3-pixi'
+import type { SpriteInst, SpriteProps } from 'vue3-pixi'
 import { onReady, useStage } from 'vue3-pixi'
-
-type RecordSprite = Sprite & Record<string, any>
 
 const stage = useStage()
 
@@ -17,9 +15,9 @@ const texture = Texture.from('https://beta.pixijs.com/assets/bunny.png')
 texture.baseTexture.scaleMode = SCALE_MODES.NEAREST
 
 const sprites = ref<Partial<SpriteProps>[]>([])
-const target = ref<RecordSprite>()
+const target = ref<SpriteInst>()
 
-function onDragStart(this: RecordSprite) {
+function onDragStart(this: SpriteInst) {
   // store a reference to the data
   // the reason for this is because of multitouch
   // we want to track the movement of this particular touch
@@ -60,8 +58,8 @@ useEventListener(stage, 'pointerupoutside', onDragEnd)
 </script>
 
 <template>
-  <Container>
+  <container>
     <Sprite v-for="(p, i) in sprites" :key="i" :index="i" v-bind="p" />
-  </Container>
+  </container>
 </template>
 

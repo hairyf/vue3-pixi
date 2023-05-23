@@ -1,12 +1,12 @@
 <!-- eslint-disable @typescript-eslint/ban-ts-comment -->
 <script lang="ts" setup>
-import { ColorMatrixFilter } from 'pixi.js'
 import { computed, reactive, ref } from 'vue'
+import type { ColorMatrixFilterInst } from 'vue3-pixi'
 import { onMountedTicker, onReady, useScreen } from 'vue3-pixi'
 
 const screen = useScreen()
 
-const filterRef = ref<ColorMatrixFilter>()
+const filterRef = ref<ColorMatrixFilterInst>()
 const rotation = ref(0)
 const pandaScale = reactive({ x: 1, y: 1 })
 const showFilter = ref(true)

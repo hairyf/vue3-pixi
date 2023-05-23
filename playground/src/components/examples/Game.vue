@@ -104,8 +104,8 @@ onKeyDown(' ', () => gaming.value && !jump.value && (jump.value = true))
 </script>
 
 <template>
-  <Container>
-    <Text
+  <container>
+    <text
       v-if="!gaming"
       :position="[screen.width / 2, screen.height / 2]"
       :style="{ fontSize: 36, fontFamily: 'Arial', align: 'center' }"
@@ -113,20 +113,20 @@ onKeyDown(' ', () => gaming.value && !jump.value && (jump.value = true))
       @click="onStart"
     >
       {{ gameover ? `Game is over, your score is ${score} points` : 'Start Game' }}
-    </Text>
+    </text>
 
-    <Sprite
+    <sprite
       v-if="!gameover"
       :texture="textures.cactus"
       :x="cactusX"
       :y="screen.height - 50 - 60"
     />
 
-    <Sprite v-if="gameover" :position="dinoPosition" :anchor="0.5" :texture="textures.dinoDeath" />
+    <sprite v-if="gameover" :position="dinoPosition" :anchor="0.5" :texture="textures.dinoDeath" />
 
     <template v-if="gaming">
-      <Sprite :visible="jump" :position="[60, jumpY]" :anchor="0.5" :texture="textures.dinoJump" />
-      <AnimatedSprite
+      <sprite :visible="jump" :position="[60, jumpY]" :anchor="0.5" :texture="textures.dinoJump" />
+      <animated-sprite
         :visible="!jump && !speedup"
         :textures="dinoRunFrames"
         :position="dinoPosition"
@@ -134,7 +134,7 @@ onKeyDown(' ', () => gaming.value && !jump.value && (jump.value = true))
         :anchor="0.5"
         :animation-speed="0.1"
       />
-      <AnimatedSprite
+      <animated-sprite
         :visible="!jump && speedup"
         :textures="dinoSpeedupFrames"
         :position="dinoPosition"
@@ -144,13 +144,13 @@ onKeyDown(' ', () => gaming.value && !jump.value && (jump.value = true))
       />
     </template>
 
-    <TilingSprite
+    <tiling-sprite
       :texture="textures.ground"
       :width="screen.width"
       :y="screen.height - 50"
       :tile-position-x="groundTileX"
       :height="30"
     />
-  </Container>
+  </container>
 </template>
 

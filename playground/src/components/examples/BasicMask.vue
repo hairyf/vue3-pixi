@@ -1,13 +1,14 @@
 <script lang="ts" setup>
+import type { GraphicsInst } from 'vue3-pixi'
 import { useScreen } from 'vue3-pixi'
-import type { Graphics as GraphicsIns, Sprite as SpriteInst } from 'pixi.js'
+import type { Sprite as SpriteInst } from 'pixi.js'
 import { ref } from 'vue'
 
 const screen = useScreen()
-const arcRef = ref<GraphicsIns>()
+const arcRef = ref<GraphicsInst>()
 const spriteRef = ref<SpriteInst>()
 
-function drawArc(e: GraphicsIns) {
+function drawArc(e: GraphicsInst) {
   e.beginFill('#fff')
   e.arc(0, 0, 100, 0, Math.PI * 2, false)
 }

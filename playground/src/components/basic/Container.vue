@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import { Container } from 'pixi.js'
 import type { Ref } from 'vue'
 import { computed, ref } from 'vue'
 
+import type { ContainerInst } from 'vue3-pixi'
 import { onMountedTicker, useScreen } from 'vue3-pixi'
 const screen = useScreen()
-const containerRef = ref<Container>() as Ref<Container>
+const containerRef = ref<ContainerInst>() as Ref<Container>
 
 const center = computed(() => ({
   x: screen.value.width / 2,
@@ -25,7 +25,7 @@ onMountedTicker((delta) => {
 </script>
 
 <template>
-  <Container
+  <container
     ref="containerRef"
     :position="center"
     :rotation="rotation"
@@ -38,6 +38,6 @@ onMountedTicker((delta) => {
       :x="(i % 5) * 40"
       :y="Math.floor(i / 5) * 40"
     />
-  </Container>
+  </container>
 </template>
 

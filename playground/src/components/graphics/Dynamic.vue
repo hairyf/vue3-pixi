@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 import { useEventListener } from '@vueuse/core'
-import { Graphics } from 'pixi.js'
 import { ref } from 'vue'
+import type { GraphicsInst } from 'vue3-pixi'
 import { onMountedTicker } from 'vue3-pixi'
 
-const graphicsRef = ref<Graphics>()
-const thingRef = ref<Graphics>()
+const graphicsRef = ref<GraphicsInst>()
+const thingRef = ref<GraphicsInst>()
 
-function onDraw(graphics: Graphics) {
+function onDraw(graphics: GraphicsInst) {
 // set a fill and line style
   graphics.beginFill(0xFF3300)
   graphics.lineStyle(10, 0xFFD900, 1)

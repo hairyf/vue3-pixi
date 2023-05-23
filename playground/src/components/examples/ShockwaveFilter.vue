@@ -1,10 +1,11 @@
 <script lang="ts" setup>
-import type { FederatedPointerEvent, Sprite as SpriteInst } from 'pixi.js'
+import type { FederatedPointerEvent } from 'pixi.js'
 import { Texture, WRAP_MODES } from 'pixi.js'
 
 import { ShockwaveFilter } from 'pixi-filters'
 
 import { computed, reactive, ref } from 'vue'
+import type { SpriteInst } from 'vue3-pixi'
 import { onMountedTicker, useApplication, useScreen } from 'vue3-pixi'
 
 interface ShockwaveItem {

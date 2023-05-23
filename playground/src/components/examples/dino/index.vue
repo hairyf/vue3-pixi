@@ -105,7 +105,7 @@ onKeyDown(' ', () => gaming.value && !jump.value && (jump.value = true))
 </script>
 
 <template>
-  <Container :scale="0.8" :x="(screen.width / 100) * 10">
+  <container :scale="0.8" :x="(screen.width / 100) * 10">
     <Text
       v-if="!gaming"
       :position="[screen.width / 2, screen.height / 2]"
@@ -152,6 +152,6 @@ onKeyDown(' ', () => gaming.value && !jump.value && (jump.value = true))
       :tile-position-x="groundTileX"
       :height="30"
     />
-  </Container>
+  </container>
 </template>
 

@@ -1,9 +1,10 @@
 <script lang="ts" setup>
-import type { Text as TextInst, TextStyle } from 'pixi.js'
+import type { TextStyle } from 'pixi.js'
 import { reactive, ref } from 'vue'
+import type { SpriteInst } from 'vue3-pixi'
 import { useScreen } from 'vue3-pixi'
 
-const spriteRef = ref<TextInst>()
+const spriteRef = ref<SpriteInst>()
 
 const screen = useScreen()
 const style = reactive({ fill: '#fff' })
