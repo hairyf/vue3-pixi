@@ -1,6 +1,6 @@
 import type { Container2d } from 'pixi-projection'
 import { Camera3d } from 'pixi-projection'
-import { setSkipFirstValue, setValue } from '@vue-pixi/renderer'
+import { setSkipValue, setValue } from '@vue-pixi/renderer'
 import { setPoint } from './setter'
 
 const pointProps = ['position3d', 'euler'] as const
@@ -43,7 +43,7 @@ export function patchCamera3dProps(el: any, key: string, _: any, nextValue: any)
   }
 
   if (props.includes(key))
-    return setSkipFirstValue(el, key, () => setPlanes({ [key]: nextValue }))
+    return setSkipValue(el, key, () => setPlanes({ [key]: nextValue }))
 
   return false
 }

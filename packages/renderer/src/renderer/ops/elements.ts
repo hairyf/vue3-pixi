@@ -20,7 +20,7 @@ import {
   Text,
   TilingSprite,
 } from 'pixi.js'
-import { normalizeTexture } from '../utils'
+import { normalizeTexture } from '../../utils'
 
 export type CustomElement = (props: (VNodeProps & { [key: string]: any })) => any
 
@@ -92,4 +92,3 @@ export const elements: Record<string, CustomElement> = {
   ),
   FXAAFilter: () => new FXAAFilter(),
 }
-

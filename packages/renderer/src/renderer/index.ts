@@ -1,80 +1,38 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-import {
-  BitmapText,
-  Container,
-  DisplayObject,
-  Filter,
-  Text,
-  Texture,
-} from 'pixi.js'
-import { createRenderer, markRaw, warn } from 'vue-demi'
-import { isCustomFilter, isOn } from '../utils'
-import { isCustomElement } from '../compiler'
-import { Empty, createPixiElement, insertContainer, insertFilter, nextSiblingContainer, nextSiblingFilter, parentNode } from './options'
-import { patchProp } from './patch'
+import type { Container } from 'pixi.js'
 
-export interface CreatePixiRendererOptions {
+import { createRenderer as _createRenderer } from 'vue-demi'
+import { isCustomElement } from '../compiler'
+
+import { patchProp } from './patchProp'
+import { nodeOps as _nodeOps } from './nodeOps'
+
+const { createElement, setText, ...nodeOps } = _nodeOps
+const { createApp: _createApp, render: _render } = createRenderer()
+
+export interface RendererOptions {
   prefix?: string
 }
 
-export function createPixiRenderer(options: CreatePixiRendererOptions = {}) {
+export function createRenderer(options: RendererOptions = {}) {
   const { prefix = 'pixi' } = options
-
-  const renderer = createRenderer<Container, Container>({
-    createElement: (name, _, __, props) => {
-      const element = isCustomFilter(prefix, name)
-        ? props?.is?.(props)
-        : createPixiElement(prefix, name, props)
-      if (element instanceof DisplayObject)
-        // @ts-expect-error
-        isOn(props) && element.eventMode === 'auto' && (element.eventMode = 'static')
-      markRaw(element)
-      return element
-    },
-
+  const renderer = _createRenderer<Container, Container>({
+    createElement: (name, _, __, props) => createElement(prefix, name, props),
+    setElementText: (node, text) => setText(prefix, node, text),
+    setText: (node, text) => setText(prefix, node, text),
     patchProp,
-
-    parentNode,
-    createText: (text): any => text ? new Text(text) : new Empty(Texture.EMPTY),
-    createComment: () => new Empty(Texture.EMPTY),
-    remove: child => child.destroy(),
-    insert: (child, parent, anchor) => {
-      if (child instanceof Filter)
-        return insertFilter(child, parent, anchor)
-      if (parent instanceof Container && child instanceof DisplayObject)
-        return insertContainer(child, parent, anchor)
-    },
-    nextSibling: (node) => {
-      if (node instanceof Filter)
-        return nextSiblingFilter(node)
-      if (node instanceof DisplayObject)
-        return nextSiblingContainer(node)
-    },
-    setElementText: (node, text) => {
-      text = text.replace(/\\n/g, '\n')
-      node instanceof Text || node instanceof BitmapText
-        ? node.text = text.trim()
-        : warn(`Text is only supported with ${prefix}-text element`)
-    },
-    setText: (node, text) => {
-      text = text.replace('\\n', '\n')
-      node instanceof Text || node instanceof BitmapText
-        ? node.text = text.trim()
-        : warn(`Text is only supported with ${prefix}-text element`)
-    },
+    ...nodeOps,
   })
-
   return renderer
 }
 
-export const renderer = createPixiRenderer()
-
-export const createApp: typeof renderer.createApp = (...args: any[]) => {
-  // @ts-expect-error
-  const app = renderer.createApp(...args)
-  app.config.compilerOptions.isCustomElement = isCustomElement
+export const createApp: typeof _createApp = (...args: any[]) => {
+  const app = (_createApp as any)(...args)
+  Object.assign(app.config.compilerOptions, { isCustomElement })
   return app
 }
-export const render = renderer.render
+export const render: typeof _render = (...args: any[]) => {
+  return (render as any)(...args)
+}
 
-export { setObject, setValue, setSkipFirstValue, setPoint } from './setter'
+export * from './setter'
+export * from './use'

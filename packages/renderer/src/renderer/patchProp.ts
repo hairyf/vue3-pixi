@@ -12,8 +12,7 @@ import {
 } from 'pixi.js'
 
 import { normalizeTexture, setTextureOptions } from '../utils'
-import { context } from '../context'
-import { setObject, setPoint, setSkipFirstValue, setValue } from './setter'
+import { setObject, setPoint, setSkipValue, setValue } from './setter'
 
 const defaultBooleanProps = ['accessible', 'cullable', 'renderable', 'visible', 'isMask'] as const
 const bitmapBooleanProps = ['dirty', 'roundPixels'] as const
@@ -23,6 +22,8 @@ const meshBooleanProps = ['roundPixels'] as const
 const simplePlaneBooleanProps = ['roundPixels', 'autoResize'] as const
 const pointProps = ['position', 'scale', 'pivot', 'skew', 'anchor', 'tilePosition', 'tileScale'] as const
 
+export const patchProps: ((el: any, key: string, prevValue: any, nextValue: any) => boolean | void)[] = []
+
 export function patchProp(
   el: Container,
   key: string,
@@ -30,8 +31,6 @@ export function patchProp(
   nextValue: any,
 ) {
   key = camelize(key)
-
-  const { patchProps } = context
 
   for (const patch of patchProps) {
     if (patch(el, key, prevValue, nextValue))
@@ -73,7 +72,7 @@ export function patchProp(
 
 export function patchTextureProps(el: any, key: string, _: any, nextValue: any): boolean {
   if (key === 'texture')
-    return setSkipFirstValue(el, key, () => el.texture = normalizeTexture(nextValue))
+    return setSkipValue(el, key, () => el.texture = normalizeTexture(nextValue))
 
   if (key === 'textureOptions') {
     setTextureOptions(el.texture, nextValue)
@@ -96,14 +95,14 @@ export function patchRenderProps(el: any, key: string, prevValue: any, nextValue
 
 export function patchTextProps(el: Text, key: string, prevValue: any, nextValue: any): boolean {
   if (key === 'text')
-    return setSkipFirstValue(el, key, () => el.text = nextValue)
+    return setSkipValue(el, key, () => el.text = nextValue)
   if (key === 'style')
-    return setSkipFirstValue(el, key, () => setObject(el.style, key, prevValue, nextValue))
+    return setSkipValue(el, key, () => setObject(el.style, key, prevValue, nextValue))
   return false
 }
 export function patchBitmapTextProps(el: BitmapText, key: string, _: any, nextValue: any): boolean {
   if (key === 'text')
-    return setSkipFirstValue(el, key, () => el.text = nextValue)
+    return setSkipValue(el, key, () => el.text = nextValue)
   if (key === 'style')
     return true
   return patchBooleanProps(el, bitmapBooleanProps, key, nextValue)
@@ -111,7 +110,7 @@ export function patchBitmapTextProps(el: BitmapText, key: string, _: any, nextVa
 
 export function patchTilingSpriteProps(el: any, key: string, _: any, nextValue: any): boolean {
   if (['width', 'height'].includes(key))
-    return setSkipFirstValue(el, key, () => el[key] = nextValue)
+    return setSkipValue(el, key, () => el[key] = nextValue)
   return patchBooleanProps(el, tilingSpriteProps, key, nextValue)
 }
 

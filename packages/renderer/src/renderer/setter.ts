@@ -4,10 +4,8 @@ import { effectScope, nextTick, watchEffect } from 'vue-demi'
 export function setObject(inst: any, key: string, prevValue: any, nextValue: any) {
   const scope = effectScope()
   function update() {
-    if (prevValue && nextValue !== prevValue) {
+    if (prevValue && nextValue !== prevValue)
       inst[`__${key}_scope`]?.stop()
-      delete inst[`__${key}_scope`]
-    }
     for (const [setKey, value] of Object.entries(nextValue))
       inst[key][setKey] = value
   }
@@ -15,7 +13,7 @@ export function setObject(inst: any, key: string, prevValue: any, nextValue: any
     watchEffect(update)
     nextTick(update)
   })
-  inst.on('destroyed', () => scope.stop())
+  inst.on?.('destroyed', () => scope.stop())
   inst[`__${key}_scope`] = scope
   return true
 }
@@ -26,7 +24,7 @@ export function setPoint(inst: any, name: string, key: string, prevValue: any, n
       if (isObject(nextValue))
         return setObject(inst, name, prevValue, nextValue)
       else
-        return setCall(inst, name, nextValue)
+        return callSet(inst, name, nextValue)
     case `${name}X`:
       return setValue(inst[name], 'x', () => inst[name].x = nextValue)
     case `${name}Y`:
@@ -51,13 +49,16 @@ export function setValue(inst: any, key: string, setter: () => void) {
   return true
 }
 
-export function setCall(inst: any, key: string, value: any | any[]) {
+export function callSet(inst: any, key: string, value: any | any[]) {
   const [v1, v2, v3] = Array.isArray(value) ? value : [value, value, value]
   setValue(inst[key], key, () => inst[key]?.set(v1, v2, v3))
   return true
 }
 
-export function setSkipFirstValue(inst: any, key: string, setter: () => void) {
+/**
+ * Skip first rendering
+ */
+export function setSkipValue(inst: any, key: string, setter: () => void) {
   if (inst[`_v_skip_first_set_${key}`])
     setValue(inst, key, setter)
   else
