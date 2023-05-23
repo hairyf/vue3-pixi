@@ -35,8 +35,11 @@ export function parentNode(node: any) {
 export function insertContainer(child: Container, parent: Container, anchor?: Container | null) {
   if (anchor)
     parent?.addChildAt(child, parent.getChildIndex(anchor))
-  // TODO: particle-container insert far comment error
-  else if (child)
+  // fix: particle-container insert far comment error
+  // if the element is empty, wait for subsequent additions to avoid affecting the collection of the first element
+  else if (child instanceof Empty)
+    setTimeout(() => parent.addChild(child))
+  if (child)
     parent.addChild(child)
 }
 

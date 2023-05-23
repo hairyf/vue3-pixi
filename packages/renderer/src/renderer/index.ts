@@ -35,7 +35,7 @@ export function createPixiRenderer(options: CreatePixiRendererOptions = {}) {
     patchProp,
 
     parentNode,
-    createText: (text): any => text ? new Text(text) : null,
+    createText: (text): any => text ? new Text(text) : new Empty(Texture.EMPTY),
     createComment: () => new Empty(Texture.EMPTY),
     remove: child => child.destroy(),
     insert: (child, parent, anchor) => {
