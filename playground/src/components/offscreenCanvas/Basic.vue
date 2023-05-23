@@ -3,7 +3,7 @@ import { Container } from 'pixi.js'
 import type { Ref } from 'vue'
 import { computed, ref } from 'vue'
 
-import { tryMountTicker, useScreen } from 'vue3-pixi'
+import { onMountedTicker, useScreen } from 'vue3-pixi'
 const screen = useScreen()
 const containerRef = ref<Container>() as Ref<Container>
 
@@ -19,7 +19,7 @@ const containerCenter = computed(() => ({
 
 const rotation = ref(0)
 
-tryMountTicker((delta) => {
+onMountedTicker((delta) => {
   rotation.value += 0.01 * delta
 })
 </script>

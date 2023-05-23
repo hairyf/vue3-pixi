@@ -2,7 +2,7 @@
 import type { ColorSource } from 'pixi.js'
 import { Rectangle, Sprite } from 'pixi.js'
 import { reactive } from 'vue'
-import { tryMountTicker, useScreen } from 'vue3-pixi'
+import { onMountedTicker, useScreen } from 'vue3-pixi'
 
 interface DudeIte {
   x: number
@@ -50,10 +50,10 @@ const dudeBounds = new Rectangle(
   screen.value.height + dudeBoundsPadding * 2,
 )
 
-let tick = 0
-tryMountTicker(() => {
+let count = 0
+onMountedTicker(() => {
   for (const dude of maggots) {
-    dude.scale.y = 0.95 + Math.sin(tick + dude.offset) * 0.05
+    dude.scale.y = 0.95 + Math.sin(count + dude.offset) * 0.05
     dude.direction += dude.turningSpeed * 0.01
     dude.x += Math.sin(dude.direction) * (dude.speed * dude.scale.y)
     dude.y += Math.cos(dude.direction) * (dude.speed * dude.scale.y)
@@ -68,7 +68,7 @@ tryMountTicker(() => {
     else if (dude.y > dudeBounds.y + dudeBounds.height)
       dude.y -= dudeBounds.height
   }
-  tick += 0.1
+  count += 0.1
 })
 </script>
 

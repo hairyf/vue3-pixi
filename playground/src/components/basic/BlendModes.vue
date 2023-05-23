@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { BLEND_MODES, Rectangle } from 'pixi.js'
 import { reactive } from 'vue'
-import { tryMountTicker, useScreen } from 'vue3-pixi'
+import { onMountedTicker, useScreen } from 'vue3-pixi'
 
 interface DudeIte {
   scale: number
@@ -48,7 +48,7 @@ const dudeBounds = new Rectangle(
   screen.value.height + dudeBoundsPadding * 2,
 )
 
-tryMountTicker(() => {
+onMountedTicker(() => {
   // iterate through the dudes and update their position
   for (const dude of dudes) {
     dude.direction += dude.turningSpeed * 0.01

@@ -2,7 +2,7 @@
 import { Assets, Texture } from 'pixi.js'
 
 import { ref } from 'vue'
-import { tryMountTicker, useScreen } from 'vue3-pixi'
+import { onMountedTicker, useScreen } from 'vue3-pixi'
 
 const screen = useScreen()
 const textures = ref<Texture[]>([])
@@ -18,7 +18,7 @@ function onAssetsLoaded() {
 Assets.load('https://beta.pixijs.com/assets/spritesheet/fighter.json')
   .then(onAssetsLoaded)
 
-tryMountTicker(() => rotation.value += 0.01)
+onMountedTicker(() => rotation.value += 0.01)
 </script>
 
 <template>

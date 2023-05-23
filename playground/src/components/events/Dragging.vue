@@ -55,8 +55,8 @@ onReady((app) => {
   app.stage.hitArea = app.screen
 })
 
-useEventListener(stage as any, 'pointerup', onDragEnd)
-useEventListener(stage as any, 'pointerupoutside', onDragEnd)
+useEventListener(stage, 'pointerup', onDragEnd)
+useEventListener(stage, 'pointerupoutside', onDragEnd)
 </script>
 
 <template>

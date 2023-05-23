@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { tryMountTicker, useScreen } from 'vue3-pixi'
+import { onMountedTicker, useScreen } from 'vue3-pixi'
 
 const screen = useScreen()
 
@@ -9,7 +9,7 @@ const mobyBlur = ref(0)
 
 let count = 0
 
-tryMountTicker(() => {
+onMountedTicker(() => {
   count += 0.005
 
   const dudeBlurAmount = Math.cos(count)

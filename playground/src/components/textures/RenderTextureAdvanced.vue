@@ -3,7 +3,7 @@ import type { Texture } from 'pixi.js'
 import { RenderTexture } from 'pixi.js'
 import { computed, markRaw, ref } from 'vue'
 import type { SpriteProps } from 'vue3-pixi'
-import { tryMountTicker, useApplication, useScreen } from 'vue3-pixi'
+import { onMountedTicker, useApplication, useScreen } from 'vue3-pixi'
 
 const screen = useScreen()
 const app = useApplication()
@@ -49,7 +49,7 @@ for (let i = 0; i < 20; i++) {
 // used for spinning!
 let count = 0
 
-tryMountTicker(() => {
+onMountedTicker(() => {
   if (!app.value)
     return
   items.value.forEach(it => (it.rotation! += 0.1))

@@ -5,7 +5,7 @@ import { Texture, WRAP_MODES } from 'pixi.js'
 import { ShockwaveFilter } from 'pixi-filters'
 
 import { computed, reactive, ref } from 'vue'
-import { tryMountTicker, useApplication, useScreen } from 'vue3-pixi'
+import { onMountedTicker, useApplication, useScreen } from 'vue3-pixi'
 
 interface ShockwaveItem {
   radius: number
@@ -78,7 +78,7 @@ function onClickWaveTicker(event: FederatedPointerEvent) {
   app.value!.ticker.add(requestAnimation)
 }
 
-tryMountTicker(() => {
+onMountedTicker(() => {
   requestWaveAnimation(waveOptions.value[0], 2)
   requestWaveAnimation(waveOptions.value[1], 1)
   requestWaveAnimation(waveOptions.value[2], 2.5)

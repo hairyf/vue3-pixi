@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { computed, reactive, ref } from 'vue'
-import { tryMountTicker, useScreen } from 'vue3-pixi'
+import { onMountedTicker, useScreen } from 'vue3-pixi'
 
 const screen = useScreen()
 
@@ -21,7 +21,7 @@ function reset() {
   target.y = Math.floor(Math.random() * screen.value.height)
 }
 
-tryMountTicker(() => {
+onMountedTicker(() => {
   position.x += (target.x - position.x) * 0.15
   position.y += (target.y - position.y) * 0.15
   if (Math.abs(position.x - target.x) < 1)

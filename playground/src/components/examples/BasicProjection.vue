@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { tryMountTicker, useScreen } from 'vue3-pixi'
+import { onMountedTicker, useScreen } from 'vue3-pixi'
 
 const screen = useScreen()
 const x = ref(0)
 
-tryMountTicker(() => {
+onMountedTicker(() => {
   x.value += 1
 })
 </script>

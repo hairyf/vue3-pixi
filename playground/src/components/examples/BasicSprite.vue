@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 import { Graphics } from 'pixi.js'
 import { ref } from 'vue-demi'
-import { tryMountTicker } from 'vue3-pixi'
+import { onMountedTicker } from 'vue3-pixi'
 
 const rotation = ref(Math.PI / 2)
 
 const alpha = ref(0.5)
 
-tryMountTicker((delta) => {
+onMountedTicker((delta) => {
   rotation.value += 0.01 * delta
 })
 

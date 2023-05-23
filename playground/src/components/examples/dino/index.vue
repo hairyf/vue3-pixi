@@ -3,7 +3,7 @@ import { onKeyDown, useMagicKeys } from '@vueuse/core'
 import type { Resource } from 'pixi.js'
 import { BaseTexture, Rectangle, Texture } from 'pixi.js'
 import { computed, ref } from 'vue'
-import { tryMountTicker, useScreen } from 'vue3-pixi'
+import { onMountedTicker, useScreen } from 'vue3-pixi'
 import image from './assets/game.png'
 
 const screen = useScreen()
@@ -89,7 +89,7 @@ function cactusTick() {
     onEnd()
 }
 
-tryMountTicker(() => {
+onMountedTicker(() => {
   if (!gaming.value)
     return
 

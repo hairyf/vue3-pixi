@@ -2,7 +2,7 @@
 <script lang="ts" setup>
 import { ColorMatrixFilter } from 'pixi.js'
 import { computed, reactive, ref } from 'vue'
-import { onReady, tryMountTicker, useScreen } from 'vue3-pixi'
+import { onMountedTicker, onReady, useScreen } from 'vue3-pixi'
 
 const screen = useScreen()
 
@@ -24,7 +24,7 @@ onReady((app) => {
 
 let count = 0
 
-tryMountTicker(() => {
+onMountedTicker(() => {
   count += 0.1
   pandaScale.x = 1 + Math.sin(count) * 0.04
   pandaScale.y = 1 + Math.cos(count) * 0.04

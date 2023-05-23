@@ -2,7 +2,7 @@
 import { useEventListener } from '@vueuse/core'
 import { Graphics } from 'pixi.js'
 import { ref } from 'vue'
-import { tryMountTicker } from 'vue3-pixi'
+import { onMountedTicker } from 'vue3-pixi'
 
 const graphicsRef = ref<Graphics>()
 const thingRef = ref<Graphics>()
@@ -86,7 +86,7 @@ function onClick() {
 
 useEventListener('pointerdown', onClick)
 
-tryMountTicker(() => thingRef.value && onDrawThing(thingRef.value))
+onMountedTicker(() => thingRef.value && onDrawThing(thingRef.value))
 </script>
 
 <template>

@@ -37,7 +37,7 @@ onReady((app) => {
   app.stage.hitArea = app.screen
 })
 
-useEventListener(stage as any, 'pointermove', (e: any) => Object.assign(position, e.global))
+useEventListener(stage, 'pointermove', (e: any) => Object.assign(position, e.global))
 </script>
 
 <template>
