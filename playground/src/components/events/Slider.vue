@@ -59,14 +59,14 @@ function onDragEnd() {
     ref="sliderRef"
     :x="(screen.width - sliderWidth) / 2"
     :y="screen.height * 0.75"
-    @draw="$event.beginFill(0x272D37).drawRect(0, 0, sliderWidth, 4)"
+    @render="$event.beginFill(0x272D37).drawRect(0, 0, sliderWidth, 4)"
   >
     <!-- Draw the handle -->
     <graphics
       cursor="pointer"
       :position="position"
       :point="4"
-      @draw="$event.beginFill(0xFFFFFF) .drawCircle(0, 0, 8)"
+      @render="$event.beginFill(0xFFFFFF) .drawCircle(0, 0, 8)"
       @pointerdown="onDragStart"
       @pointerup="onDragEnd"
       @pointerupoutside="onDragEnd"

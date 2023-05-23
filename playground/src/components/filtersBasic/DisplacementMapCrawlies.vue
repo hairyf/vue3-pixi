@@ -3,7 +3,7 @@ import { useEventListener } from '@vueuse/core'
 import type { FederatedPointerEvent } from 'pixi.js'
 import { Point, Rectangle, Sprite } from 'pixi.js'
 
-import { computed, onMounted, reactive, ref } from 'vue'
+import { computed, reactive, ref } from 'vue'
 import { onMountedTicker, onReady, useScreen, useStage } from 'vue3-pixi'
 
 interface DudeIte {

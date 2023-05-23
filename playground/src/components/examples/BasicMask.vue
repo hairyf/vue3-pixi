@@ -14,7 +14,7 @@ function drawArc(e: GraphicsIns) {
 </script>
 
 <template>
-  <graphics ref="arcRef" :x="600" :y="300" @draw="drawArc" />
+  <graphics ref="arcRef" :x="600" :y="300" @render="drawArc" />
   <sprite :mask="arcRef" :width="screen.width" :height="screen.height" texture="/bg.jpg" />
 
   <sprite ref="spriteRef" texture="https://pixijs.io/examples/examples/assets/bunny.png" :scale="10" :position="20" />

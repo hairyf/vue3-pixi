@@ -55,14 +55,14 @@ for (const r of [stageRef, whiteBoxRef, blackBoxRef]) {
     :x="400"
     name="black box"
     event-mode="static"
-    @draw="$event.beginFill(0).drawRect(0, 0, 400, 400).endFill()"
+    @render="$event.beginFill(0).drawRect(0, 0, 400, 400).endFill()"
   >
     <!-- Mount white box inside the white one -->
     <graphics
       ref="whiteBoxRef"
       name="white box"
       event-mode="static"
-      @draw="$event.beginFill(0xFFFFFF).drawRect(100, 100, 200, 200).endFill()"
+      @render="$event.beginFill(0xFFFFFF).drawRect(100, 100, 200, 200).endFill()"
     />
   </graphics>
 </template>

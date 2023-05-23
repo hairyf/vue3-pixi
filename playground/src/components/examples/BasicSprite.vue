@@ -29,6 +29,6 @@ function drawRectangle(e: Graphics) {
     @mouseenter="alpha = 1"
     @mouseleave="alpha = 0.5"
   />
-  <Graphics :x="200" :y="60" :rotation="0.5" :pivot="0" @draw="drawRectangle" />
+  <Graphics :x="200" :y="60" :rotation="0.5" :pivot="0" @render="drawRectangle" />
 </template>
 

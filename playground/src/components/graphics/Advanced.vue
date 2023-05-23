@@ -58,12 +58,12 @@ function onDrawBeatifulRect(beatifulRect: Graphics) {
 </script>
 
 <template>
-  <Graphics :x="50" :y="50" @draw="onDrawRealPath" />
-  <Graphics :x="50" :y="50" @draw="onDrawBezier" />
-  <Graphics :x="320" :y="150" @draw="onDrawRealPath2" />
-  <Graphics :x="320" :y="150" @draw="onDrawBezier2" />
-  <Graphics @draw="onDrawArc" />
-  <Graphics @draw="onDrawHole" />
-  <Graphics @draw="onDrawBeatifulRect" />
+  <Graphics :x="50" :y="50" @render="onDrawRealPath" />
+  <Graphics :x="50" :y="50" @render="onDrawBezier" />
+  <Graphics :x="320" :y="150" @render="onDrawRealPath2" />
+  <Graphics :x="320" :y="150" @render="onDrawBezier2" />
+  <Graphics @render="onDrawArc" />
+  <Graphics @render="onDrawHole" />
+  <Graphics @render="onDrawBeatifulRect" />
 </template>
 

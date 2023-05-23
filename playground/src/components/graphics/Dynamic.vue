@@ -90,7 +90,7 @@ onMountedTicker(() => thingRef.value && onDrawThing(thingRef.value))
 </script>
 
 <template>
-  <Graphics ref="graphicsRef" @draw="onDraw" />
-  <Graphics ref="thingRef" :x="400" :y="300" @draw="onDrawThing" />
+  <Graphics ref="graphicsRef" @render="onDraw" />
+  <Graphics ref="thingRef" :x="400" :y="300" @render="onDrawThing" />
 </template>
 

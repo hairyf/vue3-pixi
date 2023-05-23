@@ -52,6 +52,6 @@ const show = ref(false)
       tint="orange"
       @click="show = !show"
     />
-    <Graphics @draw="drawOutline" />
+    <Graphics @render="drawOutline" />
   </Container>
 </template>

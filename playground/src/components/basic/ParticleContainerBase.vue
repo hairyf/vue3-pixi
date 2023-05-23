@@ -86,12 +86,14 @@ onMountedTicker(() => {
     <sprite
       v-for="(dude, index) in maggots" :key="index"
       texture="https://beta.pixijs.com/assets/maggot_tiny.png"
-      :scale="dude.scale"
       :tint="dude.tint"
-      :rotation="dude.rotation"
-      :x="dude.x"
-      :y="dude.y"
       :anchor="0.5"
+      @render="
+        Object.assign($event.scale, dude.scale);
+        $event.rotation = dude.rotation;
+        $event.x = dude.x;
+        $event.y = dude.y;
+      "
     />
   </particle-container>
 </template>

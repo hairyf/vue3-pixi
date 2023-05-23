@@ -52,7 +52,7 @@ onMountedTicker(() => {
   <graphics
     v-bind="center"
     ref="maskRef"
-    @draw="$event
+    @render="$event
       .lineStyle(0)
       .clear()
       .beginFill(0x8BC5FF, 0.4)

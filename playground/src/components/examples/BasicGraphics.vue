@@ -26,9 +26,9 @@ function drawLine(e: GraphicsIns) {
 </script>
 
 <template>
-  <graphics :x="200" :y="60" @draw="drawRounded" />
-  <graphics :x="280" :y="340" @draw="drawEllipse" />
-  <graphics :x="400" :y="300" @draw="drawPolygon" />
-  <graphics :x="600" :y="300" @draw="drawArc" />
-  <graphics :x="600" :y="200" @draw="drawLine" />
+  <graphics :x="200" :y="60" @render="drawRounded" />
+  <graphics :x="280" :y="340" @render="drawEllipse" />
+  <graphics :x="400" :y="300" @render="drawPolygon" />
+  <graphics :x="600" :y="300" @render="drawArc" />
+  <graphics :x="600" :y="200" @render="drawLine" />
 </template>

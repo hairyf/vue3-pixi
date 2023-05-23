@@ -13,7 +13,7 @@ function drawCircle(e: Graphics) {
 </script>
 
 <template>
-  <Graphics :x="200" :y="60" :rotation="0.5" :pivot="0" @draw="drawRectangle" />
-  <Graphics :x="200" :y="60" @draw="drawCircle" />
+  <Graphics :x="200" :y="60" :rotation="0.5" :pivot="0" @render="drawRectangle" />
+  <Graphics :x="200" :y="60" @render="drawCircle" />
 </template>
 

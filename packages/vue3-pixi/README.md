@@ -126,7 +126,7 @@ All events emitted by pixi objects are supported. Some of vue's event modifiers 
 
 ### Graphics
 
-When using `<grahpics />` there is a special `@draw` event.
+When using `<grahpics />` there is a special `@render` event.
 
 This will set up a `watchEffect` internally that will automatically call the event handler again if any dependencies on the draw method have changed.
 
@@ -151,7 +151,7 @@ function draw(g: Graphics) {
 </script>
 
 <template>
-  <graphics @draw="draw" />
+  <graphics @render="draw" />
 </template>
 ```
 

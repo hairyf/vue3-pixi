@@ -123,11 +123,11 @@ All events emitted by pixi objects are supported. Some of vue's event modifiers 
 
 > adding an event listener to an element will currently automatically set the element's `eventMode` to `static`.
 
-### Graphics
+### Render Events
 
-When using `<grahpics />` there is a special `@draw` event.
+all elements support @render event, which allows for flexible manipulation of elements, For example, using on `<grahpics/>`
 
-This will set up a `watchEffect` internally that will automatically call the event handler again if any dependencies on the draw method have changed.
+This will set up a `watchEffect` internally that will automatically call the event handler again if any dependencies on the render method have changed.
 
 ```html
 <script setup lang="ts">
@@ -143,16 +143,17 @@ const props = defineProps<{
 function draw(g: Graphics) {
   g.clear()
   g.lineStyle(3, 0xffffff)
-
   const { x, y, width, height } = props
   g.drawRoundedRect(x, y, width, height, 5)
 }
 </script>
 
 <template>
-  <graphics @draw="draw" />
+  <graphics @render="draw" />
 </template>
 ```
+
+> In `@render`, it will not be included in the update of Vue, so no additional updates will be triggered, which can effectively reduce performance loss
 
 ## Filters
 

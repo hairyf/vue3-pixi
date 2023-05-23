@@ -4,8 +4,6 @@ import type { Container } from 'pixi.js'
 import {
   AnimatedSprite,
   BitmapText,
-
-  Graphics,
   Mesh,
   ParticleContainer,
   SimplePlane,
@@ -41,7 +39,6 @@ export function patchProp(
   }
 
   const patches = [
-    { element: Graphics, patch: patchGraphicsProps },
     { element: BitmapText, patch: patchBitmapTextProps },
     { element: Text, patch: patchTextProps },
     { element: TilingSprite, patch: patchTilingSpriteProps },
@@ -55,6 +52,9 @@ export function patchProp(
     if (el instanceof element && patch(el as any, key, prevValue, nextValue))
       return
   }
+
+  if (patchRenderProps(el, key, prevValue, nextValue))
+    return
 
   if (patchTextureProps(el, key, prevValue, nextValue))
     return
@@ -82,8 +82,8 @@ export function patchTextureProps(el: any, key: string, _: any, nextValue: any):
   return false
 }
 
-export function patchGraphicsProps(el: any, key: string, prevValue: any, nextValue: any): boolean {
-  if (key === 'onDraw' && !prevValue && typeof nextValue === 'function') {
+export function patchRenderProps(el: any, key: string, prevValue: any, nextValue: any): boolean {
+  if (key === 'onRender' && !prevValue && typeof nextValue === 'function') {
     const scope = effectScope()
     scope.run(() => watchEffect(() => nextValue(el)))
     el.on('destroyed', () => scope.stop())
@@ -93,6 +93,7 @@ export function patchGraphicsProps(el: any, key: string, prevValue: any, nextVal
     return true
   return false
 }
+
 export function patchTextProps(el: Text, key: string, prevValue: any, nextValue: any): boolean {
   if (key === 'text')
     return setSkipFirstValue(el, key, () => el.text = nextValue)

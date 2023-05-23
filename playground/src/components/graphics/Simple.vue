@@ -76,6 +76,6 @@ function onDraw(graphics: Graphics) {
 </script>
 
 <template>
-  <Graphics @draw="onDraw" />
+  <Graphics @render="onDraw" />
 </template>
 

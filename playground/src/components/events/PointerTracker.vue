@@ -25,7 +25,7 @@ useEventListener(
 <template>
   <graphics
     :position="position"
-    @draw="$event
+    @render="$event
       .beginFill(0xFFFFFF)
       .lineStyle({ color: 0x111111, alpha: 0.87, width: 1 })
       .drawCircle(0, 0, 8)

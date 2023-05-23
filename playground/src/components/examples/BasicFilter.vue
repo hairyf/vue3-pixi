@@ -19,7 +19,7 @@ function drawRectangle(e: Graphics) {
 </script>
 
 <template>
-  <Graphics ref="graphicsRef" :x="200" :y="60" :rotation="0.5" :pivot="0" @draw="drawRectangle">
+  <Graphics ref="graphicsRef" :x="200" :y="60" :rotation="0.5" :pivot="0" @render="drawRectangle">
     <blur-filter :strength="2" :blur="blurAnimated" />
   </Graphics>
 </template>
