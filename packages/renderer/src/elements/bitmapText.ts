@@ -29,9 +29,12 @@ export interface BitmapTextProps {
   tint?: PIXI.ColorSource
 }
 
-export type BitmapTextEvents = PixiEvents & {
+export interface BitmapTextEvents extends PixiEvents {
   'update:dirty': [boolean]
+  render: [AnimatedSpriteInst]
 }
+
+export type AnimatedSpriteInst = PIXI.AnimatedSprite & EventTarget
 
 export type BitmapTextComponent = DefineComponent<
 BitmapTextProps,

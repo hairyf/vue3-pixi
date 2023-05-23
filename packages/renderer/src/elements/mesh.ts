@@ -22,7 +22,11 @@ export interface MeshProps {
   canvasPadding?: number
 }
 
-type Events = PixiEvents
+export interface MeshEvents extends PixiEvents {
+  render: [MeshInst]
+}
+
+export type MeshInst = PIXI.Mesh & EventTarget
 
 export type MeshComponent = DefineComponent<
 MeshProps,
@@ -32,12 +36,12 @@ MeshProps,
   {},
   ComponentOptionsMixin,
   ComponentOptionsMixin,
-  (keyof Events)[],
-  keyof Events,
+  (keyof MeshEvents)[],
+  keyof MeshEvents,
   VNodeProps & AllowedPixiProps,
   Readonly<MeshProps> & {
-    [key in keyof Events as `on${Capitalize<key>}`]?:
-    | ((...args: Events[key]) => any)
+    [key in keyof MeshEvents as `on${Capitalize<key>}`]?:
+    | ((...args: MeshEvents[key]) => any)
     | undefined;
   },
   {}

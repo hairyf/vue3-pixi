@@ -19,7 +19,12 @@ export interface SpriteProps extends AllowedPixiProps {
 
   tint?: PIXI.ColorSource
 }
-type Events = PixiEvents
+
+export interface SpriteEvents extends PixiEvents {
+  render: [SpriteInst]
+}
+
+export type SpriteInst = PIXI.Sprite & EventTarget
 
 export type SpriteComponent = DefineComponent<
   SpriteProps,
@@ -29,12 +34,12 @@ export type SpriteComponent = DefineComponent<
   {},
   ComponentOptionsMixin,
   ComponentOptionsMixin,
-  (keyof Events)[],
-  keyof Events,
+  (keyof SpriteEvents)[],
+  keyof SpriteEvents,
   VNodeProps,
   Readonly<SpriteProps> & {
-    [key in keyof Events as `on${Capitalize<key>}`]?:
-    | ((...args: Events[key]) => any)
+    [key in keyof SpriteEvents as `on${Capitalize<key>}`]?:
+    | ((...args: SpriteEvents[key]) => any)
     | undefined;
   },
   {}

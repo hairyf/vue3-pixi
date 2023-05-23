@@ -8,7 +8,11 @@ import type { AllowedFilterProps, ExtractFilterProps } from './props'
 
 export interface FXAAFilterProps extends ExtractFilterProps<FXAAFilter> {}
 
-interface Events {}
+export interface FXAAFilterEvents {
+  render: [FXAAFilterInst]
+}
+
+export type FXAAFilterInst = FXAAFilter
 
 export type FXAAFilterComponent = DefineComponent<
 FXAAFilterProps,
@@ -18,12 +22,12 @@ FXAAFilterProps,
   {},
   ComponentOptionsMixin,
   ComponentOptionsMixin,
-  (keyof Events)[],
-  keyof Events,
+  (keyof FXAAFilterEvents)[],
+  keyof FXAAFilterEvents,
   VNodeProps & AllowedFilterProps,
   Readonly<FXAAFilterProps> & {
-    [key in keyof Events as `on${Capitalize<key>}`]?:
-    | ((...args: Events[key]) => any)
+    [key in keyof FXAAFilterEvents as `on${Capitalize<key>}`]?:
+    | ((...args: FXAAFilterEvents[key]) => any)
     | undefined;
   },
   {}

@@ -8,7 +8,11 @@ import type { AllowedFilterProps, ExtractFilterProps } from './props'
 
 export interface ColorMatrixFilterProps extends ExtractFilterProps<ColorMatrixFilter> {}
 
-interface Events {}
+export interface ColorMatrixFilterEvents {
+  render: [ColorMatrixFilterInst]
+}
+
+export type ColorMatrixFilterInst = ColorMatrixFilter
 
 export type ColorMatrixFilterComponent = DefineComponent<
 ColorMatrixFilterProps,
@@ -18,12 +22,12 @@ ColorMatrixFilterProps,
   {},
   ComponentOptionsMixin,
   ComponentOptionsMixin,
-  (keyof Events)[],
-  keyof Events,
+  (keyof ColorMatrixFilterEvents)[],
+  keyof ColorMatrixFilterEvents,
   VNodeProps & AllowedFilterProps,
   Readonly<ColorMatrixFilterProps> & {
-    [key in keyof Events as `on${Capitalize<key>}`]?:
-    | ((...args: Events[key]) => any)
+    [key in keyof ColorMatrixFilterEvents as `on${Capitalize<key>}`]?:
+    | ((...args: ColorMatrixFilterEvents[key]) => any)
     | undefined;
   },
   {}

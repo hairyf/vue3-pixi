@@ -1,14 +1,17 @@
 import type { AllowedPixiProps, PixiEvents } from '@vue-pixi/renderer'
 import type { ComponentOptionsMixin, DefineComponent, VNodeProps } from 'vue-demi'
+import type { Container3d } from 'pixi-projection'
 import type { Allowed3dPixiProps } from './props'
 
 export interface Container3dProps {
 
 }
 
-export interface Events extends PixiEvents {
-
+export interface Container3dEvents extends PixiEvents {
+  render: [Container3dInst]
 }
+
+export type Container3dInst = Container3d & EventTarget
 
 export type Container3dComponent = DefineComponent<
 Container3dProps,
@@ -18,12 +21,12 @@ Container3dProps,
   {},
   ComponentOptionsMixin,
   ComponentOptionsMixin,
-  (keyof Events)[],
-  keyof Events,
+  (keyof Container3dEvents)[],
+  keyof Container3dEvents,
   VNodeProps & AllowedPixiProps & Allowed3dPixiProps,
   Readonly<Container3dProps> & {
-    [key in keyof Events as `on${Capitalize<key>}`]?:
-    | ((...args: Events[key]) => any)
+    [key in keyof Container3dEvents as `on${Capitalize<key>}`]?:
+    | ((...args: Container3dEvents[key]) => any)
     | undefined;
   },
   {}

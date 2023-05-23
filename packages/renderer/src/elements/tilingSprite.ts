@@ -39,7 +39,11 @@ export interface TilingSpriteProps {
   uvRespectAnchor?: boolean
 }
 
-type Events = PixiEvents
+export interface TilingSpriteEvents extends PixiEvents {
+  render: [TilingSpriteInst]
+}
+
+export type TilingSpriteInst = PIXI.TilingSprite & EventTarget
 
 export type TilingSpriteComponent = DefineComponent<
   TilingSpriteProps,
@@ -49,12 +53,12 @@ export type TilingSpriteComponent = DefineComponent<
   {},
   ComponentOptionsMixin,
   ComponentOptionsMixin,
-  (keyof Events)[],
-  keyof Events,
+  (keyof TilingSpriteEvents)[],
+  keyof TilingSpriteEvents,
   VNodeProps & AllowedPixiProps,
   Readonly<TilingSpriteProps> & {
-    [key in keyof Events as `on${Capitalize<key>}`]?:
-    | ((...args: Events[key]) => any)
+    [key in keyof TilingSpriteEvents as `on${Capitalize<key>}`]?:
+    | ((...args: TilingSpriteEvents[key]) => any)
     | undefined;
   },
   {}

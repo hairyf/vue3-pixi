@@ -31,7 +31,11 @@ export interface NineSlicePlaneProps {
   autoResize?: boolean
 }
 
-type Events = PixiEvents
+export interface NineSliceEvents extends PixiEvents {
+  render: [NineSliceInst]
+}
+
+export type NineSliceInst = PIXI.NineSlicePlane & EventTarget
 
 export type NineSlicePlaneComponent = DefineComponent<
 NineSlicePlaneProps,
@@ -41,12 +45,12 @@ NineSlicePlaneProps,
   {},
   ComponentOptionsMixin,
   ComponentOptionsMixin,
-  (keyof Events)[],
-  keyof Events,
+  (keyof NineSliceEvents)[],
+  keyof NineSliceEvents,
   VNodeProps & AllowedPixiProps,
   Readonly<NineSlicePlaneProps> & {
-    [key in keyof Events as `on${Capitalize<key>}`]?:
-    | ((...args: Events[key]) => any)
+    [key in keyof NineSliceEvents as `on${Capitalize<key>}`]?:
+    | ((...args: NineSliceEvents[key]) => any)
     | undefined;
   },
   {}

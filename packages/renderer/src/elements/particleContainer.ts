@@ -3,6 +3,7 @@ import type {
   DefineComponent,
   VNodeProps,
 } from 'vue-demi'
+import type { ParticleContainer } from 'pixi.js'
 import type { AllowedPixiProps } from './props'
 import type { PixiEvents } from './events'
 
@@ -10,7 +11,11 @@ export interface ParticleContainerProps {
 
 }
 
-type Events = PixiEvents
+export interface ParticleContainerEvents extends PixiEvents {
+  render: [ParticleContainerInst]
+}
+
+export type ParticleContainerInst = ParticleContainer & EventTarget
 
 export type ParticleContainerComponent = DefineComponent<
   ParticleContainerProps,
@@ -20,12 +25,12 @@ export type ParticleContainerComponent = DefineComponent<
   {},
   ComponentOptionsMixin,
   ComponentOptionsMixin,
-  (keyof Events)[],
-  keyof Events,
+  (keyof ParticleContainerEvents)[],
+  keyof ParticleContainerEvents,
   VNodeProps & AllowedPixiProps,
   Readonly<ParticleContainerProps> & {
-    [key in keyof Events as `on${Capitalize<key>}`]?:
-    | ((...args: Events[key]) => any)
+    [key in keyof ParticleContainerEvents as `on${Capitalize<key>}`]?:
+    | ((...args: ParticleContainerEvents[key]) => any)
     | undefined;
   },
   {}

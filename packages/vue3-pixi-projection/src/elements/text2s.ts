@@ -1,14 +1,17 @@
 import type { AllowedPixiProps, PixiEvents, TextProps } from '@vue-pixi/renderer'
 import type { ComponentOptionsMixin, DefineComponent, VNodeProps } from 'vue-demi'
+import type { Text2s } from 'pixi-projection'
 import type { Allowed2sPixiProps } from './props'
 
 export interface Text2sProps extends TextProps {
 
 }
 
-export interface Events extends PixiEvents {
-
+export interface Text2sEvents extends PixiEvents {
+  render: [Text2sInst]
 }
+
+export type Text2sInst = Text2s & EventTarget
 
 export type Text2sComponent = DefineComponent<
 Text2sProps,
@@ -18,12 +21,12 @@ Text2sProps,
   {},
   ComponentOptionsMixin,
   ComponentOptionsMixin,
-  (keyof Events)[],
-  keyof Events,
+  (keyof Text2sEvents)[],
+  keyof Text2sEvents,
   VNodeProps & AllowedPixiProps & Allowed2sPixiProps,
   Readonly<Text2sProps> & {
-    [key in keyof Events as `on${Capitalize<key>}`]?:
-    | ((...args: Events[key]) => any)
+    [key in keyof Text2sEvents as `on${Capitalize<key>}`]?:
+    | ((...args: Text2sEvents[key]) => any)
     | undefined;
   },
   {}

@@ -12,7 +12,11 @@ export interface BlurFilterProps extends ExtractFilterProps<BlurFilter> {
   kernelSize?: number
 }
 
-interface Events {}
+export interface BlurFilterEvents {
+  render: [BlurFilterInst]
+}
+
+export type BlurFilterInst = BlurFilter
 
 export type BlurFilterComponent = DefineComponent<
 BlurFilterProps,
@@ -22,12 +26,12 @@ BlurFilterProps,
   {},
   ComponentOptionsMixin,
   ComponentOptionsMixin,
-  (keyof Events)[],
-  keyof Events,
+  (keyof BlurFilterEvents)[],
+  keyof BlurFilterEvents,
   VNodeProps & AllowedFilterProps,
   Readonly<BlurFilterProps> & {
-    [key in keyof Events as `on${Capitalize<key>}`]?:
-    | ((...args: Events[key]) => any)
+    [key in keyof BlurFilterEvents as `on${Capitalize<key>}`]?:
+    | ((...args: BlurFilterEvents[key]) => any)
     | undefined;
   },
   {}

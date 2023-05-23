@@ -18,7 +18,11 @@ export interface TextProps {
   width?: number
 }
 
-type Events = PixiEvents & {}
+export interface TextEvents extends PixiEvents {
+  render: [TextInst]
+}
+
+export type TextInst = PIXI.Text & EventTarget
 
 export type TextComponent = DefineComponent<
 TextProps,
@@ -28,12 +32,12 @@ TextProps,
   {},
   ComponentOptionsMixin,
   ComponentOptionsMixin,
-  (keyof Events)[],
-  keyof Events,
+  (keyof TextEvents)[],
+  keyof TextEvents,
   VNodeProps & AllowedPixiProps,
   Readonly<TextProps> & {
-    [key in keyof Events as `on${Capitalize<key>}`]?:
-    | ((...args: Events[key]) => any)
+    [key in keyof TextEvents as `on${Capitalize<key>}`]?:
+    | ((...args: TextEvents[key]) => any)
     | undefined;
   },
   {}

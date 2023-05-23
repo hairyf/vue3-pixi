@@ -1,14 +1,17 @@
 import type { AllowedPixiProps, PixiEvents, TextProps } from '@vue-pixi/renderer'
 import type { ComponentOptionsMixin, DefineComponent, VNodeProps } from 'vue-demi'
+import type { Text3d } from 'pixi-projection'
 import type { Allowed3dPixiProps } from './props'
 
 export interface Text3dProps extends TextProps {
 
 }
 
-export interface Events extends PixiEvents {
-
+export interface Text3dEvents extends PixiEvents {
+  render: [Text3dInst]
 }
+
+export type Text3dInst = Text3d & EventTarget
 
 export type Text3dComponent = DefineComponent<
 Text3dProps,
@@ -18,12 +21,12 @@ Text3dProps,
   {},
   ComponentOptionsMixin,
   ComponentOptionsMixin,
-  (keyof Events)[],
-  keyof Events,
+  (keyof Text3dEvents)[],
+  keyof Text3dEvents,
   VNodeProps & AllowedPixiProps & Allowed3dPixiProps,
   Readonly<Text3dProps> & {
-    [key in keyof Events as `on${Capitalize<key>}`]?:
-    | ((...args: Events[key]) => any)
+    [key in keyof Text3dEvents as `on${Capitalize<key>}`]?:
+    | ((...args: Text3dEvents[key]) => any)
     | undefined;
   },
   {}

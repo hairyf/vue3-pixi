@@ -10,7 +10,11 @@ export interface DisplacementFilterProps extends ExtractFilterProps<Displacement
   sprite: ISpriteMaskTarget
 }
 
-interface Events {}
+export interface DisplacementFilterEvents {
+  render: [DisplacementFilterInst]
+}
+
+export type DisplacementFilterInst = DisplacementFilter
 
 export type DisplacementFilterComponent = DefineComponent<
 DisplacementFilterProps,
@@ -20,12 +24,12 @@ DisplacementFilterProps,
   {},
   ComponentOptionsMixin,
   ComponentOptionsMixin,
-  (keyof Events)[],
-  keyof Events,
+  (keyof DisplacementFilterEvents)[],
+  keyof DisplacementFilterEvents,
   VNodeProps & AllowedFilterProps,
   Readonly<DisplacementFilterProps> & {
-    [key in keyof Events as `on${Capitalize<key>}`]?:
-    | ((...args: Events[key]) => any)
+    [key in keyof DisplacementFilterEvents as `on${Capitalize<key>}`]?:
+    | ((...args: DisplacementFilterEvents[key]) => any)
     | undefined;
   },
   {}

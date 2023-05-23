@@ -24,7 +24,11 @@ export interface SimpleRopeProps {
   canvasPadding?: number
 }
 
-type Events = PixiEvents
+export interface SimpleRopeEvents extends PixiEvents {
+  render: [SimpleRopeInst]
+}
+
+export type SimpleRopeInst = PIXI.SimpleRope & EventTarget
 
 export type SimpleRopeComponent = DefineComponent<
 SimpleRopeProps,
@@ -34,12 +38,12 @@ SimpleRopeProps,
   {},
   ComponentOptionsMixin,
   ComponentOptionsMixin,
-  (keyof Events)[],
-  keyof Events,
+  (keyof SimpleRopeEvents)[],
+  keyof SimpleRopeEvents,
   VNodeProps & AllowedPixiProps,
   Readonly<SimpleRopeProps> & {
-    [key in keyof Events as `on${Capitalize<key>}`]?:
-    | ((...args: Events[key]) => any)
+    [key in keyof SimpleRopeEvents as `on${Capitalize<key>}`]?:
+    | ((...args: SimpleRopeEvents[key]) => any)
     | undefined;
   },
   {}

@@ -16,9 +16,11 @@ export interface GraphicsProps {
   isMask?: boolean
 }
 
-type Events = PixiEvents & {
-  draw: [PIXI.Graphics]
+export interface GraphicsEvents extends PixiEvents {
+  render: [GraphicsInst]
 }
+
+export type GraphicsInst = PIXI.Graphics & EventTarget
 
 export type GraphicsComponent = DefineComponent<
 GraphicsProps,
@@ -28,12 +30,12 @@ GraphicsProps,
   {},
   ComponentOptionsMixin,
   ComponentOptionsMixin,
-  (keyof Events)[],
-  keyof Events,
+  (keyof GraphicsEvents)[],
+  keyof GraphicsEvents,
   VNodeProps & AllowedPixiProps,
   Readonly<GraphicsProps> & {
-    [key in keyof Events as `on${Capitalize<key>}`]?:
-    | ((...args: Events[key]) => any)
+    [key in keyof GraphicsEvents as `on${Capitalize<key>}`]?:
+    | ((...args: GraphicsEvents[key]) => any)
     | undefined;
   },
   {}

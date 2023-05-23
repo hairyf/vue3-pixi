@@ -48,12 +48,15 @@ export interface AnimatedSpriteProps extends AllowedPixiProps {
   updateAnchor?: boolean
 }
 
-type AnimatedSpriteEvents = PixiEvents & {
+export interface AnimatedSpriteEvents extends PixiEvents {
   complete: []
   frameChange: [number]
   'update:currentFrame': [number]
   loop: []
+  render: [AnimatedSpriteInst]
 }
+
+export type AnimatedSpriteInst = PIXI.AnimatedSprite & EventTarget
 
 export type AnimatedSpriteComponent = DefineComponent<
   AnimatedSpriteProps,

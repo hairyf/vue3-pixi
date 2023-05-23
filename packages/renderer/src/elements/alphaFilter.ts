@@ -10,7 +10,11 @@ export interface AlphaFilterProps extends ExtractFilterProps<AlphaFilter> {
 
 }
 
-interface Events {}
+export interface AlphaFilterEvents {
+  render: [AlphaFilterInst]
+}
+
+export type AlphaFilterInst = AlphaFilter
 
 export type AlphaFilterComponent = DefineComponent<
 AlphaFilterProps,
@@ -20,12 +24,12 @@ AlphaFilterProps,
   {},
   ComponentOptionsMixin,
   ComponentOptionsMixin,
-  (keyof Events)[],
-  keyof Events,
+  (keyof AlphaFilterEvents)[],
+  keyof AlphaFilterEvents,
   VNodeProps & AllowedFilterProps,
   Readonly<AlphaFilterProps> & {
-    [key in keyof Events as `on${Capitalize<key>}`]?:
-    | ((...args: Events[key]) => any)
+    [key in keyof AlphaFilterEvents as `on${Capitalize<key>}`]?:
+    | ((...args: AlphaFilterEvents[key]) => any)
     | undefined;
   },
   {}

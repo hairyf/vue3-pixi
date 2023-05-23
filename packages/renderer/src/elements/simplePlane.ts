@@ -26,7 +26,11 @@ export interface SimplePlaneProps {
   autoResize?: boolean
 }
 
-type Events = PixiEvents
+export interface SimplePlaneEvents extends PixiEvents {
+  render: [SimplePlaneInst]
+}
+
+export type SimplePlaneInst = PIXI.SimplePlane & EventTarget
 
 export type SimplePlaneComponent = DefineComponent<
 SimplePlaneProps,
@@ -36,12 +40,12 @@ SimplePlaneProps,
   {},
   ComponentOptionsMixin,
   ComponentOptionsMixin,
-  (keyof Events)[],
-  keyof Events,
+  (keyof SimplePlaneEvents)[],
+  keyof SimplePlaneEvents,
   VNodeProps & AllowedPixiProps,
   Readonly<SimplePlaneProps> & {
-    [key in keyof Events as `on${Capitalize<key>}`]?:
-    | ((...args: Events[key]) => any)
+    [key in keyof SimplePlaneEvents as `on${Capitalize<key>}`]?:
+    | ((...args: SimplePlaneEvents[key]) => any)
     | undefined;
   },
   {}
