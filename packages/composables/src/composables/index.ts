@@ -1,4 +1,4 @@
-export * from './tryMountTicker'
+export * from './onMountedTicker'
 export * from './useApplication'
 export * from './useRenderer'
 export * from './useScreen'
