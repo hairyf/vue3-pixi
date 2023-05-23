@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { BitmapText, Container, DisplayObject, Filter, Text, Texture } from 'pixi.js'
 import { markRaw, warn } from 'vue-demi'
-import { isCustomFilter } from '../utils'
+import { isCustomFilter, isOn } from '../utils'
 import {
   Empty,
   createPixiElement,
