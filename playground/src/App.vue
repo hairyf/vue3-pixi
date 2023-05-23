@@ -1,9 +1,8 @@
 <script lang="ts" setup>
-import Bundle from './components/assets_/Bundle.vue'
-import ParticleContainerBase from './components/basic/ParticleContainerBase.vue'
+import ColorMatrix from './components/filtersBasic/ColorMatrix.vue'
 </script>
 
 <template>
-  <ParticleContainerBase />
+  <ColorMatrix />
 </template>
 

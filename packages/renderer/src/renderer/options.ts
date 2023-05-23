@@ -41,6 +41,8 @@ export function insertContainer(child: Container, parent: Container, anchor?: Co
 }
 
 export function insertFilter(child: any, parent: Container, _anchor: any) {
+  if (!parent.filters)
+    parent.filters = []
   function remove() {
     parent.filters?.splice(parent.filters.indexOf(child) >>> 0, 1)
   }

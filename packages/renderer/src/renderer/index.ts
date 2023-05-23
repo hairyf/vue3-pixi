@@ -25,15 +25,9 @@ export function createPixiRenderer(options: CreatePixiRendererOptions = {}) {
       const element = isCustomFilter(prefix, name)
         ? props?.is?.(props)
         : createPixiElement(prefix, name, props)
-
-      if (element instanceof DisplayObject) {
-        element.filters = []
+      if (element instanceof DisplayObject)
         // @ts-expect-error
-        if (isOn(props) && element.eventMode === 'auto')
-        // @ts-expect-error
-          element.eventMode = 'static'
-      }
-
+        isOn(props) && element.eventMode === 'auto' && (element.eventMode = 'static')
       markRaw(element)
       return element
     },
