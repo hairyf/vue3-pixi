@@ -9,7 +9,7 @@ import 'floating-vue/dist/style.css'
 import 'uno.css'
 import './style.css'
 
-FloatingVue.options.distance = 12
+FloatingVue.options.distance = 28
 FloatingVue.options.themes.tooltip.delay.show = 100
 export default {
   ...Theme,
