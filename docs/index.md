@@ -10,7 +10,7 @@ hero:
   actions:
     - theme: brand
       text: Get Started
-      link: /guide/
+      link: /guide/introduction
     - theme: alt
       text: View on GitHub
       link: https://github.com/hairyf/vue3-pixi

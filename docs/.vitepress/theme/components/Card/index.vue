@@ -1,5 +1,5 @@
 <template>
-  <div class="rounded-lg overflow-hidden bg-[var(--vp-code-block-bg)]">
+  <div class="rounded-lg overflow-hidden bg-[#2e3138]">
     <div class="flex justify-between items-center p4 text-white">
       <slot name="header" />
     </div>

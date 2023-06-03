@@ -4,6 +4,7 @@ import Theme from 'vitepress/theme'
 import FloatingVue from 'floating-vue'
 import { NMessageProvider } from 'naive-ui'
 import PixiJSContainer from './components/PixiJSContainer/index.vue'
+import StackBlitzEmbed from './components/StackBlitzEmbed/index.vue'
 
 import 'floating-vue/dist/style.css'
 import 'uno.css'
@@ -22,6 +23,7 @@ export default {
   },
   enhanceApp({ app }) {
     app.component('DemoContainer', PixiJSContainer)
+    app.component('StackBlitzEmbed', StackBlitzEmbed)
     app.use(FloatingVue)
   },
 }

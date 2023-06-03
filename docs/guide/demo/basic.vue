@@ -3,8 +3,8 @@ import { Application } from 'vue3-pixi'
 </script>
 
 <template>
-  <Application :width="300" :height="300">
-    <text :anchor="0.5" :x="150" :y="150" :style="{ fill: 'white' }">
+  <Application :width="240" :height="240">
+    <text :anchor="0.5" :x="120" :y="120" :style="{ fill: 'white' }">
       Hello World
     </text>
   </Application>

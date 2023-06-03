@@ -76,6 +76,7 @@
   --vp-custom-block-tip-border: var(--vp-c-brand);
   --vp-custom-block-tip-text: var(--vp-c-brand-lightest);
   --vp-custom-block-tip-bg: var(--vp-c-brand-dimm);
+  --vp-code-block-bg: #2e3138
 }
 
 /**
@@ -94,18 +95,14 @@
   }
 }
 
-.vp-doc div[class*='language-'] {
+.demo-container .vp-doc div[class*='language-'] {
   background-color: var(--vp-code-block-bg);
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
-.vp-doc [class*='language-'] code {
+.demo-container .vp-doc [class*='language-'] code {
   font-size: 14px;
   padding: 0;
-}
-
-.vp-doc [class*='language-'] > pre {
-  /* padding: 0; */
 }
 
 .v-popper__popper {

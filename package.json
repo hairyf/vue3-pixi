@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@antfu/utils": "^0.7.2",
+    "@stackblitz/sdk": "^1.9.0",
     "@vueuse/core": "^10.1.2",
     "naive-ui": "^2.34.4",
     "nanoid": "^4.0.2",

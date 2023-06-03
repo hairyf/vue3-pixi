@@ -52,7 +52,7 @@ async function onCopyCode() {
 </script>
 
 <template>
-  <Card>
+  <Card class="demo-container">
     <template #header>
       <div class="flex gap-2">
         <div v-if="sfcTsCode" class="cursor-pointer i-akar-icons-typescript-fill p-10px" :class="[isUsingTs && 'text-[#007acc]']" @click="isUsingTs = true" />
@@ -79,16 +79,26 @@ async function onCopyCode() {
         />
       </div>
     </template>
-    <div ref="containerRef" class="flex justify-center bg-black min-h-300px">
-      <Application v-if="app" :width="300" :height="300">
-        <slot />
-      </Application>
-      <template v-else>
-        <slot />
-      </template>
+    <div ref="containerRef" class="container-view flex justify-center items-center p4 min-h-300px">
+      <div>
+        <Application v-if="app" :width="240" :height="240">
+          <slot />
+        </Application>
+        <template v-else>
+          <slot />
+        </template>
+      </div>
     </div>
     <template v-if="showHighlighted" #footer>
-      <div class="language-vue px4 m0!" v-html="highlightedHtml" />
+      <div class="language-vue p0 m0!" v-html="highlightedHtml" />
     </template>
   </Card>
 </template>
+
+<style>
+.container-view {
+  background-color: #d6d7da;
+  background-image: linear-gradient(90deg, #ffffff 10%, rgba(0, 0, 0, 0) 10%), linear-gradient(#ffffff 10%, rgba(0, 0, 0, 0) 10%);
+  background-size: 20px 20px;
+}
+</style>
