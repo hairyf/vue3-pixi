@@ -69,7 +69,7 @@
   --vp-custom-block-tip-border: var(--vp-c-brand);
   --vp-custom-block-tip-text: var(--vp-c-brand-darker);
   --vp-custom-block-tip-bg: var(--vp-c-brand-dimm);
-  --vp-code-block-bg: rgba(0,0,0,0);
+  /* --vp-code-block-bg: rgba(0,0,0,0); */
 }
 
 .dark {
@@ -96,6 +96,8 @@
 
 .vp-doc div[class*='language-'] {
   background-color: var(--vp-code-block-bg);
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 .vp-doc [class*='language-'] code {
   font-size: 14px;
@@ -103,5 +105,12 @@
 }
 
 .vp-doc [class*='language-'] > pre {
-  padding: 0;
+  /* padding: 0; */
+}
+
+.v-popper__popper {
+  font-size: 12px
+}
+.v-popper__inner {
+  padding: 4px 8px !important;
 }
