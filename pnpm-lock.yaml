@@ -51,8 +51,8 @@ importers:
         specifier: 2.0.0-beta.20
         version: 2.0.0-beta.20(vue@3.3.4)
       markdown-it-vitepress-demo:
-        specifier: ^0.1.6
-        version: 0.1.6
+        specifier: ^0.1.8
+        version: 0.1.8
       tsup:
         specifier: 6.6.2
         version: 6.6.2(postcss@8.4.23)(typescript@5.0.2)
@@ -5245,8 +5245,8 @@ packages:
     resolution: {integrity: sha512-y6oKTq4BB9OQuY/KLfk/O3ysFhB3IMYoIWhGJEidXt1NQFocFK2sA2t0NYZAMyMShAGL6x5OPIbrmXPIqaN9rw==}
     dev: true
 
-  /markdown-it-vitepress-demo@0.1.6:
-    resolution: {integrity: sha512-5hMhD7kgtjYJn46XWb34esjgDnt0WwnttTIsOgIEWrUHOHv5cjkbsqCUc0vkbCXgz2LmAnTLXmY30xepNLMX6w==}
+  /markdown-it-vitepress-demo@0.1.8:
+    resolution: {integrity: sha512-Ih4YI6xJjlVSRjGbl/djGoA1KJ9MkJxCPddvgSkxFYiV/WykL0b9plaRD9xZcyIEOKvNyJZdlBInbC7Hbowhcw==}
     dependencies:
       '@vue/compiler-core': 3.3.4
       '@vue/compiler-sfc': 3.3.4

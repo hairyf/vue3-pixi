@@ -33,7 +33,7 @@
     "codesandbox": "^2.2.3",
     "eslint": "^8.29.0",
     "floating-vue": "2.0.0-beta.20",
-    "markdown-it-vitepress-demo": "^0.1.6",
+    "markdown-it-vitepress-demo": "^0.1.8",
     "tsup": "6.6.2",
     "typescript": "^5.0.0",
     "vitepress": "1.0.0-beta.1",

@@ -5,8 +5,16 @@ const indexHtml = `<!DOCTYPE html>
   <head>
     <title>Naive UI Demo</title>
     <style>
-      body {
-        padding: 24px;
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      #app {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
     </style>
   </head>
