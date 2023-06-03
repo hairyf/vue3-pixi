@@ -88,8 +88,6 @@ export function patchRenderProps(el: any, key: string, prevValue: any, nextValue
     el.on('destroyed', () => scope.stop())
     return true
   }
-  if (key.startsWith('anchor'))
-    return true
   return false
 }
 
