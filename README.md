@@ -47,11 +47,11 @@ yarn add vue3-pixi
 
 ## Usage
 
-The `<Stage>` component can be used to embed a pixi app into an existing vue app.
+The `<Application>` component can be used to embed a pixi app into an existing vue app.
 
 ```html
 <script setup lang="ts">
-import { Stage } from "vue3-pixi";
+import { Application } from "vue3-pixi";
 import textureUrl from "@/assets/myTexture.png";
 
 const hitArea = new Rectangle(0, 0, 64, 64);
@@ -62,11 +62,11 @@ function onClick() {
 </script>
 
 <template>
-  <Stage :width="640" :height="480">
+  <Application :width="640" :height="480">
     <container>
       <sprite :texture="textureUrl" :hit-area="hitArea" @click="onClick" />
     </container>
-  </Stage>
+  </Application>
 </template>
 ```
 
@@ -266,18 +266,12 @@ This composable hook adds a ticker to the Pixi application during mounting and r
 
 ```html
 <script setup lang="ts">
-import { StageInst, Stage, onTick } from "vue3-pixi";
+import { onTick } from "vue3-pixi";
 
 onTick((delta) => {
   // ...
 })
 </script>
-
-<template>
-  <Stage :width="640" :height="480">
-    <!-- ... -->
-  </Stage>
-</template>
 ```
 
 ### useApplication
@@ -286,36 +280,13 @@ This composable hook is used to obtain the current Pixi application instance.
 
 ```html
 <script setup lang="ts">
-import { StageInst, Stage, useApplication } from "vue3-pixi";
-import { onMounted } from 'vue'
+import { useApplication } from "vue3-pixi";
 
-const pixiApp = useApplication()
+const app = useApplication()
 
-onMounted(() => {
-  pixiApp.value.ticker // { ... }
-})
+// set background color
+app.value.renderer.backgroundColor = 0x061639
 </script>
-
-<template>
-  <Stage :width="640" :height="480">
-    <!-- ... -->
-  </Stage>
-</template>
-```
-
-You can pass a `ref` to specify a PIXI application. By default, it will automatically look for the nearest PIXI application in the current hierarchy.
-
-```html
-<script setup lang="ts">
-const stageRef = ref()
-const pixiApp = useApplication(stageRef)
-</script>
-
-<template>
-  <Stage ref="stageRef" :width="640" :height="480">
-    <!-- ... -->
-  </Stage>
-</template>
 ```
 
 ## useScreen
