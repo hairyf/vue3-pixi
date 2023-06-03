@@ -2,6 +2,7 @@
   "name": "@vue-pixi/projection",
   "type": "module",
   "version": "0.7.1",
+  "private": true,
   "description": "Vue createRenderer for PixiJS",
   "license": "MIT",
   "homepage": "https://github.com/hairyf/vue3-pixi#readme",
@@ -47,8 +48,10 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
+    "@antfu/utils": "^0.7.2",
     "@vue-pixi/renderer": "workspace:^",
-    "pixi-projection": "^1.0.0"
+    "pixi-projection": "^1.0.0",
+    "vue-demi": "^0.14.1"
   },
   "devDependencies": {
     "@vue/runtime-core": "^3"

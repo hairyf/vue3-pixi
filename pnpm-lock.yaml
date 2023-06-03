@@ -111,12 +111,18 @@ importers:
 
   packages/vue3-pixi-projection:
     dependencies:
+      '@antfu/utils':
+        specifier: ^0.7.2
+        version: 0.7.2
       '@vue-pixi/renderer':
         specifier: workspace:^
         version: link:../renderer
       pixi-projection:
         specifier: ^1.0.0
         version: 1.0.0(@pixi-spine/base@4.0.3)(@pixi/core@7.2.4)(@pixi/display@7.2.4)(@pixi/graphics@7.2.4)(@pixi/mesh-extras@7.2.4)(@pixi/mesh@7.2.4)(@pixi/sprite-tiling@7.2.4)(@pixi/sprite@7.2.4)(@pixi/text@7.2.4)
+      vue-demi:
+        specifier: ^0.14.1
+        version: 0.14.1(vue@3.3.4)
     devDependencies:
       '@vue/runtime-core':
         specifier: ^3
@@ -2126,7 +2132,7 @@ packages:
   /@vueuse/shared@10.1.2(vue@3.3.2):
     resolution: {integrity: sha512-1uoUTPBlgyscK9v6ScGeVYDDzlPSFXBlxuK7SfrDGyUTBiznb3mNceqhwvZHjtDRELZEN79V5uWPTF1VDV8svA==}
     dependencies:
-      vue-demi: 0.14.1(vue@3.3.2)
+      vue-demi: 0.14.5(vue@3.3.2)
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
@@ -2135,7 +2141,7 @@ packages:
   /@vueuse/shared@10.1.2(vue@3.3.4):
     resolution: {integrity: sha512-1uoUTPBlgyscK9v6ScGeVYDDzlPSFXBlxuK7SfrDGyUTBiznb3mNceqhwvZHjtDRELZEN79V5uWPTF1VDV8svA==}
     dependencies:
-      vue-demi: 0.14.1(vue@3.3.4)
+      vue-demi: 0.14.5(vue@3.3.4)
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
@@ -5154,21 +5160,6 @@ packages:
     resolution: {integrity: sha512-AFbieoL7a5LMqcnOF04ji+rpXadgOXnZsxQr//r83kLPr7biP7am3g9zbaZIaBGwBRWeSvoMD4mgPdX3e4NWBg==}
     dev: true
 
-  /vue-demi@0.14.1(vue@3.3.2):
-    resolution: {integrity: sha512-rt+yuCtXvscYot9SQQj3WKZJVSriPNqVkpVBNEHPzSgBv7QIYzsS410VqVgvx8f9AAPgjg+XPKvmV3vOqqkJQQ==}
-    engines: {node: '>=12'}
-    hasBin: true
-    requiresBuild: true
-    peerDependencies:
-      '@vue/composition-api': ^1.0.0-rc.1
-      vue: ^3.0.0-0 || ^2.6.0
-    peerDependenciesMeta:
-      '@vue/composition-api':
-        optional: true
-    dependencies:
-      vue: 3.3.2
-    dev: false
-
   /vue-demi@0.14.1(vue@3.3.4):
     resolution: {integrity: sha512-rt+yuCtXvscYot9SQQj3WKZJVSriPNqVkpVBNEHPzSgBv7QIYzsS410VqVgvx8f9AAPgjg+XPKvmV3vOqqkJQQ==}
     engines: {node: '>=12'}
@@ -5211,7 +5202,6 @@ packages:
         optional: true
     dependencies:
       vue: 3.3.4
-    dev: true
 
   /vue-eslint-parser@9.2.1(eslint@8.29.0):
     resolution: {integrity: sha512-tPOex4n6jit4E7h68auOEbDMwE58XiP4dylfaVTCOVCouR45g+QFDBjgIdEU52EXJxKyjgh91dLfN2rxUcV0bQ==}
