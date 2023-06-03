@@ -1,12 +1,12 @@
 import type { Container } from 'pixi.js'
-import type { MaybeRef, Ref } from 'vue-demi'
+import type { Ref } from 'vue-demi'
 import { computed, unref } from 'vue-demi'
 
 import { useApplication } from './useApplication'
 
 export type StageInst = Container & EventTarget
 
-export function useStage(stageRef?: MaybeRef<any>): Ref<StageInst | undefined> {
-  const useApp = useApplication(stageRef)
-  return computed(() => unref(useApp)?.stage) as any
+export function useStage(): Ref<StageInst> {
+  const useApp = useApplication()
+  return computed(() => unref(useApp).stage as any)
 }

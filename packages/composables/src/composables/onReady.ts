@@ -4,8 +4,13 @@ import { useApplication } from './useApplication'
 
 export function onReady(callback: (app: Application) => void) {
   const app = useApplication()
-  onMounted(() => {
-    if (app.value)
-      callback(app.value)
-  })
+  if (app.value) {
+    callback(app.value)
+  }
+  else {
+    onMounted(() => {
+      if (app.value)
+        callback(app.value)
+    })
+  }
 }
