@@ -69,6 +69,7 @@
   --vp-custom-block-tip-border: var(--vp-c-brand);
   --vp-custom-block-tip-text: var(--vp-c-brand-darker);
   --vp-custom-block-tip-bg: var(--vp-c-brand-dimm);
+  --vp-code-block-bg: rgba(0,0,0,0);
 }
 
 .dark {
@@ -91,4 +92,16 @@
     max-width: 500px !important;
     max-height: 500px !important;
   }
+}
+
+.vp-doc div[class*='language-'] {
+  background-color: var(--vp-code-block-bg);
+}
+.vp-doc [class*='language-'] code {
+  font-size: 14px;
+  padding: 0;
+}
+
+.vp-doc [class*='language-'] > pre {
+  padding: 0;
 }

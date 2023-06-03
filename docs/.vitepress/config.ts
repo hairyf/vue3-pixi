@@ -32,6 +32,10 @@ export default defineConfig({
     config(md) {
       md.use(markdownItVitepressDemo)
     },
+    theme: {
+      dark: 'vitesse-dark',
+      light: 'vitesse-light',
+    },
   },
   vite: {
     plugins: [

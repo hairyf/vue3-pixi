@@ -2,6 +2,8 @@
 import { h } from 'vue'
 import Theme from 'vitepress/theme'
 import './style.css'
+import FloatingVue from 'floating-vue'
+import 'floating-vue/dist/style.css'
 import PixiJSContainer from './components/PixiJSContainer/index.vue'
 import 'uno.css'
 
@@ -14,5 +16,6 @@ export default {
   },
   enhanceApp({ app }) {
     app.component('DemoContainer', PixiJSContainer)
+    app.use(FloatingVue)
   },
 }
