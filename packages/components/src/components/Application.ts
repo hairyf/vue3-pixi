@@ -1,6 +1,7 @@
 /* eslint-disable vue/one-component-per-file */
 import { defineComponent, h, markRaw, onMounted, onUnmounted, ref, renderSlot, warn, watch } from 'vue-demi'
 import { throttle } from '@antfu/utils'
+import { Application as _Application } from 'pixi.js'
 import type { ColorSource, Container } from 'pixi.js'
 import type { App, PropType } from 'vue-demi'
 import { createApp } from '@vue-pixi/renderer'
@@ -46,7 +47,7 @@ const Application = defineComponent({
       if (!context)
         warn('could not crate webgl context')
 
-      const inst = new Application({
+      const inst = new _Application({
         view: canvas.value,
         width: props.width,
         height: props.height,
