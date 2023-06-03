@@ -1,7 +1,7 @@
 {
   "name": "@vue-pixi/components",
   "type": "module",
-  "version": "0.6.4",
+  "version": "0.7.0",
   "description": "Vue createRenderer for PixiJS",
   "license": "MIT",
   "homepage": "https://github.com/hairyf/vue3-pixi#readme",
