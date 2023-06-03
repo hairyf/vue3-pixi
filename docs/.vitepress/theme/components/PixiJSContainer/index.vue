@@ -24,7 +24,7 @@ const message = useMessage()
 
 const containerRef = ref<HTMLElement>()
 const showHighlighted = ref(props.expand)
-const isUsingTs = ref(true)
+const isUsingTs = ref(!!props.sfcTsCode)
 
 const sfcTsCode = computed(() => decodeURIComponent(props.sfcTsCode))
 const sfcJsCode = computed(() => decodeURIComponent(props.sfcJsCode))
@@ -50,7 +50,7 @@ async function onCopyCode() {
   <Card>
     <template #header>
       <div class="flex gap-2">
-        <div class="cursor-pointer i-akar-icons-typescript-fill p-10px" :class="[isUsingTs && 'text-[#007acc]']" @click="isUsingTs = true" />
+        <div v-if="sfcTsCode" class="cursor-pointer i-akar-icons-typescript-fill p-10px" :class="[isUsingTs && 'text-[#007acc]']" @click="isUsingTs = true" />
         <div class="cursor-pointer i-akar-icons-javascript-fill p-10px" :class="[!isUsingTs && 'text-amber']" @click="isUsingTs = false" />
       </div>
       <div class="flex gap-2">
@@ -67,8 +67,8 @@ async function onCopyCode() {
         />
       </div>
     </template>
-    <div ref="containerRef" class="flex justify-center">
-      <Application v-if="app" :width="688" :height="300">
+    <div ref="containerRef" class="flex justify-center bg-black min-h-300px">
+      <Application v-if="app" :width="300" :height="300">
         <slot />
       </Application>
       <template v-else>
