@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { defineConfig } from 'vitepress'
-
+import unocss from 'unocss/vite'
+import markdownItVitepressDemo from 'markdown-it-vitepress-demo'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: 'Vue3 Pixi',
@@ -23,6 +25,18 @@ export default defineConfig({
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/vuejs/vitepress' },
+    ],
+  },
+
+  markdown: {
+    config(md) {
+      md.use(markdownItVitepressDemo)
+    },
+  },
+  vite: {
+    plugins: [
+      // @ts-expect-error
+      unocss({}),
     ],
   },
 })

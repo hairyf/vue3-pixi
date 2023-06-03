@@ -2,6 +2,8 @@
 import { h } from 'vue'
 import Theme from 'vitepress/theme'
 import './style.css'
+import PixiJSContainer from './components/PixiJSContainer/index.vue'
+import 'uno.css'
 
 export default {
   ...Theme,
@@ -10,7 +12,7 @@ export default {
       // https://vitepress.dev/guide/extending-default-theme#layout-slots
     })
   },
-  enhanceApp({ app, router, siteData }) {
-    // ...
-  }
+  enhanceApp({ app }) {
+    app.component('DemoContainer', PixiJSContainer)
+  },
 }
