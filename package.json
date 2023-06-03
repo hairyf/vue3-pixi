@@ -15,6 +15,13 @@
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"
   },
+  "dependencies": {
+    "@antfu/utils": "^0.7.2",
+    "@vueuse/core": "^10.1.2",
+    "nanoid": "^4.0.2",
+    "pixi.js": "^7.2.4",
+    "vue-demi": "^0.14.1"
+  },
   "devDependencies": {
     "@antfu/eslint-config": "^0.33.1",
     "@types/node": "^18.11.13",

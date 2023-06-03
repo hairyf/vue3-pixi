@@ -6,14 +6,14 @@
 /**
  * Colors
  * -------------------------------------------------------------------------- */
-
  :root {
-  --vp-c-brand: #646cff;
-  --vp-c-brand-light: #747bff;
-  --vp-c-brand-lighter: #9499ff;
-  --vp-c-brand-lightest: #bcc0ff;
-  --vp-c-brand-dark: #535bf2;
-  --vp-c-brand-darker: #454ce1;
+  --vp-c-brand: #e91e63;
+  --vp-c-brand-light: #eb3674;
+  --vp-c-brand-lighter: #ed427c;
+  --vp-c-brand-lightest: #f06695;
+  --vp-c-brand-dark: #d81557;
+  --vp-c-brand-darker: #cc1452;
+  --vp-c-brand-darkest: #a81044;
   --vp-c-brand-dimm: rgba(100, 108, 255, 0.08);
 }
 
@@ -39,16 +39,12 @@
 
 :root {
   --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: -webkit-linear-gradient(
-    120deg,
-    #bd34fe 30%,
-    #41d1ff
-  );
+  --vp-home-hero-name-background: var(--vp-c-brand);
 
   --vp-home-hero-image-background-image: linear-gradient(
     -45deg,
-    #bd34fe 50%,
-    #47caff 50%
+    #41b883 0%,
+    transparent
   );
   --vp-home-hero-image-filter: blur(40px);
 }
@@ -89,3 +85,10 @@
   --docsearch-primary-color: var(--vp-c-brand) !important;
 }
 
+
+@media (min-width: 960px) {
+  .image-src {
+    max-width: 500px !important;
+    max-height: 500px !important;
+  }
+}
