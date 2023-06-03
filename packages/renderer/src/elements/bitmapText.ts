@@ -31,10 +31,10 @@ export interface BitmapTextProps {
 
 export interface BitmapTextEvents extends PixiEvents {
   'update:dirty': [boolean]
-  render: [AnimatedSpriteInst]
+  render: [BitmapTextInst]
 }
 
-export type AnimatedSpriteInst = PIXI.AnimatedSprite & EventTarget
+export type BitmapTextInst = PIXI.BitmapText & EventTarget
 
 export type BitmapTextComponent = DefineComponent<
 BitmapTextProps,
