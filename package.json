@@ -10,14 +10,10 @@
     "lint": "eslint .",
     "play": "npm -C playground run dev",
     "release": "bumpp -r && pnpm -r publish",
-    "test": "vitest"
-  },
-  "dependencies": {
-    "@antfu/utils": "^0.7.2",
-    "@vueuse/core": "^10.1.2",
-    "nanoid": "^4.0.2",
-    "pixi.js": "^7.2.4",
-    "vue-demi": "^0.14.1"
+    "test": "vitest",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.33.1",
@@ -26,6 +22,7 @@
     "eslint": "^8.29.0",
     "tsup": "6.6.2",
     "typescript": "^5.0.0",
+    "vitepress": "1.0.0-beta.1",
     "vitest": "^0.31.0"
   }
 }
