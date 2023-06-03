@@ -19,6 +19,10 @@
   <img src="https://img.shields.io/badge/pixi-v7+-ff69b4.svg?style=flat-square" alt="pixi version" />
 </p>
 
+<p align="center">
+  <a href="https://vue3-pixi.vercel.app/">View Documentation</a>
+</p>
+
 ###### Features
 
 - 💚 Lightweight and flexible [Vue 3](https://vuejs.org/) library for creating [PixiJS](https://pixijs.com/) applications.
@@ -29,17 +33,8 @@
 - 🗃️ Offers [Assets](#assets) component for bundling assets and Feature Rich [Composition Utilities](#composables).
 - 💫 Create different transition effects in conjunction with [@vue3-pixi-transition](https://github.com/hairyf/vue3-pixi/tree/main/packages/transition).
 
-## Try it Online
 
-[![StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/edit/vue3-pixi)
-
-## Demos
-
-- https://github.com/hairyf/vue3-pixi-flappy-bird
-- https://github.com/hairyf/vue3-pixi-dino
-
-## Install
-
+## Installation
 
 ```sh
 # with pnpm
@@ -48,6 +43,20 @@ pnpm add vue3-pixi
 # with yarn
 yarn add vue3-pixi
 ```
+
+review the [document](https://vue3-pixi.vercel.app/)
+
+## Try it Online
+
+[![StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/edit/vue3-pixi)
+
+
+## Demos
+
+- https://github.com/hairyf/vue3-pixi-flappy-bird
+- https://github.com/hairyf/vue3-pixi-dino
+
+
 
 ## Usage
 
