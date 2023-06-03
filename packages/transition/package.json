@@ -1,7 +1,7 @@
 {
   "name": "@vue-pixi/transition",
   "type": "module",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "packageManager": "pnpm@8.5.0",
   "license": "MIT",
   "homepage": "https://github.com/hairyf/vue3-pixi#readme",
