@@ -4,7 +4,7 @@ import type { FederatedPointerEvent } from 'pixi.js'
 import { Point, Rectangle, Sprite } from 'pixi.js'
 
 import { computed, reactive, ref } from 'vue'
-import { onMountedTicker, onReady, useScreen, useStage } from 'vue3-pixi'
+import { onReady, onTick, useScreen, useStage } from 'vue3-pixi'
 
 interface DudeIte {
   x: number
@@ -88,7 +88,7 @@ onReady((app) => {
   app.stage.hitArea = app.screen
 })
 
-onMountedTicker(creep)
+onTick(creep)
 </script>
 
 <template>

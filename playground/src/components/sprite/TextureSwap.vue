@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { Texture } from 'pixi.js'
 import { ref } from 'vue'
-import { onMountedTicker, useScreen } from 'vue3-pixi'
+import { onTick, useScreen } from 'vue3-pixi'
 
 const asserts = {
   flowerTop: Texture.from('https://beta.pixijs.com/assets/flowerTop.png'),
@@ -13,7 +13,7 @@ const screen = useScreen()
 const rotation = ref(0)
 const current = ref<keyof typeof asserts>('flowerTop')
 
-onMountedTicker(() => rotation.value += 0.01)
+onTick(() => rotation.value += 0.01)
 
 function swap() {
   current.value = current.value === 'flowerTop' ? 'eggHead' : 'flowerTop'

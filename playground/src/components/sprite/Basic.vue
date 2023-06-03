@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { onMountedTicker, useScreen } from 'vue3-pixi'
+import { onTick, useScreen } from 'vue3-pixi'
 
 const screen = useScreen()
 
 const rotation = ref(0)
 
-onMountedTicker(() => rotation.value += 0.01)
+onTick(() => rotation.value += 0.01)
 </script>
 
 <template>

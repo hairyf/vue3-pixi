@@ -255,15 +255,15 @@ You can also use the `resolved` and `fallback` slots separately to handle succes
 
 `vue3-pixi` provides a set of composable hooks for operating a Pixi application.
 
-### onMountedTicker
+### onTick
 
 This composable hook adds a ticker to the Pixi application during mounting and returns a stop function.
 
 ```html
 <script setup lang="ts">
-import { StageInst, Stage, onMountedTicker } from "vue3-pixi";
+import { StageInst, Stage, onTick } from "vue3-pixi";
 
-onMountedTicker((delta) => {
+onTick((delta) => {
   // ...
 })
 </script>

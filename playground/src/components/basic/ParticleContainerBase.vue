@@ -2,7 +2,7 @@
 import type { ColorSource } from 'pixi.js'
 import { Rectangle, Sprite } from 'pixi.js'
 import { reactive } from 'vue'
-import { onMountedTicker, useScreen } from 'vue3-pixi'
+import { onTick, useScreen } from 'vue3-pixi'
 
 interface DudeIte {
   x: number
@@ -51,7 +51,7 @@ const dudeBounds = new Rectangle(
 )
 
 let count = 0
-onMountedTicker(() => {
+onTick(() => {
   for (const dude of maggots) {
     dude.scale.y = 0.95 + Math.sin(count + dude.offset) * 0.05
     dude.direction += dude.turningSpeed * 0.01

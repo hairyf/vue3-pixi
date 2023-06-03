@@ -2,7 +2,7 @@
 <script lang="ts" setup>
 import { useEventListener } from '@vueuse/core'
 import { computed, reactive, ref } from 'vue'
-import { onReady, onMountedTicker, useScreen, useStage } from 'vue3-pixi'
+import { onReady, onTick, useScreen, useStage } from 'vue3-pixi'
 
 const screen = useScreen()
 const stage = useStage()
@@ -27,7 +27,7 @@ onReady((app) => {
 // @ts-expect-error
 useEventListener(stage, 'click', () => isMask.value = !isMask.value)
 
-onMountedTicker(() => {
+onTick(() => {
   count.value += 0.1
   pandaScale.x = 1 + Math.sin(count.value) * 0.04
   pandaScale.y = 1 + Math.cos(count.value) * 0.04

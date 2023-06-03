@@ -2,7 +2,7 @@
 import { computed, ref } from 'vue'
 
 import type { ContainerInst } from 'vue3-pixi'
-import { onMountedTicker, useScreen } from 'vue3-pixi'
+import { onTick, useScreen } from 'vue3-pixi'
 const screen = useScreen()
 const containerRef = ref<ContainerInst>()
 
@@ -18,7 +18,7 @@ const containerCenter = computed(() => ({
 
 const rotation = ref(0)
 
-onMountedTicker((delta) => {
+onTick((delta) => {
   rotation.value += 0.01 * delta
 })
 </script>

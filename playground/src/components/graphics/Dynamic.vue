@@ -2,7 +2,7 @@
 import { useEventListener } from '@vueuse/core'
 import { ref } from 'vue'
 import type { GraphicsInst } from 'vue3-pixi'
-import { onMountedTicker } from 'vue3-pixi'
+import { onTick } from 'vue3-pixi'
 
 const graphicsRef = ref<GraphicsInst>()
 const thingRef = ref<GraphicsInst>()
@@ -86,7 +86,7 @@ function onClick() {
 
 useEventListener('pointerdown', onClick)
 
-onMountedTicker(() => thingRef.value && onDrawThing(thingRef.value))
+onTick(() => thingRef.value && onDrawThing(thingRef.value))
 </script>
 
 <template>
