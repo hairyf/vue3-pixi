@@ -1,8 +1,8 @@
-<h1 align="center">Vue 3 Pixi</h1>
-
 <p align="center">
-  <img height="100px" src="./docs/public/logo.svg" />
+  <img height="130px" src="./docs/public/logo.svg" />
 </p>
+
+<h1 align="center">Vue 3 Pixi</h1>
 
 <p align="center">
   <strong>Vue createRenderer for PixiJS</strong>
