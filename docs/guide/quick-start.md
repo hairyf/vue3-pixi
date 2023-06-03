@@ -1,7 +1,95 @@
 # Quick Start
 
-The Application component will create your PixiJS app and canvas for you.
+If you have an existing project, you just need to install the following dependencies:
 
-All Vue3 Pixi elements should be children of Application.
+::: code-group
 
-<demo src="./demo/basic.vue" :app="false" />
+```bash [npm]
+npm install pixi.js vue3-pixi
+```
+
+```bash [yarn]
+yarn add pixi.js vue3-pixi
+```
+
+```bash [pnpm]
+pnpm add pixi.js vue3-pixi
+```
+
+:::
+
+## Basic Usage
+
+The `<Application>` component can be used to embed a pixi app into an existing vue app.
+
+```html
+<script setup lang="ts">
+import { Application } from "vue3-pixi";
+import textureUrl from "@/assets/myTexture.png";
+
+const hitArea = new Rectangle(0, 0, 64, 64);
+
+function onClick() {
+  console.log('sprite clicked!');
+}
+</script>
+
+<template>
+  <Application :width="640" :height="480">
+    <container>
+      <sprite :texture="textureUrl" :hit-area="hitArea" @click="onClick" />
+    </container>
+  </Application>
+</template>
+```
+
+## Initialize vue plugin
+
+The vite plugin adds the ability to specify texture paths on sprites & other components that use textures, the same way as the `src` attribute on an image.
+
+```ts
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import { transformAssetUrls } from 'vue3-pixi'
+
+export default defineConfig({
+  plugins: [
+    vue({
+      template: {
+        // support for asset url conversion
+        transformAssetUrls,
+      },
+    }),
+  ],
+})
+```
+
+### Usage in template
+
+The Vue Plugin detects any texture props containing the path to an image and replaces it with a reference to a texture object:
+
+```html
+<sprite texture="@/assets/myTexture.png" />
+```
+
+## Creating an pixi application manually
+
+Using the custom renderer inside `vue3-pixi`
+
+```ts
+import { appInjectKey, createApp } from 'vue3-pixi'
+import { Application } from 'pixi.js'
+import App from './App.vue'
+
+const pixiApp = new Application({
+  resizeTo: window,
+  antialias: true,
+})
+
+document.body.appendChild(pixiApp.view as HTMLCanvasElement)
+
+const app = createApp(App)
+
+app.provide(appInjectKey, pixiApp)
+app.mount(pixiApp.stage)
+```

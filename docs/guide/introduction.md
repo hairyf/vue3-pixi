@@ -32,27 +32,7 @@
 
 > **It is still a work in progress** but it should be usable enough for real projects. If you run into any problems please don’t hesitate to [create an issue on GitHub](https://github.com/hairyf/vue3-pixi/issues).
 
-
-
-## Try it Online
-
-You can fork this template example on [StackBlitz](https://stackblitz.com/edit/vue3-pixi?file=src/App.vue) and play with it 😋 without installing anything locally.
-
-<stack-blitz-embed id="vue3-pixi" />
-
-## Creating a Project
-
-The easiest way to get started is to use one of the [example templates](https://github.com/Stuyk/vue3-typescript-vite-pixijs-boilerplate):
-
-```bash
-npx degit Stuyk/vue3-typescript-vite-pixijs-boilerplate
-pnpm install
-pnpm dev
-```
-
-## Adding to an Existing Project
-
-If you have an existing project, you just need to install the following dependencies:
+## Install
 
 ::: code-group
 
@@ -70,31 +50,11 @@ pnpm add pixi.js vue3-pixi
 
 :::
 
-## Initialize vue plugin
 
-The vite plugin adds the ability to specify texture paths on sprites & other components that use textures, the same way as the `src` attribute on an image.
 
-```ts
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import { transformAssetUrls } from 'vue3-pixi'
+## Try it Online
 
-export default defineConfig({
-  plugins: [
-    vue({
-      template: {
-        // support for asset url conversion
-        transformAssetUrls,
-      },
-    }),
-  ],
-})
-```
+You can fork this template example on [StackBlitz](https://stackblitz.com/edit/vue3-pixi?file=src/App.vue) and play with it 😋 without installing anything locally.
 
-### Usage in template
+<stack-blitz-embed id="vue3-pixi" />
 
-The Vue Plugin detects any texture props containing the path to an image and replaces it with a reference to a texture object:
-
-```html
-<sprite texture="@/assets/myTexture.png" />
-```
