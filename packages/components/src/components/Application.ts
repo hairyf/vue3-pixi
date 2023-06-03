@@ -1,17 +1,12 @@
 /* eslint-disable vue/one-component-per-file */
-import { defineComponent, h, inject, markRaw, onMounted, onUnmounted, ref, renderSlot, warn, watch } from 'vue-demi'
+import { defineComponent, h, markRaw, onMounted, onUnmounted, ref, renderSlot, warn, watch } from 'vue-demi'
 import { throttle } from '@antfu/utils'
 import type { ColorSource, Container } from 'pixi.js'
-import { Application } from 'pixi.js'
-import type { App, PropType, Ref } from 'vue-demi'
+import type { App, PropType } from 'vue-demi'
 import { createApp } from '@vue-pixi/renderer'
 import { appInjectKey } from '@vue-pixi/composables'
 
-export interface StageInst {
-  app?: Application
-}
-
-const Stage = defineComponent({
+const Application = defineComponent({
   props: {
     alpha: Boolean,
     antialias: { type: Boolean, default: true },
@@ -32,7 +27,7 @@ const Stage = defineComponent({
   },
   setup(props, { slots }) {
     const canvas = ref<HTMLCanvasElement>()
-    const pixiApp = injectApplication()
+    const pixiApp = ref()
     let app: App<Container> | undefined
 
     function mount() {
@@ -69,7 +64,6 @@ const Stage = defineComponent({
       app.provide(appInjectKey, pixiApp)
       app.mount(pixiApp.value.stage)
     }
-
     function unmount() {
       app?.unmount()
       app = undefined
@@ -77,23 +71,19 @@ const Stage = defineComponent({
       pixiApp.value?.destroy()
       pixiApp.value = undefined
     }
-
     function resize() {
       if (!pixiApp.value)
         return
-      pixiApp.value.renderer.resize(
-        props.width || pixiApp.value.renderer.width,
-        props.height || pixiApp.value.renderer.height,
-      )
+      const width = props.width || pixiApp.value.renderer.width
+      const height = props.height || pixiApp.value.renderer.height
+      pixiApp.value.renderer.resize(width, height)
     }
 
     watch(
       () => [props.width, props.height],
       throttle(50, resize),
     )
-
     onMounted(mount)
-
     onUnmounted(unmount)
 
     return { canvas, app: pixiApp }
@@ -103,11 +93,4 @@ const Stage = defineComponent({
   },
 })
 
-function injectApplication() {
-  let pixiApp = ref(inject(appInjectKey, ref()))
-  if (pixiApp?.value)
-    pixiApp = ref()
-  return pixiApp as Ref<Application | undefined>
-}
-
-export default Stage
+export default Application

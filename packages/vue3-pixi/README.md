@@ -56,11 +56,11 @@ function onClick() {
 </script>
 
 <template>
-  <Stage :width="640" :height="480">
+  <Application :width="640" :height="480">
     <container>
       <sprite :texture="textureUrl" :hit-area="hitArea" @click="onClick" />
     </container>
-  </Stage>
+  </Application>
 </template>
 ```
 
