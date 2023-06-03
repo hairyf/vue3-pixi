@@ -54,7 +54,7 @@ function onDraw(graphics: GraphicsInst) {
 
 let count = 0
 
-function onDrawThing(thing: Graphics) {
+function onDrawThing(thing: GraphicsInst) {
   count += 0.1
 
   thing.clear()

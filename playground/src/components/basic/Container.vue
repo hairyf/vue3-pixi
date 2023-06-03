@@ -1,11 +1,10 @@
 <script lang="ts" setup>
-import type { Ref } from 'vue'
 import { computed, ref } from 'vue'
 
 import type { ContainerInst } from 'vue3-pixi'
 import { onTick, useScreen } from 'vue3-pixi'
 const screen = useScreen()
-const containerRef = ref<ContainerInst>() as Ref<Container>
+const containerRef = ref<ContainerInst>()
 
 const center = computed(() => ({
   x: screen.value.width / 2,

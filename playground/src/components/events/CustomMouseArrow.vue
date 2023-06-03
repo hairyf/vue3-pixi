@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { Sprite, Texture } from 'pixi.js'
-import { onMounted } from 'vue'
 import type { SpriteProps } from 'vue3-pixi'
 import { useApplication, useScreen } from 'vue3-pixi'
 
@@ -13,11 +12,8 @@ const screen = useScreen()
 const defaultIcon = 'url(\'https://beta.pixijs.com/assets/bunny.png\'),auto'
 const hoverIcon = 'url(\'https://beta.pixijs.com/assets/bunny_saturated.png\'),auto'
 
-// Add custom cursor styles
-onMounted(() => {
-  app.value!.renderer.events.cursorStyles.default = defaultIcon
-  app.value!.renderer.events.cursorStyles.hover = hoverIcon
-})
+app.value.renderer.events.cursorStyles.default = defaultIcon
+app.value.renderer.events.cursorStyles.hover = hoverIcon
 
 // create some textures from an image path
 const texture = Texture.from('https://beta.pixijs.com/assets/button.png')

@@ -16,10 +16,11 @@ onReady((app) => {
   position.y = app.screen.height / 2
 })
 
-useEventListener(
-  stageRef as any, 'pointermove',
-  (event: FederatedPointerEvent) => Object.assign(position, event.global),
-)
+function onPointerEvent(event: FederatedPointerEvent) {
+  Object.assign(position, event.global)
+}
+
+useEventListener(stageRef, 'pointermove', onPointerEvent)
 </script>
 
 <template>

@@ -1,12 +1,13 @@
 <script lang="ts" setup>
+import type { GraphicsInst } from 'vue3-pixi'
 import { useScreen } from 'vue3-pixi'
-import type * as PIXI from 'pixi.js'
 import { ref } from 'vue'
+
 const screen = useScreen()
 
 const play = ref(false)
 
-function drawButton(e: PIXI.Graphics) {
+function drawButton(e: GraphicsInst) {
   e.beginFill(0x0, 0.5)
     .drawRoundedRect(0, 0, 100, 100, 10)
     .endFill()

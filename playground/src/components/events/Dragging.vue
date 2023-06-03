@@ -24,7 +24,7 @@ function onDragStart(this: SpriteInst) {
   // this.data = event.data;
   this.alpha = 0.5
   target.value = this
-  stage.value!.on('pointermove', onDragMove)
+  stage.value.on('pointermove', onDragMove)
 }
 
 function onDragMove(event: FederatedPointerEvent) {
@@ -34,7 +34,7 @@ function onDragMove(event: FederatedPointerEvent) {
 function onDragEnd() {
   if (!target.value)
     return
-  stage.value!.off('pointermove', onDragMove)
+  stage.value.off('pointermove', onDragMove)
   target.value.alpha = 1
   target.value = undefined
 }

@@ -1,4 +1,3 @@
-<!-- eslint-disable @typescript-eslint/ban-ts-comment -->
 <script lang="ts" setup>
 import { useEventListener } from '@vueuse/core'
 import { computed, reactive, ref } from 'vue'
@@ -24,7 +23,6 @@ onReady((app) => {
   app.stage.hitArea = app.screen
 })
 
-// @ts-expect-error
 useEventListener(stage, 'click', () => isMask.value = !isMask.value)
 
 onTick(() => {
