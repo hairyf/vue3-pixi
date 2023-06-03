@@ -60,7 +60,7 @@ jobs:
         run: pnpm install
 
       - name: Build
-        run: pnpm build
+        run: pnpm -r build
 
       - name: Test
         run: pnpm run test
