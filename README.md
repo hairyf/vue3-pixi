@@ -27,7 +27,12 @@
 
 ## Try it Online
 
-[![StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/edit/vue-pixi-renderer)
+[![StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/edit/vue3-pixi)
+
+## Demos
+
+- https://github.com/hairyf/vue3-pixi-flappy-bird
+- https://github.com/hairyf/vue3-pixi-dino
 
 ## Install
 
