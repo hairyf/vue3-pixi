@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup>
 import { Application, Loader } from 'vue3-pixi'
 
 const images = [
@@ -24,9 +24,9 @@ const images = [
           v-for="(image, k, i) in textures" :key="k"
           :texture="image"
           :anchor="0.5"
-          :x="70 + i * 50"
+          :x="68 + i * 50"
           :y="120"
-          :scale="2"
+          :scale="1.4"
         />
       </template>
     </Loader>

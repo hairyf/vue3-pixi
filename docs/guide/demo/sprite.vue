@@ -4,6 +4,11 @@ import { Application } from 'vue3-pixi'
 
 <template>
   <Application :width="240" :height="240">
-    <sprite texture="/assets/food/lemonpie.png" />
+    <sprite
+      texture="/assets/food/lemonpie.png"
+      :anchor="0.5"
+      :x="120"
+      :y="120"
+    />
   </Application>
 </template>

@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
-import { useMessage } from 'naive-ui'
+import { NScrollbar, darkTheme, useMessage } from 'naive-ui'
 import { Application } from 'vue3-pixi'
+
 import Card from '../Card/index.vue'
 import { getCodeSandboxParams, getWithAppCodeSandboxParams } from './utils'
 
@@ -15,10 +16,12 @@ const props = withDefaults(
     metadata: Record<string, any>
     expand?: boolean
     app?: boolean
+    codesandbox?: boolean
   }>(),
   {
     expand: true,
     app: true,
+    codesandbox: true,
   },
 )
 const message = useMessage()
@@ -59,7 +62,7 @@ async function onCopyCode() {
         <div class="cursor-pointer i-akar-icons-javascript-fill p-10px" :class="[!isUsingTs && 'text-amber']" @click="isUsingTs = false" />
       </div>
       <div class="flex gap-2">
-        <form action="https://codesandbox.io/api/v1/sandboxes/define" method="POST" target="_blank" style="display: flex; padding: 0">
+        <form v-if="codesandbox" action="https://codesandbox.io/api/v1/sandboxes/define" method="POST" target="_blank" style="display: flex; padding: 0">
           <input type="hidden" name="parameters" :value="sandboxParams">
           <input type="hidden" name="query" value="file=/src/Demo.vue">
           <button
@@ -91,7 +94,15 @@ async function onCopyCode() {
       </div>
     </div>
     <template v-if="showHighlighted" #footer>
-      <div class="language-vue p0 m0!" v-html="highlightedHtml" />
+      <NScrollbar
+        style="max-height: 500px"
+        :theme-overrides="{
+          color: 'rgba(255, 255, 255, 0.6)',
+          colorHover: ' rgba(255, 255, 255, 0.3)',
+        }"
+      >
+        <div class="language-vue p0 m0!" v-html="highlightedHtml" />
+      </NScrollbar>
     </template>
   </Card>
 </template>

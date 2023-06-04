@@ -111,3 +111,7 @@
 .v-popper__inner {
   padding: 4px 8px !important;
 }
+
+.n-scrollbar-rail.n-scrollbar-rail--vertical {
+  z-index: 300
+}

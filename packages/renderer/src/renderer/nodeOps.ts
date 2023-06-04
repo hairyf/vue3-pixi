@@ -56,6 +56,7 @@ export function nextSibling(node: Container) {
 
 export function setText(prefix: string, node: Container, text: string) {
   text = text.replace(/\\n/g, '\n')
+
   node instanceof Text || node instanceof BitmapText
     ? node.text = text.trim()
     : warn(`Text is only supported with ${prefix}-text element`)

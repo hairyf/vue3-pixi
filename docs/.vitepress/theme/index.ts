@@ -6,12 +6,8 @@ import { NMessageProvider } from 'naive-ui'
 import PixiJSContainer from './components/PixiJSContainer/index.vue'
 import StackBlitzEmbed from './components/StackBlitzEmbed/index.vue'
 
-import 'floating-vue/dist/style.css'
-import 'uno.css'
-import './style.css'
+import './main'
 
-FloatingVue.options.distance = 28
-FloatingVue.options.themes.tooltip.delay.show = 100
 export default {
   ...Theme,
   Layout: () => {
