@@ -72,9 +72,6 @@ export function patchProp(
 }
 
 export function patchTextureProps(el: any, key: string, _: any, nextValue: any): boolean {
-  if (key === 'textures')
-    return setSkipValue(el, key, () => el.textures = nextValue.map(normalizeTexture))
-
   if (key === 'texture')
     return setSkipValue(el, key, () => el.texture = normalizeTexture(nextValue))
 
@@ -122,8 +119,16 @@ export function patchAnimatedSpriteProps(el: AnimatedSprite, key: string, _: any
     return setValue(el, key, () => transBoolProp(nextValue) ? el.play() : el.stop())
   if (key === 'gotoAndPlay')
     return setValue(el, key, () => el.gotoAndPlay(nextValue))
-  if (['onLoop', 'onComplete'].includes(key))
+  if (key === 'onLoop')
     return Reflect.set(el, key, nextValue)
+  if (key === 'onComplete')
+    return Reflect.set(el, key, nextValue)
+  if (key === 'textures') {
+    return setSkipValue(el, key, () => {
+      el.textures = nextValue.map(normalizeTexture)
+      el.loop && el.gotoAndPlay(0)
+    })
+  }
   return patchBooleanProps(el, animatedSpriteBooleanProps, key, nextValue)
 }
 

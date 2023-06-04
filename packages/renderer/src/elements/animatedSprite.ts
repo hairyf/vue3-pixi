@@ -6,7 +6,6 @@ import type {
 import type * as PIXI from 'pixi.js'
 import type { AllowedPixiProps } from './props'
 import type { PixiEvents } from './events'
-
 export interface AnimatedSpriteProps extends AllowedPixiProps {
   textures: (PIXI.Texture | string)[]
   width?: number
@@ -40,12 +39,14 @@ export interface AnimatedSpriteProps extends AllowedPixiProps {
   uvMatrix?: PIXI.TextureMatrix
 
   animationSpeed?: number
-  autoUpdate?: number
+  autoUpdate?: boolean
 
   currentFrame?: number
   loop?: boolean
 
   updateAnchor?: boolean
+
+  roundPixels?: boolean
 }
 
 export interface AnimatedSpriteEvents extends PixiEvents {

@@ -10,7 +10,7 @@ export type LoadAsset = string | { default: string } | Promise<string | { defaul
 export type LoadAssets = Record<string, LoadAsset> | LoadAsset[]
 
 export const loaderProps = {
-  onResolved: Function as PropType<(textures: Record<string, Texture>) => void>,
+  onResolved: Function as PropType<(textures: any) => void>,
   onProgress: Function as PropType<(progress: number) => void>,
   resources: {
     type: [Object, Array] as PropType<LoadAssets>,
