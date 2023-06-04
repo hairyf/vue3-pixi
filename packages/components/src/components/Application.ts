@@ -7,6 +7,11 @@ import type { App, PropType } from 'vue-demi'
 import { createApp } from '@vue-pixi/renderer'
 import { appInjectKey } from '@vue-pixi/composables'
 
+export interface ApplicationInst {
+  canvas: HTMLCanvasElement
+  app: App<Container>
+}
+
 const Application = defineComponent({
   props: {
     alpha: Boolean,

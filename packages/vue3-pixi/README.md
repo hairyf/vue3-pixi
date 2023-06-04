@@ -41,11 +41,11 @@ yarn add vue3-pixi
 
 ## Usage
 
-The `<Stage>` component can be used to embed a pixi app into an existing vue app.
+The `<Application>` component can be used to embed a pixi app into an existing vue app.
 
 ```html
 <script setup lang="ts">
-import { Stage } from "vue3-pixi";
+import { Application } from "vue3-pixi";
 import textureUrl from "@/assets/myTexture.png";
 
 const hitArea = new Rectangle(0, 0, 64, 64);
@@ -231,24 +231,24 @@ const resolves: AssetsResolvers = {
 </script>
 
 <template>
-  <Assets :resolves="resolves" #default="{ textures, progress }">
+  <Loader :resources="resolves" #default="{ textures, progress }">
     <container v-if="textures">
       <sprite :texture="textures.flowerTop" />
     </container>
     <text v-else>
       Loading...
     </text>
-  </Assets>
+  </Loader>
 </template>
 ```
 
 You can also use the `resolved` and `fallback` slots separately to handle successful and loaded content independently:
 
 ```html
-<Assets :resolves="resolves">
+<Loader :resources="resolves">
   <template #resolved="{ textures }"><!-- ... --></template>
   <template #fallback="{ progress }"><!-- ... --></template>
-</Assets>
+</Loader>
 ```
 
 ## Composables
@@ -261,7 +261,7 @@ This composable hook adds a ticker to the Pixi application during mounting and r
 
 ```html
 <script setup lang="ts">
-import { StageInst, Stage, onTick } from "vue3-pixi";
+import { Application, onTick } from "vue3-pixi";
 
 onTick((delta) => {
   // ...
@@ -269,9 +269,9 @@ onTick((delta) => {
 </script>
 
 <template>
-  <Stage :width="640" :height="480">
+  <Application :width="640" :height="480">
     <!-- ... -->
-  </Stage>
+  </Application>
 </template>
 ```
 
@@ -281,35 +281,20 @@ This composable hook is used to obtain the current Pixi application instance.
 
 ```html
 <script setup lang="ts">
-import { StageInst, Stage, useApplication } from "vue3-pixi";
+import { Application, useApplication } from "vue3-pixi";
 import { onMounted } from 'vue'
 
-const pixiApp = useApplication()
+const app = useApplication()
 
 onMounted(() => {
-  pixiApp.value.ticker // { ... }
+  app.value.ticker // { ... }
 })
 </script>
 
 <template>
-  <Stage :width="640" :height="480">
+  <Application :width="640" :height="480">
     <!-- ... -->
-  </Stage>
-</template>
-```
-
-You can pass a `ref` to specify a PIXI application. By default, it will automatically look for the nearest PIXI application in the current hierarchy.
-
-```html
-<script setup lang="ts">
-const stageRef = ref()
-const pixiApp = useApplication(stageRef)
-</script>
-
-<template>
-  <Stage ref="stageRef" :width="640" :height="480">
-    <!-- ... -->
-  </Stage>
+  </Application>
 </template>
 ```
 

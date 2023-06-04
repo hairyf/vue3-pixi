@@ -1,4 +1,5 @@
 export { default as Application } from './Application'
-export { default as Assets } from './Assets'
+export { default as Loader } from './Loader'
 
-export * from './Assets'
+export * from './Loader'
+export * from './Application'

@@ -233,15 +233,15 @@ To avoid conflicts with other tags, such as `<filter>`, you can use the `pixi-` 
 
 > Other components also support the `pixi-` prefix, so you can choose according to you personal preference.
 
-## Assets
+## Loader
 
 `vue3-pixi` provides a special component for bundling resources and obtaining resources from plugins.
 
 ```html
 <script setup lang="ts">
-import { Assets, AssetsResolvers } from "vue3-pixi";
+import { Loader } from "vue3-pixi";
 
-const resolves: AssetsResolvers = {
+const resolves = {
   flowerTop: import('./examples/assets/flowerTop.png'),
   eggHead: import('./examples/assets/eggHead.png'),
   bunny: 'https://pixijs.io/examples/examples/assets/bunny.png'
@@ -249,24 +249,24 @@ const resolves: AssetsResolvers = {
 </script>
 
 <template>
-  <Assets :resolves="resolves" #default="{ textures, progress }">
+  <Loader :resources="resolves" #default="{ textures, progress }">
     <container v-if="textures">
       <sprite :texture="textures.flowerTop" />
     </container>
     <text v-else>
       Loading...
     </text>
-  </Assets>
+  </Loader>
 </template>
 ```
 
 You can also use the `resolved` and `fallback` slots separately to handle successful and loaded content independently:
 
 ```html
-<Assets :resolves="resolves">
+<Loader :resources="resolves">
   <template #resolved="{ textures }"><!-- ... --></template>
   <template #fallback="{ progress }"><!-- ... --></template>
-</Assets>
+</Loader>
 ```
 
 ## Composables
