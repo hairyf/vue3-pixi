@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { camelize, effectScope, watchEffect } from 'vue-demi'
+import { effectScope, watchEffect } from 'vue-demi'
 import type { Container } from 'pixi.js'
 import {
   AnimatedSprite,
@@ -23,21 +23,12 @@ const meshBooleanProps = ['roundPixels'] as const
 const simplePlaneBooleanProps = ['roundPixels', 'autoResize'] as const
 const pointProps = ['position', 'scale', 'pivot', 'skew', 'anchor', 'tilePosition', 'tileScale'] as const
 
-export const patchProps: ((el: any, key: string, prevValue: any, nextValue: any) => boolean | void)[] = []
-
 export function patchProp(
   el: Container,
   key: string,
   prevValue: any,
   nextValue: any,
 ) {
-  key = camelize(key)
-
-  for (const patch of patchProps) {
-    if (patch(el, key, prevValue, nextValue))
-      return
-  }
-
   const patches = [
     { element: BitmapText, patch: patchBitmapTextProps },
     { element: Text, patch: patchTextProps },

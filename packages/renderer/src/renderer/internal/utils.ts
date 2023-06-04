@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import type { Container, DisplayObject } from 'pixi.js'
 import type { Renderer, RendererOptions } from 'vue-demi'
+import { camelize } from 'vue-demi'
 import { isCustomElement } from '../../compiler'
 import { use } from './hooks'
 import { defaultRenderer } from './default-renderer'
@@ -13,6 +14,14 @@ export function rendererWithCapture(options: RendererOptions<Container, Containe
       continue
     // @ts-expect-error
     const fn = options[key]
+    if (key === 'patchProp') {
+      options[key] = (el, pKey, ...args) => {
+        const inFn = renderers[el._vp_name]?.[key]
+        pKey = camelize(pKey)
+        return inFn?.(el, pKey, ...args) || fn(el, pKey, ...args)
+      }
+      continue
+    }
     // @ts-expect-error
     options[key] = (el, ...args: any[]) => {
     // @ts-expect-error
