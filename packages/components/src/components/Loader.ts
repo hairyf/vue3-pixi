@@ -2,6 +2,7 @@ import { nanoid } from 'nanoid'
 import { Assets } from 'pixi.js'
 import type { ExtractPropTypes, PropType } from 'vue'
 import { defineComponent, onBeforeUnmount, ref, renderSlot, watch } from 'vue'
+
 import type { IBaseTextureOptions, Texture } from 'pixi.js'
 import { setTextureOptions } from '../utils'
 
@@ -68,9 +69,11 @@ const Loader = defineComponent({
 
     onBeforeUnmount(unload)
 
-    return () => loading.value
-      ? renderSlot(slots, 'fallback', { progress: progress.value })
-      : renderSlot(slots, 'default', { textures: textures.value })
+    return () => {
+      return loading.value
+        ? renderSlot(slots, 'fallback', { progress: progress.value })
+        : renderSlot(slots, 'default', { textures: textures.value })
+    }
   },
 })
 
