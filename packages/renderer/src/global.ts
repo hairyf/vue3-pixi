@@ -76,6 +76,17 @@ declare module '@vue/runtime-core' {
   }
 }
 
+declare module 'pixi.js' {
+  interface Filter {
+    _vp_name: string
+    _vp_filter: boolean
+    parent: Container
+  }
+  interface Container {
+    _vp_name: string
+  }
+}
+
 export * from './elements/simpleRope'
 export * from './elements/simplePlane'
 export * from './elements/nineSlicePlane'
