@@ -11,7 +11,7 @@ import {
   lerp,
   linear,
   setProps,
-  setValue,
+  setPropertyValue,
 } from '../utils'
 
 export interface TransitionOptions {
@@ -19,7 +19,7 @@ export interface TransitionOptions {
   done: Fn
 }
 
-export async function callSetterHook(instance: any, props: any, name: string) {
+export async function callInstanceSetterterHook(instance: any, props: any, name: string) {
   const eventName = `on${name[0].toLocaleUpperCase()}${name.slice(1)}`
   const hook = props[name] || props[eventName]
   const filters = instance.filters || []
@@ -31,7 +31,7 @@ export async function callSetterHook(instance: any, props: any, name: string) {
     return
   }
 
-  filters.forEach((filter: any) => callSetterHook(filter, filter, name))
+  filters.forEach((filter: any) => callInstanceSetterterHook(filter, filter, name))
   setProps(instance, toArray(hook))
 }
 
@@ -95,7 +95,7 @@ async function executeTransition(instance: Container, duration: number, transiti
 
       const now = Date.now()
       const alpha = ease((now - startedAt) / duration)
-      ignore(() => setValue(instance, key, lerp(from, to, alpha)))
+      ignore(() => setPropertyValue(instance, key, lerp(from, to, alpha)))
       if (now > endAt)
         deferred.resolve()
     }

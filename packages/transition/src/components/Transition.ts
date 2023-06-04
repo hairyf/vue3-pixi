@@ -3,7 +3,7 @@ import { BaseTransition, defineComponent, h } from 'vue-demi'
 
 import type { Fn, Hook, TransitionTicker } from '../types'
 
-import { callAnimationHook, callSetterHook } from './utils'
+import { callAnimationHook, callInstanceSetterterHook } from './utils'
 
 export const transitionProps = {
   duration: [Number, Object] as PropType<number | { enter: number;leave: number }>,
@@ -37,25 +37,25 @@ export const PTransition = defineComponent({
 
 export function resolveTransitionProps(props: TransitionProps, context?: any) {
   function onBeforeEnter(el: any) {
-    callSetterHook(el, props, 'beforeEnter')
+    callInstanceSetterterHook(el, props, 'beforeEnter')
   }
   function onEnter(el: any, done: Fn) {
     callAnimationHook(el, props, 'enter', done, context)
   }
   function onAfterEnter(el: any) {
-    callSetterHook(el, props, 'afterEnter')
+    callInstanceSetterterHook(el, props, 'afterEnter')
   }
   function onEnterCancelled(el: any) {
-    callSetterHook(el, props, 'afterEnter')
+    callInstanceSetterterHook(el, props, 'afterEnter')
   }
   function onBeforeLeave(el: any) {
-    callSetterHook(el, props, 'beforeLeave')
+    callInstanceSetterterHook(el, props, 'beforeLeave')
   }
   async function onLeave(el: any, done: Fn) {
     callAnimationHook(el, props, 'leave', done, context)
   }
   function onAfterLeave(el: any) {
-    callSetterHook(el, props, 'afterLeave')
+    callInstanceSetterterHook(el, props, 'afterLeave')
   }
   return {
     css: false,

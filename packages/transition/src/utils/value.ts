@@ -11,7 +11,7 @@ export const pointKeys = [
   'tile',
 ]
 
-export function setValue(instance: any, prop: string, value: any) {
+export function setPropertyValue(instance: any, prop: string, value: any) {
   const name = pointKeys.find(key => prop.startsWith(key))
   if (!name) {
     instance[prop] = value
@@ -20,9 +20,9 @@ export function setValue(instance: any, prop: string, value: any) {
   switch (prop) {
     case name:
       if (typeof value === 'object')
-        return setObject(instance, name, value)
+        return setObjectProperty(instance, name, value)
       else
-        return setPoint(instance, name, value)
+        return setPointProperty(instance, name, value)
     case `${name}X`:
       return setField(instance[name], 'x', value)
     case `${name}Y`:
@@ -30,7 +30,7 @@ export function setValue(instance: any, prop: string, value: any) {
   }
 }
 
-export function setObject(instance: any, name: string, value: any) {
+export function setObjectProperty(instance: any, name: string, value: any) {
   for (const key in value)
     setField(instance[name], key, value[key])
 }
@@ -40,7 +40,7 @@ export function setField(instance: any, key: string, value: any) {
     Reflect.set(instance, key, value)
 }
 
-export function setPoint(instance: any, key: string, value: any) {
+export function setPointProperty(instance: any, key: string, value: any) {
   instance[key].set(value, value)
 }
 
@@ -51,7 +51,7 @@ export function setProps(instance: any, transitions: TransitionVars[]) {
       .keys(transition)
       .filter(i => !optionsKeys.includes(i))
     for (const key of fields)
-      setValue(instance, key, transition[key])
+      setPropertyValue(instance, key, transition[key])
   }
 }
 

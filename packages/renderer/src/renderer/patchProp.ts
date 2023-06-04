@@ -13,7 +13,7 @@ import {
 
 import { isFunction } from '@antfu/utils'
 import { normalizeTexture, setTextureOptions } from '../utils'
-import { setObject, setPoint, setSkipValue, setValue } from './setter'
+import { setObjectProperty, setPointProperty, setPropertyValue, setSkipFirstValue } from './internal'
 
 const defaultBooleanProps = ['accessible', 'cullable', 'renderable', 'visible', 'isMask'] as const
 const bitmapBooleanProps = ['dirty', 'roundPixels'] as const
@@ -73,7 +73,7 @@ export function patchProp(
 
 export function patchTextureProps(el: any, key: string, _: any, nextValue: any): boolean {
   if (key === 'texture')
-    return setSkipValue(el, key, () => el.texture = normalizeTexture(nextValue))
+    return setSkipFirstValue(el, key, () => el.texture = normalizeTexture(nextValue))
 
   if (key === 'textureOptions') {
     setTextureOptions(el.texture, nextValue)
@@ -94,15 +94,15 @@ export function patchRenderProps(el: any, key: string, prevValue: any, nextValue
 
 export function patchTextProps(el: Text, key: string, prevValue: any, nextValue: any): boolean {
   if (key === 'text')
-    return setSkipValue(el, key, () => el.text = nextValue)
+    return setSkipFirstValue(el, key, () => el.text = nextValue)
   if (key === 'style')
-    return setSkipValue(el, key, () => setObject(el.style, key, prevValue, nextValue))
+    return setSkipFirstValue(el, key, () => setObjectProperty(el.style, key, prevValue, nextValue))
   return false
 }
 
 export function patchBitmapTextProps(el: BitmapText, key: string, _: any, nextValue: any): boolean {
   if (key === 'text')
-    return setSkipValue(el, key, () => el.text = nextValue)
+    return setSkipFirstValue(el, key, () => el.text = nextValue)
   if (key === 'style')
     return true
   return patchBooleanProps(el, bitmapBooleanProps, key, nextValue)
@@ -110,21 +110,21 @@ export function patchBitmapTextProps(el: BitmapText, key: string, _: any, nextVa
 
 export function patchTilingSpriteProps(el: any, key: string, _: any, nextValue: any): boolean {
   if (['width', 'height'].includes(key))
-    return setSkipValue(el, key, () => el[key] = nextValue)
+    return setSkipFirstValue(el, key, () => el[key] = nextValue)
   return patchBooleanProps(el, tilingSpriteProps, key, nextValue)
 }
 
 export function patchAnimatedSpriteProps(el: AnimatedSprite, key: string, _: any, nextValue: any): boolean {
   if (key === 'textures') {
-    return setSkipValue(el, key, () => {
+    return setSkipFirstValue(el, key, () => {
       el.textures = nextValue.map(normalizeTexture)
       el.loop && el.gotoAndPlay(0)
     })
   }
   if (key === 'playing')
-    return setValue(el, key, () => transBoolProp(nextValue) ? el.play() : el.stop())
+    return setPropertyValue(el, key, () => transBoolProp(nextValue) ? el.play() : el.stop())
   if (key === 'gotoAndPlay')
-    return setValue(el, key, () => el.gotoAndPlay(nextValue))
+    return setPropertyValue(el, key, () => el.gotoAndPlay(nextValue))
   if (key.startsWith('on'))
     return Reflect.set(el, key, nextValue)
 
@@ -148,7 +148,7 @@ export function patchParticleContainerProps(_el: any, key: string, _: any, _1: a
 export function patchPointProps(el: Container, key: string, prevValue: any, nextValue: any) {
   for (const name of pointProps) {
     if (key.startsWith(name))
-      return setPoint(el, name, key, prevValue, nextValue)
+      return setPointProperty(el, name, key, prevValue, nextValue)
   }
   return false
 }

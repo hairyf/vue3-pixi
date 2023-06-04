@@ -1,7 +1,7 @@
 import type { Container2d } from 'pixi-projection'
 import { Camera3d } from 'pixi-projection'
-import { setSkipValue, setValue } from '@vue-pixi/renderer'
-import { setPoint } from './setter'
+import { setPropertyValue, setSkipFirstValue } from '@vue-pixi/renderer'
+import { setPointProperty } from './setter'
 
 const pointProps = ['position3d', 'euler'] as const
 const projProps = ['affine']
@@ -25,7 +25,7 @@ export function pathProp(el: any, key: string, prevValue: any, nextValue: any) {
 export function patchPointProps(el: Container2d, key: string, prevValue: any, nextValue: any) {
   for (const name of pointProps) {
     if (key.startsWith(name))
-      return setPoint(el, name, key, prevValue, nextValue)
+      return setPointProperty(el, name, key, prevValue, nextValue)
   }
   return false
 }
@@ -43,14 +43,14 @@ export function patchCamera3dProps(el: any, key: string, _: any, nextValue: any)
   }
 
   if (props.includes(key))
-    return setSkipValue(el, key, () => setPlanes({ [key]: nextValue }))
+    return setSkipFirstValue(el, key, () => setPlanes({ [key]: nextValue }))
 
   return false
 }
 
 export function patchProjProps(el: any, key: string, _: any, nextValue: any) {
   if (projProps.includes(key)) {
-    setValue(el, key, () => el.proj[key] = nextValue)
+    setPropertyValue(el, key, () => el.proj[key] = nextValue)
     return true
   }
 
