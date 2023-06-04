@@ -115,20 +115,19 @@ export function patchTilingSpriteProps(el: any, key: string, _: any, nextValue: 
 }
 
 export function patchAnimatedSpriteProps(el: AnimatedSprite, key: string, _: any, nextValue: any): boolean {
-  if (key === 'playing')
-    return setValue(el, key, () => transBoolProp(nextValue) ? el.play() : el.stop())
-  if (key === 'gotoAndPlay')
-    return setValue(el, key, () => el.gotoAndPlay(nextValue))
-  if (key === 'onLoop')
-    return Reflect.set(el, key, nextValue)
-  if (key === 'onComplete')
-    return Reflect.set(el, key, nextValue)
   if (key === 'textures') {
     return setSkipValue(el, key, () => {
       el.textures = nextValue.map(normalizeTexture)
       el.loop && el.gotoAndPlay(0)
     })
   }
+  if (key === 'playing')
+    return setValue(el, key, () => transBoolProp(nextValue) ? el.play() : el.stop())
+  if (key === 'gotoAndPlay')
+    return setValue(el, key, () => el.gotoAndPlay(nextValue))
+  if (key.startsWith('on'))
+    return Reflect.set(el, key, nextValue)
+
   return patchBooleanProps(el, animatedSpriteBooleanProps, key, nextValue)
 }
 
