@@ -1,122 +1,291 @@
-import { AlphaFilter, AnimatedSprite, BlurFilter, ColorMatrixFilter, Container, DisplacementFilter, FXAAFilter, Graphics, Mesh, NineSlicePlane, NoiseFilter, ParticleContainer, SimpleMesh, SimplePlane, SimpleRope, Sprite, Text, TilingSprite } from 'pixi.js'
-import { normalizeTexture } from 'vue3-pixi'
-import type { Renderer } from './types'
+import { AlphaFilter, AnimatedSprite, BitmapText, BlurFilter, ColorMatrixFilter, Container, DisplacementFilter, FXAAFilter, Graphics, Mesh, NineSlicePlane, NoiseFilter, ParticleContainer, SimpleMesh, SimplePlane, SimpleRope, Sprite, Text, TilingSprite } from 'pixi.js'
+import { patchProp as defuPatchProp, patchBoolProp } from '../patchProp'
+import { normalizeTexture } from '../utils'
+import { setObjectProperty, setPropertyValue, setSkipFirstValue } from './setter'
+import type { Renderer, RendererOptions } from './types'
 
-export const defaultRenderer: Renderer = [
-  {
-    name: 'Container',
-    createElement: () => new Container(),
+const ContainerRender: RendererOptions = {
+  name: 'Container',
+  createElement: () => new Container(),
+}
+
+const ParticleContainerRender: RendererOptions = {
+  name: 'ParticleContainer',
+  createElement: props => new ParticleContainer(
+    props['max-size'] || props.maxSize,
+    props.properties,
+  ),
+  patchProp(el: ParticleContainer, key, prev, next) {
+    switch (key) {
+      case 'max-size':
+      case 'properties':
+        break
+      default:
+        defuPatchProp(el, key, prev, next)
+    }
   },
-  {
-    name: 'ParticleContainer',
-    createElement: props => new ParticleContainer(
-      props['max-size'] || props.maxSize,
-      props.properties,
-    ),
+}
+
+const SpriteRender: RendererOptions = {
+  name: 'Sprite',
+  createElement: props => new Sprite(normalizeTexture(props.texture)),
+}
+
+const SimpleMeshRender: RendererOptions = {
+  name: 'SimpleMesh',
+  createElement: props => new SimpleMesh(normalizeTexture(props.texture)),
+}
+
+const GraphicsRender: RendererOptions = {
+  name: 'Graphics',
+  createElement: props => new Graphics(props.geometry),
+}
+
+const TextRender: RendererOptions = {
+  name: 'Text',
+  createElement: props => new Text(
+    props.text,
+    props.style,
+    props.canvas,
+  ),
+  patchProp(el: Text, key, prev, next) {
+    switch (key) {
+      case 'text':
+        setSkipFirstValue(el, key, () => el.text = next)
+        break
+      case 'style':
+        setSkipFirstValue(el, key, () => setObjectProperty(el.style, key, prev, next))
+        break
+      default:
+        defuPatchProp(el, key, prev, next)
+    }
   },
-  {
-    name: 'Sprite',
-    createElement: props => new Sprite(normalizeTexture(props.texture)),
+}
+
+const BitmapTextRender: RendererOptions = {
+  name: 'BitmapText',
+  createElement: props => new BitmapText(
+    props.text,
+    props.style,
+  ),
+  patchProp(el: BitmapText, key, prev, next) {
+    switch (key) {
+      case 'text':
+        setSkipFirstValue(el, key, () => el.text = next)
+        break
+      case 'style':
+        break
+      case 'dirty':
+      case 'roundPixels':
+        patchBoolProp(el, key, prev, next)
+        break
+      default:
+        defuPatchProp(el, key, prev, next)
+    }
   },
-  {
-    name: 'SimpleMesh',
-    createElement: props => new SimpleMesh(normalizeTexture(props.texture)),
+}
+
+const TilingSpriteRender: RendererOptions = {
+  name: 'TilingSprite',
+  createElement: props => new TilingSprite(
+    normalizeTexture(props!.texture),
+    props.width,
+    props.height,
+  ),
+  patchProp(el: TilingSprite, key, prev, next) {
+    switch (key) {
+      case 'width':
+      case 'height':
+        setSkipFirstValue(el, key, () => el[key] = next)
+        break
+      case 'uvRespectAnchor':
+        patchBoolProp(el, key, prev, next)
+        break
+      default:
+        defuPatchProp(el, key, prev, next)
+    }
   },
-  {
-    name: 'Graphics',
-    createElement: props => new Graphics(props.geometry),
+}
+
+const AnimatedSpriteRender: RendererOptions = {
+  name: 'AnimatedSprite',
+  createElement: (props) => {
+    return new AnimatedSprite(
+      props.textures.map(normalizeTexture),
+      props['auto-update'] || props.autoUpdate,
+    )
   },
-  {
-    name: 'Text',
-    createElement: props => new Text(
-      props.text,
-      props.style,
-      props.canvas,
-    ),
+  patchProp(el: AnimatedSprite, key, prev, next) {
+    switch (key) {
+      case 'textures':
+        setSkipFirstValue(el, key, () => {
+          el.textures = next.map(normalizeTexture)
+          el.loop && el.gotoAndPlay(0)
+        })
+        break
+      case 'playing':
+        const isPlaying = (next === '') || !!next
+        setPropertyValue(el, key, () => isPlaying ? el.play() : el.stop())
+        break
+      case 'gotoAndPlay':
+        setPropertyValue(el, key, () => el.gotoAndPlay(next))
+        break
+      case 'loop':
+      case 'updateAnchor':
+        patchBoolProp(el, key, prev, next)
+        break
+      case 'onComplete':
+      case 'onFrameChange':
+      case 'onLoop':
+        Reflect.set(el, key, next)
+        break
+      default:
+        defuPatchProp(el, key, prev, next)
+    }
   },
-  {
-    name: 'TilingSprite',
-    createElement: props => new TilingSprite(
-      normalizeTexture(props!.texture),
+}
+
+const MeshRender: RendererOptions = {
+  name: 'Mesh',
+  createElement: props => new Mesh(
+    props.geometry,
+    props.shader,
+    props.state,
+    props.drawMode,
+  ),
+  patchProp(el: Mesh, key, prev, next) {
+    switch (key) {
+      case 'geometry':
+      case 'shader':
+      case 'state':
+      case 'drawMode':
+        setSkipFirstValue(el, key, () => el[key] = next)
+        break
+      case 'roundPixels':
+        patchBoolProp(el, key, prev, next)
+        break
+      default:
+        defuPatchProp(el, key, prev, next)
+    }
+  },
+}
+
+const NineSlicePlaneRender: RendererOptions = {
+  name: 'NineSlicePlane',
+  createElement: props => new NineSlicePlane(
+    normalizeTexture(props.texture),
+  ),
+  patchProp(el: NineSlicePlane, key, prev, next) {
+    switch (key) {
+      case 'roundPixels':
+      case 'autoResize':
+        patchBoolProp(el, key, prev, next)
+        break
+      default:
+        defuPatchProp(el, key, prev, next)
+    }
+  },
+}
+
+const SimplePlaneRender: RendererOptions = {
+  name: 'SimplePlane',
+  createElement: (props) => {
+    return new SimplePlane(
+      normalizeTexture(props.texture),
       props.width,
       props.height,
-    ),
+    )
   },
-  {
-    name: 'AnimatedSprite',
-    createElement: (props) => {
-      return new AnimatedSprite(
-        props.textures.map(normalizeTexture),
-        props['auto-update'] || props.autoUpdate,
-      )
-    },
-  },
-  {
-    name: 'Mesh',
-    createElement: props => new Mesh(
-      props.geometry,
-      props.shader,
-      props.state,
-      props.drawMode,
-    ),
-  },
-  {
-    name: 'NineSlicePlane',
-    createElement: props => new NineSlicePlane(
+}
+
+const SimpleRopeRender: RendererOptions = {
+  name: 'SimpleRope',
+  createElement: (props) => {
+    return new SimpleRope(
       normalizeTexture(props.texture),
-    ),
+      props.points,
+    )
   },
-  {
-    name: 'SimplePlane',
-    createElement: (props) => {
-      return new SimplePlane(
-        normalizeTexture(props.texture),
-        props.width,
-        props.height,
-      )
-    },
+}
+
+const BlurFilterRender: RendererOptions = {
+  name: 'BlurFilter',
+  createElement: props => new BlurFilter(
+    props.blur,
+    props.quality,
+    props.resolution,
+  ),
+}
+
+const AlphaFilterRender: RendererOptions = {
+  name: 'AlphaFilter',
+  createElement: props => new AlphaFilter(props.alpha),
+}
+
+const DisplacementFilterRender: RendererOptions = {
+  name: 'DisplacementFilter',
+  createElement: props => new DisplacementFilter(
+    props.sprite,
+    props.scale,
+  ),
+  patchProp(el: DisplacementFilter, key, prev, next) {
+    switch (key) {
+      case 'sprite':
+      case 'scale':
+        setSkipFirstValue(el, key, () => el.scale = next)
+        break
+      default:
+        defuPatchProp(el, key, prev, next)
+    }
   },
-  {
-    name: 'SimpleRope',
-    createElement: (props) => {
-      return new SimpleRope(
-        normalizeTexture(props.texture),
-        props.points,
-      )
-    },
+}
+
+const ColorMatrixFilterRender: RendererOptions = {
+  name: 'ColorMatrixFilter',
+  createElement: () => new ColorMatrixFilter(),
+}
+
+const NoiseFilterRender: RendererOptions = {
+  name: 'NoiseFilter',
+  createElement: props => new NoiseFilter(
+    props.noise,
+    props.seed,
+  ),
+  patchProp(el: NoiseFilter, key, prev, next) {
+    switch (key) {
+      case 'noise':
+      case 'seed':
+        setSkipFirstValue(el, key, () => el[key] = next)
+        break
+      default:
+        defuPatchProp(el, key, prev, next)
+    }
   },
-  {
-    name: 'BlurFilter',
-    createElement: props => new BlurFilter(
-      props.blur,
-      props.quality,
-      props.resolution,
-    ),
-  },
-  {
-    name: 'AlphaFilter',
-    createElement: props => new AlphaFilter(props.alpha),
-  },
-  {
-    name: 'DisplacementFilter',
-    createElement: props => new DisplacementFilter(
-      props.sprite,
-      props.scale,
-    ),
-  },
-  {
-    name: 'ColorMatrixFilter',
-    createElement: () => new ColorMatrixFilter(),
-  },
-  {
-    name: 'ColorMatrixFilter',
-    createElement: props => new NoiseFilter(
-      props.noise,
-      props.seed,
-    ),
-  },
-  {
-    name: 'FXAAFilter',
-    createElement: () => new FXAAFilter(),
-  },
+}
+
+const FXAAFilterRender: RendererOptions = {
+  name: 'FXAAFilter',
+  createElement: () => new FXAAFilter(),
+}
+
+export const defaultRenderer: Renderer = [
+  ContainerRender,
+  ParticleContainerRender,
+  SpriteRender,
+  SimpleMeshRender,
+  GraphicsRender,
+  TextRender,
+  BitmapTextRender,
+  TilingSpriteRender,
+  AnimatedSpriteRender,
+  MeshRender,
+  NineSlicePlaneRender,
+  SimplePlaneRender,
+  SimpleRopeRender,
+  BlurFilterRender,
+  AlphaFilterRender,
+  DisplacementFilterRender,
+  ColorMatrixFilterRender,
+  NoiseFilterRender,
+  FXAAFilterRender,
 ]

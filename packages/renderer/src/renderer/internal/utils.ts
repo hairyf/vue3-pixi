@@ -18,7 +18,9 @@ export function rendererWithCapture(options: RendererOptions<Container, Containe
       options[key] = (el, pKey, ...args) => {
         const inFn = renderers[el._vp_name]?.[key]
         pKey = camelize(pKey)
-        return inFn?.(el, pKey, ...args) || fn(el, pKey, ...args)
+        return inFn
+          ? inFn(el, pKey, ...args)
+          : fn(el, pKey, ...args)
       }
       continue
     }
@@ -26,7 +28,9 @@ export function rendererWithCapture(options: RendererOptions<Container, Containe
     options[key] = (el, ...args: any[]) => {
     // @ts-expect-error
       const inFn = renderers[el._vp_name]?.[key]
-      return inFn?.(el, ...args) || fn(el, ...args)
+      return inFn
+        ? inFn?.(el, ...args)
+        : fn(el, ...args)
     }
   }
   return options

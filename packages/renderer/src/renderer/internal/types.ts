@@ -4,7 +4,7 @@ export interface RendererStacks {
   [key: string]: Omit<RendererOptions, 'name'>
 }
 
-export interface RendererOptions extends Partial<Omit<_RendererOptions, 'createText' | 'createElement'>> {
+export interface RendererOptions extends Partial<Omit<_RendererOptions<any, any>, 'createText' | 'createElement'>> {
   name: string
   createElement(props: VNodeProps & { [key: string]: any }): any
 }

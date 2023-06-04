@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { BitmapText, Container, DisplayObject, Filter, Text, Texture } from 'pixi.js'
 import { camelize, markRaw, warn } from 'vue-demi'
-import { isOn } from '../utils'
+import { isOn } from './utils'
 import { Empty, insertContainer, insertFilter, nextSiblingContainer, nextSiblingFilter, renderers } from './internal'
 
 export function createElement(prefix: string, name: string, _?: boolean, _1?: string, props?: any): any {
@@ -20,9 +20,13 @@ export function createElement(prefix: string, name: string, _?: boolean, _1?: st
     is = () => new Container()
   }
   const element = is(props ?? {})
-  if (element instanceof DisplayObject)
-  // @ts-expect-error
-    isOn(props) && element.eventMode === 'auto' && (element.eventMode = 'static')
+
+  if (element instanceof DisplayObject) {
+    // @ts-expect-error
+    if (isOn(props) && element.eventMode === 'auto')
+    // @ts-expect-error
+      element.eventMode = 'static'
+  }
 
   if (element instanceof Filter)
     element._vp_filter = true
@@ -50,14 +54,14 @@ export function remove(node: Container) {
 }
 
 export function insert(child: Container, parent: Container, anchor?: Container | null) {
-  if (Reflect.get(child, '_is_filter'))
+  if (Reflect.get(child, '_vp_filter'))
     return insertFilter(child as unknown as Filter, parent, anchor)
   else
     return insertContainer(child, parent, anchor)
 }
 
 export function nextSibling(node: Container): any {
-  if (Reflect.get(node, '_is_filter'))
+  if (Reflect.get(node, '_vp_filter'))
     return nextSiblingFilter(node as unknown as Filter)
   else
     return nextSiblingContainer(node)
