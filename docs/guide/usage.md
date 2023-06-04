@@ -45,7 +45,7 @@ You can add custom `PIXI` instances to the `renderer`, if you have a custom clas
 ```ts
 // main.js
 import { Text } from 'pixi.js'
-import { renderer } from 'vue3-pixi'
+import { pathProp as defPathProp, renderer } from 'vue3-pixi'
 
 class YellowText extends Text {
   constructor(text, style) {
@@ -54,19 +54,17 @@ class YellowText extends Text {
   }
 }
 
-const elements = {
-  YellowText: props => new YellowText(props.text, props.style),
-}
+renderer.use({
+  name: 'YellowText',
+  createElement: props => new YellowText(props.text, props.style),
+  pathProp(el, key, prevValue, nextValue) {
+    // handle special prop here..
 
-function pathProp(el, key, prevValue, nextValue) {
-  if (el instanceof YellowText) {
-    // handle special prop here and return true.
-  }
-}
+    // or fallback to default
+    return defPathProp(el, key, prevValue, nextValue)
+  },
+})
 
-renderer.use({ elements, pathProp })
-
-// ...
 ```
 
 <demo src="./demo/custom-instance.vue" :codesandbox="false" />
@@ -89,6 +87,7 @@ interface YellowTextComponent {
 declare module '@vue/runtime-core' {
   interface GlobalComponents {
     YellowText: YellowTextComponent
+    PixiYellowText: YellowTextComponent
   }
 }
 ```
