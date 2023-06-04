@@ -35,7 +35,9 @@ export default defineConfig({
         },
         {
           text: 'Elements',
-          items: [],
+          items: [
+            { text: 'AnimatedSprite', link: '/guide/elements/animated-sprite/' },
+          ],
         },
         {
           text: 'Composition API',

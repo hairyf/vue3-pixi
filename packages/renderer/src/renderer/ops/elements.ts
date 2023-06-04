@@ -49,7 +49,7 @@ export const elements: Record<string, CustomElement> = {
   ),
   AnimatedSprite: (props) => {
     return new AnimatedSprite(
-      props.textures,
+      props.textures.map(normalizeTexture),
       props['auto-update'] || props.autoUpdate,
     )
   },

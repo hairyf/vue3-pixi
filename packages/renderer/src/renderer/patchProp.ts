@@ -11,6 +11,7 @@ import {
   TilingSprite,
 } from 'pixi.js'
 
+import { isFunction } from '@antfu/utils'
 import { normalizeTexture, setTextureOptions } from '../utils'
 import { setObject, setPoint, setSkipValue, setValue } from './setter'
 
@@ -71,6 +72,9 @@ export function patchProp(
 }
 
 export function patchTextureProps(el: any, key: string, _: any, nextValue: any): boolean {
+  if (key === 'textures')
+    return setSkipValue(el, key, () => el.textures = nextValue.map(normalizeTexture))
+
   if (key === 'texture')
     return setSkipValue(el, key, () => el.texture = normalizeTexture(nextValue))
 
@@ -82,7 +86,7 @@ export function patchTextureProps(el: any, key: string, _: any, nextValue: any):
 }
 
 export function patchRenderProps(el: any, key: string, prevValue: any, nextValue: any): boolean {
-  if (key === 'onRender' && !prevValue && typeof nextValue === 'function') {
+  if (key === 'onRender' && !prevValue && isFunction(nextValue)) {
     const scope = effectScope()
     scope.run(() => watchEffect(() => nextValue(el)))
     el.on('destroyed', () => scope.stop())
@@ -98,6 +102,7 @@ export function patchTextProps(el: Text, key: string, prevValue: any, nextValue:
     return setSkipValue(el, key, () => setObject(el.style, key, prevValue, nextValue))
   return false
 }
+
 export function patchBitmapTextProps(el: BitmapText, key: string, _: any, nextValue: any): boolean {
   if (key === 'text')
     return setSkipValue(el, key, () => el.text = nextValue)
@@ -113,10 +118,12 @@ export function patchTilingSpriteProps(el: any, key: string, _: any, nextValue: 
 }
 
 export function patchAnimatedSpriteProps(el: AnimatedSprite, key: string, _: any, nextValue: any): boolean {
-  if (key === 'play')
-    return setValue(el, key, () => nextValue ? el.play() : el.stop())
+  if (key === 'playing')
+    return setValue(el, key, () => transBoolProp(nextValue) ? el.play() : el.stop())
   if (key === 'gotoAndPlay')
     return setValue(el, key, () => el.gotoAndPlay(nextValue))
+  if (['onLoop', 'onComplete'].includes(key))
+    return Reflect.set(el, key, nextValue)
   return patchBooleanProps(el, animatedSpriteBooleanProps, key, nextValue)
 }
 
@@ -163,8 +170,13 @@ export function patchBooleanProps<T extends Container>(
 ): boolean {
   if (props.includes(key as keyof T) && nextValue === '') {
     // @ts-expect-error
-    el[key] = true
-    return true
+    return el[key] = true
   }
   return false
+}
+
+export function transBoolProp(
+  value: string | boolean | undefined,
+) {
+  return value === '' || !!value
 }
