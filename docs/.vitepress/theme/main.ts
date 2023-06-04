@@ -13,11 +13,10 @@ class YellowText extends Text {
   }
 }
 
-const elements = {
-  YellowText: props => new YellowText(props.text, props.style),
-}
-
-renderer.use({ elements })
+renderer.use({
+  name: 'YellowText',
+  createElement: props => new YellowText(props.text, props.style),
+})
 
 FloatingVue.options.distance = 28
 FloatingVue.options.themes.tooltip.delay.show = 100
