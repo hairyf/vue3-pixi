@@ -3,6 +3,7 @@
   "rules": {
     "vue/no-deprecated-html-element-is": "off",
     "vue/component-name-in-template-casing": "off",
+    "no-case-declarations": "off",
     "vue/no-deprecated-filter": "off"
   }
 }
