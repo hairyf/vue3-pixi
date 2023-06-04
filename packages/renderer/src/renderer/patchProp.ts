@@ -1,68 +1,38 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { effectScope, watchEffect } from 'vue-demi'
 import type { Container } from 'pixi.js'
-import {
-  AnimatedSprite,
-  BitmapText,
-  Mesh,
-  ParticleContainer,
-  SimplePlane,
-  Text,
-  TilingSprite,
-} from 'pixi.js'
 
 import { isFunction } from '@antfu/utils'
-import { normalizeTexture, setTextureOptions } from '../utils'
-import { setObjectProperty, setPointProperty, setPropertyValue, setSkipFirstValue } from './internal'
+import { normalizeTexture, setTextureOptions } from './utils'
+import { setPointProperty, setSkipFirstValue } from './internal'
 
-const defaultBooleanProps = ['accessible', 'cullable', 'renderable', 'visible', 'isMask'] as const
-const bitmapBooleanProps = ['dirty', 'roundPixels'] as const
-const tilingSpriteProps = ['uvRespectAnchor'] as const
-const animatedSpriteBooleanProps = ['loop', 'updateAnchor'] as const
-const meshBooleanProps = ['roundPixels'] as const
-const simplePlaneBooleanProps = ['roundPixels', 'autoResize'] as const
+const defaultBooleanProps = ['accessible', 'cullable', 'renderable', 'visible', 'isMask']
 const pointProps = ['position', 'scale', 'pivot', 'skew', 'anchor', 'tilePosition', 'tileScale'] as const
 
 export function patchProp(
-  el: Container,
+  el: any,
   key: string,
   prevValue: any,
   nextValue: any,
 ) {
-  const patches = [
-    { element: BitmapText, patch: patchBitmapTextProps },
-    { element: Text, patch: patchTextProps },
-    { element: TilingSprite, patch: patchTilingSpriteProps },
-    { element: AnimatedSprite, patch: patchAnimatedSpriteProps },
-    { element: Mesh, patch: patchMeshProps },
-    { element: SimplePlane, patch: patchSimplePlaneProps },
-    { element: ParticleContainer, patch: patchParticleContainerProps },
-  ]
-
-  for (const { element, patch } of patches) {
-    if (el instanceof element && patch(el as any, key, prevValue, nextValue))
-      return
-  }
-
-  if (patchRenderProps(el, key, prevValue, nextValue))
+  if (patchRenderProp(el, key, prevValue, nextValue))
     return
 
-  if (patchTextureProps(el, key, prevValue, nextValue))
+  if (patchTextureProp(el, key, prevValue, nextValue))
     return
 
-  if (patchBooleanProps(el as any, defaultBooleanProps, key, nextValue))
+  if (defaultBooleanProps.includes(key))
+    return patchBoolProp(el, key, prevValue, nextValue)
+
+  if (patchPointProp(el, key, prevValue, nextValue))
     return
 
-  if (patchPointProps(el, key, prevValue, nextValue))
-    return
-
-  if (patchEventProps(el, key, prevValue, nextValue))
+  if (patchEventProp(el, key, prevValue, nextValue))
     return
 
   Reflect.set(el, key, nextValue)
 }
 
-export function patchTextureProps(el: any, key: string, _: any, nextValue: any): boolean {
+export function patchTextureProp(el: any, key: string, _: any, nextValue: any): boolean {
   if (key === 'texture')
     return setSkipFirstValue(el, key, () => el.texture = normalizeTexture(nextValue))
 
@@ -73,7 +43,7 @@ export function patchTextureProps(el: any, key: string, _: any, nextValue: any):
   return false
 }
 
-export function patchRenderProps(el: any, key: string, prevValue: any, nextValue: any): boolean {
+export function patchRenderProp(el: any, key: string, prevValue: any, nextValue: any): boolean {
   if (key === 'onRender' && !prevValue && isFunction(nextValue)) {
     const scope = effectScope()
     scope.run(() => watchEffect(() => nextValue(el)))
@@ -83,60 +53,7 @@ export function patchRenderProps(el: any, key: string, prevValue: any, nextValue
   return false
 }
 
-export function patchTextProps(el: Text, key: string, prevValue: any, nextValue: any): boolean {
-  if (key === 'text')
-    return setSkipFirstValue(el, key, () => el.text = nextValue)
-  if (key === 'style')
-    return setSkipFirstValue(el, key, () => setObjectProperty(el.style, key, prevValue, nextValue))
-  return false
-}
-
-export function patchBitmapTextProps(el: BitmapText, key: string, _: any, nextValue: any): boolean {
-  if (key === 'text')
-    return setSkipFirstValue(el, key, () => el.text = nextValue)
-  if (key === 'style')
-    return true
-  return patchBooleanProps(el, bitmapBooleanProps, key, nextValue)
-}
-
-export function patchTilingSpriteProps(el: any, key: string, _: any, nextValue: any): boolean {
-  if (['width', 'height'].includes(key))
-    return setSkipFirstValue(el, key, () => el[key] = nextValue)
-  return patchBooleanProps(el, tilingSpriteProps, key, nextValue)
-}
-
-export function patchAnimatedSpriteProps(el: AnimatedSprite, key: string, _: any, nextValue: any): boolean {
-  if (key === 'textures') {
-    return setSkipFirstValue(el, key, () => {
-      el.textures = nextValue.map(normalizeTexture)
-      el.loop && el.gotoAndPlay(0)
-    })
-  }
-  if (key === 'playing')
-    return setPropertyValue(el, key, () => transBoolProp(nextValue) ? el.play() : el.stop())
-  if (key === 'gotoAndPlay')
-    return setPropertyValue(el, key, () => el.gotoAndPlay(nextValue))
-  if (key.startsWith('on'))
-    return Reflect.set(el, key, nextValue)
-
-  return patchBooleanProps(el, animatedSpriteBooleanProps, key, nextValue)
-}
-
-export function patchMeshProps(el: Mesh, key: string, _: any, nextValue: any): boolean {
-  return patchBooleanProps(el, meshBooleanProps, key, nextValue)
-}
-
-export function patchSimplePlaneProps(el: SimplePlane, key: string, _: any, nextValue: any): boolean {
-  if (key === 'verticesX' || key === 'verticesY')
-    return true
-  return patchBooleanProps(el, simplePlaneBooleanProps, key, nextValue)
-}
-
-export function patchParticleContainerProps(_el: any, key: string, _: any, _1: any): boolean {
-  return ['maxSize', 'properties'].includes(key)
-}
-
-export function patchPointProps(el: Container, key: string, prevValue: any, nextValue: any) {
+export function patchPointProp(el: Container, key: string, prevValue: any, nextValue: any) {
   for (const name of pointProps) {
     if (key.startsWith(name))
       return setPointProperty(el, name, key, prevValue, nextValue)
@@ -144,7 +61,7 @@ export function patchPointProps(el: Container, key: string, prevValue: any, next
   return false
 }
 
-export function patchEventProps(el: any, key: string, prevValue: any, nextValue: any) {
+export function patchEventProp(el: any, key: string, prevValue: any, nextValue: any) {
   if (!key.startsWith('on'))
     return false
 
@@ -157,21 +74,11 @@ export function patchEventProps(el: any, key: string, prevValue: any, nextValue:
   return true
 }
 
-export function patchBooleanProps<T extends Container>(
-  el: T,
-  props: readonly (keyof T)[],
-  key: string,
+export function patchBoolProp(
+  _el: Container,
+  _key: string,
+  _prevValue: any,
   nextValue: any,
 ): boolean {
-  if (props.includes(key as keyof T) && nextValue === '') {
-    // @ts-expect-error
-    return el[key] = true
-  }
-  return false
-}
-
-export function transBoolProp(
-  value: string | boolean | undefined,
-) {
-  return value === '' || !!value
+  return nextValue === '' || !!nextValue
 }
