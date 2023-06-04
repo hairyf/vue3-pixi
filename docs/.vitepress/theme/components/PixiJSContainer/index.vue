@@ -61,6 +61,7 @@ async function onCopyCode() {
       <div class="flex gap-2">
         <form action="https://codesandbox.io/api/v1/sandboxes/define" method="POST" target="_blank" style="display: flex; padding: 0">
           <input type="hidden" name="parameters" :value="sandboxParams">
+          <input type="hidden" name="query" value="file=/src/Demo.vue">
           <button
             v-tooltip="'Edit in CodeSandbox'"
             type="submit"

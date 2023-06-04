@@ -73,6 +73,7 @@ function getDependencies(code: string) {
 }
 
 export function getWithAppCodeSandboxParams(code: string) {
+  code = code.replace(/["']\//g, '"https://raw.githubusercontent.com/hairyf/vue3-pixi/main/docs/public/')
   return (getParameters as any)({
     files: {
       'package.json': {
@@ -95,6 +96,7 @@ export function getWithAppCodeSandboxParams(code: string) {
 }
 
 export function getCodeSandboxParams(code: string) {
+  code = code.replace(/["']\//g, '"https://raw.githubusercontent.com/hairyf/vue3-pixi/main/docs/public/')
   return (getParameters as any)({
     files: {
       'package.json': {

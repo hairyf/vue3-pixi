@@ -2,6 +2,7 @@
 import { defineConfig } from 'vitepress'
 import unocss from 'unocss/vite'
 import markdownItVitepressDemo from 'markdown-it-vitepress-demo'
+import { compilerOptions } from '../../packages/renderer/src/compiler'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: 'Vue3 Pixi',
@@ -63,5 +64,9 @@ export default defineConfig({
     ssr: {
       noExternal: ['naive-ui'],
     },
+  },
+
+  vue: {
+    template: { compilerOptions },
   },
 })

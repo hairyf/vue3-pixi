@@ -14,3 +14,4 @@ Sprite component requires a `texture`, which can be a Texture object or a path t
 PixiJS will load the texture in the background and show it when it’s ready - similar to how an `img` tag works.
 
 
+<demo src="./demo/sprite.vue" :app="false" />

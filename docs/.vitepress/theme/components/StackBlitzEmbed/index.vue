@@ -1,3 +1,4 @@
+<!-- eslint-disable @typescript-eslint/ban-ts-comment -->
 <script setup lang="ts">
 import type { EmbedOptions } from '@stackblitz/sdk'
 import sdk from '@stackblitz/sdk'
@@ -10,6 +11,7 @@ const props = withDefaults(
   }>(),
   {
     options: {
+      // @ts-expect-error
       openFile: 'src/App.vue',
       view: 'preview',
       forceEmbedLayout: true,
