@@ -12,4 +12,4 @@ I recommend using spritesheets created by TexturePacker ([they have a great tuto
 
 ## Multiple Animations from Spritesheet
 
-<!-- <demo src="./demo/multiple-animations.vue" /> -->
+<demo src="./demo/multiple-animations.vue" />

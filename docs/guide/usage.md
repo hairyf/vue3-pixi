@@ -32,6 +32,14 @@ A [Ticker](/) runs an update loop for the `application`. The Application compone
 
 <demo src="./demo/ticker.vue" />
 
+## Render Events
+
+all elements support render event, which allows for flexible manipulation of elements, For example, using on `<grahpics />` and `<particle-container />`
+
+This will set up a `watchEffect` internally that will automatically call the event handler again if any dependencies on the render method have changed.
+
+<demo src="./demo/render-event.vue" />
+
 ## Accessing PixiJS Instances
 
 You can bind PixiJS instances through ref, It is like the HTML elements, so you can bind to it if you need to access it.
