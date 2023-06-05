@@ -1,4 +1,4 @@
-import { tryOnBeforeUnmount, tryOnMounted } from '@vueuse/core'
+import { tryOnBeforeUnmount } from '@vueuse/core'
 import type { TickerCallback } from 'pixi.js'
 import { Ticker } from 'pixi.js'
 
@@ -10,7 +10,7 @@ export function onTick(fn: TickerCallback<any>): () => void {
     Ticker.shared.remove(fn)
   }
 
-  tryOnMounted(insert)
+  insert()
   tryOnBeforeUnmount(remove)
 
   return remove

@@ -20,5 +20,4 @@ export type FilterComponent = <T extends AllowedFilterProps>(
   & FilterProps<T>
   & Partial<T>
   & EventsProps
-  & Record<string, any>
   ) => any

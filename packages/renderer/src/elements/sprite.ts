@@ -24,7 +24,7 @@ export interface SpriteEvents extends PixiEvents {
   render: [SpriteInst]
 }
 
-export type SpriteInst = PIXI.Sprite & EventTarget & Record<string, any>
+export type SpriteInst = PIXI.Sprite & EventTarget
 
 export type SpriteComponent = DefineComponent<
   SpriteProps,
