@@ -83,7 +83,12 @@ export default defineConfig({
         {
           text: 'Composition API',
           items: [
+            { text: 'onTick', link: '/guide/composition-api/on-tick/' },
             { text: 'useApplication', link: '/guide/composition-api/use-application/' },
+            { text: 'useRenderer', link: '/guide/composition-api/use-renderer/' },
+            { text: 'useStage', link: '/guide/composition-api/use-stage/' },
+            { text: 'useScreen', link: '/guide/composition-api/use-screen/' },
+            { text: 'useTrack', link: '/guide/composition-api/use-track/' },
           ],
         },
       ],
