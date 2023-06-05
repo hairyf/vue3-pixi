@@ -87,6 +87,7 @@ export default defineConfig({
     resolve: {
       alias: [
         {
+          // Ported from vuejs/vitepress#2347, thanks to @hooray
           find: /^.*\/VPSwitchAppearance\.vue$/,
           replacement: fileURLToPath(new URL('./theme/components/VPSwitchAppearance/index.vue', import.meta.url)),
         },
