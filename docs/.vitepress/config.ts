@@ -62,7 +62,9 @@ export default defineConfig({
         },
         {
           text: 'Composition API',
-          items: [],
+          items: [
+            { text: 'useApplication', link: '/guide/composition-api/use-application/' },
+          ],
         },
       ],
       '/examples/': [
