@@ -8,6 +8,10 @@ import { compilerOptions } from '../../packages/renderer/src/compiler'
 export default defineConfig({
   title: 'Vue3 Pixi',
   description: 'Vue Renderer for PixiJS',
+  head: [
+    ['link', { rel: 'icon', href: '/favicon.svg' }],
+    ['meta', { name: 'author', content: 'Hairyf' }],
+  ],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
