@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
+import { fileURLToPath } from 'url'
 import { defineConfig } from 'vitepress'
 import unocss from 'unocss/vite'
 import markdownItVitepressDemo from 'markdown-it-vitepress-demo'
@@ -22,7 +23,6 @@ export default defineConfig({
       },
       { text: 'Examples', link: '/examples/' },
     ],
-
     sidebar: {
       '/guide/': [
         {
@@ -79,6 +79,14 @@ export default defineConfig({
     ],
     ssr: {
       noExternal: ['naive-ui'],
+    },
+    resolve: {
+      alias: [
+        {
+          find: /^.*\/VPSwitchAppearance\.vue$/,
+          replacement: fileURLToPath(new URL('./theme/components/VPSwitchAppearance/index.vue', import.meta.url)),
+        },
+      ],
     },
   },
 
