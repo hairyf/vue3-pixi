@@ -77,6 +77,7 @@ export default defineConfig({
             { text: 'Application', link: '/guide/components/application/' },
             { text: 'Transition', link: '/guide/components/transition/' },
             { text: 'Loader', link: '/guide/components/loader/' },
+            { text: 'External', link: '/guide/components/external/' },
           ],
         },
         {
