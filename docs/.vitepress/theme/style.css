@@ -104,6 +104,9 @@
   font-size: 14px;
   padding: 0;
 }
+.vp-doc [class*='language-'] pre::-webkit-scrollbar {
+  display: none;
+}
 
 .v-popper__popper {
   font-size: 12px

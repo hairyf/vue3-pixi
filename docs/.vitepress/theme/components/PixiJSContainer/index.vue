@@ -101,7 +101,7 @@ async function onCopyCode() {
     </div>
     <template v-if="showHighlighted" #footer>
       <NScrollbar
-        style="max-height: 500px"
+        style="max-height: 450px;"
         :theme-overrides="{
           color: 'rgba(255, 255, 255, 0.6)',
           colorHover: ' rgba(255, 255, 255, 0.3)',

@@ -37,12 +37,13 @@ export default defineConfig({
           text: 'Elements',
           items: [
             { text: 'AnimatedSprite', link: '/guide/elements/animated-sprite/' },
-            { text: 'ParticleContainer', link: '/guide/elements/particle-container/' },
             { text: 'BitmapText', link: '/guide/elements/bitmap-text/' },
             { text: 'Container', link: '/guide/elements/container/' },
             { text: 'Graphics', link: '/guide/elements/graphics/' },
             { text: 'Mesh', link: '/guide/elements/mesh/' },
             { text: 'NineSlicePlane', link: '/guide/elements/nine-slice-plane/' },
+            { text: 'ParticleContainer', link: '/guide/elements/particle-container/' },
+            { text: 'SimplePlane', link: '/guide/elements/simple-plane/' },
           ],
         },
         {
