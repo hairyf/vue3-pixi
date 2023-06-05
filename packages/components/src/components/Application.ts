@@ -20,9 +20,9 @@ const Application = defineComponent({
     background: [Number, String, Array] as PropType<ColorSource>,
     backgroundColor: [Number, String, Array] as PropType<ColorSource>,
     backgroundAlpha: { type: Number, default: 1 },
-    clearBeforeRender: Boolean,
+    clearBeforeRender: { type: Boolean, default: true },
     forceCanvas: Boolean,
-    alpha: Boolean,
+    alpha: Number,
     depth: Boolean,
     desynchronized: Boolean,
     failIfMajorPerformanceCaveat: Boolean,
@@ -40,7 +40,17 @@ const Application = defineComponent({
     let app: App<Container> | undefined
 
     function mount() {
-      const context = canvas.value?.getContext('webgl', props)
+      const context = canvas.value?.getContext('webgl', {
+        alpha: props.alpha,
+        antialias: props.antialias,
+        depth: props.depth,
+        desynchronized: props.desynchronized,
+        failIfMajorPerformanceCaveat: props.failIfMajorPerformanceCaveat,
+        powerPreference: props.powerPreference,
+        premultipliedAlpha: props.premultipliedAlpha,
+        preserveDrawingBuffer: props.preserveDrawingBuffer,
+        stencil: props.stencil,
+      })
 
       if (!context)
         warn('could not crate webgl context')

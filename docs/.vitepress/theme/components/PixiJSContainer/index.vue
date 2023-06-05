@@ -20,6 +20,7 @@ const props = withDefaults(
     width?: number
     height?: number
     background?: string
+    backgroundColor?: string
   }>(),
   {
     expand: true,
@@ -90,7 +91,7 @@ async function onCopyCode() {
     </template>
     <div ref="containerRef" class="container-view flex justify-center items-center p4 min-h-300px">
       <div>
-        <Application v-if="app" :width="width" :height="height" :background="background">
+        <Application v-if="app" :width="width" :height="height" :background="background" :background-color="backgroundColor">
           <slot />
         </Application>
         <template v-else>
