@@ -38,18 +38,20 @@ export default defineConfig({
           ],
         },
         {
-          text: 'Concepts',
+          text: 'API Reference',
           items: [
             {
               text: 'Renderer',
-              link: '/guide/concepts/renderer',
+              link: '/guide/api-reference/renderer',
             },
             {
               text: 'Props',
+              link: '/guide/api-reference/props',
             },
 
             {
               text: 'Events',
+              link: '/guide/api-reference/events',
             },
           ],
         },

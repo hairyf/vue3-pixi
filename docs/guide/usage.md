@@ -28,7 +28,7 @@ You can have multiple Loader components as well, which could be useful if you wa
 
 ## Ticker
 
-A [Ticker](/) runs an update loop for the `application`. The Application component will create one automatically, which means child components can hook into the loop with `onTick`.
+update loop for the `application`. The Application component will create one automatically, which means child components can hook into the loop with `onTick`.
 
 <demo src="./demo/ticker.vue" />
 
