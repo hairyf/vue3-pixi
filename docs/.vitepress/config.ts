@@ -41,6 +41,7 @@ export default defineConfig({
             { text: 'BitmapText', link: '/guide/elements/bitmap-text/' },
             { text: 'Container', link: '/guide/elements/container/' },
             { text: 'Graphics', link: '/guide/elements/graphics/' },
+            { text: 'Mesh', link: '/guide/elements/mesh/' },
           ],
         },
         {
