@@ -9,7 +9,7 @@ import { appInjectKey } from '@vue-pixi/composables'
 
 export interface ApplicationInst {
   canvas: HTMLCanvasElement
-  app: App<Container>
+  app: _Application
 }
 
 const Application = defineComponent({

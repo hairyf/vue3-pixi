@@ -1,14 +1,15 @@
+Translation:
+
 # Application
 
-Creates a [Application](https://pixijs.download/release/docs/PIXI.Application.html)
+Creates a [Application](https://pixijs.download/release/docs/PIXI.Application.html).
 
-创建一个 Pixi 应用，所有 pixi 元素和组合式函数都需要在应用中才能正常工作。
+Creates a Pixi application where all Pixi elements and composite functions need to be inside the application to work properly.
 
 <demo src="./demo/basic.vue" :app="false" />
 
-## Triggering Renders Manually
+## Getting Instance Externally
 
-
-If you want to manually control when PixiJS renders, you can set the `autoStart` option to `false` and use the `start` and `stop` methods to control rendering.
+You can obtain the Application instance by binding a ref externally, but it is generally recommended to use `useApplication` internally.
 
 <demo src="./demo/render.vue" :app="false" />
