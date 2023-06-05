@@ -6,3 +6,9 @@ Creates a [Application](https://pixijs.download/release/docs/PIXI.Application.ht
 
 <demo src="./demo/basic.vue" :app="false" />
 
+## Triggering Renders Manually
+
+
+If you want to manually control when PixiJS renders, you can set the `autoStart` option to `false` and use the `start` and `stop` methods to control rendering.
+
+<demo src="./demo/render.vue" :app="false" />

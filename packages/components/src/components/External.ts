@@ -1,8 +1,9 @@
 /* eslint-disable vue/one-component-per-file */
-import type { App, AppContext, PropType } from 'vue'
+import type { PropType } from 'vue'
 import { createApp, defineComponent, getCurrentInstance, h, inject, ref } from 'vue'
 
 import { appInjectKey } from 'vue3-pixi'
+import { inheritParent } from '../utils'
 
 const External = defineComponent({
   props: {
@@ -29,11 +30,4 @@ const External = defineComponent({
   },
 })
 
-export function inheritParent(app: App<Element>, appContext?: AppContext) {
-  const parent = appContext?.app
-  if (parent) {
-    app.config.globalProperties = parent.config.globalProperties
-    Object.assign(app._context, parent._context)
-  }
-}
 export default External

@@ -55,9 +55,9 @@ export function remove(node: Container) {
 
 export function insert(child: Container, parent: Container, anchor?: Container | null) {
   if (Reflect.get(child, '_vp_filter'))
-    return insertFilter(child as unknown as Filter, parent, anchor)
+    insertFilter(child as unknown as Filter, parent, anchor)
   else
-    return insertContainer(child, parent, anchor)
+    insertContainer(child, parent, anchor)
 }
 
 export function nextSibling(node: Container): any {
