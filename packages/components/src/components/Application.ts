@@ -30,13 +30,11 @@ const Application = defineComponent({
     premultipliedAlpha: Boolean,
     preserveDrawingBuffer: Boolean,
     stencil: { type: Boolean, default: true },
-
     width: Number,
     height: Number,
-
     resolution: Number,
   },
-  setup(props, { slots }) {
+  setup(props, { slots, expose }) {
     const canvas = ref<HTMLCanvasElement>()
     const pixiApp = ref()
     let app: App<Container> | undefined
@@ -79,10 +77,9 @@ const Application = defineComponent({
     onMounted(mount)
     onUnmounted(unmount)
 
-    return { canvas, app: pixiApp }
-  },
-  render() {
-    return h('canvas', { ref: 'canvas' })
+    expose({ canvas, app: pixiApp })
+
+    return () => h('canvas', { ref: canvas })
   },
 })
 
