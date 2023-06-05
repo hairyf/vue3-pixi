@@ -19,13 +19,16 @@ export default defineConfig({
       {
         text: 'Docs',
         items: [
-          { text: 'Guide', link: '/guide/introduction' },
           { text: 'Quick Start', link: '/guide/quick-start' },
-          { text: 'Elements', link: '/guide/elements/' },
-          { text: 'Composition API', link: '/guide/composition-api/' },
+          { text: 'Usage', link: '/guide/usage' },
+          { text: 'API Reference', link: '/guide/api-reference' },
+          { text: 'Elements', link: '/guide/elements/animated-sprite/' },
+          { text: 'Components', link: '/guide/components/application/' },
+          { text: 'Composition API', link: '/guide/composition-api/on-tick/' },
         ],
       },
-      { text: 'Examples', link: '/examples/' },
+      // TODO
+      // { text: 'Examples', link: '/examples/' },
     ],
     sidebar: {
       '/guide/': [
