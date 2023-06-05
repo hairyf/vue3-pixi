@@ -38,6 +38,7 @@ export default defineConfig({
           items: [
             { text: 'AnimatedSprite', link: '/guide/elements/animated-sprite/' },
             { text: 'ParticleContainer', link: '/guide/elements/particle-container/' },
+            { text: 'BitmapText', link: '/guide/elements/bitmap-text/' },
           ],
         },
         {

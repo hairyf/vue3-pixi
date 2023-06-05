@@ -4,10 +4,11 @@ import type { ExtractPropTypes, PropType } from 'vue'
 import { defineComponent, onBeforeUnmount, ref, renderSlot, watch } from 'vue'
 
 import type { IBaseTextureOptions, Texture } from 'pixi.js'
+import { isString } from '@antfu/utils'
 import { setTextureOptions } from '../utils'
 
 export type LoadAsset = string | { default: string } | Promise<string | { default: string }>
-export type LoadAssets = Record<string, LoadAsset> | LoadAsset[]
+export type LoadAssets = Record<string, LoadAsset> | (LoadAsset | [string, LoadAsset])[]
 
 export const loaderProps = {
   onResolved: Function as PropType<(textures: any) => void>,
@@ -77,15 +78,23 @@ const Loader = defineComponent({
   },
 })
 
+async function parseAsset(asset: LoadAsset) {
+  const result = await asset
+  return isString(result) ? result : result.default
+}
+
 async function resolveAssets(assets: LoadAssets) {
   const result: Record<string, string> = {}
   for (const key in assets) {
-    let asset = await (assets as any)[key]
+    let asset = (assets as any)[key]
     asset = asset.default || asset
-    if (Array.isArray(assets))
-      result[asset] = asset
-    else
-      result[key] = asset
+    if (Array.isArray(asset)) {
+      result[asset[0]] = await parseAsset(asset[1])
+      continue
+    }
+    Array.isArray(assets)
+      ? (result[asset] = await parseAsset(asset))
+      : (result[key] = await parseAsset(asset))
   }
   return result
 }
