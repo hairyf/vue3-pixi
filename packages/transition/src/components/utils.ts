@@ -10,8 +10,8 @@ import {
   ignore,
   lerp,
   linear,
-  setProps,
   setPropertyValue,
+  setProps,
 } from '../utils'
 
 export interface TransitionOptions {
