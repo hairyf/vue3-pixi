@@ -17,11 +17,15 @@ const props = withDefaults(
     expand?: boolean
     app?: boolean
     codesandbox?: boolean
+    width?: number
+    height?: number
   }>(),
   {
     expand: true,
     app: true,
     codesandbox: true,
+    width: 240,
+    height: 240,
   },
 )
 const message = useMessage()
@@ -85,7 +89,7 @@ async function onCopyCode() {
     </template>
     <div ref="containerRef" class="container-view flex justify-center items-center p4 min-h-300px">
       <div>
-        <Application v-if="app" :width="240" :height="240">
+        <Application v-if="app" :width="width" :height="height">
           <slot />
         </Application>
         <template v-else>

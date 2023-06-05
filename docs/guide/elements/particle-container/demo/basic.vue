@@ -3,7 +3,7 @@ import { Sprite, Texture } from 'pixi.js'
 
 import { onUnmounted, ref } from 'vue'
 import type { ParticleContainerInst } from 'vue3-pixi'
-import { Application, onTick } from 'vue3-pixi'
+import { External, onTick } from 'vue3-pixi'
 
 interface StarSprite extends Sprite {
   initX: number
@@ -73,13 +73,11 @@ onUnmounted(() => stars.forEach(star => star.destroy()))
 </script>
 
 <template>
-  <Application :width="400" :height="240">
-    <particle-container ref="containerRef" @render="updateStars" />
-  </Application>
-  <div style="margin-top: 20px;">
+  <particle-container ref="containerRef" @render="updateStars" />
+  <External style="margin-top: 20px;" tag="div">
     <div>Amount: {{ amount }}</div>
     <input v-model="amount" type="range" min="0" max="10000" step="100">
-  </div>
+  </External>
 </template>
 
 <style>
