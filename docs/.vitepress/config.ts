@@ -75,6 +75,7 @@ export default defineConfig({
           text: 'Components',
           items: [
             { text: 'Application', link: '/guide/components/application/' },
+            { text: 'Transition', link: '/guide/components/transition/' },
             { text: 'Loader', link: '/guide/components/loader/' },
           ],
         },

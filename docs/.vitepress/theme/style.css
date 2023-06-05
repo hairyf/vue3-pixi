@@ -109,3 +109,7 @@
 .n-scrollbar-rail.n-scrollbar-rail--vertical {
   z-index: 300
 }
+.btn {
+  width: 100%; height: 40px;
+  background-color: white; margin-top: 24px;
+}
