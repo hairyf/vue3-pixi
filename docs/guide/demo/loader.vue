@@ -17,7 +17,6 @@ const images = [
           Loading...
         </text>
       </template>
-
       <!-- component with nested async dependencies -->
       <template #default="{ textures }">
         <sprite
