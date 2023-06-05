@@ -42,6 +42,7 @@ export default defineConfig({
             { text: 'Container', link: '/guide/elements/container/' },
             { text: 'Graphics', link: '/guide/elements/graphics/' },
             { text: 'Mesh', link: '/guide/elements/mesh/' },
+            { text: 'NineSlicePlane', link: '/guide/elements/nine-slice-plane/' },
           ],
         },
         {
