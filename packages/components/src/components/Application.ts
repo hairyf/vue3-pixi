@@ -14,8 +14,15 @@ export interface ApplicationInst {
 
 const Application = defineComponent({
   props: {
-    alpha: Boolean,
     antialias: { type: Boolean, default: true },
+    autoDensity: { type: Boolean, default: true },
+    autoStart: { type: Boolean, default: true },
+    background: [Number, String, Array] as PropType<ColorSource>,
+    backgroundColor: [Number, String, Array] as PropType<ColorSource>,
+    backgroundAlpha: { type: Number, default: 1 },
+    clearBeforeRender: Boolean,
+    forceCanvas: Boolean,
+    alpha: Boolean,
     depth: Boolean,
     desynchronized: Boolean,
     failIfMajorPerformanceCaveat: Boolean,
@@ -26,9 +33,7 @@ const Application = defineComponent({
 
     width: Number,
     height: Number,
-    background: [Number, String, Array] as PropType<ColorSource>,
-    backgroundColor: [Number, String, Array] as PropType<ColorSource>,
-    backgroundAlpha: { type: Number, default: 1 },
+
     resolution: Number,
   },
   setup(props, { slots }) {
@@ -37,30 +42,12 @@ const Application = defineComponent({
     let app: App<Container> | undefined
 
     function mount() {
-      const context = canvas.value?.getContext('webgl', {
-        alpha: props.alpha,
-        antialias: props.antialias,
-        depth: props.depth,
-        desynchronized: props.desynchronized,
-        failIfMajorPerformanceCaveat: props.failIfMajorPerformanceCaveat,
-        powerPreference: props.powerPreference,
-        premultipliedAlpha: props.premultipliedAlpha,
-        preserveDrawingBuffer: props.preserveDrawingBuffer,
-        stencil: props.stencil,
-      })
+      const context = canvas.value?.getContext('webgl', props)
 
       if (!context)
         warn('could not crate webgl context')
 
-      const inst = new _Application({
-        view: canvas.value,
-        width: props.width,
-        height: props.height,
-        background: props.background,
-        backgroundColor: props.backgroundColor,
-        backgroundAlpha: props.backgroundAlpha,
-        resolution: props.resolution,
-      })
+      const inst = new _Application({ view: canvas.value, ...props })
 
       pixiApp.value = markRaw(inst)
 

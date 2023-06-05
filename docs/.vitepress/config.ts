@@ -41,6 +41,12 @@ export default defineConfig({
           ],
         },
         {
+          text: 'Components',
+          items: [
+            { text: 'Application', link: '/guide/components/application/' },
+          ],
+        },
+        {
           text: 'Composition API',
           items: [],
         },
