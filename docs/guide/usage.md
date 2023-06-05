@@ -16,7 +16,7 @@ PixiJS will load the texture in the background and show it when it’s ready - s
 
 <demo src="./demo/sprite.vue" :app="false" />
 
-## Loaders
+## Loader
 
 If you have a bunch of images or other resources, you may wish to show a loading screen until all images have finished loading (rather than have them pop in one after another).
 
@@ -31,6 +31,12 @@ You can have multiple Loader components as well, which could be useful if you wa
 A [Ticker](/) runs an update loop for the `application`. The Application component will create one automatically, which means child components can hook into the loop with `onTick`.
 
 <demo src="./demo/ticker.vue" />
+
+## Filter
+
+To use filters, you need to add the filter as a child element to the element where you want to apply the filtering effect.
+
+<demo src="./demo/filter.vue" />
 
 ## Render Events
 
@@ -76,26 +82,3 @@ renderer.use({
 ```
 
 <demo src="./demo/custom-instance.vue" :codesandbox="false" />
-
-If you are using TypeScript, you can also declare your custom instance using `declare module '@vue/runtime-core'`.
-
-```ts
-import type { TextProps } from 'vue3-pixi'
-
-interface YellowTextProps extends TextProps {
-  text: string
-  style: TextStyle
-  // ...
-}
-
-interface YellowTextComponent {
-  (props: YellowTextProps): any
-}
-
-declare module '@vue/runtime-core' {
-  interface GlobalComponents {
-    YellowText: YellowTextComponent
-    PixiYellowText: YellowTextComponent
-  }
-}
-```

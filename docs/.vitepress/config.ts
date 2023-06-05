@@ -38,6 +38,22 @@ export default defineConfig({
           ],
         },
         {
+          text: 'Concepts',
+          items: [
+            {
+              text: 'Renderer',
+              link: '/guide/concepts/renderer',
+            },
+            {
+              text: 'Props',
+            },
+
+            {
+              text: 'Events',
+            },
+          ],
+        },
+        {
           text: 'Elements',
           items: [
             { text: 'AnimatedSprite', link: '/guide/elements/animated-sprite/' },
