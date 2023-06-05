@@ -206,6 +206,15 @@ const SimpleRopeRender: RendererOptions = {
       props.points,
     )
   },
+  patchProp(el: NineSlicePlane, key, prev, next) {
+    switch (key) {
+      case 'texture':
+      case 'points':
+        break
+      default:
+        defuPatchProp(el, key, prev, next)
+    }
+  },
 }
 
 const BlurFilterRender: RendererOptions = {

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
-import { NScrollbar, darkTheme, useMessage } from 'naive-ui'
+import { NScrollbar, useMessage } from 'naive-ui'
 import { Application } from 'vue3-pixi'
 
 import Card from '../Card/index.vue'

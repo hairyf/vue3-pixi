@@ -48,6 +48,9 @@ export default defineConfig({
             { text: 'NineSlicePlane', link: '/guide/elements/nine-slice-plane/' },
             { text: 'ParticleContainer', link: '/guide/elements/particle-container/' },
             { text: 'SimplePlane', link: '/guide/elements/simple-plane/' },
+            { text: 'SimpleRope', link: '/guide/elements/simple-rope/' },
+            { text: 'Sprite', link: '/guide/elements/sprite/' },
+            { text: 'TilingSprite', link: '/guide/elements/tiling-sprite/' },
           ],
         },
         {
