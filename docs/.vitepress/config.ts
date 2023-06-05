@@ -95,8 +95,7 @@ export default defineConfig({
           ],
         },
       ],
-      '/examples/': [
-      ],
+      '/examples/': [],
     },
 
     socialLinks: [
@@ -115,7 +114,7 @@ export default defineConfig({
       unocss({}),
     ],
     ssr: {
-      noExternal: ['naive-ui'],
+      noExternal: ['naive-ui', 'gsap'],
     },
     resolve: {
       alias: [

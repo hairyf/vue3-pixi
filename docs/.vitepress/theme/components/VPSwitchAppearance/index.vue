@@ -11,14 +11,17 @@ const checked = ref(false)
 const toggle = typeof localStorage !== 'undefined' ? useAppearance() : () => {}
 
 onMounted(() => {
-  checked.value = document.documentElement.classList.contains('dark')
+  if (document)
+    checked.value = document.documentElement.classList.contains('dark')
 })
 
 // @ts-expect-error: Transition API
-const isAppearanceTransition = document.startViewTransition
+const isAppearanceTransition = document?.startViewTransition
   && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
 function useAppearance() {
+  if (typeof document === 'undefined')
+    return () => {}
   const query = window.matchMedia('(prefers-color-scheme: dark)')
   const classList = document.documentElement.classList
 

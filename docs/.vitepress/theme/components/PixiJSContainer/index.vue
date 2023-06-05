@@ -32,7 +32,6 @@ const props = withDefaults(
 )
 const message = useMessage()
 
-const containerRef = ref<HTMLElement>()
 const showHighlighted = ref(props.expand)
 const isUsingTs = ref(!!props.sfcTsCode)
 
@@ -89,14 +88,16 @@ async function onCopyCode() {
         />
       </div>
     </template>
-    <div ref="containerRef" class="container-view flex justify-center items-center p4 min-h-300px">
+    <div class="container-view flex justify-center items-center p4 min-h-300px">
       <div>
-        <Application v-if="app" :width="width" :height="height" :background="background" :background-color="backgroundColor">
-          <slot />
-        </Application>
-        <template v-else>
-          <slot />
-        </template>
+        <ClientOnly>
+          <Application v-if="app" :width="width" :height="height" :background="background" :background-color="backgroundColor">
+            <slot />
+          </Application>
+          <template v-else>
+            <slot />
+          </template>
+        </ClientOnly>
       </div>
     </div>
     <template v-if="showHighlighted" #footer>

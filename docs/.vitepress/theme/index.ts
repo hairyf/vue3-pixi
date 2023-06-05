@@ -9,6 +9,9 @@ import DraggableCircle from './components/Sites/DraggableCircle.vue'
 
 import './main'
 
+if (typeof document === 'undefined')
+  globalThis.document = {} as any
+
 export default {
   ...Theme,
   Layout: () => {
