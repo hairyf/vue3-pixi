@@ -17,6 +17,7 @@ Allows you to stretch a texture using 9-slice scaling. The corners will remain u
 | right-width | ^[number] | `undefined` | The width of the right column of the grid |
 | top-height | ^[number] | `undefined` | The height of the top row of the grid |
 | bottom-height | ^[number] | `undefined` | The height of the bottom row of the grid |
+| blend-mode | <api-blend-mode /> | `BLEND_MODES.NORMAL` | The blend mode to be applied to the sprite. |
 | draw-mode | <api-draw-mode /> | `DRAW_MODES.TRIANGLES` | The draw mode to be used. |
 | geometry | ^[object]`PIXI.Geometry` | `undefined` | The geometry the mesh will use. |
 

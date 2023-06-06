@@ -9,7 +9,7 @@ import DraggableCircle from './components/Sites/DraggableCircle.vue'
 import ApiTyping from './components/ApiTyping/index.vue'
 import ApiPoint from './components/Markdown/ApiPoint.md'
 import ApiColor from './components/Markdown/ApiColor.md'
-import ApiBendMode from './components/Markdown/ApiBendMode.md'
+import ApiBlendMode from './components/Markdown/ApiBlendMode.md'
 import ApiDrawMode from './components/Markdown/ApiDrawMode.md'
 
 import './main'
@@ -39,7 +39,7 @@ export default {
     app.component('ApiTyping', ApiTyping)
     app.component('ApiPoint', inlineComponent(ApiPoint))
     app.component('ApiColor', inlineComponent(ApiColor))
-    app.component('ApiBendMode', inlineComponent(ApiBendMode))
+    app.component('ApiBlendMode', inlineComponent(ApiBlendMode))
     app.component('ApiDrawMode', inlineComponent(ApiDrawMode))
     app.use(FloatingVue)
   },
