@@ -95,12 +95,16 @@
   }
 }
 
+/* layout */
+
 .aside {
   padding-left: 12px !important;
 }
 .VPDoc.has-aside .content-container {
   max-width: 100% !important;
 }
+
+/* markdown */
 
 .vp-doc [class*='language-'] pre::-webkit-scrollbar {
   display: none;
@@ -111,6 +115,12 @@
   width: 100%;
 }
 
+.vp-doc tr:nth-child(2n) :not(pre) > code {
+  background: #fff;
+}
+
+/* v-popper */
+
 .v-popper__popper {
   font-size: 12px
 }
@@ -118,9 +128,16 @@
   padding: 4px 8px !important;
 }
 
+
+/* naive-ui */
+
 .n-scrollbar-rail.n-scrollbar-rail--vertical {
   z-index: 300
 }
+
+
+/* custom */
+
 .btn {
   width: 100%; height: 40px;
   background-color: white; margin-top: 24px;
