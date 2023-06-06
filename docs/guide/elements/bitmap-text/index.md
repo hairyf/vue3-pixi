@@ -36,7 +36,6 @@ A BitmapText can only be created when the font is loaded.
 | max-width | ^[number] | `undefined` | The maximum width of the text before it wraps. |
 | max-line-height | ^[number] | `undefined` | The maximum line height. |
 | resolution | ^[number] | `undefined` | The resolution of the BitmapText. |
-| round-pixels | ^[boolean] | `false` | If true PixiJS will Math.floor() x/y values when rendering, stopping pixel interpolation. |
 | dirty | ^[boolean] | `false` | Whether or not the text has changed. |
 
 > more attributes in [Container Props](/guide/elements/container/#container-props) and [PIXI.BitmapText](https://pixijs.download/release/docs/PIXI.BitmapText.html)
