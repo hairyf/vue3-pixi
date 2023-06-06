@@ -7,3 +7,16 @@ You may not need this component, as you can simply insert DOM elements below `<A
 :::
 
 <demo :width="400" src="./demo/basic.vue" />
+
+## API
+
+### External Props
+
+| Name | Type | Default | Description |
+| ---- | ---- | ---- | ---- |
+| tag | ^[string] | `div` | The tag of the external element |
+
+## External Slots
+
+| Name | Types | Description |
+| ---- | ---- | ---- |
