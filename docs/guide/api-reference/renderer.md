@@ -71,6 +71,29 @@ renderer.use({
 
 > Please note that if you modify any of these configurations, the default configuration for that will be overridden.
 
+To prevent Vue program from issuing warnings and to handle them, you need to add the following content in the Vue plugin configuration.
+
+```ts
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import { isCustomElement, transformAssetUrls } from 'vue3-pixi'
+
+export default defineConfig({
+  plugins: [
+    vue({
+      template: {
+        // support for custom elements and remove the unknown element warnings
+        compilerOptions: {
+          isCustomElement: (tag) => {
+            return tag === 'yellow-text' || isCustomElement(tag)
+          }
+        },
+      },
+    }),
+  ],
+})
+```
+
 If you are using TypeScript, you can add types to custom elements by declaring `GlobalComponents` from the `@vue/runtime-core` module.
 
 ```ts
