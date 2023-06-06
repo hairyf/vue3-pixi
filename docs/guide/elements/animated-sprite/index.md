@@ -43,7 +43,7 @@ I recommend using spritesheets created by TexturePacker ([they have a great tuto
 
 > more events in [Container Events](/guide/elements/container/#container-events)
 
-## AnimatedSprite Slots
+### AnimatedSprite Slots
 
 | Name | Type | Description |
 | ---- | ---- | ---- |
