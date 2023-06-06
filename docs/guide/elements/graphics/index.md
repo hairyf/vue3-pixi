@@ -14,7 +14,7 @@ This will set up a `watchEffect` internally that will automatically call the eve
 
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| blend-mode | ^[number] [BLEND_MODES](https://pixijs.download/release/docs/PIXI.html#BLEND_MODES) | `BLEND_MODES.NORMAL` | The blend mode to be applied to the sprite. |
+| blend-mode | <api-blend-mode /> | `BLEND_MODES.NORMAL` | The blend mode to be applied to the sprite. |
 | plugin-name | ^[string] | `undefined` | The name of the plugin that is responsible for rendering this element. |
 | tint | <api-color /> | `undefined` | The tint applied to the graphic shape. |
 | is-mask | ^[boolean] | `false` | Sets if this Graphics object is a mask. |

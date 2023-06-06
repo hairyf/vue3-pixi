@@ -13,3 +13,11 @@ Other more advanced functionality like masking, filters, etc will not work on sp
 Note: when working with thousands of components, it is **much** more performant to create & update the Pixi instances directly instead of through components
 
 <demo :width="400" src="./demo/basic.vue" />
+
+## API
+
+### ParticleContainer Attributes
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| blend-mode | <api-blend-mode /> | `BLEND_MODES.NORMAL` | The blend mode to be applied to the sprite. |

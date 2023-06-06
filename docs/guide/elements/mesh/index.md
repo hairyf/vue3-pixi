@@ -11,3 +11,23 @@ Pretty much all WebGL can be broken down into the following:
 - State - This is the state of WebGL required to render the mesh.
 
 <demo src="./demo/basic.vue" :width="300" :height="300" />
+
+## API
+
+### Mesh Attributes
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| draw-mode | <api-draw-mode /> | `DRAW_MODES.TRIANGLES` | The draw mode to be used. |
+| geometry | ^[object]`PIXI.Geometry` | `undefined` | The geometry the mesh will use. |
+| shader | ^[object]`PIXI.Shader \| PIXI.MeshMaterial` | `undefined` | The shader the mesh will use. |
+
+> more props in [Container Props](/guide/elements/container/#container-props) and [PIXI.Mesh](https://pixijs.download/release/docs/PIXI.Mesh.html)
+
+### Mesh Events
+
+| Name | Type | Description |
+| --- | --- | --- |
+| render | ^[function]`(el: Mesh): void` | Call your drawing functions on the PIXI.Mesh instance here |
+
+> more events in [Container Events](/guide/elements/container/#container-events)
