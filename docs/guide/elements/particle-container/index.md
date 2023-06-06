@@ -21,3 +21,16 @@ Note: when working with thousands of components, it is **much** more performant 
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | blend-mode | <api-blend-mode /> | `BLEND_MODES.NORMAL` | The blend mode to be applied to the sprite. |
+| auto-resize | ^[boolean] | `false` | If true, container will automatically calculate and resize its `bounds` to include all children. |
+| max-size | ^[number] | `1500` | The maximum number of particles that can be drawn by the container. |
+| properties | ^[object] | `undefined` | The properties of children that should be uploaded to the gpu and applied. |
+
+> more props in [Container Props](/guide/elements/container/#container-props) and [PIXI.ParticleContainer](https://pixijs.download/release/docs/PIXI.ParticleContainer.html)
+
+### ParticleContainer Events
+
+| Name | Type | Description |
+| --- | --- | --- |
+| render | ^[function]`(el: ParticleContainer): void` | custom render function |
+
+> more events in [Container Events](/guide/elements/container/#container-events)
