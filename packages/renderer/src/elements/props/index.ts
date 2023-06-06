@@ -17,6 +17,7 @@ export interface AllowedPixiProps {
   accessibleTitle?: string
   accessibleType?: string
   alpha?: number
+
   cursor?: Cursor
 
   cacheAsBitmap?: boolean

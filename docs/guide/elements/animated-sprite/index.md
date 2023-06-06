@@ -21,14 +21,14 @@ I recommend using spritesheets created by TexturePacker ([they have a great tuto
 | Name | Type | Default | Description |
 | ---- | ---- | ---- | ---- |
 | anchor | <api-point /> | `0` | The anchor sets the origin point of the text. |
-| anchorX | ^[number] | `0` | The x anchor sets the origin point of the text. |
-| anchorY | ^[number] | `0` | The y anchor sets the origin point of the text. |
+| anchor-x | ^[number] | `0` | The x anchor sets the origin point of the text. |
+| anchor-y | ^[number] | `0` | The y anchor sets the origin point of the text. |
 | textures | ^[array]`Array<Texture \| string>` | `undefined` | The textures to use for the animation |
-| animationSpeed | ^[number] | `1` | The speed that the AnimatedSprite will play at. Higher is faster, lower is slower |
-| blendMode | ^[number] [BLEND_MODES](https://pixijs.download/release/docs/PIXI.html#BLEND_MODES) | `BLEND_MODES.NORMAL` | The blend mode to be applied to the sprite. |
+| animation-speed | ^[number] | `1` | The speed that the AnimatedSprite will play at. Higher is faster, lower is slower |
+| blend-mode | ^[number] [BLEND_MODES](https://pixijs.download/release/docs/PIXI.html#BLEND_MODES) | `BLEND_MODES.NORMAL` | The blend mode to be applied to the sprite. |
 | loop | ^[boolean] | `true` | Whether or not the animate sprite repeats after playing. |
 | playing | ^[boolean] | `false` | Whether or not the animation is playing. |
-| roundPixels | ^[boolean] | `false` | If true PixiJS will Math.floor() x/y values when rendering, stopping pixel interpolation. |
+| round-pixels | ^[boolean] | `false` | If true PixiJS will Math.floor() x/y values when rendering, stopping pixel interpolation. |
 
 > more attributes in [Container Props](/guide/elements/container/#container-props) and [PIXI.AnimatedSprite](https://pixijs.download/release/docs/PIXI.AnimatedSprite.html)
 
