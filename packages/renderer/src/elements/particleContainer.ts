@@ -3,12 +3,15 @@ import type {
   DefineComponent,
   VNodeProps,
 } from 'vue-demi'
-import type { ParticleContainer } from 'pixi.js'
+import type { IParticleProperties, ParticleContainer } from 'pixi.js'
 import type { AllowedPixiProps } from './props'
 import type { PixiEvents } from './events'
 
 export interface ParticleContainerProps {
-
+  autoResize?: boolean
+  blendMode?: number
+  maxSize?: number
+  properties?: IParticleProperties
 }
 
 export interface ParticleContainerEvents extends PixiEvents {
