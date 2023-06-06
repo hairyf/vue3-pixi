@@ -8,6 +8,7 @@ import StackBlitzEmbed from './components/StackBlitzEmbed/index.vue'
 import DraggableCircle from './components/Sites/DraggableCircle.vue'
 import ApiTyping from './components/ApiTyping/index.vue'
 import ApiPoint from './components/Markdown/ApiPoint.md'
+import ApiColor from './components/Markdown/ApiColor.md'
 
 import './main'
 
@@ -35,6 +36,7 @@ export default {
     app.component('DraggableCircle', DraggableCircle)
     app.component('ApiTyping', ApiTyping)
     app.component('ApiPoint', inlineComponent(ApiPoint))
+    app.component('ApiColor', inlineComponent(ApiColor))
     app.use(FloatingVue)
   },
 }

@@ -29,10 +29,10 @@ When child components are rendered inside, their coordinates become local to the
 | skew-x | ^[number] | `0` | The x skew of the Container |
 | skew-y | ^[number] | `0` | The y skew of the Container |
 | rotation | ^[number] | `0` | The rotation of the Container |
-| event-mode | ^[enum]`'auto' \| 'none' \| 'passive' \| 'static' \| 'dynamic'` | The event mode of the Container |
+| event-mode | ^[enum]`'auto' \| 'none' \| 'passive' \| 'static' \| 'dynamic'` | `'auto'` | The event mode of the Container |
 | alpha | ^[number] | `1` | The opacity of the Container |
 | mask | ^[object]`Container \| MaskData` | `undefined` | The mask of the Container |
-| hit-area ^[object]`IHitArea` | `undefined` | The hit area of the Container |
+| hit-area | ^[object]`IHitArea` | `undefined` | The hit area of the Container |
 
 > more attributes in [PIXI.Container](https://pixijs.download/release/docs/PIXI.Container.html)
 
@@ -68,3 +68,9 @@ When child components are rendered inside, their coordinates become local to the
 | touchstart | ^[function]`(event: FederatedPointerEvent):void` | when a touch start event is detected |
 
 > more events in [PIXI.Container](https://pixijs.download/release/docs/PIXI.Container.html)
+
+### Graphics Slots
+
+| Name | Description |
+| --- | --- |
+| default | The default slot is used to render the children of the Container element. |
