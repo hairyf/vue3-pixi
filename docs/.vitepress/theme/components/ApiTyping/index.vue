@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { NButton, NPopover } from 'naive-ui'
+import { BLEND_MODES } from 'pixi.js'
 defineProps<{
   type: string
   details: string

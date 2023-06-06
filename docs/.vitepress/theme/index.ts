@@ -7,8 +7,13 @@ import PixiJSContainer from './components/PixiJSContainer/index.vue'
 import StackBlitzEmbed from './components/StackBlitzEmbed/index.vue'
 import DraggableCircle from './components/Sites/DraggableCircle.vue'
 import ApiTyping from './components/ApiTyping/index.vue'
+import ApiPoint from './components/Markdown/ApiPoint.md'
 
 import './main'
+
+function inlineComponent(Component: any) {
+  return () => h(Component, { class: 'inline-component' })
+}
 
 if (typeof document === 'undefined')
   globalThis.document = {} as any
@@ -29,6 +34,7 @@ export default {
     app.component('StackBlitzEmbed', StackBlitzEmbed)
     app.component('DraggableCircle', DraggableCircle)
     app.component('ApiTyping', ApiTyping)
+    app.component('ApiPoint', inlineComponent(ApiPoint))
     app.use(FloatingVue)
   },
 }

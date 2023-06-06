@@ -24,22 +24,8 @@ export interface AnimatedSpriteProps extends AllowedPixiProps {
 
   tint?: PIXI.ColorSource
 
-  clampMargin?: number
-
-  tilePosition?: Partial<PIXI.IPointData> | number | [number, number]
-  tilePositionX?: number
-  tilePositionY?: number
-
-  tileScale?: Partial<PIXI.IPointData> | number | [number, number]
-  tileScaleX?: number
-  tileScaleY?: number
-
-  tileTransform?: PIXI.Transform
-
-  uvMatrix?: PIXI.TextureMatrix
-
   animationSpeed?: number
-  autoUpdate?: boolean
+  autoUpdate?: PIXI.AnimatedSprite['autoUpdate']
 
   currentFrame?: number
   loop?: boolean
@@ -52,6 +38,7 @@ export interface AnimatedSpriteProps extends AllowedPixiProps {
 export interface AnimatedSpriteEvents extends PixiEvents {
   complete: []
   frameChange: [number]
+  // TODO: test this
   'update:currentFrame': [number]
   loop: []
   render: [AnimatedSpriteInst]

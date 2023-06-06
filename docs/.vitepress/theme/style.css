@@ -119,6 +119,10 @@
   background: #fff;
 }
 
+.vp-doc table a {
+  font-size: 12px;
+}
+
 /* v-popper */
 
 .v-popper__popper {
@@ -141,4 +145,8 @@
 .btn {
   width: 100%; height: 40px;
   background-color: white; margin-top: 24px;
+}
+
+.inline-component p {
+  margin: 0
 }
