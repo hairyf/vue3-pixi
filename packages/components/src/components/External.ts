@@ -44,6 +44,7 @@ const External = defineComponent({
 
     onMounted(mount)
     onUnmounted(unmount)
+    return () => null
   },
 })
 
