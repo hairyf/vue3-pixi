@@ -17,3 +17,40 @@ You can also use SDF, MSDF and MTSDF BitmapFonts for vector-like scaling appeara
 A BitmapText can only be created when the font is loaded.
 
 <demo src="./demo/basic.vue" width="440" />
+
+## API
+
+### BitmapText Attributes
+
+| Name | Type | Default | Description |
+| ---- | ---- | ---- | ---- |
+| anchor | <api-point /> | `0` | The anchor sets the origin point of the text. |
+| anchorX | ^[number] | `0` | The x anchor sets the origin point of the text. |
+| anchorY | ^[number] | `0` | The y anchor sets the origin point of the text. |
+| style | ^[object]`BitmapTextStyle` | `object` | The style parameters. |
+| text | ^[string] | `''` | The text to display. |
+| align | ^[enum]`'left'\|'center'\|'right'\|'justify'` | `left` | The alignment of the BitmapText. |
+| fontName | ^[string] | `undefined` | The name of the font to use. |
+| fontSize | ^[number] | `undefined` | The size of the font. |
+| letterSpacing | ^[number] | `undefined` | The amount of spacing between letters. |
+| maxWidth | ^[number] | `undefined` | The maximum width of the text before it wraps. |
+| maxLineHeight | ^[number] | `undefined` | The maximum line height. |
+| resolution | ^[number] | `undefined` | The resolution of the BitmapText. |
+| roundPixels | ^[boolean] | `false` | If true PixiJS will Math.floor() x/y values when rendering, stopping pixel interpolation. |
+| dirty | ^[boolean] | `false` | Whether or not the text has changed. |
+
+> more attributes in [Container Props](/guide/elements/container/#container-props) and [PIXI.BitmapText](https://pixijs.download/release/docs/PIXI.BitmapText.html)
+
+### BitmapText Events
+
+| Name | Type | Description |
+| ---- | ---- | ---- |
+| render | ^[function]`(el: BitmapText): void` | custom rendering listener |
+
+> more events in [Container Events](/guide/elements/container/#container-events)
+
+## BitmapText Slots
+
+| Name | Description |
+| ---- | ---- |
+| default | The text to display. |
