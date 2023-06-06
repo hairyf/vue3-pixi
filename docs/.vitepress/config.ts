@@ -3,6 +3,7 @@ import { fileURLToPath } from 'url'
 import type { DefaultTheme } from 'vitepress'
 import { defineConfig } from 'vitepress'
 import unocss from 'unocss/vite'
+import { compilerOptions, transformAssetUrls } from '../../packages/renderer'
 import { mdPlugin } from './plugin'
 
 const themeConfig: DefaultTheme.Config = {
@@ -127,6 +128,6 @@ export default defineConfig({
   },
 
   vue: {
-    template: { transformAssetUrls: { sprite: ['texture'] } },
+    template: { compilerOptions, transformAssetUrls },
   },
 })

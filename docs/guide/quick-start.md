@@ -45,17 +45,19 @@ function onClick() {
 
 ## Initialize vue plugin
 
-The vite plugin adds the ability to specify texture paths on sprites & other components that use textures, the same way as the `src` attribute on an image.
+add Vue plugin configuration to support custom elements, prevent parsing exceptions, and support parsing the texture attribute, just like the src attribute of an img.
 
 ```ts
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import { transformAssetUrls } from 'vue3-pixi'
+import { compilerOptions, transformAssetUrls } from 'vue3-pixi'
 
 export default defineConfig({
   plugins: [
     vue({
       template: {
+        // support for custom elements and remove the unknown element warnings
+        compilerOptions,
         // support for asset url conversion
         transformAssetUrls,
       },
