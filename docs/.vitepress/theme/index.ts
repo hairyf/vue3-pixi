@@ -6,6 +6,7 @@ import { NMessageProvider } from 'naive-ui'
 import PixiJSContainer from './components/PixiJSContainer/index.vue'
 import StackBlitzEmbed from './components/StackBlitzEmbed/index.vue'
 import DraggableCircle from './components/Sites/DraggableCircle.vue'
+import ApiTyping from './components/ApiTyping/index.vue'
 
 import './main'
 
@@ -27,6 +28,7 @@ export default {
     app.component('DemoContainer', PixiJSContainer)
     app.component('StackBlitzEmbed', StackBlitzEmbed)
     app.component('DraggableCircle', DraggableCircle)
+    app.component('ApiTyping', ApiTyping)
     app.use(FloatingVue)
   },
 }

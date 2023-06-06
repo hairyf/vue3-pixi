@@ -99,10 +99,16 @@
   padding-left: 12px !important;
 }
 .VPDoc.has-aside .content-container {
-  max-width: auto;
+  max-width: 100% !important;
 }
+
 .vp-doc [class*='language-'] pre::-webkit-scrollbar {
   display: none;
+}
+
+.vp-doc table {
+  display: table !important;
+  width: 100%;
 }
 
 .v-popper__popper {

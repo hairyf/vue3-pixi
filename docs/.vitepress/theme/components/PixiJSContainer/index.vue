@@ -101,15 +101,17 @@ async function onCopyCode() {
       </div>
     </div>
     <template v-if="showHighlighted" #footer>
-      <NScrollbar
-        style="max-height: 450px;"
-        :theme-overrides="{
-          color: 'rgba(255, 255, 255, 0.6)',
-          colorHover: ' rgba(255, 255, 255, 0.3)',
-        }"
-      >
-        <div class="language-vue p0 m0!" v-html="highlightedHtml" />
-      </NScrollbar>
+      <ClientOnly>
+        <NScrollbar
+          style="max-height: 450px;"
+          :theme-overrides="{
+            color: 'rgba(255, 255, 255, 0.6)',
+            colorHover: ' rgba(255, 255, 255, 0.3)',
+          }"
+        >
+          <div class="language-vue p0 m0!" v-html="highlightedHtml" />
+        </NScrollbar>
+      </ClientOnly>
     </template>
   </Card>
 </template>
