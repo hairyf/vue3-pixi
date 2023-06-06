@@ -9,7 +9,10 @@ defineProps<{
 
 <template>
   <span class="inline-flex items-center">
-    <code class="mr-1 line-height-16px">
+    <div v-if="type.startsWith('-')" class="mr-1 line-height-16px">
+      {{ type.slice(1) }}
+    </div>
+    <code v-else-if="type" class="mr-1 line-height-16px">
       {{ type }}
     </code>
     <ClientOnly>
