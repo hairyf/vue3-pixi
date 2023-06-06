@@ -95,6 +95,12 @@
   }
 }
 
+.aside {
+  padding-left: 12px !important;
+}
+.VPDoc.has-aside .content-container {
+  max-width: auto;
+}
 .vp-doc [class*='language-'] pre::-webkit-scrollbar {
   display: none;
 }
