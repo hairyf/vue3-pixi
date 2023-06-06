@@ -50,14 +50,14 @@ add Vue plugin configuration to support custom elements, prevent parsing excepti
 ```ts
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import { compilerOptions, transformAssetUrls } from 'vue3-pixi'
+import { isCustomElement, transformAssetUrls } from 'vue3-pixi'
 
 export default defineConfig({
   plugins: [
     vue({
       template: {
         // support for custom elements and remove the unknown element warnings
-        compilerOptions,
+        compilerOptions: { isCustomElement },
         // support for asset url conversion
         transformAssetUrls,
       },
