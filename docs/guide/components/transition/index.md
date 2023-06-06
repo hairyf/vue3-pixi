@@ -64,3 +64,80 @@ For more complex transitions, a custom function can be provided.
 You can also control the transition effects by setting enter and level to functions:
 
 <demo src="./demo/ticker.vue" :width="400" />
+
+## API
+
+### PTransition Props
+
+| Name | Type | Default | Description |
+| ---- | ---- | ---- | ---- |
+| duration | ^[number] ^[object]`{ enter: number; leave: number }` | `500` | Transition duration (ms). |
+| before-enter | ^[function]`(el: any):void` ^[object\|array]`TransitionVars | TransitionVars[]` | `undefined` | Called before the transition starts. |
+| enter | ^[function]`(el: any, done: () => void):void` ^[object\|array]`TransitionVars | TransitionVars[]` | `undefined` | Called when the transition starts. |
+| after-enter | ^[function]`(el: any):void` ^[object\|array]`TransitionVars | TransitionVars[]` | `undefined` | Called after the transition ends. |
+| 
+| before-leave | ^[function]`(el: any):void` ^[object\|array]`TransitionVars | TransitionVars[]` | `undefined` | Called before the transition starts. |
+| leave | ^[function]`(el: any, done: () => void):void` ^[object\|array]`TransitionVars | TransitionVars[]` | `undefined` | Called when the transition starts. |
+| after-leave | ^[function]`(el: any):void` ^[object\|array]`TransitionVars | TransitionVars[]` | `undefined` | Called after the transition ends. |
+
+### PTransition Events
+
+| Name | Type | Description |
+| ---- | ---- | ---- |
+| before-enter | ^[function]`(el: any):void` | Called before the transition starts. |
+| enter | ^[function]`(el: any, done: () => void):void` | Called when the transition starts. |
+| after-enter | ^[function]`(el: any):void` | Called after the transition ends. |
+| enter-cancelled | ^[function]`(el: any):void` | Called when the transition is cancelled. |
+| before-leave | ^[function]`(el: any):void` | Called before the transition starts. |
+| leave | ^[function]`(el: any, done: () => void):void` | Called when the transition starts. |
+| after-leave | ^[function]`(el: any):void` | Called after the transition ends. |
+
+#### TransitionVars Properties
+
+| Name | Type | Description |
+| ---- | ---- | ---- |
+| delay | ^[number] | Transition delay (ms). |
+| duration | ^[number] | Transition duration (ms). |
+| sase | ^[string] | Transition easing. |
+| x | ^[number] | The x position of the element. |
+| y | ^[number] | The y position of the element. |
+| alpha | ^[number] | The alpha of the element. |
+| rotation | ^[number] | The rotation of the element. |
+| scale | ^[number] | The scale of the element. |
+| scaleX | ^[number] | The scaleX of the element. |
+| scaleY | ^[number] | The scaleY of the element. |
+| skew | ^[number] | The skew of the element. |
+| skewX | ^[number] | The skewX of the element. |
+| skewY | ^[number] | The skewY of the element. |
+| pivot | ^[number] | The pivot of the element. |
+| pivotX | ^[number] | The pivotX of the element. |
+| pivotY | ^[number] | The pivotY of the element. |
+| tint | ^[number] | The tint of the element. |
+| tileX | ^[number] | The tileX of the element. |
+| tileY | ^[number] | The tileY of the element. |
+| tilePosition | ^[number] | The tilePosition of the element. |
+| tilePositionX | ^[number] | The tilePositionX of the element. |
+| tilePositionY | ^[number] | The tilePositionY of the element. |
+| tileScale | ^[number] | The tileScale of the element. |
+| tileScaleX | ^[number] | The tileScaleX of the element. |
+| tileScaleY | ^[number] | The tileScaleY of the element. |
+| zIndex | ^[number] | The zIndex of the element. |
+| width | ^[number] | The width of the element. |
+| height | ^[number] | The height of the element. |
+| anchor | ^[number] | The anchor of the element. |
+| anchorX | ^[number] | The anchorX of the element. |
+| anchorY | ^[number] | The anchorY of the element. |
+| autoAlpha | ^[number] | The autoAlpha of the element. |
+| blur | ^[number] | The blur of the element. |
+| blurX | ^[number] | The blurX of the element. |
+| blurY | ^[number] | The blurY of the element. |
+| blurPadding | ^[number] | The blurPadding of the element. |
+| brightness | ^[number] | The brightness of the element. |
+| colorize | ^[number] | The colorize of the element. |
+| colorizeAmount | ^[number] | The colorizeAmount of the element. |
+| colorMatrixFilter | ^[number] | The colorMatrixFilter of the element. |
+| combineCMF | ^[number] | The combineCMF of the element. |
+| contrast | ^[number] | The contrast of the element. |
+| fillColor | ^[number] | The fillColor of the element. |
+| hue | ^[number] | The hue of the element. |
+| lineColor | ^[number] | The lineColor of the element. |

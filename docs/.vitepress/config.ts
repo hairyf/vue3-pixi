@@ -14,7 +14,7 @@ const themeConfig: DefaultTheme.Config = {
       items: [
         { text: 'Quick Start', link: '/guide/quick-start' },
         { text: 'Usage', link: '/guide/usage' },
-        { text: 'API Reference', link: '/guide/api-reference' },
+        { text: 'API Reference', link: '/guide/api-reference/renderer' },
         { text: 'Elements', link: '/guide/elements/animated-sprite/' },
         { text: 'Components', link: '/guide/components/application/' },
         { text: 'Composition API', link: '/guide/composition-api/on-tick/' },
