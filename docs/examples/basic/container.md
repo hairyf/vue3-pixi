@@ -1,3 +1,3 @@
 # Container
 
-<demo mode="full" src="./demo/container.vue" />
+<demo mode="full" :background-alpha="0" src="./demo/container.vue" />

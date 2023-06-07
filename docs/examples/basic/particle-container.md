@@ -1,3 +1,3 @@
 # Particle Container
 
-<demo mode="full" src="./demo/particle-container-demo.vue" />
+<demo mode="full" :background-alpha="0" src="./demo/particle-container-demo.vue" />

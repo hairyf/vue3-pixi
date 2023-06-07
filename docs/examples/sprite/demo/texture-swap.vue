@@ -21,7 +21,7 @@ function swap() {
 </script>
 
 <template>
-  <Sprite
+  <sprite
     :texture="asserts[current]"
     :x="screen.width / 2"
     :y="screen.height / 2"

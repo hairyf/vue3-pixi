@@ -23,7 +23,7 @@ Assets.load('https://beta.pixijs.com/assets/spritesheet/0123456789.json')
 </script>
 
 <template>
-  <AnimatedSprite
+  <animated-sprite
     v-if="textures.length"
     ref="slowRef"
     :textures="textures"
@@ -32,16 +32,16 @@ Assets.load('https://beta.pixijs.com/assets/spritesheet/0123456789.json')
     :y="screen.height / 2"
     :anchor="0.5"
     :scale="4"
-    :play="true"
+    playing
   />
-  <AnimatedSprite
+  <animated-sprite
     v-if="textures.length"
     :textures="textures"
     :x="(screen.width + 200) / 2"
     :y="screen.height / 2"
     :anchor="0.5"
     :scale="4"
-    :play="true"
+    playing
   />
 </template>
 

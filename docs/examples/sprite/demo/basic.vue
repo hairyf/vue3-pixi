@@ -10,7 +10,7 @@ onTick(() => rotation.value += 0.01)
 </script>
 
 <template>
-  <Sprite
+  <sprite
     texture="https://beta.pixijs.com/assets/bunny.png"
     :x="screen.width / 2"
     :y="screen.height / 2"

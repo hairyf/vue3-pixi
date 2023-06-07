@@ -7,6 +7,7 @@ const props = defineProps<{
   height?: number
   background?: string
   backgroundColor?: string
+  backgroundAlpha?: number
   app?: boolean
   full?: boolean
 }>()
@@ -32,6 +33,7 @@ const size = computed(() => {
           v-bind="size"
           :background="background"
           :background-color="backgroundColor"
+          :background-alpha="backgroundAlpha"
         >
           <slot />
         </Application>

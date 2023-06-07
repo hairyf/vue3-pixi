@@ -20,6 +20,7 @@ const props = withDefaults(
     height?: number
     background?: string
     backgroundColor?: string
+    backgroundAlpha?: number
     mode?: 'full'
   }>(),
   {
@@ -67,6 +68,7 @@ const highlightedHtml = computed(() => decodeURIComponent(isUsingTs.value ? prop
         :height="height"
         :background="background"
         :background-color="backgroundColor"
+        :background-alpha="backgroundAlpha"
         :app="app"
         :full="mode === 'full'"
       >

@@ -1,3 +1,3 @@
 # Blend Modes
 
-<demo mode="full" src="./demo/blend-modes.vue" />
+<demo mode="full" :background-alpha="0" src="./demo/blend-modes.vue" />

@@ -1,9 +1,10 @@
 <script lang="ts" setup>
-import { SimplePlane, Ticker } from 'pixi.js'
+import { Ticker } from 'pixi.js'
 import { onBeforeUnmount, onMounted, ref } from 'vue'
+import type { SimplePlaneInst } from 'vue3-pixi'
 
 const ticker = new Ticker()
-const simplePlaneRef = ref<SimplePlane>()
+const simplePlaneRef = ref<SimplePlaneInst>()
 
 onMounted(() => {
   const plane = simplePlaneRef.value!

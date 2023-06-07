@@ -22,7 +22,7 @@ onTick(() => rotation.value += 0.01)
 </script>
 
 <template>
-  <AnimatedSprite
+  <animated-sprite
     v-if="textures.length"
     :textures="textures"
     :animation-speed="0.5"
@@ -30,7 +30,7 @@ onTick(() => rotation.value += 0.01)
     :y="screen.height / 2"
     :anchor="0.5"
     :rotation="rotation"
-    :play="true"
+    playing
   />
 </template>
 

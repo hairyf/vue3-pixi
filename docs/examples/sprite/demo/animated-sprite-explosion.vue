@@ -21,7 +21,7 @@ Assets.load('https://beta.pixijs.com/assets/spritesheet/mc.json')
 
 <template>
   <template v-for="(_) in 100" :key="_">
-    <AnimatedSprite
+    <animated-sprite
       v-if="textures.length"
       :textures="textures"
       :x="Math.random() * screen.width"
