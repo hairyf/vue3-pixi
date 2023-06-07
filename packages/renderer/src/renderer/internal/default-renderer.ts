@@ -29,6 +29,11 @@ const ParticleContainerRender: RendererOptions = {
 const SpriteRender: RendererOptions = {
   name: 'Sprite',
   createElement: props => new Sprite(normalizeTexture(props.texture)),
+  remove(node: Sprite) {
+    const texture = node.texture
+    texture?.baseTexture.destroy()
+    node.destroy()
+  },
 }
 
 const SimpleMeshRender: RendererOptions = {
