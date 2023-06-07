@@ -6,13 +6,13 @@ Creates a [Application](https://pixijs.download/release/docs/PIXI.Application.ht
 
 Creates a Pixi application where all Pixi elements and composite functions need to be inside the application to work properly.
 
-<demo src="./demo/basic.vue" :app="false" />
+<demo src="./demo/application.vue" :app="false" />
 
 ## Getting Instance Externally
 
 You can obtain the Application instance by binding a ref externally, but it is generally recommended to use `useApplication` internally.
 
-<demo src="./demo/render.vue" :app="false" />
+<demo src="./demo/application-render.vue" :app="false" />
 
 ## API
 

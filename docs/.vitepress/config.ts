@@ -72,10 +72,10 @@ const themeConfig: DefaultTheme.Config = {
       {
         text: 'Components',
         items: [
-          { text: 'Application', link: '/guide/components/application/' },
-          { text: 'Transition', link: '/guide/components/transition/' },
-          { text: 'Loader', link: '/guide/components/loader/' },
-          { text: 'External', link: '/guide/components/external/' },
+          { text: 'Application', link: '/guide/components/application' },
+          { text: 'Transition', link: '/guide/components/transition' },
+          { text: 'Loader', link: '/guide/components/loader' },
+          { text: 'External', link: '/guide/components/external' },
         ],
       },
       {

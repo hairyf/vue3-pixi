@@ -10,20 +10,20 @@ The usage of `PTransition` is similar to [Vue Transition](https://cn.vuejs.org/g
 
 Translation: Pixi.js does not provide a built-in tweening engine, but you can use third-party tweening engines like `GSAP` or `Tween.js` to achieve tween animations.
 
-<demo src="./demo/basic.vue" :width="400" :expand="false" />
+<demo src="./demo/transition.vue" :width="400" :expand="false" />
 
 ## Properties Mode
 
 Unlike the Vue Transition, you can achieve transition effects by setting different properties:
 
-<demo src="./demo/properties-basic.vue" :width="400" />
+<demo src="./demo/transition-properties.vue" :width="400" />
 
 
 ## Ease
 
 By default, all transition effects are linear. You can customize the transition easing by using custom cubic-bezier curves.
 
-<demo src="./demo/properties-ease-presets.vue" :width="400" />
+<demo src="./demo/transition-ease-presets.vue" :width="400" />
 
 ## Ease Presets
 
@@ -57,13 +57,13 @@ The following transitions are available via the `TransitionPresets` constant.
 
 For more complex transitions, a custom function can be provided.
 
-<demo src="./demo/properties-sase-custom.vue" :width="400" />
+<demo src="./demo/transition-ease-custom.vue" :width="400" />
 
 ## Ticker
 
 You can also control the transition effects by setting enter and level to functions:
 
-<demo src="./demo/ticker.vue" :width="400" />
+<demo src="./demo/transition-ticker.vue" :width="400" />
 
 ## API
 

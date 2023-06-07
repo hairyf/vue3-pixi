@@ -6,7 +6,7 @@ render until the Loader has finished.
 
 You can show progress by using the `progress` prop from the `fallback` slot.
 
-<demo src="./demo/basic.vue" background="#fff" />
+<demo src="./demo/loader.vue" background="#fff" />
 
 ## Alias
 
