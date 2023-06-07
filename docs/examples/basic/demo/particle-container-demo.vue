@@ -45,13 +45,10 @@ onTick(() => {
     // wrap the maggots
     if (dude.x < dudeBounds.x)
       dude.x += dudeBounds.width
-
     else if (dude.x > dudeBounds.x + dudeBounds.width)
       dude.x -= dudeBounds.width
-
     if (dude.y < dudeBounds.y)
       dude.y += dudeBounds.height
-
     else if (dude.y > dudeBounds.y + dudeBounds.height)
       dude.y -= dudeBounds.height
   }
