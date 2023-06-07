@@ -1,7 +1,6 @@
 import { AlphaFilter, AnimatedSprite, BitmapText, BlurFilter, ColorMatrixFilter, Container, DisplacementFilter, FXAAFilter, Graphics, Mesh, NineSlicePlane, NoiseFilter, ParticleContainer, SimpleMesh, SimplePlane, SimpleRope, Sprite, Text, TilingSprite } from 'pixi.js'
 import { patchProp as defuPatchProp, patchBoolProp } from '../patchProp'
 import { normalizeTexture } from '../utils'
-import { insert } from '../nodeOps'
 import { setObjectProperty, setPropertyValue, setSkipFirstValue } from './setter'
 import type { Renderer, RendererOptions } from './types'
 
@@ -24,20 +23,6 @@ const ParticleContainerRender: RendererOptions = {
       default:
         defuPatchProp(el, key, prev, next)
     }
-  },
-  insert(el: ParticleContainer, parent, anchor) {
-    let firstChild: any = el.children[0]
-    const notEmpty = () =>
-      firstChild
-        ? firstChild._vp_empty
-          ? el.children[1]
-          : firstChild
-        : firstChild
-    Object.defineProperty(el.children, 0, {
-      set: v => firstChild = v,
-      get: () => firstChild = notEmpty(),
-    })
-    insert(el, parent, anchor)
   },
 }
 

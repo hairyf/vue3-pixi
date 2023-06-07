@@ -11,11 +11,6 @@ const center = computed(() => ({
   y: screen.value.height / 2,
 }))
 
-const containerCenter = computed(() => ({
-  x: (containerRef.value?.width || 0) / 2,
-  y: (containerRef.value?.height || 0) / 2,
-}))
-
 const rotation = ref(0)
 
 onTick((delta) => {
@@ -28,7 +23,7 @@ onTick((delta) => {
     ref="containerRef"
     :position="center"
     :rotation="rotation"
-    :pivot="containerCenter"
+    :pivot="{ x: 93, y: 98.5 }"
   >
     <sprite
       v-for="(_, i) in 25"
