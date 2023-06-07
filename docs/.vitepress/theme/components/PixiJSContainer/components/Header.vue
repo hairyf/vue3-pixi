@@ -23,8 +23,8 @@ const showHighlighted = useModel(props, 'showHighlighted')
 const isUsingTs = useModel(props, 'isUsingTs')
 
 const sandboxParams = computed(() => props.app
-  ? getWithAppCodeSandboxParams(code.value)
-  : getCodeSandboxParams(code.value))
+  ? getWithAppCodeSandboxParams(props.sfcJsCode)
+  : getCodeSandboxParams(props.sfcJsCode))
 
 function onShowHighlighted() {
   showHighlighted.value = !showHighlighted.value

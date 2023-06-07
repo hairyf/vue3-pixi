@@ -62,7 +62,7 @@ const highlightedHtml = computed(() => decodeURIComponent(isUsingTs.value ? prop
         :class="[
           mode === 'full'
             ? 'h-300px lg:h-400px xl:h-full xl:order-last xl:w-55%'
-            : 'h-300px',
+            : 'min-h-300px',
         ]"
         :width="width"
         :height="height"

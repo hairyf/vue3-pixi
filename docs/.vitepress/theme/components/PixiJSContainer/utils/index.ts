@@ -33,14 +33,15 @@ import { defineComponent } from "vue";
 import Demo from "./Demo.vue";
 
 export default defineComponent({
-components: {
-  Demo,
-},
+  components: {
+    Demo,
+    Application
+  },
 });
 </script>`
 
 const appProviderVue = `<template>
-  <Application :width="300" :height="300">
+  <Application :width="600" :height="400" :background-alpha="0">
     <demo />
   </Application>
 </template>
@@ -51,9 +52,10 @@ import { Application } from 'vue3-pixi'
 import Demo from "./Demo.vue";
 
 export default defineComponent({
-components: {
-  Demo,
-},
+  components: {
+    Demo,
+    Application
+  },
 });
 </script>`
 

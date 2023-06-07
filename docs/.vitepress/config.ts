@@ -142,7 +142,6 @@ const themeConfig: DefaultTheme.Config = {
           { text: 'Dragging', link: '/examples/events/dragging' },
           { text: 'Interactivity', link: '/examples/events/interactivity' },
           { text: 'Logger', link: '/examples/events/logger' },
-          { text: 'Nested Boundary With Projection', link: '/examples/events/nested-boundary-with-projection' },
           { text: 'Pointer Tacker', link: '/examples/events/pointer-tracker' },
           { text: 'Slider', link: '/examples/events/slider' },
         ],

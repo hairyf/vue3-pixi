@@ -17,14 +17,14 @@ const { width: viewWidth, height: viewHeight } = useElementSize(containerViewRef
 
 const size = computed(() => {
   if (props.full)
-    return { width: viewWidth.value, height: viewHeight.value }
+    return { width: viewWidth.value || 629, height: viewHeight.value || 550 }
   else
     return { width: props.width, height: props.height }
 })
 </script>
 
 <template>
-  <div ref="containerViewRef" class="container-view flex justify-center items-center" :class="{ p4: !full }">
+  <div ref="containerViewRef" class="py-24px container-view flex justify-center items-center" :class="{ p4: !full }">
     <div>
       <ClientOnly>
         <Application
