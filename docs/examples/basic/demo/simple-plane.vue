@@ -28,13 +28,13 @@ onBeforeUnmount(() => ticker.destroy())
 </script>
 
 <template>
-  <SimplePlane
+  <simple-plane
     ref="simplePlaneRef"
     texture="https://beta.pixijs.com/assets/bg_grass.jpg"
     :vertices-x="10"
     :vertices-y="10"
-    :x="100"
-    :y="100"
+    :x="0"
+    :y="50"
   />
 </template>
 

@@ -61,7 +61,6 @@ onTick(() => {
 })
 
 function onRender(el: ParticleContainerInst) {
-  el.children.length = 0
   for (let i = 0; i < totalSprites; i++) {
   // create a new Sprite
     const dude = Sprite.from('https://beta.pixijs.com/assets/maggot_tiny.png') as DudeIte

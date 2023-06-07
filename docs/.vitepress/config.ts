@@ -99,8 +99,6 @@ const themeConfig: DefaultTheme.Config = {
           { text: 'Container', link: '/examples/basic/container' },
           { text: 'Particle Container', link: '/examples/basic/particle-container' },
           { text: 'Simple Plane', link: '/examples/basic/simple-plane' },
-          { text: 'Tinting', link: '/examples/basic/tinting' },
-          { text: 'Transparent Background', link: '/examples/basic/transparent-background' },
         ],
       },
       {
