@@ -1,9 +1,9 @@
 <template>
-  <text :x="50" :y="100">
+  <text :x="50" :y="24">
     Basic text in pixi
   </text>
   <text
-    :x="50" :y="220"
+    :x="50" :y="110"
     :style="{
       fontFamily: 'Arial',
       fontSize: 36,
@@ -26,7 +26,7 @@
   </text>
   <text
     :x="300"
-    :y="480"
+    :y="350"
     :style="{
       fontFamily: 'Arial',
       dropShadow: true,

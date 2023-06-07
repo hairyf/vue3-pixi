@@ -1,33 +1,30 @@
 <script lang="ts" setup>
-import { Assets } from 'pixi.js'
-import { useScreen } from 'vue3-pixi'
+import { Loader, useScreen } from 'vue3-pixi'
 
-Assets.addBundle('fonts', {
+const fonts = {
   'ChaChicle': 'https://beta.pixijs.com/assets/webfont-loader/ChaChicle.ttf',
   'Lineal': 'https://beta.pixijs.com/assets/webfont-loader/Lineal.otf',
   'Dotrice Regular': 'https://beta.pixijs.com/assets/webfont-loader/Dotrice-Regular.woff',
   'Crosterian': 'https://beta.pixijs.com/assets/webfont-loader/Crosterian.woff2',
-})
-
-await Assets.loadBundle('fonts')
+}
 
 const screen = useScreen()
 </script>
 
 <template>
-  <container :x="screen.width / 2" :y="screen.height / 2" :pivot-y="300" :pivot-x="400">
-    <text :y="0" :style="{ fontFamily: 'ChaChicle', fontSize: 50 }">
+  <Loader :resources="fonts">
+    <text :x="60" :y="50" :style="{ fontFamily: 'ChaChicle', fontSize: 34 }">
       ChaChicle.ttf
     </text>
-    <text :y="150" :style="{ fontFamily: 'Lineal', fontSize: 50 }">
+    <text :x="60" :y="150" :style="{ fontFamily: 'Lineal', fontSize: 34 }">
       Lineal.otf
     </text>
-    <text :y="300" :style="{ fontFamily: 'Dotrice Regular', fontSize: 50 }">
+    <text :x="60" :y="250" :style="{ fontFamily: 'Dotrice Regular', fontSize: 34 }">
       Dotrice Regular.woff
     </text>
-    <text :y="450" :style="{ fontFamily: 'Crosterian', fontSize: 50 }">
+    <text :x="60" :y="350" :style="{ fontFamily: 'Crosterian', fontSize: 34 }">
       Crosterian.woff2
     </text>
-  </container>
+  </Loader>
 </template>
 

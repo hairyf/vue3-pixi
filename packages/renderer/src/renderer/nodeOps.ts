@@ -5,6 +5,7 @@ import { isOn } from './utils'
 import { Empty, insertContainer, insertFilter, nextSiblingContainer, nextSiblingFilter, renderers } from './internal'
 
 export function createElement(prefix: string, name: string, _?: boolean, _1?: string, props?: any): any {
+  console.log(name)
   let is
   if (name.startsWith(prefix)) {
     name = camelize(name)
