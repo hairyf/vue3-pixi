@@ -56,7 +56,6 @@ const Application = defineComponent({
         warn('could not crate webgl context')
 
       const inst = new _Application({ view: canvas.value, ...props })
-
       pixiApp.value = markRaw(inst)
 
       app = createApp({

@@ -28,7 +28,11 @@ const ParticleContainerRender: RendererOptions = {
   insert(el: ParticleContainer, parent, anchor) {
     let firstChild: any = el.children[0]
     const notEmpty = () =>
-      firstChild._vp_empty ? el.children[1] : firstChild
+      firstChild
+        ? firstChild._vp_empty
+          ? el.children[1]
+          : firstChild
+        : firstChild
     Object.defineProperty(el.children, 0, {
       set: v => firstChild = v,
       get: () => firstChild = notEmpty(),
