@@ -12,7 +12,7 @@ Other more advanced functionality like masking, filters, etc will not work on sp
 
 Note: when working with thousands of components, it is **much** more performant to create & update the Pixi instances directly instead of through components
 
-<demo :width="400" src="./demo/particle-container.vue" />
+<demo :width="400" src="./demo/particle-container-demo.vue" />
 
 ## API
 
