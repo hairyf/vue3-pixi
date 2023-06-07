@@ -48,9 +48,10 @@ onTick(() => {
     Click or tap to turn masking on / off.
   </text>
   <graphics
-    v-bind="center"
     ref="maskRef"
-    @render="$event
+    :x="center.x"
+    :y="center.y"
+    @render="graphics => graphics
       .lineStyle(0)
       .clear()
       .beginFill(0x8BC5FF, 0.4)

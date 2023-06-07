@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { Sprite, Texture } from 'pixi.js'
-import type { SpriteProps } from 'vue3-pixi'
+import { Texture } from 'pixi.js'
+import type { SpriteInst, SpriteProps } from 'vue3-pixi'
 import { useScreen } from 'vue3-pixi'
 
-type RecordSprite = Sprite & Record<string, any>
+type RecordSprite = SpriteInst & Record<string, any>
 
 const screen = useScreen()
 
@@ -22,29 +22,29 @@ const buttons: Partial<SpriteProps>[] = [
 ]
 
 function onButtonDown(this: RecordSprite) {
-  this._is_down = true
+  this.isDown = true
   this.texture = textureDown
   this.alpha = 1
 }
 
 function onButtonUp(this: RecordSprite) {
-  this._is_down = false
-  if (this._is_over)
+  this.isDown = false
+  if (this.isOver)
     this.texture = textureOver
   else
     this.texture = texture
 }
 
 function onButtonOver(this: RecordSprite) {
-  this._is_over = true
-  if (this._is_down)
+  this.isOver = true
+  if (this.isDown)
     return
   this.texture = textureOver
 }
 
 function onButtonOut(this: RecordSprite) {
-  this._is_over = false
-  if (this._is_down)
+  this.isOver = false
+  if (this.isDown)
     return
   this.texture = texture
 }
@@ -52,9 +52,9 @@ function onButtonOut(this: RecordSprite) {
 
 <template>
   <!-- create a background... -->
-  <Sprite texture="https://beta.pixijs.com/assets/bg_button.jpg" :width="screen.width" :height="screen.height" />
+  <sprite texture="https://beta.pixijs.com/assets/bg_button.jpg" :width="screen.width" :height="screen.height" />
   <!-- add it to the stage -->
-  <Sprite
+  <sprite
     v-for="(p, i) in buttons"
     :key="i" v-bind="p"
     :texture="texture"

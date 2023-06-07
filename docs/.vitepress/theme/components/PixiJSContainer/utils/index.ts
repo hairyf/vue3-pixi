@@ -41,7 +41,7 @@ export default defineComponent({
 </script>`
 
 const appProviderVue = `<template>
-  <Application :width="600" :height="400" :background-alpha="0">
+  <Application :width="800" :height="600" :background-alpha="0">
     <demo />
   </Application>
 </template>
