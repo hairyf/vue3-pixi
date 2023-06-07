@@ -4,6 +4,7 @@ import Theme from 'vitepress/theme'
 import FloatingVue from 'floating-vue'
 import { NMessageProvider } from 'naive-ui'
 import PixiJSContainer from './components/PixiJSContainer/index.vue'
+import MountProvider from './components/MountProvider/index.vue'
 import StackBlitzEmbed from './components/StackBlitzEmbed/index.vue'
 import DraggableCircle from './components/Sites/DraggableCircle.vue'
 import ApiTyping from './components/ApiTyping/index.vue'
@@ -26,9 +27,12 @@ export default {
   Layout: () => {
     return h(NMessageProvider, null,
       [
-        h(Theme.Layout, null, {
-          // https://vitepress.dev/guide/extending-default-theme#layout-slots
-        }),
+        h(MountProvider, null, [
+          h(Theme.Layout, null, {
+            // https://vitepress.dev/guide/extending-default-theme#layout-slots
+          }),
+        ]),
+
       ],
     )
   },
