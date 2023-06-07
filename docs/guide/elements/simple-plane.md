@@ -4,7 +4,7 @@ Creates a [SimplePlane](https://pixijs.download/release/docs/PIXI.SimplePlane.ht
 
 The SimplePlane allows you to draw a texture across several points and then manipulate these points
 
-<demo src="./demo/basic.vue" />
+<demo src="./demo/simple-plane.vue" />
 
 ## API
 

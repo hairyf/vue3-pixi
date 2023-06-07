@@ -6,7 +6,7 @@ Graphics can be used for any kind of drawing. Use the `draw` prop to interact wi
 
 This will set up a `watchEffect` internally that will automatically call the event handler again if any dependencies on the render method have changed.
 
-<demo src="./demo/basic.vue" />
+<demo src="./demo/graphics.vue" />
 
 ## API
 

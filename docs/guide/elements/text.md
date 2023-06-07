@@ -10,7 +10,7 @@ The primary disadvantages is that each piece of text has it’s own texture, whi
 
 To split a line you can use `\n` in your text string, or, on the style prop, change its `wordWrap` property to true and and give the `wordWrapWidth` property a value.
 
-<demo src="./demo/basic.vue" />
+<demo src="./demo/text.vue" />
 
 ## API
 

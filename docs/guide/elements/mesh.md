@@ -10,7 +10,7 @@ Pretty much all WebGL can be broken down into the following:
 - Shader - This is the shader that PixiJS will render the geometry with (attributes in the shader must match the geometry)
 - State - This is the state of WebGL required to render the mesh.
 
-<demo src="./demo/basic.vue" :width="300" :height="300" />
+<demo src="./demo/mesh.vue" :width="300" :height="300" />
 
 ## API
 

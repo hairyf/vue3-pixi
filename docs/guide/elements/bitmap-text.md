@@ -16,7 +16,7 @@ You can also use SDF, MSDF and MTSDF BitmapFonts for vector-like scaling appeara
 
 A BitmapText can only be created when the font is loaded.
 
-<demo src="./demo/basic.vue" width="440" />
+<demo src="./demo/bitmap-text.vue" width="440" />
 
 ## API
 
