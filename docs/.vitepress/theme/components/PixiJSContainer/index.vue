@@ -61,7 +61,7 @@ const highlightedHtml = computed(() => decodeURIComponent(isUsingTs.value ? prop
       <Review
         :class="[
           mode === 'full'
-            ? 'h-300px lg:h-400px xl:h-full xl:order-last xl:w-50%'
+            ? 'h-300px lg:h-400px xl:h-full xl:order-last xl:w-55%'
             : 'h-300px',
         ]"
         :width="width"
@@ -77,7 +77,7 @@ const highlightedHtml = computed(() => decodeURIComponent(isUsingTs.value ? prop
       <Editor
         :class="[
           mode === 'full'
-            ? 'max-h-300px lg:max-h-400px xl:h-full xl:max-h-full xl:w-50%'
+            ? 'max-h-300px lg:max-h-400px xl:h-full xl:max-h-full xl:w-45%'
             : 'max-h-350px',
         ]"
         :show-highlighted="showHighlighted"
