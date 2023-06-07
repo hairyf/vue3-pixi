@@ -59,7 +59,7 @@ useEventListener(stage, 'pointerupoutside', onDragEnd)
 
 <template>
   <container>
-    <Sprite v-for="(p, i) in sprites" :key="i" :index="i" v-bind="p" />
+    <sprite v-for="(p, i) in sprites" :key="i" :index="i" v-bind="p" />
   </container>
 </template>
 

@@ -43,26 +43,26 @@ for (const r of [stageRef, whiteBoxRef, blackBoxRef]) {
 </script>
 
 <template>
-  <Text :x="2" :style="{ fontSize: 16 }">
+  <text :x="2" :style="{ fontSize: 14 }">
     Move your mouse slowly over the boxes to\nsee the order of pointerenter, pointerleave,\npointerover, pointerout events on each target!
-  </Text>
-  <Text :x="2" :y="80" :style="{ fontSize: 14 }">
+  </text>
+  <text :x="2" :y="80" :style="{ fontSize: 12 }">
     {{ logs.join('\n') }}
-  </Text>
+  </text>
   <!-- Enable interactivity everywhere! -->
   <graphics
     ref="blackBoxRef"
-    :x="400"
+    :x="300"
     name="black box"
     event-mode="static"
-    @render="$event.beginFill(0).drawRect(0, 0, 400, 400).endFill()"
+    @render="$event.beginFill(0).drawRect(0, 50, 300, 300).endFill()"
   >
     <!-- Mount white box inside the white one -->
     <graphics
       ref="whiteBoxRef"
       name="white box"
       event-mode="static"
-      @render="$event.beginFill(0xFFFFFF).drawRect(100, 100, 200, 200).endFill()"
+      @render="$event.beginFill(0xFFFFFF).drawRect(100, 150, 100, 100).endFill()"
     />
   </graphics>
 </template>
