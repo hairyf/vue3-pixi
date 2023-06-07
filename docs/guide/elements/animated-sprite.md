@@ -29,7 +29,7 @@ I recommend using spritesheets created by TexturePacker ([they have a great tuto
 | loop | ^[boolean] | `true` | Whether or not the animate sprite repeats after playing. |
 | playing | ^[boolean] | `false` | Whether or not the animation is playing. |
 
-> more attributes in [Container Props](/guide/elements/container/#container-props) and [PIXI.AnimatedSprite](https://pixijs.download/release/docs/PIXI.AnimatedSprite.html)
+> more attributes in [Container Props](/guide/elements/container#container-props) and [PIXI.AnimatedSprite](https://pixijs.download/release/docs/PIXI.AnimatedSprite.html)
 
 ### AnimatedSprite Events
 
@@ -41,4 +41,4 @@ I recommend using spritesheets created by TexturePacker ([they have a great tuto
 | render | ^[function]`(el: AnimatedSprite): void` | custom rendering listener |
 <!-- | on-update:current-frame | ^[function]`(index: number):void` | when the AnimatedSprite changes to a new frame. | -->
 
-> more events in [Container Events](/guide/elements/container/#container-events)
+> more events in [Container Events](/guide/elements/container#container-events)

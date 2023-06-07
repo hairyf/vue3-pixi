@@ -24,7 +24,7 @@ To split a line you can use `\n` in your text string, or, on the style prop, cha
 | anchor-x | ^[number] | `0` | The x anchor sets the origin point of the text. |
 | anchor-y | ^[number] | `0` | The y anchor sets the origin point of the text. |
 
-> more props in [Container Props](/guide/elements/container/#container-props) and [PIXI.Text](https://pixijs.download/release/docs/PIXI.Text.html)
+> more props in [Container Props](/guide/elements/container#container-props) and [PIXI.Text](https://pixijs.download/release/docs/PIXI.Text.html)
 
 ### Text Events
 
@@ -32,4 +32,4 @@ To split a line you can use `\n` in your text string, or, on the style prop, cha
 | --- | --- | --- |
 | render | ^[function]`(el: Text): void` | custom render function |
 
-> more events in [Container Events](/guide/elements/container/#container-events)
+> more events in [Container Events](/guide/elements/container#container-events)

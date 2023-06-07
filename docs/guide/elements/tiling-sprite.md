@@ -19,7 +19,7 @@ Creates a [TilingSprite](https://pixijs.download/release/docs/PIXI.TilingSprite.
 | tile-position-y | ^[number] | `0` | The offset position of the tile's y axis. |
 | tile-transform | ^[object]`PIXI.Transform` | `false` | Whether or not anchor and position transforms should be applied to tiles. |
 
-> more props in [Container Props](/guide/elements/container/#container-props) and [PIXI.TilingSprite](https://pixijs.download/release/docs/PIXI.TilingSprite.html)
+> more props in [Container Props](/guide/elements/container#container-props) and [PIXI.TilingSprite](https://pixijs.download/release/docs/PIXI.TilingSprite.html)
 
 ### TilingSprite Events
 
@@ -27,4 +27,4 @@ Creates a [TilingSprite](https://pixijs.download/release/docs/PIXI.TilingSprite.
 | --- | --- | --- |
 | render | ^[function]`(el: TilingSprite): void` | custom render function |
 
-> more events in [Container Events](/guide/elements/container/#container-events)
+> more events in [Container Events](/guide/elements/container#container-events)

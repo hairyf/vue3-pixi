@@ -25,7 +25,7 @@ Note: when working with thousands of components, it is **much** more performant 
 | max-size | ^[number] | `1500` | The maximum number of particles that can be drawn by the container. |
 | properties | ^[object] | `undefined` | The properties of children that should be uploaded to the gpu and applied. |
 
-> more props in [Container Props](/guide/elements/container/#container-props) and [PIXI.ParticleContainer](https://pixijs.download/release/docs/PIXI.ParticleContainer.html)
+> more props in [Container Props](/guide/elements/container#container-props) and [PIXI.ParticleContainer](https://pixijs.download/release/docs/PIXI.ParticleContainer.html)
 
 ### ParticleContainer Events
 
@@ -33,4 +33,4 @@ Note: when working with thousands of components, it is **much** more performant 
 | --- | --- | --- |
 | render | ^[function]`(el: ParticleContainer): void` | custom render function |
 
-> more events in [Container Events](/guide/elements/container/#container-events)
+> more events in [Container Events](/guide/elements/container#container-events)

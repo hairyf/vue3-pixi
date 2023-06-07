@@ -38,7 +38,7 @@ A BitmapText can only be created when the font is loaded.
 | resolution | ^[number] | `undefined` | The resolution of the BitmapText. |
 | dirty | ^[boolean] | `false` | Whether or not the text has changed. |
 
-> more attributes in [Container Props](/guide/elements/container/#container-props) and [PIXI.BitmapText](https://pixijs.download/release/docs/PIXI.BitmapText.html)
+> more attributes in [Container Props](/guide/elements/container#container-props) and [PIXI.BitmapText](https://pixijs.download/release/docs/PIXI.BitmapText.html)
 
 ### BitmapText Events
 
@@ -46,7 +46,7 @@ A BitmapText can only be created when the font is loaded.
 | ---- | ---- | ---- |
 | render | ^[function]`(el: BitmapText): void` | custom rendering listener |
 
-> more events in [Container Events](/guide/elements/container/#container-events)
+> more events in [Container Events](/guide/elements/container#container-events)
 
 ## BitmapText Slots
 

@@ -19,7 +19,7 @@ This will set up a `watchEffect` internally that will automatically call the eve
 | tint | <api-color /> | `undefined` | The tint applied to the graphic shape. |
 | is-mask | ^[boolean] | `false` | Sets if this Graphics object is a mask. |
 
-> more props in [Container Props](/guide/elements/container/#container-props) and [PIXI.Graphics](https://pixijs.download/release/docs/PIXI.Graphics.html)
+> more props in [Container Props](/guide/elements/container#container-props) and [PIXI.Graphics](https://pixijs.download/release/docs/PIXI.Graphics.html)
 
 ### Graphics Events
 
@@ -27,7 +27,7 @@ This will set up a `watchEffect` internally that will automatically call the eve
 | --- | --- | --- |
 | render | ^[function]`(el: Graphics): void` | Call your drawing functions on the PIXI.Graphics instance here |
 
-> more events in [Container Events](/guide/elements/container/#container-events)
+> more events in [Container Events](/guide/elements/container#container-events)
 
 ### Graphics Slots
 

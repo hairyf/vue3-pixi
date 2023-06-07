@@ -21,7 +21,7 @@ Allows you to stretch a texture using 9-slice scaling. The corners will remain u
 | bottom-height | ^[number] | `undefined` | The height of the bottom row of the grid |
 | geometry | ^[object]`PIXI.Geometry` | `undefined` | The geometry the mesh will use. |
 
-> more props in [Container Props](/guide/elements/container/#container-props) and [PIXI.NineSlicePlane](https://pixijs.download/release/docs/PIXI.NineSlicePlane.html)
+> more props in [Container Props](/guide/elements/container#container-props) and [PIXI.NineSlicePlane](https://pixijs.download/release/docs/PIXI.NineSlicePlane.html)
 
 ### NineSlicePlane Events
 
@@ -29,6 +29,6 @@ Allows you to stretch a texture using 9-slice scaling. The corners will remain u
 | --- | --- | --- |
 | render | ^[function]`(el: NineSlicePlane): void` | custom render function |
 
-> more events in [Container Events](/guide/elements/container/#container-events)
+> more events in [Container Events](/guide/elements/container#container-events)
 
 <!-- LINKS -->

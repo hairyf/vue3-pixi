@@ -22,7 +22,7 @@ Pretty much all WebGL can be broken down into the following:
 | draw-mode | <api-draw-mode /> | `DRAW_MODES.TRIANGLES` | The draw mode to be used. |
 | geometry | ^[object]`PIXI.Geometry` | `undefined` | The geometry the mesh will use. |
 
-> more props in [Container Props](/guide/elements/container/#container-props) and [PIXI.Mesh](https://pixijs.download/release/docs/PIXI.Mesh.html)
+> more props in [Container Props](/guide/elements/container#container-props) and [PIXI.Mesh](https://pixijs.download/release/docs/PIXI.Mesh.html)
 
 ### Mesh Events
 
@@ -30,4 +30,4 @@ Pretty much all WebGL can be broken down into the following:
 | --- | --- | --- |
 | render | ^[function]`(el: Mesh): void` | Call your drawing functions on the PIXI.Mesh instance here |
 
-> more events in [Container Events](/guide/elements/container/#container-events)
+> more events in [Container Events](/guide/elements/container#container-events)

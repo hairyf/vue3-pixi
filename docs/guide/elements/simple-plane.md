@@ -17,7 +17,7 @@ The SimplePlane allows you to draw a texture across several points and then mani
 | geometry | ^[object]`PIXI.Geometry` | `undefined` | The geometry to use on the SimplePlane. |
 | vertices | ^[number]`number` | `10` | The number of vertices in the axis |
 
-> more props in [Container Props](/guide/elements/container/#container-props) and [PIXI.SimplePlane](https://pixijs.download/release/docs/PIXI.SimplePlane.html)
+> more props in [Container Props](/guide/elements/container#container-props) and [PIXI.SimplePlane](https://pixijs.download/release/docs/PIXI.SimplePlane.html)
 
 ### SimplePlane Events
 
@@ -25,4 +25,4 @@ The SimplePlane allows you to draw a texture across several points and then mani
 | --- | --- | --- |
 | render | ^[function]`(el: SimplePlane): void` | custom render function |
 
-> more events in [Container Events](/guide/elements/container/#container-events)
+> more events in [Container Events](/guide/elements/container#container-events)
