@@ -21,7 +21,21 @@ const themeConfig: DefaultTheme.Config = {
         { text: 'Composition API', link: '/guide/composition-api/on-tick' },
       ],
     },
-    { text: 'Examples', link: '/examples/basic/blend-modes' },
+    {
+      text: 'Examples',
+      items: [
+        { text: 'Basic', link: '/examples/basic/blend-modes' },
+        { text: 'Sprite', link: '/examples/sprite/animated-sprite-animation-speed' },
+        { text: 'Text', link: '/examples/text/bitmap-text' },
+        { text: 'Graphics', link: '/examples/graphics/advanced' },
+        { text: 'Events', link: '/examples/events/click' },
+        { text: 'Masks', link: '/examples/masks/filter' },
+        { text: 'Filters Basic', link: '/examples/filters-basic/blur' },
+        // { text: 'Filters Advanced', link: '/examples/filters-advanced/custom' },
+        // { text: 'Advanced', link: '/examples/advanced/collision-detection' },
+        // { text: 'Mesh And Shaders', link: '/examples/mesh-and-shaders/instanced-geometry' },
+      ],
+    },
   ],
   sidebar: {
     '/guide/': [
@@ -156,35 +170,6 @@ const themeConfig: DefaultTheme.Config = {
         ],
       },
       {
-        text: 'Textures',
-        collapsed: true,
-        items: [
-          { text: 'Gradient', link: '/examples/textures/gradient' },
-          { text: 'Gradient Resource', link: '/examples/textures/gradient-resource' },
-          { text: 'Render Texture Advanced', link: '/examples/textures/render-texture-advanced' },
-          { text: 'Render Texture Basic', link: '/examples/textures/render-texture-basic' },
-          { text: 'Texture Rotate', link: '/examples/textures/texture-rotate' },
-        ],
-      },
-      {
-        text: 'Assets',
-        collapsed: true,
-        items: [
-          { text: 'Async', link: '/examples/assets/async' },
-          { text: 'Background', link: '/examples/assets/background' },
-          { text: 'Bundle', link: '/examples/assets/bundle' },
-          { text: 'Multiple', link: '/examples/assets/multiple' },
-          { text: 'Promise', link: '/examples/assets/promise' },
-        ],
-      },
-      {
-        text: 'Offscreen Canvas',
-        collapsed: true,
-        items: [
-          { text: 'Basic', link: '/examples/offscreen-canvas/basic' },
-        ],
-      },
-      {
         text: 'Filters Basic',
         collapsed: true,
         items: [
@@ -194,16 +179,16 @@ const themeConfig: DefaultTheme.Config = {
           { text: 'Displacement Map Flag', link: '/examples/filters-basic/displacement-map-flag' },
         ],
       },
-      {
-        text: 'Filters Advanced',
-        collapsed: true,
-        items: [
-          { text: 'Custom', link: '/examples/filters-advanced/custom' },
-          { text: 'Mouse Blending', link: '/examples/filters-advanced/mouse-blending' },
-          { text: 'Shader Toy Filter Render Texture', link: '/examples/filters-advanced/shader-toy-filter-render-texture' },
-        ],
-      },
-      {
+      // {
+      //   text: 'Filters Advanced',
+      //   collapsed: true,
+      //   items: [
+      //     { text: 'Custom', link: '/examples/filters-advanced/custom' },
+      //     { text: 'Mouse Blending', link: '/examples/filters-advanced/mouse-blending' },
+      //     { text: 'Shader Toy Filter Render Texture', link: '/examples/filters-advanced/shader-toy-filter-render-texture' },
+      //   ],
+      // },
+      /*    {
         text: 'Advanced',
         collapsed: true,
         items: [
@@ -215,8 +200,8 @@ const themeConfig: DefaultTheme.Config = {
           { text: 'Spinners', link: '/examples/advanced/spinners' },
           { text: 'Star Warp', link: '/examples/advanced/star-warp' },
         ],
-      },
-      {
+      }, */
+      /*    {
         text: 'Mesh And Shaders',
         collapsed: true,
         items: [
@@ -234,7 +219,7 @@ const themeConfig: DefaultTheme.Config = {
           { text: 'Triangle', link: '/examples/mesh-and-shaders/triangle' },
           { text: 'Uniforms', link: '/examples/mesh-and-shaders/uniforms' },
         ],
-      },
+      }, */
     ],
   },
 
