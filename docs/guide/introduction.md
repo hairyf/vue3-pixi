@@ -26,8 +26,8 @@
 - 📦 Supports all PixiJS objects, such as `Filter`, `Container`, `Sprite`, `Graphics`, `Text`, etc
 - 🧑‍💻 Support specifying `texture` paths in templates to load texture objects
 - ✨ All [events](https://pixijs.download/release/docs/PIXI.Sprite.html#onclick) emitted by PixiJS objects are supported
-- 🗃️ Offers [Assets](#assets) component for bundling assets and Feature Rich [Composition Utilities](#composables).
-- 💫 Create different transition effects in conjunction with [@vue3-pixi-transition](https://github.com/hairyf/vue3-pixi/tree/main/packages/transition).
+- 🗃️ Offers [Loader](/guide/components/loader) component for bundling assets and Feature Rich [Composition Utilities](/guide/composition-api/on-tick).
+- 💫 Create different transition effects in conjunction with [Transition](/guide/components/transition).
 
 
 > **It is still a work in progress** but it should be usable enough for real projects. If you run into any problems please don’t hesitate to [create an issue on GitHub](https://github.com/hairyf/vue3-pixi/issues).
