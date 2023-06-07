@@ -53,11 +53,8 @@ function onAssetsLoaded() {
 
 function tickAlines() {
   // let's rotate the aliens a little bit
-  for (let i = 0; i < 100; i++) {
-    const alien = aliens[i]
-
-    alien.rotation += 0.1
-  }
+  for (let i = 0; i < 100; i++)
+    aliens[i].rotation += 0.1
 
   count += 0.01
 
