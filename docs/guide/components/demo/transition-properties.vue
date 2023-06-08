@@ -8,7 +8,7 @@ function onDrawRounded(e: GraphicsIns) {
   e.drawRoundedRect(0, 0, 60, 60, 10)
 }
 
-const show = ref(false)
+const show = ref(true)
 </script>
 
 <template>

@@ -17,7 +17,7 @@ function easeOutElastic(n: number) {
       : 2 ** (-10 * n) * Math.sin((n * 10 - 0.75) * ((2 * Math.PI) / 3)) + 1
 }
 
-const show = ref(false)
+const show = ref(true)
 </script>
 
 <template>
