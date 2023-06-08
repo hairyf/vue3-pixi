@@ -8,7 +8,7 @@ The usage of `PTransition` is similar to [Vue Transition](https://cn.vuejs.org/g
 
 ## Usage
 
-Translation: Pixi.js does not provide a built-in tweening engine, but you can use third-party tweening engines like `GSAP` or `Tween.js` to achieve tween animations.
+Pixi.js does not provide a built-in tweening engine, but you can use third-party tweening engines like `GSAP` or `Tween.js` to achieve tween animations.
 
 <demo src="./demo/transition.vue" :width="400" :expand="false" />
 
