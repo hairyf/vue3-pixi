@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import type { ToRef } from 'vue'
-import { customRef } from 'vue'
+import type { ToRef } from 'vue-demi'
+import { customRef } from 'vue-demi'
 import { toValue, whenever } from '@vueuse/core'
 import type { MaybeRefOrGetter } from '@vueuse/core'
 export type OmitUndef<T> = Exclude<T, undefined>

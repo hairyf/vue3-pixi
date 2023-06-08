@@ -1,7 +1,7 @@
 import { nanoid } from 'nanoid'
 import { Assets } from 'pixi.js'
-import type { ExtractPropTypes, PropType } from 'vue'
-import { defineComponent, onBeforeUnmount, ref, renderSlot, watch } from 'vue'
+import type { ExtractPropTypes, PropType } from 'vue-demi'
+import { defineComponent, onBeforeUnmount, ref, renderSlot, watch } from 'vue-demi'
 
 import type { IBaseTextureOptions, Texture } from 'pixi.js'
 import { isString } from '@antfu/utils'

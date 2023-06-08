@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import type { IBaseTextureOptions, Texture } from 'pixi.js'
-import type { App, AppContext } from 'vue'
+import type { App, AppContext } from 'vue-demi'
 
 export function setTextureOptions(texture: Texture, options: IBaseTextureOptions = {}) {
   for (const key in options)

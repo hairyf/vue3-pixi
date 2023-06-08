@@ -11,34 +11,20 @@
     "play": "npm -C playground run dev",
     "release": "bumpp -r && pnpm -r publish",
     "test": "vitest",
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:dev": "npm -C docs run dev",
+    "docs:build": "npm -C docs run build",
+    "docs:preview": "npm -C docs run preview"
   },
   "dependencies": {
-    "@antfu/utils": "^0.7.2",
-    "@stackblitz/sdk": "^1.9.0",
-    "@vueuse/core": "^10.1.2",
-    "gsap": "^3.11.5",
-    "naive-ui": "^2.34.4",
-    "nanoid": "^4.0.2",
-    "pixi.js": "^7.2.4",
-    "unocss": "^0.53.0",
-    "vue": "^3.3.4",
-    "vue3-pixi": "workspace:^"
+    "@antfu/utils": "^0.7.2"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.33.1",
-    "@iconify/json": "^2.2.73",
     "@types/node": "^18.11.13",
     "bumpp": "^9.0.0",
-    "codesandbox": "^2.2.3",
     "eslint": "^8.29.0",
-    "floating-vue": "2.0.0-beta.20",
-    "markdown-it-vitepress-demo": "^0.1.8",
     "tsup": "6.6.2",
     "typescript": "^5.0.0",
-    "vitepress": "1.0.0-beta.1",
     "vitest": "^0.32.0"
   }
 }

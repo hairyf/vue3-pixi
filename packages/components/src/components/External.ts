@@ -1,8 +1,7 @@
 /* eslint-disable vue/one-component-per-file */
-import type { App, PropType } from 'vue'
-import { createApp, defineComponent, getCurrentInstance, h, inject, onMounted, onUnmounted, ref } from 'vue'
-
-import { appInjectKey } from 'vue3-pixi'
+import type { App, PropType } from 'vue-demi'
+import { createApp, defineComponent, getCurrentInstance, h, inject, onMounted, onUnmounted, ref } from 'vue-demi'
+import { appInjectKey } from '@vue-pixi/composables'
 import { inheritParent } from '../utils'
 
 const External = defineComponent({
