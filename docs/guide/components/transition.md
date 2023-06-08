@@ -72,13 +72,13 @@ You can also control the transition effects by setting enter and level to functi
 | Name | Type | Default | Description |
 | ---- | ---- | ---- | ---- |
 | duration | ^[number] ^[object]`{ enter: number; leave: number }` | `500` | Transition duration (ms). |
-| before-enter | ^[function]`(el: any):void` ^[object\|array]`TransitionVars | TransitionVars[]` | `undefined` | Called before the transition starts. |
-| enter | ^[function]`(el: any, done: () => void):void` ^[object\|array]`TransitionVars | TransitionVars[]` | `undefined` | Called when the transition starts. |
-| after-enter | ^[function]`(el: any):void` ^[object\|array]`TransitionVars | TransitionVars[]` | `undefined` | Called after the transition ends. |
+| before-enter | ^[function]`(el: any):void` ^[object\|array]`TransitionVars \| TransitionVars[]` | `undefined` | Called before the transition starts. |
+| enter | ^[function]`(el: any, done: () => void):void` ^[object\|array]`TransitionVars \| TransitionVars[]` | `undefined` | Called when the transition starts. |
+| after-enter | ^[function]`(el: any):void` ^[object\|array]`TransitionVars \| TransitionVars[]` | `undefined` | Called after the transition ends. |
 | 
-| before-leave | ^[function]`(el: any):void` ^[object\|array]`TransitionVars | TransitionVars[]` | `undefined` | Called before the transition starts. |
-| leave | ^[function]`(el: any, done: () => void):void` ^[object\|array]`TransitionVars | TransitionVars[]` | `undefined` | Called when the transition starts. |
-| after-leave | ^[function]`(el: any):void` ^[object\|array]`TransitionVars | TransitionVars[]` | `undefined` | Called after the transition ends. |
+| before-leave | ^[function]`(el: any):void` ^[object\|array]`TransitionVars \| TransitionVars[]` | `undefined` | Called before the transition starts. |
+| leave | ^[function]`(el: any, done: () => void):void` ^[object\|array]`TransitionVars \| TransitionVars[]` | `undefined` | Called when the transition starts. |
+| after-leave | ^[function]`(el: any):void` ^[object\|array]`TransitionVars \| TransitionVars[]` | `undefined` | Called after the transition ends. |
 
 ### PTransition Events
 
