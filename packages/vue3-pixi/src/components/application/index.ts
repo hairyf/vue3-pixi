@@ -4,8 +4,8 @@ import { throttle } from '@antfu/utils'
 import { Application as _Application } from 'pixi.js'
 import type { ColorSource, Container } from 'pixi.js'
 import type { App, PropType } from 'vue-demi'
-import { createApp } from '@vue-pixi/renderer'
-import { appInjectKey } from '@vue-pixi/composables'
+import { createApp } from '../../renderer'
+import { appInjectKey } from '../../composables'
 
 export interface ApplicationInst {
   canvas: HTMLCanvasElement

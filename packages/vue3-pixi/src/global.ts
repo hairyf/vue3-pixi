@@ -1,4 +1,5 @@
 import '@vue/runtime-core'
+import 'pixi.js'
 import type { SimpleRopeComponent } from './elements/simpleRope'
 import type { SimplePlaneComponent } from './elements/simplePlane'
 import type { NineSlicePlaneComponent } from './elements/nineSlicePlane'
