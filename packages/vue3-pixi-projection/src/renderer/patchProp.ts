@@ -1,25 +1,18 @@
 import type { Container2d } from 'pixi-projection'
-import { Camera3d } from 'pixi-projection'
-import { setPropertyValue, setSkipFirstValue } from '@vue-pixi/renderer'
-import { setPointProperty } from './setter'
+import { patchProp as defuPatchProp, setPropertyValue } from 'vue3-pixi'
+import { setPointProperty } from './internal'
 
 const pointProps = ['position3d', 'euler'] as const
 const projProps = ['affine']
-export function pathProp(el: any, key: string, prevValue: any, nextValue: any) {
-  const patches = [
-    { element: Camera3d, patch: patchCamera3dProps },
-  ]
 
-  for (const { element, patch } of patches) {
-    if (el instanceof element && patch(el, key, prevValue, nextValue))
-      return true
-  }
-
+export function patchProp(el: any, key: string, prevValue: any, nextValue: any) {
   if (patchProjProps(el, key, prevValue, nextValue))
     return true
 
   if (patchPointProps(el, key, prevValue, nextValue))
     return true
+
+  return defuPatchProp(el, key, prevValue, nextValue)
 }
 
 export function patchPointProps(el: Container2d, key: string, prevValue: any, nextValue: any) {
@@ -27,24 +20,6 @@ export function patchPointProps(el: Container2d, key: string, prevValue: any, ne
     if (key.startsWith(name))
       return setPointProperty(el, name, key, prevValue, nextValue)
   }
-  return false
-}
-
-export function patchCamera3dProps(el: any, key: string, _: any, nextValue: any) {
-  const props = ['focus', 'near', 'far', 'orthographic']
-
-  function setPlanes(config: any) {
-    el.setPlanes(
-      config.focus || el._focus,
-      config.near || el.near,
-      config.far || el.far,
-      config.orthographic || el._orthographic,
-    )
-  }
-
-  if (props.includes(key))
-    return setSkipFirstValue(el, key, () => setPlanes({ [key]: nextValue }))
-
   return false
 }
 

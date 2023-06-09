@@ -1,7 +1,6 @@
-import type { Renderer } from '@vue-pixi/renderer'
-import { elements, pathProp } from './renderer'
+import { ProjectionRenderer } from './renderer'
 
-export default { elements, pathProp } as Renderer
+export default ProjectionRenderer
 
 export * from './global'
 export * from './types'

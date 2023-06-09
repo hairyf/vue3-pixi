@@ -3,7 +3,7 @@ import type {
   DefineComponent,
   VNodeProps,
 } from 'vue-demi'
-import type { AllowedPixiProps, PixiEvents } from '@vue-pixi/renderer'
+import type { AllowedPixiProps, PixiEvents } from 'vue3-pixi'
 import type { Camera3d } from 'pixi-projection'
 
 export interface Camera3dProps {

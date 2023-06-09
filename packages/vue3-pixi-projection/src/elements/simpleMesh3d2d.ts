@@ -1,4 +1,4 @@
-import type { AllowedPixiProps, MeshProps, PixiEvents } from '@vue-pixi/renderer'
+import type { AllowedPixiProps, MeshProps, PixiEvents } from 'vue3-pixi'
 import type { ComponentOptionsMixin, DefineComponent, VNodeProps } from 'vue-demi'
 import type { SimpleMesh3d2d } from 'pixi-projection'
 import type { Allowed3dPixiProps } from './props'

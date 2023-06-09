@@ -21,7 +21,7 @@ export function patchProp(
     return
 
   if (defaultBooleanProps.includes(key))
-    return patchBoolProp(el, key, prevValue, nextValue)
+    return patchBooleanProp(el, key, prevValue, nextValue)
 
   if (patchPointProp(el, key, prevValue, nextValue))
     return
@@ -74,7 +74,7 @@ export function patchEventProp(el: any, key: string, prevValue: any, nextValue: 
   return true
 }
 
-export function patchBoolProp(
+export function patchBooleanProp(
   _el: Container,
   _key: string,
   _prevValue: any,

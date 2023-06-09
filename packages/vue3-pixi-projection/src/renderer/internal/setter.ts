@@ -1,4 +1,4 @@
-import { setPointProperty as _setPointProperty, setPropertyValue } from '@vue-pixi/renderer'
+import { setPointProperty as _setPointProperty, setPropertyValue } from 'vue3-pixi'
 
 export function setPointProperty(inst: any, name: string, key: string, prevValue: any, nextValue: any) {
   if (_setPointProperty(inst, name, key, prevValue, nextValue))

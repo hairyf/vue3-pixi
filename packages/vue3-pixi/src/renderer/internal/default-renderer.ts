@@ -19,7 +19,7 @@ import {
   Text,
   TilingSprite,
 } from 'pixi.js'
-import { patchProp as defuPatchProp, patchBoolProp } from '../patchProp'
+import { patchProp as defuPatchProp, patchBooleanProp } from '../patchProp'
 import { normalizeTexture } from '../utils'
 import { setObjectProperty, setPropertyValue, setSkipFirstValue } from './setter'
 import type { Renderer, RendererOptions } from './types'
@@ -102,7 +102,7 @@ const BitmapTextRender: RendererOptions = {
         break
       case 'dirty':
       case 'roundPixels':
-        patchBoolProp(el, key, prev, next)
+        patchBooleanProp(el, key, prev, next)
         break
       default:
         defuPatchProp(el, key, prev, next)
@@ -124,7 +124,7 @@ const TilingSpriteRender: RendererOptions = {
         setSkipFirstValue(el, key, () => el[key] = next)
         break
       case 'uvRespectAnchor':
-        patchBoolProp(el, key, prev, next)
+        patchBooleanProp(el, key, prev, next)
         break
       default:
         defuPatchProp(el, key, prev, next)
@@ -157,7 +157,7 @@ const AnimatedSpriteRender: RendererOptions = {
         break
       case 'loop':
       case 'updateAnchor':
-        patchBoolProp(el, key, prev, next)
+        patchBooleanProp(el, key, prev, next)
         break
       case 'onComplete':
       case 'onFrameChange':
@@ -187,7 +187,7 @@ const MeshRender: RendererOptions = {
         setSkipFirstValue(el, key, () => el[key] = next)
         break
       case 'roundPixels':
-        patchBoolProp(el, key, prev, next)
+        patchBooleanProp(el, key, prev, next)
         break
       default:
         defuPatchProp(el, key, prev, next)
@@ -204,7 +204,7 @@ const NineSlicePlaneRender: RendererOptions = {
     switch (key) {
       case 'roundPixels':
       case 'autoResize':
-        patchBoolProp(el, key, prev, next)
+        patchBooleanProp(el, key, prev, next)
         break
       default:
         defuPatchProp(el, key, prev, next)

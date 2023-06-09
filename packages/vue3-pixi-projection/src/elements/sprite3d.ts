@@ -1,4 +1,4 @@
-import type { AllowedPixiProps, PixiEvents, SpriteProps } from '@vue-pixi/renderer'
+import type { AllowedPixiProps, PixiEvents, SpriteProps } from 'vue3-pixi'
 import type { ComponentOptionsMixin, DefineComponent, VNodeProps } from 'vue-demi'
 import type { Sprite3d } from 'pixi-projection'
 import type { Allowed3dPixiProps } from './props'

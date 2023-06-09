@@ -59,8 +59,8 @@ jobs:
       - name: Install
         run: pnpm install
 
-      # - name: Build
-      #   run: pnpm -r build
+      - name: Build
+        run: pnpm -r build
 
       - name: Test
         run: pnpm run test
