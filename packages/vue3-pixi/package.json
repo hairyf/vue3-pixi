@@ -24,6 +24,16 @@
         "require": "./dist/index.cjs",
         "import": "./dist/index.js"
       },
+      "./compiler": {
+        "types": "./dist/compiler.d.ts",
+        "require": "./dist/compiler.cjs",
+        "import": "./dist/compiler.js"
+      },
+      "./global": {
+        "types": "./dist/global.d.ts",
+        "require": "./dist/global.cjs",
+        "import": "./dist/global.js"
+      },
       "./*": "./*"
     },
     "main": "dist/index.cjs",
