@@ -20,8 +20,8 @@ export function patchProp(
   if (patchTextureProp(el, key, prevValue, nextValue))
     return
 
-  if (defaultBooleanProps.includes(key))
-    return patchBooleanProp(el, key, prevValue, nextValue)
+  if (defaultBooleanProps.includes(key) && patchBooleanProp(el, key, prevValue, nextValue))
+    return
 
   if (patchPointProp(el, key, prevValue, nextValue))
     return
@@ -75,10 +75,12 @@ export function patchEventProp(el: any, key: string, prevValue: any, nextValue: 
 }
 
 export function patchBooleanProp(
-  _el: Container,
+  _el: any,
   _key: string,
   _prevValue: any,
   nextValue: any,
 ): boolean {
-  return nextValue === '' || !!nextValue
+  _el[_key] = nextValue === '' || !!nextValue
+
+  return true
 }

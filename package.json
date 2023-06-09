@@ -11,6 +11,7 @@
     "play": "npm -C playground run dev",
     "release": "bumpp -r && pnpm -r publish",
     "test": "vitest",
+    "coverage": "vitest run --coverage",
     "docs:dev": "npm -C docs run docs:dev",
     "docs:build": "npm -C docs run docs:build",
     "docs:preview": "npm -C docs run docs:preview"
@@ -21,8 +22,10 @@
   "devDependencies": {
     "@antfu/eslint-config": "^0.33.1",
     "@types/node": "^18.11.13",
+    "@vue/test-utils": "^2.3.2",
     "bumpp": "^9.0.0",
     "eslint": "^8.29.0",
+    "jsdom": "^22.1.0",
     "tsup": "6.6.2",
     "typescript": "^5.0.0",
     "vitest": "^0.32.0"

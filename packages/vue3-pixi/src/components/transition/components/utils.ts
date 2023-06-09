@@ -19,7 +19,7 @@ export interface TransitionOptions {
   done: Fn
 }
 
-export async function callInstanceSetterterHook(instance: any, props: any, name: string) {
+export async function callInstanceSetterHook(instance: any, props: any, name: string) {
   const eventName = `on${name[0].toLocaleUpperCase()}${name.slice(1)}`
   const hook = props[name] || props[eventName]
   const filters = instance.filters || []
@@ -31,7 +31,7 @@ export async function callInstanceSetterterHook(instance: any, props: any, name:
     return
   }
 
-  filters.forEach((filter: any) => callInstanceSetterterHook(filter, filter, name))
+  filters.forEach((filter: any) => callInstanceSetterHook(filter, filter, name))
   setProps(instance, toArray(hook))
 }
 
