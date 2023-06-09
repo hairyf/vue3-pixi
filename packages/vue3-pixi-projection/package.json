@@ -1,5 +1,5 @@
 {
-  "name": "@vue-pixi/projection",
+  "name": "vue3-pixi-projection",
   "type": "module",
   "version": "0.7.7",
   "description": "Vue createRenderer for PixiJS",

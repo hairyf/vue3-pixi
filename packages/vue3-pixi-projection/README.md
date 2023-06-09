@@ -22,7 +22,7 @@ using `@vue-pixi/projection` requires loading the module before using `vue3-pixi
 
 ```ts
 import { renderer } from 'vue3-pixi'
-import ProjectionRenderer from '@vue-pixi/projection'
+import ProjectionRenderer from 'vue3-pixi-projection'
 
 renderer.use(ProjectionRenderer)
 ```
