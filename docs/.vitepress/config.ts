@@ -3,7 +3,7 @@ import { fileURLToPath } from 'url'
 import type { DefaultTheme } from 'vitepress'
 import { defineConfig } from 'vitepress'
 import unocss from 'unocss/vite'
-import { compilerOptions, transformAssetUrls } from '../../packages/renderer'
+import { compilerOptions, transformAssetUrls } from '../../packages/vue3-pixi'
 import { mdPlugin } from './plugin'
 
 const themeConfig: DefaultTheme.Config = {
