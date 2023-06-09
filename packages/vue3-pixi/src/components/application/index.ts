@@ -12,7 +12,7 @@ export interface ApplicationInst {
   app: _Application
 }
 
-const Application = defineComponent({
+export const Application = defineComponent({
   props: {
     antialias: { type: Boolean, default: true },
     autoDensity: { type: Boolean, default: true },
@@ -92,4 +92,3 @@ const Application = defineComponent({
   },
 })
 
-export default Application

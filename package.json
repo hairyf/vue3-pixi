@@ -11,9 +11,9 @@
     "play": "npm -C playground run dev",
     "release": "bumpp -r && pnpm -r publish",
     "test": "vitest",
-    "docs:dev": "npm -C docs run dev",
-    "docs:build": "npm -C docs run build",
-    "docs:preview": "npm -C docs run preview"
+    "docs:dev": "npm -C docs run docs:dev",
+    "docs:build": "npm -C docs run docs:build",
+    "docs:preview": "npm -C docs run docs:preview"
   },
   "dependencies": {
     "@antfu/utils": "^0.7.2"

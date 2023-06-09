@@ -26,7 +26,7 @@ export const loaderProps = {
 
 export type LoaderProps = ExtractPropTypes<typeof loaderProps>
 
-const Loader = defineComponent({
+export const Loader = defineComponent({
   props: loaderProps,
   setup(props, { slots }) {
     const loading = ref(false)
@@ -99,4 +99,3 @@ async function resolveAssets(assets: LoadAssets) {
   return result
 }
 
-export default Loader
