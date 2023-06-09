@@ -21,10 +21,10 @@ pnpm install @vue-pixi/projection
 using `@vue-pixi/projection` requires loading the module before using `vue3-pixi`
 
 ```ts
-import { use } from 'vue3-pixi'
+import { renderer } from 'vue3-pixi'
 import ProjectionRenderer from '@vue-pixi/projection'
 
-use(ProjectionRenderer)
+renderer.use(ProjectionRenderer)
 ```
 
 in template use `camera-3d` and `sprite-3d` components:
