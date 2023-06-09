@@ -2,9 +2,9 @@
 import type { App, PropType } from 'vue-demi'
 import { createApp, defineComponent, getCurrentInstance, h, inject, onMounted, onUnmounted, ref } from 'vue-demi'
 import { appInjectKey } from '@vue-pixi/composables'
-import { inheritParent } from '../utils'
+import { inheritParent } from './utils'
 
-const External = defineComponent({
+export const External = defineComponent({
   props: {
     tag: String as PropType<keyof HTMLElementTagNameMap>,
     root: Object as PropType<HTMLElement>,
@@ -47,4 +47,3 @@ const External = defineComponent({
   },
 })
 
-export default External

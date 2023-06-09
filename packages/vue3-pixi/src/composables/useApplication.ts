@@ -1,7 +1,7 @@
 import type { Ref } from 'vue-demi'
 import { inject, ref } from 'vue-demi'
 import type { Application } from 'pixi.js'
-import { appInjectKey } from '../internal'
+import { appInjectKey } from './internal'
 
 export function useApplication<T = Application>(): Ref<T> {
   const app = ref(inject(appInjectKey))

@@ -1,5 +1,5 @@
-export * from '@vue-pixi/components'
-export * from '@vue-pixi/composables'
-export * from '@vue-pixi/renderer'
-export * from '@vue-pixi/transition'
-
+export * from './components'
+export * from './composables'
+export * from './global'
+export * from './compiler'
+export * from './renderer'

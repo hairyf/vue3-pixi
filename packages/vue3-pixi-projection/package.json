@@ -49,9 +49,9 @@
   },
   "dependencies": {
     "@antfu/utils": "^0.7.2",
-    "@vue-pixi/renderer": "workspace:^",
     "pixi-projection": "^1.0.0",
-    "vue-demi": "^0.14.1"
+    "vue-demi": "^0.14.1",
+    "vue3-pixi": "workspace:^"
   },
   "devDependencies": {
     "@vue/runtime-core": "^3"

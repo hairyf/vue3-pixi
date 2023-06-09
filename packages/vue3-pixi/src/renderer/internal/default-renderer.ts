@@ -1,4 +1,24 @@
-import { AlphaFilter, AnimatedSprite, BitmapText, BlurFilter, ColorMatrixFilter, Container, DisplacementFilter, FXAAFilter, Graphics, Mesh, NineSlicePlane, NoiseFilter, ParticleContainer, SimpleMesh, SimplePlane, SimpleRope, Sprite, Text, TilingSprite } from 'pixi.js'
+import {
+  AlphaFilter,
+  AnimatedSprite,
+  BitmapText,
+  BlurFilter,
+  ColorMatrixFilter,
+  Container,
+  DisplacementFilter,
+  FXAAFilter,
+  Graphics,
+  Mesh,
+  NineSlicePlane,
+  NoiseFilter,
+  ParticleContainer,
+  SimpleMesh,
+  SimplePlane,
+  SimpleRope,
+  Sprite,
+  Text,
+  TilingSprite,
+} from 'pixi.js'
 import { patchProp as defuPatchProp, patchBoolProp } from '../patchProp'
 import { normalizeTexture } from '../utils'
 import { setObjectProperty, setPropertyValue, setSkipFirstValue } from './setter'

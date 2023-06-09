@@ -5,7 +5,7 @@ import { defineComponent, onBeforeUnmount, ref, renderSlot, watch } from 'vue-de
 
 import type { IBaseTextureOptions, Texture } from 'pixi.js'
 import { isString } from '@antfu/utils'
-import { setTextureOptions } from '../utils'
+import { setTextureOptions } from './utils'
 
 export type LoadAsset = string | { default: string } | Promise<string | { default: string }>
 export type LoadAssets = Record<string, LoadAsset> | (LoadAsset | [string, LoadAsset])[]
