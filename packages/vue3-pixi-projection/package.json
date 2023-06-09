@@ -1,7 +1,7 @@
 {
   "name": "@vue-pixi/projection",
   "type": "module",
-  "version": "0.7.6",
+  "version": "0.7.7",
   "private": true,
   "description": "Vue createRenderer for PixiJS",
   "license": "MIT",
