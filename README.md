@@ -30,7 +30,7 @@
 - 📦 Supports all PixiJS objects, such as `Filter`, `Container`, `Sprite`, `Graphics`, `Text`, etc
 - 🧑‍💻 Support specifying `texture` paths in templates to load texture objects
 - ✨ All [events](https://pixijs.download/release/docs/PIXI.Sprite.html#onclick) emitted by PixiJS objects are supported
-- 🗃️ Offers [Loader](https://vue3-pixi.vercel.app//guide/components/loader) component for bundling assets and Feature Rich [Composition Utilities](https://vue3-pixi.vercel.app//guide/composition-api/on-tick).
+- 🗃️ Offers [Loader](https://vue3-pixi.vercel.app//guide/components/loader.html) component for bundling assets and Feature Rich [Composition Utilities](https://vue3-pixi.vercel.app//guide/composition-api/on-tick.html).
 - 💫 Create different transition effects in conjunction with [Transition](https://vue3-pixi.vercel.app//guide/components/transition.html).
 
 ## Installation
