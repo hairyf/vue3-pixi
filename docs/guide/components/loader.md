@@ -8,6 +8,12 @@ You can show progress by using the `progress` prop from the `fallback` slot.
 
 <demo src="./demo/loader.vue" background="#fff" />
 
+## Default Slot
+
+You can also access the loaded resources through the default slot, which is an object that you can iterate over.
+
+<demo src="./demo/loader-slots.vue" />
+
 ## Alias
 
 You can specify aliases for resources using `{ [key]: Asset }` or an array `[key, Asset]`.
@@ -26,7 +32,7 @@ You can specify aliases for resources using `{ [key]: Asset }` or an array `[key
 </template>
 ```
 
-or 
+or use array
 
 ```vue
 <template>
@@ -78,5 +84,6 @@ In a Vite project, you may sometimes need to use the import function to import r
 ### Loader Slots
 
 | Name | Type | Description |
+| ---- | ---- | ---- |
 | default | `({ textures }): void` | The default slot is where you put all your Pixi elements. |
 | fallback | `({ progress }): void` | The default slot is where you put all your Pixi elements. |
