@@ -1,7 +1,7 @@
 {
   "name": "vue3-pixi-projection",
   "type": "module",
-  "version": "0.7.8",
+  "version": "0.7.9",
   "description": "Vue createRenderer for PixiJS",
   "license": "MIT",
   "homepage": "https://github.com/hairyf/vue3-pixi#readme",
