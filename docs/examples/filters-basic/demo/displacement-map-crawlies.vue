@@ -93,26 +93,26 @@ onTick(creep)
 
 <template>
   <sprite
-    texture="https://beta.pixijs.com/assets/bg_grass.jpg"
+    texture="https://pixijs.com/assets/bg_grass.jpg"
     :width="screen.width"
     :height="screen.height"
     :alpha="0.4"
   />
   <sprite
     ref="spriteRef"
-    texture="https://beta.pixijs.com/assets/pixi-filters/displace.png"
+    texture="https://pixijs.com/assets/pixi-filters/displace.png"
     :position="position"
     :anchor="0.5"
   />
   <sprite
-    texture="https://beta.pixijs.com/assets/pixi-filters/ring.png"
+    texture="https://pixijs.com/assets/pixi-filters/ring.png"
     :visible="visible"
     :position="position"
     :anchor="0.5"
   />
   <sprite
     v-for="(dude, index) in maggots" :key="index"
-    texture="https://beta.pixijs.com/assets/maggot_tiny.png"
+    texture="https://pixijs.com/assets/maggot_tiny.png"
     :scale="dude.scale"
     :rotation="dude.rotation"
     :x="dude.x"

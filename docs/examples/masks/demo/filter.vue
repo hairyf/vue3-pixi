@@ -43,7 +43,7 @@ useEventListener(stage, 'pointermove', (e: any) => Object.assign(position, e.glo
 <template>
   <sprite
     ref="circleRef"
-    texture="https://beta.pixijs.com/assets/bg_grass.jpg"
+    texture="https://pixijs.com/assets/bg_grass.jpg"
     :width="screen.width"
     :height="screen.height"
     :mask="focusRef"

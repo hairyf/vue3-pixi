@@ -26,7 +26,7 @@ function onPlay() {
 <template>
   <sprite
     v-if="play"
-    texture="https://beta.pixijs.com/assets/video.mp4"
+    texture="https://pixijs.com/assets/video.mp4"
     :width="screen.width"
     :height="screen.height"
   />

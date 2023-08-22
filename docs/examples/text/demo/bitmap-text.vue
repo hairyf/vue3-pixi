@@ -4,7 +4,7 @@ const screen = useScreen()
 </script>
 
 <template>
-  <Loader :resources="['https://beta.pixijs.com/assets/bitmap-font/desyrel.xml']">
+  <Loader :resources="['https://pixijs.com/assets/bitmap-font/desyrel.xml']">
     <bitmap-text
       :x="screen.width / 2"
       :y="screen.height / 2"

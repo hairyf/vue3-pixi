@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { Graphics, Polygon, Sprite, Texture } from 'pixi.js'
 
-const star = Texture.from('https://beta.pixijs.com/assets/yellowstar.png')
+const star = Texture.from('https://pixijs.com/assets/yellowstar.png')
 
 const hitArea = new Polygon([
   80, 0,

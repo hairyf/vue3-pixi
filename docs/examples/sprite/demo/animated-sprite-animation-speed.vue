@@ -18,7 +18,7 @@ function onAssetsLoaded(spritesheet: any) {
   }
 }
 
-Assets.load('https://beta.pixijs.com/assets/spritesheet/0123456789.json')
+Assets.load('https://pixijs.com/assets/spritesheet/0123456789.json')
   .then(onAssetsLoaded)
 </script>
 

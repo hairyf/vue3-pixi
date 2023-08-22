@@ -9,7 +9,7 @@ import { onReady, useStage } from 'vue3-pixi'
 const stage = useStage()
 
 // create a texture from an image path
-const texture = Texture.from('https://beta.pixijs.com/assets/bunny.png')
+const texture = Texture.from('https://pixijs.com/assets/bunny.png')
 
 // Scale mode for pixelation
 texture.baseTexture.scaleMode = SCALE_MODES.NEAREST

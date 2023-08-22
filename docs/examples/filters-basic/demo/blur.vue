@@ -21,11 +21,11 @@ onTick(() => {
 </script>
 
 <template>
-  <sprite :width="screen.width" :height="screen.height" texture="https://beta.pixijs.com/assets/pixi-filters/bg_depth_blur.jpg" />
-  <sprite :x="(screen.width / 2) - 315" :y="200" texture="https://beta.pixijs.com/assets/pixi-filters/depth_blur_dudes.jpg">
+  <sprite :width="screen.width" :height="screen.height" texture="https://pixijs.com/assets/pixi-filters/bg_depth_blur.jpg" />
+  <sprite :x="(screen.width / 2) - 315" :y="200" texture="https://pixijs.com/assets/pixi-filters/depth_blur_dudes.jpg">
     <blur-filter :blur="dudeBlur" />
   </sprite>
-  <sprite :x="(screen.width / 2) - 200" :y="100" texture="https://beta.pixijs.com/assets/pixi-filters/depth_blur_moby.jpg">
+  <sprite :x="(screen.width / 2) - 200" :y="100" texture="https://pixijs.com/assets/pixi-filters/depth_blur_moby.jpg">
     <blur-filter :blur="mobyBlur" />
   </sprite>
 </template>

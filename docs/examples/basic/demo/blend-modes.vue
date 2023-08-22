@@ -73,13 +73,13 @@ onTick(() => {
 <template>
   <!-- create a new background sprite -->
   <sprite
-    texture="https://beta.pixijs.com/assets/bg_rotate.jpg"
+    texture="https://pixijs.com/assets/bg_rotate.jpg"
     :width="screen.width"
     :height="screen.height"
   />
   <sprite
     v-for="(dude, index) in dudes" :key="index"
-    texture="https://beta.pixijs.com/assets/flowerTop.png"
+    texture="https://pixijs.com/assets/flowerTop.png"
     :scale="dude.scale"
     :x="dude.x"
     :y="dude.y"

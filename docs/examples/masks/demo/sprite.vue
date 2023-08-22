@@ -33,7 +33,7 @@ reset()
 </script>
 
 <template>
-  <sprite texture="https://beta.pixijs.com/assets/bg_plane.jpg" v-bind="full" />
-  <sprite texture="https://beta.pixijs.com/assets/cells.png" v-bind="full" :mask="maskRef" />
-  <sprite ref="maskRef" texture="https://beta.pixijs.com/assets/flowerTop.png" :position="position" :anchor="0.5" />
+  <sprite texture="https://pixijs.com/assets/bg_plane.jpg" v-bind="full" />
+  <sprite texture="https://pixijs.com/assets/cells.png" v-bind="full" :mask="maskRef" />
+  <sprite ref="maskRef" texture="https://pixijs.com/assets/flowerTop.png" :position="position" :anchor="0.5" />
 </template>

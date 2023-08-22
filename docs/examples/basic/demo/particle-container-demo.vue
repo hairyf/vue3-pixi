@@ -60,7 +60,7 @@ onTick(() => {
 function onRender(el: ParticleContainerInst) {
   for (let i = 0; i < totalSprites; i++) {
   // create a new Sprite
-    const dude = Sprite.from('https://beta.pixijs.com/assets/maggot_tiny.png') as DudeIte
+    const dude = Sprite.from('https://pixijs.com/assets/maggot_tiny.png') as DudeIte
 
     // set the anchor point so the texture is centerd on the sprite
     dude.anchor.set(0.5)
