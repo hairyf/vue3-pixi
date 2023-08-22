@@ -4,8 +4,8 @@ import { ref } from 'vue'
 import { onTick, useScreen } from 'vue3-pixi'
 
 const asserts = {
-  flowerTop: Texture.from('https://beta.pixijs.com/assets/flowerTop.png'),
-  eggHead: Texture.from('https://beta.pixijs.com/assets/eggHead.png'),
+  flowerTop: Texture.from('https://pixijs.com/assets/flowerTop.png'),
+  eggHead: Texture.from('https://pixijs.com/assets/eggHead.png'),
 }
 
 const screen = useScreen()

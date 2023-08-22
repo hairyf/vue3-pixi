@@ -3,7 +3,7 @@ import { Container, Texture } from 'pixi.js'
 import { nextTick } from 'vue-demi'
 import { patchProp } from '../src'
 
-const textureURL = 'https://beta.pixijs.com/assets/bunny.png'
+const textureURL = 'https://pixijs.com/assets/bunny.png'
 
 describe('props', () => {
   it('should patch render prop', () => {

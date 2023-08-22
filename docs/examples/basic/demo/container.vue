@@ -28,7 +28,7 @@ onTick((delta) => {
     <sprite
       v-for="(_, i) in 25"
       :key="i"
-      texture="https://beta.pixijs.com/assets/bunny.png"
+      texture="https://pixijs.com/assets/bunny.png"
       :x="(i % 5) * 40"
       :y="Math.floor(i / 5) * 40"
     />

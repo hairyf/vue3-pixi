@@ -17,7 +17,7 @@ const containerRef = ref()
 
 for (let i = 0; i < 25; i++) {
   rabbits.value.push({
-    texture: 'https://beta.pixijs.com/assets/bunny.png',
+    texture: 'https://pixijs.com/assets/bunny.png',
     x: (i % 5) * 30,
     y: Math.floor(i / 5) * 30,
     rotation: Math.random() * Math.PI * 2,

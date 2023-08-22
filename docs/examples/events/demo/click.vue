@@ -12,7 +12,7 @@ const scale = ref(1)
 
 <template>
   <sprite
-    texture="https://beta.pixijs.com/assets/bunny.png"
+    texture="https://pixijs.com/assets/bunny.png"
     :x="screen.width / 2"
     :scale="scale"
     :y="screen.height / 2"

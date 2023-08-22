@@ -2,7 +2,7 @@
 import { Sprite } from 'pixi.js'
 import type { GraphicsInst } from 'vue3-pixi'
 
-const sprite = Sprite.from('https://beta.pixijs.com/assets/bg_rotate.jpg')
+const sprite = Sprite.from('https://pixijs.com/assets/bg_rotate.jpg')
 function onDrawRealPath(realPath: GraphicsInst) {
   realPath.lineStyle(2, 0xFFFFFF, 1)
   realPath.moveTo(0, 0)

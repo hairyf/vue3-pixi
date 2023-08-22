@@ -34,12 +34,12 @@ onTick(() => {
 </script>
 
 <template>
-  <sprite v-bind="center" texture="https://beta.pixijs.com/assets/bg_rotate.jpg" :rotation="+rotation" />
+  <sprite v-bind="center" texture="https://pixijs.com/assets/bg_rotate.jpg" :rotation="+rotation" />
   <container :mask="isMask ? maskRef : null">
-    <sprite v-bind="center" texture="https://beta.pixijs.com/assets/bg_scene_rotate.jpg" :rotation="rotation" />
-    <sprite v-bind="center" texture="https://beta.pixijs.com/assets/light_rotate_1.png" :rotation="rotation * 2" />
-    <sprite v-bind="center" texture="https://beta.pixijs.com/assets/light_rotate_2.png" :rotation="rotation" />
-    <sprite v-bind="center" texture="https://beta.pixijs.com/assets/panda.png" :scale="pandaScale" />
+    <sprite v-bind="center" texture="https://pixijs.com/assets/bg_scene_rotate.jpg" :rotation="rotation" />
+    <sprite v-bind="center" texture="https://pixijs.com/assets/light_rotate_1.png" :rotation="rotation * 2" />
+    <sprite v-bind="center" texture="https://pixijs.com/assets/light_rotate_2.png" :rotation="rotation" />
+    <sprite v-bind="center" texture="https://pixijs.com/assets/panda.png" :scale="pandaScale" />
   </container>
   <text
     :position="{ x: 10, y: screen.height - 26 }"

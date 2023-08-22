@@ -15,7 +15,7 @@ function onAssetsLoaded() {
   }
 }
 
-Assets.load('https://beta.pixijs.com/assets/spritesheet/fighter.json')
+Assets.load('https://pixijs.com/assets/spritesheet/fighter.json')
   .then(onAssetsLoaded)
 
 onTick(() => rotation.value += 0.01)

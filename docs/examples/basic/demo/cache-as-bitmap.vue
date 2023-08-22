@@ -64,7 +64,7 @@ function tickAlines() {
 }
 
 // load resources
-Assets.load('https://beta.pixijs.com/assets/spritesheet/monsters.json').then(onAssetsLoaded)
+Assets.load('https://pixijs.com/assets/spritesheet/monsters.json').then(onAssetsLoaded)
 ticker.add(tickAlines)
 
 // combines both mouse click + touch tap

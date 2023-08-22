@@ -77,7 +77,7 @@ function onDragEnd() {
 
   <!-- Add bunny whose scale can be changed by user using slider -->
   <sprite
-    texture="https://beta.pixijs.com/assets/bunny.png"
+    texture="https://pixijs.com/assets/bunny.png"
     :x="screen.width / 2"
     :y="screen.height / 2"
     :scale="scale"

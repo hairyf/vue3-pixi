@@ -19,7 +19,7 @@ onTick(() => {
 
 <template>
   <tiling-sprite
-    texture="https://beta.pixijs.com/assets/p2.jpeg"
+    texture="https://pixijs.com/assets/p2.jpeg"
     :width="screen.width"
     :height="screen.height"
     :tile-scale="tileScale"

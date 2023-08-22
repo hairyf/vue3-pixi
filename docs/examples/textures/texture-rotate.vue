@@ -37,7 +37,7 @@ function onAssetsLoaded(texture: Texture) {
   }
 }
 
-Assets.load('https://beta.pixijs.com/assets/flowerTop.png').then(onAssetsLoaded)
+Assets.load('https://pixijs.com/assets/flowerTop.png').then(onAssetsLoaded)
 </script>
 
 <template>
