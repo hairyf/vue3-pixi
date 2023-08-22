@@ -33,6 +33,7 @@ export const Application = defineComponent({
     width: Number,
     height: Number,
     resolution: Number,
+    resizeTo: Object as PropType<HTMLElement | Window | undefined>,
   },
   setup(props, { slots, expose }) {
     const canvas = ref<HTMLCanvasElement>()
