@@ -1,0 +1,60 @@
+{
+  "name": "vue3-pixi-ui",
+  "type": "module",
+  "version": "0.7.9",
+  "description": "Vue createRenderer for PixiJS",
+  "license": "MIT",
+  "homepage": "https://github.com/hairyf/vue3-pixi#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hairyf/vue3-pixi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hairyf/vue3-pixi/issues"
+  },
+  "keywords": [
+    "pixi.js",
+    "vue"
+  ],
+  "main": "src/index.ts",
+  "publishConfig": {
+    "exports": {
+      ".": {
+        "types": "./dist/index.d.ts",
+        "require": "./dist/index.cjs",
+        "import": "./dist/index.js"
+      },
+      "./*": "./*"
+    },
+    "main": "dist/index.cjs",
+    "module": "dist/index.js",
+    "types": "dist/index.d.ts"
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./*"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch src",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@antfu/utils": "^0.7.2",
+    "@pixi/ui": "^0.9.0",
+    "pixi-projection": "^1.0.0",
+    "pixi.js": "^7.2.4",
+    "vue-demi": "^0.14.1",
+    "vue3-pixi": "workspace:^"
+  },
+  "devDependencies": {
+    "@vue/runtime-core": "^3"
+  }
+}

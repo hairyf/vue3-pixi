@@ -13,12 +13,12 @@
 ## Install
 
 ```sh
-pnpm install @vue-pixi/projection
+pnpm install vue3-pixi-projection
 ```
 
 ## Usage
 
-using `@vue-pixi/projection` requires loading the module before using `vue3-pixi`
+using `vue3-pixi-projection` requires loading the module before using `vue3-pixi`
 
 ```ts
 import { renderer } from 'vue3-pixi'
