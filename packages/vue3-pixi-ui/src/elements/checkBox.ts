@@ -1,4 +1,4 @@
-import type { CheckBox } from '@pixi/ui'
+import type { CheckBox, CheckBoxOptions } from '@pixi/ui'
 import type {
   ComponentOptionsMixin,
   DefineComponent,
@@ -6,7 +6,10 @@ import type {
 } from 'vue-demi'
 import type { AllowedPixiProps, PixiEvents } from 'vue3-pixi'
 
-export interface CheckBoxProps {}
+export interface CheckBoxProps {
+  checked?: boolean
+  options?: CheckBoxOptions
+}
 
 export interface CheckBoxEvents extends PixiEvents {
   change: [state: string | boolean]

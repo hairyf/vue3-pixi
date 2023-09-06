@@ -1,4 +1,4 @@
-import type { RadioGroup } from '@pixi/ui'
+import type { RadioBoxOptions, RadioGroup } from '@pixi/ui'
 import type {
   ComponentOptionsMixin,
   DefineComponent,
@@ -6,7 +6,9 @@ import type {
 } from 'vue-demi'
 import type { AllowedPixiProps, PixiEvents } from 'vue3-pixi'
 
-export interface RadioGroupProps {}
+export interface RadioGroupProps {
+  options?: RadioBoxOptions
+}
 
 export interface RadioGroupEvents extends PixiEvents {
   render: [RadioGroupInst]

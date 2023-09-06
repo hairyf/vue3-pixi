@@ -1,4 +1,4 @@
-import type { Slider } from '@pixi/ui'
+import type { Slider, SliderOptions } from '@pixi/ui'
 import type {
   ComponentOptionsMixin,
   DefineComponent,
@@ -6,7 +6,9 @@ import type {
 } from 'vue-demi'
 import type { AllowedPixiProps, PixiEvents } from 'vue3-pixi'
 
-export interface SliderProps {}
+export interface SliderProps {
+  options?: SliderOptions
+}
 
 export interface SliderEvents extends PixiEvents {
   render: [SliderInst]

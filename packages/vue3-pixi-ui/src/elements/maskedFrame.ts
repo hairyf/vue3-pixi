@@ -1,4 +1,4 @@
-import type { MaskedFrame } from '@pixi/ui'
+import type { MaskedFrame, MaskedFrameOptions } from '@pixi/ui'
 import type {
   ComponentOptionsMixin,
   DefineComponent,
@@ -6,7 +6,9 @@ import type {
 } from 'vue-demi'
 import type { AllowedPixiProps, PixiEvents } from 'vue3-pixi'
 
-export interface MaskedFrameProps {}
+export interface MaskedFrameProps {
+  options?: MaskedFrameOptions
+}
 
 export interface MaskedFrameEvents extends PixiEvents {
   render: [MaskedFrameInst]

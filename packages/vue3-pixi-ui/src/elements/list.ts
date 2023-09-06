@@ -1,4 +1,4 @@
-import type { List } from '@pixi/ui'
+import type { List, ListOptions } from '@pixi/ui'
 import type {
   ComponentOptionsMixin,
   DefineComponent,
@@ -6,7 +6,9 @@ import type {
 } from 'vue-demi'
 import type { AllowedPixiProps, PixiEvents } from 'vue3-pixi'
 
-export interface ListProps {}
+export interface ListProps {
+  options?: ListOptions
+}
 
 export interface ListEvents extends PixiEvents {
   render: [ListInst]

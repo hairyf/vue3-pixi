@@ -1,4 +1,5 @@
 import type { Switcher } from '@pixi/ui'
+import type { Container } from 'pixi.js'
 import type {
   ComponentOptionsMixin,
   DefineComponent,
@@ -7,6 +8,7 @@ import type {
 import type { AllowedPixiProps, PixiEvents } from 'vue3-pixi'
 
 export interface SwitcherProps {
+  views: Container[]
 }
 
 export interface SwitcherEvents extends PixiEvents {

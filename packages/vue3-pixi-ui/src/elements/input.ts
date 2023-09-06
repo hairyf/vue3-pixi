@@ -1,4 +1,4 @@
-import type { Input } from '@pixi/ui'
+import type { Input, InputOptions } from '@pixi/ui'
 import type {
   ComponentOptionsMixin,
   DefineComponent,
@@ -6,7 +6,10 @@ import type {
 } from 'vue-demi'
 import type { AllowedPixiProps, PixiEvents } from 'vue3-pixi'
 
-export interface InputProps {}
+export interface InputProps {
+  options?: InputOptions
+  value?: string
+}
 
 export interface InputEvents extends PixiEvents {
   onChange: [text: string]

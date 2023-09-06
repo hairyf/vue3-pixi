@@ -1,4 +1,4 @@
-import type { ScrollBox } from '@pixi/ui'
+import type { ScrollBox, ScrollBoxOptions } from '@pixi/ui'
 import type {
   ComponentOptionsMixin,
   DefineComponent,
@@ -6,7 +6,9 @@ import type {
 } from 'vue-demi'
 import type { AllowedPixiProps, PixiEvents } from 'vue3-pixi'
 
-export interface ScrollBoxProps {}
+export interface ScrollBoxProps {
+  options?: ScrollBoxOptions
+}
 
 export interface ScrollBoxEvents extends PixiEvents {
   render: [ScrollBoxInst]

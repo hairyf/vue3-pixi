@@ -1,4 +1,4 @@
-import type { ProgressBar } from '@pixi/ui'
+import type { ProgressBar, ProgressBarOptions } from '@pixi/ui'
 import type {
   ComponentOptionsMixin,
   DefineComponent,
@@ -6,7 +6,9 @@ import type {
 } from 'vue-demi'
 import type { AllowedPixiProps, PixiEvents } from 'vue3-pixi'
 
-export interface ProgressBarProps {}
+export interface ProgressBarProps {
+  options?: ProgressBarOptions
+}
 
 export interface ProgressBarEvents extends PixiEvents {
   render: [ProgressBarInst]

@@ -17,7 +17,7 @@ import { patchProp as defuPatchProp, setSkipFirstValue as ssfValue } from 'vue3-
 
 const SwitcherRenderer: RendererOptions = {
   name: 'Switcher',
-  createElement: props => new Switcher(props.views || []).views,
+  createElement: props => new Switcher(props.views || []),
   patchProp(el: Switcher, key, prev, next) {
     switch (key) {
       case 'views':
