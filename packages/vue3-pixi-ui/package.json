@@ -47,9 +47,7 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@antfu/utils": "^0.7.2",
     "@pixi/ui": "^0.9.0",
-    "pixi-projection": "^1.0.0",
     "pixi.js": "^7.2.4",
     "vue-demi": "^0.14.1",
     "vue3-pixi": "workspace:^"
