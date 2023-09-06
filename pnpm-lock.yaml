@@ -128,15 +128,9 @@ importers:
 
   packages/vue3-pixi-ui:
     dependencies:
-      '@antfu/utils':
-        specifier: ^0.7.2
-        version: 0.7.5
       '@pixi/ui':
         specifier: ^0.9.0
         version: 0.9.0(@pixi/core@7.2.4)(@pixi/display@7.2.4)(@pixi/events@7.2.4)(@pixi/graphics@7.2.4)(@pixi/sprite@7.2.4)(@pixi/text-bitmap@7.2.4)(@pixi/text-html@7.2.4)(@pixi/text@7.2.4)
-      pixi-projection:
-        specifier: ^1.0.0
-        version: 1.0.0(@pixi-spine/base@4.0.3)(@pixi/core@7.2.4)(@pixi/display@7.2.4)(@pixi/graphics@7.2.4)(@pixi/mesh-extras@7.2.4)(@pixi/mesh@7.2.4)(@pixi/sprite-tiling@7.2.4)(@pixi/sprite@7.2.4)(@pixi/text@7.2.4)
       pixi.js:
         specifier: ^7.2.4
         version: 7.2.4(@pixi/utils@7.2.4)
