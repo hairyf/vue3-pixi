@@ -22,9 +22,9 @@ using `vue3-pixi-ui` requires loading the module before using `vue3-pixi`
 
 ```ts
 import { renderer } from 'vue3-pixi'
-import ProjectionRenderer from 'vue3-pixi-ui'
+import UIRenderer from 'vue3-pixi-ui'
 
-renderer.use(ProjectionRenderer)
+renderer.use(UIRenderer)
 ```
 
 ## Elements
