@@ -13,7 +13,8 @@ import {
   Switcher,
 } from '@pixi/ui'
 import type { Renderer, RendererOptions } from 'vue3-pixi'
-import { patchProp as defuPatchProp, setSkipFirstValue as ssfValue } from 'vue3-pixi'
+import { setSkipFirstValue as ssfValue } from 'vue3-pixi'
+import { patchProp } from './patchProp'
 
 const SwitcherRenderer: RendererOptions = {
   name: 'Switcher',
@@ -23,11 +24,8 @@ const SwitcherRenderer: RendererOptions = {
       case 'views':
         ssfValue(el, key, () => el[key] = next)
         break
-      case 'onChange':
-        Reflect.set(el, key, next)
-        break
       default:
-        defuPatchProp(el, key, prev, next)
+        patchProp(el, key, prev, next)
     }
   },
 }
@@ -35,69 +33,25 @@ const SwitcherRenderer: RendererOptions = {
 const ButtonRenderer: RendererOptions = {
   name: 'Button',
   createElement: () => new Button(),
-  patchProp(el: Button, key, prev, next) {
-    switch (key) {
-      case 'onDown':
-      case 'onHover':
-      case 'onOut':
-      case 'onPress':
-      case 'onUp':
-      case 'onUpOut':
-        Reflect.set(el, key, next)
-        break
-      default:
-        defuPatchProp(el, key, prev, next)
-    }
-  },
+  patchProp,
 }
 
 const CheckBoxRenderer: RendererOptions = {
   name: 'CheckBox',
   createElement: props => new CheckBox(props.options),
-  patchProp(el: CheckBox, key, prev, next) {
-    switch (key) {
-      case 'onChange':
-      case 'onCheck':
-        Reflect.set(el, key, next)
-        break
-      default:
-        defuPatchProp(el, key, prev, next)
-    }
-  },
+  patchProp,
 }
 
 const FancyButtonRenderer: RendererOptions = {
   name: 'FancyButton',
   createElement: props => new FancyButton(props.options),
-  patchProp(el: FancyButton, key, prev, next) {
-    switch (key) {
-      case 'onDown':
-      case 'onHover':
-      case 'onOut':
-      case 'onPress':
-      case 'onUp':
-      case 'onUpOut':
-        Reflect.set(el, key, next)
-        break
-      default:
-        defuPatchProp(el, key, prev, next)
-    }
-  },
+  patchProp,
 }
 
 const InputRenderer: RendererOptions = {
   name: 'Input',
   createElement: props => new Input(props.options),
-  patchProp(el: Input, key, prev, next) {
-    switch (key) {
-      case 'onChange':
-      case 'onEnter':
-        Reflect.set(el, key, next)
-        break
-      default:
-        defuPatchProp(el, key, prev, next)
-    }
-  },
+  patchProp,
 }
 
 const ListRenderer: RendererOptions = {
@@ -118,15 +72,7 @@ const ProgressBarRenderer: RendererOptions = {
 const RadioGroupRenderer: RendererOptions = {
   name: 'RadioGroup',
   createElement: props => new RadioGroup(props.options),
-  patchProp(el: Switcher, key, prev, next) {
-    switch (key) {
-      case 'onChange':
-        Reflect.set(el, key, next)
-        break
-      default:
-        defuPatchProp(el, key, prev, next)
-    }
-  },
+  patchProp,
 }
 
 const ScrollBoxRenderer: RendererOptions = {
@@ -137,30 +83,13 @@ const ScrollBoxRenderer: RendererOptions = {
 const SelectRenderer: RendererOptions = {
   name: 'Select',
   createElement: props => new Select(props.options),
-  patchProp(el: Switcher, key, prev, next) {
-    switch (key) {
-      case 'onSelect':
-        Reflect.set(el, key, next)
-        break
-      default:
-        defuPatchProp(el, key, prev, next)
-    }
-  },
+  patchProp,
 }
 
 const SliderRenderer: RendererOptions = {
   name: 'Slider',
   createElement: props => new Slider(props.options),
-  patchProp(el: Switcher, key, prev, next) {
-    switch (key) {
-      case 'onChange':
-      case 'onUpdate':
-        Reflect.set(el, key, next)
-        break
-      default:
-        defuPatchProp(el, key, prev, next)
-    }
-  },
+  patchProp,
 }
 
 export const PixiUiRenderer: Renderer = [
