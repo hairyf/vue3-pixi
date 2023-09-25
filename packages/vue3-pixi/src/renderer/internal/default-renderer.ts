@@ -79,7 +79,7 @@ const TextRender: RendererOptions = {
         setSkipFirstValue(el, key, () => el.text = next)
         break
       case 'style':
-        setSkipFirstValue(el, key, () => setObjectProperty(el.style, key, prev, next))
+        setSkipFirstValue(el, key, () => setObjectProperty(el, key, prev, next))
         break
       default:
         defuPatchProp(el, key, prev, next)
