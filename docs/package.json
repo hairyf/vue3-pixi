@@ -28,6 +28,6 @@
     "codesandbox": "^2.2.3",
     "floating-vue": "2.0.0-beta.24",
     "markdown-it-vitepress-demo": "^0.1.8",
-    "vitepress": "1.0.0-rc.21"
+    "vitepress": "1.0.0-rc.23"
   }
 }
