@@ -2,7 +2,7 @@
 import type { App, PropType } from 'vue-demi'
 import { createApp, defineComponent, getCurrentInstance, h, inject, onMounted, onUnmounted, ref } from 'vue-demi'
 import { appInjectKey } from '../../composables'
-import { inheritParent } from './utils'
+import { inheritParent } from '../../utils'
 
 export const External = defineComponent({
   props: {
