@@ -1,11 +1,12 @@
 /* eslint-disable vue/one-component-per-file */
-import { defineComponent, h, markRaw, onMounted, onUnmounted, ref, renderSlot, warn, watch } from 'vue-demi'
+import { defineComponent, getCurrentInstance, h, markRaw, onMounted, onUnmounted, ref, renderSlot, warn, watch } from 'vue-demi'
 import { throttle } from '@antfu/utils'
 import { Application as _Application } from 'pixi.js'
 import type { ColorSource, Container } from 'pixi.js'
 import type { App, PropType } from 'vue-demi'
 import { createApp } from '../../renderer'
 import { appInjectKey } from '../../composables'
+import { inheritParent } from '../../utils'
 
 export interface ApplicationInst {
   canvas: HTMLCanvasElement
@@ -36,8 +37,10 @@ export const Application = defineComponent({
     resizeTo: Object as PropType<HTMLElement | Window | undefined>,
   },
   setup(props, { slots, expose }) {
+    const { appContext } = getCurrentInstance()!
     const canvas = ref<HTMLCanvasElement>()
     const pixiApp = ref()
+
     let app: App<Container> | undefined
 
     function mount() {
@@ -62,6 +65,9 @@ export const Application = defineComponent({
       app = createApp({
         render: () => renderSlot(slots, 'default'),
       })
+
+      inheritParent(app, appContext)
+
       app.provide(appInjectKey, pixiApp)
       app.mount(pixiApp.value.stage)
     }
