@@ -6,7 +6,7 @@
 /**
  * Colors
  * -------------------------------------------------------------------------- */
- :root {
+:root {
   --vp-c-brand: #e91e63;
   --vp-c-brand-light: #eb3674;
   --vp-c-brand-lighter: #ed427c;
@@ -76,7 +76,7 @@
   --vp-custom-block-tip-border: var(--vp-c-brand);
   --vp-custom-block-tip-text: var(--vp-c-brand-lightest);
   --vp-custom-block-tip-bg: var(--vp-c-brand-dimm);
-  --vp-code-block-bg: #2e3138
+  --vp-code-block-bg: #2e3138;
 }
 
 /**
@@ -86,7 +86,6 @@
 .DocSearch {
   --docsearch-primary-color: var(--vp-c-brand) !important;
 }
-
 
 @media (min-width: 960px) {
   .image-src {
@@ -106,47 +105,71 @@
 
 /* markdown */
 
-.vp-doc [class*='language-'] pre::-webkit-scrollbar {
+.vp-doc [class*="language-"] pre::-webkit-scrollbar {
   display: none;
 }
 
+/**
+ * Table
+ * -------------------------------------------------------------------------- */
 .vp-doc table {
-  display: table !important;
-  width: 100%;
+  display: block;
+  border-collapse: collapse;
+  margin: 20px 0;
+  overflow-x: auto;
 }
 
-.vp-doc tr:nth-child(2n) :not(pre) > code {
-  background: #fff;
+.vp-doc tr {
+  border-top: 1px solid var(--vp-c-divider);
+  transition: background-color 0.5s;
 }
 
-.vp-doc table a {
-  font-size: 12px;
+.vp-doc tr:nth-child(2n) {
+  background-color: var(--vp-c-bg-soft);
+}
+
+.vp-doc th,
+.vp-doc td {
+  border: 1px solid var(--vp-c-divider);
+  padding: 8px 16px;
+}
+
+.vp-doc th {
+  text-align: left;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--vp-c-text-2);
+  background-color: var(--vp-c-bg-soft);
+}
+
+.vp-doc td {
+  font-size: 14px;
 }
 
 /* v-popper */
 
 .v-popper__popper {
-  font-size: 12px
+  font-size: 12px;
 }
 .v-popper__inner {
   padding: 4px 8px !important;
 }
 
-
 /* naive-ui */
 
 .n-scrollbar-rail.n-scrollbar-rail--vertical {
-  z-index: 300
+  z-index: 300;
 }
-
 
 /* custom */
 
 .btn {
-  width: 100%; height: 40px;
-  background-color: white; margin-top: 24px;
+  width: 100%;
+  height: 40px;
+  background-color: white;
+  margin-top: 24px;
 }
 
 .inline-component p {
-  margin: 0
+  margin: 0;
 }
