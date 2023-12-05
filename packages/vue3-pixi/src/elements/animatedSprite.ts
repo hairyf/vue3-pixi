@@ -6,8 +6,9 @@ import type {
 import type * as PIXI from 'pixi.js'
 import type { AllowedPixiProps } from './props'
 import type { PixiEvents } from './events'
+
 export interface AnimatedSpriteProps extends AllowedPixiProps {
-  textures: (PIXI.Texture | string)[]
+  textures: (PIXI.Texture | PIXI.FrameObject | string)[]
   width?: number
   height?: number
 

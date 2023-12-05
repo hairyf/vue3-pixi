@@ -24,7 +24,7 @@ I recommend using spritesheets created by TexturePacker ([they have a great tuto
 | anchor | <api-point /> | `0` | The anchor sets the origin point of the text. |
 | anchor-x | ^[number] | `0` | The x anchor sets the origin point of the text. |
 | anchor-y | ^[number] | `0` | The y anchor sets the origin point of the text. |
-| textures | ^[array]`Array<Texture \| string>` | `undefined` | The textures to use for the animation |
+| textures | ^[array]`Array<Texture \| FrameObject \| string>` | `undefined` | The textures to use for the animation |
 | animation-speed | ^[number] | `1` | The speed that the AnimatedSprite will play at. Higher is faster, lower is slower |
 | loop | ^[boolean] | `true` | Whether or not the animate sprite repeats after playing. |
 | playing | ^[boolean] | `false` | Whether or not the animation is playing. |
