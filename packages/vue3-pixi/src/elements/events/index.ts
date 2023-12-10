@@ -1,7 +1,9 @@
-import type { Container, DisplayObject, DisplayObjectEvents } from 'pixi.js'
+import type { Container, DisplayObject } from 'pixi.js'
 
-export type PixiEvents = DisplayObjectEvents & {
-  // from container
+export interface PixiEvents {
+  added: [container: Container]
   childAdded: [child: DisplayObject, container: Container, index: number]
   childRemoved: [child: DisplayObject, container: Container, index: number]
+  destroyed: []
+  removed: [container: Container]
 }
