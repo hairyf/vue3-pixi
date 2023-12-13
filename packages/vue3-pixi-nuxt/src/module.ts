@@ -1,7 +1,6 @@
 import { addComponent, addImports, createResolver, defineNuxtModule } from '@nuxt/kit'
 import * as core from 'vue3-pixi'
 import { isCustomElement } from 'vue3-pixi'
-import { setupDevToolsUI } from './devtools'
 
 export interface ModuleOptions {
   modules: string[]
@@ -55,8 +54,5 @@ export default defineNuxtModule<ModuleOptions>({
     nuxt.options.build.transpile.push(/vue3-pixi/)
 
     nuxt.options.vue.compilerOptions.isCustomElement = isCustomElement
-
-    if (options.devtools)
-      setupDevToolsUI(nuxt, resolver)
   },
 })

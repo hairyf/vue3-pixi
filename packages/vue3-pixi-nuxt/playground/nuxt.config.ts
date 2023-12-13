@@ -4,4 +4,7 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@nuxt/devtools',
   ],
+  vue3pixi: {
+    devtools: true,
+  },
 })

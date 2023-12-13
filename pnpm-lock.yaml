@@ -131,9 +131,6 @@ importers:
       sirv:
         specifier: ^2.0.3
         version: 2.0.3
-      vite-plugin-glsl:
-        specifier: ^1.2.1
-        version: 1.2.1(rollup@3.29.4)(vite@4.5.0)
       vue-demi:
         specifier: ^0.14.1
         version: 0.14.6(vue@3.3.11)
@@ -144,6 +141,9 @@ importers:
       '@nuxt/module-builder':
         specifier: ^0.5.4
         version: 0.5.4(@nuxt/kit@3.8.2)(nuxi@3.10.0)(typescript@5.0.2)
+      '@vue/runtime-core':
+        specifier: ^3
+        version: 3.3.11
       nuxt:
         specifier: ^3.8.2
         version: 3.8.2(@types/node@18.11.13)(eslint@8.29.0)(rollup@3.29.4)(typescript@5.0.2)(vite@4.5.0)
@@ -11775,18 +11775,6 @@ packages:
       vscode-languageserver: 7.0.0
       vscode-languageserver-textdocument: 1.0.11
       vscode-uri: 3.0.8
-
-  /vite-plugin-glsl@1.2.1(rollup@3.29.4)(vite@4.5.0):
-    resolution: {integrity: sha512-yBpBHWfdiRVMxN3yIKx4qmwuqMwoMAnEMipVI0NbdIieyRFO8hpW8VTFHYi3W75h7CkvsotteP9C4pln51OE0A==}
-    engines: {node: '>= 16.15.1', npm: '>= 8.11.0'}
-    peerDependencies:
-      vite: ^3.0.0 || ^4.0.0 || ^5.0.0
-    dependencies:
-      '@rollup/pluginutils': 5.1.0(rollup@3.29.4)
-      vite: 4.5.0(@types/node@18.11.13)
-    transitivePeerDependencies:
-      - rollup
-    dev: false
 
   /vite-plugin-inspect@0.7.42(@nuxt/kit@3.8.2)(rollup@3.29.4)(vite@4.5.0):
     resolution: {integrity: sha512-JCyX86wr3siQc+p9Kd0t8VkFHAJag0RaQVIpdFGSv5FEaePEVB6+V/RGtz2dQkkGSXQzRWrPs4cU3dRKg32bXw==}

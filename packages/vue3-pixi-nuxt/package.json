@@ -46,6 +46,7 @@
   },
   "devDependencies": {
     "@nuxt/module-builder": "^0.5.4",
+    "@vue/runtime-core": "^3",
     "nuxt": "^3.8.2"
   },
   "build": {
