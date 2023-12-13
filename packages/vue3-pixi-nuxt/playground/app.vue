@@ -3,7 +3,13 @@
 
 <template>
   <div style="height: 100vh">
-    -
+    <Application
+      width="629"
+      height="550"
+      background="#fff"
+    >
+      <TransitionBasic />
+    </Application>
   </div>
 </template>
 

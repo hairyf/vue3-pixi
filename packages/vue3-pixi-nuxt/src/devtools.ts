@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { existsSync } from 'fs'
 import type { Nuxt } from 'nuxt/schema'
 import type { Resolver } from '@nuxt/kit'
 
-const DEVTOOLS_UI_ROUTE = '/__tres_nuxt_devtools'
+const DEVTOOLS_UI_ROUTE = '/__vue3pixi_nuxt_devtools'
 const DEVTOOLS_UI_LOCAL_PORT = 3300
 
 export function setupDevToolsUI(nuxt: Nuxt, resolver: Resolver) {
@@ -16,7 +15,6 @@ export function setupDevToolsUI(nuxt: Nuxt, resolver: Resolver) {
       const sirv = await import('sirv').then(r => r.default || r)
       server.middlewares.use(
         DEVTOOLS_UI_ROUTE,
-        // @ts-expect-error
         sirv(clientPath, { dev: true, single: true }),
       )
     })
@@ -38,11 +36,11 @@ export function setupDevToolsUI(nuxt: Nuxt, resolver: Resolver) {
   nuxt.hook('devtools:customTabs', (tabs) => {
     tabs.push({
       // unique identifier
-      name: 'tres-nuxt-devtools',
+      name: 'vue3-pixi-nuxt-devtools',
       // title to display in the tab
-      title: 'TresJS',
+      title: 'Vue3PIXI',
       // any icon from Iconify, or a URL to an image
-      icon: 'https://raw.githubusercontent.com/Tresjs/tres/main/public/favicon.svg',
+      icon: 'https://raw.githubusercontent.com/hairyf/vue3-pixi/docs/public/favicon.svg',
       // iframe view
       view: {
         type: 'iframe',

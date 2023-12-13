@@ -29,17 +29,23 @@
     "dist"
   ],
   "scripts": {
-    "dev": "nuxi dev playground"
+    "dev": "nuxi dev playground",
+    "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
+    "dev:build": "nuxi build playground",
+    "postinstall": "npm run dev:prepare"
   },
   "dependencies": {
     "@antfu/utils": "^0.7.2",
     "@nuxt/kit": "^3.8.2",
+    "mlly": "^1.4.2",
     "pixi-projection": "^1.0.0",
+    "pkg-types": "^1.0.3",
     "sirv": "^2.0.3",
     "vue-demi": "^0.14.1",
     "vue3-pixi": "workspace:^"
   },
   "devDependencies": {
+    "@nuxt/module-builder": "^0.5.4",
     "nuxt": "^3.8.2"
   },
   "build": {

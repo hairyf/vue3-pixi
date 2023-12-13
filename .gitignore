@@ -81,3 +81,5 @@ dist
 .idea
 
 cache
+
+.output

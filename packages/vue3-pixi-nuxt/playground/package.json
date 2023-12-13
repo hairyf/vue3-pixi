@@ -7,6 +7,10 @@
     "build": "nuxi build",
     "generate": "nuxi generate"
   },
+  "dependencies": {
+    "@vueuse/core": "^10.1.2",
+    "@vueuse/nuxt": "^10.7.0"
+  },
   "devDependencies": {
     "@nuxt/devtools": "1.0.4",
     "@tresjs/cientos": "^3.6.0",
