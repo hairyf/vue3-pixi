@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import type { GraphicsInst } from 'vue3-pixi'
+import { useEventListener } from '@vueuse/core'
 const graphicsRef = ref<GraphicsInst>()
 const thingRef = ref<GraphicsInst>()
 function onDraw(graphics: GraphicsInst) {

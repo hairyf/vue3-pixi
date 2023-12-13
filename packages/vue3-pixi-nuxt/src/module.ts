@@ -2,11 +2,6 @@ import { addComponent, addImports, createResolver, defineNuxtModule } from '@nux
 import * as core from 'vue3-pixi'
 import { isCustomElement } from 'vue3-pixi'
 
-export interface ModuleOptions {
-  modules: string[]
-  devtools: boolean
-}
-
 const resolver = createResolver(import.meta.url)
 
 const components = [
@@ -19,11 +14,8 @@ const components = [
   'Loader',
 ]
 
-export default defineNuxtModule<ModuleOptions>({
-  meta: {
-    name: 'vue3-pixi-nuxt',
-    configKey: 'vue3pixi',
-  },
+export default defineNuxtModule({
+  meta: { name: 'vue3-pixi-nuxt' },
   async setup(options, nuxt) {
     for (const name of components) {
       addComponent({
@@ -51,6 +43,7 @@ export default defineNuxtModule<ModuleOptions>({
       }
     }
 
+    console.log(nuxt.options.build.transpile)
     nuxt.options.build.transpile.push(/vue3-pixi/)
 
     nuxt.options.vue.compilerOptions.isCustomElement = isCustomElement

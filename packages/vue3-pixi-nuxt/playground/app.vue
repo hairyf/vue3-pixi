@@ -8,7 +8,7 @@
       height="550"
       background="#fff"
     >
-      <TransitionBasic />
+      <GraphicsDynamic />
     </Application>
   </div>
 </template>
