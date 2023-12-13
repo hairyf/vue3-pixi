@@ -14,6 +14,12 @@ const components = [
   'Loader',
 ]
 
+export interface ModuleOptions {}
+export interface ModuleHooks {}
+export interface RuntimeModuleHooks {}
+export interface ModuleRuntimeConfig {}
+export interface ModulePublicRuntimeConfig {}
+
 export default defineNuxtModule({
   meta: { name: 'vue3-pixi-nuxt' },
   async setup(options, nuxt) {

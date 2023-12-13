@@ -5,33 +5,32 @@
   "description": "Nuxt createRenderer for PixiJS",
   "license": "MIT",
   "homepage": "https://github.com/hairyf/vue3-pixi#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hairyf/vue3-pixi.git"
-  },
-  "bugs": {
-    "url": "https://github.com/hairyf/vue3-pixi/issues"
-  },
+  "repository": "vue3-pixi",
   "keywords": [
     "pixi.js",
     "vue"
   ],
-  "main": "src/index.ts",
-  "typesVersions": {
-    "*": {
-      "*": [
-        "./dist/*",
-        "./*"
-      ]
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/module.d.mts",
+      "require": "./dist/module.cjs",
+      "import": "./dist/module.mjs"
     }
   },
+  "main": "dist/module.mjs",
+  "types": "dist/module.d.mts",
   "files": [
-    "dist"
+    "dist/*"
   ],
   "scripts": {
+    "build": "nuxt-module-build build",
     "dev": "nuxi dev playground",
-    "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
     "dev:build": "nuxi build playground",
+    "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
     "postinstall": "npm run dev:prepare"
   },
   "dependencies": {
@@ -46,6 +45,7 @@
   },
   "devDependencies": {
     "@nuxt/module-builder": "^0.5.4",
+    "@nuxt/schema": "^3.8.2",
     "@vue/runtime-core": "^3",
     "nuxt": "^3.8.2"
   },

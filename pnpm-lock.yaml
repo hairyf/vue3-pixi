@@ -141,6 +141,9 @@ importers:
       '@nuxt/module-builder':
         specifier: ^0.5.4
         version: 0.5.4(@nuxt/kit@3.8.2)(nuxi@3.10.0)(typescript@5.0.2)
+      '@nuxt/schema':
+        specifier: ^3.8.2
+        version: 3.8.2(rollup@3.29.4)
       '@vue/runtime-core':
         specifier: ^3
         version: 3.3.11
