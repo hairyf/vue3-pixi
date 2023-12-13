@@ -1,0 +1,64 @@
+{
+  "name": "vue3-pixi-nuxt",
+  "type": "module",
+  "version": "0.8.4",
+  "description": "Nuxt createRenderer for PixiJS",
+  "license": "MIT",
+  "homepage": "https://github.com/hairyf/vue3-pixi#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hairyf/vue3-pixi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hairyf/vue3-pixi/issues"
+  },
+  "keywords": [
+    "pixi.js",
+    "vue"
+  ],
+  "main": "src/index.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./*"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch src",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@antfu/utils": "^0.7.2",
+    "pixi-projection": "^1.0.0",
+    "vue-demi": "^0.14.1",
+    "vue3-pixi": "workspace:^"
+  },
+  "devDependencies": {
+    "@vue/runtime-core": "^3"
+  },
+  "build": {
+    "externals": [
+      "node:child_process",
+      "vite-plugin-glsl",
+      "@rollup/pluginutils",
+      "vite",
+      "esbuild",
+      "rollup",
+      "estree-walker",
+      "picomatch",
+      "postcss",
+      "lightningcss",
+      "fsevents",
+      "pnpapi",
+      "picocolors",
+      "source-map-js",
+      "nanoid/non-secure"
+    ]
+  }
+}
