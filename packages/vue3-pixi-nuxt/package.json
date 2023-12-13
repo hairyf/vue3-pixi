@@ -29,18 +29,19 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch src",
-    "prepublishOnly": "npm run build"
+    "dev": "nuxi dev playground"
   },
   "dependencies": {
     "@antfu/utils": "^0.7.2",
+    "@nuxt/devtools-kit": "^1.0.5",
+    "@nuxt/kit": "^3.8.2",
     "pixi-projection": "^1.0.0",
+    "sirv": "^2.0.3",
     "vue-demi": "^0.14.1",
     "vue3-pixi": "workspace:^"
   },
   "devDependencies": {
-    "@vue/runtime-core": "^3"
+    "nuxt": "^3.8.2"
   },
   "build": {
     "externals": [
