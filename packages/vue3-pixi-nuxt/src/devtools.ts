@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { existsSync } from 'fs'
 import type { Nuxt } from 'nuxt/schema'
 import type { Resolver } from '@nuxt/kit'
@@ -15,6 +16,7 @@ export function setupDevToolsUI(nuxt: Nuxt, resolver: Resolver) {
       const sirv = await import('sirv').then(r => r.default || r)
       server.middlewares.use(
         DEVTOOLS_UI_ROUTE,
+        // @ts-expect-error
         sirv(clientPath, { dev: true, single: true }),
       )
     })
