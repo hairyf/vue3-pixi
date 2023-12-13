@@ -43,7 +43,6 @@ export default defineNuxtModule({
       }
     }
 
-    console.log(nuxt.options.build.transpile)
     nuxt.options.build.transpile.push(/vue3-pixi/)
 
     nuxt.options.vue.compilerOptions.isCustomElement = isCustomElement
