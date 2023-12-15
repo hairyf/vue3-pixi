@@ -37,7 +37,6 @@
     "@antfu/utils": "^0.7.2",
     "@nuxt/kit": "^3.8.2",
     "mlly": "^1.4.2",
-    "pixi-projection": "^1.0.0",
     "pkg-types": "^1.0.3",
     "sirv": "^2.0.3",
     "vue-demi": "^0.14.1",
