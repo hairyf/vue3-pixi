@@ -1,5 +1,5 @@
 {
-  "name": "@tresjs/nuxt-playground",
+  "name": "@vue3-pixi/nuxt-playground",
   "type": "module",
   "private": true,
   "scripts": {

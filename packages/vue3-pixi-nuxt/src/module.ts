@@ -15,10 +15,6 @@ const components = [
 ]
 
 export interface ModuleOptions {}
-export interface ModuleHooks {}
-export interface RuntimeModuleHooks {}
-export interface ModuleRuntimeConfig {}
-export interface ModulePublicRuntimeConfig {}
 
 export default defineNuxtModule({
   meta: { name: 'vue3-pixi-nuxt' },
@@ -50,7 +46,6 @@ export default defineNuxtModule({
     }
 
     nuxt.options.build.transpile.push(/vue3-pixi/)
-
     nuxt.options.vue.compilerOptions.isCustomElement = isCustomElement
   },
 })
