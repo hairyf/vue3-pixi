@@ -6,5 +6,5 @@ import { useApplication } from './useApplication'
 
 export function useRenderer(app?: Ref<Application<ICanvas>>): Ref<IRenderer> {
   const useApp = app || useApplication()
-  return computed(() => unref(useApp).renderer)
+  return computed(() => unref(useApp)?.renderer)
 }

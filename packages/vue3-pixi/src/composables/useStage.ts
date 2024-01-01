@@ -8,5 +8,5 @@ export type StageInst = Container & EventTarget
 
 export function useStage(app?: Ref<Application<ICanvas>>): Ref<StageInst> {
   const useApp = app || useApplication()
-  return computed(() => unref(useApp).stage as any)
+  return computed(() => unref(useApp)?.stage as any)
 }

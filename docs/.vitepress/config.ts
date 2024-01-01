@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { fileURLToPath } from 'url'
 import type { DefaultTheme } from 'vitepress'
 import { defineConfig } from 'vitepress'
@@ -40,11 +39,12 @@ const themeConfig: DefaultTheme.Config = {
   sidebar: {
     '/guide/': [
       {
-        text: 'Getting Started',
+        text: 'Guide',
         items: [
           { text: 'Introduction', link: '/guide/introduction' },
           { text: 'Quick Start', link: '/guide/quick-start' },
           { text: 'Usage', link: '/guide/usage' },
+          { text: 'Troubleshooting', link: '/guide/troubleshooting' },
         ],
       },
       {
@@ -244,7 +244,6 @@ export default defineConfig({
     config: md => md.use(mdPlugin),
   },
   vite: {
-    // @ts-expect-error
     plugins: [unocss()],
     ssr: { noExternal: ['naive-ui', 'gsap'] },
     resolve: {
