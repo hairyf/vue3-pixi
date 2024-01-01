@@ -2,7 +2,7 @@
 
 Repository is [here](https://github.com/hairyf/vue3-pixi/tree/main/packages/vue3-pixi-nuxt)
 
-如果你要在 Nuxtjs 中使用，安装以下模块：
+If you want to use it in Nuxtjs, install the following modules:
 
 
 ## Install
