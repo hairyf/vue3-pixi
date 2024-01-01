@@ -18,5 +18,8 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
-  }
+  },
+  "exclude": [
+    "./packages/vue3-pixi-nuxt"
+  ]
 }
