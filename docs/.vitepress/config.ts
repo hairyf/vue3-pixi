@@ -40,12 +40,13 @@ const themeConfig: DefaultTheme.Config = {
   sidebar: {
     '/guide/': [
       {
-        text: 'Getting Started',
+        text: 'Guide',
         items: [
           { text: 'Introduction', link: '/guide/introduction' },
           { text: 'Quick Start', link: '/guide/quick-start' },
           { text: 'Usage', link: '/guide/usage' },
           { text: 'Nuxtjs', link: '/guide/nuxtjs' },
+          { text: 'Troubleshooting', link: '/guide/troubleshooting' },
         ],
       },
       {
