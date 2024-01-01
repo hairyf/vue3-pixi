@@ -1,13 +1,14 @@
 import type { Ref } from 'vue-demi'
 import { computed, unref } from 'vue-demi'
 
+import type { Application, ICanvas } from 'pixi.js'
 import { Rectangle } from 'pixi.js'
 
 import { computedWithControl, useResizeObserver } from '@vueuse/core'
 import { useApplication } from './useApplication'
 
-export function useScreen(): Ref<Rectangle> {
-  const useApp = useApplication()
+export function useScreen(app?: Ref<Application<ICanvas>>): Ref<Rectangle> {
+  const useApp = app || useApplication()
   const view = computed(() => unref(useApp).view as HTMLCanvasElement)
   const defaultRectangle = new Rectangle()
 
