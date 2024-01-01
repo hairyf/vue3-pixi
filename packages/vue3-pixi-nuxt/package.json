@@ -1,0 +1,70 @@
+{
+  "name": "vue3-pixi-nuxt",
+  "type": "module",
+  "version": "0.8.5",
+  "description": "Nuxt createRenderer for PixiJS",
+  "license": "MIT",
+  "homepage": "https://github.com/hairyf/vue3-pixi#readme",
+  "repository": "vue3-pixi",
+  "keywords": [
+    "pixi.js",
+    "vue"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/types.d.mts",
+      "default": "./dist/module.mjs"
+    }
+  },
+  "main": "dist/module.mjs",
+  "types": "dist/types.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "nuxt-module-build build",
+    "dev": "nuxi dev playground",
+    "dev:build": "nuxi build playground",
+    "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
+    "postinstall": "npm run dev:prepare",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@antfu/utils": "^0.7.2",
+    "@nuxt/kit": "^3.8.2",
+    "mlly": "^1.4.2",
+    "pkg-types": "^1.0.3",
+    "sirv": "^2.0.3",
+    "vue-demi": "^0.14.1",
+    "vue3-pixi": "^0.8.5"
+  },
+  "devDependencies": {
+    "@nuxt/module-builder": "^0.5.4",
+    "@nuxt/schema": "^3.8.2",
+    "@vue/runtime-core": "^3",
+    "nuxt": "^3.8.2"
+  },
+  "build": {
+    "externals": [
+      "node:child_process",
+      "vite-plugin-glsl",
+      "@rollup/pluginutils",
+      "vite",
+      "esbuild",
+      "rollup",
+      "estree-walker",
+      "picomatch",
+      "postcss",
+      "lightningcss",
+      "fsevents",
+      "pnpapi",
+      "picocolors",
+      "source-map-js",
+      "nanoid/non-secure"
+    ]
+  }
+}

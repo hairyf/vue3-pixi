@@ -14,6 +14,7 @@ const themeConfig: DefaultTheme.Config = {
       items: [
         { text: 'Quick Start', link: '/guide/quick-start' },
         { text: 'Usage', link: '/guide/usage' },
+        { text: 'Nuxtjs', link: '/guide/nuxtjs' },
         { text: 'API Reference', link: '/guide/api-reference/renderer' },
         { text: 'Elements', link: '/guide/elements/animated-sprite' },
         { text: 'Components', link: '/guide/components/application' },
@@ -44,6 +45,7 @@ const themeConfig: DefaultTheme.Config = {
           { text: 'Introduction', link: '/guide/introduction' },
           { text: 'Quick Start', link: '/guide/quick-start' },
           { text: 'Usage', link: '/guide/usage' },
+          { text: 'Nuxtjs', link: '/guide/nuxtjs' },
           { text: 'Troubleshooting', link: '/guide/troubleshooting' },
         ],
       },
