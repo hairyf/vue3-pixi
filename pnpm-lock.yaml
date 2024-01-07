@@ -170,8 +170,8 @@ importers:
   packages/vue3-pixi-ui:
     dependencies:
       '@pixi/ui':
-        specifier: ^0.9.0
-        version: 0.9.0(@pixi/core@7.3.2)(@pixi/display@7.3.2)(@pixi/events@7.3.2)(@pixi/graphics@7.3.2)(@pixi/sprite@7.3.2)(@pixi/text-bitmap@7.3.2)(@pixi/text-html@7.3.2)(@pixi/text@7.3.2)
+        specifier: ^0.10.0
+        version: 0.10.1(@pixi/core@7.3.2)(@pixi/display@7.3.2)(@pixi/events@7.3.2)(@pixi/graphics@7.3.2)(@pixi/sprite@7.3.2)(@pixi/text-bitmap@7.3.2)(@pixi/text-html@7.3.2)(@pixi/text@7.3.2)
       pixi.js:
         specifier: ^7.3.2
         version: 7.3.2(@pixi/utils@7.3.2)
@@ -607,6 +607,7 @@ packages:
   /@babel/helper-string-parser@7.22.5:
     resolution: {integrity: sha512-mM4COjgZox8U+JcXQwPijIZLElkgEpO5rsERVDJTc2qfCDfERyob6k5WegS14SX18IIjv+XD+GrqNumY5JRCDw==}
     engines: {node: '>=6.9.0'}
+    requiresBuild: true
 
   /@babel/helper-string-parser@7.23.4:
     resolution: {integrity: sha512-803gmbQdqwdf4olxrX4AJyFBV/RTr3rSmOj0rKwesmzlfhYNDEs+/iOcznzpNWlJlIlTJC2QfPFcHB6DlzdVLQ==}
@@ -2840,17 +2841,17 @@ packages:
       '@pixi/utils': 7.3.2
     dev: false
 
-  /@pixi/ui@0.9.0(@pixi/core@7.3.2)(@pixi/display@7.3.2)(@pixi/events@7.3.2)(@pixi/graphics@7.3.2)(@pixi/sprite@7.3.2)(@pixi/text-bitmap@7.3.2)(@pixi/text-html@7.3.2)(@pixi/text@7.3.2):
-    resolution: {integrity: sha512-7T1woOiOINQ89C5txUgnf/mVwHctnwThHwmUQ+TYTKsPR3kCaspE4Y1+GMMjShdMCitlWzDNKL/SIcPOGVLwcA==}
+  /@pixi/ui@0.10.1(@pixi/core@7.3.2)(@pixi/display@7.3.2)(@pixi/events@7.3.2)(@pixi/graphics@7.3.2)(@pixi/sprite@7.3.2)(@pixi/text-bitmap@7.3.2)(@pixi/text-html@7.3.2)(@pixi/text@7.3.2):
+    resolution: {integrity: sha512-PzE9Y/GX0inw5n+9lYcvYI++QMIDVf9hLEd5CNc/lIlimnyOuNHdNJuRCJHfDmBVtWZa9kMWzqIetv0a7k+0tQ==}
     peerDependencies:
-      '@pixi/core': ^7.2.3
-      '@pixi/display': ^7.2.3
-      '@pixi/events': ^7.2.3
-      '@pixi/graphics': ^7.2.3
-      '@pixi/sprite': ^7.2.3
-      '@pixi/text': ^7.2.3
-      '@pixi/text-bitmap': ^7.2.3
-      '@pixi/text-html': ^7.2.3
+      '@pixi/core': ^7.3.1
+      '@pixi/display': ^7.3.1
+      '@pixi/events': ^7.3.1
+      '@pixi/graphics': ^7.3.1
+      '@pixi/sprite': ^7.3.1
+      '@pixi/text': ^7.3.1
+      '@pixi/text-bitmap': ^7.3.1
+      '@pixi/text-html': ^7.3.1
     dependencies:
       '@pixi/core': 7.3.2
       '@pixi/display': 7.3.2(@pixi/core@7.3.2)
@@ -2860,7 +2861,6 @@ packages:
       '@pixi/text': 7.3.2(@pixi/core@7.3.2)(@pixi/sprite@7.3.2)
       '@pixi/text-bitmap': 7.3.2(@pixi/assets@7.3.2)(@pixi/core@7.3.2)(@pixi/display@7.3.2)(@pixi/mesh@7.3.2)(@pixi/text@7.3.2)
       '@pixi/text-html': 7.3.2(@pixi/core@7.3.2)(@pixi/display@7.3.2)(@pixi/sprite@7.3.2)(@pixi/text@7.3.2)
-      ts-mixer: 6.0.3
       tweedle.js: 2.1.0
       typed-signals: 2.5.0
     dev: false
@@ -11315,6 +11315,7 @@ packages:
   /to-fast-properties@2.0.0:
     resolution: {integrity: sha512-/OaKK0xYrs3DmxRYqL/yDc+FxFUVYhDlXMhRmv3z915w2HF1tnN1omB354j8VUGO/hbRzyD6Y3sA7v7GS/ceog==}
     engines: {node: '>=4'}
+    requiresBuild: true
 
   /to-regex-range@5.0.1:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
@@ -11370,10 +11371,6 @@ packages:
   /ts-interface-checker@0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
     dev: true
-
-  /ts-mixer@6.0.3:
-    resolution: {integrity: sha512-k43M7uCG1AkTyxgnmI5MPwKoUvS/bRvLvUb7+Pgpdlmok8AoqmUaZxUUw8zKM5B1lqZrt41GjYgnvAi0fppqgQ==}
-    dev: false
 
   /tsconfig-paths@3.14.2:
     resolution: {integrity: sha512-o/9iXgCYc5L/JxCHPe3Hvh8Q/2xm5Z+p18PESBU6Ff33695QnCHBEjcytY2q19ua7Mbl/DavtBOLq+oG0RCL+g==}
