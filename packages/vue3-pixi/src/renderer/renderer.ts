@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import type { Container, DisplayObject } from 'pixi.js'
 
 import type { Renderer as _Renderer } from 'vue-demi'
@@ -16,6 +17,7 @@ export function createRenderer(options: { prefix?: string } = {}) {
   const { createElement, setText, ...nodeOps } = _nodeOps
   const { prefix = 'pixi' } = options
   const rendererOptions = rendererWithCapture({
+    // @ts-expect-error
     createElement: (...args) => createElement(prefix, ...args),
     setElementText: (...args) => setText(prefix, ...args),
     setText: (...args) => setText(prefix, ...args),

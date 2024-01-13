@@ -246,7 +246,7 @@ export default defineConfig({
     config: md => md.use(mdPlugin),
   },
   vite: {
-    plugins: [unocss()],
+    plugins: [unocss() as any],
     ssr: { noExternal: ['naive-ui', 'gsap'] },
     resolve: {
       alias: [

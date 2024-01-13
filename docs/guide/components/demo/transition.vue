@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { Container, Graphics as GraphicsIns, Text } from 'pixi.js'
+import type { Graphics as GraphicsIns } from 'pixi.js'
 
 import { External, PTransition } from 'vue3-pixi'
 import gsap from 'gsap'
@@ -10,13 +10,13 @@ import * as PIXI from 'pixi.js'
 gsap.registerPlugin(PixiPlugin)
 PixiPlugin.registerPIXI(PIXI)
 
-function onBeforeEnter(el: Text) {
+function onBeforeEnter(el: GraphicsIns) {
   nextTick(() => {
     gsap.set(el, { pixi: { alpha: 1, scaleX: 0.25, scaleY: 0.25 } })
   })
 }
 
-function onEnter(el: Container, done: () => void) {
+function onEnter(el: GraphicsIns, done: () => void) {
   gsap.to(el, {
     duration: 1,
     ease: 'elastic.inOut(2.5, 1)',
@@ -25,7 +25,7 @@ function onEnter(el: Container, done: () => void) {
     pixi: { alpha: 1, scaleX: 1, scaleY: 1 },
   })
 }
-function onLeave(el: Container, done: () => void) {
+function onLeave(el: GraphicsIns, done: () => void) {
   gsap.to(el, {
     duration: 0.7,
     pixi: { scaleX: 1, scaleY: 1, x: 350 },

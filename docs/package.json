@@ -18,8 +18,8 @@
     "gsap": "^3.11.5",
     "naive-ui": "^2.34.4",
     "nanoid": "^4.0.2",
-    "pixi.js": "^7.2.4",
-    "unocss": "^0.56.0",
+    "pixi.js": "^7.3.2",
+    "unocss": "^0.58.3",
     "vue": "^3.3.4",
     "vue3-pixi": "workspace:^"
   },
