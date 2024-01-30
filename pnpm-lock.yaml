@@ -80,8 +80,8 @@ importers:
         specifier: ^2.2.3
         version: 2.2.3
       floating-vue:
-        specifier: 2.0.0-beta.24
-        version: 2.0.0-beta.24(vue@3.3.4)
+        specifier: 5.2.2
+        version: 5.2.2(vue@3.3.4)
       markdown-it-vitepress-demo:
         specifier: ^0.1.8
         version: 0.1.8
@@ -6333,8 +6333,8 @@ packages:
     resolution: {integrity: sha512-36yxDn5H7OFZQla0/jFJmbIKTdZAQHngCedGxiMmpNfEZM0sdEeT+WczLQrjK6D7o2aiyLYDnkw0R3JK0Qv1RQ==}
     dev: true
 
-  /floating-vue@2.0.0-beta.24(vue@3.3.4):
-    resolution: {integrity: sha512-URSzP6YXaF4u1oZ9XGL8Sn8puuM7ivp5jkOUrpy5Q1mfo9BfGppJOn+ierTmsSUfJEeHBae8KT7r5DeI3vQIEw==}
+  /floating-vue@5.2.2(vue@3.3.4):
+    resolution: {integrity: sha512-afW+h2CFafo+7Y9Lvw/xsqjaQlKLdJV7h1fCHfcYQ1C4SVMlu7OAekqWgu5d4SgvkBVU0pVpLlVsrSTBURFRkg==}
     peerDependencies:
       '@nuxt/kit': ^3.2.0
       vue: ^3.2.0
