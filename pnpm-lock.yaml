@@ -132,8 +132,8 @@ importers:
         specifier: ^0.14.1
         version: 0.14.6(vue@3.4.15)
       vue3-pixi:
-        specifier: ^0.8.5
-        version: 0.8.5(@pixi/utils@7.3.2)(vue@3.4.15)
+        specifier: ^0.9.0
+        version: link:../vue3-pixi
     devDependencies:
       '@nuxt/module-builder':
         specifier: ^0.5.4
@@ -3054,6 +3054,7 @@ packages:
 
   /@types/web-bluetooth@0.0.20:
     resolution: {integrity: sha512-g9gZnnXVq7gM7v3tJCWV/qw7w+KeOlSHAhgF9RytFyifW6AF61hdT2ucrYhPq9hLs5JIryeupHV3qGk95dH9ow==}
+    dev: true
 
   /@typescript-eslint/eslint-plugin@5.61.0(@typescript-eslint/parser@5.61.0)(eslint@8.29.0)(typescript@5.0.2):
     resolution: {integrity: sha512-A5l/eUAug103qtkwccSCxn8ZRwT+7RXWkFECdA4Cvl1dOlDUgTpAOfSEElZn2uSUxhdDpnCdetrf0jvU4qrL+g==}
@@ -3898,18 +3899,6 @@ packages:
       - vue
     dev: false
 
-  /@vueuse/core@10.7.0(vue@3.4.15):
-    resolution: {integrity: sha512-4EUDESCHtwu44ZWK3Gc/hZUVhVo/ysvdtwocB5vcauSV4B7NiGY5972WnsojB3vRNdxvAt7kzJWE2h9h7C9d5w==}
-    dependencies:
-      '@types/web-bluetooth': 0.0.20
-      '@vueuse/metadata': 10.7.0
-      '@vueuse/shared': 10.7.0(vue@3.4.15)
-      vue-demi: 0.14.6(vue@3.4.15)
-    transitivePeerDependencies:
-      - '@vue/composition-api'
-      - vue
-    dev: false
-
   /@vueuse/core@10.7.2(vue@3.4.15):
     resolution: {integrity: sha512-AOyAL2rK0By62Hm+iqQn6Rbu8bfmbgaIMXcE3TSr7BdQ42wnSFlwIdPjInO62onYsEMK/yDMU8C6oGfDAtZ2qQ==}
     dependencies:
@@ -3976,10 +3965,6 @@ packages:
     resolution: {integrity: sha512-3mc5BqN9aU2SqBeBuWE7ne4OtXHoHKggNgxZR2K+zIW4YLsy6xoZ4/9vErQs6tvoKDX6QAqm3lvsrv0mczAwIQ==}
     dev: false
 
-  /@vueuse/metadata@10.7.0:
-    resolution: {integrity: sha512-GlaH7tKP2iBCZ3bHNZ6b0cl9g0CJK8lttkBNUX156gWvNYhTKEtbweWLm9rxCPIiwzYcr/5xML6T8ZUEt+DkvA==}
-    dev: false
-
   /@vueuse/metadata@10.7.2:
     resolution: {integrity: sha512-kCWPb4J2KGrwLtn1eJwaJD742u1k5h6v/St5wFe8Quih90+k2a0JP8BS4Zp34XUuJqS2AxFYMb1wjUL8HfhWsQ==}
     dev: true
@@ -3995,15 +3980,6 @@ packages:
 
   /@vueuse/shared@10.1.2(vue@3.4.15):
     resolution: {integrity: sha512-1uoUTPBlgyscK9v6ScGeVYDDzlPSFXBlxuK7SfrDGyUTBiznb3mNceqhwvZHjtDRELZEN79V5uWPTF1VDV8svA==}
-    dependencies:
-      vue-demi: 0.14.6(vue@3.4.15)
-    transitivePeerDependencies:
-      - '@vue/composition-api'
-      - vue
-    dev: false
-
-  /@vueuse/shared@10.7.0(vue@3.4.15):
-    resolution: {integrity: sha512-kc00uV6CiaTdc3i1CDC4a3lBxzaBE9AgYNtFN87B5OOscqeWElj/uza8qVDmk7/U8JbqoONLbtqiLJ5LGRuqlw==}
     dependencies:
       vue-demi: 0.14.6(vue@3.4.15)
     transitivePeerDependencies:
@@ -12086,20 +12062,6 @@ packages:
       '@vue/devtools-api': 6.5.1
       vue: 3.3.11(typescript@5.0.2)
     dev: true
-
-  /vue3-pixi@0.8.5(@pixi/utils@7.3.2)(vue@3.4.15):
-    resolution: {integrity: sha512-rL6hbCtQiZH+/N9bNi9Uk5ivE+6m79ZBTC3NET9Oe8SzK7iWUdgLTJgm6p1cDSsWPdfhmCVmzR2b8OW4RIV+2g==}
-    dependencies:
-      '@antfu/utils': 0.7.7
-      '@vueuse/core': 10.7.0(vue@3.4.15)
-      nanoid: 4.0.2
-      pixi.js: 7.3.2(@pixi/utils@7.3.2)
-      vue-demi: 0.14.6(vue@3.4.15)
-    transitivePeerDependencies:
-      - '@pixi/utils'
-      - '@vue/composition-api'
-      - vue
-    dev: false
 
   /vue@3.3.11(typescript@5.0.2):
     resolution: {integrity: sha512-d4oBctG92CRO1cQfVBZp6WJAs0n8AK4Xf5fNjQCBeKCvMI1efGQ5E3Alt1slFJS9fZuPcFoiAiqFvQlv1X7t/w==}
