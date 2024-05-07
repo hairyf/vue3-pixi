@@ -75,18 +75,24 @@ function getDependencies(code: string) {
 }
 
 export function getWithAppCodeSandboxParams(code: string) {
-  code = code.replace(/["']\//g, '"https://raw.githubusercontent.com/hairyf/vue3-pixi/main/docs/public/')
+  code = code.replace(/["']\//g, (str) => {
+    return `${str === '"/' ? '"' : '\''}https://raw.githubusercontent.com/hairyf/vue3-pixi/main/docs/public/`
+  })
   return (getParameters as any)({
     files: {
       'package.json': {
         content: {
           dependencies: {
             ...getDependencies(code),
-            'vue': 'next',
-            'vue-router': 'next',
             'vue3-pixi': 'latest',
+            'vue-router': 'next',
+            'vue': '^3',
           },
-          devDependencies: { '@vue/cli-plugin-babel': '~4.5.0', 'typescript': '~4.6.3' },
+          devDependencies: {
+            '@vue/babel-plugin-jsx': '^1.2.2',
+            '@vue/cli-plugin-babel': '~4.5.0',
+            'typescript': '~4.6.3',
+          },
         },
       },
       'index.html': { content: indexHtml },
@@ -104,10 +110,10 @@ export function getCodeSandboxParams(code: string) {
       'package.json': {
         content: {
           dependencies: {
+            'vue3-pixi': '^0.9.1',
             ...getDependencies(code),
             'vue': 'next',
             'vue-router': 'next',
-            'vue3-pixi': 'latest',
           },
           devDependencies: { '@vue/cli-plugin-babel': '~4.5.0', 'typescript': '~4.6.3' },
         },
