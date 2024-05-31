@@ -60,7 +60,7 @@
   "dependencies": {
     "@antfu/utils": "^0.7.8",
     "@vueuse/core": "^10.10.0",
-    "nanoid": "^4.0.2",
+    "nanoid": "^5.0.0",
     "pixi.js": "^7.4.2",
     "vue-demi": "^0.14.8"
   },
