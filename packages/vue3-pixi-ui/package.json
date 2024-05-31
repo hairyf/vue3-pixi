@@ -47,12 +47,12 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@pixi/ui": "^0.10.0",
-    "pixi.js": "^7.3.2",
-    "vue-demi": "^0.14.1",
+    "@pixi/ui": "^0.10.5",
+    "pixi.js": "^7.4.2",
+    "vue-demi": "^0.14.8",
     "vue3-pixi": "workspace:^"
   },
   "devDependencies": {
-    "@vue/runtime-core": "^3"
+    "@vue/runtime-core": "^3.4.27"
   }
 }

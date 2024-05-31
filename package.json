@@ -15,17 +15,17 @@
     "docs:preview": "npm -C docs run docs:preview"
   },
   "dependencies": {
-    "@antfu/utils": "^0.7.2"
+    "@antfu/utils": "^0.7.8"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.33.1",
-    "@types/node": "^20.0.0",
-    "@vue/test-utils": "^2.3.2",
-    "bumpp": "^9.0.0",
-    "eslint": "^8.29.0",
+    "@types/node": "^20.12.13",
+    "@vue/test-utils": "^2.4.6",
+    "bumpp": "^9.4.1",
+    "eslint": "^8.57.0",
     "jsdom": "^22.1.0",
     "tsup": "6.6.2",
-    "typescript": "^5.0.0",
-    "vitest": "^1.0.0"
+    "typescript": "^5.4.5",
+    "vitest": "^1.6.0"
   }
 }

@@ -33,19 +33,19 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@antfu/utils": "^0.7.2",
-    "@nuxt/kit": "^3.8.2",
-    "mlly": "^1.4.2",
-    "pkg-types": "^1.0.3",
-    "sirv": "^2.0.3",
-    "vue-demi": "^0.14.1",
+    "@antfu/utils": "^0.7.8",
+    "@nuxt/kit": "^3.11.2",
+    "mlly": "^1.7.0",
+    "pkg-types": "^1.1.1",
+    "sirv": "^2.0.4",
+    "vue-demi": "^0.14.8",
     "vue3-pixi": "^0.8.5"
   },
   "devDependencies": {
-    "@nuxt/module-builder": "^0.5.4",
-    "@nuxt/schema": "^3.8.2",
-    "@vue/runtime-core": "^3",
-    "nuxt": "^3.8.2"
+    "@nuxt/module-builder": "^0.5.5",
+    "@nuxt/schema": "^3.11.2",
+    "@vue/runtime-core": "^3.4.27",
+    "nuxt": "^3.11.2"
   },
   "build": {
     "externals": [

@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.7.6",
   "private": true,
-  "packageManager": "pnpm@8.15.1",
+  "packageManager": "pnpm@8.15.8",
   "description": "Vue createRenderer for PixiJS",
   "license": "MIT",
   "scripts": {
@@ -12,22 +12,22 @@
     "docs:preview": "vitepress preview"
   },
   "dependencies": {
-    "@antfu/utils": "^0.7.2",
-    "@stackblitz/sdk": "^1.9.0",
-    "@vueuse/core": "^10.1.2",
-    "gsap": "^3.11.5",
-    "naive-ui": "^2.34.4",
+    "@antfu/utils": "^0.7.8",
+    "@stackblitz/sdk": "^1.10.0",
+    "@vueuse/core": "^10.10.0",
+    "gsap": "^3.12.5",
+    "naive-ui": "^2.38.2",
     "nanoid": "^4.0.2",
-    "pixi.js": "^7.3.2",
-    "unocss": "^0.58.3",
-    "vue": "^3.3.4",
+    "pixi.js": "^7.4.2",
+    "unocss": "^0.58.9",
+    "vue": "^3.4.27",
     "vue3-pixi": "workspace:^"
   },
   "devDependencies": {
-    "@iconify/json": "^2.2.73",
+    "@iconify/json": "^2.2.215",
     "codesandbox": "^2.2.3",
     "floating-vue": "2.0.0-beta.24",
-    "markdown-it-vitepress-demo": "0.1.8",
+    "markdown-it-vitepress-demo": "0.2.1",
     "vitepress": "1.0.0-rc.40"
   }
 }
