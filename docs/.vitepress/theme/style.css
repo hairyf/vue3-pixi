@@ -7,6 +7,10 @@
  * Colors
  * -------------------------------------------------------------------------- */
 :root {
+  --vp-c-indigo-1: #eb3674;
+  --vp-c-indigo-2: #d81557;
+  --vp-c-indigo-3: #ed427c;
+
   --vp-c-brand: #e91e63;
   --vp-c-brand-light: #eb3674;
   --vp-c-brand-lighter: #ed427c;
