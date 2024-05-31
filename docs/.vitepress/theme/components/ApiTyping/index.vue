@@ -19,6 +19,7 @@ defineProps<{
       <n-popover v-if="details" trigger="hover">
         <template #trigger>
           <NButton
+            class="dark:text-gray"
             text
             :theme-overrides="{
               textColorTextHover: 'var(--vp-button-brand-hover-bg)',
