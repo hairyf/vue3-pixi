@@ -18,7 +18,7 @@
     "naive-ui": "^2.38.2",
     "nanoid": "^4.0.2",
     "pixi.js": "^7.4.2",
-    "unocss": "^0.58.9",
+    "unocss": "^0.60.0",
     "vue": "^3.4.27",
     "vue3-pixi": "workspace:^"
   },
