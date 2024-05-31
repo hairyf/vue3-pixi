@@ -2,8 +2,8 @@
   "name": "vue3-pixi-monorepo",
   "type": "module",
   "version": "0.9.1",
-  "packageManager": "pnpm@8.15.8",
   "private": true,
+  "packageManager": "pnpm@8.15.8",
   "description": "Vue createRenderer for PixiJS",
   "license": "MIT",
   "scripts": {
