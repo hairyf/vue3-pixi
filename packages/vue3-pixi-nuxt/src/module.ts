@@ -2,8 +2,6 @@ import { addComponent, addImports, createResolver, defineNuxtModule } from '@nux
 import * as core from 'vue3-pixi'
 import { isCustomElement } from 'vue3-pixi'
 
-const resolver = createResolver(import.meta.url)
-
 const components = [
   'Application',
   'PixiTransition',
@@ -19,22 +17,20 @@ export interface ModuleOptions {}
 export default defineNuxtModule({
   meta: { name: 'vue3-pixi-nuxt' },
   async setup(options, nuxt) {
+    const resolver = createResolver(import.meta.url)
     for (const name of components) {
       addComponent({
         name,
         filePath: 'vue3-pixi',
         export: name,
-        mode: 'client',
-        _raw: true,
-      })
-      addComponent({
-        name,
-        filePath: name === 'Application'
-          ? resolver.resolve('./runtime/ServerApplication.vue')
-          : resolver.resolve('./runtime/ServerEmpty.vue'),
-        mode: 'server',
       })
     }
+
+    addComponent({
+      name: 'Application',
+      filePath: resolver.resolve('./runtime/Application.server.vue'),
+      mode: 'server',
+    })
 
     for (const name in core) {
       if (name.match(/^use/) || name.match(/^on[A-Z]{1}/)) {

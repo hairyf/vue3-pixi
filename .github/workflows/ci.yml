@@ -38,7 +38,7 @@ jobs:
 
     strategy:
       matrix:
-        node: [16.x, 18.x]
+        node: [18.x]
       fail-fast: false
 
     steps:
