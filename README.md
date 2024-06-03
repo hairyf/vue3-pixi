@@ -53,6 +53,10 @@ yarn add vue3-pixi
 - https://github.com/hairyf/vue3-pixi-flappy-bird
 - https://github.com/hairyf/vue3-pixi-dino
 
+## Join us at Discord
+
+Join our Discord server @https://discord.gg/jfwsQUgU9e
+
 ## License
 
 [MIT](./LICENSE) License © 2023-PRESENT [hairyf](https://github.com/hairyf)
