@@ -1,20 +1,28 @@
+/* eslint-disable @typescript-eslint/consistent-type-definitions */
 import { nanoid } from 'nanoid'
 import { Assets } from 'pixi.js'
 import type { ExtractPropTypes, PropType } from 'vue-demi'
 import { defineComponent, onBeforeUnmount, ref, renderSlot, watch } from 'vue-demi'
 
-import type { IBaseTextureOptions, Texture } from 'pixi.js'
+import type { IBaseTextureOptions, Texture, UnresolvedAsset as _UnresolvedAsset } from 'pixi.js'
+import type { Awaitable } from '@antfu/utils'
 import { isString } from '@antfu/utils'
 import { setTextureOptions } from '../../renderer'
 
-export type LoadAsset = string | { default: string } | Promise<string | { default: string }>
-export type LoadAssets = Record<string, LoadAsset> | (LoadAsset | [string, LoadAsset])[]
+export type ImportedAsset = { default: string }
+export type UnresolvedAsset = _UnresolvedAsset & { data?: any }
+
+export type UnresolvedAssetAwaitable = Awaitable<string | ImportedAsset | UnresolvedAsset>
+export type UnresolvedAssetArray = (UnresolvedAssetAwaitable | [string, UnresolvedAssetAwaitable])[]
+export type UnresolvedAssetObject = Record<string, UnresolvedAssetAwaitable>
+
+export type UnresolvedAssets = UnresolvedAssetObject | UnresolvedAssetArray
 
 export const loaderProps = {
   onResolved: Function as PropType<(textures: any) => void>,
   onProgress: Function as PropType<(progress: number) => void>,
   resources: {
-    type: [Object, Array] as PropType<LoadAssets>,
+    type: [Object, Array] as PropType<UnresolvedAssets>,
     required: true as const,
   },
   options: {
@@ -42,7 +50,6 @@ export const Loader = defineComponent({
     async function load() {
       Assets.addBundle(bundle, await resolveAssets(props.resources))
       const _textures = await Assets.loadBundle(bundle, onProgress)
-
       for (const key in _textures)
         setTextureOptions(_textures[key], props.options)
 
@@ -78,23 +85,33 @@ export const Loader = defineComponent({
   },
 })
 
-async function parseAsset(asset: LoadAsset) {
+async function parseAsset(asset: UnresolvedAssetAwaitable, alias?: string) {
   const result = await asset
-  return isString(result) ? result : result.default
+  const parsed = !isString(result)
+    ? (result.default || result as UnresolvedAsset)
+    : result
+  if (typeof parsed === 'string')
+    return { alias: alias || parsed, src: parsed }
+  else
+    return { ...parsed, alias: alias || parsed.alias }
 }
 
-async function resolveAssets(assets: LoadAssets) {
-  const result: Record<string, string> = {}
+async function resolveAssets(assets: UnresolvedAssets) {
+  const result: UnresolvedAsset[] = []
+  const isArray = Array.isArray(assets)
+
   for (const key in assets) {
     let asset = (assets as any)[key]
     asset = asset.default || asset
     if (Array.isArray(asset)) {
-      result[asset[0]] = await parseAsset(asset[1])
+      result.push(await parseAsset(asset[1], asset[0]))
       continue
     }
-    Array.isArray(assets)
-      ? (result[asset] = await parseAsset(asset))
-      : (result[key] = await parseAsset(asset))
+    result.push(
+      isArray
+        ? await parseAsset(asset)
+        : await parseAsset(asset, key),
+    )
   }
   return result
 }

@@ -39,7 +39,7 @@
     "pkg-types": "^1.1.1",
     "sirv": "^2.0.4",
     "vue-demi": "^0.14.8",
-    "vue3-pixi": "^0.8.5"
+    "vue3-pixi": "latest"
   },
   "devDependencies": {
     "@nuxt/module-builder": "^0.7.0",
