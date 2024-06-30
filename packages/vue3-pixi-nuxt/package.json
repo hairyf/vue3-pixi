@@ -39,6 +39,7 @@
     "nuxi": "^3.12.0",
     "pkg-types": "^1.1.1",
     "sirv": "^2.0.4",
+    "unhead": "^1.9.14",
     "vue-demi": "^0.14.8",
     "vue3-pixi": "workspace:1.0.0"
   },
