@@ -8,7 +8,7 @@ const elementNames = [
   'animated-sprite',
   'mesh',
   'simple-plane',
-  'nine-slice-plane',
+  'nine-slice-sprite',
   'simple-rope',
 
   'filter',
@@ -16,7 +16,6 @@ const elementNames = [
   'alpha-filter',
   'displacement-filter',
   'color-matrix-filter',
-  'f-x-a-a-filter',
 ]
 
 const prefix = 'pixi-'

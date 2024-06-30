@@ -6,15 +6,10 @@ import {
   ColorMatrixFilter,
   Container,
   DisplacementFilter,
-  FXAAFilter,
   Graphics,
   Mesh,
-  NineSlicePlane,
+  NineSliceSprite,
   NoiseFilter,
-  ParticleContainer,
-  SimpleMesh,
-  SimplePlane,
-  SimpleRope,
   Sprite,
   Text,
   TilingSprite,
@@ -29,34 +24,12 @@ const ContainerRender: RendererOptions = {
   createElement: () => new Container(),
 }
 
-const ParticleContainerRender: RendererOptions = {
-  name: 'ParticleContainer',
-  createElement: props => new ParticleContainer(
-    props['max-size'] || props.maxSize,
-    props.properties,
-  ),
-  patchProp(el: ParticleContainer, key, prev, next) {
-    switch (key) {
-      case 'max-size':
-      case 'properties':
-        break
-      default:
-        defuPatchProp(el, key, prev, next)
-    }
-  },
-}
-
 const SpriteRender: RendererOptions = {
   name: 'Sprite',
   createElement: props => new Sprite(normalizeTexture(props.texture)),
   remove(node: Sprite) {
     node.destroy()
   },
-}
-
-const SimpleMeshRender: RendererOptions = {
-  name: 'SimpleMesh',
-  createElement: props => new SimpleMesh(normalizeTexture(props.texture)),
 }
 
 const GraphicsRender: RendererOptions = {
@@ -66,11 +39,10 @@ const GraphicsRender: RendererOptions = {
 
 const TextRender: RendererOptions = {
   name: 'Text',
-  createElement: props => new Text(
-    props.text,
-    props.style,
-    props.canvas,
-  ),
+  createElement: props => new Text({
+    text: props.text,
+    style: props.style,
+  }),
   patchProp(el: Text, key, prev, next) {
     switch (key) {
       case 'text':
@@ -87,10 +59,10 @@ const TextRender: RendererOptions = {
 
 const BitmapTextRender: RendererOptions = {
   name: 'BitmapText',
-  createElement: props => new BitmapText(
-    props.text,
-    props.style,
-  ),
+  createElement: props => new BitmapText({
+    text: props.text,
+    style: props.style,
+  }),
   patchProp(el: BitmapText, key, prev, next) {
     switch (key) {
       case 'text':
@@ -170,18 +142,17 @@ const AnimatedSpriteRender: RendererOptions = {
 
 const MeshRender: RendererOptions = {
   name: 'Mesh',
-  createElement: props => new Mesh(
-    props.geometry,
-    props.shader,
-    props.state,
-    props.drawMode,
-  ),
+  createElement: props => new Mesh({
+    geometry: props.geometry,
+    shader: props.shader,
+    state: props.state,
+    roundPixels: props.roundPixels,
+  }),
   patchProp(el: Mesh, key, prev, next) {
     switch (key) {
       case 'geometry':
       case 'shader':
       case 'state':
-      case 'drawMode':
         setSkipFirstValue(el, key, () => el[key] = next)
         break
       case 'roundPixels':
@@ -193,12 +164,12 @@ const MeshRender: RendererOptions = {
   },
 }
 
-const NineSlicePlaneRender: RendererOptions = {
-  name: 'NineSlicePlane',
-  createElement: props => new NineSlicePlane(
+const NineSliceSpriteRender: RendererOptions = {
+  name: 'NineSliceSprite',
+  createElement: props => new NineSliceSprite(
     normalizeTexture(props.texture),
   ),
-  patchProp(el: NineSlicePlane, key, prev, next) {
+  patchProp(el: NineSliceSprite, key, prev, next) {
     switch (key) {
       case 'roundPixels':
       case 'autoResize':
@@ -229,7 +200,7 @@ const SimpleRopeRender: RendererOptions = {
       props.points,
     )
   },
-  patchProp(el: NineSlicePlane, key, prev, next) {
+  patchProp(el: NineSliceSprite, key, prev, next) {
     switch (key) {
       case 'texture':
       case 'points':
@@ -295,23 +266,16 @@ const NoiseFilterRender: RendererOptions = {
   },
 }
 
-const FXAAFilterRender: RendererOptions = {
-  name: 'FXAAFilter',
-  createElement: () => new FXAAFilter(),
-}
-
 export const defaultRenderer: Renderer = [
   ContainerRender,
-  ParticleContainerRender,
   SpriteRender,
-  SimpleMeshRender,
   GraphicsRender,
   TextRender,
   BitmapTextRender,
   TilingSpriteRender,
   AnimatedSpriteRender,
   MeshRender,
-  NineSlicePlaneRender,
+  NineSliceSpriteRender,
   SimplePlaneRender,
   SimpleRopeRender,
   BlurFilterRender,
@@ -319,5 +283,4 @@ export const defaultRenderer: Renderer = [
   DisplacementFilterRender,
   ColorMatrixFilterRender,
   NoiseFilterRender,
-  FXAAFilterRender,
 ]

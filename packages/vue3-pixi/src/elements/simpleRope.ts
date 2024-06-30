@@ -9,12 +9,12 @@ import type { PixiEvents } from './events'
 
 export interface SimpleRopeProps {
   texture: string | PIXI.Texture
-  points: PIXI.IPoint[]
+  points: PIXI.Point[]
   textureScale?: number
   autoUpdate?: number
   shader?: PIXI.Shader | PIXI.MeshMaterial
   blendMode?: PIXI.BLEND_MODES
-  drawMode?: PIXI.DRAW_MODES
+  drawMode?: PIXI.DRAW
   material?: PIXI.Shader
   roundPixels?: boolean
   size?: number
