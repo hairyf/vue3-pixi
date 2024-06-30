@@ -9,7 +9,7 @@ import type { PixiEvents } from './events'
 
 export interface SimplePlaneProps {
   texture: string | PIXI.Texture
-  points: PIXI.IPoint[]
+  points: PIXI.Point[]
 
   shader?: PIXI.Shader | PIXI.MeshMaterial
   blendMode?: PIXI.BLEND_MODES

@@ -13,7 +13,7 @@ export interface BitmapTextProps {
 
   align?: string
 
-  anchor?: PIXI.IPointData | number
+  anchor?: PointData | number
   anchorX?: number
   anchorY?: number
 

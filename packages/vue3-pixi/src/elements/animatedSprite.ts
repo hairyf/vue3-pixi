@@ -15,7 +15,7 @@ export interface AnimatedSpriteProps extends AllowedPixiProps {
   playing?: boolean
   gotoAndPlay?: number
 
-  anchor?: PIXI.IPointData | number
+  anchor?: PointData | number
   anchorX?: number
   anchorY?: number
 
