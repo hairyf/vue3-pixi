@@ -9,7 +9,7 @@ const elementNames = [
   'mesh',
   'simple-plane',
   'nine-slice-sprite',
-  'simple-rope',
+  'mesh-rope',
 
   'filter',
   'blur-filter',

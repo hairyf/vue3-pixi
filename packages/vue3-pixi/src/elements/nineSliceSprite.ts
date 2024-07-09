@@ -16,9 +16,9 @@ export interface NineSliceSpriteProps {
   verticesX?: number
   verticesY?: number
 
-  shader?: PIXI.Shader | PIXI.MeshMaterial
+  shader?: PIXI.Shader
   blendMode?: PIXI.BLEND_MODES
-  drawMode?: PIXI.DRAW_MODES
+  drawMode?: PIXI.Topology
   material?: PIXI.Shader
   roundPixels?: boolean
   size?: number

@@ -1,3 +1,26 @@
+// imported by default
+import 'pixi.js/accessibility'
+import 'pixi.js/app'
+import 'pixi.js/events'
+import 'pixi.js/filters'
+import 'pixi.js/sprite-tiling'
+import 'pixi.js/text'
+import 'pixi.js/text-bitmap'
+import 'pixi.js/text-html'
+import 'pixi.js/graphics'
+import 'pixi.js/mesh'
+import 'pixi.js/sprite-nine-slice'
+
+// not added by default, everyone needs to import these manually
+import 'pixi.js/advanced-blend-modes'
+import 'pixi.js/unsafe-eval'
+import 'pixi.js/prepare'
+import 'pixi.js/math-extras'
+import 'pixi.js/dds'
+import 'pixi.js/ktx'
+import 'pixi.js/ktx2'
+import 'pixi.js/basis'
+
 import {
   AlphaFilter,
   AnimatedSprite,
@@ -8,7 +31,11 @@ import {
   DisplacementFilter,
   Graphics,
   Mesh,
-  NineSliceSprite,
+  // -- Strange thing
+  // -- why are these three empty?
+  // MeshPlane,
+  // MeshRope,
+  // NineSliceSprite,
   NoiseFilter,
   Sprite,
   Text,
@@ -27,9 +54,7 @@ const ContainerRender: RendererOptions = {
 const SpriteRender: RendererOptions = {
   name: 'Sprite',
   createElement: props => new Sprite(normalizeTexture(props.texture)),
-  remove(node: Sprite) {
-    node.destroy()
-  },
+  remove: (node: Sprite) => node.destroy(),
 }
 
 const GraphicsRender: RendererOptions = {
@@ -70,7 +95,7 @@ const BitmapTextRender: RendererOptions = {
         break
       case 'style':
         break
-      case 'dirty':
+      case 'sortDirty':
       case 'roundPixels':
         patchBooleanProp(el, key, prev, next)
         break
@@ -82,11 +107,11 @@ const BitmapTextRender: RendererOptions = {
 
 const TilingSpriteRender: RendererOptions = {
   name: 'TilingSprite',
-  createElement: props => new TilingSprite(
-    normalizeTexture(props!.texture),
-    props.width,
-    props.height,
-  ),
+  createElement: props => new TilingSprite({
+    texture: normalizeTexture(props!.texture),
+    width: props.width,
+    height: props.height,
+  }),
   patchProp(el: TilingSprite, key, prev, next) {
     switch (key) {
       case 'width':
@@ -142,12 +167,8 @@ const AnimatedSpriteRender: RendererOptions = {
 
 const MeshRender: RendererOptions = {
   name: 'Mesh',
-  createElement: props => new Mesh({
-    geometry: props.geometry,
-    shader: props.shader,
-    state: props.state,
-    roundPixels: props.roundPixels,
-  }),
+  // TODO(drawMode): undetermined
+  createElement: props => new Mesh(props as any),
   patchProp(el: Mesh, key, prev, next) {
     switch (key) {
       case 'geometry':
@@ -164,60 +185,57 @@ const MeshRender: RendererOptions = {
   },
 }
 
-const NineSliceSpriteRender: RendererOptions = {
-  name: 'NineSliceSprite',
-  createElement: props => new NineSliceSprite(
-    normalizeTexture(props.texture),
-  ),
-  patchProp(el: NineSliceSprite, key, prev, next) {
-    switch (key) {
-      case 'roundPixels':
-      case 'autoResize':
-        patchBooleanProp(el, key, prev, next)
-        break
-      default:
-        defuPatchProp(el, key, prev, next)
-    }
-  },
-}
+// const NineSliceSpriteRender: RendererOptions = {
+//   name: 'NineSliceSprite',
+//   createElement: props => new NineSliceSprite(
+//     normalizeTexture(props.texture),
+//   ),
+//   patchProp(el: NineSliceSprite, key, prev, next) {
+//     switch (key) {
+//       case 'roundPixels':
+//       case 'autoResize':
+//         patchBooleanProp(el, key, prev, next)
+//         break
+//       default:
+//         defuPatchProp(el, key, prev, next)
+//     }
+//   },
+// }
 
-const SimplePlaneRender: RendererOptions = {
-  name: 'SimplePlane',
-  createElement: (props) => {
-    return new SimplePlane(
-      normalizeTexture(props.texture),
-      props.width,
-      props.height,
-    )
-  },
-}
+// TODO: SimplePlane -> MeshPlane files
+// const MeshPlaneRender: RendererOptions = {
+//   name: 'MeshPlane',
+//   createElement: (props) => {
+//     return new MeshPlane({
+//       texture: normalizeTexture(props.texture),
+//       width: props.width,
+//       height: props.height,
+//     })
+//   },
+// }
 
-const SimpleRopeRender: RendererOptions = {
-  name: 'SimpleRope',
-  createElement: (props) => {
-    return new SimpleRope(
-      normalizeTexture(props.texture),
-      props.points,
-    )
-  },
-  patchProp(el: NineSliceSprite, key, prev, next) {
-    switch (key) {
-      case 'texture':
-      case 'points':
-        break
-      default:
-        defuPatchProp(el, key, prev, next)
-    }
-  },
-}
+// const MeshRopeRender: RendererOptions = {
+//   name: 'MeshRope',
+//   createElement: (props) => {
+//     return new MeshRope({
+//       texture: normalizeTexture(props.texture),
+//       points: props.points,
+//     })
+//   },
+//   patchProp(el: NineSliceSprite, key, prev, next) {
+//     switch (key) {
+//       case 'texture':
+//       case 'points':
+//         break
+//       default:
+//         defuPatchProp(el, key, prev, next)
+//     }
+//   },
+// }
 
 const BlurFilterRender: RendererOptions = {
   name: 'BlurFilter',
-  createElement: props => new BlurFilter(
-    props.blur,
-    props.quality,
-    props.resolution,
-  ),
+  createElement: props => new BlurFilter(props as any),
 }
 
 const AlphaFilterRender: RendererOptions = {
@@ -235,7 +253,7 @@ const DisplacementFilterRender: RendererOptions = {
     switch (key) {
       case 'sprite':
       case 'scale':
-        setSkipFirstValue(el, key, () => el.scale = next)
+        // setSkipFirstValue(el, key, () => el.scale = next)
         break
       default:
         defuPatchProp(el, key, prev, next)
@@ -250,10 +268,7 @@ const ColorMatrixFilterRender: RendererOptions = {
 
 const NoiseFilterRender: RendererOptions = {
   name: 'NoiseFilter',
-  createElement: props => new NoiseFilter(
-    props.noise,
-    props.seed,
-  ),
+  createElement: props => new NoiseFilter(props as any),
   patchProp(el: NoiseFilter, key, prev, next) {
     switch (key) {
       case 'noise':
@@ -275,9 +290,9 @@ export const defaultRenderer: Renderer = [
   TilingSpriteRender,
   AnimatedSpriteRender,
   MeshRender,
-  NineSliceSpriteRender,
-  SimplePlaneRender,
-  SimpleRopeRender,
+  // NineSliceSpriteRender,
+  // MeshPlaneRender,
+  // MeshRopeRender,
   BlurFilterRender,
   AlphaFilterRender,
   DisplacementFilterRender,

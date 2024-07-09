@@ -1,6 +1,6 @@
 import '@vue/runtime-core'
 import 'pixi.js'
-import type { SimpleRopeComponent } from './elements/simpleRope'
+import type { MeshRopeComponent } from './elements/meshRope'
 import type { SimplePlaneComponent } from './elements/simplePlane'
 import type { NineSliceSpriteComponent } from './elements/NineSliceSprite'
 import type { MeshComponent } from './elements/mesh'
@@ -71,8 +71,8 @@ declare module '@vue/runtime-core' {
     NineSliceSprite: NineSliceSpriteComponent
     PixiNineSliceSprite: NineSliceSpriteComponent
 
-    SimpleRope: SimpleRopeComponent
-    PixiSimpleRope: SimpleRopeComponent
+    MeshRope: MeshRopeComponent
+    PixiMeshRope: MeshRopeComponent
   }
 }
 
@@ -87,7 +87,7 @@ declare module 'pixi.js' {
   }
 }
 
-export * from './elements/simpleRope'
+export * from './elements/meshRope'
 export * from './elements/simplePlane'
 export * from './elements/nineSliceSprite'
 export * from './elements/mesh'

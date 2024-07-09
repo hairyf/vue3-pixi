@@ -13,7 +13,7 @@ export interface SimplePlaneProps {
 
   shader?: PIXI.Shader | PIXI.MeshMaterial
   blendMode?: PIXI.BLEND_MODES
-  drawMode?: PIXI.DRAW_MODES
+  drawMode?: PIXI.Topology
   material?: PIXI.Shader
   roundPixels?: boolean
   size?: number

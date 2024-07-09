@@ -13,7 +13,7 @@ export interface TilingSpriteProps {
   width?: number
   height?: number
 
-  anchor?: PIXI.PointData | number
+  anchor?: Partial<PIXI.PointData> | number
   anchorX?: number
   anchorY?: number
 

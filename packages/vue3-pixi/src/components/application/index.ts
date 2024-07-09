@@ -1,8 +1,7 @@
 /* eslint-disable vue/one-component-per-file */
-import { defineComponent, getCurrentInstance, h, markRaw, onMounted, onUnmounted, ref, renderSlot, warn, watch } from 'vue-demi'
-import { throttle } from '@antfu/utils'
+import { defineComponent, getCurrentInstance, h, markRaw, onMounted, onUnmounted, ref, renderSlot } from 'vue-demi'
 import { Application as _Application } from 'pixi.js'
-import type { ApplicationOptions, ColorSource, Container, GpuPowerPreference } from 'pixi.js'
+import type { ColorSource, Container, GpuPowerPreference } from 'pixi.js'
 import type { App, PropType } from 'vue-demi'
 import { createApp } from '../../renderer'
 import { appInjectKey } from '../../composables'
@@ -55,9 +54,7 @@ export const Application = defineComponent({
 
       pixiApp.value = markRaw(inst)
 
-      app = createApp({
-        render: () => renderSlot(slots, 'default'),
-      })
+      app = createApp({ render: () => renderSlot(slots, 'default') })
 
       inheritParent(app, appContext)
 
