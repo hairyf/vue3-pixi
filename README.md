@@ -55,7 +55,7 @@ yarn add vue3-pixi
 
 ## Join Discord
 
-Join Discord server [https://discord.gg/7DUKnQpc3V](https://discord.gg/7DUKnQpc3V)
+Join Discord server https://discord.gg/7DUKnQpc3V
 ## License
 
 [MIT](./LICENSE) License © 2023-PRESENT [hairyf](https://github.com/hairyf)
