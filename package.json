@@ -19,7 +19,7 @@
     "@antfu/utils": "^0.7.8"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.33.1",
+    "@antfu/eslint-config": "^2.0.0",
     "@types/node": "^20.12.13",
     "@vue/test-utils": "^2.4.6",
     "bumpp": "^9.4.1",
