@@ -62,7 +62,7 @@
     "@vueuse/core": "^10.10.0",
     "nanoid": "^4.0.2",
     "pixi-filters": "^6.0.4",
-    "pixi.js": "^8.2.1",
+    "pixi.js": "^8.2.5",
     "vue-demi": "^0.14.8"
   },
   "devDependencies": {

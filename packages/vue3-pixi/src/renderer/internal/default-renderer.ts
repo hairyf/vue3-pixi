@@ -53,7 +53,10 @@ const ContainerRender: RendererOptions = {
 
 const SpriteRender: RendererOptions = {
   name: 'Sprite',
-  createElement: props => new Sprite(normalizeTexture(props.texture)),
+  createElement: props => new Sprite({
+    ...props,
+    texture: normalizeTexture(props.texture),
+  }),
   remove: (node: Sprite) => node.destroy(),
 }
 

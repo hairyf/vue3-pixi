@@ -11,7 +11,7 @@ export function insertFilter(child: Filter, parent: Container, _anchor: any) {
   child.parent = parent
   child.destroy = remove
 
-  parent.filters!.push(child)
+  parent.filters.push(child)
 }
 
 export function nextSiblingFilter(node: Filter) {
