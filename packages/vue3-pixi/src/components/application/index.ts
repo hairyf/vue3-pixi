@@ -35,6 +35,7 @@ export const Application = defineComponent({
     height: Number,
     resolution: Number,
     resizeTo: Object as PropType<HTMLElement | Window | undefined>,
+    transferControlToOffscreen: Boolean,
   },
   setup(props, { slots, expose }) {
     const { appContext } = getCurrentInstance()!
@@ -55,6 +56,9 @@ export const Application = defineComponent({
         preserveDrawingBuffer: props.preserveDrawingBuffer,
         stencil: props.stencil,
       })
+
+      if (props.transferControlToOffscreen)
+        canvas.value?.transferControlToOffscreen()
 
       if (!context)
         warn('could not crate webgl context')
