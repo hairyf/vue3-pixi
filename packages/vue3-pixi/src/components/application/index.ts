@@ -45,6 +45,10 @@ export const Application = defineComponent({
     let app: App<Container> | undefined
 
     function mount() {
+
+      if (props.transferControlToOffscreen)
+        canvas.value?.transferControlToOffscreen()
+
       const context = canvas.value?.getContext('webgl', {
         alpha: props.alpha,
         antialias: props.antialias,
@@ -56,9 +60,6 @@ export const Application = defineComponent({
         preserveDrawingBuffer: props.preserveDrawingBuffer,
         stencil: props.stencil,
       })
-
-      if (props.transferControlToOffscreen)
-        canvas.value?.transferControlToOffscreen()
 
       if (!context)
         warn('could not crate webgl context')
