@@ -1,7 +1,7 @@
 {
   "name": "vue3-pixi-nuxt",
   "type": "module",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "description": "Nuxt createRenderer for PixiJS",
   "license": "MIT",
   "homepage": "https://github.com/hairyf/vue3-pixi#readme",
