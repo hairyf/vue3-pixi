@@ -5,6 +5,7 @@ import type { Application, ICanvas } from 'pixi.js'
 import { Rectangle } from 'pixi.js'
 
 import { computedWithControl, useResizeObserver } from '@vueuse/core'
+
 import { useApplication } from './useApplication'
 
 export function useScreen(app?: Ref<Application<ICanvas>>): Ref<Rectangle> {
@@ -17,7 +18,8 @@ export function useScreen(app?: Ref<Application<ICanvas>>): Ref<Rectangle> {
     () => useApp.value?.screen || defaultRectangle,
   )
 
-  useResizeObserver(view, screen.trigger)
+  if (view?.value instanceof HTMLCanvasElement)
+    useResizeObserver(view, screen.trigger)
 
   return screen
 }

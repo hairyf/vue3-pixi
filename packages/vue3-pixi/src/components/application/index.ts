@@ -43,13 +43,12 @@ export const Application = defineComponent({
     const pixiApp = ref()
 
     let app: App<Container> | undefined
-
     function mount() {
-
+      let view: HTMLCanvasElement | OffscreenCanvas | undefined = canvas.value
       if (props.transferControlToOffscreen)
-        canvas.value?.transferControlToOffscreen()
+        view = canvas.value?.transferControlToOffscreen() as OffscreenCanvas
 
-      const context = canvas.value?.getContext('webgl', {
+      const context = view?.getContext('webgl', {
         alpha: props.alpha,
         antialias: props.antialias,
         depth: props.depth,
@@ -64,7 +63,14 @@ export const Application = defineComponent({
       if (!context)
         warn('could not crate webgl context')
 
-      const inst = new _Application({ view: canvas.value, ...props })
+      const params = { ...props } as { [key: string]: any }
+      // delete params.autoDensity
+
+      const inst = new _Application({ view, ...params })
+
+      inst.view.width = params.width
+      inst.view.height = params.height
+
       pixiApp.value = markRaw(inst)
 
       app = createApp({
