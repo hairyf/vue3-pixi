@@ -42,7 +42,7 @@
     "vue3-pixi": "latest"
   },
   "devDependencies": {
-    "@nuxt/module-builder": "^0.7.0",
+    "@nuxt/module-builder": "^0.8.0",
     "@nuxt/schema": "^3.11.2",
     "@vue/runtime-core": "^3.4.27",
     "nuxt": "^3.11.2"
