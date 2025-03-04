@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import { BLEND_MODES, Rectangle } from 'pixi.js'
+import type { BLEND_MODES } from 'pixi.js'
+import { Rectangle } from 'pixi.js'
 import { computed, reactive } from 'vue'
 import { onTick, useScreen } from 'vue3-pixi'
 
@@ -27,7 +28,7 @@ for (let i = 0; i < totalDues; i++) {
     x: Math.random() * screen.value.width,
     y: Math.random() * screen.value.height,
     // The important bit of this example, this is how you change the default blend mode of the sprite
-    blendMode: BLEND_MODES.ADD,
+    blendMode: 'add',
     // create some extra properties that will control movement
     direction: Math.random() * Math.PI * 2,
     // this number will be used to modify the direction of the dude over time

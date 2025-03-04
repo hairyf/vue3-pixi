@@ -5,8 +5,8 @@ export function insertFilter(child: Filter, parent: Container, _anchor: any) {
   parent.filters = Array.isArray(parent.filters) ? parent.filters : [parent.filters]
 
   function remove() {
-    const index = parent.filters.indexOf(child)
-    parent.filters?.splice(index >>> 0, 1)
+    const index = (parent.filters as Filter[]).indexOf(child)
+    ;(parent.filters as Filter[])?.splice(index >>> 0, 1)
   }
   child.parent = parent
   child.destroy = remove
@@ -16,7 +16,7 @@ export function insertFilter(child: Filter, parent: Container, _anchor: any) {
 
 export function nextSiblingFilter(node: Filter) {
   node.parent.filters ??= []
-  node.parent.filters = Array.isArray(parent.filters) ? parent.filters : [parent.filters]
+  node.parent.filters = Array.isArray(node.parent.filters) ? node.parent.filters : [node.parent.filters]
 
   const index = node.parent.filters!.indexOf(node)
   if (node.parent.filters!.length <= index + 1)
