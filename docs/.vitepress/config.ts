@@ -4,7 +4,6 @@ import { defineConfig } from 'vitepress'
 import unocss from 'unocss/vite'
 import { compilerOptions, transformAssetUrls } from '../../packages/vue3-pixi'
 import { mdPlugin } from './plugin'
-
 const themeConfig: DefaultTheme.Config = {
   // https://vitepress.dev/reference/default-theme-config
   nav: [

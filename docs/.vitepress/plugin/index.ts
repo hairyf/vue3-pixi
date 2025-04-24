@@ -1,8 +1,8 @@
 import type { MarkdownRenderer } from 'vitepress'
-import demo from 'markdown-it-vitepress-demo'
+import { demoMdPlugin } from 'vitepress-plugin-demo'
 import tooltip from './tooltip'
 
 export function mdPlugin(md: MarkdownRenderer) {
-  md.use(demo)
+  md.use(demoMdPlugin)
   md.use(tooltip)
 }
