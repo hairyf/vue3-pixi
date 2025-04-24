@@ -25,8 +25,8 @@
   "devDependencies": {
     "@iconify/json": "^2.2.215",
     "codesandbox": "^2.2.3",
-    "floating-vue": "2.0.0-beta.24",
-    "vitepress": "1.0.0-rc.40",
+    "floating-vue": "^5.2.2",
+    "vitepress": "^1.6.3",
     "vitepress-plugin-demo": "^0.8.0"
   }
 }

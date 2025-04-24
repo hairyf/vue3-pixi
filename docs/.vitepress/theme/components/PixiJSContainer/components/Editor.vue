@@ -16,7 +16,7 @@ defineProps<{
         colorHover: ' rgba(255, 255, 255, 0.3)',
       }"
     >
-      <div class="language-vue p0 m0! h-full" v-html="highlightedHtml" />
+      <slot />
     </NScrollbar>
   </ClientOnly>
 </template>

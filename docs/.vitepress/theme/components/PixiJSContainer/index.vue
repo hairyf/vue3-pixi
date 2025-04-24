@@ -7,11 +7,9 @@ import Editor from './components/Editor.vue'
 
 const props = withDefaults(
   defineProps<{
-    sfcTsCode: string
-    // if using ts, sfcJsCode will transform the to js
-    sfcJsCode: string
-    sfcTsHtml: string
-    sfcJsHtml: string
+    typescript: string
+    // if using ts, javascript will transform the to js
+    javascript: string
     metadata: Record<string, any>
     expand?: boolean
     app?: boolean
@@ -33,11 +31,10 @@ const props = withDefaults(
 )
 
 const showHighlighted = ref(props.expand)
-const isUsingTs = ref(!!props.sfcTsCode)
+const isUsingTs = ref(!!props.typescript)
 
-const sfcTsCode = computed(() => decodeURIComponent(props.sfcTsCode))
-const sfcJsCode = computed(() => decodeURIComponent(props.sfcJsCode))
-const highlightedHtml = computed(() => decodeURIComponent(isUsingTs.value ? props.sfcTsHtml : props.sfcJsHtml))
+const typescript = computed(() => decodeURIComponent(props.typescript))
+const javascript = computed(() => decodeURIComponent(props.javascript))
 </script>
 
 <template>
@@ -47,8 +44,8 @@ const highlightedHtml = computed(() => decodeURIComponent(isUsingTs.value ? prop
       v-model:show-highlighted="showHighlighted"
       :app="app"
       :codesandbox="codesandbox"
-      :sfc-ts-code="sfcTsCode"
-      :sfc-js-code="sfcJsCode"
+      :sfc-ts-code="typescript"
+      :sfc-js-code="javascript"
       :metadata="metadata"
     />
     <div
@@ -81,8 +78,10 @@ const highlightedHtml = computed(() => decodeURIComponent(isUsingTs.value ? prop
             : 'max-h-350px',
         ]"
         :show-highlighted="showHighlighted"
-        :highlighted-html="highlightedHtml"
-      />
+      >
+        <slot v-if="isUsingTs" name="md:typescript" />
+        <slot v-else name="md:javascript" />
+      </Editor>
     </div>
   </div>
 </template>
