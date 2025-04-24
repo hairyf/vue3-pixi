@@ -48,7 +48,8 @@ export const Loader = defineComponent({
     }
 
     async function load() {
-      Assets.addBundle(bundle, await resolveAssets(props.resources))
+      const assets = await resolveAssets(props.resources)
+      Assets.addBundle(bundle, assets)
       const _textures = await Assets.loadBundle(bundle, onProgress)
       for (const key in _textures)
         setTextureOptions(_textures[key], props.options)
@@ -88,7 +89,7 @@ export const Loader = defineComponent({
 async function parseAsset(asset: UnresolvedAssetAwaitable, alias?: string) {
   const result = await asset
   const parsed = !isString(result)
-    ? (result.default || result as UnresolvedAsset)
+    ? (result?.default || result as UnresolvedAsset)
     : result
   if (typeof parsed === 'string')
     return { alias: alias || parsed, src: parsed }
@@ -102,7 +103,7 @@ async function resolveAssets(assets: UnresolvedAssets) {
 
   for (const key in assets) {
     let asset = (assets as any)[key]
-    asset = asset.default || asset
+    asset = asset?.default || asset
     if (Array.isArray(asset)) {
       result.push(await parseAsset(asset[1], asset[0]))
       continue

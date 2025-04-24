@@ -39,3 +39,25 @@
     --vp-home-hero-image-filter: blur(72px);
   }
 }
+
+@media (min-width: 960px) {
+  .image-src {
+    max-width: 500px !important;
+    max-height: 500px !important;
+  }
+}
+
+/* layout */
+
+.aside {
+  padding-left: 12px !important;
+}
+.VPDoc.has-aside .content-container {
+  max-width: 100% !important;
+}
+
+/* markdown */
+
+.vp-doc [class*="language-"] pre::-webkit-scrollbar {
+  display: none;
+}

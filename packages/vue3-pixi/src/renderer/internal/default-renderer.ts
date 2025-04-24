@@ -41,6 +41,7 @@ import {
   Text,
   TilingSprite,
 } from 'pixi.js'
+
 import { patchProp as defuPatchProp, patchBooleanProp } from '../patchProp'
 import { normalizeTexture } from '../utils'
 import { setObjectProperty, setPropertyValue, setSkipFirstValue } from './setter'

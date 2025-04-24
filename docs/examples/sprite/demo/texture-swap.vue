@@ -1,11 +1,10 @@
 <script lang="ts" setup>
-import { Texture } from 'pixi.js'
 import { ref } from 'vue'
-import { onTick, useScreen } from 'vue3-pixi'
+import { Loader, onTick, useScreen } from 'vue3-pixi'
 
 const asserts = {
-  flowerTop: Texture.from('https://pixijs.com/assets/flowerTop.png'),
-  eggHead: Texture.from('https://pixijs.com/assets/eggHead.png'),
+  flowerTop: ('https://pixijs.com/assets/flowerTop.png'),
+  eggHead: ('https://pixijs.com/assets/eggHead.png'),
 }
 
 const screen = useScreen()
@@ -21,13 +20,15 @@ function swap() {
 </script>
 
 <template>
-  <sprite
-    :texture="asserts[current]"
-    :x="screen.width / 2"
-    :y="screen.height / 2"
-    :rotation="rotation"
-    :anchor="0.5"
-    @click="swap"
-  />
+  <Loader :resources="asserts">
+    <sprite
+      :texture="current"
+      :x="screen.width / 2"
+      :y="screen.height / 2"
+      :rotation="rotation"
+      :anchor="0.5"
+      @click="swap"
+    />
+  </Loader>
 </template>
 

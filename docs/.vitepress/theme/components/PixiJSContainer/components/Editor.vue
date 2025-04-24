@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { NScrollbar } from 'naive-ui'
 defineProps<{
-  highlightedHtml: string
   showHighlighted: boolean
 }>()
 </script>
