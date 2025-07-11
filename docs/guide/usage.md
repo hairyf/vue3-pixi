@@ -16,15 +16,15 @@ PixiJS will load the texture in the background and show it when it’s ready - s
 
 <demo src="./demo/sprite.vue" :app="false" />
 
-## Loader
+## Assets
 
 If you have a bunch of images or other resources, you may wish to show a loading screen until all images have finished loading (rather than have them pop in one after another).
 
 > Note: You may want to enable network throttling in your browser dev tools to actually see the loading screen - these are small images!
 
-<demo src="./demo/loader.vue" :app="false" />
+<demo src="./demo/assets.vue" :app="false" />
 
-You can have multiple Loader components as well, which could be useful if you wanted to render a fallbacks at a component-level instead.
+You can have multiple Assets components as well, which could be useful if you wanted to render a fallbacks at a component-level instead.
 
 ## Ticker
 
@@ -36,7 +36,7 @@ update loop for the `application`. The Application component will create one aut
 
 To use filters, you need to add the filter as a child element to the element where you want to apply the filtering effect.
 
-<demo src="./demo/filter.vue" />
+<!-- <demo src="./demo/filter.vue" /> -->
 
 ## Render Events
 
@@ -44,13 +44,13 @@ all elements support render event, which allows for flexible manipulation of ele
 
 This will set up a `watchEffect` internally that will automatically call the event handler again if any dependencies on the render method have changed.
 
-<demo src="./demo/render-event.vue" />
+<!-- <demo src="./demo/render-event.vue" /> -->
 
 ## Accessing PixiJS Instances
 
 You can bind PixiJS instances through ref, It is like the HTML elements, so you can bind to it if you need to access it.
 
-<demo src="./demo/refs.vue" />
+<!-- <demo src="./demo/refs.vue" /> -->
 
 ## Using a Custom Instance
 
@@ -81,4 +81,4 @@ renderer.use({
 
 ```
 
-<demo src="./demo/custom-instance.vue" :codesandbox="false" />
+<!-- <demo src="./demo/custom-instance.vue" :codesandbox="false" /> -->

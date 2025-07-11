@@ -1,5 +1,5 @@
 <script setup>
-import { Application, Loader } from 'vue3-pixi'
+import { Application, Assets } from 'vue3-pixi'
 
 const images = [
   '/assets/food/lemonpie.png',
@@ -10,7 +10,7 @@ const images = [
 
 <template>
   <Application :width="240" :height="240">
-    <Loader :resources="images">
+    <Assets :entry="images">
       <!-- loading state via #fallback slot -->
       <template #fallback>
         <text :anchor="0.5" :x="120" :y="120" :style="{ fill: 'white' }">
@@ -18,9 +18,9 @@ const images = [
         </text>
       </template>
       <!-- component with nested async dependencies -->
-      <template #default="{ textures }">
+      <template #default="{ data }">
         <sprite
-          v-for="(image, k, i) in textures" :key="k"
+          v-for="(image, k, i) in data" :key="k"
           :texture="image"
           :anchor="0.5"
           :x="68 + i * 50"
@@ -28,6 +28,6 @@ const images = [
           :scale="1.4"
         />
       </template>
-    </Loader>
+    </Assets>
   </Application>
 </template>

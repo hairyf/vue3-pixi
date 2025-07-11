@@ -1,15 +1,14 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable vue/one-component-per-file */
-import { type ArrayOr, type AssetsManifest, type AssetsPreferences, type BundleIdentifierOptions, Assets as _PixiAssets } from 'pixi.js'
-import { defineComponent } from 'vue-demi'
+import { type ArrayOr, type AssetsManifest, type AssetsPreferences, type BundleIdentifierOptions, Assets as PixiAssets } from 'pixi.js'
+import { defineComponent, onBeforeUnmount, ref, renderSlot, watch } from 'vue-demi'
 import type { PropType, SlotsType } from 'vue-demi'
+import { isString, toArray } from '@antfu/utils'
 import type { AssetsBundleSrc, ResolvedSrc, UnresolvedAsset } from './types'
-
 export const assetsProps = {
   basePath: String,
 
   /**
-   * 通过 Assets.init 加载资源清单
+   * Load resource manifest via Assets.init
    * @example
    * ```vue
    * <assets base-path="https://..." :manifest="{...}" />
@@ -33,16 +32,16 @@ export const assetsProps = {
 
   alias: [String, Array] as PropType<string | string[]>,
   /**
-   * 用于加载资源的入口，支持多种格式
+   * Entry for loading resources, supports multiple formats
    *
-   * @type {string | string[] | ResolvedSrc | ResolvedSrc[]} 用于指定资源的路径（地址或文件路径）
+   * @type {string | string[] | ResolvedSrc | ResolvedSrc[]} Used to specify the path of the resource (URL or file path)
    * @example
    * ```vue
    * <assets alias="myAsset" :entry="'path/to/asset'" />
    * <assets alias="myAsset" :entry="{{ src: 'path/to/asset', type: 'image' }}" />
    * ```
    *
-   * @type {UnresolvedAsset | UnresolvedAsset[]} 用于指定资源的元数据
+   * @type {UnresolvedAsset | UnresolvedAsset[]} Used to specify the metadata of the resource
    * @example
    * ```vue
    * <assets :entry="{ alias: 'myAsset', src: 'path/to/asset' }" />
@@ -51,33 +50,114 @@ export const assetsProps = {
    *   { alias: 'myAsset', src: 'path/to/asset' },
    *   { alias: 'myAsset2', src: 'path/to/asset2' }
    *  ]"
-   *
    * />
    * ```
    */
   entry: [String, Object, Array] as PropType<string | string[] | ResolvedSrc | ResolvedSrc[] | UnresolvedAsset | UnresolvedAsset[]>,
 
   /**
-   * 是否通过 `Assets.load` 进行自动加载
+   * Whether to automatically load via `Assets.load`
    *
-   * @default false
+   * @default true
    */
-  autoload: Boolean,
+  autoload: {
+    type: Boolean,
+    default: true,
+  },
 
   /**
-   * 资源加载完成时的回调，只有在 `autoload` 为 `true` 时才会被调用
+   * Callback when resources are loaded, only called when `autoload` is true
    */
   onLoaded: Function as PropType<(value: any) => void>,
   /**
-   * 资源加载进度更新时的回调，只有在 `autoload` 为 `true` 时才会被调用
+   * Callback for resource loading progress update, only called when `autoload` is true
    */
   onProgress: Function as PropType<(progress: number) => void>,
+
+  /**
+   * PixiJS provides a background loader that allows you to load assets in the background while your application is running.
+   */
+  background: Boolean,
 } as const
 
 export const Assets = defineComponent({
   props: assetsProps,
-  slots: Object as SlotsType<{ default: any; fallback: number }>,
-  setup(_props) {
+  slots: Object as SlotsType<{ default: { data: any }; fallback: { progress: number } }>,
+  setup(props: any, { slots }) {
+    const loading = ref(false)
+    const progress = ref(0)
+    const data = ref()
+    const assets = ref<string[]>([])
+
+    function onProgress(p: number) {
+      progress.value = p
+      props.onProgress?.(p)
+    }
+    async function loadUrls(urls: any) {
+      data.value = props.background
+        ? await PixiAssets.backgroundLoad(urls)
+        : await PixiAssets.load(urls, onProgress)
+      props.onLoaded?.(data.value)
+    }
+
+    async function load() {
+      if (props.manifest) {
+        await PixiAssets.init(props)
+        return
+      }
+
+      if (isAsset(props)) {
+        props.autoload
+          ? await loadUrls({ alias: props.alias, src: props.entry })
+          : PixiAssets.add({ alias: props.alias, src: props.entry })
+        assets.value.push(...toArray(props.alias))
+        return
+      }
+
+      if (isString(props.entry) || isStringArray(props.entry)) {
+        const entry = isStringArray(props.entry)
+          ? toArray(props.entry).map(src => ({ src }))
+          : { src: props.entry }
+        props.autoload
+          ? await loadUrls(entry)
+          : PixiAssets.add(entry)
+        assets.value.push(...toArray(props.entry))
+        return
+      }
+
+      if (!props.entry)
+        return
+
+      const entry = toArray(props.entry)
+      const alias = entry.map(entry => toArray(entry?.alias || entry?.src)).flat()
+      props.autoload
+        ? await loadUrls(entry)
+        : PixiAssets.add(entry)
+      assets.value.push(...alias)
+    }
+
+    async function unload() {
+      await PixiAssets.unload(assets.value)
+    }
+
+    watch(
+      () => props,
+      () => {
+        loading.value = true
+        load().finally(() => loading.value = false)
+      },
+      { deep: true, immediate: true },
+    )
+
+    onBeforeUnmount(unload)
+
+    return () => {
+      if (!props.autoload)
+        return renderSlot(slots, 'default')
+      return loading.value
+        ? renderSlot(slots, 'fallback', { progress: progress.value })
+        : renderSlot(slots, 'default', { data: data.value })
+    }
   },
 })
 
@@ -103,24 +183,31 @@ export const assetsBundleProps = {
    */
   entry: [Object, Array] as PropType<AssetsBundleSrc>,
   /**
-   * 是否通过 `Assets.loadBundle` 进行自动加载
-   * @default false
+   * Whether to automatically load via `Assets.loadBundle`
+   * @default true
    */
   autoload: Boolean,
-
   /**
-    * 资源加载完成时的回调，只有在 `autoload` 为 `true` 时才会被调用
-    */
+   * Callback when resources are loaded, only called when `autoload` is true
+   */
   onLoaded: Function as PropType<(value: any) => void>,
   /**
-    * 资源加载进度更新时的回调，只有在 `autoload` 为 `true` 时才会被调用
-    */
+   * Callback for resource loading progress update, only called when `autoload` is true
+   */
   onProgress: Function as PropType<(progress: number) => void>,
 } as const
 
 export const AssetsBundle = defineComponent({
   props: assetsBundleProps,
-  slots: Object as SlotsType<{ default: any; fallback: number }>,
+  slots: Object as SlotsType<{ default: { data: any }; fallback: { progress: number } }>,
   setup(_props) {
   },
 })
+
+function isAsset(props: any) {
+  return props.alias && props.entry
+}
+function isStringArray(value: any) {
+  return Array.isArray(value) && value.some(v => isString(v))
+}
+
