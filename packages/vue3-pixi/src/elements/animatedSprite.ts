@@ -8,7 +8,7 @@ import type { AllowedPixiProps } from './props'
 import type { PixiEvents } from './events'
 
 export interface AnimatedSpriteProps extends AllowedPixiProps {
-  textures: (PIXI.Texture | PIXI.FrameObject | string)[]
+  textures?: any[]
   width?: number
   height?: number
 

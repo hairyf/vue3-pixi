@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import {
   BitmapText,
   Container,
@@ -27,12 +26,8 @@ export function createElement(prefix: string, name: string, _?: boolean, _1?: st
   }
   const element = is(props ?? {})
 
-  if (element instanceof Container) {
-    // @ts-expect-error
-    if (isOn(props) && element.eventMode === 'auto')
-      // @ts-expect-error
-      element.eventMode = 'static'
-  }
+  if (element instanceof Container && isOn(props) && element.eventMode === 'passive')
+    element.eventMode = 'static'
 
   if (element instanceof Filter)
     element._vp_filter = true

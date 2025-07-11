@@ -66,6 +66,11 @@ export const assetsProps = {
   },
 
   /**
+   * Destruction during component logout
+   */
+  autounload: Boolean,
+
+  /**
    * Callback when resources are loaded, only called when `autoload` is true
    */
   onLoaded: Function as PropType<(value: any) => void>,
@@ -78,6 +83,7 @@ export const assetsProps = {
    * PixiJS provides a background loader that allows you to load assets in the background while your application is running.
    */
   background: Boolean,
+
 } as const
 
 export const Assets = defineComponent({
@@ -137,7 +143,7 @@ export const Assets = defineComponent({
     }
 
     async function unload() {
-      await PixiAssets.unload(assets.value)
+      PixiAssets.unload(assets.value).catch(() => undefined)
     }
 
     watch(
@@ -149,7 +155,7 @@ export const Assets = defineComponent({
       { deep: true, immediate: true },
     )
 
-    onBeforeUnmount(unload)
+    props.autounload && onBeforeUnmount(unload)
 
     return () => {
       if (!props.autoload)
