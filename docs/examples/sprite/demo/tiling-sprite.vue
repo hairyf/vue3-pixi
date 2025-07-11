@@ -18,12 +18,14 @@ onTick(() => {
 </script>
 
 <template>
-  <tiling-sprite
-    texture="https://pixijs.com/assets/p2.jpeg"
-    :width="screen.width"
-    :height="screen.height"
-    :tile-scale="tileScale"
-    :tile-position="tilePosition"
-  />
+  <assets entry="https://pixijs.com/assets/p2.jpeg" #="{data}">
+    <tiling-sprite
+      :texture="data"
+      :width="screen.width"
+      :height="screen.height"
+      :tile-scale="tileScale"
+      :tile-position="tilePosition"
+    />
+  </assets>
 </template>
 

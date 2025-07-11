@@ -24,12 +24,14 @@ function onPlay() {
 </script>
 
 <template>
-  <sprite
-    v-if="play"
-    texture="https://pixijs.com/assets/video.mp4"
-    :width="screen.width"
-    :height="screen.height"
-  />
+  <assets entry="https://pixijs.com/assets/video.mp4" #="{data}">
+    <sprite
+      v-if="play"
+      :texture="data"
+      :width="screen.width"
+      :height="screen.height"
+    />
+  </assets>
   <graphics
     v-if="!play"
     :x="screen.width / 2"

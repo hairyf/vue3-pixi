@@ -72,20 +72,27 @@ onTick(() => {
 </script>
 
 <template>
-  <!-- create a new background sprite -->
-  <sprite
-    texture="https://pixijs.com/assets/bg_rotate.jpg"
-    :width="screen.width"
-    :height="screen.height"
-  />
-  <sprite
-    v-for="(dude, index) in dudes" :key="index"
-    texture="https://pixijs.com/assets/flowerTop.png"
-    :scale="dude.scale"
-    :x="dude.x"
-    :y="dude.y"
-    :blend-mode="dude.blendMode"
-    :anchor="0.5"
-  />
+  <assets
+    :entry="[
+      { alias: 'bg_rotate', src: 'https://pixijs.com/assets/bg_rotate.jpg' },
+      { alias: 'flowerTop', src: 'https://pixijs.com/assets/flowerTop.png' },
+    ]"
+  >
+    <!-- create a new background sprite -->
+    <sprite
+      texture="bg_rotate"
+      :width="screen.width"
+      :height="screen.height"
+    />
+    <sprite
+      v-for="(dude, index) in dudes" :key="index"
+      texture="flowerTop"
+      :scale="dude.scale"
+      :x="dude.x"
+      :y="dude.y"
+      :blend-mode="dude.blendMode"
+      :anchor="0.5"
+    />
+  </assets>
 </template>
 
