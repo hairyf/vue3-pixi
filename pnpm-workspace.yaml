@@ -1,5 +1,49 @@
 packages:
+  - playground
   - docs
-  - packages/**
-  - '!packages/vue3-pixi-nuxt'
-  - '!packages/**/playground'
+  - packages/**/*
+  - examples/**/*
+catalogs:
+  cli:
+    tsup: 6.6.2
+    typescript: ^5.8.3
+    eslint: ^8.57.1
+    bumpp: ^9.11.1
+    vitest: ^1.6.1
+    jsdom: ^24.1.3
+    '@antfu/eslint-config': ^0.33.1
+    '@vue/test-utils': ^2.4.6
+  share:
+    vue: ^3.4.27
+    vue-demi: ^0.14.8
+    "@vue/runtime-core": ^3.4.27
+    '@vueuse/core': ^10.10.0
+    '@antfu/utils': ^0.7.8
+    nanoid: ^4.0.2
+    naive-ui: ^2.38.2
+    pixi.js: ^8.2.5
+    pixi-filters: ^6.0.4
+    '@pixi/ui': ^0.10.5
+    pixi-projection: ^1.0.0
+  docs:
+    vitepress: ^1.6.3
+    vitepress-plugin-demo: ^0.8.0
+    floating-vue: ^5.2.2
+    '@iconify/json': ^2.2.215
+    '@stackblitz/sdk': ^1.10.0
+    codesandbox: ^2.2.3
+    unocss: ^0.60.0
+    gsap: ^3.12.5
+  nuxt:
+    '@nuxt/kit': ^3.11.2
+    '@nuxt/module-builder': ^0.7.1
+    '@nuxt/schema': ^3.11.2
+    nuxi: ^3.12.0
+    nuxt: ^3.11.2
+    mlly: ^1.7.0
+    pkg-types: ^1.1.1
+    sirv: ^2.0.4
+    '@xmldom/xmldom': ^0.8.10
+  types:
+    '@types/node': ^20.17.30
+  

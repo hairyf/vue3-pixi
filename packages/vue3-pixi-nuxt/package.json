@@ -33,21 +33,21 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@antfu/utils": "^0.7.8",
-    "@nuxt/kit": "^3.11.2",
-    "@xmldom/xmldom": "^0.8.10",
-    "mlly": "^1.7.0",
-    "nuxi": "^3.12.0",
-    "pkg-types": "^1.1.1",
-    "sirv": "^2.0.4",
-    "vue-demi": "^0.14.8",
-    "vue3-pixi": "workspace:1.0.0"
+    "@antfu/utils": "catalog:share",
+    "@nuxt/kit": "catalog:nuxt",
+    "@xmldom/xmldom": "catalog:nuxt",
+    "mlly": "catalog:nuxt",
+    "nuxi": "catalog:nuxt",
+    "pkg-types": "catalog:nuxt",
+    "sirv": "catalog:nuxt",
+    "vue-demi": "catalog:share",
+    "vue3-pixi": "workspace:^"
   },
   "devDependencies": {
-    "@nuxt/module-builder": "^0.7.1",
-    "@nuxt/schema": "^3.11.2",
-    "@vue/runtime-core": "^3.4.27",
-    "nuxt": "^3.11.2"
+    "@nuxt/module-builder": "catalog:nuxt",
+    "@nuxt/schema": "catalog:nuxt",
+    "@vue/runtime-core": "catalog:share",
+    "nuxt": "catalog:nuxt"
   },
   "build": {
     "externals": [

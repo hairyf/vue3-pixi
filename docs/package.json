@@ -11,22 +11,22 @@
     "docs:preview": "vitepress preview"
   },
   "dependencies": {
-    "@antfu/utils": "^0.7.8",
-    "@stackblitz/sdk": "^1.10.0",
-    "@vueuse/core": "^10.10.0",
-    "gsap": "^3.12.5",
-    "naive-ui": "^2.38.2",
-    "nanoid": "^4.0.2",
-    "pixi.js": "^8.2.5",
-    "unocss": "^0.60.0",
-    "vue": "^3.4.27",
+    "@antfu/utils": "catalog:share",
+    "@stackblitz/sdk": "catalog:docs",
+    "@vueuse/core": "catalog:share",
+    "gsap": "catalog:docs",
+    "naive-ui": "catalog:share",
+    "nanoid": "catalog:share",
+    "pixi.js": "catalog:share",
+    "unocss": "catalog:docs",
+    "vue": "catalog:share",
     "vue3-pixi": "workspace:^"
   },
   "devDependencies": {
-    "@iconify/json": "^2.2.215",
-    "codesandbox": "^2.2.3",
-    "floating-vue": "^5.2.2",
-    "vitepress": "^1.6.3",
-    "vitepress-plugin-demo": "^0.8.0"
+    "@iconify/json": "catalog:docs",
+    "codesandbox": "catalog:docs",
+    "floating-vue": "catalog:docs",
+    "vitepress": "catalog:docs",
+    "vitepress-plugin-demo": "catalog:docs"
   }
 }
