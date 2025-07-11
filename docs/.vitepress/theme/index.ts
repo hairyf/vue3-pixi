@@ -3,6 +3,7 @@ import { h } from 'vue'
 import Theme from 'vitepress/theme'
 import FloatingVue from 'floating-vue'
 import { NMessageProvider } from 'naive-ui'
+import { Assets } from 'vue3-pixi'
 import PixiJSContainer from './components/PixiJSContainer/index.vue'
 import MountProvider from './components/MountProvider/index.vue'
 import StackBlitzEmbed from './components/StackBlitzEmbed/index.vue'
@@ -37,6 +38,7 @@ export default {
     )
   },
   enhanceApp({ app }) {
+    app.component('Assets', Assets)
     app.component('DemoContainer', PixiJSContainer)
     app.component('StackBlitzEmbed', StackBlitzEmbed)
     app.component('DraggableCircle', DraggableCircle)

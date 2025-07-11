@@ -4,8 +4,8 @@ import { onTick } from 'vue3-pixi'
 
 const text = ref('Delta: 0')
 
-onTick((delta) => {
-  text.value = `Delta: ${delta.toFixed(10)}`
+onTick(({ deltaTime }) => {
+  text.value = `Delta: ${deltaTime.toFixed(10)}`
 })
 </script>
 

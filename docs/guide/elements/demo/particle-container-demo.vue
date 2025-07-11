@@ -3,7 +3,7 @@ import { Sprite, Texture } from 'pixi.js'
 
 import { onUnmounted, ref } from 'vue'
 import type { ParticleContainerInst } from 'vue3-pixi'
-import { External, onTick } from 'vue3-pixi'
+import { Assets, External, onTick } from 'vue3-pixi'
 
 interface StarSprite extends Sprite {
   initX: number
@@ -33,7 +33,7 @@ function updateStars() {
     return
 
   stars = new Array(+amount.value).fill(null).map(() => {
-    const star = new Sprite(Texture.from('/assets/star.png')) as StarSprite
+    const star = new Sprite(Texture.from('star')) as StarSprite
     const deg = Math.random() * Math.PI * 2
     const distance = Math.random() * 50 + 1
 
@@ -64,8 +64,8 @@ function updateStar(star: StarSprite) {
   star.y = star.initY * (fov / z) * width + height / 2
 }
 
-onTick((delta) => {
-  camera += delta * 10 * speed
+onTick(({ deltaTime }) => {
+  camera += deltaTime * 10 * speed
   stars.forEach(updateStar)
 })
 
@@ -73,7 +73,9 @@ onUnmounted(() => stars.forEach(star => star.destroy()))
 </script>
 
 <template>
-  <particle-container ref="containerRef" @render="updateStars" />
+  <assets alias="star" entry="/assets/star.png">
+    <particle-container ref="containerRef" @render="updateStars" />
+  </assets>
   <External style="margin-top: 20px;" tag="div">
     <div>Amount: {{ amount }}</div>
     <input v-model="amount" type="range" min="0" max="10000" step="100">

@@ -7,12 +7,12 @@ let direction = -1
 
 const position = reactive({ x: 120, y: 80 })
 
-onTick((delta) => {
+onTick(({ deltaTime }) => {
   if (position.x <= 0)
     direction = 1
   else if (position.x >= 180)
     direction = -1
-  position.x += 2 * direction * delta
+  position.x += 2 * direction * deltaTime
 })
 </script>
 

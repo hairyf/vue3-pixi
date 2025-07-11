@@ -94,6 +94,8 @@ export default defineConfig({
 })
 ```
 
+## TypeScript
+
 If you are using TypeScript, you can add types to custom elements by declaring `GlobalComponents` from the `@vue/runtime-core` module.
 
 ```ts

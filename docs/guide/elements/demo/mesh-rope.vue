@@ -20,11 +20,13 @@ onTick(() => {
 </script>
 
 <template>
-  <mesh-rope
-    texture="/assets/snake.png"
-    :x="20"
-    :y="120"
-    :scale="0.4"
-    :points="points"
-  />
+  <assets entry="/assets/snake.png" #="{data}">
+    <mesh-rope
+      :texture="data"
+      :x="20"
+      :y="120"
+      :scale="0.4"
+      :points="points"
+    />
+  </assets>
 </template>

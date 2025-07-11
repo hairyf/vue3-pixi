@@ -2,7 +2,7 @@ import { fileURLToPath } from 'url'
 import type { DefaultTheme } from 'vitepress'
 import { defineConfig } from 'vitepress'
 import unocss from 'unocss/vite'
-import { compilerOptions, transformAssetUrls } from '../../packages/vue3-pixi'
+import { compilerOptions } from '../../packages/vue3-pixi'
 import { mdPlugin } from './plugin'
 const themeConfig: DefaultTheme.Config = {
   // https://vitepress.dev/reference/default-theme-config
@@ -258,6 +258,6 @@ export default defineConfig({
   },
 
   vue: {
-    template: { compilerOptions, transformAssetUrls },
+    template: { compilerOptions },
   },
 })

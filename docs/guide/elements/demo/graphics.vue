@@ -6,8 +6,8 @@ const size = ref(100)
 
 let count = 0
 
-onTick((delta) => {
-  count += delta * 0.025
+onTick(({ deltaTime }) => {
+  count += deltaTime * 0.025
   size.value = 60 + Math.sin(count) * 30
 })
 </script>
