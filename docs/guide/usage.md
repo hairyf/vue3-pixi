@@ -34,7 +34,7 @@ update loop for the `application`. The Application component will create one aut
 
 To use filters, you need to add the filter as a child element to the element where you want to apply the filtering effect.
 
-<!-- <demo src="./demo/filter.vue" /> -->
+<demo src="./demo/filter.vue" />
 
 ## Render Events
 

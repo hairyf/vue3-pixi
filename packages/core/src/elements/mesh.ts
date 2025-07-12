@@ -1,48 +1,51 @@
-import type * as PIXI from 'pixi.js'
-import type {
-  ComponentOptionsMixin,
-  DefineComponent,
-  VNodeProps,
-} from 'vue-demi'
-import type { PixiEvents } from './events'
-import type { AllowedPixiProps } from './props'
+import type { AllowedEvents, DefineElement } from '../types'
+import { BLEND_MODES, ColorSource, Geometry, Mesh, Shader, State, Texture, Topology } from 'pixi.js'
+import { patchProp, renderer, setSkipFirstValue } from '../renderer'
+import { patchBooleanProp } from '../renderer/patchProp'
+
+renderer.use({
+  name: 'Mesh',
+  createElement: props => new Mesh(props),
+  patchProp(el: Mesh, key, prev, next) {
+    switch (key) {
+      case 'geometry':
+      case 'shader':
+      case 'state':
+        setSkipFirstValue(el, key, () => el[key] = next)
+        break
+      case 'roundPixels':
+        patchBooleanProp(el, key, prev, next)
+        break
+      default:
+        patchProp(el, key, prev, next)
+    }
+  },
+})
 
 export interface MeshProps {
-  geometry: PIXI.Geometry
-  shader: PIXI.Shader
-  blendMode?: PIXI.BLEND_MODES
-  drawMode?: PIXI.Topology
-  material?: PIXI.Shader
+  geometry: Geometry
+  shader: Shader
+  blendMode?: BLEND_MODES
+  drawMode?: Topology
+  material?: Shader
   roundPixels?: boolean
   size?: number
   start?: number
-  state?: PIXI.State
-  texture?: string | PIXI.Texture
-  tint?: PIXI.ColorSource
+  state?: State
+  texture?: string | Texture
+  tint?: ColorSource
   canvasPadding?: number
 }
 
-export interface MeshEvents extends PixiEvents {
-  render: [MeshInst]
+export interface MeshEvents extends AllowedEvents {
+  render: [Mesh]
 }
 
-export type MeshInst = PIXI.Mesh & EventTarget
+export type MeshElement = DefineElement<MeshProps, MeshEvents>
 
-export type MeshComponent = DefineComponent<
-MeshProps,
-  {},
-  unknown,
-  {},
-  {},
-  ComponentOptionsMixin,
-  ComponentOptionsMixin,
-  (keyof MeshEvents)[],
-  keyof MeshEvents,
-  VNodeProps & AllowedPixiProps,
-  Readonly<MeshProps> & {
-    [key in keyof MeshEvents as `on${Capitalize<key>}`]?:
-    | ((...args: MeshEvents[key]) => any)
-    | undefined;
-  },
-  {}
->
+declare module '@vue/runtime-core' {
+  export interface GlobalComponents {
+    Mesh: MeshElement
+    PixiMesh: MeshElement
+  }
+}

@@ -1,37 +1,22 @@
-import type { Container } from 'pixi.js'
-import type {
-  ComponentOptionsMixin,
-  DefineComponent,
-  VNodeProps,
-} from 'vue-demi'
-import type { PixiEvents } from './events'
-import type { AllowedPixiProps } from './props'
+import type { AllowedEvents, DefineElement } from '../types'
+import { Container } from 'pixi.js'
+import { renderer } from '../renderer'
+
+renderer.use({ name: 'Container', createElement: () => new Container() })
 
 export interface ContainerProps {
 
 }
 
-export interface ContainerEvents extends PixiEvents {
-  render: [ContainerInst]
+export interface ContainerEvents extends AllowedEvents {
+  render: [Container]
 }
 
-export type ContainerInst = Container & EventTarget
+export type ContainerElement = DefineElement<ContainerProps, ContainerEvents>
 
-export type ContainerComponent = DefineComponent<
-  ContainerProps,
-  {},
-  unknown,
-  {},
-  {},
-  ComponentOptionsMixin,
-  ComponentOptionsMixin,
-  (keyof ContainerEvents)[],
-  keyof ContainerEvents,
-  VNodeProps & AllowedPixiProps,
-  Readonly<ContainerProps> & {
-    [key in keyof ContainerEvents as `on${Capitalize<key>}`]?:
-    | ((...args: ContainerEvents[key]) => any)
-    | undefined;
-  },
-  {}
->
+declare module '@vue/runtime-core' {
+  export interface GlobalComponents {
+    Container: ContainerElement
+    PixiContainer: ContainerElement
+  }
+}

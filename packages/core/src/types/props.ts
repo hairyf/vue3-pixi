@@ -8,7 +8,7 @@ import type {
   Rectangle,
 } from 'pixi.js'
 
-export interface AllowedPixiProps {
+export interface AllowedProps {
   accessible?: boolean
   accessibleChildren?: number
   accessibleHint?: string

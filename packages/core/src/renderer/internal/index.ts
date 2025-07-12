@@ -1,6 +1,5 @@
 export * from './constants'
 export * from './custom'
-export * from './default-renderer'
 export * from './hooks'
 export * from './options'
 export * from './setter'

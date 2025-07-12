@@ -1,47 +1,39 @@
-import type * as PIXI from 'pixi.js'
-import type {
-  ComponentOptionsMixin,
-  DefineComponent,
-  VNodeProps,
-} from 'vue-demi'
-import type { PixiEvents } from './events'
-import type { AllowedPixiProps } from './props'
+import type { BLEND_MODES, ColorSource, Texture } from 'pixi.js'
+import type { AllowedEvents, AllowedProps, DefineElement } from '../types'
+import { Sprite } from 'pixi.js'
+import { normalizeTexture, renderer } from '../renderer'
 
-export interface SpriteProps extends AllowedPixiProps {
-  texture: string | PIXI.Texture
-  textureOptions?: PIXI.TextureOptions
+renderer.use({
+  name: 'Sprite',
+  createElement: props => new Sprite({
+    ...props,
+    texture: normalizeTexture(props.texture),
+  }),
+  remove: (node: Sprite) => node.destroy(),
+})
 
-  blendMode?: PIXI.BLEND_MODES
+export interface SpriteProps extends AllowedProps {
+  texture: string | Texture
+
+  blendMode?: BLEND_MODES
 
   width?: number
   height?: number
 
   pluginName?: string
 
-  tint?: PIXI.ColorSource
+  tint?: ColorSource
 }
 
-export interface SpriteEvents extends PixiEvents {
-  render: [SpriteInst]
+export interface SpriteEvents extends AllowedEvents {
+  render: [Sprite]
 }
 
-export type SpriteInst = PIXI.Sprite & EventTarget
+export type SpriteElement = DefineElement<SpriteProps, SpriteEvents>
 
-export type SpriteComponent = DefineComponent<
-  SpriteProps,
-  {},
-  unknown,
-  {},
-  {},
-  ComponentOptionsMixin,
-  ComponentOptionsMixin,
-  (keyof SpriteEvents)[],
-  keyof SpriteEvents,
-  VNodeProps,
-  Readonly<SpriteProps> & {
-    [key in keyof SpriteEvents as `on${Capitalize<key>}`]?:
-    | ((...args: SpriteEvents[key]) => any)
-    | undefined;
-  },
-  {}
->
+declare module '@vue/runtime-core' {
+  export interface GlobalComponents {
+    Sprite: SpriteElement
+    PixiSprite: SpriteElement
+  }
+}

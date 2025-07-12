@@ -4,7 +4,6 @@ import type { Renderer, RendererOptions } from 'vue-demi'
 import { camelize } from 'vue-demi'
 import { isCustomElement } from '../../compiler'
 import { renderers } from './constants'
-import { defaultRenderer } from './default-renderer'
 import { use } from './hooks'
 
 export function rendererWithCapture(options: RendererOptions<Container, Container>) {
@@ -18,19 +17,15 @@ export function rendererWithCapture(options: RendererOptions<Container, Containe
       options[key] = (el, pKey, ...args) => {
         const inFn = renderers[el._vp_name]?.[key]
         pKey = camelize(pKey)
-        return inFn
-          ? inFn(el, pKey, ...args)
-          : fn(el, pKey, ...args)
+        return inFn ? inFn(el, pKey, ...args) : fn(el, pKey, ...args)
       }
       continue
     }
     // @ts-expect-error
     options[key] = (el, ...args: any[]) => {
-    // @ts-expect-error
+      // @ts-expect-error
       const inFn = renderers[el._vp_name]?.[key]
-      return inFn
-        ? inFn?.(el, ...args)
-        : fn(el, ...args)
+      return inFn ? inFn?.(el, ...args) : fn(el, ...args)
     }
   }
   return options
@@ -52,8 +47,6 @@ export function rendererWithOptions(
   function render(...args: any[]) {
     return (_render as any)(...args)
   }
-
-  use(defaultRenderer)
 
   Object.assign(renderer, { createApp, render, use })
 }

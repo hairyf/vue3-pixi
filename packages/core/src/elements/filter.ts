@@ -1,23 +1,25 @@
-import type { Filter } from 'pixi.js'
-import type {
-} from 'vue-demi'
-import type { AllowedFilterProps } from './props'
+import type { AllowedEvents, AllowedFilterProps, DefineElement, ExtractFilterProps } from '../types'
+import { Filter } from 'pixi.js'
+import { renderer } from '../renderer'
 
-export interface FilterProps<T> { is: (props: any) => T }
+renderer.use({
+  name: 'Filter',
+  createElement: props => new Filter(props.alpha),
+})
 
-export interface FilterEvents {
-  render: [FilterInst]
+export interface FilterProps extends ExtractFilterProps<Filter> {
+
 }
 
-export type FilterInst = Filter
-
-type EventsProps = {
-  [key in keyof FilterEvents as `on${Capitalize<key>}`]?: ((...args: FilterEvents[key]) => any) | undefined
+export interface FilterEvents extends AllowedEvents {
+  render: [Filter]
 }
 
-export type FilterComponent = <T extends AllowedFilterProps>(
-  props:
-    & FilterProps<T>
-    & Partial<T>
-    & EventsProps
-) => any
+export type FilterElement = DefineElement<FilterProps, FilterEvents, AllowedFilterProps>
+
+declare module '@vue/runtime-core' {
+  export interface GlobalComponents {
+    Filter: FilterElement
+    PixiFilter: FilterElement
+  }
+}

@@ -2,8 +2,8 @@
 import { Graphics } from 'pixi.js'
 
 function drawRectangle(e: Graphics) {
-  e.beginFill('#00a3af')
-  e.drawRect(0, 0, 60, 60)
+  e.rect(0, 0, 60, 60)
+  e.fill('#00a3af')
 }
 </script>
 

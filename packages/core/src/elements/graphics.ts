@@ -1,38 +1,35 @@
-import type * as PIXI from 'pixi.js'
-import type {
-  ComponentOptionsMixin,
-  DefineComponent,
-  VNodeProps,
-} from 'vue-demi'
-import type { PixiEvents } from './events'
-import type { AllowedPixiProps } from './props'
+import type { BLEND_MODES, ColorSource, Texture } from 'pixi.js'
+import type { AllowedEvents, AllowedProps, DefineElement } from '../types'
+import { Graphics } from 'pixi.js'
+import { renderer } from '../renderer'
 
-export interface GraphicsProps {
-  blendMode?: PIXI.BLEND_MODES
-  geometry?: PIXI.GraphicsOptions | PIXI.GraphicsContext
+renderer.use({
+  name: 'Graphics',
+  createElement: props => new Graphics(props.geometry),
+})
+
+export interface GraphicsProps extends AllowedProps {
+  texture: string | Texture
+
+  blendMode?: BLEND_MODES
+
+  width?: number
+  height?: number
+
+  pluginName?: string
+
+  tint?: ColorSource
 }
 
-export interface GraphicsEvents extends PixiEvents {
-  render: [GraphicsInst]
+export interface GraphicsEvents extends AllowedEvents {
+  render: [Graphics]
 }
 
-export type GraphicsInst = PIXI.Graphics & EventTarget
+export type GraphicsElement = DefineElement<GraphicsProps, GraphicsEvents>
 
-export type GraphicsComponent = DefineComponent<
-GraphicsProps,
-  {},
-  unknown,
-  {},
-  {},
-  ComponentOptionsMixin,
-  ComponentOptionsMixin,
-  (keyof GraphicsEvents)[],
-  keyof GraphicsEvents,
-  VNodeProps & AllowedPixiProps,
-  Readonly<GraphicsProps> & {
-    [key in keyof GraphicsEvents as `on${Capitalize<key>}`]?:
-    | ((...args: GraphicsEvents[key]) => any)
-    | undefined;
-  },
-  {}
->
+declare module '@vue/runtime-core' {
+  export interface GlobalComponents {
+    Graphics: GraphicsElement
+    PixiGraphics: GraphicsElement
+  }
+}

@@ -1,15 +1,15 @@
 import type { ICanvasRenderingContext2D, TextStyle } from 'pixi.js'
 import type { AllowedEvents, AllowedProps, DefineElement } from '../types'
-import { Text } from 'pixi.js'
+import { HTMLText } from 'pixi.js'
 import { patchProp, renderer, setObjectProperty, setSkipFirstValue } from '../renderer'
 
 renderer.use({
-  name: 'Text',
-  createElement: props => new Text({
+  name: 'HtmlText',
+  createElement: props => new HTMLText({
     text: props.text,
     style: props.style,
   }),
-  patchProp(el: Text, key, prev, next) {
+  patchProp(el: HTMLText, key, prev, next) {
     switch (key) {
       case 'text':
         setSkipFirstValue(el, key, () => el.text = next)
@@ -23,7 +23,7 @@ renderer.use({
   },
 })
 
-export interface TextProps extends AllowedProps {
+export interface HTMLTextProps extends AllowedProps {
   text?: string | number
   style?: TextStyle | Partial<TextStyle>
 
@@ -32,15 +32,15 @@ export interface TextProps extends AllowedProps {
   width?: number
 }
 
-export interface TextEvents extends AllowedEvents {
-  render: [Text]
+export interface HTMLTextEvents extends AllowedEvents {
+  render: [HTMLText]
 }
 
-export type TextElement = DefineElement<TextProps, TextEvents>
+export type HTMLTextElement = DefineElement<HTMLTextProps, HTMLTextEvents>
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    Text: TextElement
-    PixiText: TextElement
+    HTMLText: HTMLTextElement
+    PixiHTMLText: HTMLTextElement
   }
 }
