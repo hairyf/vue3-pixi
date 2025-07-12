@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import { computed, reactive, ref } from 'vue'
-import type { SpriteInst } from 'vue3-pixi'
+import type { Sprite } from 'pixi.js'
 import { onTick, useScreen } from 'vue3-pixi'
 
 const screen = useScreen()
 
-const maskRef = ref<SpriteInst>()
+const maskRef = ref<Sprite>()
 const position = reactive({ x: 310, y: 190 })
 const target = reactive({ x: 0, y: 0 })
 

@@ -6,7 +6,7 @@ import { appInjectKey } from '../../composables'
 import { createApp } from '../../renderer'
 import { inheritParent } from '../../utils'
 
-export interface ApplicationInst {
+export interface Application {
   canvas: HTMLCanvasElement
   app: _Application
 }

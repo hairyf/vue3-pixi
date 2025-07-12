@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue'
-import type { ApplicationInst } from 'vue3-pixi'
 import { Application } from 'vue3-pixi'
-const appRef = ref<ApplicationInst>()
+
+const appRef = ref<Application>()
 
 onMounted(() => {
   appRef.value?.app.start()

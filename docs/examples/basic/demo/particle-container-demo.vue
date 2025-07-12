@@ -1,13 +1,12 @@
 <script lang="ts" setup>
-import type { ColorSource } from 'pixi.js'
+import type { ParticleContainer } from 'pixi.js'
 import { Rectangle, Sprite } from 'pixi.js'
-import type { ParticleContainerInst } from 'vue3-pixi'
 import { onTick } from 'vue3-pixi'
 
-interface DudeIte extends Sprite {
+interface DudeIte extends Omit<Sprite, 'tint'> {
   x: number
   y: number
-  tint: ColorSource
+  tint: number
   direction: number
   turningSpeed: number
   speed: number
@@ -57,7 +56,7 @@ onTick(() => {
   tick += 0.1
 })
 
-function onRender(el: ParticleContainerInst) {
+function onRender(el: ParticleContainer) {
   for (let i = 0; i < totalSprites; i++) {
   // create a new Sprite
     const dude = Sprite.from('https://pixijs.com/assets/maggot_tiny.png') as DudeIte

@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 import { useEventListener } from '@vueuse/core'
 import { ref } from 'vue'
-import type { GraphicsInst } from 'vue3-pixi'
+import type { Graphics } from 'pixi.js'
 import { onTick } from 'vue3-pixi'
 
-const graphicsRef = ref<GraphicsInst>()
-const thingRef = ref<GraphicsInst>()
+const graphicsRef = ref<Graphics>()
+const thingRef = ref<Graphics>()
 
-function onDraw(graphics: GraphicsInst) {
+function onDraw(graphics: Graphics) {
 // set a fill and line style
   graphics.beginFill(0xFF3300)
   graphics.lineStyle(10, 0xFFD900, 1)
@@ -54,7 +54,7 @@ function onDraw(graphics: GraphicsInst) {
 
 let count = 0
 
-function onDrawThing(thing: GraphicsInst) {
+function onDrawThing(thing: Graphics) {
   count += 0.1
 
   thing.clear()

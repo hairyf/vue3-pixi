@@ -1,8 +1,8 @@
 <script lang="ts" setup>
+import type { Text } from 'pixi.js'
 import { onMounted, ref } from 'vue'
-import type { TextInst } from 'vue3-pixi'
 
-const textRef = ref<TextInst>()
+const textRef = ref<Text>()
 onMounted(() => {
   textRef.value!.style.fill = 'yellow'
 })
