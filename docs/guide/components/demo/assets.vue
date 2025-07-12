@@ -1,10 +1,11 @@
 <script lang="ts" setup>
-import { Loader, useScreen } from 'vue3-pixi'
+import { Assets, useScreen } from 'vue3-pixi'
+
 const screen = useScreen()
 </script>
 
 <template>
-  <Loader :resources="['/assets/metal_slug.png']">
+  <Assets entry="/assets/metal_slug.png">
     <template #fallback="{ progress }">
       <text :x="120" :y="120" :anchor="0.5">
         {{ `Loading... ${progress}` }}
@@ -17,5 +18,5 @@ const screen = useScreen()
       :anchor="0.5"
       :scale="0.8"
     />
-  </Loader>
+  </Assets>
 </template>

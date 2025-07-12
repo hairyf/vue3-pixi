@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { computed, ref } from 'vue'
 import type { SimplePlaneInst } from 'vue3-pixi'
+import { computed, ref } from 'vue'
 import { onTick } from 'vue3-pixi'
 
 const planeRef = ref<SimplePlaneInst>()
@@ -17,9 +17,11 @@ onTick(() => {
 </script>
 
 <template>
-  <simple-plane
-    ref="planeRef"
-    texture="/assets/bg_grass.jpg"
-    :vertices="10"
-  />
+  <assets entry="https://pixijs.com/assets/snake.png" #="{data}">
+    <simple-plane
+      ref="planeRef"
+      :texture="data"
+      :vertices="10"
+    />
+  </assets>
 </template>

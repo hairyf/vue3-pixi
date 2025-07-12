@@ -14,33 +14,33 @@ catalogs:
     typescript: ^5.8.3
     vitest: ^1.6.1
   docs:
-    '@iconify/json': ^2.2.215
-    '@stackblitz/sdk': ^1.10.0
+    '@iconify/json': ^2.2.357
+    '@stackblitz/sdk': ^1.11.0
     codesandbox: ^2.2.3
     floating-vue: ^5.2.2
-    gsap: ^3.12.5
-    naive-ui: ^2.38.2
-    unocss: ^0.60.0
+    gsap: ^3.13.0
+    naive-ui: ^2.42.0
+    unocss: ^0.60.4
     vitepress: ^1.6.3
     vitepress-plugin-demo: ^0.8.0
   nuxt:
-    '@nuxt/kit': ^3.11.2
+    '@nuxt/kit': ^3.17.6
     '@nuxt/module-builder': ^0.7.1
-    '@nuxt/schema': ^3.11.2
+    '@nuxt/schema': ^3.17.6
     '@xmldom/xmldom': ^0.8.10
-    mlly: ^1.7.0
-    nuxi: ^3.12.0
-    nuxt: ^3.11.2
-    pkg-types: ^1.1.1
+    mlly: ^1.7.4
+    nuxi: ^3.25.1
+    nuxt: ^3.17.6
+    pkg-types: ^1.3.1
     sirv: ^2.0.4
   share:
-    '@antfu/utils': ^0.7.8
-    '@vue/runtime-core': ^3.4.27
-    '@vueuse/core': ^10.10.0
+    '@antfu/utils': ^0.7.10
+    '@vue/runtime-core': ^3.5.17
+    '@vueuse/core': ^10.11.1
     nanoid: ^4.0.2
-    pixi-filters: ^6.0.4
-    pixi.js: ^8.2.5
-    vue: ^3.4.27
-    vue-demi: ^0.14.8
+    pixi-filters: ^6.1.3
+    pixi.js: ^8.11.0
+    vue: ^3.5.17
+    vue-demi: ^0.14.10
   types:
-    '@types/node': ^20.17.30
+    '@types/node': ^20.19.7

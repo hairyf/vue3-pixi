@@ -2,7 +2,7 @@ import type { DefaultTheme } from 'vitepress'
 import { fileURLToPath } from 'node:url'
 import unocss from 'unocss/vite'
 import { defineConfig } from 'vitepress'
-import { compilerOptions } from '../../packages/vue3-pixi'
+import { compilerOptions } from '../../packages/core'
 import { mdPlugin } from './plugin'
 
 const themeConfig: DefaultTheme.Config = {
@@ -75,9 +75,9 @@ const themeConfig: DefaultTheme.Config = {
           { text: 'Container', link: '/guide/elements/container' },
           { text: 'Graphics', link: '/guide/elements/graphics' },
           { text: 'Mesh', link: '/guide/elements/mesh' },
-          { text: 'NineSlicePlane', link: '/guide/elements/nine-slice-plane' },
-          { text: 'ParticleContainer', link: '/guide/elements/particle-container' },
-          { text: 'SimplePlane', link: '/guide/elements/simple-plane' },
+          // { text: 'NineSlicePlane', link: '/guide/elements/nine-slice-plane' },
+          // { text: 'ParticleContainer', link: '/guide/elements/particle-container' },
+          // { text: 'SimplePlane', link: '/guide/elements/simple-plane' },
           { text: 'MeshRope', link: '/guide/elements/mesh-rope' },
           { text: 'Sprite', link: '/guide/elements/sprite' },
           { text: 'Text', link: '/guide/elements/text' },
@@ -89,7 +89,7 @@ const themeConfig: DefaultTheme.Config = {
         items: [
           { text: 'Application', link: '/guide/components/application' },
           { text: 'Transition', link: '/guide/components/transition' },
-          { text: 'Loader', link: '/guide/components/loader' },
+          { text: 'Assets', link: '/guide/components/assets' },
           { text: 'External', link: '/guide/components/external' },
         ],
       },

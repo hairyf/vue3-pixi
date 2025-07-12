@@ -9,11 +9,12 @@ import {
   DisplacementFilter,
   Graphics,
   Mesh,
+  MeshPlane,
   // -- Strange thing
   // -- why are these three empty?
   // MeshPlane,
-  // MeshRope,
-  // NineSliceSprite,
+  MeshRope,
+  NineSliceSprite,
   NoiseFilter,
   Sprite,
   Text,
@@ -148,6 +149,7 @@ const AnimatedSpriteRender: RendererOptions = {
         })
         break
       case 'playing':
+        // eslint-disable-next-line no-case-declarations
         const isPlaying = (next === '') || !!next
         setPropertyValue(el, key, () => isPlaying ? el.play() : el.stop())
         break
@@ -189,53 +191,53 @@ const MeshRender: RendererOptions = {
   },
 }
 
-// const NineSliceSpriteRender: RendererOptions = {
-//   name: 'NineSliceSprite',
-//   createElement: props => new NineSliceSprite(
-//     normalizeTexture(props.texture),
-//   ),
-//   patchProp(el: NineSliceSprite, key, prev, next) {
-//     switch (key) {
-//       case 'roundPixels':
-//       case 'autoResize':
-//         patchBooleanProp(el, key, prev, next)
-//         break
-//       default:
-//         defuPatchProp(el, key, prev, next)
-//     }
-//   },
-// }
+const NineSliceSpriteRender: RendererOptions = {
+  name: 'NineSliceSprite',
+  createElement: props => new NineSliceSprite(
+    normalizeTexture(props.texture),
+  ),
+  patchProp(el: NineSliceSprite, key, prev, next) {
+    switch (key) {
+      case 'roundPixels':
+      case 'autoResize':
+        patchBooleanProp(el, key, prev, next)
+        break
+      default:
+        defuPatchProp(el, key, prev, next)
+    }
+  },
+}
 
 // TODO: SimplePlane -> MeshPlane files
-// const MeshPlaneRender: RendererOptions = {
-//   name: 'MeshPlane',
-//   createElement: (props) => {
-//     return new MeshPlane({
-//       texture: normalizeTexture(props.texture),
-//       width: props.width,
-//       height: props.height,
-//     })
-//   },
-// }
+const MeshPlaneRender: RendererOptions = {
+  name: 'MeshPlane',
+  createElement: (props) => {
+    return new MeshPlane({
+      texture: normalizeTexture(props.texture),
+      width: props.width,
+      height: props.height,
+    })
+  },
+}
 
-// const MeshRopeRender: RendererOptions = {
-//   name: 'MeshRope',
-//   createElement: (props) => {
-//     return new MeshRope({
-//       texture: normalizeTexture(props.texture),
-//       points: props.points,
-//     })
-//   },
-//   patchProp(el: NineSliceSprite, key, prev, next) {
-//     switch (key) {
-//       case 'texture':
-//       case 'points':
-//         break
-//       default:
-//         defuPatchProp(el, key, prev, next)
-//     }
-//   },
-// }
+const MeshRopeRender: RendererOptions = {
+  name: 'MeshRope',
+  createElement: (props) => {
+    return new MeshRope({
+      texture: normalizeTexture(props.texture),
+      points: props.points,
+    })
+  },
+  patchProp(el: NineSliceSprite, key, prev, next) {
+    switch (key) {
+      case 'texture':
+      case 'points':
+        break
+      default:
+        defuPatchProp(el, key, prev, next)
+    }
+  },
+}
 
 const BlurFilterRender: RendererOptions = {
   name: 'BlurFilter',
@@ -294,9 +296,9 @@ export const defaultRenderer: Renderer = [
   TilingSpriteRender,
   AnimatedSpriteRender,
   MeshRender,
-  // NineSliceSpriteRender,
-  // MeshPlaneRender,
-  // MeshRopeRender,
+  NineSliceSpriteRender,
+  MeshPlaneRender,
+  MeshRopeRender,
   BlurFilterRender,
   AlphaFilterRender,
   DisplacementFilterRender,

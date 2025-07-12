@@ -5,7 +5,7 @@ import { onTick } from 'vue3-pixi'
 const ropeLength = 918 / 20
 
 let count = 0
-const points = ref<{ x: number; y: number }[]>([])
+const points = ref<{ x: number, y: number }[]>([])
 
 for (let i = 0; i < 20; i++)
   points.value.push({ x: i * ropeLength, y: 0 })

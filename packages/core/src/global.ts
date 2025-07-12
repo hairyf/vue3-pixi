@@ -9,7 +9,7 @@ import type { FilterComponent } from './elements/filter'
 import type { GraphicsComponent } from './elements/graphics'
 import type { MeshComponent } from './elements/mesh'
 import type { MeshRopeComponent } from './elements/meshRope'
-import type { NineSliceSpriteComponent } from './elements/NineSliceSprite'
+// import type { NineSliceSpriteComponent } from './elements/NineSliceSprite'
 import type { ParticleContainerComponent } from './elements/particleContainer'
 import type { SimplePlaneComponent } from './elements/simplePlane'
 import type { SpriteComponent } from './elements/sprite'
@@ -68,8 +68,8 @@ declare module '@vue/runtime-core' {
     SimplePlane: SimplePlaneComponent
     PixiSimplePlane: SimplePlaneComponent
 
-    NineSliceSprite: NineSliceSpriteComponent
-    PixiNineSliceSprite: NineSliceSpriteComponent
+    // NineSliceSprite: NineSliceSpriteComponent
+    // PixiNineSliceSprite: NineSliceSpriteComponent
 
     MeshRope: MeshRopeComponent
     PixiMeshRope: MeshRopeComponent
@@ -99,7 +99,7 @@ export * from './elements/filter'
 export * from './elements/graphics'
 export * from './elements/mesh'
 export * from './elements/meshRope'
-export * from './elements/nineSliceSprite'
+// export * from './elements/nineSliceSprite'
 export * from './elements/particleContainer'
 export * from './elements/props'
 export * from './elements/simplePlane'
