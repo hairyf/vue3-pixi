@@ -1,5 +1,4 @@
-import type { ICanvasRenderingContext2D, TextStyle } from 'pixi.js'
-import type { AllowedEvents, AllowedProps, DefineElement } from '../types'
+import type { AllowedEvents, DefineElement, ExtractContainerProps } from '../types'
 import { BitmapText } from 'pixi.js'
 import { patchProp, renderer, setSkipFirstValue } from '../renderer'
 import { patchBooleanProp } from '../renderer/patchProp'
@@ -27,14 +26,7 @@ renderer.use({
   },
 })
 
-export interface BitmapTextProps extends AllowedProps {
-  text?: string | number
-  style?: TextStyle | Partial<TextStyle>
-
-  context?: ICanvasRenderingContext2D
-
-  width?: number
-}
+export type BitmapTextProps = ExtractContainerProps<BitmapText>
 
 export interface BitmapTextEvents extends AllowedEvents {
   render: [BitmapText]

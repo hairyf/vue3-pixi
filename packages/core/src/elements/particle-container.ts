@@ -1,6 +1,6 @@
 
-import type { AllowedEvents, DefineElement } from '../types'
-import { ParticleContainer, ParticleProperties } from 'pixi.js'
+import type { AllowedEvents, DefineElement, ExtractContainerProps } from '../types'
+import { ParticleContainer } from 'pixi.js'
 import { patchProp, renderer } from '../renderer'
 
 renderer.use({ 
@@ -17,12 +17,7 @@ renderer.use({
   },
  })
 
-export interface ParticleContainerProps {
-  autoResize?: boolean
-  blendMode?: number
-  maxSize?: number
-  properties?: ParticleProperties
-}
+export type ParticleContainerProps = ExtractContainerProps<ParticleContainer>
 
 export interface ParticleContainerEvents extends AllowedEvents {
   render: [ParticleContainer]

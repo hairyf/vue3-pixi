@@ -1,5 +1,6 @@
 import "./container"
-import "./container-particle"
+import "./particle"
+import "./particle-container"
 import "./filter"
 import "./filter-alpha"
 import "./filter-blur"

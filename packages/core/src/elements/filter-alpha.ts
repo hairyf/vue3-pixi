@@ -1,7 +1,6 @@
-import type { AllowedEvents, DefineElement } from '../types'
+import type { AllowedEvents, AllowedFilterProps, DefineElement, ExtractFilterProps } from '../types'
 import { AlphaFilter } from 'pixi.js'
 import { renderer } from '../renderer'
-import { AllowedFilterProps, ExtractFilterProps } from '../global'
 
 renderer.use({
   name: 'AlphaFilter',

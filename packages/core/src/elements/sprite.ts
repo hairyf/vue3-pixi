@@ -1,5 +1,5 @@
-import type { BLEND_MODES, ColorSource, Texture } from 'pixi.js'
-import type { AllowedEvents, AllowedProps, DefineElement } from '../types'
+import type { Texture } from 'pixi.js'
+import type { AllowedEvents, DefineElement, ExtractContainerProps } from '../types'
 import { Sprite } from 'pixi.js'
 import { normalizeTexture, renderer } from '../renderer'
 
@@ -12,18 +12,7 @@ renderer.use({
   remove: (node: Sprite) => node.destroy(),
 })
 
-export interface SpriteProps extends AllowedProps {
-  texture: string | Texture
-
-  blendMode?: BLEND_MODES
-
-  width?: number
-  height?: number
-
-  pluginName?: string
-
-  tint?: ColorSource
-}
+export type SpriteProps = ExtractContainerProps<Sprite, { texture: Texture | string }>
 
 export interface SpriteEvents extends AllowedEvents {
   render: [Sprite]

@@ -4,15 +4,12 @@ import { renderer } from '../renderer'
 
 renderer.use({ name: 'Container', createElement: () => new Container() })
 
-export interface ContainerProps {
-
-}
 
 export interface ContainerEvents extends AllowedEvents {
   render: [Container]
 }
 
-export type ContainerElement = DefineElement<ContainerProps, ContainerEvents>
+export type ContainerElement = DefineElement<{}, ContainerEvents>
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {

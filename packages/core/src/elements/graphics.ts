@@ -1,5 +1,4 @@
-import type { BLEND_MODES, ColorSource, Geometry, Shader } from 'pixi.js'
-import type { AllowedEvents, AllowedProps, DefineElement } from '../types'
+import type { AllowedEvents, DefineElement, ExtractContainerProps } from '../types'
 import { Graphics } from 'pixi.js'
 import { renderer } from '../renderer'
 
@@ -8,14 +7,7 @@ renderer.use({
   createElement: props => new Graphics(props.geometry),
 })
 
-export interface GraphicsProps extends AllowedProps {
-  blendMode?: BLEND_MODES
-  pluginName?: string
-  shader?: Shader
-  tint?: ColorSource
-  geometry?: Geometry
-  isMask?: boolean
-}
+export type GraphicsProps = ExtractContainerProps<Graphics>
 
 export interface GraphicsEvents extends AllowedEvents {
   render: [Graphics]

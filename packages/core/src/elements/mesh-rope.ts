@@ -1,5 +1,5 @@
-import type { AllowedEvents, DefineElement } from '../types'
-import { BLEND_MODES, ColorSource, MeshRope, Point, Shader, State, Texture, Topology } from 'pixi.js'
+import type { AllowedEvents, DefineElement, ExtractContainerProps } from '../types'
+import { MeshRope, Point, Texture } from 'pixi.js'
 import { normalizeTexture, patchProp, renderer } from '../renderer'
 
 renderer.use({
@@ -21,22 +21,10 @@ renderer.use({
   },
 })
 
-export interface MeshRopeProps {
+export type MeshRopeProps = ExtractContainerProps<MeshRope, {
   texture: string | Texture
   points: Point[]
-  textureScale?: number
-  autoUpdate?: number
-  shader?: Shader
-  blendMode?: BLEND_MODES
-  drawMode?: Topology
-  material?: Shader
-  roundPixels?: boolean
-  size?: number
-  start?: number
-  state?: State
-  tint?: ColorSource
-  canvasPadding?: number
-}
+}>
 
 export interface MeshRopeEvents extends AllowedEvents {
   render: [MeshRope]

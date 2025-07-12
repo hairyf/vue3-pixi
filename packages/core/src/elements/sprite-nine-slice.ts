@@ -1,5 +1,5 @@
-import type { AllowedEvents, DefineElement } from '../types'
-import { BLEND_MODES, ColorSource, NineSliceSprite, Shader, State, Texture } from 'pixi.js'
+import type { AllowedEvents, DefineElement, ExtractContainerProps } from '../types'
+import { NineSliceSprite, Texture } from 'pixi.js'
 import { normalizeTexture, renderer } from '../renderer'
 
 renderer.use({
@@ -10,28 +10,7 @@ renderer.use({
   }),
 })
 
-export interface NineSliceSpriteProps {
-  texture: Texture | string
-  leftWidth?: number
-  rightWidth?: number
-  topHeight?: number
-  bottomHeight?: number
-  verticesX?: number
-  verticesY?: number
-
-  shader?: Shader
-  blendMode?: BLEND_MODES
-  material?: Shader
-  roundPixels?: boolean
-  size?: number
-  start?: number
-  state?: State
-
-  tint?: ColorSource
-  canvasPadding?: number
-
-  autoResize?: boolean
-}
+export type NineSliceSpriteProps = ExtractContainerProps<NineSliceSprite, { texture: Texture | string }>
 
 export interface NineSliceSpriteEvents extends AllowedEvents {
   render: [NineSliceSprite]

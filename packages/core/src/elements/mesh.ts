@@ -1,5 +1,5 @@
-import type { AllowedEvents, DefineElement } from '../types'
-import { BLEND_MODES, ColorSource, Geometry, Mesh, Shader, State, Texture, Topology } from 'pixi.js'
+import type { AllowedEvents, DefineElement, ExtractContainerProps } from '../types'
+import { Geometry, Mesh, MeshRope } from 'pixi.js'
 import { patchProp, renderer, setSkipFirstValue } from '../renderer'
 import { patchBooleanProp } from '../renderer/patchProp'
 
@@ -22,20 +22,9 @@ renderer.use({
   },
 })
 
-export interface MeshProps {
+export type MeshProps = ExtractContainerProps<MeshRope, {
   geometry: Geometry
-  shader: Shader
-  blendMode?: BLEND_MODES
-  drawMode?: Topology
-  material?: Shader
-  roundPixels?: boolean
-  size?: number
-  start?: number
-  state?: State
-  texture?: string | Texture
-  tint?: ColorSource
-  canvasPadding?: number
-}
+}>
 
 export interface MeshEvents extends AllowedEvents {
   render: [Mesh]

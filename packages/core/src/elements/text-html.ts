@@ -1,5 +1,4 @@
-import type { ICanvasRenderingContext2D, TextStyle } from 'pixi.js'
-import type { AllowedEvents, AllowedProps, DefineElement } from '../types'
+import type { AllowedEvents, DefineElement, ExtractContainerProps } from '../types'
 import { HTMLText } from 'pixi.js'
 import { patchProp, renderer, setObjectProperty, setSkipFirstValue } from '../renderer'
 
@@ -23,14 +22,7 @@ renderer.use({
   },
 })
 
-export interface HTMLTextProps extends AllowedProps {
-  text?: string | number
-  style?: TextStyle | Partial<TextStyle>
-
-  context?: ICanvasRenderingContext2D
-
-  width?: number
-}
+export type HTMLTextProps = ExtractContainerProps<HTMLText>
 
 export interface HTMLTextEvents extends AllowedEvents {
   render: [HTMLText]

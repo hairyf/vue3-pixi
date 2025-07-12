@@ -3,7 +3,7 @@ import type {
   DefineComponent,
   VNodeProps,
 } from 'vue-demi'
-import type { AllowedProps } from './props'
+import { AllowedContainerProps } from './props'
 
 export interface ContainerEvents {
   render: []
@@ -12,7 +12,7 @@ export interface ContainerEvents {
 export type DefineElement<
   InstanceProps = {},
   Events extends { [key: string]: any } = {},
-  PublicProps = AllowedProps,
+  PublicProps = AllowedContainerProps,
 > = DefineComponent<
   InstanceProps,
   {},

@@ -1,5 +1,5 @@
-import type { AllowedEvents, DefineElement } from '../types'
-import { AnimatedSprite, BLEND_MODES, ColorSource, PointData } from 'pixi.js'
+import type { AllowedEvents, DefineElement, ExtractContainerProps } from '../types'
+import { AnimatedSprite } from 'pixi.js'
 import { normalizeTexture, renderer, setPropertyValue, setSkipFirstValue } from '../renderer'
 import { patchBooleanProp, patchProp } from '../renderer/patchProp'
 
@@ -42,33 +42,7 @@ renderer.use({
   },
 })
 
-
-export interface AnimatedSpriteProps {
-  textures?: any[]
-  width?: number
-  height?: number
-
-  playing?: boolean
-  gotoAndPlay?: number
-
-  anchor?: Partial<PointData> | number
-  anchorX?: number
-  anchorY?: number
-
-  blendMode?: BLEND_MODES
-
-  tint?: ColorSource
-
-  animationSpeed?: number
-  autoUpdate?: AnimatedSprite['autoUpdate']
-
-  currentFrame?: number
-  loop?: boolean
-
-  updateAnchor?: boolean
-
-  roundPixels?: boolean
-}
+export type AnimatedSpriteProps = ExtractContainerProps<AnimatedSprite, { textures?: any }>
 
 export interface AnimatedSpriteEvents extends AllowedEvents {
   render: [AnimatedSprite]
