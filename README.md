@@ -47,7 +47,6 @@ yarn add vue3-pixi
 
 [![StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/edit/vue3-pixi)
 
-
 ## Demos
 
 - https://github.com/hairyf/vue3-pixi-flappy-bird

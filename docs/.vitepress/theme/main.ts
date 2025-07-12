@@ -1,6 +1,6 @@
 import FloatingVue from 'floating-vue'
-import { renderer } from 'vue3-pixi'
 import { Text } from 'pixi.js'
+import { renderer } from 'vue3-pixi'
 
 import 'floating-vue/dist/style.css'
 import 'uno.css'

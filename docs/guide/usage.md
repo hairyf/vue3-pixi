@@ -8,11 +8,9 @@ All Vue3 Pixi elements should be children of Application.
 
 ## Sprites
 
-
 Sprite component requires a `texture`, which can be a Texture object or a path to an image.
 
 PixiJS will load the texture in the background and show it when it’s ready - similar to how an `img` tag works.
-
 
 <demo src="./demo/sprite.vue" :app="false" />
 
@@ -78,7 +76,6 @@ renderer.use({
     return defPathProp(el, key, prevValue, nextValue)
   },
 })
-
 ```
 
 <demo src="./demo/custom-instance.vue" :codesandbox="false" />

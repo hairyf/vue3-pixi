@@ -31,6 +31,7 @@ Note that if you use this approach, you cannot immediately access `app`. You nee
 
 ```ts
 import { Application, useApplication } from 'vue3-pixi'
+
 const app = useApplication()
 const renderer = useRenderer(app)
 const stage = useStage(app)
@@ -45,6 +46,7 @@ While `useScreen` will create a default empty rectangle if Application is not ob
 
 ```ts
 import { useScreen } from 'vue3-pixi'
+
 const screen = useScreen(app)
 screen.value // defaultRectangle
 // ...

@@ -4,7 +4,6 @@ Repository is [here](https://github.com/hairyf/vue3-pixi/tree/main/packages/vue3
 
 If you want to use it in Nuxtjs, install the following modules:
 
-
 ## Install
 
 ::: code-group

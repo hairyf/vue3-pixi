@@ -6,7 +6,6 @@ All events emitted by pixi objects are supported. Some of vue's event modifiers 
 
 <demo src="./demo/events.vue" />
 
-
 ## Render Events
 
 all elements support render event, which allows for flexible manipulation of elements, For example, using on `<grahpics />` and `<particle-container />`

@@ -41,4 +41,3 @@ features:
     icon: ☁️
     details: Usable via CDN, without any bundlers.
 ---
-

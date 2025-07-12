@@ -15,7 +15,7 @@
     "@stackblitz/sdk": "catalog:docs",
     "@vueuse/core": "catalog:share",
     "gsap": "catalog:docs",
-    "naive-ui": "catalog:share",
+    "naive-ui": "catalog:docs",
     "nanoid": "catalog:share",
     "pixi.js": "catalog:share",
     "unocss": "catalog:docs",

@@ -1,18 +1,18 @@
-// https://vitepress.dev/guide/custom-theme
-import { h } from 'vue'
-import Theme from 'vitepress/theme'
 import FloatingVue from 'floating-vue'
 import { NMessageProvider } from 'naive-ui'
+import Theme from 'vitepress/theme'
+// https://vitepress.dev/guide/custom-theme
+import { h } from 'vue'
 import { Assets } from 'vue3-pixi'
-import PixiJSContainer from './components/PixiJSContainer/index.vue'
-import MountProvider from './components/MountProvider/index.vue'
-import StackBlitzEmbed from './components/StackBlitzEmbed/index.vue'
-import DraggableCircle from './components/Sites/DraggableCircle.vue'
 import ApiTyping from './components/ApiTyping/index.vue'
-import ApiPoint from './components/Markdown/ApiPoint.md'
-import ApiColor from './components/Markdown/ApiColor.md'
 import ApiBlendMode from './components/Markdown/ApiBlendMode.md'
+import ApiColor from './components/Markdown/ApiColor.md'
 import ApiDrawMode from './components/Markdown/ApiDrawMode.md'
+import ApiPoint from './components/Markdown/ApiPoint.md'
+import MountProvider from './components/MountProvider/index.vue'
+import PixiJSContainer from './components/PixiJSContainer/index.vue'
+import DraggableCircle from './components/Sites/DraggableCircle.vue'
+import StackBlitzEmbed from './components/StackBlitzEmbed/index.vue'
 
 import './main'
 
@@ -26,16 +26,14 @@ if (typeof document === 'undefined')
 export default {
   ...Theme,
   Layout: () => {
-    return h(NMessageProvider, null,
-      [
-        h(MountProvider, null, [
-          h(Theme.Layout, null, {
-            // https://vitepress.dev/guide/extending-default-theme#layout-slots
-          }),
-        ]),
+    return h(NMessageProvider, null, [
+      h(MountProvider, null, [
+        h(Theme.Layout, null, {
+          // https://vitepress.dev/guide/extending-default-theme#layout-slots
+        }),
+      ]),
 
-      ],
-    )
+    ])
   },
   enhanceApp({ app }) {
     app.component('Assets', Assets)

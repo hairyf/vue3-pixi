@@ -18,7 +18,6 @@ Unlike the Vue Transition, you can achieve transition effects by setting differe
 
 <demo src="./demo/transition-properties.vue" :width="400" />
 
-
 ## Ease
 
 By default, all transition effects are linear. You can customize the transition easing by using custom cubic-bezier curves.
@@ -75,7 +74,7 @@ You can also control the transition effects by setting enter and level to functi
 | before-enter | ^[function]`(el: any):void` ^[object\|array]`TransitionVars \| TransitionVars[]` | `undefined` | Called before the transition starts. |
 | enter | ^[function]`(el: any, done: () => void):void` ^[object\|array]`TransitionVars \| TransitionVars[]` | `undefined` | Called when the transition starts. |
 | after-enter | ^[function]`(el: any):void` ^[object\|array]`TransitionVars \| TransitionVars[]` | `undefined` | Called after the transition ends. |
-| 
+|
 | before-leave | ^[function]`(el: any):void` ^[object\|array]`TransitionVars \| TransitionVars[]` | `undefined` | Called before the transition starts. |
 | leave | ^[function]`(el: any, done: () => void):void` ^[object\|array]`TransitionVars \| TransitionVars[]` | `undefined` | Called when the transition starts. |
 | after-leave | ^[function]`(el: any):void` ^[object\|array]`TransitionVars \| TransitionVars[]` | `undefined` | Called after the transition ends. |

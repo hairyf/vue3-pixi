@@ -29,7 +29,6 @@
 - 🗃️ Offers [Loader](/guide/components/loader) component for bundling assets and Feature Rich [Composition Utilities](/guide/composition-api/on-tick).
 - 💫 Create different transition effects in conjunction with [Transition](/guide/components/transition).
 
-
 > **It is still a work in progress** but it should be usable enough for real projects. If you run into any problems please don’t hesitate to [create an issue on GitHub](https://github.com/hairyf/vue3-pixi/issues).
 
 ## Install
@@ -55,8 +54,8 @@ pnpm add pixi.js vue3-pixi
 add Vue plugin configuration to support custom elements, prevent parsing exceptions, and support parsing the texture attribute, just like the src attribute of an img.
 
 ```ts
-import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import { defineConfig } from 'vite'
 import { compilerOptions, transformAssetUrls } from 'vue3-pixi'
 
 export default defineConfig({
@@ -73,11 +72,8 @@ export default defineConfig({
 })
 ```
 
-
-
 ## Try it Online
 
 You can fork this template example on [StackBlitz](https://stackblitz.com/edit/vue3-pixi?file=src/App.vue) and play with it 😋 without installing anything locally.
 
 <stack-blitz-embed id="vue3-pixi" />
-

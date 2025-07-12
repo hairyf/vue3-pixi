@@ -66,7 +66,6 @@ renderer.use({
   // setText
   // parentNode
 })
-
 ```
 
 > Please note that if you modify any of these configurations, the default configuration for that will be overridden.
@@ -74,8 +73,8 @@ renderer.use({
 To prevent Vue program from issuing warnings and to handle them, you need to add the following content in the Vue plugin configuration.
 
 ```ts
-import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import { defineConfig } from 'vite'
 import { isCustomElement, transformAssetUrls } from 'vue3-pixi'
 
 export default defineConfig({

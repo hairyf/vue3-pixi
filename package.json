@@ -15,9 +15,6 @@
     "docs:build": "npm -C docs run docs:build",
     "docs:preview": "npm -C docs run docs:preview"
   },
-  "dependencies": {
-    "@antfu/utils": "catalog:share"
-  },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:cli",
     "@types/node": "catalog:types",

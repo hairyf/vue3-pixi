@@ -48,8 +48,8 @@ function onClick() {
 add Vue plugin configuration to support custom elements, prevent parsing exceptions, and support parsing the texture attribute, just like the src attribute of an img.
 
 ```ts
-import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import { defineConfig } from 'vite'
 import { isCustomElement, transformAssetUrls } from 'vue3-pixi/compiler'
 
 export default defineConfig({
@@ -79,8 +79,8 @@ The Vue Plugin detects any texture props containing the path to an image and rep
 Using the custom renderer inside `vue3-pixi`
 
 ```ts
-import { appInjectKey, createApp } from 'vue3-pixi'
 import { Application } from 'pixi.js'
+import { appInjectKey, createApp } from 'vue3-pixi'
 import App from './App.vue'
 
 const pixiApp = new Application({
