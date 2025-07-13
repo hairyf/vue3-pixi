@@ -1,13 +1,13 @@
-import type { DefineContainerAttributes } from '../types'
+import type { DefineContainerElement } from '../types'
 import { Graphics, GraphicsOptions } from 'pixi.js'
 import { renderer } from '../renderer'
 
-export type GraphicsAttributes = DefineContainerAttributes<Graphics, GraphicsOptions>
+export type GraphicsElement = DefineContainerElement<Graphics, GraphicsOptions>
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    Graphics: GraphicsAttributes
-    PixiGraphics: GraphicsAttributes
+    Graphics: GraphicsElement
+    PixiGraphics: GraphicsElement
   }
 }
 

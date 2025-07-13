@@ -1,14 +1,14 @@
 import type { NineSliceSpriteOptions } from 'pixi.js'
-import type { DefineContainerAttributes } from '../types'
+import type { DefineContainerElement } from '../types'
 import { NineSliceSprite } from 'pixi.js'
 import { normalizeTexture, renderer } from '../renderer'
 
-export type NineSliceSpriteAttributes = DefineContainerAttributes<NineSliceSprite, NineSliceSpriteOptions>
+export type NineSliceSpriteElement = DefineContainerElement<NineSliceSprite, NineSliceSpriteOptions>
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    NineSliceSprite: NineSliceSpriteAttributes
-    PixiNineSliceSprite: NineSliceSpriteAttributes
+    NineSliceSprite: NineSliceSpriteElement
+    PixiNineSliceSprite: NineSliceSpriteElement
   }
 }
 

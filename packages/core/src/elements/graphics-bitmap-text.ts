@@ -1,13 +1,13 @@
-import type { DefineContainerAttributes } from '../types'
+import type { DefineContainerElement } from '../types'
 import { BitmapTextGraphics, GraphicsOptions } from 'pixi.js'
 import { renderer } from '../renderer'
 
-export type BitmapTextGraphicsAttributes = DefineContainerAttributes<BitmapTextGraphics, GraphicsOptions>
+export type BitmapTextGraphicsElement = DefineContainerElement<BitmapTextGraphics, GraphicsOptions>
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    BitmapTextGraphics: BitmapTextGraphicsAttributes
-    PixiBitmapTextGraphics: BitmapTextGraphicsAttributes
+    BitmapTextGraphics: BitmapTextGraphicsElement
+    PixiBitmapTextGraphics: BitmapTextGraphicsElement
   }
 }
 

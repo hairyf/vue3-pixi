@@ -1,13 +1,13 @@
-import type { DefineFilterAttributes } from '../types'
+import type { DefineFilterElement } from '../types'
 import { MaskFilter, MaskFilterOptions } from 'pixi.js'
 import { renderer } from '../renderer'
 
-export type MaskFilterAttributes = DefineFilterAttributes<MaskFilter, MaskFilterOptions>
+export type MaskFilterElement = DefineFilterElement<MaskFilter, MaskFilterOptions>
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    MaskFilter: MaskFilterAttributes
-    PixiMaskFilter: MaskFilterAttributes
+    MaskFilter: MaskFilterElement
+    PixiMaskFilter: MaskFilterElement
   }
 }
 

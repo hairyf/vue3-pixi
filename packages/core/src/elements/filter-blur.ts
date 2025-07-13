@@ -1,13 +1,13 @@
-import type { DefineFilterAttributes } from '../types'
+import type { DefineFilterElement } from '../types'
 import { BlurFilter, BlurFilterOptions } from 'pixi.js'
 import { renderer } from '../renderer'
 
-export type BlurFilterAttributes = DefineFilterAttributes<BlurFilter, BlurFilterOptions>
+export type BlurFilterElement = DefineFilterElement<BlurFilter, BlurFilterOptions>
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    BlurFilter: BlurFilterAttributes
-    PixiBlurFilter: BlurFilterAttributes
+    BlurFilter: BlurFilterElement
+    PixiBlurFilter: BlurFilterElement
   }
 }
 

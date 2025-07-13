@@ -1,13 +1,13 @@
-import type { DefineFilterAttributes } from '../types'
+import type { DefineFilterElement } from '../types'
 import { ColorMatrixFilter, FilterOptions } from 'pixi.js'
 import { renderer } from '../renderer'
 
-export type ColorMatrixFilterAttributes = DefineFilterAttributes<ColorMatrixFilter, FilterOptions>
+export type ColorMatrixFilterElement = DefineFilterElement<ColorMatrixFilter, FilterOptions>
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    ColorMatrixFilter: ColorMatrixFilterAttributes
-    PixiColorMatrixFilter: ColorMatrixFilterAttributes
+    ColorMatrixFilter: ColorMatrixFilterElement
+    PixiColorMatrixFilter: ColorMatrixFilterElement
   }
 }
 

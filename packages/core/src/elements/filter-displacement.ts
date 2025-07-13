@@ -1,13 +1,13 @@
-import type { DefineFilterAttributes } from '../types'
+import type { DefineFilterElement } from '../types'
 import { DisplacementFilter, DisplacementFilterOptions } from 'pixi.js'
 import { renderer } from '../renderer'
 
-export type DisplacementFilterAttributes = DefineFilterAttributes<DisplacementFilter, DisplacementFilterOptions>
+export type DisplacementFilterElement = DefineFilterElement<DisplacementFilter, DisplacementFilterOptions>
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    DisplacementFilter: DisplacementFilterAttributes
-    PixiDisplacementFilter: DisplacementFilterAttributes
+    DisplacementFilter: DisplacementFilterElement
+    PixiDisplacementFilter: DisplacementFilterElement
   }
 }
 

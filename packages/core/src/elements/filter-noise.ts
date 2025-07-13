@@ -1,13 +1,13 @@
-import type { DefineFilterAttributes } from '../types'
+import type { DefineFilterElement } from '../types'
 import { NoiseFilter, NoiseFilterOptions } from 'pixi.js'
 import { renderer } from '../renderer'
 
-export type NoiseFilterAttributes = DefineFilterAttributes<NoiseFilter, NoiseFilterOptions>
+export type NoiseFilterElement = DefineFilterElement<NoiseFilter, NoiseFilterOptions>
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    NoiseFilter: NoiseFilterAttributes
-    PixiNoiseFilter: NoiseFilterAttributes
+    NoiseFilter: NoiseFilterElement
+    PixiNoiseFilter: NoiseFilterElement
   }
 }
 

@@ -1,13 +1,13 @@
-import type { DefineContainerAttributes } from '../types'
+import type { DefineContainerElement } from '../types'
 import { DOMContainer, DOMContainerOptions } from 'pixi.js'
 import { renderer } from '../renderer'
 
-export type DOMContainerAttributes = DefineContainerAttributes<DOMContainer, DOMContainerOptions>
+export type DOMContainerElement = DefineContainerElement<DOMContainer, DOMContainerOptions>
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    DomContainer: DOMContainerAttributes
-    PixiDomContainer: DOMContainerAttributes
+    DomContainer: DOMContainerElement
+    PixiDomContainer: DOMContainerElement
   }
 }
 

@@ -1,14 +1,14 @@
-import type { DefineContainerAttributes } from '../types'
+import type { DefineContainerElement } from '../types'
 import { SplitBitmapText, SplitBitmapTextOptions } from 'pixi.js'
 import { patchProp, renderer, setSkipFirstValue } from '../renderer'
 import { patchBooleanProp } from '../renderer/patchProp'
 
-export type SplitBitmapTextAttributes = DefineContainerAttributes<SplitBitmapText, SplitBitmapTextOptions>
+export type SplitBitmapTextElement = DefineContainerElement<SplitBitmapText, SplitBitmapTextOptions>
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    SplitBitmapText: SplitBitmapTextAttributes
-    PixiSplitBitmapText: SplitBitmapTextAttributes
+    SplitBitmapText: SplitBitmapTextElement
+    PixiSplitBitmapText: SplitBitmapTextElement
   }
 }
 

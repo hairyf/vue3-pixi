@@ -1,13 +1,13 @@
-import type { DefineFilterAttributes } from '../types'
+import type { DefineFilterElement } from '../types'
 import { AlphaFilter, AlphaFilterOptions } from 'pixi.js'
 import { renderer } from '../renderer'
 
-export type AlphaFilterAttributes = DefineFilterAttributes<AlphaFilter, AlphaFilterOptions>
+export type AlphaFilterElement = DefineFilterElement<AlphaFilter, AlphaFilterOptions>
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    AlphaFilter: AlphaFilterAttributes
-    PixiAlphaFilter: AlphaFilterAttributes
+    AlphaFilter: AlphaFilterElement
+    PixiAlphaFilter: AlphaFilterElement
   }
 }
 

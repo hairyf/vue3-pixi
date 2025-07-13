@@ -1,13 +1,13 @@
-import type { DefineContainerAttributes } from '../types'
+import type { DefineContainerElement } from '../types'
 import { Text, TextOptions } from 'pixi.js'
 import { patchProp, renderer, setObjectProperty, setSkipFirstValue } from '../renderer'
 
-export type TextAttributes = DefineContainerAttributes<Text, TextOptions>
+export type TextElement = DefineContainerElement<Text, TextOptions>
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    Text: TextAttributes
-    PixiText: TextAttributes
+    Text: TextElement
+    PixiText: TextElement
   }
 }
 
