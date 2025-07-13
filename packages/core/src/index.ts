@@ -1,5 +1,5 @@
-import "./elements"
-import "./global"
+import './elements'
+import './global'
 
 export * from './compiler'
 export * from './components'

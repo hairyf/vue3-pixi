@@ -1,25 +1,21 @@
-import type { AllowedEvents, AllowedFilterProps, DefineElement, ExtractFilterProps } from '../types'
+import type { DefineAttributes, ExtractFilterProps } from '../types'
 import { ColorMatrixFilter } from 'pixi.js'
 import { renderer } from '../renderer'
+
+export type ColorMatrixFilterProps = ExtractFilterProps<ColorMatrixFilter>
+
+export interface ColorMatrixFilterEvents { render: [ColorMatrixFilter] }
+
+export type ColorMatrixFilterAttributes = DefineAttributes<ColorMatrixFilterProps, ColorMatrixFilterEvents>
+
+declare module '@vue/runtime-core' {
+  export interface GlobalComponents {
+    ColorMatrixFilter: ColorMatrixFilterAttributes
+    PixiColorMatrixFilter: ColorMatrixFilterAttributes
+  }
+}
 
 renderer.use({
   name: 'ColorMatrixFilter',
   createElement: props => new ColorMatrixFilter(props.alpha),
 })
-
-export interface ColorMatrixFilterProps extends ExtractFilterProps<ColorMatrixFilter> {
-
-}
-
-export interface ColorMatrixFilterEvents extends AllowedEvents {
-  render: [ColorMatrixFilter]
-}
-
-export type ColorMatrixFilterElement = DefineElement<ColorMatrixFilterProps, ColorMatrixFilterEvents, AllowedFilterProps>
-
-declare module '@vue/runtime-core' {
-  export interface GlobalComponents {
-    ColorMatrixFilter: ColorMatrixFilterElement
-    PixiColorMatrixFilter: ColorMatrixFilterElement
-  }
-}

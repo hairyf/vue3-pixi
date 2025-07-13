@@ -1,19 +1,16 @@
-import type { AllowedEvents, DefineElement } from '../types'
+import type { DefineAttributes, ExtractContainerEvents } from '../types'
 import { Container } from 'pixi.js'
 import { renderer } from '../renderer'
 
-renderer.use({ name: 'Container', createElement: () => new Container() })
+export type ContainerEvents = ExtractContainerEvents<{ render: [Container] }>
 
-
-export interface ContainerEvents extends AllowedEvents {
-  render: [Container]
-}
-
-export type ContainerElement = DefineElement<{}, ContainerEvents>
+export type ContainerAttributes = DefineAttributes<{}, ContainerEvents>
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    Container: ContainerElement
-    PixiContainer: ContainerElement
+    Container: ContainerAttributes
+    PixiContainer: ContainerAttributes
   }
 }
+
+renderer.use({ name: 'Container', createElement: () => new Container() })

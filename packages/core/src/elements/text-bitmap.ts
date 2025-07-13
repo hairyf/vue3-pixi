@@ -1,7 +1,20 @@
-import type { AllowedEvents, DefineElement, ExtractContainerProps } from '../types'
+import type { DefineAttributes, ExtractContainerProps, ExtractContainerEvents } from '../types'
 import { BitmapText } from 'pixi.js'
 import { patchProp, renderer, setSkipFirstValue } from '../renderer'
 import { patchBooleanProp } from '../renderer/patchProp'
+
+export type BitmapTextProps = ExtractContainerProps<BitmapText>
+
+export type BitmapTextEvents = ExtractContainerEvents<BitmapText, { render: [BitmapText] }>
+
+export type BitmapTextAttributes = DefineAttributes<BitmapTextProps, BitmapTextEvents>
+
+declare module '@vue/runtime-core' {
+  export interface GlobalComponents {
+    BitmapText: BitmapTextAttributes
+    PixiBitmapText: BitmapTextAttributes
+  }
+}
 
 renderer.use({
   name: 'BitmapText',
@@ -25,18 +38,3 @@ renderer.use({
     }
   },
 })
-
-export type BitmapTextProps = ExtractContainerProps<BitmapText>
-
-export interface BitmapTextEvents extends AllowedEvents {
-  render: [BitmapText]
-}
-
-export type BitmapTextElement = DefineElement<BitmapTextProps, BitmapTextEvents>
-
-declare module '@vue/runtime-core' {
-  export interface GlobalComponents {
-    BitmapText: BitmapTextElement
-    PixiBitmapText: BitmapTextElement
-  }
-}

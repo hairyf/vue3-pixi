@@ -1,7 +1,20 @@
-import type { AllowedEvents, DefineElement, ExtractContainerProps } from '../types'
+import type { DefineAttributes, ExtractContainerProps, ExtractContainerEvents } from '../types'
 import { AnimatedSprite } from 'pixi.js'
 import { normalizeTexture, renderer, setPropertyValue, setSkipFirstValue } from '../renderer'
 import { patchBooleanProp, patchProp } from '../renderer/patchProp'
+
+export type AnimatedSpriteProps = ExtractContainerProps<AnimatedSprite, { textures?: any }>
+
+export type AnimatedSpriteEvents = ExtractContainerEvents<AnimatedSprite, { render: [AnimatedSprite] }>
+
+export type AnimatedSpriteAttributes = DefineAttributes<AnimatedSpriteProps, AnimatedSpriteEvents>
+
+declare module '@vue/runtime-core' {
+  export interface GlobalComponents {
+    AnimatedSprite: AnimatedSpriteAttributes
+    PixiAnimatedSprite: AnimatedSpriteAttributes
+  }
+}
 
 renderer.use({
   name: 'AnimatedSprite',
@@ -41,18 +54,3 @@ renderer.use({
     }
   },
 })
-
-export type AnimatedSpriteProps = ExtractContainerProps<AnimatedSprite, { textures?: any }>
-
-export interface AnimatedSpriteEvents extends AllowedEvents {
-  render: [AnimatedSprite]
-}
-
-export type AnimatedSpriteElement = DefineElement<AnimatedSpriteProps, AnimatedSpriteEvents>
-
-declare module '@vue/runtime-core' {
-  export interface GlobalComponents {
-    AnimatedSprite: AnimatedSpriteElement
-    PixiAnimatedSprite: AnimatedSpriteElement
-  }
-}

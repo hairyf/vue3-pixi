@@ -1,25 +1,18 @@
-import type { AllowedEvents, AllowedFilterProps, DefineElement, ExtractFilterProps } from '../types'
+import type { DefineAttributes, ExtractFilterProps } from '../types'
 import { AlphaFilter } from 'pixi.js'
 import { renderer } from '../renderer'
 
-renderer.use({
-  name: 'AlphaFilter',
-  createElement: props => new AlphaFilter(props.alpha),
-})
+export type AlphaFilterProps = ExtractFilterProps<AlphaFilter>
 
-export interface AlphaFilterProps extends ExtractFilterProps<AlphaFilter> {
+export interface AlphaFilterEvents { render: [AlphaFilter] }
 
-}
-
-export interface AlphaFilterEvents extends AllowedEvents {
-  render: [AlphaFilter]
-}
-
-export type AlphaFilterElement = DefineElement<AlphaFilterProps, AlphaFilterEvents, AllowedFilterProps>
+export type AlphaFilterAttributes = DefineAttributes<AlphaFilterProps, AlphaFilterEvents>
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    AlphaFilter: AlphaFilterElement
-    PixiAlphaFilter: AlphaFilterElement
+    AlphaFilter: AlphaFilterAttributes
+    PixiAlphaFilter: AlphaFilterAttributes
   }
 }
+
+renderer.use({ name: 'AlphaFilter', createElement: props => new AlphaFilter(props.alpha) })

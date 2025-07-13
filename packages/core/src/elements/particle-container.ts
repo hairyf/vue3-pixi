@@ -1,9 +1,21 @@
-
-import type { AllowedEvents, DefineElement, ExtractContainerProps } from '../types'
+import type { DefineAttributes, ExtractContainerProps, ExtractContainerEvents } from '../types'
 import { ParticleContainer } from 'pixi.js'
 import { patchProp, renderer } from '../renderer'
 
-renderer.use({ 
+export type ParticleContainerProps = ExtractContainerProps<ParticleContainer>
+
+export type ParticleContainerEvents = ExtractContainerEvents<ParticleContainer, { render: [ParticleContainer] }>
+
+export type ParticleContainerAttributes = DefineAttributes<ParticleContainerProps, ParticleContainerEvents>
+
+declare module '@vue/runtime-core' {
+  export interface GlobalComponents {
+    ParticleContainer: ParticleContainerAttributes
+    PixiParticleContainer: ParticleContainerAttributes
+  }
+}
+
+renderer.use({
   name: 'ParticleContainer',
   createElement: props => new ParticleContainer(props),
   patchProp(el: ParticleContainer, key, prev, next) {
@@ -15,19 +27,4 @@ renderer.use({
         patchProp(el, key, prev, next)
     }
   },
- })
-
-export type ParticleContainerProps = ExtractContainerProps<ParticleContainer>
-
-export interface ParticleContainerEvents extends AllowedEvents {
-  render: [ParticleContainer]
-}
-
-export type ParticleContainerElement = DefineElement<ParticleContainerProps, ParticleContainerEvents>
-
-declare module '@vue/runtime-core' {
-  export interface GlobalComponents {
-    ParticleContainer: ParticleContainerElement
-    PixiParticleContainer: ParticleContainerElement
-  }
-}
+})

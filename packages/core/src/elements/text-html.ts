@@ -1,6 +1,19 @@
-import type { AllowedEvents, DefineElement, ExtractContainerProps } from '../types'
+import type { DefineAttributes, ExtractContainerProps, ExtractContainerEvents } from '../types'
 import { HTMLText } from 'pixi.js'
 import { patchProp, renderer, setObjectProperty, setSkipFirstValue } from '../renderer'
+
+export type HTMLTextProps = ExtractContainerProps<HTMLText>
+
+export type HTMLTextEvents = ExtractContainerEvents<HTMLText, { render: [HTMLText] }>
+
+export type HTMLTextAttributes = DefineAttributes<HTMLTextProps, HTMLTextEvents>
+
+declare module '@vue/runtime-core' {
+  export interface GlobalComponents {
+    HTMLText: HTMLTextAttributes
+    PixiHTMLText: HTMLTextAttributes
+  }
+}
 
 renderer.use({
   name: 'HtmlText',
@@ -21,18 +34,3 @@ renderer.use({
     }
   },
 })
-
-export type HTMLTextProps = ExtractContainerProps<HTMLText>
-
-export interface HTMLTextEvents extends AllowedEvents {
-  render: [HTMLText]
-}
-
-export type HTMLTextElement = DefineElement<HTMLTextProps, HTMLTextEvents>
-
-declare module '@vue/runtime-core' {
-  export interface GlobalComponents {
-    HTMLText: HTMLTextElement
-    PixiHTMLText: HTMLTextElement
-  }
-}

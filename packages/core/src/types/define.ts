@@ -3,16 +3,18 @@ import type {
   DefineComponent,
   VNodeProps,
 } from 'vue-demi'
-import { AllowedContainerProps } from './props'
+import { ExtractContainerProps } from './props'
+import { ExtractContainerEvents } from './events'
 
 export interface ContainerEvents {
   render: []
 }
 
-export type DefineElement<
+export type DefineContainerAttributes<T> = DefineAttributes<ExtractContainerProps<T>, ExtractContainerEvents<T, { render: [T] }>>
+
+export type DefineAttributes<
   InstanceProps = {},
   Events extends { [key: string]: any } = {},
-  PublicProps = AllowedContainerProps,
 > = DefineComponent<
   InstanceProps,
   {},
@@ -23,7 +25,7 @@ export type DefineElement<
   ComponentOptionsMixin,
   (Extract<keyof Events, string>)[],
   Extract<keyof Events, string>,
-  VNodeProps & PublicProps,
+  VNodeProps,
   Readonly<InstanceProps> & {
     [key in Extract<keyof Events, string> as `on${Capitalize<key>}`]?:
     | ((...args: Events[key]) => any)
@@ -31,3 +33,4 @@ export type DefineElement<
   },
   {}
 >
+

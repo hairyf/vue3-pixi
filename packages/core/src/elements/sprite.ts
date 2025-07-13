@@ -1,7 +1,20 @@
 import type { Texture } from 'pixi.js'
-import type { AllowedEvents, DefineElement, ExtractContainerProps } from '../types'
+import type { DefineAttributes, ExtractContainerProps, ExtractContainerEvents } from '../types'
 import { Sprite } from 'pixi.js'
 import { normalizeTexture, renderer } from '../renderer'
+
+export type SpriteProps = ExtractContainerProps<Sprite, { texture: Texture | string }>
+
+export type SpriteEvents = ExtractContainerEvents<Sprite, { render: [Sprite] }>
+
+export type SpriteAttributes = DefineAttributes<SpriteProps, SpriteEvents>
+
+declare module '@vue/runtime-core' {
+  export interface GlobalComponents {
+    Sprite: SpriteAttributes
+    PixiSprite: SpriteAttributes
+  }
+}
 
 renderer.use({
   name: 'Sprite',
@@ -11,18 +24,3 @@ renderer.use({
   }),
   remove: (node: Sprite) => node.destroy(),
 })
-
-export type SpriteProps = ExtractContainerProps<Sprite, { texture: Texture | string }>
-
-export interface SpriteEvents extends AllowedEvents {
-  render: [Sprite]
-}
-
-export type SpriteElement = DefineElement<SpriteProps, SpriteEvents>
-
-declare module '@vue/runtime-core' {
-  export interface GlobalComponents {
-    Sprite: SpriteElement
-    PixiSprite: SpriteElement
-  }
-}

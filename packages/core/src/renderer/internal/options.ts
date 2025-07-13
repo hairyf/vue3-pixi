@@ -5,7 +5,7 @@ export function insertFilter(child: Filter, parent: Container, _anchor: any) {
   parent.filters = Array.isArray(parent.filters) ? parent.filters : [parent.filters]
 
   function remove() {
-    const index = (parent.filters as Filter[]).indexOf(child);
+    const index = (parent.filters as Filter[]).indexOf(child)
     parent.filters = [...parent.filters]?.splice(index >>> 0, 1)
   }
 

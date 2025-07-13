@@ -1,7 +1,23 @@
-import type { AllowedEvents, DefineElement, ExtractContainerProps } from '../types'
-import { Texture, TilingSprite } from 'pixi.js'
+import type { Texture } from 'pixi.js'
+import type { DefineAttributes, ExtractContainerProps, ExtractContainerEvents } from '../types'
+import { TilingSprite } from 'pixi.js'
 import { normalizeTexture, renderer, setSkipFirstValue } from '../renderer'
 import { patchBooleanProp, patchProp } from '../renderer/patchProp'
+
+
+
+export type TilingSpriteProps = ExtractContainerProps<TilingSprite, { texture: Texture | string }>
+
+export type TilingSpriteEvents = ExtractContainerEvents<TilingSprite, { render: [TilingSprite] }>
+
+export type TilingSpriteAttributes = DefineAttributes<TilingSpriteProps, TilingSpriteEvents>
+
+declare module '@vue/runtime-core' {
+  export interface GlobalComponents {
+    TilingSprite: TilingSpriteAttributes
+    PixiTilingSprite: TilingSpriteAttributes
+  }
+}
 
 renderer.use({
   name: 'TilingSprite',
@@ -24,18 +40,3 @@ renderer.use({
     }
   },
 })
-
-export type TilingSpriteProps = ExtractContainerProps<TilingSprite, { texture: Texture | string }>
-
-export interface TilingSpriteEvents extends AllowedEvents {
-  render: [TilingSprite]
-}
-
-export type TilingSpriteElement = DefineElement<TilingSpriteProps, TilingSpriteEvents>
-
-declare module '@vue/runtime-core' {
-  export interface GlobalComponents {
-    TilingSprite: TilingSpriteElement
-    PixiTilingSprite: TilingSpriteElement
-  }
-}
