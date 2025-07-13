@@ -1,13 +1,9 @@
-import type { DefineAttributes, ExtractContainerProps, ExtractContainerEvents } from '../types'
+import type { DefineContainerAttributes } from '../types'
 import { AnimatedSprite, AnimatedSpriteOptions } from 'pixi.js'
 import { normalizeTexture, renderer, setPropertyValue, setSkipFirstValue } from '../renderer'
 import { patchBooleanProp, patchProp } from '../renderer/patchProp'
 
-export type AnimatedSpriteProps = ExtractContainerProps<AnimatedSprite, AnimatedSpriteOptions>
-
-export type AnimatedSpriteEvents = ExtractContainerEvents<AnimatedSprite>
-
-export type AnimatedSpriteAttributes = DefineAttributes<AnimatedSpriteProps, AnimatedSpriteEvents>
+export type AnimatedSpriteAttributes = DefineContainerAttributes<AnimatedSprite, AnimatedSpriteOptions>
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {

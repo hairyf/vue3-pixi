@@ -1,13 +1,9 @@
 import type { SpriteOptions } from 'pixi.js'
-import type { DefineAttributes, ExtractContainerProps, ExtractContainerEvents } from '../types'
+import type { DefineContainerAttributes } from '../types'
 import { Sprite } from 'pixi.js'
 import { normalizeTexture, renderer } from '../renderer'
 
-export type SpriteProps = ExtractContainerProps<Sprite, SpriteOptions>
-
-export type SpriteEvents = ExtractContainerEvents<Sprite>
-
-export type SpriteAttributes = DefineAttributes<SpriteProps, SpriteEvents>
+export type SpriteAttributes = DefineContainerAttributes<Sprite, SpriteOptions>
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {

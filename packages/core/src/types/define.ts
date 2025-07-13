@@ -6,15 +6,11 @@ import type {
 import { ExtractContainerProps, ExtractFilterProps } from './props'
 import { ExtractContainerEvents } from './events'
 
-export interface ContainerEvents {
-  render: []
-}
+export type DefineContainerAttributes<T, O = {}> = DefinePIXIAttributes<ExtractContainerProps<T, O>, ExtractContainerEvents<T, { render: [T] }>>
 
-export type DefineContainerAttributes<T> = DefineAttributes<ExtractContainerProps<T>, ExtractContainerEvents<T, { render: [T] }>>
+export type DefineFilterAttributes<T, O = {}> = DefinePIXIAttributes<ExtractFilterProps<T, O>, { render: [T] }>
 
-export type DefineFilterAttributes<T> = DefineAttributes<ExtractFilterProps<T>, { render: [T] }>
-
-export type DefineAttributes<
+export type DefinePIXIAttributes<
   InstanceProps = {},
   Events extends { [key: string]: any } = {},
 > = DefineComponent<

@@ -1,12 +1,8 @@
-import type { DefineAttributes, ExtractContainerProps, ExtractContainerEvents } from '../types'
+import type { DefineContainerAttributes } from '../types'
 import { ParticleContainer, ParticleContainerOptions } from 'pixi.js'
 import { patchProp, renderer } from '../renderer'
 
-export type ParticleContainerProps = ExtractContainerProps<ParticleContainer, ParticleContainerOptions>
-
-export type ParticleContainerEvents = ExtractContainerEvents<ParticleContainer>
-
-export type ParticleContainerAttributes = DefineAttributes<ParticleContainerProps, ParticleContainerEvents>
+export type ParticleContainerAttributes = DefineContainerAttributes<ParticleContainer, ParticleContainerOptions>
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {

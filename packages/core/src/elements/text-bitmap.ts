@@ -1,13 +1,9 @@
-import type { DefineAttributes, ExtractContainerProps, ExtractContainerEvents } from '../types'
+import type { DefineContainerAttributes } from '../types'
 import { BitmapText, SplitBitmapTextOptions } from 'pixi.js'
 import { patchProp, renderer, setSkipFirstValue } from '../renderer'
 import { patchBooleanProp } from '../renderer/patchProp'
 
-export type BitmapTextProps = ExtractContainerProps<BitmapText, SplitBitmapTextOptions>
-
-export type BitmapTextEvents = ExtractContainerEvents<BitmapText>
-
-export type BitmapTextAttributes = DefineAttributes<BitmapTextProps, BitmapTextEvents>
+export type BitmapTextAttributes = DefineContainerAttributes<BitmapText, SplitBitmapTextOptions>
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {

@@ -1,18 +1,14 @@
 import type { MeshRopeOptions } from 'pixi.js'
-import type { DefineAttributes, ExtractContainerProps, ExtractContainerEvents } from '../types'
+import type { DefineContainerAttributes } from '../types'
 import { MeshRope } from 'pixi.js'
 import { normalizeTexture, patchProp, renderer } from '../renderer'
 
-export type MeshRopeProps = ExtractContainerProps<MeshRope, MeshRopeOptions>
-
-export type MeshRopeEvents = ExtractContainerEvents<MeshRope>
-
-export type MeshRopeElement = DefineAttributes<MeshRopeProps, MeshRopeEvents>
+export type MeshRopeAttributes = DefineContainerAttributes<MeshRope, MeshRopeOptions>
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    MeshRope: MeshRopeElement
-    PixiMeshRope: MeshRopeElement
+    MeshRope: MeshRopeAttributes
+    PixiMeshRope: MeshRopeAttributes
   }
 }
 

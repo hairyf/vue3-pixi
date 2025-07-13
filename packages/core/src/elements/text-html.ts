@@ -1,12 +1,8 @@
-import type { DefineAttributes, ExtractContainerProps, ExtractContainerEvents } from '../types'
+import type { DefineContainerAttributes } from '../types'
 import { HTMLText, HTMLTextOptions } from 'pixi.js'
 import { patchProp, renderer, setObjectProperty, setSkipFirstValue } from '../renderer'
 
-export type HTMLTextProps = ExtractContainerProps<HTMLText, HTMLTextOptions>
-
-export type HTMLTextEvents = ExtractContainerEvents<HTMLText>
-
-export type HTMLTextAttributes = DefineAttributes<HTMLTextProps, HTMLTextEvents>
+export type HTMLTextAttributes = DefineContainerAttributes<HTMLText, HTMLTextOptions>
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {

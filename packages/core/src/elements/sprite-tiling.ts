@@ -1,16 +1,10 @@
 import type { TilingSpriteOptions } from 'pixi.js'
-import type { DefineAttributes, ExtractContainerProps, ExtractContainerEvents } from '../types'
+import type { DefineContainerAttributes } from '../types'
 import { TilingSprite } from 'pixi.js'
 import { normalizeTexture, renderer, setSkipFirstValue } from '../renderer'
 import { patchBooleanProp, patchProp } from '../renderer/patchProp'
 
-
-
-export type TilingSpriteProps = ExtractContainerProps<TilingSprite, TilingSpriteOptions>
-
-export type TilingSpriteEvents = ExtractContainerEvents<TilingSprite>
-
-export type TilingSpriteAttributes = DefineAttributes<TilingSpriteProps, TilingSpriteEvents>
+export type TilingSpriteAttributes = DefineContainerAttributes<TilingSprite, TilingSpriteOptions>
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
