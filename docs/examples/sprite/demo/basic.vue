@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
-import { onTick, useScreen } from 'vue3-pixi'
 import type { Texture } from 'pixi.js'
 import { Assets } from 'pixi.js'
+import { ref } from 'vue'
+import { onTick, useScreen } from 'vue3-pixi'
 
 const screen = useScreen()
 const texture = ref<Texture>()
@@ -24,4 +24,3 @@ onTick(() => rotation.value += 0.01)
     :anchor="0.5"
   />
 </template>
-

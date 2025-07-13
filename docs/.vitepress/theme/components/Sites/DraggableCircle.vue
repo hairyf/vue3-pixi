@@ -61,4 +61,3 @@ function handleDragMove({ global }: FederatedPointerEvent) {
     }"
   />
 </template>
-

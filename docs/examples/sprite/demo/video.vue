@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { Graphics } from 'pixi.js'
-import { useScreen } from 'vue3-pixi'
 import { ref } from 'vue'
+import { useScreen } from 'vue3-pixi'
 
 const screen = useScreen()
 
@@ -41,4 +41,3 @@ function onPlay() {
     @click="onPlay"
   />
 </template>
-

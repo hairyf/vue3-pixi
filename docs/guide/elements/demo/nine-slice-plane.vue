@@ -14,7 +14,7 @@ onTick((delta) => {
 </script>
 
 <template>
-  <assets alias="nine-slice-blue" entry="/assets/nine-slice-blue.png">
+  <Assets alias="nine-slice-blue" entry="/assets/nine-slice-blue.png">
     <nine-slice-plane
       :position="120"
       texture="x"
@@ -26,5 +26,5 @@ onTick((delta) => {
       :right-width="12"
       :bottom-height="12"
     />
-  </assets>
+  </Assets>
 </template>

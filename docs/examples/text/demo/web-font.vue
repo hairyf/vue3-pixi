@@ -32,4 +32,3 @@ useScriptTag(leapis).load()
     PixiJS text using the\ncustom "Snippet" Webfont
   </pixi-text>
 </template>
-

@@ -33,4 +33,3 @@ Assets.load('https://pixijs.com/assets/spritesheet/mc.json')
     />
   </template>
 </template>
-

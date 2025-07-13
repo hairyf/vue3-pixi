@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { computed, reactive, ref } from 'vue'
 import type { Sprite } from 'pixi.js'
+import { computed, reactive, ref } from 'vue'
 import { onTick, useScreen } from 'vue3-pixi'
 
 const screen = useScreen()

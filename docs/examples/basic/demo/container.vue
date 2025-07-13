@@ -3,6 +3,7 @@ import type { Container } from 'pixi.js'
 import { computed, ref } from 'vue'
 
 import { onTick, useScreen } from 'vue3-pixi'
+
 const screen = useScreen()
 const containerRef = ref<Container>()
 
@@ -36,4 +37,3 @@ onTick(({ deltaTime }) => {
     </assets>
   </container>
 </template>
-

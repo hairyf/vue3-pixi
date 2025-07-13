@@ -104,4 +104,3 @@ function onRender(el: ParticleContainer) {
     @render="onRender"
   />
 </template>
-

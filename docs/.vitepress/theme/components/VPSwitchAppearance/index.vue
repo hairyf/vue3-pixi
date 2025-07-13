@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import { onMounted, ref, watch } from 'vue'
-import { useData } from 'vitepress/dist/client/theme-default/composables/data'
 import { APPEARANCE_KEY } from 'vitepress/dist/client/shared'
-import VPSwitch from 'vitepress/dist/client/theme-default/components/VPSwitch.vue'
-import VPIconSun from 'vitepress/dist/client/theme-default/components/icons/VPIconSun.vue'
 import VPIconMoon from 'vitepress/dist/client/theme-default/components/icons/VPIconMoon.vue'
+import VPIconSun from 'vitepress/dist/client/theme-default/components/icons/VPIconSun.vue'
+import VPSwitch from 'vitepress/dist/client/theme-default/components/VPSwitch.vue'
+import { useData } from 'vitepress/dist/client/theme-default/composables/data'
+import { onMounted, ref, watch } from 'vue'
 
 const { site, isDark } = useData()
 const checked = ref(false)
@@ -29,9 +29,9 @@ function useAppearance() {
 
   let isDark
     = (site.value.appearance === 'dark' && userPreference == null)
-    || (userPreference === 'auto' || userPreference == null
-      ? query.matches
-      : userPreference === 'dark')
+      || (userPreference === 'auto' || userPreference == null
+        ? query.matches
+        : userPreference === 'dark')
 
   query.onchange = (e) => {
     if (userPreference === 'auto')

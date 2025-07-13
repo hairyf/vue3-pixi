@@ -2,6 +2,7 @@
 import { useElementSize } from '@vueuse/core'
 import { computed, ref } from 'vue'
 import { Application } from 'vue3-pixi'
+
 const props = defineProps<{
   width?: number
   height?: number

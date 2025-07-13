@@ -10,4 +10,3 @@ function drawArc(graphics: Graphics) {
 <template>
   <graphics :x="120" :y="120" @render="drawArc" />
 </template>
-

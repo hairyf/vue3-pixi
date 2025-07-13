@@ -33,4 +33,3 @@ onTick(() => rotation.value += 0.01)
     playing
   />
 </template>
-

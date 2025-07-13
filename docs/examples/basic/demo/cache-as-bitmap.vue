@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { useEventListener } from '@vueuse/core'
 import type { ColorSource } from 'pixi.js'
+import { useEventListener } from '@vueuse/core'
 import { Assets, Texture, Ticker } from 'pixi.js'
 
 import { reactive, ref } from 'vue'
@@ -93,4 +93,3 @@ useEventListener('pointerdown', () => {
     />
   </container>
 </template>
-

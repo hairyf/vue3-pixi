@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { Sprite, Texture } from 'pixi.js'
 import type { SpriteProps } from 'vue3-pixi'
+import { Sprite, Texture } from 'pixi.js'
 import { useApplication, useScreen } from 'vue3-pixi'
 
 type RecordSprite = Sprite & Record<string, any>

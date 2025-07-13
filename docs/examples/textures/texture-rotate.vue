@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { Assets, Rectangle, Texture, groupD8 } from 'pixi.js'
+import { Assets, groupD8, Rectangle, Texture } from 'pixi.js'
 import { computed, reactive } from 'vue'
-import { useScreen } from 'vue3-pixi'
 import { LocalScope } from 'vue3-local-scope'
+import { useScreen } from 'vue3-pixi'
 
 const screen = useScreen()
 const textures = reactive<Texture[]>([])
@@ -42,7 +42,7 @@ Assets.load('https://pixijs.com/assets/flowerTop.png').then(onAssetsLoaded)
 
 <template>
   <container>
-    <local-scope
+    <LocalScope
       v-for="(it, i) in textures"
       :key="i"
       v-slot="{ x, y }"
@@ -58,6 +58,6 @@ Assets.load('https://pixijs.com/assets/flowerTop.png').then(onAssetsLoaded)
       <text :x="x" :y="y - 40" :style="{ fontFamily: 'Courier New', fontSize: '12px', fill: 'white' }">
         {{ `rotate = ${it.rotate}` }}
       </text>
-    </local-scope>
+    </LocalScope>
   </container>
 </template>

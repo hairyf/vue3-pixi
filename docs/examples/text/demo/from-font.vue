@@ -25,4 +25,3 @@ const fonts = {
     </text>
   </Loader>
 </template>
-

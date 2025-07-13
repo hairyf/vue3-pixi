@@ -5,6 +5,7 @@ Return a responsive writable store updated during low-priority, which is useful 
 ```vue
 <script lang="ts" setup>
 import { useTrack } from 'vue3-pixi'
+
 const containerRef = ref()
 
 const x = useTrack(containerRef, 'x', 0)
@@ -19,5 +20,4 @@ const scaleY = useTrack(() => containerRef.value?.scale, 'y', 0)
     <!-- ... -->
   </container>
 </template>
-
 ```

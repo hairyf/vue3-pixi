@@ -84,4 +84,3 @@ function onDragEnd() {
     anchor="0.5"
   />
 </template>
-

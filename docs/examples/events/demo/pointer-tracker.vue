@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { useEventListener } from '@vueuse/core'
 import type { FederatedPointerEvent } from 'pixi.js'
+import { useEventListener } from '@vueuse/core'
 import { reactive } from 'vue'
 import { onReady, useStage } from 'vue3-pixi'
 

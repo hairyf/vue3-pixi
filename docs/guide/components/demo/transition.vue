@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import type { Graphics as GraphicsIns } from 'pixi.js'
 
-import { External, PTransition } from 'vue3-pixi'
 import gsap from 'gsap'
 import PixiPlugin from 'gsap/PixiPlugin'
-import { nextTick, ref } from 'vue'
 import * as PIXI from 'pixi.js'
+import { nextTick, ref } from 'vue'
+import { External, PTransition } from 'vue3-pixi'
 
 gsap.registerPlugin(PixiPlugin)
 PixiPlugin.registerPIXI(PIXI)
@@ -47,10 +47,10 @@ const show = ref(true)
 </script>
 
 <template>
-  <p-transition @before-enter="onBeforeEnter" @enter="onEnter" @leave="onLeave">
+  <PTransition @before-enter="onBeforeEnter" @enter="onEnter" @leave="onLeave">
     <graphics v-if="show" :scale="1" :pivot="30" :x="120" :y="120" @render="onDrawRounded" />
-  </p-transition>
-  <external class="btn" tag="button" @click="show = !show">
+  </PTransition>
+  <External class="btn" tag="button" @click="show = !show">
     {{ show ? 'Hide' : 'Show' }}
-  </external>
+  </External>
 </template>

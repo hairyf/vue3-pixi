@@ -18,7 +18,7 @@ onTick(() => {
 </script>
 
 <template>
-  <assets entry="/assets/tiling-sprite.jpeg" #="{data}">
+  <Assets entry="/assets/tiling-sprite.jpeg" #="{data}">
     <tiling-sprite
       :texture="data"
       :width="screen.width"
@@ -26,6 +26,5 @@ onTick(() => {
       :tile-scale="tileScale"
       :tile-position="tilePosition"
     />
-  </assets>
+  </Assets>
 </template>
-

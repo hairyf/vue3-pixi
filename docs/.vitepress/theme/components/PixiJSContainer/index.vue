@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
 
+import Editor from './components/Editor.vue'
 import Header from './components/Header.vue'
 import Review from './components/Review.vue'
-import Editor from './components/Editor.vue'
 
 const props = withDefaults(
   defineProps<{

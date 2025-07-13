@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { useEventListener } from '@vueuse/core'
 import type { FederatedPointerEvent } from 'pixi.js'
+import type { SpriteInst, SpriteProps } from 'vue3-pixi'
+import { useEventListener } from '@vueuse/core'
 import { Container, SCALE_MODES, Sprite, Texture } from 'pixi.js'
 import { ref } from 'vue'
-import type { SpriteInst, SpriteProps } from 'vue3-pixi'
 import { onReady, useStage } from 'vue3-pixi'
 
 const stage = useStage()
@@ -40,7 +40,7 @@ function onDragEnd() {
 }
 
 onReady((app) => {
-  sprites.value = Array(10).fill(undefined).map(() => ({
+  sprites.value = Array.from({ length: 10 }).fill(undefined).map(() => ({
     x: Math.floor(Math.random() * app.screen.width),
     y: Math.floor(Math.random() * app.screen.height),
     onPointerdown: onDragStart,
@@ -58,8 +58,7 @@ useEventListener(stage, 'pointerupoutside', onDragEnd)
 </script>
 
 <template>
-  <container>
-    <sprite v-for="(p, i) in sprites" :key="i" :index="i" v-bind="p" />
-  </container>
+  <Container>
+    <Sprite v-for="(p, i) in sprites" :key="i" :index="i" v-bind="p" />
+  </Container>
 </template>
-

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { EasePresets, External, PTransition } from 'vue3-pixi'
 import type { Graphics as GraphicsIns } from 'pixi.js'
 import { ref } from 'vue'
+import { EasePresets, External, PTransition } from 'vue3-pixi'
 
 function onDrawRounded(e: GraphicsIns) {
   e.beginFill('#00a3af')
@@ -12,7 +12,7 @@ const show = ref(true)
 </script>
 
 <template>
-  <p-transition
+  <PTransition
     :before-enter="{ x: 20 }"
     :enter="{ ease: [0, 1.89, .02, 2.01], x: 120 }"
     :leave="[
@@ -21,8 +21,8 @@ const show = ref(true)
     ]"
   >
     <graphics v-if="show" :scale="1" :pivot="30" :x="120" :y="120" @render="onDrawRounded" />
-  </p-transition>
-  <external class="btn" tag="button" @click="show = !show">
+  </PTransition>
+  <External class="btn" tag="button" @click="show = !show">
     {{ show ? 'Hide' : 'Show' }}
-  </external>
+  </External>
 </template>

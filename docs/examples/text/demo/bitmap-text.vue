@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { Loader, useScreen } from 'vue3-pixi'
+
 const screen = useScreen()
 </script>
 
@@ -15,4 +16,3 @@ const screen = useScreen()
     </bitmap-text>
   </Loader>
 </template>
-

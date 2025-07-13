@@ -4,16 +4,26 @@ import { Graphics, Polygon, Sprite, Texture } from 'pixi.js'
 const star = Texture.from('https://pixijs.com/assets/yellowstar.png')
 
 const hitArea = new Polygon([
-  80, 0,
-  100, 50,
-  160, 55,
-  115, 95,
-  130, 150,
-  80, 120,
-  30, 150,
-  45, 95,
-  0, 55,
-  60, 50,
+  80,
+  0,
+  100,
+  50,
+  160,
+  55,
+  115,
+  95,
+  130,
+  150,
+  80,
+  120,
+  30,
+  150,
+  45,
+  95,
+  0,
+  55,
+  60,
+  50,
 ])
 
 const square = new Graphics()
@@ -68,4 +78,3 @@ const tBind = {
     Mask + Hit Area
   </Text>
 </template>
-

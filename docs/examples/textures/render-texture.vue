@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { BaseRenderTexture, RenderTexture, SCALE_MODES, Sprite } from 'pixi.js'
 import type { SpriteProps } from 'vue3-pixi'
-import { onReady } from 'vue3-pixi'
+import { BaseRenderTexture, RenderTexture, SCALE_MODES, Sprite } from 'pixi.js'
 import { ref } from 'vue'
+import { onReady } from 'vue3-pixi'
 
 const brt = new BaseRenderTexture({
   width: 300,
@@ -39,4 +39,3 @@ onReady((app) => {
     />
   </container>
 </template>
-

@@ -55,4 +55,3 @@ useEventListener(stage, 'pointermove', (e: any) => Object.assign(position, e.glo
     :anchor="0.5"
   />
 </template>
-

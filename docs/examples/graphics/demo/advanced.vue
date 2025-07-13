@@ -67,4 +67,3 @@ function onDrawBeatifulRect(beatifulRect: Graphics) {
   <graphics @render="onDrawHole" />
   <graphics @render="onDrawBeatifulRect" />
 </template>
-

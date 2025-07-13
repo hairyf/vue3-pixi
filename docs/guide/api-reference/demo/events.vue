@@ -12,7 +12,7 @@ function eventHandler(name: string, evt: any) {
 </script>
 
 <template>
-  <assets entry="/assets/mushroom.png" #="{data}">
+  <Assets entry="/assets/mushroom.png" #="{data}">
     <sprite
       :x="120"
       :y="120"
@@ -23,7 +23,7 @@ function eventHandler(name: string, evt: any) {
       @pointermove="evt => eventHandler('pointermove', evt)"
       @pointerleave="evt => eventHandler('pointerleave', evt)"
     />
-  </assets>
+  </Assets>
 
   <text :x="120" :y="180" :style="{ fill: 'white' }" :anchor="0.5">
     {{ eventName }}

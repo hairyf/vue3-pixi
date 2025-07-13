@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { NButton, NPopover } from 'naive-ui'
-import { BLEND_MODES } from 'pixi.js'
+
 defineProps<{
   type: string
   details: string
@@ -16,7 +16,7 @@ defineProps<{
       {{ type }}
     </code>
     <ClientOnly>
-      <n-popover v-if="details" trigger="hover">
+      <NPopover v-if="details" trigger="hover">
         <template #trigger>
           <NButton
             class="dark:text-gray"
@@ -34,7 +34,7 @@ defineProps<{
             {{ details }}
           </code>
         </slot>
-      </n-popover>
+      </NPopover>
     </ClientOnly>
   </span>
 </template>

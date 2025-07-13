@@ -29,4 +29,3 @@ onTick(() => {
     <blur-filter :blur="mobyBlur" />
   </sprite>
 </template>
-

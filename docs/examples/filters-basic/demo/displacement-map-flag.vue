@@ -21,7 +21,7 @@ onTick(() => {
 <template>
   <sprite ref="spriteRef" :texture="texture" :position="position" :anchor="0.5" />
   <sprite :x="100" :y="100" texture="https://pixijs.com/assets/pixi-filters/flag.png">
-    <displacement-filter v-if="spriteRef" :sprite="spriteRef" :padding="10" />
+    <DisplacementFilter v-if="spriteRef" :sprite="spriteRef" :padding="10" />
   </sprite>
 </template>
 

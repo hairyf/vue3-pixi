@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import type { Texture } from 'pixi.js'
+import type { SpriteProps } from 'vue3-pixi'
 import { RenderTexture } from 'pixi.js'
 import { computed, markRaw, ref } from 'vue'
-import type { SpriteProps } from 'vue3-pixi'
 import { onTick, useApplication, useScreen } from 'vue3-pixi'
 
 const screen = useScreen()
@@ -80,4 +80,3 @@ onTick(() => {
     <sprite v-for="(it, i) in items" v-bind="it" :key="i" :anchor="0.5" />
   </container>
 </template>
-

@@ -21,7 +21,7 @@ function onChangeAnimation() {
 </script>
 
 <template>
-  <assets entry="/assets/adventurer-spritesheet.json" @loaded="onLoaded">
+  <Assets entry="/assets/adventurer-spritesheet.json" @loaded="onLoaded">
     <animated-sprite
       :textures="resource.animation"
       playing
@@ -32,6 +32,5 @@ function onChangeAnimation() {
       :scale="1.4"
       @loop="onChangeAnimation"
     />
-  </assets>
+  </Assets>
 </template>
-

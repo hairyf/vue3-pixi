@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { reactive } from 'vue'
 import { onTick, useScreen } from 'vue3-pixi'
+
 const screen = useScreen()
 
 const tileScale = reactive({ x: 1, y: 1 })
@@ -28,4 +29,3 @@ onTick(() => {
     />
   </assets>
 </template>
-

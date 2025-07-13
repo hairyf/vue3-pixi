@@ -1,7 +1,7 @@
 <script lang="ts" setup>
+import type { Graphics } from 'pixi.js'
 import { useEventListener } from '@vueuse/core'
 import { ref } from 'vue'
-import type { Graphics } from 'pixi.js'
 import { onTick } from 'vue3-pixi'
 
 const graphicsRef = ref<Graphics>()
@@ -78,9 +78,12 @@ function onClick() {
   graphics.lineStyle(Math.random() * 30, Math.random() * 0xFFFFFF, 1)
   graphics.moveTo(Math.random() * 800, Math.random() * 600)
   graphics.bezierCurveTo(
-    Math.random() * 800, Math.random() * 600,
-    Math.random() * 800, Math.random() * 600,
-    Math.random() * 800, Math.random() * 600,
+    Math.random() * 800,
+    Math.random() * 600,
+    Math.random() * 800,
+    Math.random() * 600,
+    Math.random() * 800,
+    Math.random() * 600,
   )
 }
 
@@ -93,4 +96,3 @@ onTick(() => thingRef.value && onDrawThing(thingRef.value))
   <Graphics ref="graphicsRef" @render="onDraw" />
   <Graphics ref="thingRef" :x="400" :y="300" @render="onDrawThing" />
 </template>
-

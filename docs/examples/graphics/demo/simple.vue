@@ -78,4 +78,3 @@ function onDraw(graphics: Graphics) {
 <template>
   <Graphics @render="onDraw" />
 </template>
-

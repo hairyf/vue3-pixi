@@ -3,11 +3,11 @@ import { Assets } from 'vue3-pixi'
 </script>
 
 <template>
-  <assets entry="/assets/adventurer.png" #="{data}">
+  <Assets entry="/assets/adventurer.png" #="{data}">
     <sprite
       :texture="data"
       :anchor="0.5" :scale="1.2"
       :x="120" :y="120"
     />
-  </assets>
+  </Assets>
 </template>

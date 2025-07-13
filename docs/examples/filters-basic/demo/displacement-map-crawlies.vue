@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { useEventListener } from '@vueuse/core'
 import type { FederatedPointerEvent } from 'pixi.js'
+import { useEventListener } from '@vueuse/core'
 import { Point, Rectangle, Sprite } from 'pixi.js'
 
 import { computed, reactive, ref } from 'vue'
@@ -9,7 +9,7 @@ import { onReady, onTick, useScreen, useStage } from 'vue3-pixi'
 interface DudeIte {
   x: number
   y: number
-  scale: { x: number; y: number }
+  scale: { x: number, y: number }
   direction: number
   turningSpeed: number
   speed: number
@@ -30,7 +30,8 @@ const maggots = reactive<DudeIte[]>([])
 const position = reactive({ x: 0, y: 0 })
 
 const bounds = computed(() => new Rectangle(
-  -padding, -padding,
+  -padding,
+  -padding,
   screen.value.width + padding * 2,
   screen.value.height + padding * 2,
 ))
@@ -92,25 +93,25 @@ onTick(creep)
 </script>
 
 <template>
-  <sprite
+  <Sprite
     texture="https://pixijs.com/assets/bg_grass.jpg"
     :width="screen.width"
     :height="screen.height"
     :alpha="0.4"
   />
-  <sprite
+  <Sprite
     ref="spriteRef"
     texture="https://pixijs.com/assets/pixi-filters/displace.png"
     :position="position"
     :anchor="0.5"
   />
-  <sprite
+  <Sprite
     texture="https://pixijs.com/assets/pixi-filters/ring.png"
     :visible="visible"
     :position="position"
     :anchor="0.5"
   />
-  <sprite
+  <Sprite
     v-for="(dude, index) in maggots" :key="index"
     texture="https://pixijs.com/assets/maggot_tiny.png"
     :scale="dude.scale"

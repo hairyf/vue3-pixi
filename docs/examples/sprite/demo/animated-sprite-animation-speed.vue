@@ -44,4 +44,3 @@ Assets.load('https://pixijs.com/assets/spritesheet/0123456789.json')
     playing
   />
 </template>
-

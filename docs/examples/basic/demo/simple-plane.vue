@@ -37,4 +37,3 @@ onBeforeUnmount(() => ticker.destroy())
     :y="50"
   />
 </template>
-
