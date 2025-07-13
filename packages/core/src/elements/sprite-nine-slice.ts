@@ -1,11 +1,11 @@
-import type { Texture } from 'pixi.js'
+import type { NineSliceSpriteOptions } from 'pixi.js'
 import type { DefineAttributes, ExtractContainerProps, ExtractContainerEvents } from '../types'
 import { NineSliceSprite } from 'pixi.js'
 import { normalizeTexture, renderer } from '../renderer'
 
-export type NineSliceSpriteProps = ExtractContainerProps<NineSliceSprite, { texture: Texture | string }>
+export type NineSliceSpriteProps = ExtractContainerProps<NineSliceSprite, NineSliceSpriteOptions>
 
-export type NineSliceSpriteEvents = ExtractContainerEvents<NineSliceSprite, { render: [NineSliceSprite] }>
+export type NineSliceSpriteEvents = ExtractContainerEvents<NineSliceSprite>
 
 export type NineSliceSpriteAttributes = DefineAttributes<NineSliceSpriteProps, NineSliceSpriteEvents>
 

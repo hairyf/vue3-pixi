@@ -1,11 +1,11 @@
-import type { Point, Texture } from 'pixi.js'
+import type { MeshRopeOptions } from 'pixi.js'
 import type { DefineAttributes, ExtractContainerProps, ExtractContainerEvents } from '../types'
 import { MeshRope } from 'pixi.js'
 import { normalizeTexture, patchProp, renderer } from '../renderer'
 
-export type MeshRopeProps = ExtractContainerProps<MeshRope, { texture: string | Texture, points: Point[] }>
+export type MeshRopeProps = ExtractContainerProps<MeshRope, MeshRopeOptions>
 
-export type MeshRopeEvents = ExtractContainerEvents<MeshRope, { render: [MeshRope] }>
+export type MeshRopeEvents = ExtractContainerEvents<MeshRope>
 
 export type MeshRopeElement = DefineAttributes<MeshRopeProps, MeshRopeEvents>
 

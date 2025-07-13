@@ -1,10 +1,10 @@
-import type { DefineAttributes, ExtractFilterProps } from '../types'
-import { DisplacementFilter } from 'pixi.js'
+import type { DefineAttributes, ExtractFilterEvents, ExtractFilterProps } from '../types'
+import { DisplacementFilter, DisplacementFilterOptions } from 'pixi.js'
 import { renderer } from '../renderer'
 
-export type DisplacementFilterProps = ExtractFilterProps<DisplacementFilter>
+export type DisplacementFilterProps = ExtractFilterProps<DisplacementFilter, DisplacementFilterOptions>
 
-export interface DisplacementFilterEvents { render: [DisplacementFilter] }
+export type DisplacementFilterEvents = ExtractFilterEvents<DisplacementFilter>
 
 export type DisplacementFilterAttributes = DefineAttributes<DisplacementFilterProps, DisplacementFilterEvents>
 

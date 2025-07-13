@@ -1,10 +1,10 @@
-import type { DefineAttributes, ExtractFilterProps } from '../types'
-import { BlurFilter } from 'pixi.js'
+import type { DefineAttributes, ExtractFilterEvents, ExtractFilterProps } from '../types'
+import { BlurFilter, BlurFilterOptions } from 'pixi.js'
 import { renderer } from '../renderer'
 
-export type BlurFilterProps = ExtractFilterProps<BlurFilter>
+export type BlurFilterProps = ExtractFilterProps<BlurFilter, BlurFilterOptions>
 
-export interface BlurFilterEvents { render: [BlurFilter] }
+export type BlurFilterEvents = ExtractFilterEvents<BlurFilter>
 
 export type BlurFilterAttributes = DefineAttributes<BlurFilterProps, BlurFilterEvents>
 

@@ -1,11 +1,11 @@
 import type { DefineAttributes, ExtractContainerProps, ExtractContainerEvents } from '../types'
-import { BitmapText } from 'pixi.js'
+import { BitmapText, SplitBitmapTextOptions } from 'pixi.js'
 import { patchProp, renderer, setSkipFirstValue } from '../renderer'
 import { patchBooleanProp } from '../renderer/patchProp'
 
-export type BitmapTextProps = ExtractContainerProps<BitmapText>
+export type BitmapTextProps = ExtractContainerProps<BitmapText, SplitBitmapTextOptions>
 
-export type BitmapTextEvents = ExtractContainerEvents<BitmapText, { render: [BitmapText] }>
+export type BitmapTextEvents = ExtractContainerEvents<BitmapText>
 
 export type BitmapTextAttributes = DefineAttributes<BitmapTextProps, BitmapTextEvents>
 

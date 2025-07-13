@@ -1,11 +1,11 @@
 import type { DefineAttributes, ExtractContainerProps, ExtractContainerEvents } from '../types'
-import { AnimatedSprite } from 'pixi.js'
+import { AnimatedSprite, AnimatedSpriteOptions } from 'pixi.js'
 import { normalizeTexture, renderer, setPropertyValue, setSkipFirstValue } from '../renderer'
 import { patchBooleanProp, patchProp } from '../renderer/patchProp'
 
-export type AnimatedSpriteProps = ExtractContainerProps<AnimatedSprite, { textures?: any }>
+export type AnimatedSpriteProps = ExtractContainerProps<AnimatedSprite, AnimatedSpriteOptions>
 
-export type AnimatedSpriteEvents = ExtractContainerEvents<AnimatedSprite, { render: [AnimatedSprite] }>
+export type AnimatedSpriteEvents = ExtractContainerEvents<AnimatedSprite>
 
 export type AnimatedSpriteAttributes = DefineAttributes<AnimatedSpriteProps, AnimatedSpriteEvents>
 

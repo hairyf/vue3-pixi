@@ -1,10 +1,10 @@
 import type { DefineAttributes, ExtractContainerProps, ExtractContainerEvents } from '../types'
-import { HTMLText } from 'pixi.js'
+import { HTMLText, HTMLTextOptions } from 'pixi.js'
 import { patchProp, renderer, setObjectProperty, setSkipFirstValue } from '../renderer'
 
-export type HTMLTextProps = ExtractContainerProps<HTMLText>
+export type HTMLTextProps = ExtractContainerProps<HTMLText, HTMLTextOptions>
 
-export type HTMLTextEvents = ExtractContainerEvents<HTMLText, { render: [HTMLText] }>
+export type HTMLTextEvents = ExtractContainerEvents<HTMLText>
 
 export type HTMLTextAttributes = DefineAttributes<HTMLTextProps, HTMLTextEvents>
 

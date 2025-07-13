@@ -1,10 +1,10 @@
-import type { DefineAttributes, ExtractFilterProps } from '../types'
-import { ColorMatrixFilter } from 'pixi.js'
+import type { DefineAttributes, ExtractFilterEvents, ExtractFilterProps } from '../types'
+import { ColorMatrixFilter, FilterOptions } from 'pixi.js'
 import { renderer } from '../renderer'
 
-export type ColorMatrixFilterProps = ExtractFilterProps<ColorMatrixFilter>
+export type ColorMatrixFilterProps = ExtractFilterProps<ColorMatrixFilter, FilterOptions>
 
-export interface ColorMatrixFilterEvents { render: [ColorMatrixFilter] }
+export type ColorMatrixFilterEvents = ExtractFilterEvents<ColorMatrixFilter>
 
 export type ColorMatrixFilterAttributes = DefineAttributes<ColorMatrixFilterProps, ColorMatrixFilterEvents>
 

@@ -1,10 +1,10 @@
-import type { DefineAttributes, ExtractFilterProps } from '../types'
-import { NoiseFilter } from 'pixi.js'
+import type { DefineAttributes, ExtractFilterEvents, ExtractFilterProps } from '../types'
+import { NoiseFilter, NoiseFilterOptions } from 'pixi.js'
 import { renderer } from '../renderer'
 
-export type NoiseFilterProps = ExtractFilterProps<NoiseFilter>
+export type NoiseFilterProps = ExtractFilterProps<NoiseFilter, NoiseFilterOptions>
 
-export interface NoiseFilterEvents { render: [NoiseFilter] }
+export type NoiseFilterEvents = ExtractFilterEvents<NoiseFilter>
 
 export type NoiseFilterAttributes = DefineAttributes<NoiseFilterProps, NoiseFilterEvents>
 

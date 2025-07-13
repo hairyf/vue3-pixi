@@ -36,4 +36,4 @@ export interface AllowedFilterProps extends Partial<Omit<Filter, 'destroy'>> {
   is?: (props: any) => Filter
 }
 
-export type ExtractFilterProps<T> = Partial<Omit<T, keyof AllowedFilterProps | 'destroy'>>
+export type ExtractFilterProps<T, U = {}> = Partial<Omit<T, keyof AllowedFilterProps | 'destroy'>> & U

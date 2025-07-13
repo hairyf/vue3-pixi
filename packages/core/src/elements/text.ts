@@ -1,10 +1,10 @@
 import type { DefineAttributes, ExtractContainerProps, ExtractContainerEvents } from '../types'
-import { Text } from 'pixi.js'
+import { Text, TextOptions } from 'pixi.js'
 import { patchProp, renderer, setObjectProperty, setSkipFirstValue } from '../renderer'
 
-export type TextProps = ExtractContainerProps<Text>
+export type TextProps = ExtractContainerProps<Text, TextOptions>
 
-export type TextEvents = ExtractContainerEvents<Text, { render: [Text] }>
+export type TextEvents = ExtractContainerEvents<Text>
 
 export type TextElement = DefineAttributes<TextProps, TextEvents>
 

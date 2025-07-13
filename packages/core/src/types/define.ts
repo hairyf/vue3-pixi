@@ -3,7 +3,7 @@ import type {
   DefineComponent,
   VNodeProps,
 } from 'vue-demi'
-import { ExtractContainerProps } from './props'
+import { ExtractContainerProps, ExtractFilterProps } from './props'
 import { ExtractContainerEvents } from './events'
 
 export interface ContainerEvents {
@@ -11,6 +11,8 @@ export interface ContainerEvents {
 }
 
 export type DefineContainerAttributes<T> = DefineAttributes<ExtractContainerProps<T>, ExtractContainerEvents<T, { render: [T] }>>
+
+export type DefineFilterAttributes<T> = DefineAttributes<ExtractFilterProps<T>, { render: [T] }>
 
 export type DefineAttributes<
   InstanceProps = {},

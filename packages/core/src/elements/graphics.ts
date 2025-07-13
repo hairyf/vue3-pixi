@@ -4,7 +4,7 @@ import { renderer } from '../renderer'
 
 export type GraphicsProps = ExtractContainerProps<Graphics>
 
-export type GraphicsEvents = ExtractContainerEvents<Graphics, { render: [Graphics] }>
+export type GraphicsEvents = ExtractContainerEvents<Graphics>
 
 export type GraphicsAttributes = DefineAttributes<GraphicsProps, { render: [Graphics] }>
 

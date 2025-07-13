@@ -1,10 +1,10 @@
 import type { DefineAttributes, ExtractContainerProps, ExtractContainerEvents } from '../types'
-import { Particle } from 'pixi.js'
+import { Particle, ParticleOptions } from 'pixi.js'
 import { renderer } from '../renderer'
 
-export type ParticleProps = ExtractContainerProps<Particle>
+export type ParticleProps = ExtractContainerProps<Particle, ParticleOptions>
 
-export type ParticleEvents = ExtractContainerEvents<Particle, { render: [Particle] }>
+export type ParticleEvents = ExtractContainerEvents<Particle>
 
 export type ParticleAttributes = DefineAttributes<ParticleProps, ParticleEvents>
 

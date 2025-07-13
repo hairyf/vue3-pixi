@@ -1,12 +1,13 @@
-import type { Geometry, MeshRope } from 'pixi.js'
+import type { MeshRope } from 'pixi.js'
 import type { DefineAttributes, ExtractContainerProps, ExtractContainerEvents } from '../types'
 import { Mesh } from 'pixi.js'
 import { patchProp, renderer, setSkipFirstValue } from '../renderer'
 import { patchBooleanProp } from '../renderer/patchProp'
+import { MeshRopeOptions } from 'pixi.js'
 
-export type MeshProps = ExtractContainerProps<MeshRope, { geometry: Geometry }>
+export type MeshProps = ExtractContainerProps<MeshRope, MeshRopeOptions>
 
-export type MeshEvents = ExtractContainerEvents<MeshRope, { render: [Mesh] }>
+export type MeshEvents = ExtractContainerEvents<MeshRope>
 
 export type MeshAttributes = DefineAttributes<MeshProps, MeshEvents>
 

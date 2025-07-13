@@ -1,4 +1,4 @@
-import type { Texture } from 'pixi.js'
+import type { TilingSpriteOptions } from 'pixi.js'
 import type { DefineAttributes, ExtractContainerProps, ExtractContainerEvents } from '../types'
 import { TilingSprite } from 'pixi.js'
 import { normalizeTexture, renderer, setSkipFirstValue } from '../renderer'
@@ -6,9 +6,9 @@ import { patchBooleanProp, patchProp } from '../renderer/patchProp'
 
 
 
-export type TilingSpriteProps = ExtractContainerProps<TilingSprite, { texture: Texture | string }>
+export type TilingSpriteProps = ExtractContainerProps<TilingSprite, TilingSpriteOptions>
 
-export type TilingSpriteEvents = ExtractContainerEvents<TilingSprite, { render: [TilingSprite] }>
+export type TilingSpriteEvents = ExtractContainerEvents<TilingSprite>
 
 export type TilingSpriteAttributes = DefineAttributes<TilingSpriteProps, TilingSpriteEvents>
 

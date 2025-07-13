@@ -1,8 +1,8 @@
 import type { DefineAttributes, ExtractFilterProps } from '../types'
-import { Filter } from 'pixi.js'
+import { Filter, FilterOptions } from 'pixi.js'
 import { renderer } from '../renderer'
 
-export type FilterProps = ExtractFilterProps<Filter>
+export type FilterProps = ExtractFilterProps<Filter, FilterOptions>
 
 export interface FilterEvents { render: [Filter] }
 
