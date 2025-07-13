@@ -2,17 +2,12 @@
 import type { Container } from 'pixi.js'
 
 import type { Renderer as _Renderer } from 'vue-demi'
-import type { use } from './internal'
 
 import { createRenderer as _createRenderer } from 'vue-demi'
-import { rendererWithCapture, rendererWithOptions } from './internal'
+import { rendererWithActions, rendererWithCapture } from './internal'
 import { nodeOps as _nodeOps } from './nodeOps'
 import { patchProp } from './patchProp'
-
-export interface VuePIXIRenderer<T = Container<Container>>
-  extends _Renderer<T> {
-  use: typeof use
-}
+import { VuePIXIRenderer } from '../types'
 
 export function createRenderer(options: { prefix?: string } = {}) {
   const { createElement, setText, ...nodeOps } = _nodeOps
@@ -30,7 +25,7 @@ export function createRenderer(options: { prefix?: string } = {}) {
 
 export const renderer = createRenderer() as VuePIXIRenderer
 
-rendererWithOptions(renderer)
+rendererWithActions(renderer)
 
 export const createApp = renderer.createApp
 export const render = renderer.render

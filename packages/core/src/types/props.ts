@@ -1,6 +1,23 @@
 import type { AnyFn } from '@vueuse/core'
-import type { Container, Filter } from 'pixi.js'
+import type { Container, Filter, ViewContainerOptions } from 'pixi.js'
 import type { OmitBy, Overwrite, Point } from './utils'
+import { NormalizeTexture } from './attribute'
+
+export type AllowedPointsAttributes = Point<'position'>
+& Point<'anchor'>
+& Point<'scale'>
+& Point<'skew'>
+
+export type AllowedContainerAttributes = Overwrite<
+  Container,
+  AllowedPointsAttributes
+>
+
+export type AllowedContainerProps = ExtractProps<AllowedContainerAttributes>
+
+export interface AllowedFilterProps extends Partial<Omit<Filter, 'destroy'>> {
+  is?: (props: any) => Filter
+}
 
 export type ExtractContainerProps<T, U = {}> = ExtractProps<Overwrite<T, AllowedPointsAttributes>, U>
 
@@ -20,20 +37,11 @@ export type ExtractProps<T, U = {}> = Overwrite<
   U
 >
 
-export type AllowedPointsAttributes = Point<'position'>
-& Point<'anchor'>
-& Point<'scale'>
-& Point<'skew'>
-
-export type AllowedContainerAttributes = Overwrite<
-  Container,
-  AllowedPointsAttributes
->
-
-export type AllowedContainerProps = ExtractProps<AllowedContainerAttributes>
-
-export interface AllowedFilterProps extends Partial<Omit<Filter, 'destroy'>> {
-  is?: (props: any) => Filter
-}
 
 export type ExtractFilterProps<T, U = {}> = Partial<Omit<T, keyof AllowedFilterProps | 'destroy'>> & U
+
+export type OmitContainerOptions<T> = Omit<T, keyof ViewContainerOptions>
+
+export type ExtractContainerOptions<T> = OmitContainerOptions<{
+  [K in keyof T]: K extends 'textures' ? NormalizeTexture[] : K extends 'texture' ? NormalizeTexture: T[K]
+}>

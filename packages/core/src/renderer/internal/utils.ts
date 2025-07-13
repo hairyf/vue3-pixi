@@ -6,6 +6,8 @@ import { isCustomElement } from '../../compiler'
 import { renderers } from './constants'
 import { use } from './hooks'
 
+const { assign } = Object
+
 export function rendererWithCapture(options: RendererOptions<Container, Container>) {
   const notOverrides = ['createComment', 'insertStaticContent', 'createText', 'querySelector', 'createElement']
   for (const key in options) {
@@ -31,22 +33,15 @@ export function rendererWithCapture(options: RendererOptions<Container, Containe
   return options
 }
 
-export function rendererWithOptions(
+export function rendererWithActions(
   renderer: Renderer<Container<Container>> & Record<string, any>,
 ) {
-  const _createApp = renderer.createApp
-  const _render = renderer.render
-  function createApp(...args: any[]) {
-    const app = (_createApp as any)(...args)
-    Object.assign(app.config.compilerOptions, {
-      isCustomElement,
-    })
+  const { createApp: _createApp, render: render } = renderer
+  function createApp(...args: Parameters<typeof _createApp>) {
+    const app = _createApp(...args)
+    assign(app.config.compilerOptions, { isCustomElement })
     return app
   }
 
-  function render(...args: any[]) {
-    return (_render as any)(...args)
-  }
-
-  Object.assign(renderer, { createApp, render, use })
+  assign(renderer, { createApp, render, use })
 }

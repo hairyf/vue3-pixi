@@ -5,10 +5,6 @@ export {
   setPropertyValue,
   setSkipFirstValue,
 } from './internal'
-export type {
-  Renderer,
-  RendererOptions,
-} from './internal'
 
 export { nodeOps } from './nodeOps'
 export { patchProp } from './patchProp'

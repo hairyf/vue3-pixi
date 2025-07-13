@@ -1,4 +1,4 @@
-import type { Renderer, RendererOptions } from './types'
+import type { RendererOptions } from './types'
 import { renderers } from './constants'
 
 export function baseUse(options: RendererOptions) {
@@ -14,7 +14,7 @@ export function baseUse(options: RendererOptions) {
   renderers[name] = options
 }
 
-export function use(options: Renderer) {
+export function use(options: RendererOptions | RendererOptions[]) {
   if (Array.isArray(options))
     options.forEach(baseUse)
   else
