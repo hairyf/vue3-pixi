@@ -8,6 +8,11 @@ export type AllowedPointsAttributes = Point<'position'>
 & Point<'scale'>
 & Point<'skew'>
 
+export interface OptionsOverrides {
+  texture: NormalizeTexture
+  textures: NormalizeTexture[]
+}
+
 export type AllowedContainerAttributes = Overwrite<
   Container,
   AllowedPointsAttributes
@@ -37,11 +42,10 @@ export type ExtractProps<T, U = {}> = Overwrite<
   U
 >
 
-
 export type ExtractFilterProps<T, U = {}> = Partial<Omit<T, keyof AllowedFilterProps | 'destroy'>> & U
 
 export type OmitContainerOptions<T> = Omit<T, keyof ViewContainerOptions>
 
 export type ExtractContainerOptions<T> = OmitContainerOptions<{
-  [K in keyof T]: K extends 'textures' ? NormalizeTexture[] : K extends 'texture' ? NormalizeTexture: T[K]
+  [K in keyof T]: K extends keyof OptionsOverrides ? OptionsOverrides[K] : T[K]
 }>
