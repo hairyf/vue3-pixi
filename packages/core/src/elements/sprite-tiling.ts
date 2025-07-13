@@ -1,8 +1,8 @@
 import type { TilingSpriteOptions } from 'pixi.js'
 import type { DefineContainerElement } from '../types'
 import { TilingSprite } from 'pixi.js'
-import { normalizeTexture, renderer, setSkipFirstValue } from '../renderer'
-import { patchBooleanProp, patchProp } from '../renderer/patchProp'
+import { normalizeTexture, renderer, setters } from '../renderer'
+import { patchProp } from '../renderer/patchProp'
 
 export type TilingSpriteElement = DefineContainerElement<TilingSprite, TilingSpriteOptions>
 
@@ -24,10 +24,10 @@ renderer.use({
     switch (key) {
       case 'width':
       case 'height':
-        setSkipFirstValue(el, key, () => el[key] = next)
+        setters.unfirst(el, key, () => el[key] = next)
         break
       case 'uvRespectAnchor':
-        patchBooleanProp(el, key, prev, next)
+        setters.boolean(el, key, prev, next)
         break
       default:
         patchProp(el, key, prev, next)

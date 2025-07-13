@@ -1,8 +1,7 @@
 import type { MeshRope } from 'pixi.js'
 import type { DefineContainerElement } from '../types'
 import { Mesh } from 'pixi.js'
-import { patchProp, renderer, setSkipFirstValue } from '../renderer'
-import { patchBooleanProp } from '../renderer/patchProp'
+import { patchProp, renderer, setters } from '../renderer'
 import { MeshRopeOptions } from 'pixi.js'
 
 export type MeshElement = DefineContainerElement<MeshRope, MeshRopeOptions>
@@ -22,10 +21,10 @@ renderer.use({
       case 'geometry':
       case 'shader':
       case 'state':
-        setSkipFirstValue(el, key, () => el[key] = next)
+        setters.unfirst(el, key, () => el[key] = next)
         break
       case 'roundPixels':
-        patchBooleanProp(el, key, prev, next)
+        setters.boolean(el, key, prev, next)
         break
       default:
         patchProp(el, key, prev, next)

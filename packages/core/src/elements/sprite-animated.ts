@@ -1,7 +1,7 @@
 import type { DefineContainerElement } from '../types'
 import { AnimatedSprite, AnimatedSpriteOptions } from 'pixi.js'
-import { normalizeTexture, renderer, setPropertyValue, setSkipFirstValue } from '../renderer'
-import { patchBooleanProp, patchProp } from '../renderer/patchProp'
+import { normalizeTexture, renderer, setters } from '../renderer'
+import { patchProp } from '../renderer/patchProp'
 
 export type AnimatedSpriteElement = DefineContainerElement<AnimatedSprite, AnimatedSpriteOptions>
 
@@ -23,7 +23,7 @@ renderer.use({
   patchProp(el: AnimatedSprite, key, prev, next) {
     switch (key) {
       case 'textures':
-        setSkipFirstValue(el, key, () => {
+        setters.unfirst(el, key, () => {
           el.textures = next.map(normalizeTexture)
           el.loop && el.gotoAndPlay(0)
         })
@@ -31,14 +31,14 @@ renderer.use({
       case 'playing':
         // eslint-disable-next-line no-case-declarations
         const isPlaying = (next === '') || !!next
-        setPropertyValue(el, key, () => isPlaying ? el.play() : el.stop())
+        setters.call(el, key, () => isPlaying ? el.play() : el.stop())
         break
       case 'gotoAndPlay':
-        setPropertyValue(el, key, () => el.gotoAndPlay(next))
+        setters.call(el, key, () => el.gotoAndPlay(next))
         break
       case 'loop':
       case 'updateAnchor':
-        patchBooleanProp(el, key, prev, next)
+        setters.boolean(el, key, prev, next)
         break
       case 'onComplete':
       case 'onFrameChange':

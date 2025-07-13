@@ -1,7 +1,6 @@
 import type { DefineContainerElement } from '../types'
 import { SplitBitmapText, SplitBitmapTextOptions } from 'pixi.js'
-import { patchProp, renderer, setSkipFirstValue } from '../renderer'
-import { patchBooleanProp } from '../renderer/patchProp'
+import { patchProp, renderer, setters } from '../renderer'
 
 export type SplitBitmapTextElement = DefineContainerElement<SplitBitmapText, SplitBitmapTextOptions>
 
@@ -18,13 +17,13 @@ renderer.use({
   patchProp(el: SplitBitmapText, key, prev, next) {
     switch (key) {
       case 'text':
-        setSkipFirstValue(el, key, () => el.text = next)
+        setters.unfirst(el, key, () => el.text = next)
         break
       case 'style':
         break
       case 'sortDirty':
       case 'roundPixels':
-        patchBooleanProp(el, key, prev, next)
+        setters.boolean(el, key, prev, next)
         break
       default:
         patchProp(el, key, prev, next)

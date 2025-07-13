@@ -1,9 +1,5 @@
 export {
-  callInstanceSetter,
-  setObjectProperty,
-  setPointProperty,
-  setPropertyValue,
-  setSkipFirstValue,
+  setters
 } from './internal'
 
 export { nodeOps } from './nodeOps'

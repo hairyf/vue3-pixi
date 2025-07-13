@@ -1,8 +1,8 @@
 import type { Container } from 'pixi.js'
-import { isFunction } from '@antfu/utils'
+import { isFunction, isObject } from '@antfu/utils'
 
 import { effectScope, watchEffect } from 'vue-demi'
-import { setPointProperty, setSkipFirstValue } from './internal'
+import { setters } from './internal'
 import { normalizeTexture, setTextureOptions } from './utils'
 
 const defaultBooleanProps = ['accessible', 'cullable', 'renderable', 'visible', 'isMask']
@@ -14,13 +14,14 @@ export function patchProp(
   prevValue: any,
   nextValue: any,
 ) {
+
   if (patchRenderProp(el, key, prevValue, nextValue))
     return
 
   if (patchTextureProp(el, key, prevValue, nextValue))
     return
 
-  if (defaultBooleanProps.includes(key) && patchBooleanProp(el, key, prevValue, nextValue))
+  if (defaultBooleanProps.includes(key) && setters.boolean(el, key, prevValue, nextValue))
     return
 
   if (patchPointProp(el, key, prevValue, nextValue))
@@ -29,12 +30,14 @@ export function patchProp(
   if (patchEventProp(el, key, prevValue, nextValue))
     return
 
-  Reflect.set(el, key, nextValue)
+  isObject(nextValue)
+    ? setters.object(el, key, prevValue, nextValue)
+    : Reflect.set(el, key, nextValue)
 }
 
 export function patchTextureProp(el: any, key: string, _: any, nextValue: any): boolean {
   if (key === 'texture')
-    return setSkipFirstValue(el, key, () => el.texture = normalizeTexture(nextValue))
+    return setters.unfirst(el, key, () => el.texture = normalizeTexture(nextValue))
 
   if (key === 'textureOptions') {
     setTextureOptions(el.texture, nextValue)
@@ -56,7 +59,7 @@ export function patchRenderProp(el: any, key: string, prevValue: any, nextValue:
 export function patchPointProp(el: Container, key: string, prevValue: any, nextValue: any) {
   for (const name of pointProps) {
     if (key.startsWith(name))
-      return setPointProperty(el, name, key, prevValue, nextValue)
+      return setters.point(el, name, key, prevValue, nextValue)
   }
   return false
 }
@@ -74,13 +77,4 @@ export function patchEventProp(el: any, key: string, prevValue: any, nextValue: 
   return true
 }
 
-export function patchBooleanProp(
-  _el: any,
-  _key: string,
-  _prevValue: any,
-  nextValue: any,
-): boolean {
-  _el[_key] = nextValue === '' || !!nextValue
 
-  return true
-}

@@ -24,7 +24,9 @@ export function createElement(prefix: string, name: string, _?: boolean, _1?: st
     warn(`Unknown element ${name}`)
     is = () => new Container()
   }
-  const element = is(props ?? {})
+  props ??= {}
+
+  const element = is(props)
 
   if (element instanceof Container && isOn(props) && element.eventMode === 'passive')
     element.eventMode = 'static'
