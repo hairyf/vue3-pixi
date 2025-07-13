@@ -13,10 +13,7 @@ declare module '@vue/runtime-core' {
 
 renderer.use({
   name: 'HtmlText',
-  createElement: props => new HTMLText({
-    text: props.text,
-    style: props.style,
-  }),
+  createElement: props => new HTMLText(props),
   patchProp(el: HTMLText, key, prev, next) {
     switch (key) {
       case 'text':
