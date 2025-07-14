@@ -51,7 +51,7 @@ onTick(() => {
     ref="maskRef"
     :x="center.x"
     :y="center.y"
-    @render="graphics => graphics
+    @effect="graphics => graphics
       .lineStyle(0)
       .clear()
       .beginFill(0x8BC5FF, 0.4)

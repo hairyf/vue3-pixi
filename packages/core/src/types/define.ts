@@ -3,15 +3,12 @@ import type {
   DefineComponent,
   VNodeProps,
 } from 'vue-demi'
-import type { ExtractContainerEvents } from './events'
+import type { ExtractContainerEvents, ExtractFilterEvents } from './events'
 import type { ExtractContainerOptions, ExtractContainerProps, ExtractFilterProps } from './props'
 
-export type DefineContainerElement<T, O = {}> = DefineElement<
-  ExtractContainerProps<T, ExtractContainerOptions<O>>,
-  ExtractContainerEvents<T, { render: [T] }>
->
+export type DefineContainerElement<T, O = {}> = DefineElement<ExtractContainerProps<T, ExtractContainerOptions<O>>, ExtractContainerEvents<T>>
 
-export type DefineFilterElement<T, O = {}> = DefineElement<ExtractFilterProps<T, O>, { render: [T] }>
+export type DefineFilterElement<T, O = {}> = DefineElement<ExtractFilterProps<T, O>, ExtractFilterEvents<T>>
 
 export type DefineElement<
   InstanceProps = {},

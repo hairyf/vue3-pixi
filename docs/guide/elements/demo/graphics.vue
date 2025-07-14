@@ -16,7 +16,7 @@ onTick(({ deltaTime }) => {
   <graphics
     :x="120"
     :y="120"
-    @render="graphics => {
+    @effect="graphics => {
       graphics.clear()
       graphics.beginFill(0xDE3249)
       graphics.drawCircle(0, 0, size)

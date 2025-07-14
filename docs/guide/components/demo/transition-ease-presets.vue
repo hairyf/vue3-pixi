@@ -20,7 +20,7 @@ const show = ref(true)
       { delay: 1000, alpha: 0 },
     ]"
   >
-    <graphics v-if="show" :scale="1" :pivot="30" :x="120" :y="120" @render="onDrawRounded" />
+    <graphics v-if="show" :scale="1" :pivot="30" :x="120" :y="120" @effect="onDrawRounded" />
   </PTransition>
   <External class="btn" tag="button" @click="show = !show">
     {{ show ? 'Hide' : 'Show' }}

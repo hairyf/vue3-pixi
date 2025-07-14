@@ -37,7 +37,7 @@ function onPlay() {
     :x="screen.width / 2"
     :y="screen.height / 2"
     :pivot="50"
-    @render="drawButton"
+    @effect="drawButton"
     @click="onPlay"
   />
 </template>

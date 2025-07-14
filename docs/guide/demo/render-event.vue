@@ -8,5 +8,5 @@ function drawArc(graphics: Graphics) {
 </script>
 
 <template>
-  <graphics :x="120" :y="120" @render="drawArc" />
+  <graphics :x="120" :y="120" @effect="drawArc" />
 </template>

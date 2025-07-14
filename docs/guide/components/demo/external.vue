@@ -73,7 +73,7 @@ onUnmounted(() => stars.forEach(star => star.destroy()))
 </script>
 
 <template>
-  <particle-container ref="containerRef" @render="updateStars" />
+  <particle-container ref="containerRef" @effect="updateStars" />
   <External style="margin-top: 20px;" tag="div">
     <div>Amount: {{ amount }}</div>
     <input v-model="amount" type="range" min="0" max="10000" step="100">

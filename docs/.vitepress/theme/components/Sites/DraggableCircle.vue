@@ -53,7 +53,7 @@ function handleDragMove({ global }: FederatedPointerEvent) {
     @pointerup="handleDragEnd"
     @pointerupoutside="handleDragEnd"
     @mousemove="handleDragMove"
-    @render="graphics => {
+    @effect="graphics => {
       graphics.clear()
         .beginFill(0xDE3249)
         .drawCircle(0, 0, size)

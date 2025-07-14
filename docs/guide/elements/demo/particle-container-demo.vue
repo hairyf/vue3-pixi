@@ -74,7 +74,7 @@ onUnmounted(() => stars.forEach(star => star.destroy()))
 
 <template>
   <Assets alias="star" entry="/assets/star.png">
-    <particle-container ref="containerRef" @render="updateStars" />
+    <particle-container ref="containerRef" @effect="updateStars" />
   </Assets>
   <External style="margin-top: 20px;" tag="div">
     <div>Amount: {{ amount }}</div>

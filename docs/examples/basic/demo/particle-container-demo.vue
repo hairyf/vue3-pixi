@@ -101,6 +101,6 @@ function onRender(el: ParticleContainer) {
       uvs: true,
       alpha: true,
     }"
-    @render="onRender"
+    @effect="onRender"
   />
 </template>

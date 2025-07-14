@@ -93,6 +93,6 @@ onTick(() => thingRef.value && onDrawThing(thingRef.value))
 </script>
 
 <template>
-  <Graphics ref="graphicsRef" @render="onDraw" />
-  <Graphics ref="thingRef" :x="400" :y="300" @render="onDrawThing" />
+  <Graphics ref="graphicsRef" @effect="onDraw" />
+  <Graphics ref="thingRef" :x="400" :y="300" @effect="onDrawThing" />
 </template>

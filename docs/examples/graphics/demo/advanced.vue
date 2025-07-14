@@ -59,11 +59,11 @@ function onDrawBeatifulRect(beatifulRect: Graphics) {
 </script>
 
 <template>
-  <graphics :x="50" :y="50" @render="onDrawRealPath" />
-  <graphics :x="50" :y="50" @render="onDrawBezier" />
-  <graphics :x="320" :y="150" @render="onDrawRealPath2" />
-  <graphics :x="320" :y="150" @render="onDrawBezier2" />
-  <graphics @render="onDrawArc" />
-  <graphics @render="onDrawHole" />
-  <graphics @render="onDrawBeatifulRect" />
+  <graphics :x="50" :y="50" @effect="onDrawRealPath" />
+  <graphics :x="50" :y="50" @effect="onDrawBezier" />
+  <graphics :x="320" :y="150" @effect="onDrawRealPath2" />
+  <graphics :x="320" :y="150" @effect="onDrawBezier2" />
+  <graphics @effect="onDrawArc" />
+  <graphics @effect="onDrawHole" />
+  <graphics @effect="onDrawBeatifulRect" />
 </template>

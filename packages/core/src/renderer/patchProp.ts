@@ -5,7 +5,8 @@ import { effectScope, watchEffect } from 'vue-demi'
 import { setters } from './internal'
 import { normalizeTexture, setTextureOptions } from './utils'
 
-const defaultBooleanProps = ['accessible', 'cullable', 'renderable', 'visible', 'isMask']
+const booleanProps = ['accessible', 'cullable', 'renderable', 'visible', 'isMask']
+const skipProps = ['onRender']
 const pointProps = ['position', 'scale', 'pivot', 'skew', 'anchor', 'tilePosition', 'tileScale'] as const
 
 export function patchProp(
@@ -14,14 +15,16 @@ export function patchProp(
   prevValue: any,
   nextValue: any,
 ) {
+  if (skipProps.includes(key))
+    return
 
-  if (patchRenderProp(el, key, prevValue, nextValue))
+  if (patchEffectProp(el, key, prevValue, nextValue))
     return
 
   if (patchTextureProp(el, key, prevValue, nextValue))
     return
 
-  if (defaultBooleanProps.includes(key) && setters.boolean(el, key, prevValue, nextValue))
+  if (booleanProps.includes(key) && setters.boolean(el, key, prevValue, nextValue))
     return
 
   if (patchPointProp(el, key, prevValue, nextValue))
@@ -46,8 +49,8 @@ export function patchTextureProp(el: any, key: string, _: any, nextValue: any): 
   return false
 }
 
-export function patchRenderProp(el: any, key: string, prevValue: any, nextValue: any): boolean {
-  if (key === 'onRender' && !prevValue && isFunction(nextValue)) {
+export function patchEffectProp(el: any, key: string, prevValue: any, nextValue: any): boolean {
+  if (key === 'onEffect' && !prevValue && isFunction(nextValue)) {
     const scope = effectScope()
     scope.run(() => watchEffect(() => nextValue(el)))
     el.on('destroyed', () => scope.stop())
@@ -76,5 +79,3 @@ export function patchEventProp(el: any, key: string, prevValue: any, nextValue: 
 
   return true
 }
-
-

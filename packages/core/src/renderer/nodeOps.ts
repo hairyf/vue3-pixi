@@ -7,7 +7,7 @@ import {
 } from 'pixi.js'
 import { camelize, markRaw, warn } from 'vue-demi'
 import { Empty, insertContainer, insertFilter, nextSiblingContainer, nextSiblingFilter, renderers } from './internal'
-import { isOn } from './utils'
+import { isOn, withThisRender } from './utils'
 
 export function createElement(prefix: string, name: string, _?: boolean, _1?: string, props?: any): any {
   let is
@@ -25,6 +25,8 @@ export function createElement(prefix: string, name: string, _?: boolean, _1?: st
     is = () => new Container()
   }
   props ??= {}
+
+  withThisRender(props)
 
   const element = is(props)
 

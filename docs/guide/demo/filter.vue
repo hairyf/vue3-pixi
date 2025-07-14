@@ -8,7 +8,7 @@ function drawRectangle(e: Graphics) {
 </script>
 
 <template>
-  <graphics :x="120" :y="60" :rotation="0.5" :pivot="0" @render="drawRectangle">
+  <graphics :x="120" :y="60" :rotation="0.5" :pivot="0" @effect="drawRectangle">
     <blur-filter :strength="2" :blur="4" />
   </graphics>
 </template>
