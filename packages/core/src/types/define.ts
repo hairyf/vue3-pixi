@@ -3,8 +3,8 @@ import type {
   DefineComponent,
   VNodeProps,
 } from 'vue-demi'
-import { ExtractContainerOptions, ExtractContainerProps, ExtractFilterProps } from './props'
-import { ExtractContainerEvents } from './events'
+import type { ExtractContainerEvents } from './events'
+import type { ExtractContainerOptions, ExtractContainerProps, ExtractFilterProps } from './props'
 
 export type DefineContainerElement<T, O = {}> = DefineElement<
   ExtractContainerProps<T, ExtractContainerOptions<O>>,
@@ -34,4 +34,3 @@ export type DefineElement<
   },
   {}
 >
-

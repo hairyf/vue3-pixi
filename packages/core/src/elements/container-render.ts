@@ -1,5 +1,6 @@
+import type { RenderContainerOptions } from 'pixi.js'
 import type { DefineContainerElement } from '../types'
-import { RenderContainer, RenderContainerOptions } from 'pixi.js'
+import { RenderContainer } from 'pixi.js'
 import { renderer } from '../renderer'
 
 export type RenderContainerElement = DefineContainerElement<RenderContainer, RenderContainerOptions>

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import type { MaybeRefOrGetter } from '@vueuse/core'
 import type { ToRef } from 'vue-demi'
 import { toValue, whenever } from '@vueuse/core'
@@ -27,6 +26,7 @@ export function useTrack<T, K extends keyof OmitUndef<T>>(target: MaybeRefOrGett
   }))
   whenever(
     () => toValue(target),
+    // eslint-disable-next-line ts/ban-ts-comment
     // @ts-expect-error
     target => (target[key] ??= defaultValue!),
   )

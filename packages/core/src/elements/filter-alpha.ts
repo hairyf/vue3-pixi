@@ -1,5 +1,6 @@
+import type { AlphaFilterOptions } from 'pixi.js'
 import type { DefineFilterElement } from '../types'
-import { AlphaFilter, AlphaFilterOptions } from 'pixi.js'
+import { AlphaFilter } from 'pixi.js'
 import { renderer } from '../renderer'
 
 export type AlphaFilterElement = DefineFilterElement<AlphaFilter, AlphaFilterOptions>

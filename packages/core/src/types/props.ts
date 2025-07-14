@@ -1,12 +1,13 @@
 import type { AnyFn } from '@vueuse/core'
 import type { Container, Filter, ViewContainerOptions } from 'pixi.js'
+import type { NormalizeTexture } from './attribute'
 import type { OmitBy, Overwrite, Point } from './utils'
-import { NormalizeTexture } from './attribute'
 
 export type AllowedPointsAttributes = Point<'position'>
-& Point<'anchor'>
-& Point<'scale'>
-& Point<'skew'>
+  & Point<'anchor'>
+  & Point<'scale'>
+  & Point<'skew'>
+  & Point<'pivot'>
 
 export interface OptionsOverrides {
   texture: NormalizeTexture

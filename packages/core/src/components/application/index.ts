@@ -1,6 +1,7 @@
+/* eslint-disable ts/no-redeclare */
 import type { ColorSource, Container, GpuPowerPreference } from 'pixi.js'
 import type { App, PropType } from 'vue-demi'
-import { Application as _Application } from 'pixi.js'
+import { Application as PixiApplication } from 'pixi.js'
 import { defineComponent, getCurrentInstance, h, markRaw, onMounted, onUnmounted, ref, renderSlot } from 'vue-demi'
 import { appInjectKey } from '../../composables'
 import { createApp } from '../../renderer'
@@ -8,7 +9,7 @@ import { inheritParent } from '../../utils'
 
 export interface Application {
   canvas: HTMLCanvasElement
-  app: _Application
+  app: PixiApplication
 }
 
 export const Application = defineComponent({
@@ -17,6 +18,7 @@ export const Application = defineComponent({
     autoDensity: { type: Boolean, default: undefined },
     autoStart: { type: Boolean, default: true },
     alpha: { type: Boolean, default: undefined },
+    background: { type: Object as PropType<ColorSource> },
     backgroundColor: [Number, String, Array, Object] as PropType<ColorSource>,
     backgroundAlpha: { type: Number, default: 1 },
     clearBeforeRender: { type: Boolean, default: undefined },
@@ -43,12 +45,12 @@ export const Application = defineComponent({
   setup(props, { slots, expose }) {
     const { appContext } = getCurrentInstance()!
     const canvas = ref<HTMLCanvasElement>()
-    const pixiApp = ref<_Application>()
+    const pixiApp = ref<PixiApplication>()
 
     let app: App<Container> | undefined
 
     async function mount() {
-      const inst = new _Application()
+      const inst = new PixiApplication()
       await inst.init({ canvas: canvas.value, ...props })
 
       pixiApp.value = markRaw(inst)
