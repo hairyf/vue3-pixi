@@ -1,8 +1,8 @@
-import { Container, ContainerChild } from 'pixi.js'
-import type { RendererOptions as _RendererOptions } from 'vue-demi'
-import type { Renderer as _Renderer } from 'vue-demi'
+import type { Container, ContainerChild } from 'pixi.js'
 
-export interface VuePIXIRenderer<T = Container<ContainerChild>> extends _Renderer<T> {
+import type { RendererOptions as _RendererOptions, Renderer } from 'vue-demi'
+
+export interface VuePIXIRenderer<T = Container<ContainerChild>> extends Renderer<T> {
   use: (options: RendererOptions | RendererOptions[]) => void
 }
 
@@ -14,4 +14,3 @@ export interface RendererOptions extends Partial<Omit<_RendererOptions<any, any>
   name: string
   createElement: (props: any) => any
 }
-

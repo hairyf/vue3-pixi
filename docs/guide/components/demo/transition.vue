@@ -39,8 +39,8 @@ function onLeave(el: GraphicsIns, done: () => void) {
   })
 }
 function onDrawRounded(e: GraphicsIns) {
-  e.beginFill('#00a3af')
-  e.drawRoundedRect(0, 0, 60, 60, 10)
+  e.roundRect(0, 0, 60, 60, 10)
+  e.fill('#00a3af')
 }
 
 const show = ref(true)

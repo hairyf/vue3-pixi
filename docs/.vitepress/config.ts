@@ -8,13 +8,13 @@ import { mdPlugin } from './plugin'
 const themeConfig: DefaultTheme.Config = {
   // https://vitepress.dev/reference/default-theme-config
   nav: [
-    { text: 'Home', link: '/' },
+    // { text: 'Home', link: '/' },
     {
       text: 'Docs',
       items: [
         { text: 'Quick Start', link: '/guide/quick-start' },
         { text: 'Usage', link: '/guide/usage' },
-        { text: 'Nuxtjs', link: '/guide/nuxtjs' },
+        // { text: 'Nuxtjs', link: '/guide/nuxtjs' },
         { text: 'API Reference', link: '/guide/api-reference/renderer' },
         { text: 'Elements', link: '/guide/elements/animated-sprite' },
         { text: 'Components', link: '/guide/components/application' },
@@ -45,7 +45,7 @@ const themeConfig: DefaultTheme.Config = {
           { text: 'Introduction', link: '/guide/introduction' },
           { text: 'Quick Start', link: '/guide/quick-start' },
           { text: 'Usage', link: '/guide/usage' },
-          { text: 'Nuxtjs', link: '/guide/nuxtjs' },
+          // { text: 'Nuxtjs', link: '/guide/nuxtjs' },
           { text: 'Troubleshooting', link: '/guide/troubleshooting' },
         ],
       },
@@ -249,12 +249,12 @@ export default defineConfig({
     plugins: [unocss() as any],
     ssr: { noExternal: ['naive-ui', 'gsap'] },
     resolve: {
-      alias: [
-        {
-          find: /^.*\/VPSwitchAppearance\.vue$/,
-          replacement: fileURLToPath(new URL('./theme/components/VPSwitchAppearance/index.vue', import.meta.url)),
-        },
-      ],
+      // alias: [
+      //   {
+      //     find: /^.*\/VPSwitchAppearance\.vue$/,
+      //     replacement: fileURLToPath(new URL('./theme/components/VPSwitchAppearance/index.vue', import.meta.url)),
+      //   },
+      // ],
     },
   },
 

@@ -9,7 +9,7 @@ const components = [
   'PTransition',
   'PTransitionGroup',
   'External',
-  'Loader',
+  'Assets',
 ]
 
 export interface ModuleOptions {}

@@ -52,4 +52,8 @@ const size = computed(() => {
   background-image: linear-gradient(90deg, #ffffff 10%, rgba(0, 0, 0, 0) 10%), linear-gradient(#ffffff 10%, rgba(0, 0, 0, 0) 10%);
   background-size: 20px 20px;
 }
+.dark .container-view {
+  background-color: #8b8b8e;
+  background-image: linear-gradient(90deg, #c2c2c2 10%, rgba(0,0,0,0) 10%), linear-gradient(#c2c2c2 10%, rgba(0,0,0,0) 10%);
+}
 </style>

@@ -1,3 +1,3 @@
-import { RendererStacks } from "../../types";
+import type { RendererStacks } from '../../types'
 
 export const renderers: RendererStacks = {}

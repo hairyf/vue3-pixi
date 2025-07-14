@@ -4,8 +4,8 @@ import { ref } from 'vue'
 import { EasePresets, External, PTransition } from 'vue3-pixi'
 
 function onDrawRounded(e: GraphicsIns) {
-  e.beginFill('#00a3af')
-  e.drawRoundedRect(0, 0, 60, 60, 10)
+  e.roundRect(0, 0, 60, 60, 10)
+  e.fill('#00a3af')
 }
 
 // custom ease function
