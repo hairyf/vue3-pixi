@@ -1,18 +1,15 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import type { Container } from 'pixi.js'
-
-import type { Renderer as _Renderer } from 'vue-demi'
-
+import type { VuePIXIRenderer } from '../types'
 import { createRenderer as _createRenderer } from 'vue-demi'
 import { rendererWithActions, rendererWithCapture } from './internal'
 import { nodeOps as _nodeOps } from './nodeOps'
 import { patchProp } from './patchProp'
-import { VuePIXIRenderer } from '../types'
 
 export function createRenderer(options: { prefix?: string } = {}) {
   const { createElement, setText, ...nodeOps } = _nodeOps
   const { prefix = 'pixi' } = options
   const rendererOptions = rendererWithCapture({
+    // eslint-disable-next-line ts/ban-ts-comment
     // @ts-expect-error
     createElement: (...args) => createElement(prefix, ...args),
     setElementText: (...args) => setText(prefix, ...args),

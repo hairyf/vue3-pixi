@@ -1,4 +1,3 @@
-
 import { isObject } from '@antfu/utils'
 import { effectScope, nextTick, watchEffect } from 'vue-demi'
 
@@ -41,10 +40,7 @@ export const setters = {
 
     return false
   },
-  boolean(_el: any,
-    _key: string,
-    _prevValue: any,
-    nextValue: any,) {
+  boolean(_el: any, _key: string, _prevValue: any, nextValue: any) {
     _el[_key] = nextValue === '' || !!nextValue
 
     return true
@@ -62,9 +58,14 @@ export const setters = {
       update()
     }
     return true
-  }
+  },
+  texture: {
+    options(texture: any, options: any) {
+      for (const key in options)
+        texture.baseTexture[key] = options[key]
+    },
+  },
 }
-
 
 function callInstanceSetter(inst: any, key: string, value: any | any[]) {
   const [v1, v2, v3] = Array.isArray(value) ? value : [value, value, value]

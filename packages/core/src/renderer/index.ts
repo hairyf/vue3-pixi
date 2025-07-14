@@ -1,9 +1,5 @@
-export {
-  setters
-} from './internal'
-
 export { nodeOps } from './nodeOps'
 export { patchProp } from './patchProp'
-
 export * from './renderer'
+export { patchs, setters } from './utils'
 export * from './utils'

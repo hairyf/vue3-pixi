@@ -1,13 +1,4 @@
-import type { Container } from 'pixi.js'
-import { isFunction, isObject } from '@antfu/utils'
-
-import { effectScope, watchEffect } from 'vue-demi'
-import { setters } from './internal'
-import { normalizeTexture, setTextureOptions } from './utils'
-
-const booleanProps = ['accessible', 'cullable', 'renderable', 'visible', 'isMask']
-const skipProps = ['onRender']
-const pointProps = ['position', 'scale', 'pivot', 'skew', 'anchor', 'tilePosition', 'tileScale'] as const
+import { patchs } from './utils'
 
 export function patchProp(
   el: any,
@@ -15,67 +6,21 @@ export function patchProp(
   prevValue: any,
   nextValue: any,
 ) {
-  if (skipProps.includes(key))
+  if (patchs.skip(key))
     return
 
-  if (patchEffectProp(el, key, prevValue, nextValue))
+  if (patchs.events.effect(el, key, prevValue, nextValue))
+    return
+  if (patchs.events.general(el, key, prevValue, nextValue))
+    return
+  if (patchs.texture(el, key, prevValue, nextValue))
     return
 
-  if (patchTextureProp(el, key, prevValue, nextValue))
+  if (patchs.boolean(el, key, prevValue, nextValue))
     return
 
-  if (booleanProps.includes(key) && setters.boolean(el, key, prevValue, nextValue))
+  if (patchs.point(el, key, prevValue, nextValue))
     return
 
-  if (patchPointProp(el, key, prevValue, nextValue))
-    return
-
-  if (patchEventProp(el, key, prevValue, nextValue))
-    return
-
-  isObject(nextValue)
-    ? setters.object(el, key, prevValue, nextValue)
-    : Reflect.set(el, key, nextValue)
-}
-
-export function patchTextureProp(el: any, key: string, _: any, nextValue: any): boolean {
-  if (key === 'texture')
-    return setters.unfirst(el, key, () => el.texture = normalizeTexture(nextValue))
-
-  if (key === 'textureOptions') {
-    setTextureOptions(el.texture, nextValue)
-    return true
-  }
-  return false
-}
-
-export function patchEffectProp(el: any, key: string, prevValue: any, nextValue: any): boolean {
-  if (key === 'onEffect' && !prevValue && isFunction(nextValue)) {
-    const scope = effectScope()
-    scope.run(() => watchEffect(() => nextValue(el)))
-    el.on('destroyed', () => scope.stop())
-    return true
-  }
-  return false
-}
-
-export function patchPointProp(el: Container, key: string, prevValue: any, nextValue: any) {
-  for (const name of pointProps) {
-    if (key.startsWith(name))
-      return setters.point(el, name, key, prevValue, nextValue)
-  }
-  return false
-}
-
-export function patchEventProp(el: any, key: string, prevValue: any, nextValue: any) {
-  if (!key.startsWith('on'))
-    return false
-
-  const eventName = key.slice(2).toLowerCase()
-  if (prevValue)
-    el.off(eventName, prevValue)
-  if (nextValue)
-    el?.on(eventName, nextValue)
-
-  return true
+  patchs.default(el, key, prevValue, nextValue)
 }
