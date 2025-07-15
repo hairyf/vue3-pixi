@@ -1,5 +1,5 @@
 import type { Container } from 'pixi.js'
-import { isFunction, isObject } from '@antfu/utils'
+import { isFunction } from '@antfu/utils'
 import { effectScope, watchEffect } from 'vue-demi'
 import { setters } from './setters'
 import { normalizeTexture } from './util'
@@ -31,10 +31,8 @@ export const patchs = {
   boolean(el: any, key: string, prevValue: any, nextValue: any) {
     return booleanProps.includes(key) && setters.boolean(el, key, prevValue, nextValue)
   },
-  default(el: any, key: string, prevValue: any, nextValue: any) {
-    isObject(nextValue)
-      ? setters.object(el, key, prevValue, nextValue)
-      : Reflect.set(el, key, nextValue)
+  default(el: any, key: string, _prevValue: any, nextValue: any) {
+    Reflect.set(el, key, nextValue)
   },
   events: {
     general(el: any, key: string, prevValue: any, nextValue: any) {

@@ -1,6 +1,4 @@
 <script setup>
-import { Assets } from 'vue3-pixi'
-
 const images = [
   '/assets/food/lemonpie.png',
   '/assets/food/strawberrycake.png',
@@ -9,7 +7,7 @@ const images = [
 </script>
 
 <template>
-  <Assets :entry="images">
+  <assets :entry="images">
     <!-- loading state via #fallback slot -->
     <template #fallback>
       <text :anchor="0.5" :x="120" :y="120" :style="{ fill: 'white' }">
@@ -27,5 +25,5 @@ const images = [
         :scale="1.4"
       />
     </template>
-  </Assets>
+  </assets>
 </template>

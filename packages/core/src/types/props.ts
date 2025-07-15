@@ -11,7 +11,7 @@ export type AllowedPointsAttributes = Point<'position'>
 
 export interface OptionsOverrides {
   texture: NormalizeTexture
-  textures: NormalizeTexture[]
+  textures: any
 }
 
 export type AllowedContainerAttributes = Overwrite<

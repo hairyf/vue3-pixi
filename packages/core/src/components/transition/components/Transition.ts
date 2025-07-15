@@ -26,8 +26,8 @@ export const transitionProps = {
 
 export type TransitionProps = ExtractPropTypes<typeof transitionProps>
 
-export const PTransition = defineComponent({
-  name: 'PTransition',
+export const AnimatedTransition = defineComponent({
+  name: 'AnimatedTransition',
   props: transitionProps,
   setup(props, { slots }) {
     const rowProps = resolveTransitionProps(props, { id: 0, time: 0 })

@@ -1,7 +1,6 @@
-export { PTransition, type TransitionProps } from './components/Transition'
-export { PTransition as PixiTransition } from './components/Transition'
-export { PTransitionGroup } from './components/TransitionGroup'
-export { PTransitionGroup as PixiTransitionGroup } from './components/TransitionGroup'
+export { type TransitionProps } from './components/Transition'
+export { AnimatedTransition } from './components/Transition'
+export { AnimatedTransitionGroup } from './components/TransitionGroup'
 
 export {
   EasePresets,

@@ -1,7 +1,6 @@
 <!-- eslint-disable no-console -->
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { Assets } from 'vue3-pixi'
 
 const eventName = ref('none')
 
@@ -12,7 +11,7 @@ function eventHandler(name: string, evt: any) {
 </script>
 
 <template>
-  <Assets entry="/assets/mushroom.png" #="{data}">
+  <assets entry="/assets/mushroom.png" #="{data}">
     <sprite
       :x="120"
       :y="120"
@@ -23,7 +22,7 @@ function eventHandler(name: string, evt: any) {
       @pointermove="evt => eventHandler('pointermove', evt)"
       @pointerleave="evt => eventHandler('pointerleave', evt)"
     />
-  </Assets>
+  </assets>
 
   <text :x="120" :y="180" :style="{ fill: 'white' }" :anchor="0.5">
     {{ eventName }}

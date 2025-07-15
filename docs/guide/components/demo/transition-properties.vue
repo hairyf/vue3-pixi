@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { Graphics as GraphicsIns } from 'pixi.js'
 import { ref } from 'vue'
-import { External, PTransition } from 'vue3-pixi'
+import { External } from 'vue3-pixi'
 
 function onDrawRounded(e: GraphicsIns) {
   e.roundRect(0, 0, 60, 60, 10)
@@ -12,7 +12,7 @@ const show = ref(true)
 </script>
 
 <template>
-  <PTransition
+  <AnimatedTransition
     :duration="{ enter: 600, leave: 700 }"
     :before-enter="{ alpha: 0, scaleX: 0.25, scaleY: 0.25 }"
     :enter="{ alpha: 1, scaleX: 1, scaleY: 1 }"
@@ -22,7 +22,7 @@ const show = ref(true)
     ]"
   >
     <graphics v-if="show" :scale="1" :pivot="30" :x="120" :y="120" @effect="onDrawRounded" />
-  </PTransition>
+  </AnimatedTransition>
   <External class="btn" tag="button" @click="show = !show">
     {{ show ? 'Hide' : 'Show' }}
   </External>

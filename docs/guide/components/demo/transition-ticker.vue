@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { Text } from 'pixi.js'
 import { ref } from 'vue'
-import { External, PTransition } from 'vue3-pixi'
+import { External } from 'vue3-pixi'
 
 function typewriter(el: Text) {
   const speed = 2
@@ -21,14 +21,14 @@ const show = ref(true)
 </script>
 
 <template>
-  <PTransition
+  <AnimatedTransition
     :enter="typewriter"
     :leave="typewriter"
   >
     <text v-if="show" :x="40" :y="120" :style="{ fill: '#fff', fontSize: '16px' }">
       The quick brown fox jumps over the lazy dog
     </text>
-  </PTransition>
+  </AnimatedTransition>
   <External class="btn" tag="button" @click="show = !show">
     {{ show ? 'Hide' : 'Show' }}
   </External>

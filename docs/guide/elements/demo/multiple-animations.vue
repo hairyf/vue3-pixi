@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import type { Spritesheet, Texture } from 'pixi.js'
 import { reactive } from 'vue'
-import { Assets } from 'vue3-pixi'
 
 const resource = reactive({
   spritesheet: undefined as undefined | Spritesheet,
@@ -21,7 +20,7 @@ function onChangeAnimation() {
 </script>
 
 <template>
-  <Assets entry="/assets/adventurer-spritesheet.json" @loaded="onLoaded">
+  <assets entry="/assets/adventurer-spritesheet.json" @loaded="onLoaded">
     <animated-sprite
       :textures="resource.animation"
       playing
@@ -32,5 +31,5 @@ function onChangeAnimation() {
       :scale="1.4"
       @loop="onChangeAnimation"
     />
-  </Assets>
+  </assets>
 </template>

@@ -6,6 +6,7 @@ import { defineComponent, getCurrentInstance, h, markRaw, onMounted, onUnmounted
 import { appInjectKey } from '../../composables'
 import { createApp } from '../../renderer'
 import { inheritParent } from '../../utils'
+import { Assets } from '../assets'
 
 export interface Application {
   canvas: HTMLCanvasElement
@@ -51,11 +52,12 @@ export const Application = defineComponent({
 
     async function mount() {
       const inst = new PixiApplication()
-      await inst.init({ canvas: canvas.value, ...props })
+      await inst.init({ canvas: canvas.value, ...props, preference: 'webgl' })
 
       pixiApp.value = markRaw(inst)
 
       app = createApp({ render: () => renderSlot(slots, 'default') })
+      app.component('Assets', Assets)
 
       inheritParent(app, appContext)
 

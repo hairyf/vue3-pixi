@@ -176,7 +176,7 @@ export const assetsBundleProps = {
    * @type {Record<string, UnresolvedAsset>}
    * @example
    * ```vue
-   * <assets-bundle id="myBundle" :entry="{ aliasName: { src: 'path/to/asset' } }" />
+   * <assets-bundle id="myBundle" :entry="{ [aliasName]: { src: 'path/to/asset' } }" />
    * ```
    *
    * @type {UnresolvedAsset[]}

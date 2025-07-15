@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { Assets, onTick } from 'vue3-pixi'
+import { onTick } from 'vue3-pixi'
 
 const width = ref(0)
 const height = ref(0)
@@ -14,7 +14,7 @@ onTick((delta) => {
 </script>
 
 <template>
-  <Assets alias="nine-slice-blue" entry="/assets/nine-slice-blue.png">
+  <assets alias="nine-slice-blue" entry="/assets/nine-slice-blue.png">
     <nine-slice-plane
       :position="120"
       texture="x"
@@ -26,5 +26,5 @@ onTick((delta) => {
       :right-width="12"
       :bottom-height="12"
     />
-  </Assets>
+  </assets>
 </template>

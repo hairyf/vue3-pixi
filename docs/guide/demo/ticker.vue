@@ -1,6 +1,6 @@
 <script lang=ts setup>
 import { reactive } from 'vue'
-import { Assets, onTick } from 'vue3-pixi'
+import { onTick } from 'vue3-pixi'
 
 const position = reactive({ x: 120, y: 120 })
 
@@ -13,12 +13,12 @@ onTick(({ deltaTime }) => {
 </script>
 
 <template>
-  <Assets entry="/assets/food/lemonpie.png" #="{data}">
+  <assets entry="/assets/food/lemonpie.png" #="{data}">
     <sprite
       :texture="data"
       :position="position"
       :anchor="0.5"
       :scale="1.4"
     />
-  </Assets>
+  </assets>
 </template>

@@ -1,81 +1,77 @@
-<script setup>
-import { Geometry, Shader, Texture } from 'pixi.js'
-import { ref } from 'vue'
-import { onTick } from 'vue3-pixi'
+<script lang="ts" setup>
+import { onTick } from 'vue3-pixi';
+import { defineComponent, h, ref } from 'vue';
+import { Geometry, Shader, Texture } from 'pixi.js';
 
-const geometry = new Geometry()
-  .addAttribute('aVertexPosition', [
-    -100,
-    -100,
-    100,
-    -100,
-    100,
-    100,
-    -100,
-    100,
-  ], 2)
-  .addAttribute('aUvs', [
-    0,
-    0,
-    1,
-    0,
-    1,
-    1,
-    0,
-    1,
-  ], 2)
-  .addIndex([0, 1, 2, 0, 2, 3])
+const MeshChild = defineComponent({
+  setup() {
+    const texture = Texture.from('bg_scene_rotate');
 
-const vertexSrc = `
-  precision mediump float;
+    const geometry = new Geometry({
+      attributes: {
+        aPosition: [-100, -100, 100, -100, 100, 100,],
+        aColor: [1, 0, 0, 0, 1, 0, 0, 0, 1],
+        aUV: [0, 0, 1, 0, 1, 1],
+      },
+    })
 
-  attribute vec2 aVertexPosition;
-  attribute vec2 aUvs;
+    const shader = Shader.from({
+      gl: {
+        vertex: `
+            in vec2 aPosition;
+            in vec3 aColor;
+            in vec2 aUV;
 
-  uniform mat3 translationMatrix;
-  uniform mat3 projectionMatrix;
+            out vec3 vColor;
+            out vec2 vUV;
 
-  varying vec2 vUvs;
+            uniform mat3 uProjectionMatrix;
+            uniform mat3 uWorldTransformMatrix;
 
-  void main() {
-    vUvs = aUvs;
-    gl_Position = vec4((projectionMatrix * translationMatrix * vec3(aVertexPosition, 1.0)).xy, 0.0, 1.0);
+            uniform mat3 uTransformMatrix;
+
+
+            void main() {
+
+                mat3 mvp = uProjectionMatrix * uWorldTransformMatrix * uTransformMatrix;
+                gl_Position = vec4((mvp * vec3(aPosition, 1.0)).xy, 0.0, 1.0);
+
+                vColor = aColor;
+                vUV = aUV;
+            }
+          `,
+        fragment: `
+            in vec3 vColor;
+            in vec2 vUV;
+
+            uniform sampler2D uTexture;
+
+            void main() {
+                gl_FragColor = texture2D(uTexture, vUV) * vec4(vColor, 1.0);
+            }
+          `,
+      },
+      resources: {
+        uTexture: texture.source,
+      },
+    })
+
+    const rotation = ref(0)
+
+    onTick(() => rotation.value += 0.01)
+
+    return () => h('mesh', {
+      rotation: rotation.value,
+      position: 150,
+      geometry,
+      shader
+    })
   }
-`
-const fragmentSrc = `
-  precision mediump float;
-
-  varying vec2 vUvs;
-
-  uniform sampler2D uSampler2;
-  uniform float time;
-
-  void main() {
-
-    gl_FragColor = texture2D(uSampler2, vUvs + sin( (time + (vUvs.x) * 14.) ) * 0.1 );
-  }
-`
-
-const uniforms = {
-  uSampler2: Texture.from('/assets/bg_mesh.jpg'),
-  time: 0,
-}
-
-const shader = Shader.from(vertexSrc, fragmentSrc, uniforms)
-
-const rotation = ref(0)
-
-onTick((delta) => {
-  rotation.value += 0.01 * delta
-  shader.uniforms.time += 0.1 * delta
 })
 </script>
 
 <template>
-  <mesh
-    :position="150"
-    :geometry="geometry"
-    :shader="shader"
-    :rotation="rotation"
-  />
+  <assets alias="bg_scene_rotate" entry="https://pixijs.com/assets/bg_scene_rotate.jpg">
+    <mesh-child />
+  </assets>
 </template>

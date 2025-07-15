@@ -1,10 +1,9 @@
-import type { MeshRope } from 'pixi.js'
+import type { Geometry, MeshOptions, Shader } from 'pixi.js'
 import type { DefineContainerElement } from '../types'
 import { Mesh } from 'pixi.js'
 import { patchProp, renderer, setters } from '../renderer'
-import { MeshRopeOptions } from 'pixi.js'
 
-export type MeshElement = DefineContainerElement<MeshRope, MeshRopeOptions>
+export type MeshElement = DefineContainerElement<Mesh, MeshOptions<Geometry, Shader>>
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {

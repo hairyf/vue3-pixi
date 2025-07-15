@@ -1,10 +1,10 @@
-# Transition
+# Animated Transition
 
 vue3-pixi provides out-of-the-box transition effects. You can use the `Transition` component on any element, which inherits from Vue's `<BaseTransition>`.
 
-The usage of `PTransition` is similar to [Vue Transition](https://cn.vuejs.org/guide/built-ins/transition.html#javascript-hooks) (but does not include CSS modes). The component can wrap any element, and the transition effect is triggered when the `v-if` condition of the element becomes `true|false`. It can also be encapsulated as a standalone transition component.
+The usage of `AnimatedTransition` is similar to [Vue Transition](https://cn.vuejs.org/guide/built-ins/transition.html#javascript-hooks) (but does not include CSS modes). The component can wrap any element, and the transition effect is triggered when the `v-if` condition of the element becomes `true|false`. It can also be encapsulated as a standalone transition component.
 
-> It is important to note that the default Transition component cannot be overridden, so the exported component name is `PTransition|PixiTransition`.
+> It is important to note that the default Transition component cannot be overridden, so the exported component name is `AnimatedTransition`.
 
 ## Usage
 
@@ -66,7 +66,7 @@ You can also control the transition effects by setting enter and level to functi
 
 ## API
 
-### PTransition Props
+### AnimatedTransition Props
 
 | Name | Type | Default | Description |
 | ---- | ---- | ---- | ---- |
@@ -79,7 +79,7 @@ You can also control the transition effects by setting enter and level to functi
 | leave | ^[function]`(el: any, done: () => void):void` ^[object\|array]`TransitionVars \| TransitionVars[]` | `undefined` | Called when the transition starts. |
 | after-leave | ^[function]`(el: any):void` ^[object\|array]`TransitionVars \| TransitionVars[]` | `undefined` | Called after the transition ends. |
 
-### PTransition Events
+### AnimatedTransition Events
 
 | Name | Type | Description |
 | ---- | ---- | ---- |

@@ -4,10 +4,10 @@ import { isCustomElement } from 'vue3-pixi'
 
 const components = [
   'Application',
-  'PixiTransition',
-  'PixiTransitionGroup',
-  'PTransition',
-  'PTransitionGroup',
+  'AnimatedTransition',
+  'AnimatedTransitionGroup',
+  'AnimatedTransition',
+  'AnimatedTransitionGroup',
   'External',
   'Assets',
 ]

@@ -1,6 +1,7 @@
+import type { ParticleContainerOptions } from 'pixi.js'
 import type { DefineContainerElement } from '../types'
-import { ParticleContainer, ParticleContainerOptions } from 'pixi.js'
-import { patchProp, renderer } from '../renderer'
+import { ParticleContainer } from 'pixi.js'
+import { nodeOps, patchProp, renderer } from '../renderer'
 
 export type ParticleContainerElement = DefineContainerElement<ParticleContainer, ParticleContainerOptions>
 
@@ -22,5 +23,9 @@ renderer.use({
       default:
         patchProp(el, key, prev, next)
     }
+  },
+  remove(el) {
+    el.removeParticle(...el.particleChildren)
+    nodeOps.remove(el)
   },
 })

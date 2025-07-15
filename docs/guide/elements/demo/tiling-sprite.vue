@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { reactive } from 'vue'
-import { Assets, onTick, useScreen } from 'vue3-pixi'
+import { onTick, useScreen } from 'vue3-pixi'
 
 const screen = useScreen()
 
@@ -18,7 +18,7 @@ onTick(() => {
 </script>
 
 <template>
-  <Assets entry="/assets/tiling-sprite.jpeg" #="{data}">
+  <assets entry="/assets/tiling-sprite.jpeg" #="{data}">
     <tiling-sprite
       :texture="data"
       :width="screen.width"
@@ -26,5 +26,5 @@ onTick(() => {
       :tile-scale="tileScale"
       :tile-position="tilePosition"
     />
-  </Assets>
+  </assets>
 </template>

@@ -1,9 +1,5 @@
-<script lang="ts" setup>
-import { Assets } from 'vue3-pixi'
-</script>
-
 <template>
-  <Assets entry="/assets/adventurer-spritesheet.json">
+  <assets entry="/assets/adventurer-spritesheet.json">
     <animated-sprite
       :textures="[
         'adventurer-idle-00.png',
@@ -17,5 +13,5 @@ import { Assets } from 'vue3-pixi'
       :y="120"
       :scale="1.4"
     />
-  </Assets>
+  </assets>
 </template>

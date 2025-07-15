@@ -11,3 +11,10 @@ declare module 'pixi.js' {
     _vp_name: string
   }
 }
+
+declare module '@vue/runtime-core' {
+  export interface GlobalComponents {
+    Assets: typeof import('./components').Assets
+    AnimatedTransition: typeof import('./components').AnimatedTransition
+  }
+}

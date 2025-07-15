@@ -1,9 +1,5 @@
-<script setup>
-import { Assets } from 'vue3-pixi'
-</script>
-
 <template>
-  <Assets entry="https://pixijs.com/assets/bitmap-font/desyrel.xml" autoload>
+  <assets entry="https://pixijs.com/assets/bitmap-font/desyrel.xml" autoload>
     <bitmap-text
       :x="220"
       :y="120"
@@ -12,5 +8,5 @@ import { Assets } from 'vue3-pixi'
     >
       the fox jumps over\nthe lazy dog
     </bitmap-text>
-  </Assets>
+  </assets>
 </template>

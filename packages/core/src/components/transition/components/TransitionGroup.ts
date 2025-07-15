@@ -11,8 +11,8 @@ import {
 } from 'vue-demi'
 import { resolveTransitionProps, transitionProps } from './Transition'
 
-export const PTransitionGroup = defineComponent({
-  name: 'PTransitionGroup',
+export const AnimatedTransitionGroup = defineComponent({
+  name: 'AnimatedTransitionGroup',
   props: transitionProps,
   setup(props, { slots }) {
     const instance = getCurrentInstance()!

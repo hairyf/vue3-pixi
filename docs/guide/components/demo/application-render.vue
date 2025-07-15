@@ -1,12 +1,14 @@
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue'
+import { whenever } from '@vueuse/core'
+import { ref } from 'vue'
 import { Application } from 'vue3-pixi'
 
 const appRef = ref<Application>()
 
-onMounted(() => {
-  appRef.value?.app.start()
-})
+whenever(
+  () => appRef.value?.app,
+  app => app.start(),
+)
 </script>
 
 <template>

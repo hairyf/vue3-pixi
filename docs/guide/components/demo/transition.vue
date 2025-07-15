@@ -5,7 +5,7 @@ import gsap from 'gsap'
 import PixiPlugin from 'gsap/PixiPlugin'
 import * as PIXI from 'pixi.js'
 import { nextTick, ref } from 'vue'
-import { External, PTransition } from 'vue3-pixi'
+import { External } from 'vue3-pixi'
 
 gsap.registerPlugin(PixiPlugin)
 PixiPlugin.registerPIXI(PIXI)
@@ -47,9 +47,9 @@ const show = ref(true)
 </script>
 
 <template>
-  <PTransition @before-enter="onBeforeEnter" @enter="onEnter" @leave="onLeave">
+  <AnimatedTransition @before-enter="onBeforeEnter" @enter="onEnter" @leave="onLeave">
     <graphics v-if="show" :scale="1" :pivot="30" :x="120" :y="120" @effect="onDrawRounded" />
-  </PTransition>
+  </AnimatedTransition>
   <External class="btn" tag="button" @click="show = !show">
     {{ show ? 'Hide' : 'Show' }}
   </External>
