@@ -7,6 +7,7 @@ import { appInjectKey } from '../../composables'
 import { createApp } from '../../renderer'
 import { inheritParent } from '../../utils'
 import { Assets } from '../assets'
+import { AnimatedTransition, AnimatedTransitionGroup } from '../transition'
 
 export interface Application {
   canvas: HTMLCanvasElement
@@ -56,11 +57,16 @@ export const Application = defineComponent({
 
       pixiApp.value = markRaw(inst)
 
-      app = createApp({ render: () => renderSlot(slots, 'default') })
-      app.component('Assets', Assets)
+      app = createApp({ 
+        render: () => renderSlot(slots, 'default'),
+       })
+
 
       inheritParent(app, appContext)
 
+      app.component('AnimatedTransitionGroup', AnimatedTransitionGroup)
+      app.component('AnimatedTransition', AnimatedTransition)
+      app.component('Assets', Assets)
       app.provide(appInjectKey, pixiApp.value)
       app.mount(pixiApp.value.stage)
     }
