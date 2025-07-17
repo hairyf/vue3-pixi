@@ -1,5 +1,6 @@
+import type { TextOptions } from 'pixi.js'
 import type { DefineContainerElement } from '../types'
-import { BitmapText, TextOptions } from 'pixi.js'
+import { BitmapText } from 'pixi.js'
 import { patchProp, renderer, setters } from '../renderer'
 
 export type BitmapTextElement = DefineContainerElement<BitmapText, TextOptions>

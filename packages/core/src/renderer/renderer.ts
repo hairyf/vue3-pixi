@@ -3,18 +3,14 @@ import type { VuePIXIRenderer } from '../types'
 import { createRenderer as _createRenderer } from 'vue-demi'
 import { rendererWithActions, rendererWithCapture } from './internal'
 import { nodeOps as _nodeOps } from './nodeOps'
-import { patchProp } from './patchProp'
 
 export function createRenderer(options: { prefix?: string } = {}) {
   const { createElement, setText, ...nodeOps } = _nodeOps
   const { prefix = 'pixi' } = options
   const rendererOptions = rendererWithCapture({
-    // eslint-disable-next-line ts/ban-ts-comment
-    // @ts-expect-error
     createElement: (...args) => createElement(prefix, ...args),
     setElementText: (...args) => setText(prefix, ...args),
     setText: (...args) => setText(prefix, ...args),
-    patchProp,
     ...nodeOps,
   })
   return _createRenderer<Container, Container>(rendererOptions)

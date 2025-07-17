@@ -1,5 +1,6 @@
+import type { TextOptions } from 'pixi.js'
 import type { DefineContainerElement } from '../types'
-import { Text, TextOptions } from 'pixi.js'
+import { Text } from 'pixi.js'
 import { patchProp, renderer, setters } from '../renderer'
 
 export type TextElement = DefineContainerElement<Text, TextOptions>

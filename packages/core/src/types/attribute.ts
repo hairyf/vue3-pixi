@@ -1,4 +1,4 @@
-import { Texture } from "pixi.js"
+import type { Texture } from 'pixi.js'
 
 export interface PointAttribute {
   x: number

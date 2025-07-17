@@ -1,5 +1,6 @@
+import type { HTMLTextOptions } from 'pixi.js'
 import type { DefineContainerElement } from '../types'
-import { HTMLText, HTMLTextOptions } from 'pixi.js'
+import { HTMLText } from 'pixi.js'
 import { patchProp, renderer, setters } from '../renderer'
 
 export type HTMLTextElement = DefineContainerElement<HTMLText, HTMLTextOptions>

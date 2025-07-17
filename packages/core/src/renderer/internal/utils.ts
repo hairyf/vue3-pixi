@@ -1,4 +1,5 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
+/* eslint-disable ts/ban-ts-comment */
+import type { AnyFn } from '@vueuse/core'
 import type { Container } from 'pixi.js'
 import type { Renderer, RendererOptions } from 'vue-demi'
 import { camelize } from 'vue-demi'
@@ -13,22 +14,20 @@ export function rendererWithCapture(options: RendererOptions<Container, Containe
   for (const key in options) {
     if (notOverrides.includes(key))
       continue
-    // @ts-expect-error
-    const fn = options[key]
-    if (key === 'patchProp') {
-      options[key] = (el, pKey, ...args) => {
-        const inFn = renderers[el._vp_name]?.[key]
-        pKey = camelize(pKey)
-        return inFn ? inFn(el, pKey, ...args) : fn(el, pKey, ...args)
-      }
-      continue
+    function overwritePatchProp(el: any, prop: string, ...args: any[]) {
+      return overwrite(el, camelize(prop), ...args)
     }
-    // @ts-expect-error
-    options[key] = (el, ...args: any[]) => {
+    function overwrite(el: any, ...args: any[]) {
+      const overwriteFn = Reflect.get(renderers, el._vp_name)?.[key]
+      const rendererFn = options[key as keyof RendererOptions] as AnyFn
+      return (overwriteFn ?? rendererFn)(el, ...args)
+    }
+
+    if (key === 'patchProp')
+      options[key] = overwritePatchProp
+    else
       // @ts-expect-error
-      const inFn = renderers[el._vp_name]?.[key]
-      return inFn ? inFn?.(el, ...args) : fn(el, ...args)
-    }
+      options[key] = overwrite
   }
   return options
 }
@@ -36,12 +35,11 @@ export function rendererWithCapture(options: RendererOptions<Container, Containe
 export function rendererWithActions(
   renderer: Renderer<Container<Container>> & Record<string, any>,
 ) {
-  const { createApp: _createApp, render: render } = renderer
+  const { createApp: _createApp } = renderer
   function createApp(...args: Parameters<typeof _createApp>) {
     const app = _createApp(...args)
     assign(app.config.compilerOptions, { isCustomElement })
     return app
   }
-
-  assign(renderer, { createApp, render, use })
+  assign(renderer, { createApp, use })
 }

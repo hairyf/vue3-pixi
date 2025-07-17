@@ -1,5 +1,6 @@
+import type { GraphicsOptions } from 'pixi.js'
 import type { DefineContainerElement } from '../types'
-import { BitmapTextGraphics, GraphicsOptions } from 'pixi.js'
+import { BitmapTextGraphics } from 'pixi.js'
 import { renderer } from '../renderer'
 
 export type BitmapTextGraphicsElement = DefineContainerElement<BitmapTextGraphics, GraphicsOptions>

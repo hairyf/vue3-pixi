@@ -1,5 +1,6 @@
+import type { FilterOptions } from 'pixi.js'
 import type { DefineFilterElement } from '../types'
-import { ColorMatrixFilter, FilterOptions } from 'pixi.js'
+import { ColorMatrixFilter } from 'pixi.js'
 import { renderer } from '../renderer'
 
 export type ColorMatrixFilterElement = DefineFilterElement<ColorMatrixFilter, FilterOptions>

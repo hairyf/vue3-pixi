@@ -1,5 +1,6 @@
+import type { ParticleOptions } from 'pixi.js'
 import type { DefineContainerElement } from '../types'
-import { Particle, ParticleOptions } from 'pixi.js'
+import { Particle } from 'pixi.js'
 import { renderer } from '../renderer'
 
 export type ParticleElement = DefineContainerElement<Particle, ParticleOptions>

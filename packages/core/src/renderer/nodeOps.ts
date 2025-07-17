@@ -1,3 +1,4 @@
+import type { ElementNamespace, VNodeProps } from 'vue-demi'
 import {
   BitmapText,
   Container,
@@ -7,9 +8,9 @@ import {
 } from 'pixi.js'
 import { camelize, markRaw, warn } from 'vue-demi'
 import { Empty, insertContainer, insertFilter, nextSiblingContainer, nextSiblingFilter, renderers } from './internal'
-import { isOn, withThisRender } from './utils'
+import { isOn, patchs, withThisRender } from './utils'
 
-export function createElement(prefix: string, name: string, _?: boolean, _1?: string, props?: any): any {
+export function createElement(prefix: string, name: string, _?: ElementNamespace, _1?: string, props?: (VNodeProps & { [key: string]: any }) | null): any {
   let is
   if (name.startsWith(prefix)) {
     name = camelize(name)
@@ -79,6 +80,26 @@ export function setText(prefix: string, node: Container, text: string) {
     : warn(`Text is only supported with ${prefix}-text element`)
 }
 
+export function patchProp(el: any, prevValue: any, key: string, nextValue: any) {
+  if (patchs.skip(key))
+    return
+
+  if (patchs.events.effect(el, key, prevValue, nextValue))
+    return
+  if (patchs.events.general(el, key, prevValue, nextValue))
+    return
+  if (patchs.texture(el, key, prevValue, nextValue))
+    return
+
+  if (patchs.boolean(el, key, prevValue, nextValue))
+    return
+
+  if (patchs.point(el, key, prevValue, nextValue))
+    return
+
+  patchs.default(el, key, prevValue, nextValue)
+}
+
 export const nodeOps = {
   createElement,
   parentNode,
@@ -88,4 +109,5 @@ export const nodeOps = {
   insert,
   nextSibling,
   setText,
+  patchProp,
 }
