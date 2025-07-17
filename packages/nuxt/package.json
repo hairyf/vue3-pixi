@@ -16,12 +16,12 @@
   "sideEffects": false,
   "exports": {
     ".": {
-      "types": "./dist/types.d.mts",
+      "types": "./dist/module.d.ts",
       "default": "./dist/module.mjs"
     }
   },
   "main": "dist/module.mjs",
-  "types": "dist/types.d.ts",
+  "types": "dist/module.d.types",
   "files": [
     "dist"
   ],
@@ -30,7 +30,8 @@
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "prepare": "nuxt-module-build prepare"
   },
   "dependencies": {
     "@antfu/utils": "catalog:share",

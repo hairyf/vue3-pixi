@@ -1,4 +1,4 @@
-import type { RendererOptions } from './types'
+import type { RendererOptions } from '../../types'
 import { renderers } from './constants'
 
 export function baseUse(options: RendererOptions) {
