@@ -5,7 +5,6 @@ import { computed, ref } from 'vue'
 import { onTick, useScreen } from 'vue3-pixi'
 
 const screen = useScreen()
-const containerRef = ref<Container>()
 
 const center = computed(() => ({
   x: screen.value.width / 2,
@@ -20,20 +19,19 @@ onTick(({ deltaTime }) => {
 </script>
 
 <template>
-  <container
-    ref="containerRef"
-    :position="center"
-    :rotation="rotation"
-    :pivot="{ x: 93, y: 98.5 }"
-  >
-    <assets alias="bunny" entry="https://pixijs.com/assets/bunny.png">
+  <assets alias="bunny" entry="https://pixijs.com/assets/bunny.png">
+    <container
+      :position="center"
+      :rotation="rotation"
+      :pivot="{ x: 93, y: 98.5 }"
+    >
       <sprite
         v-for="(_, i) in 25"
         :key="i"
-        texture="bunny"
         :x="(i % 5) * 40"
         :y="Math.floor(i / 5) * 40"
+        texture="bunny"
       />
-    </assets>
-  </container>
+    </container>
+  </assets>
 </template>

@@ -7,6 +7,7 @@ import { appInjectKey } from '../../composables'
 import { createApp } from '../../renderer'
 import { inheritParent } from '../../utils'
 import { Assets } from '../assets'
+import { External } from '../external'
 import { AnimatedTransition, AnimatedTransitionGroup } from '../transition'
 
 export interface Application {
@@ -57,19 +58,19 @@ export const Application = defineComponent({
 
       pixiApp.value = markRaw(inst)
 
-      app = createApp({ 
-        render: () => renderSlot(slots, 'default'),
-       })
-
+      app = createApp({ render: renderSlotDefault })
 
       inheritParent(app, appContext)
 
       app.component('AnimatedTransitionGroup', AnimatedTransitionGroup)
       app.component('AnimatedTransition', AnimatedTransition)
       app.component('Assets', Assets)
+      app.component('External', External)
+
       app.provide(appInjectKey, pixiApp.value)
       app.mount(pixiApp.value.stage)
     }
+
     function unmount() {
       app?.unmount()
       app = undefined
@@ -77,11 +78,20 @@ export const Application = defineComponent({
       pixiApp.value?.destroy()
       pixiApp.value = undefined
     }
+
+    function renderSlotDefault() {
+      return renderSlot(slots, 'default')
+    }
+
+    function renderCanvas() {
+      return h('canvas', { ref: canvas })
+    }
+
     onMounted(mount)
     onUnmounted(unmount)
 
     expose({ canvas, app: pixiApp })
 
-    return () => h('canvas', { ref: canvas })
+    return renderCanvas
   },
 })

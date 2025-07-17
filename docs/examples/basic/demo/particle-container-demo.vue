@@ -1,9 +1,10 @@
 <script lang="ts" setup>
 import type { ParticleContainer } from 'pixi.js'
-import { Rectangle, Sprite } from 'pixi.js'
+import { Particle, Rectangle, Texture } from 'pixi.js'
+
 import { onTick } from 'vue3-pixi'
 
-interface DudeIte extends Omit<Sprite, 'tint'> {
+interface DudeIte extends Omit<Particle, 'tint'> {
   x: number
   y: number
   tint: number
@@ -35,10 +36,10 @@ onTick(() => {
   for (let i = 0; i < maggots.length; i++) {
     const dude = maggots[i]
 
-    dude.scale.y = 0.95 + Math.sin(tick + dude.offset) * 0.05
+    dude.scaleY = 0.95 + Math.sin(tick + dude.offset) * 0.05
     dude.direction += dude.turningSpeed * 0.01
-    dude.x += Math.sin(dude.direction) * (dude.speed * dude.scale.y)
-    dude.y += Math.cos(dude.direction) * (dude.speed * dude.scale.y)
+    dude.x += Math.sin(dude.direction) * (dude.speed * dude.scaleY)
+    dude.y += Math.cos(dude.direction) * (dude.speed * dude.scaleY)
     dude.rotation = -dude.direction + Math.PI
 
     // wrap the maggots
@@ -56,16 +57,19 @@ onTick(() => {
   tick += 0.1
 })
 
-function onRender(el: ParticleContainer) {
+function effect(el: ParticleContainer) {
   for (let i = 0; i < totalSprites; i++) {
   // create a new Sprite
-    const dude = Sprite.from('https://pixijs.com/assets/maggot_tiny.png') as DudeIte
+    const dude = new Particle({ texture: Texture.from('maggot_tiny') }) as unknown as DudeIte
 
     // set the anchor point so the texture is centerd on the sprite
-    dude.anchor.set(0.5)
+    dude.anchorX = 0.5
+    dude.anchorY = 0.5
 
     // different maggots, different sizes
-    dude.scale.set(0.8 + Math.random() * 0.3)
+    const scale = (0.8 + Math.random() * 0.3)
+    dude.scaleX = scale
+    dude.scaleY = scale
 
     // scatter them all
     dude.x = Math.random() * 572
@@ -87,20 +91,22 @@ function onRender(el: ParticleContainer) {
     // finally we push the dude into the maggots array so it it can be easily accessed later
     maggots.push(dude)
   }
-  el.addChild(...maggots)
+  el.addParticle(...maggots)
 }
 </script>
 
 <template>
-  <particle-container
-    :max-size="10000"
-    :properties="{
-      scale: true,
-      position: true,
-      rotation: true,
-      uvs: true,
-      alpha: true,
-    }"
-    @effect="onRender"
-  />
+  <assets alias="maggot_tiny" entry="https://pixijs.com/assets/maggot_tiny.png">
+    <particle-container
+      :max-size="10000"
+      :properties="{
+        scale: true,
+        position: true,
+        rotation: true,
+        uvs: true,
+        alpha: true,
+      }"
+      @effect="effect"
+    />
+  </assets>
 </template>

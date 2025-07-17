@@ -8,14 +8,13 @@ const screen = useScreen()
 const play = ref(false)
 
 function drawButton(e: Graphics) {
-  e.beginFill(0x0, 0.5)
-    .drawRoundedRect(0, 0, 100, 100, 10)
-    .endFill()
+  e.roundRect(0, 0, 100, 100, 10)
+  e.fill(0x0, 0.5)
 
-  e.beginFill(0xFFFFFF)
-    .moveTo(36, 30)
-    .lineTo(36, 70)
-    .lineTo(70, 50)
+  e.moveTo(36, 30)
+  e.lineTo(36, 70)
+  e.lineTo(70, 50)
+  e.fill(0xFFFFFF)
 }
 
 function onPlay() {

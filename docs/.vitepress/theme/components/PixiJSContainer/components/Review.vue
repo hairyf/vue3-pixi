@@ -25,7 +25,7 @@ const size = computed(() => {
 </script>
 
 <template>
-  <div ref="containerViewRef" class="container-view flex justify-center items-center" :class="{ p4: !full }">
+  <div ref="containerViewRef" class="container-view flex justify-center items-center relative" :class="{ p4: !full }">
     <div>
       <ClientOnly>
         <Application

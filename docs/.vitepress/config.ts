@@ -1,5 +1,4 @@
 import type { DefaultTheme } from 'vitepress'
-import { fileURLToPath } from 'node:url'
 import unocss from 'unocss/vite'
 import { defineConfig } from 'vitepress'
 import { compilerOptions } from '../../packages/core'
@@ -111,11 +110,12 @@ const themeConfig: DefaultTheme.Config = {
         text: 'Basic',
         collapsed: true,
         items: [
-          { text: 'Blend Modes', link: '/examples/basic/blend-modes' },
-          { text: 'Cache As Bitmap', link: '/examples/basic/cache-as-bitmap' },
           { text: 'Container', link: '/examples/basic/container' },
-          { text: 'Particle Container', link: '/examples/basic/particle-container' },
-          { text: 'Simple Plane', link: '/examples/basic/simple-plane' },
+          { text: 'Container Origin', link: '/examples/basic/container-origin' },
+          // { text: 'Blend Modes', link: '/examples/basic/blend-modes' },
+          // { text: 'Cache As Bitmap', link: '/examples/basic/cache-as-bitmap' },
+          // { text: 'Particle Container', link: '/examples/basic/particle-container' },
+          // { text: 'Simple Plane', link: '/examples/basic/simple-plane' },
         ],
       },
       {
@@ -131,57 +131,57 @@ const themeConfig: DefaultTheme.Config = {
           { text: 'Video', link: '/examples/sprite/video' },
         ],
       },
-      {
-        text: 'Text',
-        collapsed: true,
-        items: [
-          { text: 'Bitmap Text', link: '/examples/text/bitmap-text' },
-          { text: 'From Font', link: '/examples/text/from-font' },
-          { text: 'Basic', link: '/examples/text/basic' },
-          { text: 'Web Font', link: '/examples/text/web-font' },
-        ],
-      },
-      {
-        text: 'Graphics',
-        collapsed: true,
-        items: [
-          { text: 'Advanced', link: '/examples/graphics/advanced' },
-          { text: 'Dynamic', link: '/examples/graphics/dynamic' },
-          { text: 'Simple', link: '/examples/graphics/simple' },
-        ],
-      },
-      {
-        text: 'Events',
-        collapsed: true,
-        items: [
-          { text: 'Click', link: '/examples/events/click' },
-          { text: 'Custom Mouse Icon', link: '/examples/events/custom-mouse-icon' },
-          { text: 'Dragging', link: '/examples/events/dragging' },
-          { text: 'Interactivity', link: '/examples/events/interactivity' },
-          { text: 'Logger', link: '/examples/events/logger' },
-          { text: 'Pointer Tacker', link: '/examples/events/pointer-tracker' },
-          { text: 'Slider', link: '/examples/events/slider' },
-        ],
-      },
-      {
-        text: 'Masks',
-        collapsed: true,
-        items: [
-          { text: 'Filter', link: '/examples/masks/filter' },
-          { text: 'Graphics', link: '/examples/masks/graphics' },
-          { text: 'Sprite', link: '/examples/masks/sprite' },
-        ],
-      },
-      {
-        text: 'Filters Basic',
-        collapsed: true,
-        items: [
-          { text: 'Blur', link: '/examples/filters-basic/blur' },
-          { text: 'Color Matrix', link: '/examples/filters-basic/color-matrix' },
-          { text: 'Displacement Map Crawlies', link: '/examples/filters-basic/displacement-map-crawlies' },
-          { text: 'Displacement Map Flag', link: '/examples/filters-basic/displacement-map-flag' },
-        ],
-      },
+      // {
+      //   text: 'Text',
+      //   collapsed: true,
+      //   items: [
+      //     { text: 'Bitmap Text', link: '/examples/text/bitmap-text' },
+      //     { text: 'From Font', link: '/examples/text/from-font' },
+      //     { text: 'Basic', link: '/examples/text/basic' },
+      //     { text: 'Web Font', link: '/examples/text/web-font' },
+      //   ],
+      // },
+      // {
+      //   text: 'Graphics',
+      //   collapsed: true,
+      //   items: [
+      //     { text: 'Advanced', link: '/examples/graphics/advanced' },
+      //     { text: 'Dynamic', link: '/examples/graphics/dynamic' },
+      //     { text: 'Simple', link: '/examples/graphics/simple' },
+      //   ],
+      // },
+      // {
+      //   text: 'Events',
+      //   collapsed: true,
+      //   items: [
+      //     { text: 'Click', link: '/examples/events/click' },
+      //     { text: 'Custom Mouse Icon', link: '/examples/events/custom-mouse-icon' },
+      //     { text: 'Dragging', link: '/examples/events/dragging' },
+      //     { text: 'Interactivity', link: '/examples/events/interactivity' },
+      //     { text: 'Logger', link: '/examples/events/logger' },
+      //     { text: 'Pointer Tacker', link: '/examples/events/pointer-tracker' },
+      //     { text: 'Slider', link: '/examples/events/slider' },
+      //   ],
+      // },
+      // {
+      //   text: 'Masks',
+      //   collapsed: true,
+      //   items: [
+      //     { text: 'Filter', link: '/examples/masks/filter' },
+      //     { text: 'Graphics', link: '/examples/masks/graphics' },
+      //     { text: 'Sprite', link: '/examples/masks/sprite' },
+      //   ],
+      // },
+      // {
+      //   text: 'Filters Basic',
+      //   collapsed: true,
+      //   items: [
+      //     { text: 'Blur', link: '/examples/filters-basic/blur' },
+      //     { text: 'Color Matrix', link: '/examples/filters-basic/color-matrix' },
+      //     { text: 'Displacement Map Crawlies', link: '/examples/filters-basic/displacement-map-crawlies' },
+      //     { text: 'Displacement Map Flag', link: '/examples/filters-basic/displacement-map-flag' },
+      //   ],
+      // },
       // {
       //   text: 'Filters Advanced',
       //   collapsed: true,

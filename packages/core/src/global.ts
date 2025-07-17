@@ -16,5 +16,7 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Assets: typeof import('./components').Assets
     AnimatedTransition: typeof import('./components').AnimatedTransition
+    AnimatedTransitionGroup: typeof import('./components').AnimatedTransitionGroup
+    External: typeof import('./components').External
   }
 }
