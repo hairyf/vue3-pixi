@@ -1,3 +1,3 @@
 # Blur
 
-<demo mode="full" :background-alpha="0" src="./demo/blur.vue" />
+<!-- <demo mode="full" :background-alpha="0" src="./demo/blur.vue" /> -->

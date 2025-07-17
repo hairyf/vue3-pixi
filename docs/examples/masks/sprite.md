@@ -1,3 +1,3 @@
 # Sprite
 
-<demo mode="full" :background-alpha="0" src="./demo/sprite.vue" />
+<!-- <demo mode="full" :background-alpha="0" src="./demo/sprite.vue" /> -->

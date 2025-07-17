@@ -1,3 +1,3 @@
 # Logger
 
-<demo mode="full" :background-alpha="0" src="./demo/logger.vue" />
+<!-- <demo mode="full" :background-alpha="0" src="./demo/logger.vue" /> -->

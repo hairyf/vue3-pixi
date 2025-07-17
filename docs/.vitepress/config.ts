@@ -76,7 +76,7 @@ const themeConfig: DefaultTheme.Config = {
           { text: 'Graphics', link: '/guide/elements/graphics' },
           { text: 'Mesh', link: '/guide/elements/mesh' },
           // { text: 'NineSlicePlane', link: '/guide/elements/nine-slice-plane' },
-          { text: 'ParticleContainer', link: '/guide/elements/particle-container' },
+          // { text: 'ParticleContainer', link: '/guide/elements/particle-container' },
           // { text: 'SimplePlane', link: '/guide/elements/simple-plane' },
           { text: 'MeshRope', link: '/guide/elements/mesh-rope' },
           { text: 'Sprite', link: '/guide/elements/sprite' },
