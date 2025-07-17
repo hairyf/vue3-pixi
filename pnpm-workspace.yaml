@@ -22,7 +22,7 @@ catalogs:
     naive-ui: ^2.42.0
     unocss: ^0.60.4
     vitepress: ^1.6.3
-    vitepress-plugin-demo: ^0.8.0
+    vitepress-plugin-demo: ^0.8.1
   nuxt:
     '@nuxt/kit': ^3.17.6
     '@nuxt/module-builder': ^0.7.1
