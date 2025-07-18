@@ -24,13 +24,13 @@ const themeConfig: DefaultTheme.Config = {
     {
       text: 'Examples',
       items: [
-        { text: 'Basic', link: '/examples/basic/blend-modes' },
+        { text: 'Basic', link: '/examples/basic/container' },
         { text: 'Sprite', link: '/examples/sprite/animated-sprite-animation-speed' },
-        { text: 'Text', link: '/examples/text/bitmap-text' },
-        { text: 'Graphics', link: '/examples/graphics/advanced' },
-        { text: 'Events', link: '/examples/events/click' },
-        { text: 'Masks', link: '/examples/masks/filter' },
-        { text: 'Filters Basic', link: '/examples/filters-basic/blur' },
+        // { text: 'Text', link: '/examples/text/bitmap-text' },
+        // { text: 'Graphics', link: '/examples/graphics/advanced' },
+        // { text: 'Events', link: '/examples/events/click' },
+        // { text: 'Masks', link: '/examples/masks/filter' },
+        // { text: 'Filters Basic', link: '/examples/filters-basic/blur' },
         // { text: 'Filters Advanced', link: '/examples/filters-advanced/custom' },
         // { text: 'Advanced', link: '/examples/advanced/collision-detection' },
         // { text: 'Mesh And Shaders', link: '/examples/mesh-and-shaders/instanced-geometry' },
@@ -112,7 +112,7 @@ const themeConfig: DefaultTheme.Config = {
         items: [
           { text: 'Container', link: '/examples/basic/container' },
           { text: 'Container Origin', link: '/examples/basic/container-origin' },
-          // { text: 'Blend Modes', link: '/examples/basic/blend-modes' },
+          { text: 'Transparent Background', link: '/examples/basic/transparent-background' },
           // { text: 'Cache As Bitmap', link: '/examples/basic/cache-as-bitmap' },
           // { text: 'Particle Container', link: '/examples/basic/particle-container' },
           // { text: 'Simple Plane', link: '/examples/basic/simple-plane' },
