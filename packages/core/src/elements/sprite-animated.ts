@@ -2,7 +2,7 @@ import type { AnimatedSpriteOptions } from 'pixi.js'
 import type { DefineContainerElement } from '../types'
 import { AnimatedSprite } from 'pixi.js'
 import { normalizeTexture, renderer, setters } from '../renderer'
-import { patchProp } from '../renderer/patchProp'
+import { patchProp } from '../renderer/nodeOps'
 
 export type AnimatedSpriteElement = DefineContainerElement<AnimatedSprite, AnimatedSpriteOptions>
 

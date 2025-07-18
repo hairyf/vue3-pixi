@@ -14,12 +14,13 @@ export function rendererWithCapture(options: RendererOptions<Container, Containe
   for (const key in options) {
     if (notOverrides.includes(key))
       continue
+    const rendererFn = options[key as keyof RendererOptions] as AnyFn
+
     function overwritePatchProp(el: any, prop: string, ...args: any[]) {
       return overwrite(el, camelize(prop), ...args)
     }
     function overwrite(el: any, ...args: any[]) {
       const overwriteFn = Reflect.get(renderers, el._vp_name)?.[key]
-      const rendererFn = options[key as keyof RendererOptions] as AnyFn
       return (overwriteFn ?? rendererFn)(el, ...args)
     }
 

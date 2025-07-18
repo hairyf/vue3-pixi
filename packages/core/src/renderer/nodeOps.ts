@@ -80,7 +80,7 @@ export function setText(prefix: string, node: Container, text: string) {
     : warn(`Text is only supported with ${prefix}-text element`)
 }
 
-export function patchProp(el: any, prevValue: any, key: string, nextValue: any) {
+export function patchProp(el: any, key: string, prevValue: any, nextValue: any) {
   if (patchs.skip(key))
     return
 

@@ -2,7 +2,7 @@ import type { TilingSpriteOptions } from 'pixi.js'
 import type { DefineContainerElement } from '../types'
 import { TilingSprite } from 'pixi.js'
 import { normalizeTexture, renderer, setters } from '../renderer'
-import { patchProp } from '../renderer/patchProp'
+import { patchProp } from '../renderer/nodeOps'
 
 export type TilingSpriteElement = DefineContainerElement<TilingSprite, TilingSpriteOptions>
 
