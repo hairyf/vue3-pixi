@@ -18,25 +18,17 @@ const elementNames = [
   'color-matrix-filter',
 ]
 
-const prefix = 'pixi-'
-
-export function isCustomElement(name: string) {
-  let normalizedName = name.replace(/[A-Z]/g, m => `-${m.toLowerCase()}`)
-  if (normalizedName.startsWith('-'))
-    normalizedName = normalizedName.slice(1)
-
-  const isPixiElement = elementNames.includes(normalizedName)
-  const isPrefixElement
-    = normalizedName.startsWith(prefix)
-      && elementNames.includes(normalizedName.slice(prefix.length))
-
-  return isPixiElement || isPrefixElement
-}
-
 export const compilerOptions = {
-  isCustomElement,
-}
+  isCustomElement(name: string) {
+    let normalizedName = name.replace(/[A-Z]/g, m => `-${m.toLowerCase()}`)
+    if (normalizedName.startsWith('-'))
+      normalizedName = normalizedName.slice(1)
 
-export const transformAssetUrls = {
-  sprite: ['texture'],
+    const isPixiElement = elementNames.includes(normalizedName)
+    const isPrefixElement = normalizedName.startsWith(compilerOptions.prefix)
+      && elementNames.includes(normalizedName.slice(compilerOptions.prefix.length))
+
+    return isPixiElement || isPrefixElement
+  },
+  prefix: 'pixi-',
 }

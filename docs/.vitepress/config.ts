@@ -113,7 +113,7 @@ const themeConfig: DefaultTheme.Config = {
           { text: 'Container', link: '/examples/basic/container' },
           { text: 'Container Origin', link: '/examples/basic/container-origin' },
           { text: 'Transparent Background', link: '/examples/basic/transparent-background' },
-          // { text: 'Cache As Bitmap', link: '/examples/basic/cache-as-bitmap' },
+          { text: 'Tinting', link: '/examples/basic/tinting' },
           // { text: 'Particle Container', link: '/examples/basic/particle-container' },
           // { text: 'Simple Plane', link: '/examples/basic/simple-plane' },
         ],

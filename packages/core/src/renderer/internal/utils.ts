@@ -3,7 +3,7 @@ import type { AnyFn } from '@vueuse/core'
 import type { Container } from 'pixi.js'
 import type { Renderer, RendererOptions } from 'vue-demi'
 import { camelize } from 'vue-demi'
-import { isCustomElement } from '../../compiler'
+import { compilerOptions } from '../../compiler'
 import { renderers } from './constants'
 import { use } from './hooks'
 
@@ -39,7 +39,7 @@ export function rendererWithActions(
   const { createApp: _createApp } = renderer
   function createApp(...args: Parameters<typeof _createApp>) {
     const app = _createApp(...args)
-    assign(app.config.compilerOptions, { isCustomElement })
+    assign(app.config.compilerOptions, compilerOptions)
     return app
   }
   assign(renderer, { createApp, use })
