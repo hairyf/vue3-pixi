@@ -47,8 +47,19 @@ export const patchs = {
     },
     effect(el: any, key: string, prevValue: any, nextValue: any) {
       if (key === 'onEffect' && !prevValue && isFunction(nextValue)) {
-        const scope = effectScope()
+        let scope = effectScope()
         scope.run(() => watchEffect(() => nextValue(el)))
+
+        const onDestroy = () => {
+          scope.stop()
+          // eslint-disable-next-line ts/ban-ts-comment
+          // @ts-ignore
+          scope = null
+          el.off('destroyed', onDestroy)
+        }
+
+        el.on('destroyed', onDestroy)
+
         el.on('destroyed', () => scope.stop())
         return true
       }
