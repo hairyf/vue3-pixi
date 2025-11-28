@@ -56,7 +56,7 @@ export function createComment() {
 }
 
 export function remove(node: Container) {
-  node.destroy()
+  node.destroy({ children: true })
 }
 
 export function insert(child: Container, parent: Container, anchor?: Container | null) {

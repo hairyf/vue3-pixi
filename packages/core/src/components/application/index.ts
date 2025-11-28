@@ -1,3 +1,4 @@
+/* eslint-disable ts/ban-ts-comment */
 /* eslint-disable ts/no-redeclare */
 import type { ColorSource, Container, GpuPowerPreference } from 'pixi.js'
 import type { App, PropType } from 'vue-demi'
@@ -75,7 +76,17 @@ export const Application = defineComponent({
       app?.unmount()
       app = undefined
 
-      pixiApp.value?.destroy()
+      pixiApp.value?.destroy(
+        // @ts-ignore
+        { releaseGlobalResources: true, removeView: true },
+        {
+          children: true,
+          texture: true,
+          textureSource: true,
+          context: true,
+          style: true,
+        },
+      )
       pixiApp.value = undefined
     }
 

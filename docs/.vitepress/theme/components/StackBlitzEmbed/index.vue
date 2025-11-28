@@ -7,11 +7,11 @@ import { ref, watch } from 'vue'
 const props = withDefaults(
   defineProps<{
     id: string
+    // eslint-disable-next-line vue/no-required-prop-with-default
     options: EmbedOptions
   }>(),
   {
     options: {
-      // @ts-expect-error
       openFile: 'src/App.vue',
       view: 'preview',
       forceEmbedLayout: true,

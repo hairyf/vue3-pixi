@@ -7,8 +7,7 @@ import { ref } from 'vue'
 
 const isLoaded = ref(false)
 
-// @ts-expect-error
-window.WebFontConfig = {
+;(window as any).WebFontConfig = {
   google: { families: ['Snippet'] },
   active: () => {
     isLoaded.value = true
