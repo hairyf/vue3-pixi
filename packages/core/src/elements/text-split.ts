@@ -1,5 +1,6 @@
+import type { SplitTextOptions } from 'pixi.js'
 import type { DefineContainerElement } from '../types'
-import { SplitText, SplitTextOptions } from 'pixi.js'
+import { SplitText } from 'pixi.js'
 import { patchProp, renderer, setters } from '../renderer'
 
 export type SplitTextElement = DefineContainerElement<SplitText, SplitTextOptions>

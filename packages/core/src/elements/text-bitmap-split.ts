@@ -1,5 +1,6 @@
+import type { SplitBitmapTextOptions } from 'pixi.js'
 import type { DefineContainerElement } from '../types'
-import { SplitBitmapText, SplitBitmapTextOptions } from 'pixi.js'
+import { SplitBitmapText } from 'pixi.js'
 import { patchProp, renderer, setters } from '../renderer'
 
 export type SplitBitmapTextElement = DefineContainerElement<SplitBitmapText, SplitBitmapTextOptions>

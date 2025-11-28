@@ -1,15 +1,15 @@
 <script lang="ts" setup>
-import { onTick } from 'vue3-pixi';
-import { defineComponent, h, ref } from 'vue';
-import { Geometry, Shader, Texture } from 'pixi.js';
+import { Geometry, Shader, Texture } from 'pixi.js'
+import { defineComponent, h, ref } from 'vue'
+import { onTick } from 'vue3-pixi'
 
 const MeshChild = defineComponent({
   setup() {
-    const texture = Texture.from('bg_scene_rotate');
+    const texture = Texture.from('bg_scene_rotate')
 
     const geometry = new Geometry({
       attributes: {
-        aPosition: [-100, -100, 100, -100, 100, 100,],
+        aPosition: [-100, -100, 100, -100, 100, 100],
         aColor: [1, 0, 0, 0, 1, 0, 0, 0, 1],
         aUV: [0, 0, 1, 0, 1, 1],
       },
@@ -64,14 +64,14 @@ const MeshChild = defineComponent({
       rotation: rotation.value,
       position: 150,
       geometry,
-      shader
+      shader,
     })
-  }
+  },
 })
 </script>
 
 <template>
   <assets alias="bg_scene_rotate" entry="https://pixijs.com/assets/bg_scene_rotate.jpg">
-    <mesh-child />
+    <MeshChild />
   </assets>
 </template>

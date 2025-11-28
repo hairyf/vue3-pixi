@@ -1,5 +1,6 @@
+import type { DOMContainerOptions } from 'pixi.js'
 import type { DefineContainerElement } from '../types'
-import { DOMContainer, DOMContainerOptions } from 'pixi.js'
+import { DOMContainer } from 'pixi.js'
 import { renderer } from '../renderer'
 
 export type DOMContainerElement = DefineContainerElement<DOMContainer, DOMContainerOptions>

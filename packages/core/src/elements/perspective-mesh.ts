@@ -1,5 +1,6 @@
+import type { PerspectivePlaneOptions } from 'pixi.js'
 import type { DefineContainerElement } from '../types'
-import { PerspectiveMesh, PerspectivePlaneOptions } from 'pixi.js'
+import { PerspectiveMesh } from 'pixi.js'
 import { renderer } from '../renderer'
 
 export type PerspectiveMeshElement = DefineContainerElement<PerspectiveMesh, PerspectivePlaneOptions>

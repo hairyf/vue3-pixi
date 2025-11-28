@@ -88,7 +88,7 @@ async function executeTransition(instance: Container, duration: number, transiti
     const from = getValue(instance, key)
     const to = Number(transition[key])
     const deferred = createDeferred<void>()
-    if (isNaN(to) || isUndefined(from))
+    if (Number.isNaN(to) || isUndefined(from))
       throw new Error(`Transition - {${key}} not valid field`)
 
     function tick() {

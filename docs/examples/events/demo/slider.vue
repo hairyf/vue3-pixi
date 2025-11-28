@@ -1,4 +1,3 @@
-<!-- eslint-disable @typescript-eslint/ban-ts-comment -->
 <script lang="ts" setup>
 import type { FederatedPointerEvent } from 'pixi.js'
 import { computed, reactive, ref } from 'vue'
@@ -21,7 +20,6 @@ onReady((app) => {
 })
 
 function onDragStart() {
-  // @ts-expect-error
   stage.value!.addEventListener('pointermove', onDrag)
 }
 

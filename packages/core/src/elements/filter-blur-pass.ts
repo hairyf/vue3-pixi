@@ -1,5 +1,6 @@
+import type { BlurFilterPassOptions } from 'pixi.js'
 import type { DefineFilterElement } from '../types'
-import { BlurFilterPass, BlurFilterPassOptions } from 'pixi.js'
+import { BlurFilterPass } from 'pixi.js'
 import { renderer } from '../renderer'
 
 export type BlurFilterPassElement = DefineFilterElement<BlurFilterPass, BlurFilterPassOptions>

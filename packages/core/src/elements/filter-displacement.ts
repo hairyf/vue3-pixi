@@ -1,5 +1,6 @@
+import type { DisplacementFilterOptions } from 'pixi.js'
 import type { DefineFilterElement } from '../types'
-import { DisplacementFilter, DisplacementFilterOptions } from 'pixi.js'
+import { DisplacementFilter } from 'pixi.js'
 import { renderer } from '../renderer'
 
 export type DisplacementFilterElement = DefineFilterElement<DisplacementFilter, DisplacementFilterOptions>

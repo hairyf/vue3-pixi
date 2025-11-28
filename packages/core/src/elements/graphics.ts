@@ -1,5 +1,6 @@
+import type { GraphicsOptions } from 'pixi.js'
 import type { DefineContainerElement } from '../types'
-import { Graphics, GraphicsOptions } from 'pixi.js'
+import { Graphics } from 'pixi.js'
 import { renderer } from '../renderer'
 
 export type GraphicsElement = DefineContainerElement<Graphics, GraphicsOptions>

@@ -1,12 +1,12 @@
 <script lang="ts" setup>
-import { Geometry,Texture } from 'pixi.js'
-import { Shader } from 'pixi.js'
-import { ref } from 'vue';
-import { onTick } from 'vue3-pixi';
+import { Geometry, Shader, Texture } from 'pixi.js'
 
-const texture = Texture.from('https://pixijs.com/assets/bg_scene_rotate.jpg');
+import { ref } from 'vue'
+import { onTick } from 'vue3-pixi'
 
-const rotation =ref(0)
+const texture = Texture.from('https://pixijs.com/assets/bg_scene_rotate.jpg')
+
+const rotation = ref(0)
 
 const geometry = new Geometry({
   attributes: {
@@ -64,7 +64,7 @@ const shader = Shader.from({
   },
 })
 
-onTick(() =>rotation.value += 0.01)
+onTick(() => rotation.value += 0.01)
 </script>
 
 <template>

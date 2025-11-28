@@ -1,4 +1,5 @@
 import type { Fn } from '@antfu/utils'
+import type { AnyFn } from '@vueuse/core'
 import { camelize } from 'vue-demi'
 
 export function delay(ms: number) {
@@ -14,11 +15,16 @@ export function lerp(a: number, b: number, alpha: number) {
 }
 
 export function ignore(fn: Fn<any>) {
-  try { return fn() }
+  try {
+    return fn()
+  }
   catch {}
 }
 
-export type Deferred<T = void> = Promise<T> & { resolve: (value: T) => void, reject: Function }
+export type Deferred<T = void> = Promise<T> & {
+  resolve: (value: T) => void
+  reject: AnyFn
+}
 
 export function createDeferred<T = void>(): Deferred<T> {
   let resolve: any, reject: any

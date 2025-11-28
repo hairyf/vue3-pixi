@@ -1,5 +1,6 @@
+import type { FilterOptions } from 'pixi.js'
 import type { DefineFilterElement } from '../types'
-import { Filter, FilterOptions } from 'pixi.js'
+import { Filter } from 'pixi.js'
 import { renderer } from '../renderer'
 
 export type FilterElement = DefineFilterElement<Filter, FilterOptions>

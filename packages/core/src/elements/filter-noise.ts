@@ -1,5 +1,6 @@
+import type { NoiseFilterOptions } from 'pixi.js'
 import type { DefineFilterElement } from '../types'
-import { NoiseFilter, NoiseFilterOptions } from 'pixi.js'
+import { NoiseFilter } from 'pixi.js'
 import { renderer } from '../renderer'
 
 export type NoiseFilterElement = DefineFilterElement<NoiseFilter, NoiseFilterOptions>

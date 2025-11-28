@@ -1,5 +1,6 @@
+import type { MaskFilterOptions } from 'pixi.js'
 import type { DefineFilterElement } from '../types'
-import { MaskFilter, MaskFilterOptions } from 'pixi.js'
+import { MaskFilter } from 'pixi.js'
 import { renderer } from '../renderer'
 
 export type MaskFilterElement = DefineFilterElement<MaskFilter, MaskFilterOptions>
