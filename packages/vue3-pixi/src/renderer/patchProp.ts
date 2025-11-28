@@ -45,9 +45,17 @@ export function patchTextureProp(el: any, key: string, _: any, nextValue: any): 
 
 export function patchRenderProp(el: any, key: string, prevValue: any, nextValue: any): boolean {
   if (key === 'onRender' && !prevValue && isFunction(nextValue)) {
-    const scope = effectScope()
+    let scope = effectScope();
     scope.run(() => watchEffect(() => nextValue(el)))
-    el.on('destroyed', () => scope.stop())
+
+    const onDestroy = () => {
+      scope.stop();
+      // @ts-ignore
+      scope = null;
+      el.off("destroyed", onDestroy);
+    };
+
+    el.on("destroyed", onDestroy);
     return true
   }
   return false
