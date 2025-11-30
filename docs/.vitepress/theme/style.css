@@ -11,6 +11,7 @@
   --vp-c-brand-darker: #cc1452;
   --vp-c-brand-darkest: #a81044;
   --vp-c-brand-dimm: rgba(100, 108, 255, 0.08);
+  --vp-sidebar-width: 275px !important;
 }
 .language-vue {
   margin: 0 !important;

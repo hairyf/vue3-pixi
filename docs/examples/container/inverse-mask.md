@@ -1,3 +1,1 @@
-# Inverse Mask
-
 <demo mode="full" :background-alpha="0" src="./demo/inverse-mask.vue" />
