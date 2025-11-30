@@ -60,7 +60,7 @@ export const patchs = {
 
         el.on('destroyed', onDestroy)
 
-        el.on('destroyed', () => scope.stop())
+        el.on('destroyed', () => scope?.stop?.())
         return true
       }
     },
