@@ -100,11 +100,11 @@ catalogs:
       specifier: ^4.0.2
       version: 4.0.2
     pixi-filters:
-      specifier: ^6.1.3
-      version: 6.1.3
+      specifier: ^6.1.5
+      version: 6.1.5
     pixi.js:
-      specifier: ^8.11.0
-      version: 8.11.0
+      specifier: ^8.14.3
+      version: 8.14.3
     vue:
       specifier: ^3.5.17
       version: 3.5.17
@@ -170,7 +170,7 @@ importers:
         version: 4.0.2
       pixi.js:
         specifier: catalog:share
-        version: 8.11.0
+        version: 8.14.3
       unocss:
         specifier: catalog:docs
         version: 0.60.4(postcss@8.5.6)(rollup@4.44.2)(vite@5.4.18(@types/node@20.19.7)(terser@5.43.1))
@@ -210,10 +210,10 @@ importers:
         version: 4.0.2
       pixi-filters:
         specifier: catalog:share
-        version: 6.1.3(pixi.js@8.11.0)
+        version: 6.1.5(pixi.js@8.14.3)
       pixi.js:
         specifier: catalog:share
-        version: 8.11.0
+        version: 8.14.3
       vue-demi:
         specifier: catalog:share
         version: 0.14.10(vue@3.5.17(typescript@5.8.3))
@@ -3680,8 +3680,8 @@ packages:
   duplexify@3.7.1:
     resolution: {integrity: sha512-07z8uv2wMyS51kKhD1KsdXJg5WQ6t93RneqRxUHnskXVtlYYkLqM0gqStQZ3pj073g687jPCHrqNfCzawLYh5g==}
 
-  earcut@3.0.1:
-    resolution: {integrity: sha512-0l1/0gOjESMeQyYaK5IDiPNvFeu93Z/cO0TjZh9eZ1vyCtZnA7KMZ8rQggpsJHIbGSdrqYq9OhuveadOVHCshw==}
+  earcut@3.0.2:
+    resolution: {integrity: sha512-X7hshQbLyMJ/3RPhyObLARM2sNxxmRALLKx1+NVFFnQ9gKzmCrxm9+uLIAdBcvc8FNLpctqlQ2V6AE92Ol9UDQ==}
 
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
@@ -5833,13 +5833,13 @@ packages:
     resolution: {integrity: sha512-saLsH7WeYYPiD25LDuLRRY/i+6HaPYr6G1OUlN39otzkSTxKnubR9RTxS3/Kk50s1g2JTgFwWQDQyplC5/SHZg==}
     engines: {node: '>= 6'}
 
-  pixi-filters@6.1.3:
-    resolution: {integrity: sha512-bmdI2Ytz+z/NcADkjew2phKq300aQ9p9nVx9OfkMNuoYEl4gW99ZDNQZfsF834V/jj3CKTsIV4jxA+BI45UYOQ==}
+  pixi-filters@6.1.5:
+    resolution: {integrity: sha512-Ewb/J+kxAbaNN+0/ATJbglAJG+skGJfh7BIDP3ILIDdD6wWk1p0pGa25pVf1T8hGBOQSUNVAmwwJBwkj+cyLLA==}
     peerDependencies:
       pixi.js: '>=8.0.0-0'
 
-  pixi.js@8.11.0:
-    resolution: {integrity: sha512-dyuThzncsgEgJZnvd/A/5x6IkUERbK+phXqUQrI+0C6WE+8xqGH5VChRTLecemhgZF0kQ+gZOM3tJTX9937xpg==}
+  pixi.js@8.14.3:
+    resolution: {integrity: sha512-6xGYARV8D9E/fO1c2NmYn+k2dQ5oZldVm5tNlLQJ8obTlOQXdL5QpMc217qTpRyHVDFaw5eoFCLF1gr6p5ZcjQ==}
 
   pkg-types@1.3.1:
     resolution: {integrity: sha512-/Jm5M4RvtBFVkKWRu2BLUTNP8/M2a+UwuAX+ae4770q1qVGtfjG+WTCupoZixokjmHiry8uI+dlY8KXYV5HVVQ==}
@@ -6795,6 +6795,10 @@ packages:
 
   tiny-invariant@1.3.3:
     resolution: {integrity: sha512-+FbBPE1o9QAYvviau/qC5SE3caw21q3xkvWKBtja5vgqOWIHHJ3ioaq1VPfn/Szqctz2bU/oYeKd9/z5BL+PVg==}
+
+  tiny-lru@11.4.5:
+    resolution: {integrity: sha512-hkcz3FjNJfKXjV4mjQ1OrXSLAehg8Hw+cEZclOVT+5c/cWQWImQ9wolzTjth+dmmDe++p3bme3fTxz6Q4Etsqw==}
+    engines: {node: '>=12'}
 
   tinybench@2.8.0:
     resolution: {integrity: sha512-1/eK7zUnIklz4JUUlL+658n58XO2hHLQfSk1Zf2LKieUjxidN16eKFEoDEfjHc3ohofSSqK3X5yO6VGb6iW8Lw==}
@@ -11111,7 +11115,7 @@ snapshots:
       readable-stream: 2.3.8
       stream-shift: 1.0.3
 
-  earcut@3.0.1: {}
+  earcut@3.0.2: {}
 
   eastasianwidth@0.2.0: {}
 
@@ -13921,23 +13925,24 @@ snapshots:
 
   pirates@4.0.6: {}
 
-  pixi-filters@6.1.3(pixi.js@8.11.0):
+  pixi-filters@6.1.5(pixi.js@8.14.3):
     dependencies:
       '@types/gradient-parser': 0.1.5
-      pixi.js: 8.11.0
+      pixi.js: 8.14.3
 
-  pixi.js@8.11.0:
+  pixi.js@8.14.3:
     dependencies:
       '@pixi/colord': 2.9.6
       '@types/css-font-loading-module': 0.0.12
       '@types/earcut': 3.0.0
       '@webgpu/types': 0.1.43
       '@xmldom/xmldom': 0.8.10
-      earcut: 3.0.1
+      earcut: 3.0.2
       eventemitter3: 5.0.1
       gifuct-js: 2.1.2
       ismobilejs: 1.1.1
       parse-svg-path: 0.1.2
+      tiny-lru: 11.4.5
 
   pkg-types@1.3.1:
     dependencies:
@@ -14962,6 +14967,8 @@ snapshots:
   tiny-conventional-commits-parser@0.0.1: {}
 
   tiny-invariant@1.3.3: {}
+
+  tiny-lru@11.4.5: {}
 
   tinybench@2.8.0: {}
 

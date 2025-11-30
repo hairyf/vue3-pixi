@@ -24,7 +24,7 @@ const themeConfig: DefaultTheme.Config = {
     {
       text: 'Examples',
       items: [
-        { text: 'Basic', link: '/examples/basic/container' },
+        { text: 'Container', link: '/examples/container/blend-modes_comparison' },
         { text: 'Sprite', link: '/examples/sprite/animated-sprite-animation-speed' },
         // { text: 'Text', link: '/examples/text/bitmap-text' },
         // { text: 'Graphics', link: '/examples/graphics/advanced' },
@@ -107,30 +107,43 @@ const themeConfig: DefaultTheme.Config = {
     ],
     '/examples/': [
       {
-        text: 'Basic',
+        text: 'Container',
         collapsed: true,
         items: [
-          { text: 'Container', link: '/examples/basic/container' },
-          { text: 'Container Origin', link: '/examples/basic/container-origin' },
-          { text: 'Transparent Background', link: '/examples/basic/transparent-background' },
-          { text: 'Tinting', link: '/examples/basic/tinting' },
-          // { text: 'Particle Container', link: '/examples/basic/particle-container' },
-          // { text: 'Simple Plane', link: '/examples/basic/simple-plane' },
+          { text: 'Blend modes / Comparison', link: '/examples/container/blend-modes_comparison' },
+          { text: 'Cache as texture / Optimization', link: '/examples/container/cache-as-texture_optimization' },
+          { text: 'Inverse Mask', link: '/examples/container/inverse-mask' },
+          { text: 'Mask Filters Blur', link: '/examples/container/mask_filters_blur' },
+          { text: 'Tinting', link: '/examples/container/tinting' },
+          { text: 'Transform / Origin', link: '/examples/container/transform_origin' },
+          { text: 'Transform / Pivot / Basic', link: '/examples/container/transform_pivot_basic' },
         ],
       },
-      {
-        text: 'Sprite',
-        collapsed: true,
-        items: [
-          { text: 'Animated Sprite Animation Speed', link: '/examples/sprite/animated-sprite-animation-speed' },
-          { text: 'Animated Sprite Explosion', link: '/examples/sprite/animated-sprite-explosion' },
-          { text: 'Animated Sprite Jet', link: '/examples/sprite/animated-sprite-jet' },
-          { text: 'Basic', link: '/examples/sprite/basic' },
-          { text: 'Texture Swap', link: '/examples/sprite/texture-swap' },
-          { text: 'Tiling Sprite', link: '/examples/sprite/tiling-sprite' },
-          { text: 'Video', link: '/examples/sprite/video' },
-        ],
-      },
+      // {
+      //   text: 'Container',
+      //   collapsed: true,
+      //   items: [
+      //     { text: 'Container', link: '/examples/basic/container' },
+      //     { text: 'Container Origin', link: '/examples/basic/container-origin' },
+      //     { text: 'Transparent Background', link: '/examples/basic/transparent-background' },
+      //     { text: 'Tinting', link: '/examples/basic/tinting' },
+      //     { text: 'Particle Container', link: '/examples/basic/particle-container' },
+      //     { text: 'Simple Plane', link: '/examples/basic/simple-plane' },
+      //   ],
+      // },
+      // {
+      //   text: 'Sprite',
+      //   collapsed: true,
+      //   items: [
+      //     { text: 'Animated Sprite Animation Speed', link: '/examples/sprite/animated-sprite-animation-speed' },
+      //     { text: 'Animated Sprite Explosion', link: '/examples/sprite/animated-sprite-explosion' },
+      //     { text: 'Animated Sprite Jet', link: '/examples/sprite/animated-sprite-jet' },
+      //     { text: 'Basic', link: '/examples/sprite/basic' },
+      //     { text: 'Texture Swap', link: '/examples/sprite/texture-swap' },
+      //     { text: 'Tiling Sprite', link: '/examples/sprite/tiling-sprite' },
+      //     { text: 'Video', link: '/examples/sprite/video' },
+      //   ],
+      // },
       // {
       //   text: 'Text',
       //   collapsed: true,
