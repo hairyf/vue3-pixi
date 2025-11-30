@@ -1,6 +1,6 @@
 import { addComponent, addImports, createResolver, defineNuxtModule } from '@nuxt/kit'
 import * as core from 'vue3-pixi'
-import { isCustomElement } from 'vue3-pixi'
+import { compilerOptions } from 'vue3-pixi'
 
 const components = [
   'Application',
@@ -42,6 +42,6 @@ export default defineNuxtModule({
     }
 
     nuxt.options.build.transpile.push(/vue3-pixi/)
-    nuxt.options.vue.compilerOptions.isCustomElement = isCustomElement
+    nuxt.options.vue.compilerOptions.isCustomElement = compilerOptions.isCustomElement
   },
 })
