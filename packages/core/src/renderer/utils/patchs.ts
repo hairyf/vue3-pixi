@@ -51,7 +51,7 @@ export const patchs = {
         scope.run(() => watchEffect(() => nextValue(el)))
 
         const onDestroy = () => {
-          scope.stop()
+          scope?.stop?.()
           // eslint-disable-next-line ts/ban-ts-comment
           // @ts-ignore
           scope = null
