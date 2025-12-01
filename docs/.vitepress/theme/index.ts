@@ -3,7 +3,6 @@ import { NMessageProvider } from 'naive-ui'
 import Theme from 'vitepress/theme'
 // https://vitepress.dev/guide/custom-theme
 import { h } from 'vue'
-import { Assets } from 'vue3-pixi'
 import ApiTyping from './components/ApiTyping/index.vue'
 import ApiBlendMode from './components/Markdown/ApiBlendMode.md'
 import ApiColor from './components/Markdown/ApiColor.md'
@@ -36,7 +35,6 @@ export default {
     ])
   },
   enhanceApp({ app }) {
-    app.component('Assets', Assets)
     app.component('DemoContainer', PixiJSContainer)
     app.component('StackBlitzEmbed', StackBlitzEmbed)
     app.component('DraggableCircle', DraggableCircle)

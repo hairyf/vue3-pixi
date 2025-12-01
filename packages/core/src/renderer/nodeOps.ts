@@ -19,7 +19,7 @@ export function createElement(prefix: string, name: string, _?: ElementNamespace
   else {
     name = camelize(name)
     name = name.charAt(0).toUpperCase() + name.slice(1)
-    is = renderers[name].createElement
+    is = renderers[name]?.createElement
   }
   if (!is) {
     warn(`Unknown element ${name}`)

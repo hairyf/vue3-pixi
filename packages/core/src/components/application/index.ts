@@ -1,5 +1,5 @@
 /* eslint-disable ts/no-redeclare */
-import type { ColorSource, Container, GpuPowerPreference } from 'pixi.js'
+import type { ApplicationOptions, ColorSource, Container, GpuPowerPreference } from 'pixi.js'
 import type { App, PropType } from 'vue-demi'
 import { Application as PixiApplication } from 'pixi.js'
 import { defineComponent, getCurrentInstance, h, markRaw, onMounted, onUnmounted, ref, renderSlot } from 'vue-demi'
@@ -35,6 +35,7 @@ export const Application = defineComponent({
     forceFallbackAdapter: { type: Boolean, default: undefined },
     depth: { type: Boolean, default: undefined },
     failIfMajorPerformanceCaveat: { type: Boolean, default: undefined },
+    preference: { type: String as PropType<ApplicationOptions['preference']>, default: 'webgl' },
     powerPreference: { type: String as PropType<GpuPowerPreference>, default: undefined },
     resizeTo: Object as PropType<HTMLElement | Window | undefined>,
     roundPixels: { type: Boolean, default: undefined },
@@ -57,7 +58,6 @@ export const Application = defineComponent({
       await inst.init({
         canvas: canvas.value,
         ...props,
-        preference: 'webgl',
         width: props.width ? Number(props.width) : undefined,
         height: props.height ? Number(props.height) : undefined,
       })
