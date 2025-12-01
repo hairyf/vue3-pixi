@@ -10,7 +10,7 @@ import { useApplication } from './useApplication'
 
 export function useScreen(app?: Ref<Application>): Ref<Rectangle> {
   const useApp = app || useApplication()
-  const view = computed(() => unref(useApp).canvas)
+  const view = computed(() => unref(useApp)?.canvas)
   const defaultRectangle = new Rectangle()
 
   const screen = computedWithControl(

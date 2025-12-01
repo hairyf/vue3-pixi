@@ -6,11 +6,8 @@ import { appInjectKey } from './internal'
 export function useApplication<T = Application>(): Ref<T> {
   const app = ref(inject(appInjectKey, undefined))
   const appComputed = computed({
-    get: () => app.value,
-    set: (value: any) => {
-      if (value.app)
-        app.value = value.app
-    },
+    get: () => (app.value as any)?.app,
+    set: (value: any) => app.value = value,
   })
 
   onMounted(() => {

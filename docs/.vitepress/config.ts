@@ -24,8 +24,9 @@ const themeConfig: DefaultTheme.Config = {
     {
       text: 'Examples',
       items: [
+        { text: 'Animated Sprite', link: '/examples/animated-sprite/animation' },
+        { text: 'App', link: '/examples/app/transparent-background' },
         { text: 'Container', link: '/examples/container/blend-modes_comparison' },
-        { text: 'Sprite', link: '/examples/sprite/animated-sprite-animation-speed' },
         // { text: 'Text', link: '/examples/text/bitmap-text' },
         // { text: 'Graphics', link: '/examples/graphics/advanced' },
         // { text: 'Events', link: '/examples/events/click' },
@@ -106,6 +107,22 @@ const themeConfig: DefaultTheme.Config = {
       },
     ],
     '/examples/': [
+      {
+        text: 'Animated Sprite',
+        collapsed: true,
+        items: [
+          { text: 'Animation', link: '/examples/animated-sprite/animation' },
+          { text: 'Particles', link: '/examples/animated-sprite/particles' },
+          { text: 'Spritesheet', link: '/examples/animated-sprite/spritesheet' },
+        ],
+      },
+      {
+        text: 'App',
+        collapsed: true,
+        items: [
+          { text: 'Transparent Background', link: '/examples/app/transparent-background' },
+        ],
+      },
       {
         text: 'Container',
         collapsed: true,
