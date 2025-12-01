@@ -1,4 +1,3 @@
-/* eslint-disable ts/ban-ts-comment */
 /* eslint-disable ts/no-redeclare */
 import type { ColorSource, Container, GpuPowerPreference } from 'pixi.js'
 import type { App, PropType } from 'vue-demi'
@@ -40,8 +39,8 @@ export const Application = defineComponent({
     resizeTo: Object as PropType<HTMLElement | Window | undefined>,
     roundPixels: { type: Boolean, default: undefined },
     useBackBuffer: { type: Boolean, default: undefined },
-    width: { type: Number, default: undefined },
-    height: { type: Number, default: undefined },
+    width: { type: [Number, String], default: undefined },
+    height: { type: [Number, String], default: undefined },
     resolution: { type: Number, default: 1 },
 
     // @TODO: Add webgl/webgpu
@@ -55,7 +54,13 @@ export const Application = defineComponent({
 
     async function mount() {
       const inst = new PixiApplication()
-      await inst.init({ canvas: canvas.value, ...props, preference: 'webgl' })
+      await inst.init({
+        canvas: canvas.value,
+        ...props,
+        preference: 'webgl',
+        width: props.width ? Number(props.width) : undefined,
+        height: props.height ? Number(props.height) : undefined,
+      })
 
       pixiApp.value = markRaw(inst)
 
@@ -77,7 +82,6 @@ export const Application = defineComponent({
       app = undefined
 
       pixiApp.value?.destroy(
-        // @ts-ignore
         { releaseGlobalResources: true, removeView: true },
         {
           children: true,
