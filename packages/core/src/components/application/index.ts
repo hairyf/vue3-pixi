@@ -82,6 +82,8 @@ export const Application = defineComponent({
       app = undefined
 
       pixiApp.value?.destroy(
+        // eslint-disable-next-line ts/ban-ts-comment
+        // @ts-ignore
         { releaseGlobalResources: true, removeView: true },
         {
           children: true,
