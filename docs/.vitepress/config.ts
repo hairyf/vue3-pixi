@@ -143,6 +143,7 @@ const themeConfig: DefaultTheme.Config = {
         items: [
           { text: 'Async', link: '/examples/assets/async' },
           { text: 'Background Loading', link: '/examples/assets/background-loading' },
+          { text: 'Manifest Bundles', link: '/examples/assets/manifest_bundles' },
         ],
       },
       // {

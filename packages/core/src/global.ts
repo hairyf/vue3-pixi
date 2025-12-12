@@ -15,6 +15,7 @@ declare module 'pixi.js' {
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Assets: typeof import('./components').Assets
+    AssetsBundle: typeof import('./components').AssetsBundle
     AnimatedTransition: typeof import('./components').AnimatedTransition
     AnimatedTransitionGroup: typeof import('./components').AnimatedTransitionGroup
     External: typeof import('./components').External

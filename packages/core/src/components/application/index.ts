@@ -6,7 +6,7 @@ import { defineComponent, getCurrentInstance, h, markRaw, nextTick, onMounted, o
 import { appInjectKey } from '../../composables'
 import { createApp } from '../../renderer'
 import { inheritParent } from '../../utils'
-import { Assets } from '../assets'
+import { Assets, AssetsBundle } from '../assets'
 import { External } from '../external'
 import { AnimatedTransition, AnimatedTransitionGroup } from '../transition'
 
@@ -71,6 +71,7 @@ export const Application = defineComponent({
       app.component('AnimatedTransitionGroup', AnimatedTransitionGroup)
       app.component('AnimatedTransition', AnimatedTransition)
       app.component('Assets', Assets)
+      app.component('AssetsBundle', AssetsBundle)
       app.component('External', External)
 
       app.provide(appInjectKey, pixiApp.value)
