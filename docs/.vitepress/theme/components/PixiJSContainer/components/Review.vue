@@ -35,6 +35,8 @@ const size = computed(() => {
           :background="background"
           :background-color="backgroundColor"
           :background-alpha="backgroundAlpha"
+          use-back-buffer
+          antialias
         >
           <slot />
         </Application>
