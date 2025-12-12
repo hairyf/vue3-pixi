@@ -59,7 +59,7 @@ onTick(({ deltaTime }) => rotation.value += 0.01 * deltaTime)
       g.fill(0xFFFFFF);
     }"
   />
-  <external tag="div" class="absolute z-10 top-20px right-20px px-10px  py-20px bg-white rounded-md">
+  <external tag="div" class="absolute z-10 top-20px right-20px px-10px  py-20px bg-white dark:bg-gray-800 rounded-md">
     <h3 class="text-center mt-0! mb-2!">
       Adjust Origin/Pivot
     </h3>

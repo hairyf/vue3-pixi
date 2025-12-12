@@ -2,7 +2,7 @@
 import type { ApplicationOptions, ColorSource, Container, GpuPowerPreference } from 'pixi.js'
 import type { App, PropType } from 'vue-demi'
 import { Application as PixiApplication } from 'pixi.js'
-import { defineComponent, getCurrentInstance, h, markRaw, onMounted, onUnmounted, ref, renderSlot } from 'vue-demi'
+import { defineComponent, getCurrentInstance, h, markRaw, nextTick, onMounted, onUnmounted, ref, renderSlot } from 'vue-demi'
 import { appInjectKey } from '../../composables'
 import { createApp } from '../../renderer'
 import { inheritParent } from '../../utils'
@@ -80,20 +80,29 @@ export const Application = defineComponent({
     function unmount() {
       app?.unmount()
       app = undefined
+      // Wait for Vue to finish unmounting before destroying Application to avoid accessing cleaned TexturePool during unmount
+      nextTick(() => {
+        if (!pixiApp.value)
+          return
 
-      pixiApp.value?.destroy(
-        // eslint-disable-next-line ts/ban-ts-comment
-        // @ts-ignore
-        { releaseGlobalResources: true, removeView: true },
-        {
-          children: true,
-          texture: true,
-          textureSource: true,
-          context: true,
-          style: true,
-        },
-      )
-      pixiApp.value = undefined
+        try {
+          pixiApp.value.destroy(
+            // eslint-disable-next-line ts/ban-ts-comment
+            // @ts-ignore
+            { releaseGlobalResources: true, removeView: true },
+            {
+              children: true,
+              texture: true,
+              textureSource: true,
+              context: true,
+              style: true,
+            },
+          )
+        }
+        finally {
+          pixiApp.value = undefined
+        }
+      })
     }
 
     function renderSlotDefault() {

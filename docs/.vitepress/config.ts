@@ -27,6 +27,7 @@ const themeConfig: DefaultTheme.Config = {
         { text: 'Animated Sprite', link: '/examples/animated-sprite/animation' },
         { text: 'App', link: '/examples/app/transparent-background' },
         { text: 'Container', link: '/examples/container/blend-modes_comparison' },
+        { text: 'Assets', link: '/examples/assets/async' },
         // { text: 'Text', link: '/examples/text/bitmap-text' },
         // { text: 'Graphics', link: '/examples/graphics/advanced' },
         // { text: 'Events', link: '/examples/events/click' },
@@ -134,6 +135,14 @@ const themeConfig: DefaultTheme.Config = {
           { text: 'Tinting', link: '/examples/container/tinting' },
           { text: 'Transform / Origin', link: '/examples/container/transform_origin' },
           { text: 'Transform / Pivot / Basic', link: '/examples/container/transform_pivot_basic' },
+        ],
+      },
+      {
+        text: 'Assets',
+        collapsed: true,
+        items: [
+          { text: 'Async', link: '/examples/assets/async' },
+          { text: 'Background Loading', link: '/examples/assets/background-loading' },
         ],
       },
       // {

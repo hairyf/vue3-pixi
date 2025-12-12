@@ -56,7 +56,23 @@ export function createComment() {
 }
 
 export function remove(node: Container) {
-  node.destroy({ children: true })
+  // If the node is already destroyed, return early
+  if (!node || node.destroyed)
+    return
+
+  try {
+    node.destroy({ children: true })
+  }
+  catch {
+    // During unmounting, if the Application has already been destroyed, the TexturePool may have been cleaned up
+    // This causes the node to fail when trying to return textures to the TexturePool during destruction
+    // Catch the error here to avoid crashes and mark the node as destroyed
+    if (node && !node.destroyed) {
+      // Silent handling: node errors when trying to clean up textures after Application is destroyed
+      // This is normal because global resources have already been released
+      node.destroyed = true
+    }
+  }
 }
 
 export function insert(child: Container, parent: Container, anchor?: Container | null) {

@@ -101,9 +101,7 @@ export const Assets = defineComponent({
       props.onProgress?.(p)
     }
     async function loadUrls(urls: any) {
-      data.value = props.background
-        ? await PixiAssets.backgroundLoad(urls)
-        : await PixiAssets.load(urls, onProgress)
+      data.value = await PixiAssets.load(urls, onProgress)
       props.onLoaded?.(data.value)
     }
 
@@ -113,7 +111,7 @@ export const Assets = defineComponent({
         return
       }
 
-      if (isAsset(props)) {
+      if (isAsset(props.alias, props.entry)) {
         props.autoload
           ? await loadUrls({ alias: props.alias, src: props.entry })
           : PixiAssets.add({ alias: props.alias, src: props.entry })
@@ -149,9 +147,15 @@ export const Assets = defineComponent({
 
     watch(
       () => props,
-      () => {
+      async () => {
         loading.value = true
-        load().finally(() => loading.value = false)
+        try {
+          await load()
+          props.background && PixiAssets.backgroundLoad(assets.value)
+        }
+        finally {
+          loading.value = false
+        }
       },
       { deep: true, immediate: true },
     )
@@ -211,9 +215,10 @@ export const AssetsBundle = defineComponent({
   },
 })
 
-function isAsset(props: any) {
-  return props.alias && props.entry
+function isAsset(alias: string, entry: any) {
+  return alias && entry
 }
+
 function isStringArray(value: any) {
   return Array.isArray(value) && value.some(v => isString(v))
 }

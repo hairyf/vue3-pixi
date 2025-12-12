@@ -57,12 +57,14 @@
     "dev": "tsup --watch src",
     "prepublishOnly": "npm run build"
   },
+  "peerDependencies": {
+    "pixi-filters": "catalog:share",
+    "pixi.js": "catalog:share"
+  },
   "dependencies": {
     "@antfu/utils": "catalog:share",
     "@vueuse/core": "catalog:share",
     "nanoid": "catalog:share",
-    "pixi-filters": "catalog:share",
-    "pixi.js": "catalog:share",
     "vue-demi": "catalog:share"
   },
   "devDependencies": {
