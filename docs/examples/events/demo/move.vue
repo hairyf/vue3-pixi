@@ -27,9 +27,8 @@ useEventListener(stageRef, 'pointermove', onPointerEvent)
   <graphics
     :position="position"
     @effect="graphics => graphics
-      .beginFill(0xFFFFFF)
-      .lineStyle({ color: 0x111111, alpha: 0.87, width: 1 })
-      .drawCircle(0, 0, 8)
-      .endFill()"
+      .setStrokeStyle({ color: 0x111111, width: 0.87, alpha: 1 })
+      .circle(0, 0, 8)
+      .fill()"
   />
 </template>

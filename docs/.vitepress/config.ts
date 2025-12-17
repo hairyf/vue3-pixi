@@ -28,6 +28,8 @@ const themeConfig: DefaultTheme.Config = {
         { text: 'App', link: '/examples/app/transparent-background' },
         { text: 'Container', link: '/examples/container/blend-modes_comparison' },
         { text: 'Assets', link: '/examples/assets/async' },
+        { text: 'Dom Container', link: '/examples/dom-container/html_text-area' },
+        { text: 'Events', link: '/examples/events/buttons' },
         // { text: 'Text', link: '/examples/text/bitmap-text' },
         // { text: 'Graphics', link: '/examples/graphics/advanced' },
         // { text: 'Events', link: '/examples/events/click' },
@@ -145,6 +147,27 @@ const themeConfig: DefaultTheme.Config = {
           { text: 'Background Loading', link: '/examples/assets/background-loading' },
           { text: 'Manifest Bundles', link: '/examples/assets/manifest_bundles' },
           { text: 'Multi Loading', link: '/examples/assets/multi-loading' },
+        ],
+      },
+      {
+        text: 'Dom Container',
+        collapsed: true,
+        items: [
+          { text: 'HTML Text Area', link: '/examples/dom-container/html_text-area' },
+        ],
+      },
+      {
+        text: 'Events',
+        collapsed: true,
+        items: [
+          { text: 'Buttons', link: '/examples/events/buttons' },
+          { text: 'Click', link: '/examples/events/click' },
+          { text: 'Custom Hitarea', link: '/examples/events/custom-hitarea' },
+          { text: 'Custom Pointer', link: '/examples/events/custom-pointer' },
+          { text: 'Dragging', link: '/examples/events/dragging' },
+          { text: 'Move', link: '/examples/events/move' },
+          { text: 'Order', link: '/examples/events/order' },
+          { text: 'Slider', link: '/examples/events/slider' },
         ],
       },
       // {

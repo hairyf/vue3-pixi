@@ -14,5 +14,5 @@ declare module '@vue/runtime-core' {
 
 renderer.use({
   name: 'DomContainer',
-  createElement: props => new DOMContainer(props.geometry),
+  createElement: props => new DOMContainer(props),
 })

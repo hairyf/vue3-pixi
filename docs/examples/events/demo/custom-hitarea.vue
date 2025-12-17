@@ -1,7 +1,5 @@
 <script lang="ts" setup>
-import { Graphics, Polygon, Sprite, Texture } from 'pixi.js'
-
-const star = Texture.from('https://pixijs.com/assets/yellowstar.png')
+import { Graphics, Polygon, Sprite } from 'pixi.js'
 
 const hitArea = new Polygon([
   80,
@@ -27,14 +25,12 @@ const hitArea = new Polygon([
 ])
 
 const square = new Graphics()
-  .beginFill(0xFFFFFF)
-  .drawRect(450, 200, 75, 200)
-  .endFill()
+  .rect(400, 200, 75, 200)
+  .fill()
 
 const squareHit = new Graphics()
-  .beginFill(0xFFFFFF)
-  .drawRect(600, 200, 75, 200)
-  .endFill()
+  .rect(550, 200, 75, 200)
+  .fill()
 
 function onClick(this: Sprite) {
   this.tint = 0x333333
@@ -47,7 +43,6 @@ function onPointerOut(this: Sprite) {
 }
 
 const sBind = {
-  texture: star,
   cursor: 'pointer',
   onClick,
   onPointerOver,
@@ -61,20 +56,22 @@ const tBind = {
 </script>
 
 <template>
-  <Sprite v-bind="sBind" :x="50" />
-  <Text v-bind="tBind" :x="50 + 25">
-    Standard
-  </Text>
-  <Sprite v-bind="sBind" :x="250" :hit-area="hitArea" />
-  <Text v-bind="tBind" :x="250 + 35">
-    Hit Area
-  </Text>
-  <Sprite v-bind="sBind" :x="450" :mask="square" />
-  <Text v-bind="tBind" :x="450 + 10">
-    Mask
-  </Text>
-  <Sprite v-bind="sBind" :x="600" :hit-area="hitArea" :mask="squareHit" />
-  <Text v-bind="tBind" :x="600 + 10">
-    Mask + Hit Area
-  </Text>
+  <assets alias="star" entry="https://pixijs.com/assets/yellowstar.png">
+    <Sprite v-bind="sBind" :x="0" texture="star" />
+    <Text v-bind="tBind" :x="25">
+      Standard
+    </Text>
+    <Sprite v-bind="sBind" :x="200" :hit-area="hitArea" texture="star" />
+    <Text v-bind="tBind" :x="200 + 35">
+      Hit Area
+    </Text>
+    <Sprite v-bind="sBind" :x="400" :mask="square" texture="star" />
+    <Text v-bind="tBind" :x="400 + 10">
+      Mask
+    </Text>
+    <Sprite v-bind="sBind" :x="550" :hit-area="hitArea" :mask="squareHit" texture="star" />
+    <Text v-bind="tBind" :x="550 + 10">
+      Mask\nHit Area
+    </Text>
+  </assets>
 </template>

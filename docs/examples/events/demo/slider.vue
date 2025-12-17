@@ -12,13 +12,6 @@ const sliderRef = ref()
 const scale = ref(3)
 const position = reactive({ x: 0, y: 2 })
 
-onReady((app) => {
-  app.stage.eventMode = 'static'
-  // Make sure stage covers the whole scene
-  app.stage.hitArea = app.screen
-  position.x = sliderWidth.value / 2
-})
-
 function onDragStart() {
   stage.value!.addEventListener('pointermove', onDrag)
 }
@@ -39,6 +32,13 @@ function onDrag(e: FederatedPointerEvent) {
   scale.value = 3 * (1.1 + t)
 }
 
+onReady((app) => {
+  app.stage.eventMode = 'static'
+  // Make sure stage covers the whole scene
+  app.stage.hitArea = app.screen
+  position.x = sliderWidth.value / 2
+})
+
 // Stop dragging feedback once the handle is released.
 function onDragEnd() {
   stage.value!.removeEventListener('pointermove', onDrag)
@@ -50,7 +50,8 @@ function onDragEnd() {
     :x="screen.width / 2"
     :y="40"
     :anchor="0.5"
-    :style="{ fill: '#272d37', fontFamily: 'Roboto', fontSize: 20, align: 'center' }"
+    :style="{ fill: '#272d37', fontFamily: 'Roboto', fontSize: 20 }"
+    align="center"
   >
     Drag the handle to change the scale of bunny.
   </text>
@@ -59,14 +60,18 @@ function onDragEnd() {
     ref="sliderRef"
     :x="(screen.width - sliderWidth) / 2"
     :y="screen.height * 0.75"
-    @effect="$event.beginFill(0x272D37).drawRect(0, 0, sliderWidth, 4)"
+    @effect="graphics => graphics
+      .rect(0, 0, sliderWidth, 4)
+      .fill({ color: 0x272D37 })"
   >
     <!-- Draw the handle -->
     <graphics
       cursor="pointer"
       :position="position"
       :point="4"
-      @effect="$event.beginFill(0xFFFFFF) .drawCircle(0, 0, 8)"
+      @effect="graphics => graphics
+        .circle(0, 0, 8)
+        .fill({ color: 0xFFFFFF })"
       @pointerdown="onDragStart"
       @pointerup="onDragEnd"
       @pointerupoutside="onDragEnd"
@@ -74,11 +79,17 @@ function onDragEnd() {
   </graphics>
 
   <!-- Add bunny whose scale can be changed by user using slider -->
-  <sprite
-    texture="https://pixijs.com/assets/bunny.png"
-    :x="screen.width / 2"
-    :y="screen.height / 2"
-    :scale="scale"
-    anchor="0.5"
-  />
+  <assets
+    alias="bunny"
+    entry="https://pixijs.com/assets/bunny.png"
+    @loaded="texture => texture.source.scaleMode = 'nearest'"
+  >
+    <sprite
+      texture="bunny"
+      :x="screen.width / 2"
+      :y="screen.height / 2"
+      :scale="scale"
+      :anchor="0.5"
+    />
+  </assets>
 </template>

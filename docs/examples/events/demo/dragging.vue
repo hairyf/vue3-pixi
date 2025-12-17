@@ -1,23 +1,17 @@
 <script lang="ts" setup>
-import type { FederatedPointerEvent } from 'pixi.js'
-import type { SpriteInst, SpriteProps } from 'vue3-pixi'
+import type { FederatedPointerEvent, Sprite as SpriteElement, Texture } from 'pixi.js'
+
 import { useEventListener } from '@vueuse/core'
-import { Container, SCALE_MODES, Sprite, Texture } from 'pixi.js'
 import { ref } from 'vue'
-import { onReady, useStage } from 'vue3-pixi'
+import { onReady, useScreen, useStage } from 'vue3-pixi'
 
 const stage = useStage()
+const screen = useScreen()
 
-// create a texture from an image path
-const texture = Texture.from('https://pixijs.com/assets/bunny.png')
+const sprites = ref<Partial<any>[]>([])
+const target = ref<SpriteElement>()
 
-// Scale mode for pixelation
-texture.baseTexture.scaleMode = SCALE_MODES.NEAREST
-
-const sprites = ref<Partial<SpriteProps>[]>([])
-const target = ref<SpriteInst>()
-
-function onDragStart(this: SpriteInst) {
+function onDragStart(this: SpriteElement) {
   // store a reference to the data
   // the reason for this is because of multitouch
   // we want to track the movement of this particular touch
@@ -28,9 +22,13 @@ function onDragStart(this: SpriteInst) {
 }
 
 function onDragMove(event: FederatedPointerEvent) {
-  if (target.value)
-    Object.assign(sprites.value[target.value!.index], event.global)
+  if (target.value) {
+    // Directly update the sprite's position
+    target.value.x = event.global.x
+    target.value.y = event.global.y
+  }
 }
+
 function onDragEnd() {
   if (!target.value)
     return
@@ -39,15 +37,20 @@ function onDragEnd() {
   target.value = undefined
 }
 
-onReady((app) => {
+function onLoaded(texture: Texture) {
+  texture.source.scaleMode = 'nearest'
+
   sprites.value = Array.from({ length: 10 }).fill(undefined).map(() => ({
-    x: Math.floor(Math.random() * app.screen.width),
-    y: Math.floor(Math.random() * app.screen.height),
+    x: Math.floor(Math.random() * screen.value.width),
+    y: Math.floor(Math.random() * screen.value.height),
     onPointerdown: onDragStart,
     texture,
     scale: 3,
     anchor: 0.5,
   }))
+}
+
+onReady((app) => {
   // Enable interactivity!
   app.stage.eventMode = 'static'
   app.stage.hitArea = app.screen
@@ -58,7 +61,13 @@ useEventListener(stage, 'pointerupoutside', onDragEnd)
 </script>
 
 <template>
-  <Container>
-    <Sprite v-for="(p, i) in sprites" :key="i" :index="i" v-bind="p" />
-  </Container>
+  <assets entry="https://pixijs.com/assets/bunny.png" @loaded="onLoaded">
+    <sprite
+      v-for="(p, i) in sprites"
+      :key="i"
+      :index="i"
+      v-bind="p"
+      @pointerdown="onDragStart"
+    />
+  </assets>
 </template>
