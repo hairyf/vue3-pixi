@@ -6,7 +6,7 @@ import { nanoid } from 'nanoid'
 
 import { Assets as PixiAssets } from 'pixi.js'
 
-import { defineComponent, onBeforeUnmount, ref, renderSlot, watch } from 'vue-demi'
+import { defineComponent, onBeforeUnmount, ref, renderSlot, toRaw, watch } from 'vue-demi'
 
 export const assetsProps = {
   basePath: String,
@@ -83,7 +83,7 @@ export const Assets = defineComponent({
     async function loadUrls(urls: any) {
       if (Array.isArray(urls) && urls.length === 1)
         urls = urls[0]
-      data.value = await PixiAssets.load(urls, onProgress)
+      data.value = toRaw(await PixiAssets.load(urls, onProgress))
       props.onLoaded?.(data.value)
     }
 

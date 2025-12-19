@@ -32,6 +32,7 @@ const themeConfig: DefaultTheme.Config = {
         { text: 'Events', link: '/examples/events/buttons' },
         { text: 'Filters', link: '/examples/filters/blur' },
         { text: 'Graphics', link: '/examples/graphics/basic_shapes' },
+        { text: 'Gsap', link: '/examples/gsap/animation_basic' },
         // { text: 'Text', link: '/examples/text/bitmap-text' },
         // { text: 'Events', link: '/examples/events/click' },
         // { text: 'Masks', link: '/examples/masks/filter' },
@@ -196,6 +197,20 @@ const themeConfig: DefaultTheme.Config = {
           { text: 'SVG File', link: '/examples/graphics/svg_file' },
           { text: 'SVG String / Parsing', link: '/examples/graphics/svg_string-parsing' },
           { text: 'Texture Fill', link: '/examples/graphics/texture-fill' },
+        ],
+      },
+      {
+        text: 'Gsap',
+        collapsed: true,
+        items: [
+          { text: 'Animation / Basic', link: '/examples/gsap/animation_basic' },
+          { text: 'Animation / Confetti', link: '/examples/gsap/animation_confetti' },
+          { text: 'Animation / Keyframe', link: '/examples/gsap/animation_keyframe' },
+          { text: 'Animation / Physics / Particles', link: '/examples/gsap/animation_physics_particles' },
+          { text: 'Animation / Timeline', link: '/examples/gsap/animation_timeline' },
+          { text: 'Interaction / Inertia', link: '/examples/gsap/interaction_inertia' },
+          { text: 'Interaction / MoveTo', link: '/examples/gsap/interaction_moveto' },
+          { text: 'Physics', link: '/examples/gsap/physics' },
         ],
       },
       // {

@@ -18,7 +18,7 @@ catalogs:
     '@stackblitz/sdk': ^1.11.0
     codesandbox: ^2.2.3
     floating-vue: ^5.2.2
-    gsap: ^3.13.0
+    gsap: ^3.14.2
     naive-ui: ^2.42.0
     unocss: ^0.60.4
     vitepress: ^1.6.3

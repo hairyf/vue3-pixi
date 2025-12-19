@@ -14,5 +14,5 @@ declare module '@vue/runtime-core' {
 
 renderer.use({
   name: 'Graphics',
-  createElement: props => new Graphics(props.texture),
+  createElement: props => new Graphics(props),
 })

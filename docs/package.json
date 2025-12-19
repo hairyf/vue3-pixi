@@ -20,7 +20,8 @@
     "pixi.js": "catalog:share",
     "unocss": "catalog:docs",
     "vue": "catalog:share",
-    "vue3-pixi": "workspace:^"
+    "vue3-pixi": "workspace:^",
+    "pixi-filters": "catalog:share"
   },
   "devDependencies": {
     "@iconify/json": "catalog:docs",

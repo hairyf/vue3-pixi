@@ -1,1 +1,1 @@
-<demo mode="full" src="./demo/basic_shapes.vue" />
+<demo mode="full" src="./demo/texture-fill.vue" />
