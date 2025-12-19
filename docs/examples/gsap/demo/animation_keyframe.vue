@@ -54,7 +54,6 @@ onUnmounted(() => animation?.kill())
     container.y = screen.height / 2 - container.height / 2 + size / 2
   }">
     <graphics v-for="i in 4" :key="i" ref="boxes" :x="(i - 1) * 120" @effect="graphics => {
-      const size = 75
       graphics
         .roundRect(-size / 2, -size / 2, size, size, 8)
         .fill(0xED427C)

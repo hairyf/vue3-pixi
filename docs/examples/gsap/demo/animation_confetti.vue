@@ -21,6 +21,7 @@ interface Dot {
 
 const dots = ref<Dot[]>([])
 let dotIdCounter = 0
+let timeline: gsap.core.Timeline | null = null  
 
 const textFilter = new DropShadowFilter({
   color: 'black',
@@ -57,7 +58,7 @@ function animateDot(dotRef: GraphicsElement, dot: Dot) {
     scale: 0,
   })
 
-  gsap
+  timeline = gsap
     .timeline({
       onComplete: () => {
         const index = dots.value.findIndex(d => d.id === dot.id)
@@ -97,6 +98,7 @@ useEventListener(stage, 'click', (event) => {
 
 onUnmounted(() => {
   dots.value = []
+  timeline?.kill()
 })
 </script>
 
