@@ -81,6 +81,8 @@ export const Assets = defineComponent({
       props.onProgress?.(p)
     }
     async function loadUrls(urls: any) {
+      if (Array.isArray(urls) && urls.length === 1)
+        urls = urls[0]
       data.value = await PixiAssets.load(urls, onProgress)
       props.onLoaded?.(data.value)
     }

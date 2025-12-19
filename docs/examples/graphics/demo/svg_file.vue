@@ -29,11 +29,13 @@ onTick(() => {
 <template>
   <assets
     :entry="{
+      alias: 'tiger',
       src: 'https://pixijs.com/assets/tiger.svg',
       data: {
         parseAsGraphicsContext: true,
       },
     }"
+    @loaded="console.log"
   >
     <template #default="{ data }">
       <graphics

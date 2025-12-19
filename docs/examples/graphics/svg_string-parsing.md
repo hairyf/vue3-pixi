@@ -1,1 +1,1 @@
-<demo mode="full" src="./demo/svg_file.vue" />
+<demo mode="full" :background-alpha="0"  src="./demo/svg_string-parsing.vue" />
