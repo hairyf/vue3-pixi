@@ -9,7 +9,7 @@ type RecordSprite = SpriteElement & Record<string, any>
 const screen = useScreen()
 const textures = reactive<Record<string, Texture>>({})
 
-// 根据 screen 计算按钮位置和尺寸
+// calculate button positions and sizes based on screen
 const buttons = computed(() => {
   const { width, height } = screen.value
   return [
@@ -61,7 +61,7 @@ function onButtonOut(this: RecordSprite) {
     @loaded="Object.assign(textures, $event)"
   >
     <!-- create a background... -->
-    <Sprite texture="bg" :width="screen.width" :height="screen.height" />
+    <sprite texture="bg" :width="screen.width" :height="screen.height" />
     <!-- add it to the stage -->
     <sprite
       v-for="(p, i) in buttons"

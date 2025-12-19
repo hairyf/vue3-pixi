@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import { Graphics, Polygon, Sprite } from 'pixi.js'
+import type { Sprite as SpriteElement } from 'pixi.js'
+import { Graphics, Polygon } from 'pixi.js'
 
 const hitArea = new Polygon([
   80,
@@ -24,21 +25,16 @@ const hitArea = new Polygon([
   50,
 ])
 
-const square = new Graphics()
-  .rect(400, 200, 75, 200)
-  .fill()
+const square = new Graphics().rect(400, 200, 75, 200).fill()
+const squareHit = new Graphics().rect(550, 200, 75, 200).fill()
 
-const squareHit = new Graphics()
-  .rect(550, 200, 75, 200)
-  .fill()
-
-function onClick(this: Sprite) {
+function onClick(this: SpriteElement) {
   this.tint = 0x333333
 }
-function onPointerOver(this: Sprite) {
+function onPointerOver(this: SpriteElement) {
   this.tint = 0x666666
 }
-function onPointerOut(this: Sprite) {
+function onPointerOut(this: SpriteElement) {
   this.tint = 0xFFFFFF
 }
 
@@ -57,21 +53,21 @@ const tBind = {
 
 <template>
   <assets alias="star" entry="https://pixijs.com/assets/yellowstar.png">
-    <Sprite v-bind="sBind" :x="0" texture="star" />
-    <Text v-bind="tBind" :x="25">
+    <sprite v-bind="sBind" :x="0" texture="star" />
+    <text v-bind="tBind" :x="25">
       Standard
-    </Text>
-    <Sprite v-bind="sBind" :x="200" :hit-area="hitArea" texture="star" />
-    <Text v-bind="tBind" :x="200 + 35">
+    </text>
+    <sprite v-bind="sBind" :x="200" :hit-area="hitArea" texture="star" />
+    <text v-bind="tBind" :x="200 + 35">
       Hit Area
-    </Text>
-    <Sprite v-bind="sBind" :x="400" :mask="square" texture="star" />
-    <Text v-bind="tBind" :x="400 + 10">
+    </text>
+    <sprite v-bind="sBind" :x="400" :mask="square" texture="star" />
+    <text v-bind="tBind" :x="400 + 10">
       Mask
-    </Text>
-    <Sprite v-bind="sBind" :x="550" :hit-area="hitArea" :mask="squareHit" texture="star" />
-    <Text v-bind="tBind" :x="550 + 10">
+    </text>
+    <sprite v-bind="sBind" :x="550" :hit-area="hitArea" :mask="squareHit" texture="star" />
+    <text v-bind="tBind" :x="550 + 10">
       Mask\nHit Area
-    </Text>
+    </text>
   </assets>
 </template>

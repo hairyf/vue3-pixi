@@ -22,11 +22,11 @@ function onDragStart(this: SpriteElement) {
 }
 
 function onDragMove(event: FederatedPointerEvent) {
-  if (target.value) {
-    // Directly update the sprite's position
-    target.value.x = event.global.x
-    target.value.y = event.global.y
-  }
+  if (!target.value)
+    return
+  // Directly update the sprite's position
+  target.value.x = event.global.x
+  target.value.y = event.global.y
 }
 
 function onDragEnd() {
@@ -40,14 +40,17 @@ function onDragEnd() {
 function onLoaded(texture: Texture) {
   texture.source.scaleMode = 'nearest'
 
-  sprites.value = Array.from({ length: 10 }).fill(undefined).map(() => ({
-    x: Math.floor(Math.random() * screen.value.width),
-    y: Math.floor(Math.random() * screen.value.height),
-    onPointerdown: onDragStart,
-    texture,
-    scale: 3,
-    anchor: 0.5,
-  }))
+  sprites.value = Array
+    .from({ length: 10 })
+    .fill(undefined)
+    .map(() => ({
+      x: Math.floor(Math.random() * screen.value.width),
+      y: Math.floor(Math.random() * screen.value.height),
+      onPointerdown: onDragStart,
+      texture,
+      scale: 3,
+      anchor: 0.5,
+    }))
 }
 
 onReady((app) => {

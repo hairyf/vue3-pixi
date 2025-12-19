@@ -14,5 +14,5 @@ declare module '@vue/runtime-core' {
 
 renderer.use({
   name: 'DisplacementFilter',
-  createElement: props => new DisplacementFilter(props.alpha),
+  createElement: props => new DisplacementFilter(props),
 })

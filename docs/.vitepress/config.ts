@@ -30,6 +30,7 @@ const themeConfig: DefaultTheme.Config = {
         { text: 'Assets', link: '/examples/assets/async' },
         { text: 'Dom Container', link: '/examples/dom-container/html_text-area' },
         { text: 'Events', link: '/examples/events/buttons' },
+        { text: 'Filters', link: '/examples/filters/blur' },
         // { text: 'Text', link: '/examples/text/bitmap-text' },
         // { text: 'Graphics', link: '/examples/graphics/advanced' },
         // { text: 'Events', link: '/examples/events/click' },
@@ -168,6 +169,18 @@ const themeConfig: DefaultTheme.Config = {
           { text: 'Move', link: '/examples/events/move' },
           { text: 'Order', link: '/examples/events/order' },
           { text: 'Slider', link: '/examples/events/slider' },
+        ],
+      },
+      {
+        text: 'Filters',
+        collapsed: true,
+        items: [
+          { text: 'Blur', link: '/examples/filters/blur' },
+          { text: 'Color Matrix', link: '/examples/filters/color-matrix' },
+          { text: 'Custom shader / Glsl', link: '/examples/filters/custom-shader_glsl' },
+          { text: 'Custom / Interactive / Blending', link: '/examples/filters/custom_interactive_blending' },
+          { text: 'Displacement', link: '/examples/filters/displacement' },
+          { text: 'Displacement / Interactive', link: '/examples/filters/displacement_interactive' },
         ],
       },
       // {

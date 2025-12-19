@@ -44,7 +44,11 @@ for (const r of [stageRef, whiteBoxRef, blackBoxRef]) {
 
 <template>
   <text :x="2" :style="{ fontSize: 14 }">
-    Move your mouse slowly over the boxes to\nsee the order of pointerenter, pointerleave,\npointerover, pointerout events on each target!
+    Move your mouse slowly over the boxes to
+    \n
+    see the order of pointerenter, pointerleave,
+    \n
+    pointerover, pointerout events on each target!
   </text>
   <text :x="2" :y="80" :style="{ fontSize: 12 }">
     {{ logs.join('\n') }}

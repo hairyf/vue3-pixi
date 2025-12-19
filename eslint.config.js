@@ -6,5 +6,6 @@ export default antfu({
   typescript: true,
   rules: {
     'ts/no-empty-object-type': 'off',
+    'vue/no-deprecated-html-element-is': 'off',
   },
 })

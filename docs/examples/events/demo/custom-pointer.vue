@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import type { Sprite as SpriteElement, SpriteOptions, Texture } from 'pixi.js'
+import type { Sprite as SpriteElement, Texture } from 'pixi.js'
 
-import { reactive } from 'vue'
+import { computed, reactive } from 'vue'
 import { onReady, useScreen } from 'vue3-pixi'
 
 type RecordSprite = SpriteElement & Record<string, any>
@@ -9,39 +9,42 @@ type RecordSprite = SpriteElement & Record<string, any>
 const screen = useScreen()
 const textures = reactive<Record<string, Texture>>({})
 
-// set some silly values...
-const buttons: any[] = [
-  { x: 175, y: 75, scale: 1.2 },
-  { x: 655, y: 75 },
-  { x: 410, y: 325, rotation: Math.PI / 10 },
-  { x: 150, y: 465, scale: 0.8 },
-  { x: 685, y: 445, scale: { x: 0.8, y: 1.2 }, rotation: Math.PI },
-]
+// calculate button positions and sizes based on screen
+const buttons = computed(() => {
+  const { width, height } = screen.value
+  return [
+    { x: width * 0.25, y: height * 0.15, scale: 1.2 },
+    { x: width * 0.75, y: height * 0.15 },
+    { x: width * 0.5, y: height * 0.5, rotation: Math.PI / 10 },
+    { x: width * 0.2, y: height * 0.85, scale: 0.8 },
+    { x: width * 0.8, y: height * 0.85, scale: { x: 0.8, y: 1.2 }, rotation: Math.PI },
+  ]
+})
 
 function onButtonDown(this: RecordSprite) {
-  this._is_down = true
+  this.isDown = true
   this.texture = textures.buttonDown
   this.alpha = 1
 }
 
 function onButtonUp(this: RecordSprite) {
-  this._is_down = false
-  if (this._is_over)
+  this.isDown = false
+  if (this.isOver)
     this.texture = textures.buttonOver
   else
     this.texture = textures.button
 }
 
 function onButtonOver(this: RecordSprite) {
-  this._is_over = true
-  if (this._is_down)
+  this.isOver = true
+  if (this.isDown)
     return
   this.texture = textures.buttonOver
 }
 
 function onButtonOut(this: RecordSprite) {
-  this._is_over = false
-  if (this._is_down)
+  this.isOver = false
+  if (this.isDown)
     return
   this.texture = textures.button
 }

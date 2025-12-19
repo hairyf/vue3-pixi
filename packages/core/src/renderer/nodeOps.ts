@@ -7,7 +7,16 @@ import {
   Texture,
 } from 'pixi.js'
 import { camelize, markRaw, warn } from 'vue-demi'
-import { Empty, insertContainer, insertFilter, nextSiblingContainer, nextSiblingFilter, renderers } from './internal'
+import {
+  Empty,
+  insertContainer,
+  insertFilter,
+  nextSiblingContainer,
+  nextSiblingFilter,
+  removeContainer,
+  removeFilter,
+  renderers,
+} from './internal'
 import { isOn, patchs, withThisRender } from './utils'
 
 export function createElement(prefix: string, name: string, _?: ElementNamespace, _1?: string, props?: (VNodeProps & { [key: string]: any }) | null): any {
@@ -25,6 +34,7 @@ export function createElement(prefix: string, name: string, _?: ElementNamespace
     warn(`Unknown element ${name}`)
     is = () => new Container()
   }
+
   props ??= {}
 
   withThisRender(props)
@@ -56,23 +66,10 @@ export function createComment() {
 }
 
 export function remove(node: Container) {
-  // If the node is already destroyed, return early
-  if (!node || node.destroyed)
-    return
-
-  try {
-    node.destroy({ children: true })
-  }
-  catch {
-    // During unmounting, if the Application has already been destroyed, the TexturePool may have been cleaned up
-    // This causes the node to fail when trying to return textures to the TexturePool during destruction
-    // Catch the error here to avoid crashes and mark the node as destroyed
-    if (node && !node.destroyed) {
-      // Silent handling: node errors when trying to clean up textures after Application is destroyed
-      // This is normal because global resources have already been released
-      node.destroyed = true
-    }
-  }
+  if (Reflect.get(node, '_vp_filter'))
+    removeFilter(node as unknown as Filter)
+  else
+    removeContainer(node)
 }
 
 export function insert(child: Container, parent: Container, anchor?: Container | null) {

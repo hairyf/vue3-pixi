@@ -43,7 +43,10 @@ export type ExtractProps<T, U = {}> = Overwrite<
   U
 >
 
-export type ExtractFilterProps<T, U = {}> = Partial<Omit<T, keyof AllowedFilterProps | 'destroy'>> & U
+export type ExtractFilterProps<T, U = {}> = ExtractProps<
+  Partial<Omit<T, keyof AllowedFilterProps | 'destroy'>> & U,
+  AllowedPointsAttributes
+>
 
 export type OmitContainerOptions<T> = Omit<T, keyof ViewContainerOptions>
 
