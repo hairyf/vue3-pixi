@@ -31,8 +31,8 @@ const themeConfig: DefaultTheme.Config = {
         { text: 'Dom Container', link: '/examples/dom-container/html_text-area' },
         { text: 'Events', link: '/examples/events/buttons' },
         { text: 'Filters', link: '/examples/filters/blur' },
+        { text: 'Graphics', link: '/examples/graphics/basic_shapes' },
         // { text: 'Text', link: '/examples/text/bitmap-text' },
-        // { text: 'Graphics', link: '/examples/graphics/advanced' },
         // { text: 'Events', link: '/examples/events/click' },
         // { text: 'Masks', link: '/examples/masks/filter' },
         // { text: 'Filters Basic', link: '/examples/filters-basic/blur' },
@@ -183,6 +183,21 @@ const themeConfig: DefaultTheme.Config = {
           { text: 'Displacement / Interactive', link: '/examples/filters/displacement_interactive' },
         ],
       },
+      {
+        text: 'Graphics',
+        collapsed: true,
+        items: [
+          { text: 'Basic Shapes', link: '/examples/graphics/basic_shapes' },
+          { text: 'Curves / Arcs / Holes / Textures', link: '/examples/graphics/curves_arcs_holes_textures' },
+          { text: 'Dynamic', link: '/examples/graphics/dynamic' },
+          { text: 'Fill / Stroke / Gradient', link: '/examples/graphics/fill_stroke_gradient' },
+          { text: 'Mask / Animation', link: '/examples/graphics/mask_animation' },
+          { text: 'Pixel Line / Antialiasing', link: '/examples/graphics/pixel-line_antialiasing' },
+          { text: 'SVG File', link: '/examples/graphics/svg_file' },
+          { text: 'SVG String / Parsing', link: '/examples/graphics/svg_string-parsing' },
+          { text: 'Texture Fill', link: '/examples/graphics/texture-fill' },
+        ],
+      },
       // {
       //   text: 'Container',
       //   collapsed: true,
@@ -216,15 +231,6 @@ const themeConfig: DefaultTheme.Config = {
       //     { text: 'From Font', link: '/examples/text/from-font' },
       //     { text: 'Basic', link: '/examples/text/basic' },
       //     { text: 'Web Font', link: '/examples/text/web-font' },
-      //   ],
-      // },
-      // {
-      //   text: 'Graphics',
-      //   collapsed: true,
-      //   items: [
-      //     { text: 'Advanced', link: '/examples/graphics/advanced' },
-      //     { text: 'Dynamic', link: '/examples/graphics/dynamic' },
-      //     { text: 'Simple', link: '/examples/graphics/simple' },
       //   ],
       // },
       // {
