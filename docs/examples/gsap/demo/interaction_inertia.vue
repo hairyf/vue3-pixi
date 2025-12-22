@@ -1,18 +1,20 @@
 <script lang="ts" setup>
+import { computed } from 'vue'
 import type { Container as ContainerElement, Sprite as SpriteElement } from 'pixi.js'
+import { onReady, useScreen, useStage } from 'vue3-pixi'
 import { useEventListener } from '@vueuse/core'
 import { gsap } from 'gsap'
 import InertiaPlugin from 'gsap/InertiaPlugin'
-import { nextTick, onMounted, onUnmounted, ref } from 'vue'
-import { onReady, useScreen, useStage } from 'vue3-pixi'
 
 gsap.registerPlugin(InertiaPlugin)
 
 const screen = useScreen()
 const stage = useStage()
 
-const container = ref<ContainerElement>()
-const holders = ref<ContainerElement[]>([])
+const center = computed(() => ({
+  x: screen.value.width / 2,
+  y: screen.value.height / 2,
+}))
 
 let oldX = 0
 let oldY = 0
@@ -31,83 +33,63 @@ useEventListener(stage, 'pointermove', (e: PointerEvent) => {
   oldY = e.clientY
 })
 
-onMounted(async () => {
-  await nextTick()
-  if (container.value && holders.value.length === 25) {
-    container.value.x = screen.value.width / 2
-    container.value.y = screen.value.height / 2
-    container.value.pivot.x = container.value.width / 2
-    container.value.pivot.y = container.value.height / 2
-
-    holders.value.forEach((holder) => {
-      holder.eventMode = 'static'
-      holder.on('pointerover', () => {
-        const tl = gsap.timeline({
-          onComplete: () => {
-            tl.kill()
-          },
-        })
-
-        tl.timeScale(1.2)
-
-        const image = holder.getChildAt(0) as SpriteElement
-
-        tl.to(image, {
-          inertia: {
-            x: {
-              velocity: deltaX * 30,
-              end: 0,
-            },
-            y: {
-              velocity: deltaY * 30,
-              end: 0,
-            },
-          },
-        })
-        tl.fromTo(
-          image,
-          {
-            angle: 0,
-          },
-          {
-            duration: 0.4,
-            angle: (Math.random() - 0.5) * 30,
-            yoyo: true,
-            repeat: 1,
-            ease: 'power1.inOut',
-          },
-          '<',
-        )
-      })
-    })
-  }
-})
-
-onUnmounted(() => {
-  holders.value.forEach((holder) => {
-    holder.removeAllListeners()
+function onPointerover(this: ContainerElement) {
+  const tl = gsap.timeline({
+    onComplete: () => {
+      tl.kill()
+    },
   })
-})
+
+  tl.timeScale(1.2)
+
+
+  const image = this.getChildAt(0) as SpriteElement
+
+  tl.to(image, {
+    inertia: {
+      x: {
+        velocity: deltaX * 30,
+        end: 0,
+      },
+      y: {
+        velocity: deltaY * 30,
+        end: 0,
+      },
+    },
+  })
+  tl.fromTo(
+    image,
+    {
+      angle: 0,
+    },
+    {
+      duration: 0.4,
+      angle: (Math.random() - 0.5) * 30,
+      yoyo: true,
+      repeat: 1,
+      ease: 'power1.inOut',
+    },
+    '<',
+  )
+
+}
 </script>
 
 <template>
-  <assets entry="https://pixijs.com/assets/bunny.png">
-    <container ref="container">
+  <assets alias="bunny" entry="https://pixijs.com/assets/bunny.png">
+    <container
+      :position="center"
+      :pivot="{ x: 93, y: 98.5 }"
+    >
       <container
-        v-for="i in 25"
+        v-for="(_, i) in 25"
         :key="i"
-        :ref="(el: any) => { if (el) holders[i - 1] = el as ContainerElement }"
-        :x="((i - 1) % 5) * 40"
-        :y="Math.floor((i - 1) / 5) * 40"
-        @effect="(holder: ContainerElement) => {
-          const sprite = holder.getChildAt(0) as SpriteElement
-          if (sprite) {
-            holder.origin.set(sprite.width / 2, sprite.height / 2)
-          }
-        }"
+        @pointerover="onPointerover"
+        :x="(i % 5) * 40"
+        :y="Math.floor(i / 5) * 40"
       >
-        <sprite texture="https://pixijs.com/assets/bunny.png" />
+        <sprite texture="bunny" />
       </container>
     </container>
-  </assets>
+</assets>
 </template>

@@ -2,13 +2,14 @@
 import type { Graphics as GraphicsElement } from 'pixi.js'
 import { gsap } from 'gsap'
 import { DropShadowFilter } from 'pixi-filters'
-import { onMounted, onUnmounted, ref } from 'vue'
+import {  onUnmounted, ref } from 'vue'
 import { useScreen } from 'vue3-pixi'
+import { whenever } from '@vueuse/core'
 
 const screen = useScreen()
 
-const boxes = ref<GraphicsElement[]>([])
-const wrapper = ref()
+const size = 75
+const boxes = ref<GraphicsElement[]>()
 
 const dropShadowFilter = new DropShadowFilter({
   color: 'black',
@@ -19,13 +20,9 @@ const dropShadowFilter = new DropShadowFilter({
 
 let timeline: gsap.core.Timeline | null = null
 
-onMounted(() => {
-  if (boxes.value.length === 3 && wrapper.value) {
-    const size = 75
-    wrapper.value.x = screen.width / 2 - wrapper.value.width / 2 + size / 2
-    wrapper.value.y = screen.height / 2 - wrapper.value.height / 2 + size / 2
 
-    timeline = gsap.timeline({
+function initial(boxes: GraphicsElement[]) {
+  timeline = gsap.timeline({
       delay: 2,
       repeat: -1,
       yoyo: true,
@@ -33,25 +30,26 @@ onMounted(() => {
     })
 
     timeline
-      .to(boxes.value[0], { duration: 2, angle: -360 })
-      .to(boxes.value[1], { duration: 1, x: -100, ease: 'elastic.out' })
-      .to(boxes.value[2], { duration: 2, angle: 360, x: 100, ease: 'expo.out' })
-  }
-})
+      .to(boxes[0], { duration: 2, angle: -360 })
+      .to(boxes[1], { duration: 1, x: -100, ease: 'elastic.out' })
+      .to(boxes[2], { duration: 2, angle: 360, x: 100, ease: 'expo.out' })
+}
 
-onUnmounted(() => {
-  if (timeline) {
-    timeline.kill()
-  }
-})
+whenever(boxes, initial)
+onUnmounted(() => timeline?.kill())
 </script>
 
 <template>
-  <container ref="wrapper">
+  <container 
+    @effect="container => {
+      container.x = screen.width / 2 - container.width / 2 + size / 2
+      container.y = screen.height / 2 - container.height / 2 + size / 2
+    }"
+  >
     <graphics
       v-for="i in 3"
       :key="i"
-      :ref="el => { if (el) boxes[i - 1] = el as GraphicsElement }"
+      ref="boxes"
       :y="(i - 1) * 120"
       @effect="graphics => {
         const size = 75

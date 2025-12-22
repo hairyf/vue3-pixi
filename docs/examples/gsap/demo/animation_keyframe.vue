@@ -49,10 +49,12 @@ onUnmounted(() => animation?.kill())
 </script>
 
 <template>
-  <container @effect="container => {
+  <container
+   @effect="container => {
     container.x = screen.width / 2 - container.width / 2 + size / 2
     container.y = screen.height / 2 - container.height / 2 + size / 2
-  }">
+  }
+  ">
     <graphics v-for="i in 4" :key="i" ref="boxes" :x="(i - 1) * 120" @effect="graphics => {
       graphics
         .roundRect(-size / 2, -size / 2, size, size, 8)

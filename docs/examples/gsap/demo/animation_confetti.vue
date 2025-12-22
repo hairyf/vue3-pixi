@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { Graphics as GraphicsElement, Text as TextElement } from 'pixi.js'
+import type { Graphics as GraphicsElement } from 'pixi.js'
 import { useEventListener } from '@vueuse/core'
 import { gsap } from 'gsap'
 import Physics2DPlugin from 'gsap/Physics2DPlugin'
