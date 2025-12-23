@@ -1,10 +1,21 @@
 <script lang="ts" setup>
-// TODO: 实现 Transform / Rotation 示例
+import { ref } from 'vue'
+import { onTick, useScreen } from 'vue3-pixi'
+
+const screen = useScreen()
+const rotation = ref(0)
+
+onTick(() => rotation.value += 0.01)
 </script>
 
 <template>
-  <container>
-    <!-- TODO: 添加内容 -->
-  </container>
+  <assets alias="bunny" entry="https://pixijs.com/assets/bunny.png">
+    <sprite
+      texture="bunny"
+      :x="screen.width / 2"
+      :y="screen.height / 2"
+      :rotation="rotation"
+      :anchor="0.5"
+    />
+  </assets>
 </template>
-

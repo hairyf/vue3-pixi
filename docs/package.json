@@ -17,11 +17,11 @@
     "gsap": "catalog:docs",
     "naive-ui": "catalog:docs",
     "nanoid": "catalog:share",
+    "pixi-filters": "catalog:share",
     "pixi.js": "catalog:share",
     "unocss": "catalog:docs",
     "vue": "catalog:share",
-    "vue3-pixi": "workspace:^",
-    "pixi-filters": "catalog:share"
+    "vue3-pixi": "workspace:^"
   },
   "devDependencies": {
     "@iconify/json": "catalog:docs",

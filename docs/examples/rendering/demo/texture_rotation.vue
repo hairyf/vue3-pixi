@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-// TODO: 实现 Custom / Color / Attributes 示例
+// TODO: 实现 Texture Rotation 示例
 </script>
 
 <template>

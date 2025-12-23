@@ -1,10 +1,31 @@
 <script lang="ts" setup>
-// TODO: 实现 Tiling Sprite Transform / Animation 示例
+import { reactive } from 'vue'
+import { onTick, useScreen } from 'vue3-pixi'
+
+const screen = useScreen()
+
+const tileScale = reactive({ x: 1, y: 1 })
+const tilePosition = reactive({ x: 0, y: 0 })
+
+let count = 0
+onTick(() => {
+  count += 0.005
+  tileScale.x = 2 + Math.sin(count)
+  tileScale.y = 2 + Math.cos(count)
+
+  tilePosition.x += 1
+  tilePosition.y += 1
+})
 </script>
 
 <template>
-  <container>
-    <!-- TODO: 添加内容 -->
-  </container>
+  <assets entry="https://pixijs.com/assets/p2.jpeg" #="{data}">
+    <tiling-sprite
+      :texture="data"
+      :width="screen.width"
+      :height="screen.height"
+      :tile-scale="tileScale"
+      :tile-position="tilePosition"
+    />
+  </assets>
 </template>
-
