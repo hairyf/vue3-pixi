@@ -1,0 +1,6 @@
+[submodule "source/pixijs"]
+	path = source/pixijs
+	url = git@github.com:pixijs/pixijs.git
+[submodule "source/pixijs.com"]
+	path = source/pixijs.com
+	url = https://github.com/pixijs/pixijs.com

@@ -1,6 +1,11 @@
 {
   "version": 1,
   "skills": {
+    "arch-nuxt-module-builder": {
+      "source": "hairyf/skills",
+      "sourceType": "github",
+      "computedHash": "af15d8d6afa1d817c15faf88de39d5477376d7ccbdd1013bfb8d3d1aab75a6d1"
+    },
     "arch-tsdown-monorepo": {
       "source": "hairyf/skills",
       "sourceType": "github",
@@ -35,6 +40,11 @@
       "source": "hairyf/skills",
       "sourceType": "github",
       "computedHash": "61eda64684bf238290db54d87b2e86bd85e5dee417424112624374a3ffacdcc7"
+    },
+    "nuxt": {
+      "source": "hairyf/skills",
+      "sourceType": "github",
+      "computedHash": "6f5456948b35c0c0005424098eaf28ebbba1bbd92a3f3268466fe7d85e9e3789"
     },
     "pinia": {
       "source": "hairyf/skills",
