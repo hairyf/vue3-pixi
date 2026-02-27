@@ -1,0 +1,130 @@
+{
+  "version": 1,
+  "skills": {
+    "arch-tsdown-monorepo": {
+      "source": "hairyf/skills",
+      "sourceType": "github",
+      "computedHash": "12222d57deb4fe6a40ddcd6a69dfc3a2205a45bbfc9d90b3bb9cafd44b5e42d9"
+    },
+    "create-adaptable-composable": {
+      "source": "vuejs-ai/skills",
+      "sourceType": "github",
+      "computedHash": "3d044f8c43ddaee6a58ab28acc9d6315775aed150c3a9ab059d2714768be5bec"
+    },
+    "e2e-testing": {
+      "source": "hairyf/skills",
+      "sourceType": "github",
+      "computedHash": "9363ee179222eb03a390fd4407c988fced949859720f6f9c5cbafbe718fa8436"
+    },
+    "github-cli": {
+      "source": "hairyf/skills",
+      "sourceType": "github",
+      "computedHash": "2572253c1357bef87e91d5ff214807d08b291b5771cf6d2bcee0b7fc7d45c42b"
+    },
+    "github-workflow": {
+      "source": "hairyf/skills",
+      "sourceType": "github",
+      "computedHash": "e72b0ab57924a526d93a8f9c68b25448041a7b56102432530d91beffe572a8fd"
+    },
+    "hairy": {
+      "source": "hairyf/skills",
+      "sourceType": "github",
+      "computedHash": "1c5a80c0415c510fc22d84d6319c34aba4f090b08cb5f488ad0e9377d3ac1aab"
+    },
+    "hairy-utils": {
+      "source": "hairyf/skills",
+      "sourceType": "github",
+      "computedHash": "61eda64684bf238290db54d87b2e86bd85e5dee417424112624374a3ffacdcc7"
+    },
+    "pinia": {
+      "source": "hairyf/skills",
+      "sourceType": "github",
+      "computedHash": "8e8346fac8cb76d6f186462b712352d5a651c9c049076ea73559f47210c874ef"
+    },
+    "pnpm": {
+      "source": "hairyf/skills",
+      "sourceType": "github",
+      "computedHash": "bd8353f601082d30aacb8987d30818e13df4ac0d52bcd6af6c86c1f69f83e264"
+    },
+    "tsdown": {
+      "source": "hairyf/skills",
+      "sourceType": "github",
+      "computedHash": "ca6ce47784dde0bd71b57226ce162517bb26dd293acfb33dfeea12ad464324ee"
+    },
+    "unocss": {
+      "source": "hairyf/skills",
+      "sourceType": "github",
+      "computedHash": "1054e69977e1d2d3b7c8479adf16b4db43191bf775f150ce8a06a0b1c191318b"
+    },
+    "vite": {
+      "source": "hairyf/skills",
+      "sourceType": "github",
+      "computedHash": "f406fceb1b9020cd759a728d8424de7ffd8dfe5874bd97be2724571741e54852"
+    },
+    "vitepress": {
+      "source": "hairyf/skills",
+      "sourceType": "github",
+      "computedHash": "a8aa9c4c23b88c5f6ff59159d8dd0678c8c87ae28bab19b4e84fa399022ce5ce"
+    },
+    "vitest": {
+      "source": "hairyf/skills",
+      "sourceType": "github",
+      "computedHash": "0efd9cf8c56aada060d418d009cfe621a7915d0c73a958fe611985bc0c2fa4b8"
+    },
+    "vue": {
+      "source": "hairyf/skills",
+      "sourceType": "github",
+      "computedHash": "f72b54618560c53d65740515ded5bb833750c4574dbe961fd21f022bd2b31a74"
+    },
+    "vue-best-practices": {
+      "source": "vuejs-ai/skills",
+      "sourceType": "github",
+      "computedHash": "21132f6c11c765bd11d0d6ad081122dd858630073e2123b651e58f17b399b131"
+    },
+    "vue-debug-guides": {
+      "source": "vuejs-ai/skills",
+      "sourceType": "github",
+      "computedHash": "58bb2ad9e92dce0c15b42acc65aeec1dd93bc36f9db96ab248e52b1d22945472"
+    },
+    "vue-jsx-best-practices": {
+      "source": "vuejs-ai/skills",
+      "sourceType": "github",
+      "computedHash": "4e214770e8c516a073929902c54cb17ab8ac45c01f11beabd85f470392de2a1c"
+    },
+    "vue-options-api-best-practices": {
+      "source": "vuejs-ai/skills",
+      "sourceType": "github",
+      "computedHash": "4c613ef2a6d5fd5599e6aa58f24bb6460a9f0903f389cf71bad3a71400dbad20"
+    },
+    "vue-pinia-best-practices": {
+      "source": "vuejs-ai/skills",
+      "sourceType": "github",
+      "computedHash": "ab191c9cc34d755e5e2133bbedc56bd5f9ba0841e242a7b54c818780a5c78a9c"
+    },
+    "vue-router": {
+      "source": "hairyf/skills",
+      "sourceType": "github",
+      "computedHash": "f93ef1300320fd67bc522f62dc28cc7c198f0980ed21db99a52e12186a02caf2"
+    },
+    "vue-router-best-practices": {
+      "source": "vuejs-ai/skills",
+      "sourceType": "github",
+      "computedHash": "5a8f2f8021fe27cef48d8cf053b4cdb9375c0dc5d5e066330888229d0370f55c"
+    },
+    "vue-testing-best-practices": {
+      "source": "vuejs-ai/skills",
+      "sourceType": "github",
+      "computedHash": "743e11d7e5eaea83aead5853200df531328036f0cb7009d70f525626292f12d2"
+    },
+    "vueuse-functions": {
+      "source": "hairyf/skills",
+      "sourceType": "github",
+      "computedHash": "4719379b966e3c28ed36748d23a97cd2b7d9dc927576ca40fd575e43390187ad"
+    },
+    "web-design-guidelines": {
+      "source": "hairyf/skills",
+      "sourceType": "github",
+      "computedHash": "2f99e281ce912c5d269e4c47c688c91faed47dfe0bfe582ce5ab5a0b55dbc482"
+    }
+  }
+}
