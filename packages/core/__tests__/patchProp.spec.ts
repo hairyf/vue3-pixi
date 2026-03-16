@@ -190,7 +190,7 @@ describe('Mesh patchProp', () => {
     })
   }
 
-  it('geometry skip first set', () => {
+  it('geometry skip first set, apply on second', async () => {
     const el = createMesh()
     const handler = renderers.Mesh.patchProp!
     const origGeo = el.geometry
@@ -204,6 +204,11 @@ describe('Mesh patchProp', () => {
     handler(el, 'geometry', null, newGeo)
     // first: unfirst skip
     expect(el.geometry).toBe(origGeo)
+
+    // second call goes through setters.call, deferred on first use
+    handler(el, 'geometry', null, newGeo)
+    await nextTick()
+    expect(el.geometry).toBe(newGeo)
   })
 
   it('roundPixels applies as boolean', () => {

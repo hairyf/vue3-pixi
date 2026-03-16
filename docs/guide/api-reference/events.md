@@ -6,10 +6,10 @@ All events emitted by pixi objects are supported. Some of vue's event modifiers 
 
 <demo src="./demo/events.vue" />
 
-## Render Events
+## Effect Events
 
-All elements support the render event for manipulating elements directly. This is useful with `<graphics />` and `<particle-container />`.
+All elements support the `@effect` event for manipulating elements directly. This is useful with `<graphics />` and `<particle-container />`.
 
-This will set up a `watchEffect` internally that will automatically call the event handler again if any dependencies on the render method have changed.
+This sets up a `watchEffect` internally that re-runs the handler whenever its reactive dependencies change.
 
 <demo src="../demo/render-event.vue" />
