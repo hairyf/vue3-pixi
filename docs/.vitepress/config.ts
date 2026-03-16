@@ -281,6 +281,7 @@ const themeConfig: DefaultTheme.Config = {
           { text: 'Render Texture / Basic', link: '/examples/rendering/render_texture_basic' },
           { text: 'Render Texture / Buffer', link: '/examples/rendering/render_texture_buffer' },
           { text: 'Render Texture / Scratch Card', link: '/examples/rendering/render_texture_scratch_card' },
+          { text: 'Texture Rotation', link: '/examples/rendering/texture_rotation' },
         ],
       },
       {
@@ -351,6 +352,11 @@ export default defineConfig({
   vite: {
     plugins: [unocss() as any],
     ssr: { noExternal: ['naive-ui', 'gsap'] },
+    build: {
+      rollupOptions: {
+        external: ['three'],
+      },
+    },
     resolve: {
       // alias: [
       //   {

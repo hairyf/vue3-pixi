@@ -30,13 +30,43 @@ npm install pixi.js@^8.0.0 vue3-pixi@^1.0.0
 </template>
 ```
 
-**v8:**
+**v8 (single asset):**
 
 ```vue
 <template>
-  <assets :urls="['/hero.png']" @resolved="onLoaded">
-    <template #default="{ textures }">
-      <sprite :texture="textures['/hero.png']" />
+  <assets alias="hero" entry="/hero.png" @loaded="onLoaded">
+    <sprite texture="hero" />
+  </assets>
+</template>
+```
+
+**v8 (multiple assets):**
+
+```vue
+<template>
+  <assets
+    :entry="[
+      { alias: 'hero', src: '/hero.png' },
+      { alias: 'bg', src: '/background.jpg' },
+    ]"
+    @loaded="onLoaded"
+  >
+    <sprite texture="hero" />
+    <sprite texture="bg" />
+  </assets>
+</template>
+```
+
+The `<assets>` component gates rendering of its default slot until loading completes. Use the `#fallback` slot for loading state and `#error` for error state:
+
+```vue
+<template>
+  <assets alias="hero" entry="/hero.png">
+    <template #default>
+      <sprite texture="hero" />
+    </template>
+    <template #fallback="{ progress }">
+      <text :style="{ fill: 'white' }">Loading... {{ progress }}</text>
     </template>
     <template #error="{ error }">
       <text :style="{ fill: 'red' }">{{ error.message }}</text>
@@ -74,6 +104,18 @@ const geometry = new PlaneGeometry({ width: 100, height: 100, verticesX: 10, ver
 ### ParticleContainer
 
 In PixiJS v8, `ParticleContainer` uses lightweight `Particle` objects instead of `Sprite` children. Particles are **not** Containers and must be added via `addParticle()` (not `addChild()`). Declarative `<particle>` children inside `<particle-container>` are not supported; use the imperative approach instead.
+
+The `properties` and `maxSize` options from v7 have been replaced:
+
+```vue
+<!-- v7 -->
+<particle-container :max-size="10000" :properties="{ scale: true, position: true }">
+
+<!-- v8 -->
+<particle-container :dynamic-properties="{ position: true, rotation: true, vertex: true, uvs: true, color: true }">
+```
+
+Valid `dynamicProperties` keys in v8: `position`, `rotation`, `vertex`, `uvs`, `color`.
 
 ### New Elements
 
@@ -141,6 +183,34 @@ onTick(({ deltaTime }) => {
   sprite.rotation += 0.01 * deltaTime
 })
 ```
+
+### useApplication returns Ref
+
+`useApplication()` returns a `Ref<Application>` directly — **not** an object with an `app` property:
+
+```ts
+// Correct
+const app = useApplication()
+app.value.renderer.render(...)
+app.value.ticker.elapsedMS
+
+// Wrong — will be undefined
+const { app } = useApplication()
+```
+
+### Text constructor
+
+The `Text` constructor now uses an options object instead of positional arguments:
+
+```ts
+// v7
+const text = new Text('Hello', style)
+
+// v8
+const text = new Text({ text: 'Hello', style })
+```
+
+Note: `textureStyle` is a constructor-only option on `Text`. It cannot be set via the `<text>` element's props — use imperative creation if you need it.
 
 ### Texture changes
 
@@ -235,7 +305,7 @@ PixiJS v8 supports WebGPU. Opt in via the `preference` prop on `<Application>`:
 The `<assets>` component supports an `@error` event and an `#error` slot:
 
 ```vue
-<assets :urls="['/missing.png']" @error="handleError">
+<assets alias="missing" entry="/missing.png" @error="handleError">
   <template #error="{ error }">
     <text :style="{ fill: 'red' }">Failed to load: {{ error.message }}</text>
   </template>

@@ -1,10 +1,22 @@
 <script lang="ts" setup>
-// TODO: 实现 Bitmap / Xml 示例
 </script>
 
 <template>
-  <container>
-    <!-- TODO: 添加内容 -->
-  </container>
+  <assets
+    alias="desyrel"
+    entry="https://pixijs.com/assets/bitmap-font/desyrel.xml"
+  >
+    <bitmap-text
+      :x="50"
+      :y="200"
+      :style="{
+        fontFamily: 'Desyrel',
+        fontSize: 55,
+        align: 'left',
+      }"
+    >
+      bitmap fonts are supported!
+      Woo yay!
+    </bitmap-text>
+  </assets>
 </template>
-
