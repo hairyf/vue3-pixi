@@ -100,6 +100,30 @@ Interactive elements now need an explicit `event-mode` prop. In v7, some element
 <sprite :texture="texture" event-mode="static" @pointerdown="onClick" />
 ```
 
+### Pointer Move Events
+
+In v8, `@pointermove` only fires when the pointer is **over** the element, not anywhere on the canvas. For canvas-wide tracking, use `@globalpointermove`:
+
+```vue
+<!-- v7: pointermove fired everywhere -->
+<sprite :texture="texture" @pointermove="onMove" />
+
+<!-- v8: use globalpointermove for canvas-wide tracking -->
+<sprite :texture="texture" event-mode="static" @globalpointermove="onMove" />
+```
+
+### Container.name → Container.label
+
+The `name` property has been renamed to `label` in v8:
+
+```vue
+<!-- v7 -->
+<container name="myContainer" />
+
+<!-- v8 -->
+<container label="myContainer" />
+```
+
 ## Script Breaking Changes
 
 ### onTick callback signature

@@ -48,4 +48,22 @@ describe('compiler', () => {
     expect(compilerOptions.isCustomElement('div')).toBe(false)
     expect(compilerOptions.isCustomElement('pixi-unknown')).toBe(false)
   })
+
+  it('recognizes PascalCase element names', () => {
+    expect(compilerOptions.isCustomElement('Container')).toBe(true)
+    expect(compilerOptions.isCustomElement('TilingSprite')).toBe(true)
+    expect(compilerOptions.isCustomElement('BlurFilter')).toBe(true)
+    expect(compilerOptions.isCustomElement('MeshPlane')).toBe(true)
+    expect(compilerOptions.isCustomElement('GraphicsContext')).toBe(true)
+  })
+
+  it('rejects unknown PascalCase elements', () => {
+    expect(compilerOptions.isCustomElement('Unknown')).toBe(false)
+    expect(compilerOptions.isCustomElement('FooBar')).toBe(false)
+  })
+
+  it('does not recognize particle as template element', () => {
+    expect(compilerOptions.isCustomElement('particle')).toBe(false)
+    expect(compilerOptions.isCustomElement('pixi-particle')).toBe(false)
+  })
 })

@@ -37,6 +37,12 @@ describe('nodeOps', () => {
       const node = createText('')
       expect(node).toBeInstanceOf(Empty)
     })
+
+    it('should handle escaped newlines', () => {
+      const node = createText('line1\\nline2')
+      expect(node).toBeInstanceOf(Text)
+      expect(node.text).toBe('line1\nline2')
+    })
   })
 
   describe('createComment', () => {

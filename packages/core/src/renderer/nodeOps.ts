@@ -57,7 +57,7 @@ export function parentNode(node: any) {
 
 export function createText(text: string) {
   text = text.replace(/\\n/g, '\n')
-  return text ? new Text(text) : new Empty() as any
+  return text ? new Text({ text }) : new Empty() as any
 }
 
 export function createComment() {
