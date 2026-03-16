@@ -74,21 +74,23 @@ The Vue Plugin detects any texture props containing the path to an image and rep
 <sprite texture="@/assets/myTexture.png" />
 ```
 
-## Creating an pixi application manually
+## Creating a PixiJS application manually
 
-Using the custom renderer inside `vue3-pixi`
+Using the custom renderer inside `vue3-pixi`:
 
 ```ts
 import { Application } from 'pixi.js'
 import { appInjectKey, createApp } from 'vue3-pixi'
 import App from './App.vue'
 
-const pixiApp = new Application({
+const pixiApp = new Application()
+
+await pixiApp.init({
   resizeTo: window,
   antialias: true,
 })
 
-document.body.appendChild(pixiApp.view as HTMLCanvasElement)
+document.body.appendChild(pixiApp.canvas)
 
 const app = createApp(App)
 

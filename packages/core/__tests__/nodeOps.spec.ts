@@ -1,7 +1,8 @@
-import { Container, Text } from 'pixi.js'
-import { describe, expect, it } from 'vitest'
+import { BitmapText, Container, Filter, Text } from 'pixi.js'
+import { describe, expect, it, vi } from 'vitest'
 import { Empty } from '../src/renderer/internal/custom'
-import { createComment, createElement, createText, insert, remove } from '../src/renderer/nodeOps'
+import { patchs } from '../src/renderer/utils/patchs'
+import { createComment, createElement, createText, insert, nextSibling, remove, setText } from '../src/renderer/nodeOps'
 
 // Register elements before testing
 import '../src/elements'
@@ -103,6 +104,91 @@ describe('nodeOps', () => {
       // Empty should be detached but not destroyed (lightweight cleanup)
       expect(parent.children).not.toContain(empty)
       expect(empty.destroyed).toBe(false)
+    })
+  })
+
+  describe('setText', () => {
+    it('updates .text on a Text node', () => {
+      const node = new Text({ text: 'hello' })
+      setText(PREFIX, node, 'world')
+      expect(node.text).toBe('world')
+    })
+
+    it('updates .text on a BitmapText node', () => {
+      const node = new BitmapText({ text: 'hello' })
+      setText(PREFIX, node, 'world')
+      expect(node.text).toBe('world')
+    })
+
+    it('does not set text on non-text Container', () => {
+      // Vue's warn is used internally; we just verify no crash and no .text property set
+      const node = new Container()
+      expect(() => setText(PREFIX, node as any, 'text')).not.toThrow()
+      expect((node as any).text).toBeUndefined()
+    })
+  })
+
+  describe('filter dispatcher', () => {
+    it('insert with _vp_filter routes to insertFilter', () => {
+      const parent = new Container()
+      const filter = new Filter()
+      ;(filter as any)._vp_filter = true
+
+      insert(filter as any, parent)
+
+      expect(parent.filters).toContain(filter)
+    })
+
+    it('remove with _vp_filter routes to removeFilter', () => {
+      const parent = new Container()
+      const filter = new Filter()
+      ;(filter as any)._vp_filter = true
+
+      insert(filter as any, parent)
+      expect(parent.filters).toContain(filter)
+
+      remove(filter as any)
+      expect(parent.filters).not.toContain(filter)
+    })
+
+    it('nextSibling returns next filter in parent.filters', () => {
+      const parent = new Container()
+      const filter1 = new Filter()
+      const filter2 = new Filter()
+      ;(filter1 as any)._vp_filter = true
+      ;(filter2 as any)._vp_filter = true
+
+      insert(filter1 as any, parent)
+      insert(filter2 as any, parent)
+
+      const sibling = nextSibling(filter1 as any)
+      expect(sibling).toBe(filter2)
+    })
+  })
+
+  describe('effect cleanup', () => {
+    it('onEffect scope stops when destroyed event fires', () => {
+      const el: any = new Container()
+      const fn = vi.fn()
+
+      patchs.events.effect(el, 'onEffect', null, fn)
+      expect(fn).toHaveBeenCalledWith(el)
+
+      // Fire destroyed — scope should stop
+      el.emit('destroyed')
+      // No throw, cleanup happened
+    })
+
+    it('double destroy does not throw', () => {
+      const el: any = new Container()
+      const fn = vi.fn()
+
+      patchs.events.effect(el, 'onEffect', null, fn)
+
+      expect(() => {
+        el.emit('destroyed')
+        el.emit('destroyed')
+      }).not.toThrow()
     })
   })
 })

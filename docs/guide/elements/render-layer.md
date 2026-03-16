@@ -30,9 +30,9 @@ import { ref } from 'vue'
 
 ## Use Cases
 
-- **HUD / UI layers** -- keep UI elements on top regardless of scene graph depth
-- **Background layers** -- ensure backgrounds always render behind other content
-- **Sorting** -- control draw order for elements that don't share a common parent
+- **HUD / UI layers**: keep UI elements on top regardless of scene graph depth
+- **Background layers**: ensure backgrounds always render behind other content
+- **Sorting**: control draw order for elements that don't share a common parent
 
 ## API
 

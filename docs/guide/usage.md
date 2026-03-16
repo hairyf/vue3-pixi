@@ -38,9 +38,9 @@ To use filters, you need to add the filter as a child element to the element whe
 
 ## Render Events
 
-all elements support render event, which allows for flexible manipulation of elements, For example, using on `<grahpics />` and `<particle-container />`
+All elements support the effect event for manipulating elements directly. This is useful with `<graphics />` and `<particle-container />`.
 
-This will set up a `watchEffect` internally that will automatically call the event handler again if any dependencies on the render method have changed.
+This sets up a `watchEffect` internally that re-runs the handler whenever its reactive dependencies change.
 
 <demo src="./demo/render-event.vue" />
 
@@ -57,23 +57,23 @@ You can add custom `PIXI` instances to the `renderer`, if you have a custom clas
 ```ts
 // main.js
 import { Text } from 'pixi.js'
-import { pathProp as defPathProp, renderer } from 'vue3-pixi'
+import { patchProp as defPatchProp, renderer } from 'vue3-pixi'
 
 class YellowText extends Text {
-  constructor(text, style) {
-    super(text, style)
+  constructor(options) {
+    super(options)
     this.style.fill = 'yellow'
   }
 }
 
 renderer.use({
   name: 'YellowText',
-  createElement: props => new YellowText(props.text, props.style),
-  pathProp(el, key, prevValue, nextValue) {
+  createElement: props => new YellowText({ text: props.text, style: props.style }),
+  patchProp(el, key, prevValue, nextValue) {
     // handle special prop here..
 
     // or fallback to default
-    return defPathProp(el, key, prevValue, nextValue)
+    return defPatchProp(el, key, prevValue, nextValue)
   },
 })
 ```

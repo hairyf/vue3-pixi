@@ -58,7 +58,6 @@ export const patchs = {
 
         el.on('destroyed', onDestroy)
 
-        el.on('destroyed', () => scope?.stop?.())
         return true
       }
     },

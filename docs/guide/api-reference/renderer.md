@@ -1,27 +1,29 @@
 # Renderer
 
-vue3-pixi changes the rules for rendering different tags through custom renderers. Each element will be rendered as a different `PIXI` instance.
+vue3-pixi uses a custom Vue renderer to map tags to PixiJS instances.
 
-Currently, the following PixiJS objects are supported out of the box:
+The following PixiJS objects are supported out of the box:
 
-- [Container](http://pixijs.download/release/docs/PIXI.Container.html)
-- [Sprite](http://pixijs.download/release/docs/PIXI.Sprite.html)
-- [Graphics](http://pixijs.download/release/docs/PIXI.Graphics.html)
-- [Text](http://pixijs.download/release/docs/PIXI.Text.html)
-- [BitmapText](http://pixijs.download/release/docs/PIXI.BitmapText.html)
-- [AnimatedSprite](http://pixijs.download/release/docs/PIXI.AnimatedSprite.html)
-- [SimpleMesh](http://pixijs.download/release/docs/PIXI.SimpleMesh.html)
-- [SimplePlane](http://pixijs.download/release/docs/PIXI.SimplePlane.html)
-- [TilingSprite](http://pixijs.download/release/docs/PIXI.TilingSprite.html)
-- [NineSlicePlane](http://pixijs.download/release/docs/PIXI.NineSlicePlane.html)
-- [MeshRope](http://pixijs.download/release/docs/PIXI.MeshRope.html)
-- [Mesh](http://pixijs.download/release/docs/PIXI.AnimatedSprite.html)
-- [BlurFilter](https://pixijs.download/release/docs/PIXI.BlurFilter.html)
-- [AlphaFilter](https://pixijs.download/release/docs/PIXI.AlphaFilter.html)
-- [DisplacementFilter](https://pixijs.download/release/docs/PIXI.DisplacementFilter.html)
-- [ColorMatrixFilter](https://pixijs.download/release/docs/PIXI.ColorMatrixFilter.html)
-- [NoiseFilter](https://pixijs.download/release/docs/PIXI.NoiseFilter.html)
-- [FXAAFilter](https://pixijs.download/release/docs/PIXI.FXAAFilter.html)
+- [Container](https://pixijs.download/release/docs/scene.Container.html)
+- [Sprite](https://pixijs.download/release/docs/scene.Sprite.html)
+- [Graphics](https://pixijs.download/release/docs/scene.Graphics.html)
+- [Text](https://pixijs.download/release/docs/scene.Text.html)
+- [BitmapText](https://pixijs.download/release/docs/scene.BitmapText.html)
+- [AnimatedSprite](https://pixijs.download/release/docs/scene.AnimatedSprite.html)
+- [Mesh](https://pixijs.download/release/docs/scene.Mesh.html)
+- [MeshPlane](https://pixijs.download/release/docs/scene.MeshPlane.html)
+- [MeshSimple](https://pixijs.download/release/docs/scene.MeshSimple.html)
+- [MeshRope](https://pixijs.download/release/docs/scene.MeshRope.html)
+- [TilingSprite](https://pixijs.download/release/docs/scene.TilingSprite.html)
+- [NineSliceSprite](https://pixijs.download/release/docs/scene.NineSliceSprite.html)
+- [ParticleContainer](https://pixijs.download/release/docs/scene.ParticleContainer.html)
+- [RenderLayer](https://pixijs.download/release/docs/scene.RenderLayer.html)
+- [GraphicsContext](https://pixijs.download/release/docs/scene.GraphicsContext.html)
+- [BlurFilter](https://pixijs.download/release/docs/filters.BlurFilter.html)
+- [AlphaFilter](https://pixijs.download/release/docs/filters.AlphaFilter.html)
+- [DisplacementFilter](https://pixijs.download/release/docs/filters.DisplacementFilter.html)
+- [ColorMatrixFilter](https://pixijs.download/release/docs/filters.ColorMatrixFilter.html)
+- [NoiseFilter](https://pixijs.download/release/docs/filters.NoiseFilter.html)
 
 ## Namespaces
 
@@ -37,40 +39,35 @@ All elements (including custom elements) can use the `pixi-` prefix or capitaliz
 
 ## Using a Custom Element
 
-You can add custom `PIXI` instances to the `renderer` if you have a custom class (whether it's your own or from a third-party library).
+You can add custom PixiJS instances to the `renderer` if you have a custom class (your own or from a third-party library).
 
 ```ts
 // main.js
 import { Text } from 'pixi.js'
-import { pathProp as defPathProp, renderer } from 'vue3-pixi'
+import { patchProp as defPatchProp, renderer } from 'vue3-pixi'
 
 class YellowText extends Text {
-  constructor(text, style) {
-    super(text, style)
+  constructor(options) {
+    super(options)
     this.style.fill = 'yellow'
   }
 }
 
 renderer.use({
   name: 'YellowText',
-  createElement: props => new YellowText(props.text, props.style),
-  pathProp(el, key, prevValue, nextValue) {
+  createElement: props => new YellowText({ text: props.text, style: props.style }),
+  patchProp(el, key, prevValue, nextValue) {
     // handle special prop here..
 
     // or fallback to default
-    return defPathProp(el, key, prevValue, nextValue)
+    return defPatchProp(el, key, prevValue, nextValue)
   },
-  // nextSibling
-  // insert
-  // setElementText
-  // setText
-  // parentNode
 })
 ```
 
-> Please note that if you modify any of these configurations, the default configuration for that will be overridden.
+> If you override any of these hooks, the default behavior for that hook is replaced entirely.
 
-To prevent Vue program from issuing warnings and to handle them, you need to add the following content in the Vue plugin configuration.
+To suppress Vue warnings for the custom element tag, update the plugin configuration:
 
 ```ts
 import vue from '@vitejs/plugin-vue'

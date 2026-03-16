@@ -2,7 +2,7 @@
 
 Creates a [Mesh](https://pixijs.download/release/docs/scene.Mesh.html)
 
-This component empowers you to have maximum flexibility to render any kind of WebGL visuals you can think of. This component assumes a certain level of WebGL knowledge.
+Renders arbitrary WebGL/WebGPU visuals with full control over geometry, shaders, and state. Assumes some WebGL knowledge.
 
 Pretty much all WebGL can be broken down into the following:
 

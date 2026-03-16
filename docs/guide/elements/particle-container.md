@@ -9,7 +9,7 @@ The tradeoff of the ParticleContainer is that most advanced functionality will n
 Other more advanced functionality like masking, filters, etc will not work on sprites in this batch.
 
 ::: warning Imperative Usage Only
-In PixiJS v8, `ParticleContainer` uses `Particle` objects which are **not** Containers. They cannot be added via `addChild()` — you must use `addParticle()` instead. This means declarative `<particle>` children inside `<particle-container>` will not work.
+In PixiJS v8, `ParticleContainer` uses `Particle` objects which are **not** Containers. They cannot be added via `addChild()`; you must use `addParticle()` instead. Declarative `<particle>` children inside `<particle-container>` will not work.
 
 Use the imperative approach shown below for particle management.
 :::

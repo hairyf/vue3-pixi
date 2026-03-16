@@ -8,7 +8,7 @@ All events emitted by pixi objects are supported. Some of vue's event modifiers 
 
 ## Render Events
 
-all elements support render event, which allows for flexible manipulation of elements, For example, using on `<grahpics />` and `<particle-container />`
+All elements support the render event for manipulating elements directly. This is useful with `<graphics />` and `<particle-container />`.
 
 This will set up a `watchEffect` internally that will automatically call the event handler again if any dependencies on the render method have changed.
 

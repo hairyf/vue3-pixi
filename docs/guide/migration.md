@@ -73,12 +73,12 @@ const geometry = new PlaneGeometry({ width: 100, height: 100, verticesX: 10, ver
 
 ### ParticleContainer
 
-In PixiJS v8, `ParticleContainer` uses lightweight `Particle` objects instead of `Sprite` children. Particles are **not** Containers and must be added via `addParticle()` (not `addChild()`). Declarative `<particle>` children inside `<particle-container>` are not supported — use the imperative approach instead.
+In PixiJS v8, `ParticleContainer` uses lightweight `Particle` objects instead of `Sprite` children. Particles are **not** Containers and must be added via `addParticle()` (not `addChild()`). Declarative `<particle>` children inside `<particle-container>` are not supported; use the imperative approach instead.
 
 ### New Elements
 
-- `<mesh-plane>` — texture mapped to a plane with configurable vertex density (replaces `<simple-plane>`)
-- `<mesh-simple>` — simplified mesh with direct vertex control
+- `<mesh-plane>`: texture mapped to a plane with configurable vertex density (replaces `<simple-plane>`)
+- `<mesh-simple>`: simplified mesh with direct vertex control
 
 ### @render to @effect
 
