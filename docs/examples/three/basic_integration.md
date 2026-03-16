@@ -1,2 +1,2 @@
-<demo mode="full" src="./demo/basic_integration.vue" />
+<demo mode="full" :app="false" src="./demo/basic_integration.vue" />
 
