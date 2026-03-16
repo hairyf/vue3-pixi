@@ -1,6 +1,6 @@
 # Text
 
-Creates a [Text](https://pixijs.download/release/docs/PIXI.Text.html)
+Creates a [Text](https://pixijs.download/release/docs/scene.Text.html)
 
 Renders a line or multiple lines of text to the canvas.
 
@@ -19,17 +19,17 @@ To split a line you can use `\n` in your text string, or, on the style prop, cha
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | text | ^[string] | `undefined` | The text to display. |
-| style | ^[object]`PIXI.TextStyle` | `undefined` | The style parameters. |
+| style | ^[object]`TextStyle` | `undefined` | The style parameters. |
 | anchor | <api-point /> | `0` | The anchor sets the origin point of the text. |
 | anchor-x | ^[number] | `0` | The x anchor sets the origin point of the text. |
 | anchor-y | ^[number] | `0` | The y anchor sets the origin point of the text. |
 
-> more props in [Container Props](/guide/elements/container#container-props) and [PIXI.Text](https://pixijs.download/release/docs/PIXI.Text.html)
+> more props in [Container Props](/guide/elements/container#container-props) and [Text](https://pixijs.download/release/docs/scene.Text.html)
 
 ### Text Events
 
 | Name | Type | Description |
 | --- | --- | --- |
-| render | ^[function]`(el: Text): void` | custom render function |
+| effect | ^[function]`(el: Text): void` | custom render function |
 
 > more events in [Container Events](/guide/elements/container#container-events)

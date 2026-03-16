@@ -14,5 +14,5 @@ declare module '@vue/runtime-core' {
 
 renderer.use({
   name: 'NoiseFilter',
-  createElement: props => new NoiseFilter(props.alpha),
+  createElement: props => new NoiseFilter(props),
 })

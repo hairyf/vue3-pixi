@@ -1,8 +1,6 @@
-Translation:
-
 # Application
 
-Creates a [Application](https://pixijs.download/release/docs/PIXI.Application.html).
+Creates an [Application](https://pixijs.download/release/docs/app.Application.html).
 
 Creates a Pixi application where all Pixi elements and composite functions need to be inside the application to work properly.
 
@@ -26,8 +24,9 @@ You can obtain the Application instance by binding a ref externally, but it is g
 | backgroundColor | <api-color /> | `0x000000` | The background color of the renderer |
 | backgroundAlpha | ^[number] | `1` | The background alpha of the renderer |
 | resolution | ^[number] | `1` | The resolution / device pixel ratio of the renderer |
+| preference | ^[string]`'webgl' \| 'webgpu'` | `'webgl'` | Which rendering backend to prefer |
 
-> more props in [PIXI.Application](https://pixijs.download/release/docs/PIXI.Application.html)
+> more props in [PixiJS Application](https://pixijs.download/release/docs/app.Application.html)
 
 ### Application Slots
 

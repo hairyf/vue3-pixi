@@ -1,6 +1,6 @@
 # Sprite
 
-Creates a [Sprite](https://svelte-pixi.com/docs/components/sprite)
+Creates a [Sprite](https://pixijs.download/release/docs/scene.Sprite.html)
 
 Sprites are the base for all textured objects that are rendered to the screen
 
@@ -12,18 +12,18 @@ Sprites are the base for all textured objects that are rendered to the screen
 
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| blend-mode | <api-blend-mode /> | `BLEND_MODES.NORMAL` | The blend mode to be applied to the sprite. |
-| texture | ^[string] ^[object]`PIXI.Texture` | `undefined` | The texture to use on the Sprite. |
+| blend-mode | <api-blend-mode /> | `'normal'` | The blend mode to be applied to the sprite. |
+| texture | ^[string] ^[object]`Texture` | `undefined` | The texture to use on the Sprite. |
 | anchor | <api-point /> | `0` | The anchor sets the origin point of the text. |
 | anchor-x | ^[number] | `0` | The x anchor sets the origin point of the text. |
 | anchor-y | ^[number] | `0` | The y anchor sets the origin point of the text. |
 
-> more props in [Container Props](/guide/elements/container#container-props) and [PIXI.Sprite](https://pixijs.download/release/docs/PIXI.Sprite.html)
+> more props in [Container Props](/guide/elements/container#container-props) and [Sprite](https://pixijs.download/release/docs/scene.Sprite.html)
 
 ### Sprite Events
 
 | Name | Type | Description |
 | --- | --- | --- |
-| render | ^[function]`(el: Sprite): void` | custom render function |
+| effect | ^[function]`(el: Sprite): void` | custom render function |
 
 > more events in [Container Events](/guide/elements/container#container-events)

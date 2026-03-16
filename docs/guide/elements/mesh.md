@@ -1,6 +1,6 @@
 # Mesh
 
-Creates a [Mesh](https://pixijs.download/release/docs/PIXI.Mesh.html)
+Creates a [Mesh](https://pixijs.download/release/docs/scene.Mesh.html)
 
 This component empowers you to have maximum flexibility to render any kind of WebGL visuals you can think of. This component assumes a certain level of WebGL knowledge.
 
@@ -18,16 +18,16 @@ Pretty much all WebGL can be broken down into the following:
 
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| blend-mode | <api-blend-mode /> | `BLEND_MODES.NORMAL` | The blend mode to be applied to the sprite. |
-| draw-mode | <api-draw-mode /> | `Topology` | The draw mode to be used. |
-| geometry | ^[object]`PIXI.Geometry` | `undefined` | The geometry the mesh will use. |
+| blend-mode | <api-blend-mode /> | `'normal'` | The blend mode to be applied to the sprite. |
+| draw-mode | <api-draw-mode /> | `'triangle-list'` | The draw mode to be used. |
+| geometry | ^[object]`Geometry` | `undefined` | The geometry the mesh will use. |
 
-> more props in [Container Props](/guide/elements/container#container-props) and [PIXI.Mesh](https://pixijs.download/release/docs/PIXI.Mesh.html)
+> more props in [Container Props](/guide/elements/container#container-props) and [Mesh](https://pixijs.download/release/docs/scene.Mesh.html)
 
 ### Mesh Events
 
 | Name | Type | Description |
 | --- | --- | --- |
-| render | ^[function]`(el: Mesh): void` | Call your drawing functions on the PIXI.Mesh instance here |
+| effect | ^[function]`(el: Mesh): void` | Call your drawing functions on the Mesh instance here |
 
 > more events in [Container Events](/guide/elements/container#container-events)

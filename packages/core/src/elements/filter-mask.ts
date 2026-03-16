@@ -14,5 +14,5 @@ declare module '@vue/runtime-core' {
 
 renderer.use({
   name: 'MaskFilter',
-  createElement: props => new MaskFilter(props.alpha),
+  createElement: props => new MaskFilter(props),
 })

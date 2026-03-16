@@ -1,6 +1,6 @@
 # BitmapText
 
-Creates a [BitmapText](https://pixijs.download/release/docs/PIXI.BitmapText.html)
+Creates a [BitmapText](https://pixijs.download/release/docs/scene.BitmapText.html)
 
 Renders a line or multiple lines of text using bitmap font.
 
@@ -38,13 +38,13 @@ A BitmapText can only be created when the font is loaded.
 | resolution | ^[number] | `undefined` | The resolution of the BitmapText. |
 | dirty | ^[boolean] | `false` | Whether or not the text has changed. |
 
-> more attributes in [Container Props](/guide/elements/container#container-props) and [PIXI.BitmapText](https://pixijs.download/release/docs/PIXI.BitmapText.html)
+> more attributes in [Container Props](/guide/elements/container#container-props) and [BitmapText](https://pixijs.download/release/docs/scene.BitmapText.html)
 
 ### BitmapText Events
 
 | Name | Type | Description |
 | ---- | ---- | ---- |
-| render | ^[function]`(el: BitmapText): void` | custom rendering listener |
+| effect | ^[function]`(el: BitmapText): void` | custom rendering listener |
 
 > more events in [Container Events](/guide/elements/container#container-events)
 

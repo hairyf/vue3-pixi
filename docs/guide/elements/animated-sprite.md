@@ -1,6 +1,6 @@
 # AnimatedSprite
 
-Creates a [AnimatedSprite](https://pixijs.download/release/docs/PIXI.AnimatedSprite.html)
+Creates a [AnimatedSprite](https://pixijs.download/release/docs/scene.AnimatedSprite.html)
 
 A simple way to display an animation depicted by a list of textures.
 
@@ -20,7 +20,7 @@ I recommend using spritesheets created by TexturePacker ([they have a great tuto
 
 | Name | Type | Default | Description |
 | ---- | ---- | ---- | ---- |
-| blend-mode | <api-blend-mode /> | `BLEND_MODES.NORMAL` | The blend mode to be applied to the sprite. |
+| blend-mode | <api-blend-mode /> | `'normal'` | The blend mode to be applied to the sprite. |
 | anchor | <api-point /> | `0` | The anchor sets the origin point of the text. |
 | anchor-x | ^[number] | `0` | The x anchor sets the origin point of the text. |
 | anchor-y | ^[number] | `0` | The y anchor sets the origin point of the text. |
@@ -29,7 +29,7 @@ I recommend using spritesheets created by TexturePacker ([they have a great tuto
 | loop | ^[boolean] | `true` | Whether or not the animate sprite repeats after playing. |
 | playing | ^[boolean] | `false` | Whether or not the animation is playing. |
 
-> more attributes in [Container Props](/guide/elements/container#container-props) and [PIXI.AnimatedSprite](https://pixijs.download/release/docs/PIXI.AnimatedSprite.html)
+> more attributes in [Container Props](/guide/elements/container#container-props) and [AnimatedSprite](https://pixijs.download/release/docs/scene.AnimatedSprite.html)
 
 ### AnimatedSprite Events
 
@@ -38,7 +38,7 @@ I recommend using spritesheets created by TexturePacker ([they have a great tuto
 | loop | ^[function]`():void` | when the AnimatedSprite finishes playing. |
 | frame-change | ^[function]`(index: number):void` | when the AnimatedSprite changes to a new frame. |
 | complete | ^[function]`():void` | when the AnimatedSprite finishes playing. |
-| render | ^[function]`(el: AnimatedSprite): void` | custom rendering listener |
+| effect | ^[function]`(el: AnimatedSprite): void` | custom rendering listener |
 <!-- | on-update:current-frame | ^[function]`(index: number):void` | when the AnimatedSprite changes to a new frame. | -->
 
 > more events in [Container Events](/guide/elements/container#container-events)

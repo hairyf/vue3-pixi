@@ -1,28 +1,26 @@
-# SimplePlane
+# SimplePlane (Removed)
 
-Creates a [SimplePlane](https://pixijs.download/release/docs/PIXI.SimplePlane.html)
+::: warning Deprecated
+`<simple-plane>` has been removed in vue3-pixi v1.0.0 (PixiJS v8). Use [`<mesh-plane>`](/guide/elements/mesh-plane) instead, or `<mesh>` with a `PlaneGeometry` for advanced use cases.
+:::
 
-The SimplePlane allows you to draw a texture across several points and then manipulate these points
+## Migration
 
-<demo src="./demo/simple-plane.vue" />
+```vue
+<script setup>
+import { PlaneGeometry } from 'pixi.js'
 
-## API
+const geometry = new PlaneGeometry({
+  width: 100,
+  height: 100,
+  verticesX: 10,
+  verticesY: 10,
+})
+</script>
 
-### SimplePlane Attributes
+<template>
+  <mesh :geometry="geometry" :texture="texture" />
+</template>
+```
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| draw-mode | <api-draw-mode /> | `Topology` | The draw mode to be used. |
-| texture | ^[string] ^[object]`PIXI.Texture` | `undefined` | The texture to use on the NineSlicePlane. |
-| geometry | ^[object]`PIXI.Geometry` | `undefined` | The geometry to use on the SimplePlane. |
-| vertices | ^[number]`number` | `10` | The number of vertices in the axis |
-
-> more props in [Container Props](/guide/elements/container#container-props) and [PIXI.SimplePlane](https://pixijs.download/release/docs/PIXI.SimplePlane.html)
-
-### SimplePlane Events
-
-| Name | Type | Description |
-| --- | --- | --- |
-| render | ^[function]`(el: SimplePlane): void` | custom render function |
-
-> more events in [Container Events](/guide/elements/container#container-events)
+See the [Migration Guide](/guide/migration) for all v7 to v8 changes.
