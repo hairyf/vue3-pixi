@@ -1,29 +1,33 @@
 import type { Container, Filter } from 'pixi.js'
+import { Empty } from './custom'
+
+const filterParentMap = new WeakMap<Filter, Container>()
+
+export function getFilterParent(filter: Filter): Container | undefined {
+  return filterParentMap.get(filter)
+}
 
 export function insertFilter(child: Filter, parent: Container, _anchor: any) {
   parent.filters ??= []
   parent.filters = Array.isArray(parent.filters) ? parent.filters : [parent.filters]
 
-  function remove() {
-    const index = (parent.filters as Filter[]).indexOf(child)
-    parent.filters = [...parent.filters]?.splice(index >>> 0, 1)
-  }
-
-  child.parent = parent
-  child.destroy = remove
+  filterParentMap.set(child, parent)
 
   parent.filters = [...parent.filters, child]
 }
 
 export function nextSiblingFilter(node: Filter) {
-  node.parent.filters ??= []
-  node.parent.filters = Array.isArray(node.parent.filters) ? node.parent.filters : [node.parent.filters]
+  const parent = filterParentMap.get(node)
+  if (!parent)
+    return null
+  parent.filters ??= []
+  parent.filters = Array.isArray(parent.filters) ? parent.filters : [parent.filters]
 
-  const index = node.parent.filters!.indexOf(node)
-  if (node.parent.filters!.length <= index + 1)
+  const index = parent.filters.indexOf(node)
+  if (parent.filters.length <= index + 1)
     return null
 
-  return node.parent.filters?.[index + 1]
+  return parent.filters[index + 1]
 }
 
 export function insertContainer(child: Container, parent: Container, anchor?: Container | null) {
@@ -47,6 +51,12 @@ export function removeContainer(node: Container) {
   if (!node || node.destroyed)
     return
 
+  // Empty nodes are lightweight placeholders (comments/text) — just detach from parent
+  if (node instanceof Empty) {
+    node.parent?.removeChild(node)
+    return
+  }
+
   try {
     node.destroy({ children: true })
   }
@@ -63,5 +73,9 @@ export function removeContainer(node: Container) {
 }
 
 export function removeFilter(node: Filter) {
-  node.parent.filters = node.parent.filters.filter(filter => filter !== node)
+  const parent = filterParentMap.get(node)
+  if (parent) {
+    parent.filters = parent.filters.filter(filter => filter !== node)
+    filterParentMap.delete(node)
+  }
 }

@@ -4,7 +4,6 @@ import {
   Container,
   Filter,
   Text,
-  Texture,
 } from 'pixi.js'
 import { camelize, markRaw, warn } from 'vue-demi'
 import {
@@ -58,11 +57,11 @@ export function parentNode(node: any) {
 
 export function createText(text: string) {
   text = text.replace(/\\n/g, '\n')
-  return text ? new Text(text) : new Empty(Texture.EMPTY) as any
+  return text ? new Text(text) : new Empty() as any
 }
 
 export function createComment() {
-  return new Empty(Texture.EMPTY)
+  return new Empty()
 }
 
 export function remove(node: Container) {

@@ -3,13 +3,11 @@ import { describe, expect, it, vi } from 'vitest'
 import { nextTick } from 'vue-demi'
 import { patchProp } from '../src'
 
-const textureURL = 'https://pixijs.com/assets/bunny.png'
-
 describe('props', () => {
-  it('should patch render prop', () => {
-    const el = { on: vi.fn() }
+  it('should patch onEffect prop', () => {
+    const el = { on: vi.fn(), off: vi.fn() }
     const nextValue = vi.fn()
-    patchProp(el, 'onRender', null, nextValue)
+    patchProp(el, 'onEffect', null, nextValue)
 
     expect(el.on).toBeCalled()
     expect(el.on.mock.calls[0][0]).toBe('destroyed')
@@ -17,21 +15,18 @@ describe('props', () => {
     expect(nextValue).toBeCalled()
   })
 
-  it('should patch texture string prop', async () => {
-    const el = { texture: null }
+  it('should skip onRender prop (handled natively in v8)', () => {
+    const el = { on: vi.fn() }
+    patchProp(el, 'onRender', null, vi.fn())
 
-    patchProp(el, 'texture', null, textureURL)
-    patchProp(el, 'texture', null, textureURL)
-
-    await nextTick()
-
-    expect(el.texture).toBeInstanceOf(Texture)
+    // onRender is in skipProps — should not call el.on
+    expect(el.on).not.toBeCalled()
   })
 
   it('should patch texture object prop', async () => {
     const el = { texture: null }
 
-    const texture = Texture.from(textureURL)
+    const texture = Texture.WHITE
 
     patchProp(el, 'texture', null, texture)
     patchProp(el, 'texture', null, texture)

@@ -61,6 +61,11 @@ export const assetsProps = {
   onProgress: Function as PropType<(progress: number) => void>,
 
   /**
+   * Callback when resource loading fails
+   */
+  onError: Function as PropType<(error: unknown) => void>,
+
+  /**
    * PixiJS provides a background loader that allows you to load assets in the background while your application is running.
    */
   background: Boolean,
@@ -69,11 +74,12 @@ export const assetsProps = {
 
 export const Assets = defineComponent({
   props: assetsProps,
-  slots: Object as SlotsType<{ default: { data: any }, fallback: { progress: number } }>,
+  slots: Object as SlotsType<{ default: { data: any }, fallback: { progress: number }, error: { error: Error } }>,
   setup(props: any, { slots }) {
     const loading = ref(false)
     const progress = ref(0)
     const data = ref()
+    const error = ref<Error>()
     const assets = ref<string[]>([])
 
     function onProgress(p: number) {
@@ -83,8 +89,14 @@ export const Assets = defineComponent({
     async function loadUrls(urls: any) {
       if (Array.isArray(urls) && urls.length === 1)
         urls = urls[0]
-      data.value = toRaw(await PixiAssets.load(urls, onProgress))
-      props.onLoaded?.(data.value)
+      try {
+        data.value = toRaw(await PixiAssets.load(urls, onProgress))
+        props.onLoaded?.(data.value)
+      }
+      catch (e) {
+        error.value = e as Error
+        props.onError?.(e)
+      }
     }
 
     async function load() {
@@ -142,6 +154,8 @@ export const Assets = defineComponent({
     return () => {
       if (!props.autoload || props.background)
         return renderSlot(slots, 'default')
+      if (error.value)
+        return renderSlot(slots, 'error', { error: error.value })
       return loading.value
         ? renderSlot(slots, 'fallback', { progress: progress.value })
         : renderSlot(slots, 'default', { data: data.value })

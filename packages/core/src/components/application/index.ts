@@ -44,7 +44,6 @@ export const Application = defineComponent({
     height: { type: [Number, String], default: undefined },
     resolution: { type: Number, default: 1 },
 
-    // @TODO: Add webgl/webgpu
   },
   setup(props, { slots, expose }) {
     const { appContext } = getCurrentInstance()!
@@ -88,9 +87,7 @@ export const Application = defineComponent({
 
         try {
           pixiApp.value.destroy(
-            // eslint-disable-next-line ts/ban-ts-comment
-            // @ts-ignore
-            { releaseGlobalResources: true, removeView: true },
+            { removeView: true },
             {
               children: true,
               texture: true,

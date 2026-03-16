@@ -62,7 +62,7 @@ export const setters = {
   texture: {
     options(texture: any, options: any) {
       for (const key in options)
-        texture.baseTexture[key] = options[key]
+        texture.source[key] = options[key]
     },
   },
 }

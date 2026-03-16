@@ -10,13 +10,16 @@ export const External = defineComponent({
   },
   setup(props, { slots, attrs }) {
     const { appContext } = getCurrentInstance()!
-    const element = document.createElement('div')
     const pixiApp = ref(inject(appInjectKey)!)
     const childApp = ref<App>()
 
-    const root = props.root || pixiApp.value.canvas.parentNode as HTMLElement
-
     function mount() {
+      if (typeof document === 'undefined')
+        return
+
+      const element = document.createElement('div')
+      const root = props.root || pixiApp.value.canvas.parentNode as HTMLElement
+
       if (!root)
         throw new Error('could not find root')
 
