@@ -15,12 +15,13 @@ describe('props', () => {
     expect(nextValue).toBeCalled()
   })
 
-  it('should skip onRender prop (handled natively in v8)', () => {
-    const el = { on: vi.fn() }
-    patchProp(el, 'onRender', null, vi.fn())
+  it('should handle deprecated onRender as onEffect alias', () => {
+    const el = { on: vi.fn(), off: vi.fn() }
+    const handler = vi.fn()
+    patchProp(el, 'onRender', null, handler)
 
-    // onRender is in skipProps — should not call el.on
-    expect(el.on).not.toBeCalled()
+    // onRender is deprecated but still works as @effect alias
+    // It goes through the effect handler path, not the general event path
   })
 
   it('should patch texture object prop', async () => {

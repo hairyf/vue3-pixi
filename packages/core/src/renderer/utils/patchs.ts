@@ -6,7 +6,8 @@ import { normalizeTexture } from './util'
 
 const booleanProps = ['accessible', 'cullable', 'renderable', 'visible', 'isMask']
 const pointProps = ['position', 'scale', 'pivot', 'skew', 'anchor', 'tilePosition', 'tileScale'] as const
-const skipProps = ['onRender']
+const skipProps: string[] = []
+let renderDeprecationWarned = false
 
 export const patchs = {
   skip(key: string) {
@@ -46,6 +47,13 @@ export const patchs = {
       return true
     },
     effect(el: any, key: string, prevValue: any, nextValue: any) {
+      if (key === 'onRender' && isFunction(nextValue)) {
+        if (!renderDeprecationWarned) {
+          renderDeprecationWarned = true
+          console.warn('[vue3-pixi] @render is deprecated. Use @effect instead.')
+        }
+        key = 'onEffect'
+      }
       if (key === 'onEffect' && !prevValue && isFunction(nextValue)) {
         let scope: ReturnType<typeof effectScope> | undefined = effectScope()
         scope.run(() => watchEffect(() => nextValue(el)))
