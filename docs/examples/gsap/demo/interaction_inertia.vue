@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import { computed } from 'vue'
 import type { Container as ContainerElement, Sprite as SpriteElement } from 'pixi.js'
-import { onReady, useScreen, useStage } from 'vue3-pixi'
 import { useEventListener } from '@vueuse/core'
 import { gsap } from 'gsap'
 import InertiaPlugin from 'gsap/InertiaPlugin'
+import { computed } from 'vue'
+import { onReady, useScreen, useStage } from 'vue3-pixi'
 
 gsap.registerPlugin(InertiaPlugin)
 
@@ -42,7 +42,6 @@ function onPointerover(this: ContainerElement) {
 
   tl.timeScale(1.2)
 
-
   const image = this.getChildAt(0) as SpriteElement
 
   tl.to(image, {
@@ -71,7 +70,6 @@ function onPointerover(this: ContainerElement) {
     },
     '<',
   )
-
 }
 </script>
 
@@ -84,12 +82,12 @@ function onPointerover(this: ContainerElement) {
       <container
         v-for="(_, i) in 25"
         :key="i"
-        @pointerover="onPointerover"
         :x="(i % 5) * 40"
         :y="Math.floor(i / 5) * 40"
+        @pointerover="onPointerover"
       >
         <sprite texture="bunny" />
       </container>
     </container>
-</assets>
+  </assets>
 </template>

@@ -10,7 +10,7 @@ import '../src/elements'
 
 const PREFIX = 'pixi'
 
-describe('Text patchProp', () => {
+describe('text patchProp', () => {
   it('text prop: first set skipped, second applies after nextTick', async () => {
     const el = createElement(PREFIX, 'pixi-text', undefined, undefined, { text: 'hello' })
     const handler = renderers.Text.patchProp!
@@ -48,7 +48,7 @@ describe('Text patchProp', () => {
   })
 })
 
-describe('AnimatedSprite patchProp', () => {
+describe('animatedSprite patchProp', () => {
   function createAnimSprite() {
     return createElement(PREFIX, 'pixi-animated-sprite', undefined, undefined, {
       textures: [Texture.WHITE],
@@ -138,7 +138,7 @@ describe('AnimatedSprite patchProp', () => {
   })
 })
 
-describe('TilingSprite patchProp', () => {
+describe('tilingSprite patchProp', () => {
   function createTS() {
     return createElement(PREFIX, 'pixi-tiling-sprite', undefined, undefined, {
       texture: Texture.WHITE,
@@ -177,7 +177,7 @@ describe('TilingSprite patchProp', () => {
   })
 })
 
-describe('Mesh patchProp', () => {
+describe('mesh patchProp', () => {
   function createMesh() {
     const geometry = new Geometry({
       attributes: {
@@ -228,7 +228,7 @@ describe('Mesh patchProp', () => {
   })
 })
 
-describe('ParticleContainer remove', () => {
+describe('particleContainer remove', () => {
   it('calls removeParticle(...particleChildren) before destroy', () => {
     const el = createElement(PREFIX, 'pixi-particle-container', undefined, undefined, {})
     const parent = new Container()
@@ -258,7 +258,7 @@ describe('ParticleContainer remove', () => {
   })
 })
 
-describe('Sprite remove', () => {
+describe('sprite remove', () => {
   it('calls destroy() directly', () => {
     const el = createElement(PREFIX, 'pixi-sprite', undefined, undefined, {})
     const spy = vi.spyOn(el, 'destroy')

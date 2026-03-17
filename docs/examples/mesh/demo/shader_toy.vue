@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { Geometry, Shader } from 'pixi.js'
-import { onTick, useScreen, useApplication } from 'vue3-pixi'
+import { onTick, useApplication, useScreen } from 'vue3-pixi'
 
 const screen = useScreen()
 const app = useApplication()

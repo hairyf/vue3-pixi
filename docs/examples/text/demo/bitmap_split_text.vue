@@ -7,6 +7,7 @@ const screen = useScreen()
 const sceneRef = ref<Container>()
 
 const theText = 'Break apart text into characters, words, and/or lines for easy animation.'
+let animId: number | null = null
 
 onMounted(async () => {
   if (!sceneRef.value)
@@ -66,15 +67,14 @@ onMounted(async () => {
   animId = requestAnimationFrame(animate)
 })
 
-let animId: number | null = null
-
 onBeforeUnmount(() => {
-  if (animId !== null) cancelAnimationFrame(animId)
+  if (animId !== null)
+    cancelAnimationFrame(animId)
 })
 </script>
 
 <template>
-  <container
+  <Container
     ref="sceneRef"
     :x="screen.width / 2"
     :y="screen.height / 2"

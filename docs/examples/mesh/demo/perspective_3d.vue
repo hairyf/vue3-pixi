@@ -11,8 +11,8 @@ const texture = ref<Texture>()
 let angleX = 0
 let angleY = 0
 
-const points = ref<{ x: number; y: number }[]>([])
-const outPoints = ref<{ x: number; y: number }[]>([])
+const points = ref<{ x: number, y: number }[]>([])
+const outPoints = ref<{ x: number, y: number }[]>([])
 
 function onLoaded(tex: any) {
   texture.value = tex
@@ -27,7 +27,8 @@ function onLoaded(tex: any) {
 }
 
 function rotate3D(pts: any[], out: any[], aX: number, aY: number, perspective: number) {
-  if (!texture.value) return
+  if (!texture.value)
+    return
   const tw = texture.value.width
   const th = texture.value.height
   const radX = (aX * Math.PI) / 180
@@ -57,7 +58,8 @@ function rotate3D(pts: any[], out: any[], aX: number, aY: number, perspective: n
 }
 
 function onPointerMove(e: any) {
-  if (!meshRef.value) return
+  if (!meshRef.value)
+    return
   const mx = e.global?.x ?? e.x
   const my = e.global?.y ?? e.y
   angleY = -(mx - meshRef.value.x) / 10
@@ -65,15 +67,20 @@ function onPointerMove(e: any) {
 }
 
 onTick(() => {
-  if (!meshRef.value || !points.value.length) return
+  if (!meshRef.value || !points.value.length)
+    return
 
   rotate3D(points.value, outPoints.value, angleX, angleY, 300)
   const o = outPoints.value
   meshRef.value.setCorners(
-    o[0].x, o[0].y,
-    o[1].x, o[1].y,
-    o[2].x, o[2].y,
-    o[3].x, o[3].y,
+    o[0].x,
+    o[0].y,
+    o[1].x,
+    o[1].y,
+    o[2].x,
+    o[2].y,
+    o[3].x,
+    o[3].y,
   )
 })
 </script>
@@ -85,7 +92,7 @@ onTick(() => {
     @loaded="onLoaded"
   >
     <container
-      :event-mode="'static'"
+      event-mode="static"
       :hit-area="{ x: 0, y: 0, width: screen.width, height: screen.height, contains: () => true }"
       @pointermove="onPointerMove"
     >

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { Geometry, Shader } from 'pixi.js'
-import { onTick } from 'vue3-pixi'
 import { ref } from 'vue'
+import { onTick } from 'vue3-pixi'
 
 const rotation = ref(0)
 

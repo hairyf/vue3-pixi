@@ -11,6 +11,8 @@ A common use case is rendering UI elements on top of game content, even though t
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
+
+const uiLayer = ref()
 </script>
 
 <template>

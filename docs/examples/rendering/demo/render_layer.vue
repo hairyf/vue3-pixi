@@ -15,7 +15,6 @@ import { onTick, useApplication } from 'vue3-pixi'
 const app = useApplication()
 
 const pondContainerRef = ref<Container>()
-const displacementSpriteRef = ref<Sprite>()
 
 let waterOverlay: TilingSprite | null = null
 let displacementSprite: Sprite | null = null
@@ -160,5 +159,5 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <container ref="pondContainerRef" />
+  <Container ref="pondContainerRef" />
 </template>

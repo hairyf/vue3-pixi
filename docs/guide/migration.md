@@ -66,10 +66,14 @@ The `<assets>` component gates rendering of its default slot until loading compl
       <sprite texture="hero" />
     </template>
     <template #fallback="{ progress }">
-      <text :style="{ fill: 'white' }">Loading... {{ progress }}</text>
+      <text :style="{ fill: 'white' }">
+        Loading... {{ progress }}
+      </text>
     </template>
     <template #error="{ error }">
-      <text :style="{ fill: 'red' }">{{ error.message }}</text>
+      <text :style="{ fill: 'red' }">
+        {{ error.message }}
+      </text>
     </template>
   </assets>
 </template>
@@ -96,8 +100,10 @@ The `<assets>` component gates rendering of its default slot until loading compl
 <!-- v8 (alternative: manual geometry) -->
 <script setup>
 import { PlaneGeometry } from 'pixi.js'
+
 const geometry = new PlaneGeometry({ width: 100, height: 100, verticesX: 10, verticesY: 10 })
 </script>
+
 <mesh :geometry="geometry" :texture="texture" />
 ```
 
@@ -191,7 +197,7 @@ onTick(({ deltaTime }) => {
 ```ts
 // Correct
 const app = useApplication()
-app.value.renderer.render(...)
+app.value.renderer.render({ container: myContainer })
 app.value.ticker.elapsedMS
 
 // Wrong — will be undefined
@@ -244,19 +250,19 @@ The chainable `beginFill/endFill` pattern is replaced with a draw-then-fill API:
 ```ts
 // v7
 graphics
-  .beginFill(0xff0000)
+  .beginFill(0xFF0000)
   .drawRect(0, 0, 100, 100)
   .endFill()
-  .beginFill(0x00ff00)
+  .beginFill(0x00FF00)
   .drawCircle(150, 50, 50)
   .endFill()
 
 // v8
 graphics
   .rect(0, 0, 100, 100)
-  .fill(0xff0000)
+  .fill(0xFF0000)
   .circle(150, 50, 50)
-  .fill(0x00ff00)
+  .fill(0x00FF00)
 ```
 
 ## New Features
@@ -266,6 +272,10 @@ graphics
 Decouples render order from the scene graph hierarchy. A child can belong to one parent in the scene graph but render in a different layer:
 
 ```vue
+<script setup>
+const uiLayer = ref()
+</script>
+
 <template>
   <render-layer ref="uiLayer" />
   <container>
@@ -281,8 +291,12 @@ See the [RenderLayer guide](/guide/elements/render-layer) for details.
 Share drawing instructions across multiple Graphics instances:
 
 ```vue
+<script setup>
+const sharedCtx = ref()
+</script>
+
 <template>
-  <graphics-context @effect="(ctx) => ctx.rect(0, 0, 50, 50).fill('red')" ref="sharedCtx" />
+  <graphics-context ref="sharedCtx" @effect="(ctx) => ctx.rect(0, 0, 50, 50).fill('red')" />
   <graphics :context="sharedCtx" :x="0" />
   <graphics :context="sharedCtx" :x="100" />
 </template>

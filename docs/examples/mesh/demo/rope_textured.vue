@@ -1,8 +1,6 @@
 <script lang="ts" setup>
 import { Point } from 'pixi.js'
-import { onTick, useScreen } from 'vue3-pixi'
-
-const screen = useScreen()
+import { onTick } from 'vue3-pixi'
 
 const ropeLength = 918 / 20
 const points: Point[] = []

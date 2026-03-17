@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { Point, Texture } from 'pixi.js'
-import { reactive, ref } from 'vue'
+import { reactive } from 'vue'
 import { onReady, onTick, useScreen } from 'vue3-pixi'
 
 const screen = useScreen()
@@ -122,7 +122,6 @@ onTick((ticker) => {
     @mousemove="onMouseMove"
   >
     <sprite
-      ref="redRef"
       :texture="whiteTexture"
       :x="redSquare.x"
       :y="redSquare.y"
@@ -131,7 +130,6 @@ onTick((ticker) => {
       :tint="0xFF0000"
     />
     <sprite
-      ref="greenRef"
       :texture="whiteTexture"
       :x="greenSquare.x"
       :y="greenSquare.y"

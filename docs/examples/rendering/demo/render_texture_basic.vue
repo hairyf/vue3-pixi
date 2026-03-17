@@ -38,8 +38,8 @@ onTick(() => {
 
 <template>
   <assets alias="bunny" entry="https://pixijs.com/assets/bunny.png">
-    <container ref="containerRef" :x="100" :y="60">
-      <sprite
+    <Container ref="containerRef" :x="100" :y="60">
+      <Sprite
         v-for="(b, i) in bunnies"
         :key="i"
         texture="bunny"
@@ -47,7 +47,7 @@ onTick(() => {
         :y="b.y"
         :rotation="b.rotation"
       />
-    </container>
-    <sprite ref="rtSpriteRef" :x="450" :y="60" />
+    </Container>
+    <Sprite ref="rtSpriteRef" :x="450" :y="60" />
   </assets>
 </template>

@@ -1,10 +1,10 @@
 import {
   Application,
   Assets,
-  Buffer,
   BufferUsage,
   Geometry,
   Mesh,
+  Buffer as PixiBuffer,
   Shader,
 } from 'pixi.js'
 import fragment from './instancedGeometry.frag'
@@ -31,7 +31,7 @@ import source from './instancedGeometry.wgsl';
   const totalTriangles = 1000
 
   // need a buffer big enough to store x, y of totalTriangles
-  const instancePositionBuffer = new Buffer({
+  const instancePositionBuffer = new PixiBuffer({
     data: new Float32Array(totalTriangles * 2),
     usage: BufferUsage.VERTEX | BufferUsage.COPY_DST,
   })

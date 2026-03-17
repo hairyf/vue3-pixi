@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { groupD8, Rectangle, Texture } from 'pixi.js'
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 import { useScreen } from 'vue3-pixi'
 
 const screen = useScreen()

@@ -1,8 +1,8 @@
 import { BitmapText, Container, Filter, Text } from 'pixi.js'
 import { describe, expect, it, vi } from 'vitest'
 import { Empty } from '../src/renderer/internal/custom'
-import { patchs } from '../src/renderer/utils/patchs'
 import { createComment, createElement, createText, insert, nextSibling, remove, setText } from '../src/renderer/nodeOps'
+import { patchs } from '../src/renderer/utils/patchs'
 
 // Register elements before testing
 import '../src/elements'

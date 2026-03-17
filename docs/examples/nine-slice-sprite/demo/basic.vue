@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import type { NineSliceSprite as NineSliceSpriteType } from 'pixi.js'
 import { ref } from 'vue'
 import { onTick, useScreen } from 'vue3-pixi'
 

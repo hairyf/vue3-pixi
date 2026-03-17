@@ -1,9 +1,8 @@
 <script lang="ts" setup>
-import { Assets, Sprite, Texture } from 'pixi.js'
+import { Assets, Sprite } from 'pixi.js'
 import { onMounted, onUnmounted, ref } from 'vue'
-import { onTick, useApplication, useScreen } from 'vue3-pixi'
+import { onTick, useApplication } from 'vue3-pixi'
 
-const screen = useScreen()
 const app = useApplication()
 const containerRef = ref()
 
@@ -36,7 +35,8 @@ function randomizeStar(star: Star, initial: boolean) {
 
 onMounted(async () => {
   const container = containerRef.value
-  if (!container) return
+  if (!container)
+    return
 
   const starTexture = await Assets.load('https://pixijs.com/assets/star.png')
 
@@ -60,11 +60,13 @@ onMounted(async () => {
 })
 
 onUnmounted(() => {
-  if (intervalId !== null) clearInterval(intervalId)
+  if (intervalId !== null)
+    clearInterval(intervalId)
 })
 
 onTick((ticker) => {
-  if (!app.value?.renderer) return
+  if (!app.value?.renderer)
+    return
   const renderer = app.value.renderer
 
   speed += (warpSpeed - speed) / 20
@@ -72,7 +74,8 @@ onTick((ticker) => {
 
   for (let i = 0; i < stars.length; i++) {
     const star = stars[i]
-    if (star.z < cameraZ) randomizeStar(star, false)
+    if (star.z < cameraZ)
+      randomizeStar(star, false)
 
     const z = star.z - cameraZ
     star.sprite.x = star.x * (fov / z) * renderer.screen.width + renderer.screen.width / 2
@@ -84,9 +87,9 @@ onTick((ticker) => {
     const distanceScale = Math.max(0, (2000 - z) / 2000)
 
     star.sprite.scale.x = distanceScale * starBaseSize
-    star.sprite.scale.y =
-      distanceScale * starBaseSize +
-      (distanceScale * speed * starStretch * distanceCenter) / renderer.screen.width
+    star.sprite.scale.y
+      = distanceScale * starBaseSize
+        + (distanceScale * speed * starStretch * distanceCenter) / renderer.screen.width
     star.sprite.rotation = Math.atan2(dyCenter, dxCenter) + Math.PI / 2
   }
 })

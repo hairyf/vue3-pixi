@@ -1,13 +1,13 @@
 import { Rectangle, Ticker } from 'pixi.js'
 import { describe, expect, it, vi } from 'vitest'
 import { createApp, defineComponent, h, nextTick, ref } from 'vue-demi'
-import { useTrack } from '../src/composables/useTrack'
+import { appInjectKey } from '../src/composables/internal'
+import { onReady } from '../src/composables/onReady'
 import { useApplication } from '../src/composables/useApplication'
 import { useRenderer } from '../src/composables/useRenderer'
-import { useStage } from '../src/composables/useStage'
 import { useScreen } from '../src/composables/useScreen'
-import { onReady } from '../src/composables/onReady'
-import { appInjectKey } from '../src/composables/internal'
+import { useStage } from '../src/composables/useStage'
+import { useTrack } from '../src/composables/useTrack'
 
 describe('onTick', () => {
   it('should add and remove callbacks from ticker', () => {

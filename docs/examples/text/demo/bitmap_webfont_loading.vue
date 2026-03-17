@@ -2,10 +2,10 @@
 import { Loader } from 'vue3-pixi'
 
 const fonts = {
-  ChaChicle: 'https://pixijs.com/assets/webfont-loader/ChaChicle.ttf',
-  Lineal: 'https://pixijs.com/assets/webfont-loader/Lineal.otf',
+  'ChaChicle': 'https://pixijs.com/assets/webfont-loader/ChaChicle.ttf',
+  'Lineal': 'https://pixijs.com/assets/webfont-loader/Lineal.otf',
   'Dotrice Regular': 'https://pixijs.com/assets/webfont-loader/Dotrice-Regular.woff',
-  Crosterian: 'https://pixijs.com/assets/webfont-loader/Crosterian.woff2',
+  'Crosterian': 'https://pixijs.com/assets/webfont-loader/Crosterian.woff2',
 }
 </script>
 

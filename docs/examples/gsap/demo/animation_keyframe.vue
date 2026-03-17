@@ -1,10 +1,11 @@
 <script lang="ts" setup>
-import { DEG_TO_RAD, type Graphics as GraphicsElement } from 'pixi.js'
+import type { Graphics as GraphicsElement } from 'pixi.js'
+import { whenever } from '@vueuse/core'
 import { gsap } from 'gsap'
 import { DropShadowFilter } from 'pixi-filters'
+import { DEG_TO_RAD } from 'pixi.js'
 import { onUnmounted, ref } from 'vue'
 import { useScreen } from 'vue3-pixi'
-import { whenever } from '@vueuse/core'
 
 const screen = useScreen()
 
@@ -41,7 +42,7 @@ function initial(boxes: GraphicsElement[]) {
     stagger: 0.2,
     repeat: -1,
     yoyo: true,
-  });
+  })
 }
 
 whenever(boxes, initial)
@@ -50,17 +51,20 @@ onUnmounted(() => animation?.kill())
 
 <template>
   <container
-   @effect="container => {
-    container.x = screen.width / 2 - container.width / 2 + size / 2
-    container.y = screen.height / 2 - container.height / 2 + size / 2
-  }
-  ">
-    <graphics v-for="i in 4" :key="i" ref="boxes" :x="(i - 1) * 120" @effect="graphics => {
-      graphics
-        .roundRect(-size / 2, -size / 2, size, size, 8)
-        .fill(0xED427C)
-        .stroke({ color: 'white', width: 4 })
-      graphics.filters = [dropShadowFilter]
-    }" />
+    @effect="container => {
+      container.x = screen.width / 2 - container.width / 2 + size / 2
+      container.y = screen.height / 2 - container.height / 2 + size / 2
+    }
+    "
+  >
+    <graphics
+      v-for="i in 4" :key="i" ref="boxes" :x="(i - 1) * 120" @effect="graphics => {
+        graphics
+          .roundRect(-size / 2, -size / 2, size, size, 8)
+          .fill(0xED427C)
+          .stroke({ color: 'white', width: 4 })
+        graphics.filters = [dropShadowFilter]
+      }"
+    />
   </container>
 </template>

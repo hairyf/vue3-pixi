@@ -9,7 +9,8 @@ const containerRef = ref()
 
 onMounted(async () => {
   const container = containerRef.value
-  if (!container) return
+  if (!container)
+    return
 
   const source = await Assets.load('https://userland.pixijs.io/gif/examples/chew.gif')
   const gif = new GifSprite({

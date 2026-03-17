@@ -7,15 +7,24 @@ const containerRef = ref()
 const tickHandlers: Array<(delta: number) => void> = []
 
 function intersect(
-  x1: number, y1: number, x2: number, y2: number,
-  x3: number, y3: number, x4: number, y4: number,
+  x1: number,
+  y1: number,
+  x2: number,
+  y2: number,
+  x3: number,
+  y3: number,
+  x4: number,
+  y4: number,
 ): { x: number, y: number } | false {
-  if ((x1 === x2 && y1 === y2) || (x3 === x4 && y3 === y4)) return false
+  if ((x1 === x2 && y1 === y2) || (x3 === x4 && y3 === y4))
+    return false
   const denominator = (y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1)
-  if (denominator === 0) return false
+  if (denominator === 0)
+    return false
   const ua = ((x4 - x3) * (y1 - y3) - (y4 - y3) * (x1 - x3)) / denominator
   const ub = ((x2 - x1) * (y1 - y3) - (y2 - y1) * (x1 - x3)) / denominator
-  if (ua < 0 || ua > 1 || ub < 0 || ub > 1) return false
+  if (ua < 0 || ua > 1 || ub < 0 || ub > 1)
+    return false
   return { x: x1 + ua * (x2 - x1), y: y1 + ua * (y2 - y1) }
 }
 
@@ -58,18 +67,25 @@ function generateSpinner1(parent: Container, posX: number, posY: number) {
       const hit = intersect(0, 0, x, y, s[0], s[1], s[2], s[3])
       if (hit) {
         intersection = hit
-        if (i === 0) winding = hit.x > 0 ? 0 : 4
+        if (i === 0)
+          winding = hit.x > 0 ? 0 : 4
         else winding = i
         break
       }
     }
-    if (!intersection) return
+    if (!intersection)
+      return
     const corners = [
-      size / 2, -size / 2,
-      size / 2, size / 2,
-      -size / 2, size / 2,
-      -size / 2, -size / 2,
-      0, -size / 2,
+      size / 2,
+      -size / 2,
+      size / 2,
+      size / 2,
+      -size / 2,
+      size / 2,
+      -size / 2,
+      -size / 2,
+      0,
+      -size / 2,
     ]
     mask.clear().moveTo(0, -size / 2).lineTo(0, 0).lineTo(intersection.x, intersection.y)
     for (let i = winding; i < corners.length / 2; i++) {
@@ -163,7 +179,7 @@ function generateSpinner4(parent: Container, posX: number, posY: number) {
       [-size / 2 + lineSize, size / 2 - lineSize, size / 2 - lineSize, size / 2 - lineSize],
       [-size / 2 + lineSize, -size / 2 + lineSize, -size / 2 + lineSize, size / 2 - lineSize],
     ]
-    let outDir = [[0, -1], [1, 0], [0, 1], [-1, 0]]
+    const outDir = [[0, -1], [1, 0], [0, 1], [-1, 0]]
     let intersection: { x: number, y: number } | false = false
     let winding = 0
     let selectedDir = [0, -1]
@@ -172,18 +188,24 @@ function generateSpinner4(parent: Container, posX: number, posY: number) {
       const hit = intersect(0, 0, x, y, s[0], s[1], s[2], s[3])
       if (hit) {
         intersection = hit
-        if (i === 0) winding = hit.x < 0 ? 0 : 4
+        if (i === 0)
+          winding = hit.x < 0 ? 0 : 4
         else winding = 4 - i
         selectedDir = outDir[i]
         break
       }
     }
-    if (!intersection) return
+    if (!intersection)
+      return
     const corners = [
-      -size / 2 - lineSize, -size / 2 - lineSize,
-      -size / 2 - lineSize, size / 2 + lineSize,
-      size / 2 + lineSize, size / 2 + lineSize,
-      size / 2 + lineSize, -size / 2 - lineSize,
+      -size / 2 - lineSize,
+      -size / 2 - lineSize,
+      -size / 2 - lineSize,
+      size / 2 + lineSize,
+      size / 2 + lineSize,
+      size / 2 + lineSize,
+      size / 2 + lineSize,
+      -size / 2 - lineSize,
     ]
     mask.clear().moveTo(0, 0).moveTo(0, -size / 2 - lineSize)
     for (let i = 0; i < winding; i++) {
@@ -216,7 +238,8 @@ function generateSpinner5(parent: Container, posX: number, posY: number) {
 
 onMounted(async () => {
   const root = containerRef.value
-  if (!root) return
+  if (!root)
+    return
 
   await Assets.load([
     'https://pixijs.com/assets/bg_scene_rotate.jpg',
@@ -239,5 +262,5 @@ onTick((ticker) => {
 </script>
 
 <template>
-  <container ref="containerRef" />
+  <Container ref="containerRef" />
 </template>

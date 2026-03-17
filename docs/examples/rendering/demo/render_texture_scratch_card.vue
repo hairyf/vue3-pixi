@@ -40,7 +40,8 @@ onReady((pixi) => {
 })
 
 onBeforeUnmount(() => {
-  if (!app.value) return
+  if (!app.value)
+    return
   app.value.stage
     .off('pointerdown', pointerDown)
     .off('pointerup', pointerUp)
@@ -94,17 +95,17 @@ function pointerUp() {
       { alias: 'bg_rotate', src: 'https://pixijs.com/assets/bg_rotate.jpg' },
     ]"
   >
-    <sprite
+    <Sprite
       texture="bg_grass"
       :width="screen.width"
       :height="screen.height"
     />
-    <sprite
+    <Sprite
       ref="imageToRevealRef"
       texture="bg_rotate"
       :width="screen.width"
       :height="screen.height"
     />
-    <sprite ref="rtSpriteRef" />
+    <Sprite ref="rtSpriteRef" />
   </assets>
 </template>

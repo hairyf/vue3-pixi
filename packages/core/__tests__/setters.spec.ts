@@ -1,4 +1,4 @@
-import { Container, Texture } from 'pixi.js'
+import { Texture } from 'pixi.js'
 import { describe, expect, it, vi } from 'vitest'
 import { nextTick } from 'vue-demi'
 import { setters } from '../src/renderer/utils/setters'

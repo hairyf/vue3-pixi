@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { Assets, Geometry, Shader } from 'pixi.js'
-import { onTick, useScreen } from 'vue3-pixi'
 import { onMounted, ref } from 'vue'
+import { onTick, useScreen } from 'vue3-pixi'
 
 const screen = useScreen()
 const quadRotation = ref(0)

@@ -9,6 +9,8 @@ GraphicsContext holds shareable drawing instructions that can be reused across m
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
+
+const sharedCtx = ref()
 </script>
 
 <template>

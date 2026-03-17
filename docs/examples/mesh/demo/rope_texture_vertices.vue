@@ -20,13 +20,13 @@ function renderPoints(g: PixiGraphics) {
 
   for (let i = 1; i < points.length; i++) {
     g.lineTo(points[i].x, points[i].y)
-    g.stroke({ width: 2, color: 0xffc2c2 })
+    g.stroke({ width: 2, color: 0xFFC2C2 })
   }
 
   for (let i = 1; i < points.length; i++) {
     g.circle(points[i].x, points[i].y, 10)
-    g.fill({ color: 0xff0022 })
-    g.stroke({ width: 2, color: 0xffc2c2 })
+    g.fill({ color: 0xFF0022 })
+    g.stroke({ width: 2, color: 0xFFC2C2 })
   }
 }
 

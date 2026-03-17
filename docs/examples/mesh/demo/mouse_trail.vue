@@ -19,17 +19,20 @@ for (let i = 0; i < ropeSize; i++) {
   points.push(new Point(0, 0))
 }
 
-let mousePosition: { x: number; y: number } | null = null
+let mousePosition: { x: number, y: number } | null = null
 
 function onMouseMove(e: any) {
-  if (!mousePosition) mousePosition = { x: 0, y: 0 }
+  if (!mousePosition)
+    mousePosition = { x: 0, y: 0 }
   mousePosition.x = e.global?.x ?? e.x
   mousePosition.y = e.global?.y ?? e.y
 }
 
 function clipInput(k: number, arr: number[]) {
-  if (k < 0) k = 0
-  if (k > arr.length - 1) k = arr.length - 1
+  if (k < 0)
+    k = 0
+  if (k > arr.length - 1)
+    k = arr.length - 1
   return arr[k]
 }
 
@@ -55,7 +58,8 @@ function cubicInterpolation(array: number[], t: number, tangentFactor = 1) {
 }
 
 onTick(() => {
-  if (!mousePosition) return
+  if (!mousePosition)
+    return
 
   historyX.pop()
   historyX.unshift(mousePosition.x)
@@ -79,7 +83,7 @@ onTick(() => {
     entry="https://pixijs.com/assets/trail.png"
   >
     <container
-      :event-mode="'static'"
+      event-mode="static"
       :hit-area="{ x: 0, y: 0, width: screen.width, height: screen.height, contains: () => true }"
       @mousemove="onMouseMove"
     >

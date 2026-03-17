@@ -54,7 +54,8 @@ function backout(amount: number) {
 }
 
 function startPlay() {
-  if (running) return
+  if (running)
+    return
   running = true
   for (let i = 0; i < reels.length; i++) {
     const r = reels[i]
@@ -70,7 +71,10 @@ function reelsComplete() {
 }
 
 function tweenTo(
-  object: any, property: string, target: number, time: number,
+  object: any,
+  property: string,
+  target: number,
+  time: number,
   easing: (t: number) => number,
   onchange: ((t: Tween) => void) | null,
   oncomplete: ((t: Tween) => void) | null,
@@ -92,7 +96,8 @@ function tweenTo(
 
 onMounted(async () => {
   const root = containerRef.value
-  if (!root) return
+  if (!root)
+    return
 
   await Assets.load([
     'https://pixijs.com/assets/eggHead.png',
@@ -210,10 +215,12 @@ onTick(() => {
     const t = tweening[i]
     const phase = Math.min(1, (now - t.start) / t.time)
     t.object[t.property] = lerp(t.propertyBeginValue, t.target, t.easing(phase))
-    if (t.change) t.change(t)
+    if (t.change)
+      t.change(t)
     if (phase === 1) {
       t.object[t.property] = t.target
-      if (t.complete) t.complete(t)
+      if (t.complete)
+        t.complete(t)
       remove.push(t)
     }
   }
@@ -224,5 +231,5 @@ onTick(() => {
 </script>
 
 <template>
-  <container ref="containerRef" />
+  <Container ref="containerRef" />
 </template>

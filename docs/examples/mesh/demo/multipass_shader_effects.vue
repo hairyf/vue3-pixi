@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import { Geometry, Mesh, RenderTexture, Shader } from 'pixi.js'
+import type { Mesh } from 'pixi.js'
+import { Geometry, RenderTexture, Shader } from 'pixi.js'
 import { ref } from 'vue'
 import { onTick, useApplication } from 'vue3-pixi'
 
@@ -157,11 +158,14 @@ let time = 0
 
 onTick(() => {
   const renderer = app.value?.renderer
-  if (!renderer) return
+  if (!renderer)
+    return
 
   // Initialize noise shader lazily (needs perlin texture loaded)
-  if (!noiseShader.value) return
-  if (!combineShader.value) return
+  if (!noiseShader.value)
+    return
+  if (!combineShader.value)
+    return
 
   time += 1 / 60
 
@@ -211,18 +215,18 @@ onTick(() => {
     }"
   >
     <container :x="10" :y="10">
-      <mesh ref="gridQuadRef" :geometry="geometry" :shader="gridShader" />
+      <Mesh ref="gridQuadRef" :geometry="geometry" :shader="gridShader" />
     </container>
     <container :x="220" :y="10">
-      <mesh ref="rippleQuadRef" :geometry="geometry" :shader="rippleShader" />
+      <Mesh ref="rippleQuadRef" :geometry="geometry" :shader="rippleShader" />
     </container>
     <container :x="10" :y="220">
-      <mesh v-if="noiseShader" ref="noiseQuadRef" :geometry="geometry" :shader="noiseShader" />
+      <Mesh v-if="noiseShader" ref="noiseQuadRef" :geometry="geometry" :shader="noiseShader" />
     </container>
     <container :x="10" :y="430">
-      <mesh ref="waveQuadRef" :geometry="geometry" :shader="waveShader" />
+      <Mesh ref="waveQuadRef" :geometry="geometry" :shader="waveShader" />
     </container>
-    <mesh
+    <Mesh
       v-if="combineShader"
       :geometry="geometry"
       :shader="combineShader"

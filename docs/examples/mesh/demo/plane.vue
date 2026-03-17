@@ -6,7 +6,8 @@ const meshRef = ref()
 let timer = 0
 
 onTick(() => {
-  if (!meshRef.value) return
+  if (!meshRef.value)
+    return
 
   const { buffer } = meshRef.value.geometry.getAttribute('aPosition')
 

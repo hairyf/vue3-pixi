@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Graphics, Text as PixiText } from 'pixi.js'
+import { Graphics } from 'pixi.js'
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 import { useScreen } from 'vue3-pixi'
 
@@ -72,6 +72,6 @@ function drawRect2(g: Graphics) {
   >
     TRIMMED TEXT
   </text>
-  <graphics v-if="boundsReady" @draw="drawRect1" />
-  <graphics v-if="boundsReady" @draw="drawRect2" />
+  <Graphics v-if="boundsReady" @draw="drawRect1" />
+  <Graphics v-if="boundsReady" @draw="drawRect2" />
 </template>

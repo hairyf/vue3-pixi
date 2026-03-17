@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Buffer, BufferUsage, Geometry, Shader } from 'pixi.js'
+import { BufferUsage, Geometry, Buffer as PixiBuffer, Shader } from 'pixi.js'
 import { ref } from 'vue'
 import { onTick } from 'vue3-pixi'
 
@@ -87,12 +87,12 @@ fn mainFrag(
 
 const totalTriangles = 1000
 
-const instancePositionBuffer = new Buffer({
+const instancePositionBuffer = new PixiBuffer({
   data: new Float32Array(totalTriangles * 2),
   usage: BufferUsage.VERTEX | BufferUsage.COPY_DST,
 })
 
-const triangles: { x: number; y: number; speed: number }[] = []
+const triangles: { x: number, y: number, speed: number }[] = []
 
 for (let i = 0; i < totalTriangles; i++) {
   triangles.push({

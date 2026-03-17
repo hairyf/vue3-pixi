@@ -7,7 +7,8 @@ const error = ref('')
 let cleanup: (() => void) | null = null
 
 onMounted(async () => {
-  if (!canvasContainer.value) return
+  if (!canvasContainer.value)
+    return
 
   // Check if three.js is available by trying to access it from globalThis
   // or via a dynamic URL import. Since three.js is an optional peer dependency,
@@ -15,6 +16,7 @@ onMounted(async () => {
   let THREE: any
   try {
     // Use Function constructor to avoid Vite's static import analysis
+    // eslint-disable-next-line no-new-func
     const dynamicImport = new Function('specifier', 'return import(specifier)')
     THREE = await dynamicImport('three')
   }
@@ -23,8 +25,8 @@ onMounted(async () => {
     return
   }
 
-  let WIDTH = canvasContainer.value.clientWidth || 600
-  let HEIGHT = canvasContainer.value.clientHeight || 400
+  const WIDTH = canvasContainer.value.clientWidth || 600
+  const HEIGHT = canvasContainer.value.clientHeight || 400
 
   // Three.js setup
   const threeRenderer = new THREE.WebGLRenderer({ antialias: true, stencil: true })
@@ -79,7 +81,8 @@ onMounted(async () => {
   animationId = requestAnimationFrame(loop)
 
   cleanup = () => {
-    if (animationId !== null) cancelAnimationFrame(animationId)
+    if (animationId !== null)
+      cancelAnimationFrame(animationId)
     threeRenderer.dispose()
     pixiRenderer.destroy()
   }

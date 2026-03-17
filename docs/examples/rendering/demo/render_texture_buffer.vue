@@ -72,7 +72,7 @@ onTick(() => {
 
 <template>
   <assets :entry="fruits">
-    <sprite
+    <Sprite
       ref="outputSpriteRef"
       :x="screen.width / 2"
       :y="screen.height / 2"
@@ -83,7 +83,7 @@ onTick(() => {
       :x="screen.width / 2"
       :y="screen.height / 2"
     >
-      <sprite
+      <Sprite
         v-for="(item, i) in items"
         :key="i"
         :texture="item.src"
