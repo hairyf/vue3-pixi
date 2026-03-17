@@ -51,12 +51,12 @@ pnpm add pixi.js vue3-pixi
 
 ## Initialize vue plugin
 
-Add Vue plugin configuration to support custom elements, prevent parsing exceptions, and support parsing the texture attribute, just like the src attribute of an img.
+Add Vue plugin configuration to support custom elements and prevent unknown element warnings.
 
 ```ts
 import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
-import { compilerOptions, transformAssetUrls } from 'vue3-pixi'
+import { compilerOptions } from 'vue3-pixi'
 
 export default defineConfig({
   plugins: [
@@ -64,8 +64,6 @@ export default defineConfig({
       template: {
         // support for custom elements and remove the unknown element warnings
         compilerOptions,
-        // support for asset url conversion
-        transformAssetUrls,
       },
     }),
   ],

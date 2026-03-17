@@ -18,8 +18,8 @@ You can obtain the Application instance by binding a ref externally, but it is g
 
 | Name | Type | Default | Description |
 | ---- | ---- | ---- | ---- |
-| width | ^[number] | `undefined` | The width of the renderer |
-| height | ^[number] | `undefined` | The height of the renderer |
+| width | ^[number] ^[string] | `undefined` | The width of the renderer |
+| height | ^[number] ^[string] | `undefined` | The height of the renderer |
 | background | <api-color /> | | The background color of the renderer |
 | backgroundColor | <api-color /> | `0x000000` | The background color of the renderer |
 | backgroundAlpha | ^[number] | `1` | The background alpha of the renderer |

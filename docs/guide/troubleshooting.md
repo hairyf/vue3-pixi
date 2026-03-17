@@ -1,6 +1,6 @@
 # A guide to common problems and how to solve them
 
-This guide is intended to help you solve the most common issues that you might encounter when using Vue3 PIXI.
+This guide is intended to help you solve the most common issues that you might encounter when using vue3-pixi.
 
 ## Composition API failure
 
@@ -30,7 +30,7 @@ const stage = useStage(app)
 Note that if you use this approach, you cannot immediately access `app`. You need to use it within `onMounted`, similar to the characteristics of ref:
 
 ```ts
-import { Application, useApplication } from 'vue3-pixi'
+import { useApplication, useRenderer, useStage } from 'vue3-pixi'
 
 const app = useApplication()
 const renderer = useRenderer(app)
@@ -45,8 +45,9 @@ console.log(renderer.value) // undefined
 While `useScreen` will create a default empty rectangle if Application is not obtained, so you don't need to worry about screen-related calculations when using ref:
 
 ```ts
-import { useScreen } from 'vue3-pixi'
+import { useApplication, useScreen } from 'vue3-pixi'
 
+const app = useApplication()
 const screen = useScreen(app)
 screen.value // defaultRectangle
 // ...

@@ -16,7 +16,7 @@
   <img src="https://img.shields.io/npm/dm/vue3-pixi.svg?style=flat-square" />
   <img src="https://img.shields.io/npm/v/vue3-pixi?color=a1b858&style=flat-square" alt="license" />
   <img src="https://img.shields.io/badge/license-MIT-green.svg?style=flat-square" alt="license" />
-  <img src="https://img.shields.io/badge/pixi-v7+-ff69b4.svg?style=flat-square" alt="pixi version" />
+  <img src="https://img.shields.io/badge/pixi-v8+-ff69b4.svg?style=flat-square" alt="pixi version" />
 </p>
 
 <p align="center">
@@ -25,13 +25,13 @@
 
 ###### Features
 
-- 💚 Lightweight and flexible [Vue 3](https://vuejs.org/) library for creating [PixiJS](https://pixijs.com/) applications.
-- ✏️ Provides a [Custom Vue Renderer](https://vuejs.org/api/custom-renderer.html#custom-renderer-api) that creates PixiJS objects instead of HTML elements.
-- 📦 Supports all PixiJS objects, such as `Filter`, `Container`, `Sprite`, `Graphics`, `Text`, etc
-- 🧑‍💻 Support specifying `texture` paths in templates to load texture objects
-- ✨ All [events](https://pixijs.download/release/docs/PIXI.Sprite.html#onclick) emitted by PixiJS objects are supported
-- 🗃️ Offers [Assets](https://vue3-pixi.vercel.app//guide/components/assets.html) component for bundling assets and Feature Rich [Composition Utilities](https://vue3-pixi.vercel.app//guide/composition-api/on-tick.html).
-- 💫 Create different transition effects in conjunction with [Transition](https://vue3-pixi.vercel.app//guide/components/transition.html).
+- Lightweight and flexible [Vue 3](https://vuejs.org/) library for creating [PixiJS](https://pixijs.com/) applications.
+- Provides a [Custom Vue Renderer](https://vuejs.org/api/custom-renderer.html#custom-renderer-api) that creates PixiJS objects instead of HTML elements.
+- Supports all PixiJS objects, such as `Filter`, `Container`, `Sprite`, `Graphics`, `Text`, etc.
+- Support specifying `texture` paths in templates to load texture objects.
+- All [events](https://pixijs.download/release/docs/scene.Sprite.html) emitted by PixiJS objects are supported.
+- Offers [Assets](https://vue3-pixi.vercel.app/guide/components/assets.html) component for bundling assets and feature-rich [Composition Utilities](https://vue3-pixi.vercel.app/guide/composition-api/on-tick.html).
+- Create different transition effects in conjunction with [Transition](https://vue3-pixi.vercel.app/guide/components/transition.html).
 
 ## Installation
 
@@ -55,6 +55,7 @@ yarn add vue3-pixi
 ## Join Discord
 
 Join Discord server https://discord.gg/7DUKnQpc3V
+
 ## License
 
 [MIT](./LICENSE) License © 2023-PRESENT [hairyf](https://github.com/hairyf)

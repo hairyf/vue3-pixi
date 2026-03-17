@@ -1,7 +1,7 @@
 # Assets
 
 Preloads the assets (textures, audio, etc.) used by your components using the PixiJS [Assets](https://pixijs.download/release/docs/assets.Assets.html) API.
-It contains two slots, `fallback` and the default. The default slot will not
+It contains three slots: `default`, `fallback`, and `error`. The default slot will not
 render until the assets have finished loading.
 
 You can show progress by using the `progress` prop from the `fallback` slot.

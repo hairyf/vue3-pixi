@@ -1,6 +1,6 @@
 # Usage
 
-The [Application](/) component will create your PixiJS app and canvas for you.
+The [Application](/guide/components/application) component will create your PixiJS app and canvas for you.
 
 All Vue3 Pixi elements should be children of Application.
 
@@ -22,7 +22,7 @@ If you have a bunch of images or other resources, you may wish to show a loading
 
 <demo src="./demo/assets.vue" :app="false" />
 
-You can have multiple Assets components as well, which could be useful if you wanted to render a fallbacks at a component-level instead.
+You can have multiple Assets components as well, which could be useful if you want to render fallbacks at a component level instead.
 
 ## Ticker
 

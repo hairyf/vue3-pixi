@@ -24,6 +24,7 @@ The `<Application>` component can be used to embed a pixi app into an existing v
 
 ```html
 <script setup lang="ts">
+import { Rectangle } from "pixi.js";
 import { Application } from "vue3-pixi";
 import textureUrl from "@/assets/myTexture.png";
 
@@ -45,33 +46,31 @@ function onClick() {
 
 ## Initialize vue plugin
 
-Add Vue plugin configuration to support custom elements, prevent parsing exceptions, and support parsing the texture attribute, just like the src attribute of an img.
+Add Vue plugin configuration to support custom elements and prevent unknown element warnings.
 
 ```ts
 import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
-import { isCustomElement, transformAssetUrls } from 'vue3-pixi/compiler'
+import { compilerOptions } from 'vue3-pixi/compiler'
 
 export default defineConfig({
   plugins: [
     vue({
       template: {
         // support for custom elements and remove the unknown element warnings
-        compilerOptions: { isCustomElement },
-        // support for asset url conversion
-        transformAssetUrls,
+        compilerOptions,
       },
     }),
   ],
 })
 ```
 
-### Usage in template
+### Texture paths in templates
 
-The Vue Plugin detects any texture props containing the path to an image and replaces it with a reference to a texture object:
+The vue3-pixi renderer accepts string paths for texture props and resolves them to Texture objects at runtime via `Texture.from()`:
 
 ```html
-<sprite texture="@/assets/myTexture.png" />
+<sprite texture="/assets/myTexture.png" />
 ```
 
 ## Creating a PixiJS application manually

@@ -160,7 +160,7 @@ In v8, `@pointermove` only fires when the pointer is **over** the element, not a
 <sprite :texture="texture" event-mode="static" @globalpointermove="onMove" />
 ```
 
-### Container.name → Container.label
+### Container.name to Container.label
 
 The `name` property has been renamed to `label` in v8:
 
@@ -192,7 +192,7 @@ onTick(({ deltaTime }) => {
 
 ### useApplication returns Ref
 
-`useApplication()` returns a `Ref<Application>` directly — **not** an object with an `app` property:
+`useApplication()` returns a `Ref<Application>` directly, **not** an object with an `app` property:
 
 ```ts
 // Correct
@@ -200,7 +200,7 @@ const app = useApplication()
 app.value.renderer.render({ container: myContainer })
 app.value.ticker.elapsedMS
 
-// Wrong — will be undefined
+// Wrong - will be undefined
 const { app } = useApplication()
 ```
 
@@ -216,7 +216,7 @@ const text = new Text('Hello', style)
 const text = new Text({ text: 'Hello', style })
 ```
 
-Note: `textureStyle` is a constructor-only option on `Text`. It cannot be set via the `<text>` element's props — use imperative creation if you need it.
+Note: `textureStyle` is a constructor-only option on `Text`. It cannot be set via the `<text>` element's props; use imperative creation if you need it.
 
 ### Texture changes
 
