@@ -10,15 +10,10 @@ onMounted(async () => {
   if (!canvasContainer.value)
     return
 
-  // Check if three.js is available by trying to access it from globalThis
-  // or via a dynamic URL import. Since three.js is an optional peer dependency,
-  // this example gracefully handles its absence.
+  // three.js is an optional dependency — gracefully handle its absence
   let THREE: any
   try {
-    // Use Function constructor to avoid Vite's static import analysis
-    // eslint-disable-next-line no-new-func
-    const dynamicImport = new Function('specifier', 'return import(specifier)')
-    THREE = await dynamicImport('three')
+    THREE = await import('three')
   }
   catch {
     error.value = 'This example requires three.js. Install it with: pnpm add three'
