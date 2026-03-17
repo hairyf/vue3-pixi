@@ -16,12 +16,17 @@ describe('props', () => {
   })
 
   it('should handle deprecated onRender as onEffect alias', () => {
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
     const el = { on: vi.fn(), off: vi.fn() }
     const handler = vi.fn()
     patchProp(el, 'onRender', null, handler)
 
     // onRender is deprecated but still works as @effect alias
-    // It goes through the effect handler path, not the general event path
+    // It should go through the effect handler path and call the handler
+    expect(handler).toBeCalled()
+    expect(el.on).toBeCalled()
+    expect(el.on.mock.calls[0][0]).toBe('destroyed')
+    warnSpy.mockRestore()
   })
 
   it('should patch texture object prop', async () => {
