@@ -93,7 +93,7 @@ Particles support a limited set of properties for performance. Set them directly
 | round-pixels | ^[boolean] | `false` | Whether to round particle positions to whole pixels. |
 | dynamic-properties | ^[object] | `undefined` | Controls which properties can update after creation (`vertex`, `position`, `rotation`, `uvs`, `tint`). |
 
-> more props in [Container Props](/guide/elements/container#container-props) and [ParticleContainer](https://pixijs.download/release/docs/scene.ParticleContainer.html)
+> more props in [Container Attributes](/guide/elements/container#container-attributes) and [ParticleContainer](https://pixijs.download/release/docs/scene.ParticleContainer.html)
 
 ### ParticleContainer Events
 

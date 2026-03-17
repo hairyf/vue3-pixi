@@ -17,7 +17,7 @@ A simplified mesh class that provides an easy way to create and manipulate textu
 | topology | ^[enum]`Topology` | `'triangle-list'` | How vertices are connected to form triangles. |
 | auto-update | ^[boolean] | `true` | Whether the vertex buffer auto-updates each frame. |
 
-> more props in [Container Props](/guide/elements/container#container-props) and [MeshSimple](https://pixijs.download/release/docs/scene.MeshSimple.html)
+> more props in [Container Attributes](/guide/elements/container#container-attributes) and [MeshSimple](https://pixijs.download/release/docs/scene.MeshSimple.html)
 
 ### MeshSimple Events
 

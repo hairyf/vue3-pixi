@@ -88,7 +88,7 @@ onTick(() => {
 | style | ^[object]`TextStyle` | `undefined` | Text style options (font, fill, wordWrap, etc.). Set at creation time. |
 | round-pixels | ^[boolean] | `false` | Whether to round pixel positions for sharper rendering. |
 
-> more props in [Container Props](/guide/elements/container#container-props) and [SplitText](https://pixijs.download/release/docs/scene.SplitText.html)
+> more props in [Container Attributes](/guide/elements/container#container-attributes) and [SplitText](https://pixijs.download/release/docs/scene.SplitText.html)
 
 ### SplitBitmapText Attributes
 
@@ -98,7 +98,7 @@ onTick(() => {
 | style | ^[object]`TextStyle` | `undefined` | Bitmap text style (fontFamily, fontSize, fill, etc.). Set at creation time. |
 | round-pixels | ^[boolean] | `false` | Whether to round pixel positions for sharper rendering. |
 
-> more props in [Container Props](/guide/elements/container#container-props) and [SplitBitmapText](https://pixijs.download/release/docs/scene.SplitBitmapText.html)
+> more props in [Container Attributes](/guide/elements/container#container-attributes) and [SplitBitmapText](https://pixijs.download/release/docs/scene.SplitBitmapText.html)
 
 ### Events
 

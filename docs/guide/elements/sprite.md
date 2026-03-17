@@ -18,7 +18,7 @@ Sprites are the base for all textured objects that are rendered to the screen
 | anchor-x | ^[number] | `0` | The x anchor sets the origin point of the text. |
 | anchor-y | ^[number] | `0` | The y anchor sets the origin point of the text. |
 
-> more props in [Container Props](/guide/elements/container#container-props) and [Sprite](https://pixijs.download/release/docs/scene.Sprite.html)
+> more props in [Container Attributes](/guide/elements/container#container-attributes) and [Sprite](https://pixijs.download/release/docs/scene.Sprite.html)
 
 ### Sprite Events
 

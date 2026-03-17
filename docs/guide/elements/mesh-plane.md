@@ -15,7 +15,7 @@ A mesh that renders a texture mapped to a plane with configurable vertex density
 | vertices-y | ^[number] | `10` | Number of vertices along the Y axis. |
 | auto-resize | ^[boolean] | `true` | Whether geometry auto-resizes when texture dimensions change. |
 
-> more props in [Container Props](/guide/elements/container#container-props) and [MeshPlane](https://pixijs.download/release/docs/scene.MeshPlane.html)
+> more props in [Container Attributes](/guide/elements/container#container-attributes) and [MeshPlane](https://pixijs.download/release/docs/scene.MeshPlane.html)
 
 ### MeshPlane Events
 

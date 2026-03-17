@@ -33,7 +33,7 @@ onTick(() => {
     ]"
     @loaded="textures => {
       // Make sure the sprite is wrapping.
-      textures.displacement_map_repeat.baseTexture.wrapMode = 'repeat'
+      textures.displacement_map_repeat.source.wrapMode = 'repeat'
     }"
   >
     <container>

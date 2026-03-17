@@ -62,7 +62,7 @@ DOMContainer supports standard container transforms including rotation and ancho
 | --- | --- | --- | --- |
 | element | ^[object]`HTMLElement` | `undefined` | The HTML DOM element to embed in the scene. |
 
-> more props in [Container Props](/guide/elements/container#container-props) and [DOMContainer](https://pixijs.download/release/docs/scene.DOMContainer.html)
+> more props in [Container Attributes](/guide/elements/container#container-attributes) and [DOMContainer](https://pixijs.download/release/docs/scene.DOMContainer.html)
 
 ### DOMContainer Events
 

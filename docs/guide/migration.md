@@ -1,6 +1,24 @@
 # Migration from v7
 
+::: tip PixiJS v8
+This version of vue3-pixi targets **PixiJS v8**. All APIs, examples, and guides reflect the v8 API.
+:::
+
 Covers migrating from vue3-pixi v0.9.x (PixiJS v7) to vue3-pixi v1.0.0 (PixiJS v8).
+
+## Backwards Compatibility
+
+To ease migration, vue3-pixi provides **deprecation aliases** for renamed v7 elements. The old names still work but emit a console warning:
+
+| Deprecated (v7) | Replacement (v8) |
+|---|---|
+| `<simple-plane>` | `<mesh-plane>` |
+| `<simple-rope>` | `<mesh-rope>` |
+| `<nine-slice-plane>` | `<nine-slice-sprite>` |
+
+The `@render` event also still works as an alias for `@effect`, with a deprecation warning.
+
+These aliases will be removed in a future major version. Update your templates to use the new names.
 
 ## Installation
 
@@ -241,6 +259,27 @@ container.cacheAsTexture(true)
 
 // mask assignment -> setMask()
 container.setMask({ mask: maskGraphics })
+```
+
+### SCALE_MODES and BLEND_MODES
+
+The `SCALE_MODES` and `BLEND_MODES` enums have been replaced with plain strings in v8:
+
+```ts
+// v7
+import { SCALE_MODES, BLEND_MODES } from 'pixi.js'
+texture.baseTexture.scaleMode = SCALE_MODES.NEAREST
+sprite.blendMode = BLEND_MODES.ADD
+
+// v8
+texture.source.scaleMode = 'nearest'
+sprite.blendMode = 'add'
+```
+
+For advanced blend modes (`'color-dodge'`, `'color-burn'`, `'vivid-light'`, etc.), import the extension:
+
+```ts
+import 'pixi.js/advanced-blend-modes'
 ```
 
 ### Graphics API

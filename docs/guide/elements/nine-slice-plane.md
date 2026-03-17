@@ -18,7 +18,7 @@ Allows you to stretch a texture using 9-slice scaling. The corners remain unscal
 | top-height | ^[number] | `undefined` | The height of the top row |
 | bottom-height | ^[number] | `undefined` | The height of the bottom row |
 
-> more props in [Container Props](/guide/elements/container#container-props) and [PixiJS NineSliceSprite](https://pixijs.download/release/docs/scene.NineSliceSprite.html)
+> more props in [Container Attributes](/guide/elements/container#container-attributes) and [PixiJS NineSliceSprite](https://pixijs.download/release/docs/scene.NineSliceSprite.html)
 
 ### NineSliceSprite Events
 

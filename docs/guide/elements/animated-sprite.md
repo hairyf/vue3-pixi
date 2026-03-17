@@ -29,7 +29,7 @@ I recommend using spritesheets created by TexturePacker ([they have a great tuto
 | loop | ^[boolean] | `true` | Whether or not the animate sprite repeats after playing. |
 | playing | ^[boolean] | `false` | Whether or not the animation is playing. |
 
-> more attributes in [Container Props](/guide/elements/container#container-props) and [AnimatedSprite](https://pixijs.download/release/docs/scene.AnimatedSprite.html)
+> more attributes in [Container Attributes](/guide/elements/container#container-attributes) and [AnimatedSprite](https://pixijs.download/release/docs/scene.AnimatedSprite.html)
 
 ### AnimatedSprite Events
 

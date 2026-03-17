@@ -18,7 +18,7 @@ This will set up a `watchEffect` internally that will automatically call the eve
 | tint | <api-color /> | `undefined` | The tint applied to the graphic shape. |
 | is-mask | ^[boolean] | `false` | Sets if this Graphics object is a mask. |
 
-> more props in [Container Props](/guide/elements/container#container-props) and [Graphics](https://pixijs.download/release/docs/scene.Graphics.html)
+> more props in [Container Attributes](/guide/elements/container#container-attributes) and [Graphics](https://pixijs.download/release/docs/scene.Graphics.html)
 
 ### Graphics Events
 

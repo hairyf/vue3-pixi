@@ -6,11 +6,14 @@ const screen = useScreen()
 const element = ref<HTMLTextAreaElement>()
 const rotation = ref(0)
 
+const width = 200
+const height = 100
+
 onMounted(() => {
   const textarea = document.createElement('textarea')
   textarea.value = 'Type here...'
-  textarea.style.width = '200px'
-  textarea.style.height = '100px'
+  textarea.style.width = `${width}px`
+  textarea.style.height = `${height}px`
   textarea.style.fontSize = '16px'
   textarea.style.padding = '8px'
   textarea.style.borderRadius = '8px'
@@ -23,12 +26,12 @@ onTick(({ deltaTime }) => rotation.value += 0.01 * deltaTime)
 </script>
 
 <template>
-  <container :x="screen.width / 2" :y="screen.height / 2">
-    <dom-container
-      v-if="element"
-      :element="element"
-      :anchor="0.5"
-      :rotation="rotation"
-    />
-  </container>
+  <dom-container
+    v-if="element"
+    :element="element"
+    :x="screen.width / 2"
+    :y="screen.height / 2"
+    :pivot="{ x: width / 2, y: height / 2 }"
+    :rotation="rotation"
+  />
 </template>

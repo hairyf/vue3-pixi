@@ -15,7 +15,7 @@ The rope allows you to draw a texture across several points and then manipulate 
 | texture | ^[string] ^[object]`Texture` | `undefined` | The texture to use on the MeshRope. |
 | points | ^[Array<object>]`PointData[]` | `undefined` | An array of points or point-like objects to construct this rope. |
 
-> more props in [Container Props](/guide/elements/container#container-props) and [MeshRope](https://pixijs.download/release/docs/scene.MeshRope.html)
+> more props in [Container Attributes](/guide/elements/container#container-attributes) and [MeshRope](https://pixijs.download/release/docs/scene.MeshRope.html)
 
 ### MeshRope Events
 

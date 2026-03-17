@@ -55,7 +55,7 @@ onTick(() => {
 | anchor-x | ^[number] | `0` | The x-axis origin point. |
 | anchor-y | ^[number] | `0` | The y-axis origin point. |
 
-> more props in [Container Props](/guide/elements/container#container-props) and [PerspectiveMesh](https://pixijs.download/release/docs/scene.PerspectiveMesh.html)
+> more props in [Container Attributes](/guide/elements/container#container-attributes) and [PerspectiveMesh](https://pixijs.download/release/docs/scene.PerspectiveMesh.html)
 
 ### PerspectiveMesh Events
 

@@ -1,16 +1,15 @@
 <script lang="ts" setup>
-import { Loader } from 'vue3-pixi'
-
-const fonts = {
-  'ChaChicle': 'https://pixijs.com/assets/webfont-loader/ChaChicle.ttf',
-  'Lineal': 'https://pixijs.com/assets/webfont-loader/Lineal.otf',
-  'Dotrice Regular': 'https://pixijs.com/assets/webfont-loader/Dotrice-Regular.woff',
-  'Crosterian': 'https://pixijs.com/assets/webfont-loader/Crosterian.woff2',
-}
 </script>
 
 <template>
-  <Loader :resources="fonts">
+  <assets
+    :entry="[
+      { alias: 'ChaChicle', src: 'https://pixijs.com/assets/webfont-loader/ChaChicle.ttf' },
+      { alias: 'Lineal', src: 'https://pixijs.com/assets/webfont-loader/Lineal.otf' },
+      { alias: 'Dotrice Regular', src: 'https://pixijs.com/assets/webfont-loader/Dotrice-Regular.woff' },
+      { alias: 'Crosterian', src: 'https://pixijs.com/assets/webfont-loader/Crosterian.woff2' },
+    ]"
+  >
     <text :y="0" :style="{ fontFamily: 'ChaChicle', fontSize: 50 }">
       ChaChicle.ttf
     </text>
@@ -23,5 +22,5 @@ const fonts = {
     <text :y="450" :style="{ fontFamily: 'Crosterian', fontSize: 50 }">
       Crosterian.woff2
     </text>
-  </Loader>
+  </assets>
 </template>

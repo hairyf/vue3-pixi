@@ -18,7 +18,7 @@ Creates a [TilingSprite](https://pixijs.download/release/docs/scene.TilingSprite
 | tile-position-x | ^[number] | `0` | The offset position of the tile's x axis. |
 | tile-position-y | ^[number] | `0` | The offset position of the tile's y axis. |
 
-> more props in [Container Props](/guide/elements/container#container-props) and [TilingSprite](https://pixijs.download/release/docs/scene.TilingSprite.html)
+> more props in [Container Attributes](/guide/elements/container#container-attributes) and [TilingSprite](https://pixijs.download/release/docs/scene.TilingSprite.html)
 
 ### TilingSprite Events
 

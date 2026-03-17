@@ -49,7 +49,7 @@ function onRender(dude: Sprite & Record<string, any>) {
       :turning-speed="Math.random() - 0.8"
       :speed="2 + Math.random() * 2"
       texture="eggHead"
-      @render="onRender"
+      @effect="onRender"
     />
   </assets>
 </template>

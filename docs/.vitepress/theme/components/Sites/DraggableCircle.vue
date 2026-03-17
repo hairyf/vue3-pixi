@@ -55,9 +55,8 @@ function handleDragMove({ global }: FederatedPointerEvent) {
     @mousemove="handleDragMove"
     @effect="graphics => {
       graphics.clear()
-        .beginFill(0xDE3249)
-        .drawCircle(0, 0, size)
-        .endFill()
+        .circle(0, 0, size)
+        .fill(0xDE3249)
     }"
   />
 </template>

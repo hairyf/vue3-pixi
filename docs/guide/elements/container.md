@@ -1,5 +1,9 @@
 # Container
 
+::: tip PixiJS v8
+All element APIs on this page reflect PixiJS v8. See the [Migration Guide](/guide/migration) for changes from v7.
+:::
+
 Creates a [Container](https://pixijs.download/release/docs/scene.Container.html)
 
 A Container is the base component for all components that render to the screen. It can be used on its own, but components such as Sprite or Graphics will be composed of Containers

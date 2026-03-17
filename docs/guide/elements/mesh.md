@@ -22,7 +22,7 @@ Pretty much all rendering can be broken down into the following:
 | geometry | ^[object]`Geometry` | `undefined` | The geometry the mesh will use. |
 | shader | ^[object]`Shader` | `undefined` | The shader the mesh will use. |
 
-> more props in [Container Props](/guide/elements/container#container-props) and [Mesh](https://pixijs.download/release/docs/scene.Mesh.html)
+> more props in [Container Attributes](/guide/elements/container#container-attributes) and [Mesh](https://pixijs.download/release/docs/scene.Mesh.html)
 
 ### Mesh Events
 

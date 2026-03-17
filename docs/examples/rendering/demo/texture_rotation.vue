@@ -5,7 +5,7 @@ import { useScreen } from 'vue3-pixi'
 
 const screen = useScreen()
 const textureLoaded = ref(false)
-const baseTexture = ref<Texture>()
+const sourceTexture = ref<Texture>()
 
 interface RotatedItem {
   texture: Texture
@@ -19,7 +19,7 @@ interface RotatedItem {
 const rotatedItems = ref<RotatedItem[]>([])
 
 function onTextureLoaded(texture: any) {
-  baseTexture.value = texture
+  sourceTexture.value = texture
 
   const D8 = groupD8
   const allTextures: Texture[] = [texture]

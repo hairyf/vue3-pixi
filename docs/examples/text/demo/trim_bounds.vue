@@ -72,6 +72,6 @@ function drawRect2(g: Graphics) {
   >
     TRIMMED TEXT
   </text>
-  <Graphics v-if="boundsReady" @draw="drawRect1" />
-  <Graphics v-if="boundsReady" @draw="drawRect2" />
+  <Graphics v-if="boundsReady" @effect="drawRect1" />
+  <Graphics v-if="boundsReady" @effect="drawRect2" />
 </template>

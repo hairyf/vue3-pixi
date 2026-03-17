@@ -44,7 +44,7 @@ const uiLayer = ref()
 | --- | --- | --- | --- |
 | sort-function | ^[function] | `undefined` | Custom sort function for children in this layer |
 
-> more props in [Container Props](/guide/elements/container#container-props) and [PixiJS RenderLayer](https://pixijs.download/release/docs/scene.RenderLayer.html)
+> more props in [Container Attributes](/guide/elements/container#container-attributes) and [PixiJS RenderLayer](https://pixijs.download/release/docs/scene.RenderLayer.html)
 
 ### RenderLayer Events
 

@@ -29,7 +29,7 @@ const alienFrames = ['eggHead.png', 'flowerTop.png', 'helmlok.png', 'skully.png'
 const aliens = reactive<Aline[]>([])
 const scale = reactive({ x: 1, y: 1 })
 const rotation = ref(0)
-const cacheAsBitmap = ref(false)
+const cacheAsTexture = ref(false)
 
 function onAssetsLoaded() {
   // add a bunch of aliens with textures from image paths
@@ -68,7 +68,7 @@ ticker.add(tickAlines)
 
 // combines both mouse click + touch tap
 useEventListener('pointerdown', () => {
-  cacheAsBitmap.value = !cacheAsBitmap.value
+  cacheAsTexture.value = !cacheAsTexture.value
 })
 </script>
 
@@ -78,7 +78,7 @@ useEventListener('pointerdown', () => {
     :y="screen.height / 2"
     :scale="scale"
     :rotation="rotation"
-    :cache-as-bitmap="cacheAsBitmap"
+    :cache-as-texture="cacheAsTexture"
   >
     <sprite
       v-for="(alien, index) in aliens" :key="index"

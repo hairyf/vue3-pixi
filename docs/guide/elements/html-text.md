@@ -52,7 +52,7 @@ HTMLText supports inline HTML tags for formatting:
 | anchor-x | ^[number] | `0` | The x anchor sets the origin point of the text. |
 | anchor-y | ^[number] | `0` | The y anchor sets the origin point of the text. |
 
-> more props in [Container Props](/guide/elements/container#container-props) and [HTMLText](https://pixijs.download/release/docs/scene.HTMLText.html)
+> more props in [Container Attributes](/guide/elements/container#container-attributes) and [HTMLText](https://pixijs.download/release/docs/scene.HTMLText.html)
 
 ### HTMLText Events
 

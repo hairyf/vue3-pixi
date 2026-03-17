@@ -1,5 +1,9 @@
 # Quick Start
 
+::: tip PixiJS v8
+This version of vue3-pixi targets **PixiJS v8**. If you are migrating from v7, see the [Migration Guide](/guide/migration).
+:::
+
 If you have an existing project, you just need to install the following dependencies:
 
 ::: code-group
