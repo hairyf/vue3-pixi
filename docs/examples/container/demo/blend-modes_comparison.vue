@@ -2,6 +2,7 @@
 import type { BLEND_MODES } from 'pixi.js'
 import { ref } from 'vue'
 import { onTick } from 'vue3-pixi'
+import 'pixi.js/advanced-blend-modes'
 
 const allBlendModes: BLEND_MODES[] = [
   'normal',

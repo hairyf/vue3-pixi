@@ -3,6 +3,7 @@ import type { BLEND_MODES } from 'pixi.js'
 import { Rectangle } from 'pixi.js'
 import { computed, reactive } from 'vue'
 import { onTick, useScreen } from 'vue3-pixi'
+import 'pixi.js/advanced-blend-modes'
 
 interface DudeIte {
   scale: number
