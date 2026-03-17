@@ -17,7 +17,6 @@ Creates a [TilingSprite](https://pixijs.download/release/docs/scene.TilingSprite
 | tile-position | <api-point /> | `0` | The offset position of the tile. |
 | tile-position-x | ^[number] | `0` | The offset position of the tile's x axis. |
 | tile-position-y | ^[number] | `0` | The offset position of the tile's y axis. |
-| tile-transform | ^[object]`Transform` | `false` | Whether or not anchor and position transforms should be applied to tiles. |
 
 > more props in [Container Props](/guide/elements/container#container-props) and [TilingSprite](https://pixijs.download/release/docs/scene.TilingSprite.html)
 

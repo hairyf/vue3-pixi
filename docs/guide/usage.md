@@ -10,7 +10,7 @@ All Vue3 Pixi elements should be children of Application.
 
 Sprite component requires a `texture`, which can be a Texture object or a path to an image.
 
-PixiJS will load the texture in the background and show it when it’s ready - similar to how an `img` tag works.
+PixiJS will load the texture in the background and show it when it's ready - similar to how an `img` tag works.
 
 <demo src="./demo/sprite.vue" :app="false" />
 
@@ -26,7 +26,22 @@ You can have multiple Assets components as well, which could be useful if you wa
 
 ## Ticker
 
-update loop for the `application`. The Application component will create one automatically, which means child components can hook into the loop with `onTick`.
+Update loop for the `application`. The Application component will create one automatically, which means child components can hook into the loop with `onTick`.
+
+In PixiJS v8, the `onTick` callback receives a Ticker instance. Use `ticker.deltaTime` for the frame delta:
+
+```vue
+<script lang="ts" setup>
+import { ref } from 'vue'
+import { onTick } from 'vue3-pixi'
+
+const x = ref(0)
+
+onTick(({ deltaTime }) => {
+  x.value += deltaTime * 0.05
+})
+</script>
+```
 
 <demo src="./demo/ticker.vue" />
 
@@ -36,9 +51,9 @@ To use filters, you need to add the filter as a child element to the element whe
 
 <demo src="./demo/filter.vue" />
 
-## Render Events
+## Effect Events
 
-All elements support the effect event for manipulating elements directly. This is useful with `<graphics />` and `<particle-container />`.
+All elements support the `@effect` event for manipulating elements directly. This is useful with `<graphics />` and other elements that need imperative drawing.
 
 This sets up a `watchEffect` internally that re-runs the handler whenever its reactive dependencies change.
 
@@ -52,7 +67,7 @@ You can bind PixiJS instances through ref, It is like the HTML elements, so you 
 
 ## Using a Custom Instance
 
-You can add custom `PIXI` instances to the `renderer`, if you have a custom class (whether that be your own or from a third-party library).
+You can add custom PixiJS instances to the `renderer`, if you have a custom class (whether that be your own or from a third-party library).
 
 ```ts
 // main.js

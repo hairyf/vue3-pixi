@@ -69,7 +69,7 @@ When child components are rendered inside, their coordinates become local to the
 
 > more events in [Container](https://pixijs.download/release/docs/scene.Container.html)
 
-### Graphics Slots
+### Container Slots
 
 | Name | Description |
 | --- | --- |

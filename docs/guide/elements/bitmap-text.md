@@ -27,16 +27,11 @@ A BitmapText can only be created when the font is loaded.
 | anchor | <api-point /> | `0` | The anchor sets the origin point of the text. |
 | anchor-x | ^[number] | `0` | The x anchor sets the origin point of the text. |
 | anchor-y | ^[number] | `0` | The y anchor sets the origin point of the text. |
-| style | ^[object]`BitmapTextStyle` | `object` | The style parameters. |
+| style | ^[object]`TextStyle` | `object` | The style parameters (fontFamily, fontSize, align, letterSpacing, etc.). |
 | text | ^[string] | `''` | The text to display. |
-| align | ^[enum]`'left'\|'center'\|'right'\|'justify'` | `left` | The alignment of the BitmapText. |
-| font-name | ^[string] | `undefined` | The name of the font to use. |
-| font-size | ^[number] | `undefined` | The size of the font. |
-| letter-spacing | ^[number] | `undefined` | The amount of spacing between letters. |
-| max-width | ^[number] | `undefined` | The maximum width of the text before it wraps. |
-| max-line-height | ^[number] | `undefined` | The maximum line height. |
+| anchor | <api-point /> | `0` | The anchor sets the origin point of the text. |
 | resolution | ^[number] | `undefined` | The resolution of the BitmapText. |
-| dirty | ^[boolean] | `false` | Whether or not the text has changed. |
+| round-pixels | ^[boolean] | `false` | Whether to round the position to the nearest pixel. |
 
 > more attributes in [Container Props](/guide/elements/container#container-props) and [BitmapText](https://pixijs.download/release/docs/scene.BitmapText.html)
 

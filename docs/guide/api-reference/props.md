@@ -1,6 +1,6 @@
 # Props
 
-By default, the props of custom elements will be mapped to PIXI elements, while some special attributes will be handled separately.
+By default, the props of custom elements will be mapped to PixiJS elements, while some special attributes will be handled separately.
 
 ## Set
 
