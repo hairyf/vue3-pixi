@@ -8,9 +8,14 @@
   "license": "MIT",
   "scripts": {
     "lint": "eslint .",
+    "build": "pnpm -r run build",
+    "dev": "pnpm -r run dev",
     "release": "bumpp -r && pnpm -r publish",
-    "test:run": "vitest",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
+    "prepare": "simple-git-hooks",
     "docs:dev": "npm -C docs run docs:dev",
     "docs:build": "npm -C docs run docs:build",
     "docs:preview": "npm -C docs run docs:preview"
@@ -22,8 +27,16 @@
     "bumpp": "catalog:cli",
     "eslint": "catalog:cli",
     "jsdom": "catalog:cli",
+    "lint-staged": "catalog:cli",
+    "simple-git-hooks": "catalog:cli",
     "tsup": "catalog:cli",
     "typescript": "catalog:cli",
     "vitest": "catalog:cli"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm i --frozen-lockfile --ignore-scripts --offline && npx lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
   }
 }
