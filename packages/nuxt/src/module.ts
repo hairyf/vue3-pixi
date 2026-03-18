@@ -17,7 +17,7 @@ export interface ModuleOptions {}
 
 export default defineNuxtModule({
   meta: { name: 'vue3-pixi-nuxt' },
-  async setup(options, nuxt) {
+  async setup(_options, nuxt) {
     const resolver = createResolver(import.meta.url)
     for (const name of components) {
       addComponent({

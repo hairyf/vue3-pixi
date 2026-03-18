@@ -131,7 +131,7 @@ describe('nodeOps', () => {
   describe('filter dispatcher', () => {
     it('insert with _vp_filter routes to insertFilter', () => {
       const parent = new Container()
-      const filter = new Filter()
+      const filter = new Filter({})
       ;(filter as any)._vp_filter = true
 
       insert(filter as any, parent)
@@ -141,7 +141,7 @@ describe('nodeOps', () => {
 
     it('remove with _vp_filter routes to removeFilter', () => {
       const parent = new Container()
-      const filter = new Filter()
+      const filter = new Filter({})
       ;(filter as any)._vp_filter = true
 
       insert(filter as any, parent)
@@ -153,8 +153,8 @@ describe('nodeOps', () => {
 
     it('nextSibling returns next filter in parent.filters', () => {
       const parent = new Container()
-      const filter1 = new Filter()
-      const filter2 = new Filter()
+      const filter1 = new Filter({})
+      const filter2 = new Filter({})
       ;(filter1 as any)._vp_filter = true
       ;(filter2 as any)._vp_filter = true
 

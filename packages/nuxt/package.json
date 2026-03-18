@@ -16,38 +16,31 @@
   "sideEffects": false,
   "exports": {
     ".": {
-      "types": "./dist/module.d.ts",
-      "default": "./dist/module.mjs"
+      "types": "./dist/types.d.mts",
+      "import": "./dist/module.mjs"
     }
   },
-  "main": "dist/module.mjs",
-  "types": "dist/module.d.ts",
-  "files": [
-    "dist"
-  ],
+  "main": "./dist/module.mjs",
+  "typesVersions": { "*": { ".": ["./dist/types.d.mts"] } },
+  "files": ["dist"],
   "scripts": {
-    "build": "nuxt-module-build build",
-    "dev": "nuxi dev playground",
-    "dev:build": "nuxi build playground",
-    "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
-    "prepublishOnly": "npm run build"
+    "prepack": "nuxt-module-build build",
+    "dev": "npm run dev:prepare && nuxt dev playground",
+    "dev:build": "nuxt build playground",
+    "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxt prepare playground"
   },
   "dependencies": {
-    "@antfu/utils": "catalog:share",
     "@nuxt/kit": "catalog:nuxt",
-    "@xmldom/xmldom": "catalog:nuxt",
-    "mlly": "catalog:nuxt",
-    "nuxi": "catalog:nuxt",
-    "pkg-types": "catalog:nuxt",
-    "sirv": "catalog:nuxt",
-    "vue-demi": "catalog:share",
     "vue3-pixi": "workspace:^"
   },
   "devDependencies": {
+    "@nuxt/devtools": "catalog:nuxt",
     "@nuxt/module-builder": "catalog:nuxt",
     "@nuxt/schema": "catalog:nuxt",
-    "@vue/runtime-core": "catalog:share",
-    "nuxt": "catalog:nuxt"
+    "@nuxt/test-utils": "catalog:nuxt",
+    "@types/node": "catalog:types",
+    "nuxt": "catalog:nuxt",
+    "vue-tsc": "catalog:cli"
   },
   "build": {
     "externals": [
