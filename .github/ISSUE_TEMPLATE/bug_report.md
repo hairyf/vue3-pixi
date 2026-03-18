@@ -7,9 +7,6 @@ assignees: ""
 ---
 
 **Environment**
-- OS:
-- Node.js version:
-- Vue3-Pixi version:
 
 **Description**
 Describe the problem briefly.
@@ -18,10 +15,6 @@ Describe the problem briefly.
 1.
 2.
 3.
-
-**Expected behavior**
-
-**Actual behavior**
 
 **Logs / Screenshots**
 If there are any related logs or screenshots, please post them.

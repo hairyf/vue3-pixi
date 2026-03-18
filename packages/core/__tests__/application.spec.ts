@@ -1,6 +1,4 @@
 import { describe, expect, it, vi } from 'vitest'
-import { Application as PixiApplication, Rectangle } from 'pixi.js'
-import { defineComponent, h, nextTick, ref } from 'vue-demi'
 import { Application } from '../src/components/application'
 
 // Mock PixiApplication since jsdom has no WebGL

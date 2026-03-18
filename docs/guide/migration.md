@@ -267,7 +267,8 @@ The `SCALE_MODES` and `BLEND_MODES` enums have been replaced with plain strings 
 
 ```ts
 // v7
-import { SCALE_MODES, BLEND_MODES } from 'pixi.js'
+import { BLEND_MODES, SCALE_MODES } from 'pixi.js'
+
 texture.baseTexture.scaleMode = SCALE_MODES.NEAREST
 sprite.blendMode = BLEND_MODES.ADD
 
