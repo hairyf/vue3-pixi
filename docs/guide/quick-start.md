@@ -1,6 +1,6 @@
 # Quick Start
 
-::: tip PixiJS v8
+::: tip PixiJS v8(RC)
 This version of vue3-pixi targets **PixiJS v8**. If you are migrating from v7, see the [Migration Guide](/guide/migration).
 :::
 
@@ -9,15 +9,15 @@ If you have an existing project, you just need to install the following dependen
 ::: code-group
 
 ```bash [npm]
-npm install pixi.js vue3-pixi
+npm install pixi.js vue3-pixi@rc
 ```
 
 ```bash [yarn]
-yarn add pixi.js vue3-pixi
+yarn add pixi.js vue3-pixi@rc
 ```
 
 ```bash [pnpm]
-pnpm add pixi.js vue3-pixi
+pnpm add pixi.js vue3-pixi@rc
 ```
 
 :::

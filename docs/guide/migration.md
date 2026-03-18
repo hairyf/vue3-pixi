@@ -1,6 +1,6 @@
 # Migration from v7
 
-::: tip PixiJS v8
+::: tip PixiJS v8(RC)
 This version of vue3-pixi targets **PixiJS v8**. All APIs, examples, and guides reflect the v8 API.
 :::
 

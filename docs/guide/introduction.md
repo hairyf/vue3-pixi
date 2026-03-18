@@ -19,7 +19,7 @@
   <img src="https://img.shields.io/badge/pixi-v8+-ff69b4.svg?style=flat-square" alt="pixi version" />
 </div>
 
-::: tip PixiJS v8
+::: tip PixiJS v8(RC)
 This version of vue3-pixi targets **PixiJS v8**. If you are migrating from v7, see the [Migration Guide](/guide/migration).
 :::
 
@@ -39,16 +39,16 @@ This version of vue3-pixi targets **PixiJS v8**. If you are migrating from v7, s
 
 ::: code-group
 
-```bash [npm]
-npm install pixi.js vue3-pixi
+```bash [pnpm]
+pnpm add pixi.js vue3-pixi@rc
 ```
 
 ```bash [yarn]
-yarn add pixi.js vue3-pixi
+yarn add pixi.js vue3-pixi@rc
 ```
 
-```bash [pnpm]
-pnpm add pixi.js vue3-pixi
+```bash [npm]
+npm install pixi.js vue3-pixi@rc
 ```
 
 :::
