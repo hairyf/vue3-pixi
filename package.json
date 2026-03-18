@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "build": "pnpm -r run build",
     "dev": "pnpm -r run dev",
-    "release": "bumpp -r && pnpm -r publish",
+    "release": "bumpp -r",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
