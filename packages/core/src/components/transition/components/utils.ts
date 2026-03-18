@@ -123,9 +123,10 @@ async function executeInTicker(ticker: TransitionTicker | void, done: Fn, abort:
     const progress = (now - startedAt) / duration
     context.time = now - startedAt
     tick(progress)
-    endAt > now
-      ? requestAnimationFrame(exec)
-      : deferred.resolve()
+    if (endAt > now)
+      typeof requestAnimationFrame !== 'undefined' ? requestAnimationFrame(exec) : setTimeout(exec, 16)
+    else
+      deferred.resolve()
   }
   exec()
   Ticker.shared.add(exec)
@@ -147,9 +148,10 @@ async function executeOutTicker(ticker: TransitionTicker | void, done: Fn, abort
     const progress = (endAt - now) / duration
     context.time = endAt - now
     tick(progress)
-    endAt > now
-      ? requestAnimationFrame(exec)
-      : deferred.resolve()
+    if (endAt > now)
+      typeof requestAnimationFrame !== 'undefined' ? requestAnimationFrame(exec) : setTimeout(exec, 16)
+    else
+      deferred.resolve()
   }
   Ticker.shared.add(exec)
   deferred.then(() => Ticker.shared.remove(exec))

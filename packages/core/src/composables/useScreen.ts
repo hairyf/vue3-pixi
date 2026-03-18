@@ -4,7 +4,7 @@ import type { Ref } from 'vue-demi'
 import { computedWithControl, useResizeObserver } from '@vueuse/core'
 import { Rectangle } from 'pixi.js'
 
-import { computed, unref } from 'vue-demi'
+import { computed, unref, watch } from 'vue-demi'
 
 import { useApplication } from './useApplication'
 
@@ -18,8 +18,11 @@ export function useScreen(app?: Ref<Application>): Ref<Rectangle> {
     () => useApp.value?.screen || defaultRectangle,
   )
 
-  if (view?.value instanceof HTMLCanvasElement)
-    useResizeObserver(view, screen.trigger)
+  // Watch for canvas availability to handle async app.init()
+  watch(view, (canvas) => {
+    if (canvas instanceof HTMLCanvasElement)
+      useResizeObserver(canvas, screen.trigger)
+  }, { immediate: true })
 
   return screen
 }

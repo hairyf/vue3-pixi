@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import type { Container as ContainerElement, Graphics } from 'pixi.js'
+import { whenever } from '@vueuse/core'
 import { gsap } from 'gsap'
 import Physics2DPlugin from 'gsap/Physics2DPlugin'
 import PixiPlugin from 'gsap/PixiPlugin'
 import { onUnmounted, ref } from 'vue'
 import { useScreen } from 'vue3-pixi'
-import { whenever } from '@vueuse/core'
 
 gsap.registerPlugin(Physics2DPlugin, PixiPlugin)
 
@@ -13,7 +13,6 @@ const screen = useScreen()
 
 const particleCount = 160
 const particles = ref<ContainerElement[]>()
-
 
 let animations: gsap.core.Tween[] = []
 
@@ -55,23 +54,24 @@ onUnmounted(() => {
   animations.forEach(anim => anim.kill())
   animations = []
 })
-
 </script>
 
 <template>
   <container>
     <container v-for="i in particleCount" :key="i" ref="particles">
-      <graphics @effect="graphics => {
-        const size = random(5, 40)
-        graphics
-          .circle(0, 0, size)
-          .fill({ color: 0x000000, alpha: 0 })
-          .stroke({
-            color: `hsl(${(i - 1) * (300 / particleCount) - 5}, 100%, 50%)`,
-            width: 2,
-          })
-      }
-      " />
+      <graphics
+        @effect="graphics => {
+          const size = random(5, 40)
+          graphics
+            .circle(0, 0, size)
+            .fill({ color: 0x000000, alpha: 0 })
+            .stroke({
+              color: `hsl(${(i - 1) * (300 / particleCount) - 5}, 100%, 50%)`,
+              width: 2,
+            })
+        }
+        "
+      />
     </container>
   </container>
 </template>

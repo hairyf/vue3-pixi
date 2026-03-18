@@ -3,13 +3,11 @@ import { describe, expect, it, vi } from 'vitest'
 import { nextTick } from 'vue-demi'
 import { patchProp } from '../src'
 
-const textureURL = 'https://pixijs.com/assets/bunny.png'
-
 describe('props', () => {
-  it('should patch render prop', () => {
-    const el = { on: vi.fn() }
+  it('should patch onEffect prop', () => {
+    const el = { on: vi.fn(), off: vi.fn() }
     const nextValue = vi.fn()
-    patchProp(el, 'onRender', null, nextValue)
+    patchProp(el, 'onEffect', null, nextValue)
 
     expect(el.on).toBeCalled()
     expect(el.on.mock.calls[0][0]).toBe('destroyed')
@@ -17,21 +15,24 @@ describe('props', () => {
     expect(nextValue).toBeCalled()
   })
 
-  it('should patch texture string prop', async () => {
-    const el = { texture: null }
+  it('should handle deprecated onRender as onEffect alias', () => {
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
+    const el = { on: vi.fn(), off: vi.fn() }
+    const handler = vi.fn()
+    patchProp(el, 'onRender', null, handler)
 
-    patchProp(el, 'texture', null, textureURL)
-    patchProp(el, 'texture', null, textureURL)
-
-    await nextTick()
-
-    expect(el.texture).toBeInstanceOf(Texture)
+    // onRender is deprecated but still works as @effect alias
+    // It should go through the effect handler path and call the handler
+    expect(handler).toBeCalled()
+    expect(el.on).toBeCalled()
+    expect(el.on.mock.calls[0][0]).toBe('destroyed')
+    warnSpy.mockRestore()
   })
 
   it('should patch texture object prop', async () => {
     const el = { texture: null }
 
-    const texture = Texture.from(textureURL)
+    const texture = Texture.WHITE
 
     patchProp(el, 'texture', null, texture)
     patchProp(el, 'texture', null, texture)

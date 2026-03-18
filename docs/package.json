@@ -19,6 +19,7 @@
     "nanoid": "catalog:share",
     "pixi-filters": "catalog:share",
     "pixi.js": "catalog:share",
+    "three": "^0.183.2",
     "unocss": "catalog:docs",
     "vue": "catalog:share",
     "vue3-pixi": "workspace:^"

@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import type { SimplePlaneInst } from 'vue3-pixi'
+import type { MeshPlane } from 'pixi.js'
 import { computed, ref } from 'vue'
 import { onTick } from 'vue3-pixi'
 
-const planeRef = ref<SimplePlaneInst>()
-const buffer = computed(() => planeRef.value?.geometry.getBuffer('aVertexPosition'))
+const planeRef = ref<MeshPlane>()
+const buffer = computed(() => planeRef.value?.geometry.getBuffer('aPosition'))
 
 onTick(() => {
   if (buffer.value) {
@@ -18,10 +18,11 @@ onTick(() => {
 
 <template>
   <assets entry="https://pixijs.com/assets/snake.png" #="{data}">
-    <simple-plane
+    <mesh-plane
       ref="planeRef"
       :texture="data"
-      :vertices="10"
+      :vertices-x="10"
+      :vertices-y="10"
     />
   </assets>
 </template>

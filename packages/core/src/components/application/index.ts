@@ -2,7 +2,7 @@
 import type { ApplicationOptions, ColorSource, Container, GpuPowerPreference } from 'pixi.js'
 import type { App, PropType } from 'vue-demi'
 import { Application as PixiApplication } from 'pixi.js'
-import { defineComponent, getCurrentInstance, h, markRaw, nextTick, onMounted, onUnmounted, ref, renderSlot } from 'vue-demi'
+import { defineComponent, getCurrentInstance, h, markRaw, nextTick, onMounted, onUnmounted, ref, renderSlot, watch } from 'vue-demi'
 import { appInjectKey } from '../../composables'
 import { createApp } from '../../renderer'
 import { inheritParent } from '../../utils'
@@ -21,7 +21,7 @@ export const Application = defineComponent({
     autoDensity: { type: Boolean, default: undefined },
     autoStart: { type: Boolean, default: true },
     alpha: { type: Boolean, default: undefined },
-    background: { type: Object as PropType<ColorSource> },
+    background: [Number, String, Array, Object] as PropType<ColorSource>,
     backgroundColor: [Number, String, Array, Object] as PropType<ColorSource>,
     backgroundAlpha: { type: Number, default: 1 },
     clearBeforeRender: { type: Boolean, default: undefined },
@@ -44,7 +44,6 @@ export const Application = defineComponent({
     height: { type: [Number, String], default: undefined },
     resolution: { type: Number, default: 1 },
 
-    // @TODO: Add webgl/webgpu
   },
   setup(props, { slots, expose }) {
     const { appContext } = getCurrentInstance()!
@@ -88,9 +87,7 @@ export const Application = defineComponent({
 
         try {
           pixiApp.value.destroy(
-            // eslint-disable-next-line ts/ban-ts-comment
-            // @ts-ignore
-            { releaseGlobalResources: true, removeView: true },
+            { removeView: true },
             {
               children: true,
               texture: true,
@@ -116,6 +113,16 @@ export const Application = defineComponent({
 
     onMounted(mount)
     onUnmounted(unmount)
+
+    // Reactively resize the renderer when width/height props change
+    watch(() => [props.width, props.height] as const, ([w, h]) => {
+      if (pixiApp.value?.renderer) {
+        const numW = w != null ? Number(w) : undefined
+        const numH = h != null ? Number(h) : undefined
+        if (numW != null && numH != null)
+          pixiApp.value.renderer.resize(numW, numH)
+      }
+    })
 
     expose({ canvas, app: pixiApp })
 

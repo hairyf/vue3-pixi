@@ -1,5 +1,9 @@
 # Quick Start
 
+::: tip PixiJS v8
+This version of vue3-pixi targets **PixiJS v8**. If you are migrating from v7, see the [Migration Guide](/guide/migration).
+:::
+
 If you have an existing project, you just need to install the following dependencies:
 
 ::: code-group
@@ -24,6 +28,7 @@ The `<Application>` component can be used to embed a pixi app into an existing v
 
 ```html
 <script setup lang="ts">
+import { Rectangle } from "pixi.js";
 import { Application } from "vue3-pixi";
 import textureUrl from "@/assets/myTexture.png";
 
@@ -45,50 +50,50 @@ function onClick() {
 
 ## Initialize vue plugin
 
-add Vue plugin configuration to support custom elements, prevent parsing exceptions, and support parsing the texture attribute, just like the src attribute of an img.
+Add Vue plugin configuration to support custom elements and prevent unknown element warnings.
 
 ```ts
 import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
-import { isCustomElement, transformAssetUrls } from 'vue3-pixi/compiler'
+import { compilerOptions } from 'vue3-pixi/compiler'
 
 export default defineConfig({
   plugins: [
     vue({
       template: {
         // support for custom elements and remove the unknown element warnings
-        compilerOptions: { isCustomElement },
-        // support for asset url conversion
-        transformAssetUrls,
+        compilerOptions,
       },
     }),
   ],
 })
 ```
 
-### Usage in template
+### Texture paths in templates
 
-The Vue Plugin detects any texture props containing the path to an image and replaces it with a reference to a texture object:
+The vue3-pixi renderer accepts string paths for texture props and resolves them to Texture objects at runtime via `Texture.from()`:
 
 ```html
-<sprite texture="@/assets/myTexture.png" />
+<sprite texture="/assets/myTexture.png" />
 ```
 
-## Creating an pixi application manually
+## Creating a PixiJS application manually
 
-Using the custom renderer inside `vue3-pixi`
+Using the custom renderer inside `vue3-pixi`:
 
 ```ts
 import { Application } from 'pixi.js'
 import { appInjectKey, createApp } from 'vue3-pixi'
 import App from './App.vue'
 
-const pixiApp = new Application({
+const pixiApp = new Application()
+
+await pixiApp.init({
   resizeTo: window,
   antialias: true,
 })
 
-document.body.appendChild(pixiApp.view as HTMLCanvasElement)
+document.body.appendChild(pixiApp.canvas)
 
 const app = createApp(App)
 

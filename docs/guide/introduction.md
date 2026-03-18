@@ -16,20 +16,24 @@
   <img src="https://img.shields.io/npm/dm/vue3-pixi.svg?style=flat-square" />
   <img src="https://img.shields.io/npm/v/vue3-pixi?color=a1b858&style=flat-square" alt="license" />
   <img src="https://img.shields.io/badge/license-MIT-green.svg?style=flat-square" alt="license" />
-  <img src="https://img.shields.io/badge/pixi-v7+-ff69b4.svg?style=flat-square" alt="pixi version" />
+  <img src="https://img.shields.io/badge/pixi-v8+-ff69b4.svg?style=flat-square" alt="pixi version" />
 </div>
+
+::: tip PixiJS v8
+This version of vue3-pixi targets **PixiJS v8**. If you are migrating from v7, see the [Migration Guide](/guide/migration).
+:::
 
 ###### Features
 
-- 💚 Lightweight and flexible [Vue 3](https://vuejs.org/) library for creating [PixiJS](https://pixijs.com/) applications.
-- ✏️ Provides a [Custom Vue Renderer](https://vuejs.org/api/custom-renderer.html#custom-renderer-api) that creates PixiJS objects instead of HTML elements.
-- 📦 Supports all PixiJS objects, such as `Filter`, `Container`, `Sprite`, `Graphics`, `Text`, etc
-- 🧑‍💻 Support specifying `texture` paths in templates to load texture objects
-- ✨ All [events](https://pixijs.download/release/docs/PIXI.Sprite.html#onclick) emitted by PixiJS objects are supported
-- 🗃️ Offers [assets](/guide/components/assets) component for bundling assets and Feature Rich [Composition Utilities](/guide/composition-api/on-tick).
-- 💫 Create different transition effects in conjunction with [Transition](/guide/components/transition).
+- Lightweight and flexible [Vue 3](https://vuejs.org/) library for creating [PixiJS](https://pixijs.com/) applications.
+- Provides a [Custom Vue Renderer](https://vuejs.org/api/custom-renderer.html#custom-renderer-api) that creates PixiJS objects instead of HTML elements.
+- Supports all PixiJS objects: `Filter`, `Container`, `Sprite`, `Graphics`, `Text`, and more.
+- Specify `texture` paths in templates to load texture objects automatically.
+- All [events](https://pixijs.download/release/docs/scene.Sprite.html) emitted by PixiJS objects are supported.
+- Includes an [assets](/guide/components/assets) component for bundling resources and [Composition Utilities](/guide/composition-api/on-tick) for common patterns.
+- Create [transition effects](/guide/components/transition) for PixiJS objects.
 
-> **It is still a work in progress** but it should be usable enough for real projects. If you run into any problems please don’t hesitate to [create an issue on GitHub](https://github.com/hairyf/vue3-pixi/issues).
+> If you run into any problems, please [create an issue on GitHub](https://github.com/hairyf/vue3-pixi/issues).
 
 ## Install
 
@@ -51,12 +55,12 @@ pnpm add pixi.js vue3-pixi
 
 ## Initialize vue plugin
 
-add Vue plugin configuration to support custom elements, prevent parsing exceptions, and support parsing the texture attribute, just like the src attribute of an img.
+Add Vue plugin configuration to support custom elements and prevent unknown element warnings.
 
 ```ts
 import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
-import { compilerOptions, transformAssetUrls } from 'vue3-pixi'
+import { compilerOptions } from 'vue3-pixi'
 
 export default defineConfig({
   plugins: [
@@ -64,8 +68,6 @@ export default defineConfig({
       template: {
         // support for custom elements and remove the unknown element warnings
         compilerOptions,
-        // support for asset url conversion
-        transformAssetUrls,
       },
     }),
   ],
@@ -74,6 +76,6 @@ export default defineConfig({
 
 ## Try it Online
 
-You can fork this template example on [StackBlitz](https://stackblitz.com/edit/vue3-pixi?file=src/App.vue) and play with it 😋 without installing anything locally.
+You can fork this template on [StackBlitz](https://stackblitz.com/edit/vue3-pixi?file=src/App.vue) and try it without installing anything locally.
 
 <stack-blitz-embed id="vue3-pixi" />

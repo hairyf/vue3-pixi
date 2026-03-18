@@ -14,5 +14,5 @@ declare module '@vue/runtime-core' {
 
 renderer.use({
   name: 'BlurFilterPass',
-  createElement: props => new BlurFilterPass(props.alpha),
+  createElement: props => new BlurFilterPass(props),
 })

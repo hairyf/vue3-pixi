@@ -14,5 +14,5 @@ declare module '@vue/runtime-core' {
 
 renderer.use({
   name: 'ColorMatrixFilter',
-  createElement: props => new ColorMatrixFilter(props.alpha),
+  createElement: props => new ColorMatrixFilter(props),
 })

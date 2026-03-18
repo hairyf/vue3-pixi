@@ -4,7 +4,7 @@ import { useEventListener } from '@vueuse/core'
 import { gsap } from 'gsap'
 import Physics2DPlugin from 'gsap/Physics2DPlugin'
 import { DropShadowFilter } from 'pixi-filters'
-import {  onUnmounted, ref } from 'vue'
+import { onUnmounted, ref } from 'vue'
 import { onReady, useScreen, useStage } from 'vue3-pixi'
 
 gsap.registerPlugin(Physics2DPlugin)
@@ -21,7 +21,7 @@ interface Dot {
 
 const dots = ref<Dot[]>([])
 let dotIdCounter = 0
-let timeline: gsap.core.Timeline | null = null  
+let timeline: gsap.core.Timeline | null = null
 
 const textFilter = new DropShadowFilter({
   color: 'black',
@@ -38,7 +38,6 @@ const dotFilter = new DropShadowFilter({
 })
 
 function createConfetti(event: PointerEvent) {
-  
   const dotCount = gsap.utils.random(15, 30, 1)
 
   for (let i = 0; i < dotCount; i++) {

@@ -1,9 +1,10 @@
 # useTrack
 
-Return a responsive writable store updated during low-priority, which is useful for observing properties on PixiJS instances that are updated outside of the component, such as physical systems.
+Returns a reactive, writable ref that tracks a property on a PixiJS instance. Useful for observing properties that are updated outside of Vue (e.g. by a physics engine).
 
 ```vue
 <script lang="ts" setup>
+import { ref } from 'vue'
 import { useTrack } from 'vue3-pixi'
 
 const containerRef = ref()
@@ -21,3 +22,15 @@ const scaleY = useTrack(() => containerRef.value?.scale, 'y', 0)
   </container>
 </template>
 ```
+
+## Type Signature
+
+```ts
+function useTrack<T, K extends keyof T>(
+  target: MaybeRefOrGetter<T>,
+  key: K,
+  defaultValue?: T[K]
+): Ref<T[K]>
+```
+
+The first argument can be a ref, a reactive object, or a getter function. The second argument is the property name to track. The optional third argument is a default value used before the target is available.

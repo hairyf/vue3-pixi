@@ -11,18 +11,18 @@
   <img src="https://img.shields.io/github/stars/hairyf/vue3-pixi.svg?style=flat-square" />
   <img src="https://img.shields.io/npm/dm/vue3-pixi.svg?style=flat-square" />
   <img src="https://img.shields.io/badge/license-MIT-green.svg?style=flat-square" alt="license" />
-  <img src="https://img.shields.io/badge/pixi-v7+-ff69b4.svg?style=flat-square" alt="pixi version" />
+  <img src="https://img.shields.io/badge/pixi-v8+-ff69b4.svg?style=flat-square" alt="pixi version" />
 </p>
 
 ###### Features
 
-- 💚 Lightweight and flexible [Vue 3](https://vuejs.org/) library for creating [PixiJS](https://pixijs.com/) applications.
-- ✏️ Provides a [Custom Vue Renderer](https://vuejs.org/api/custom-renderer.html#custom-renderer-api) that creates PixiJS objects instead of HTML elements.
-- 📦 Supports all PixiJS objects, such as `Filter`, `Container`, `Sprite`, `Graphics`, `Text`, etc
-- 🧑‍💻 Support specifying `texture` paths in templates to load texture objects
-- ✨ All [events](https://pixijs.download/release/docs/PIXI.Sprite.html#onclick) emitted by PixiJS objects are supported
-- 🗃️ Offers [Assets](#assets) component for bundling assets and Feature Rich [Composition Utilities](#composables).
-- 💫 Create different transition effects in conjunction with [@vue-pixi/transition](https://github.com/hairyf/vue3-pixi/tree/main/packages/transition).
+- Lightweight and flexible [Vue 3](https://vuejs.org/) library for creating [PixiJS](https://pixijs.com/) applications.
+- Provides a [Custom Vue Renderer](https://vuejs.org/api/custom-renderer.html#custom-renderer-api) that creates PixiJS objects instead of HTML elements.
+- Supports all PixiJS objects, such as `Filter`, `Container`, `Sprite`, `Graphics`, `Text`, etc.
+- Support specifying `texture` paths in templates to load texture objects.
+- All [events](https://pixijs.download/release/docs/scene.Sprite.html) emitted by PixiJS objects are supported.
+- Offers [Assets](#assets) component for bundling assets and feature-rich [Composition Utilities](#composables).
+- Create different transition effects in conjunction with [@vue-pixi/transition](https://github.com/hairyf/vue3-pixi/tree/main/packages/transition).
 
 ## Try it Online
 
@@ -44,6 +44,7 @@ The `<Application>` component can be used to embed a pixi app into an existing v
 
 ```html
 <script setup lang="ts">
+import { Rectangle } from "pixi.js";
 import { Application } from "vue3-pixi";
 import textureUrl from "@/assets/myTexture.png";
 
@@ -65,12 +66,12 @@ function onClick() {
 
 ## Initialize vue plugin
 
-The vite plugin adds the ability to specify texture paths on sprites & other components that use textures, the same way as the `src` attribute on an image.
+Add Vue plugin configuration to support custom elements and prevent unknown element warnings.
 
 ```ts
 import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
-import { compilerOptions, transformAssetUrls } from 'vue3-pixi'
+import { compilerOptions } from 'vue3-pixi'
 
 export default defineConfig({
   plugins: [
@@ -78,36 +79,34 @@ export default defineConfig({
       template: {
         // remove the unknown element warnings
         compilerOptions,
-        // support for asset url conversion
-        transformAssetUrls,
       },
     }),
   ],
 })
 ```
 
-### Usage in template
+### Texture paths in templates
 
-The Vue Plugin detects any texture props containing the path to an image and replaces it with a reference to a texture object:
+The vue3-pixi renderer accepts string paths for texture props and resolves them to Texture objects at runtime via `Texture.from()`:
 
 ```html
-<sprite texture="@/assets/myTexture.png" />
+<sprite texture="/assets/myTexture.png" />
 ```
 
 ## Elements
 
-- [Container](http://pixijs.download/release/docs/PIXI.Container.html)
-- [Sprite](http://pixijs.download/release/docs/PIXI.Sprite.html)
-- [Graphics](http://pixijs.download/release/docs/PIXI.Graphics.html)
-- [Text](http://pixijs.download/release/docs/PIXI.Text.html)
-- [BitmapText](http://pixijs.download/release/docs/PIXI.BitmapText.html)
-- [AnimatedSprite](http://pixijs.download/release/docs/PIXI.AnimatedSprite.html)
-- [SimpleMesh](http://pixijs.download/release/docs/PIXI.SimpleMesh.html)
-- [SimplePlane](http://pixijs.download/release/docs/PIXI.SimplePlane.html)
-- [TilingSprite](http://pixijs.download/release/docs/PIXI.TilingSprite.html)
-- [NineSlicePlane](http://pixijs.download/release/docs/PIXI.NineSlicePlane.html)
-- [MeshRope](http://pixijs.download/release/docs/PIXI.MeshRope.html)
-- [Mesh](http://pixijs.download/release/docs/PIXI.AnimatedSprite.html)
+- [Container](https://pixijs.download/release/docs/scene.Container.html)
+- [Sprite](https://pixijs.download/release/docs/scene.Sprite.html)
+- [Graphics](https://pixijs.download/release/docs/scene.Graphics.html)
+- [Text](https://pixijs.download/release/docs/scene.Text.html)
+- [BitmapText](https://pixijs.download/release/docs/scene.BitmapText.html)
+- [AnimatedSprite](https://pixijs.download/release/docs/scene.AnimatedSprite.html)
+- [Mesh](https://pixijs.download/release/docs/scene.Mesh.html)
+- [MeshPlane](https://pixijs.download/release/docs/scene.MeshPlane.html)
+- [MeshSimple](https://pixijs.download/release/docs/scene.MeshSimple.html)
+- [TilingSprite](https://pixijs.download/release/docs/scene.TilingSprite.html)
+- [NineSliceSprite](https://pixijs.download/release/docs/scene.NineSliceSprite.html)
+- [MeshRope](https://pixijs.download/release/docs/scene.MeshRope.html)
 
 ## Props
 
@@ -125,7 +124,7 @@ All events emitted by pixi objects are supported. Some of vue's event modifiers 
 
 ### Graphics
 
-When using `<grahpics />` there is a special `@effect` event.
+When using `<graphics />` there is a special `@effect` event.
 
 This will set up a `watchEffect` internally that will automatically call the event handler again if any dependencies on the draw method have changed.
 
@@ -142,10 +141,10 @@ const props = defineProps<{
 
 function draw(g: Graphics) {
   g.clear()
-  g.lineStyle(3, 0xffffff)
 
   const { x, y, width, height } = props
-  g.drawRoundedRect(x, y, width, height, 5)
+  g.roundRect(x, y, width, height, 5)
+  g.stroke({ width: 3, color: 0xffffff })
 }
 </script>
 
@@ -158,12 +157,11 @@ function draw(g: Graphics) {
 
 To use `filter`, you need to place the Filter tag under the `<Container>` that sets the filter. Currently, the following filters are supported by default:
 
-- [BlurFilter](https://pixijs.download/release/docs/PIXI.BlurFilter.html)
-- [AlphaFilter](https://pixijs.download/release/docs/PIXI.AlphaFilter.html)
-- [DisplacementFilter](https://pixijs.download/release/docs/PIXI.DisplacementFilter.html)
-- [ColorMatrixFilter](https://pixijs.download/release/docs/PIXI.ColorMatrixFilter.html)
-- [NoiseFilter](https://pixijs.download/release/docs/PIXI.NoiseFilter.html)
-- [FXAAFilter](https://pixijs.download/release/docs/PIXI.FXAAFilter.html)
+- [BlurFilter](https://pixijs.download/release/docs/filters.BlurFilter.html)
+- [AlphaFilter](https://pixijs.download/release/docs/filters.AlphaFilter.html)
+- [DisplacementFilter](https://pixijs.download/release/docs/filters.DisplacementFilter.html)
+- [ColorMatrixFilter](https://pixijs.download/release/docs/filters.ColorMatrixFilter.html)
+- [NoiseFilter](https://pixijs.download/release/docs/filters.NoiseFilter.html)
 
 Example of using `BlurFilter` with a Container:
 
@@ -216,38 +214,33 @@ To avoid conflicts with other tags, such as `<filter>`, you can use the `pixi-` 
 
 ## Assets
 
-`vue3-pixi` provides a special component for bundling resources and obtaining resources from plugins.
+`vue3-pixi` provides the `<assets>` component for loading resources using the PixiJS Assets API.
 
 ```html
-<script setup lang="ts">
-import { Assets, AssetsResolvers } from "vue3-pixi";
-
-const resolves: AssetsResolvers = {
-  flowerTop: import('./examples/assets/flowerTop.png'),
-  eggHead: import('./examples/assets/eggHead.png'),
-  bunny: 'https://pixijs.io/examples/examples/assets/bunny.png'
-}
-</script>
-
 <template>
-  <Loader :resources="resolves" #default="{ textures, progress }">
-    <container v-if="textures">
-      <sprite :texture="textures.flowerTop" />
-    </container>
-    <text v-else>
-      Loading...
-    </text>
-  </Loader>
+  <assets
+    :entry="[
+      { alias: 'flowerTop', src: '/assets/flowerTop.png' },
+      { alias: 'eggHead', src: '/assets/eggHead.png' },
+    ]"
+  >
+    <template #default>
+      <sprite texture="flowerTop" />
+      <sprite texture="eggHead" />
+    </template>
+    <template #fallback="{ progress }">
+      <text :style="{ fill: 'white' }">Loading... {{ progress }}</text>
+    </template>
+  </assets>
 </template>
 ```
 
-You can also use the `resolved` and `fallback` slots separately to handle successful and loaded content independently:
+You can also load a single asset using the `alias` and `entry` props:
 
 ```html
-<Loader :resources="resolves">
-  <template #resolved="{ textures }"><!-- ... --></template>
-  <template #fallback="{ progress }"><!-- ... --></template>
-</Loader>
+<assets alias="bunny" entry="/assets/bunny.png">
+  <sprite texture="bunny" />
+</assets>
 ```
 
 ## Composables
@@ -256,22 +249,16 @@ You can also use the `resolved` and `fallback` slots separately to handle succes
 
 ### onTick
 
-This composable hook adds a ticker to the Pixi application during mounting and returns a stop function.
+This composable hook adds a ticker to the PixiJS application during mounting and returns a remove function.
 
 ```html
 <script setup lang="ts">
-import { Application, onTick } from "vue3-pixi";
+import { onTick } from "vue3-pixi";
 
-onTick((delta) => {
-  // ...
+onTick((ticker) => {
+  // ticker.deltaTime, ticker.elapsedMS, etc.
 })
 </script>
-
-<template>
-  <Application :width="640" :height="480">
-    <!-- ... -->
-  </Application>
-</template>
 ```
 
 ### useApplication
@@ -297,12 +284,14 @@ onMounted(() => {
 </template>
 ```
 
-## useScreen
+### useScreen
 
-obtain responsive `screen` information of `pixiApp.screen`
+Returns a reactive `Ref<Rectangle>` for the application's screen dimensions.
 
 ```html
 <script setup lang="ts">
+import { useScreen } from 'vue3-pixi'
+
 const screen = useScreen()
 </script>
 
@@ -311,21 +300,23 @@ const screen = useScreen()
 </template>
 ```
 
-## Creating an pixi application manually
+## Creating a PixiJS application manually
 
-Using the custom renderer inside `vue3-pixi`
+Using the custom renderer inside `vue3-pixi`:
 
 ```ts
 import { Application } from 'pixi.js'
 import { appInjectKey, createApp } from 'vue3-pixi'
 import App from './App.vue'
 
-const pixiApp = new Application({
+const pixiApp = new Application()
+
+await pixiApp.init({
   resizeTo: window,
   antialias: true,
 })
 
-document.body.appendChild(pixiApp.view as HTMLCanvasElement)
+document.body.appendChild(pixiApp.canvas)
 
 const app = createApp(App)
 

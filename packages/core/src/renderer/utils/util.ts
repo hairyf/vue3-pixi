@@ -6,7 +6,7 @@ export function setTextureOptions(texture: Texture, options: TextureOptions = {}
   for (const key in options)
     // eslint-disable-next-line ts/ban-ts-comment
     // @ts-expect-error
-    texture.baseTexture[key] = options[key]
+    texture.source[key] = options[key]
 }
 
 export function normalizeTexture(value: Texture | string): Texture {

@@ -56,6 +56,7 @@ const themeConfig: DefaultTheme.Config = {
           { text: 'Usage', link: '/guide/usage' },
           // { text: 'Nuxtjs', link: '/guide/nuxtjs' },
           { text: 'Troubleshooting', link: '/guide/troubleshooting' },
+          { text: 'Migration from v7', link: '/guide/migration' },
         ],
       },
       {
@@ -82,12 +83,21 @@ const themeConfig: DefaultTheme.Config = {
           { text: 'AnimatedSprite', link: '/guide/elements/animated-sprite' },
           { text: 'BitmapText', link: '/guide/elements/bitmap-text' },
           { text: 'Container', link: '/guide/elements/container' },
+          { text: 'DOMContainer', link: '/guide/elements/dom-container' },
+          { text: 'Filters', link: '/guide/elements/filters' },
           { text: 'Graphics', link: '/guide/elements/graphics' },
+          { text: 'GraphicsContext', link: '/guide/elements/graphics-context' },
+          { text: 'HTMLText', link: '/guide/elements/html-text' },
           { text: 'Mesh', link: '/guide/elements/mesh' },
-          // { text: 'NineSlicePlane', link: '/guide/elements/nine-slice-plane' },
-          // { text: 'ParticleContainer', link: '/guide/elements/particle-container' },
-          // { text: 'SimplePlane', link: '/guide/elements/simple-plane' },
+          { text: 'MeshPlane', link: '/guide/elements/mesh-plane' },
           { text: 'MeshRope', link: '/guide/elements/mesh-rope' },
+          { text: 'MeshSimple', link: '/guide/elements/mesh-simple' },
+          { text: 'NineSliceSprite', link: '/guide/elements/nine-slice-plane' },
+          { text: 'ParticleContainer', link: '/guide/elements/particle-container' },
+          { text: 'PerspectiveMesh', link: '/guide/elements/perspective-mesh' },
+          { text: 'RenderLayer', link: '/guide/elements/render-layer' },
+          { text: 'RenderTexture', link: '/guide/elements/render-texture' },
+          { text: 'SplitText', link: '/guide/elements/split-text' },
           { text: 'Sprite', link: '/guide/elements/sprite' },
           { text: 'Text', link: '/guide/elements/text' },
           { text: 'TilingSprite', link: '/guide/elements/tiling-sprite' },
@@ -277,6 +287,7 @@ const themeConfig: DefaultTheme.Config = {
           { text: 'Render Texture / Basic', link: '/examples/rendering/render_texture_basic' },
           { text: 'Render Texture / Buffer', link: '/examples/rendering/render_texture_buffer' },
           { text: 'Render Texture / Scratch Card', link: '/examples/rendering/render_texture_scratch_card' },
+          { text: 'Texture Rotation', link: '/examples/rendering/texture_rotation' },
         ],
       },
       {
@@ -347,6 +358,11 @@ export default defineConfig({
   vite: {
     plugins: [unocss() as any],
     ssr: { noExternal: ['naive-ui', 'gsap'] },
+    build: {
+      rollupOptions: {
+        external: ['three'],
+      },
+    },
     resolve: {
       // alias: [
       //   {

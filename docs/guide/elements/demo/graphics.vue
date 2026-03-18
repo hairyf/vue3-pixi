@@ -18,9 +18,8 @@ onTick(({ deltaTime }) => {
     :y="120"
     @effect="graphics => {
       graphics.clear()
-      graphics.beginFill(0xDE3249)
-      graphics.drawCircle(0, 0, size)
-      graphics.endFill()
+      graphics.circle(0, 0, size)
+      graphics.fill(0xDE3249)
     }"
   />
 </template>

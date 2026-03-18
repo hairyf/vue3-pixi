@@ -1,7 +1,7 @@
 <!-- eslint-disable ts/ban-ts-comment -->
 <script lang="ts" setup>
 import { useEventListener } from '@vueuse/core'
-import { BlurFilter, Graphics, Rectangle, SCALE_MODES } from 'pixi.js'
+import { BlurFilter, Graphics, Rectangle } from 'pixi.js'
 import { computed, reactive, ref } from 'vue'
 import { onReady, useApplication, useScreen, useStage } from 'vue3-pixi'
 
@@ -21,13 +21,13 @@ const texture = computed(() => {
     .circle(radius + blur, radius + blur, radius)
     .fill({ color: 0xFF0000 })
 
-  circle.filters = [new BlurFilter(blur)]
+  circle.filters = [new BlurFilter({ strength: blur })]
 
   const bounds = new Rectangle(0, 0, (radius + blur) * 2, (radius + blur) * 2)
   const texture = app.value?.renderer.generateTexture({
     target: circle,
     // @ts-expect-error
-    style: { scaleMode: SCALE_MODES.LINEAR },
+    style: { scaleMode: 'linear' },
     resolution: 1,
     frame: bounds,
   })

@@ -52,7 +52,7 @@ function initial(wrapper: ContainerElement, wordContainers: ContainerElement[]) 
 whenever(
   () => wordContainers.value && wrapper.value,
   () => initial(wrapper.value!, wordContainers.value!),
-  { immediate: true }
+  { immediate: true },
 )
 
 onUnmounted(() => animation?.kill())
@@ -63,7 +63,7 @@ onUnmounted(() => animation?.kill())
     <container ref="wrapper" :x="screen.width / 2" :y="screen.height / 2">
       <container
         v-for="(word, i) in words"
-        :key="i" 
+        :key="i"
         ref="wordContainers"
         @effect="container => {
           const padding = 20
@@ -94,7 +94,7 @@ onUnmounted(() => animation?.kill())
           container.pivot.set(text.width / 2, text.height / 2)
           // Add box and text to container
           container.addChild(box, text)
-      }"
+        }"
       />
     </container>
   </assets>

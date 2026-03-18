@@ -1,34 +1,29 @@
-# NineSlicePlane
+# NineSliceSprite
 
-Creates a [NineSlicePlane](https://pixijs.download/release/docs/PIXI.NineSlicePlane.html)
+Creates a [NineSliceSprite](https://pixijs.download/release/docs/scene.NineSliceSprite.html)
 
-Allows you to stretch a texture using 9-slice scaling. The corners will remain unscaled (useful for buttons with rounded corners for example) and the other areas will be scaled horizontally and or vertically
+Allows you to stretch a texture using 9-slice scaling. The corners remain unscaled (useful for buttons with rounded corners, for example) and the other areas scale horizontally and/or vertically.
 
 <demo src="./demo/nine-slice-plane.vue" />
 
 ## API
 
-### NineSlicePlane Attributes
+### NineSliceSprite Attributes
 
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| blend-mode | <api-blend-mode /> | `BLEND_MODES.NORMAL` | The blend mode to be applied to the sprite. |
-| draw-mode | <api-draw-mode /> | `Topology` | The draw mode to be used. |
-| texture | ^[string] ^[object]`PIXI.Texture` | `undefined` | The texture to use on the NineSlicePlane. |
-| left-width | ^[number] | `undefined` | The width of the left column of the grid |
-| right-width | ^[number] | `undefined` | The width of the right column of the grid |
-| top-height | ^[number] | `undefined` | The height of the top row of the grid |
-| bottom-height | ^[number] | `undefined` | The height of the bottom row of the grid |
-| geometry | ^[object]`PIXI.Geometry` | `undefined` | The geometry the mesh will use. |
+| texture | ^[string] ^[object]`Texture` | `undefined` | The texture to use on the NineSliceSprite. |
+| left-width | ^[number] | `undefined` | The width of the left column |
+| right-width | ^[number] | `undefined` | The width of the right column |
+| top-height | ^[number] | `undefined` | The height of the top row |
+| bottom-height | ^[number] | `undefined` | The height of the bottom row |
 
-> more props in [Container Props](/guide/elements/container#container-props) and [PIXI.NineSlicePlane](https://pixijs.download/release/docs/PIXI.NineSlicePlane.html)
+> more props in [Container Attributes](/guide/elements/container#container-attributes) and [PixiJS NineSliceSprite](https://pixijs.download/release/docs/scene.NineSliceSprite.html)
 
-### NineSlicePlane Events
+### NineSliceSprite Events
 
 | Name | Type | Description |
 | --- | --- | --- |
-| render | ^[function]`(el: NineSlicePlane): void` | custom render function |
+| effect | ^[function]`(el: NineSliceSprite): void` | Custom effect function called each frame |
 
 > more events in [Container Events](/guide/elements/container#container-events)
-
-<!-- LINKS -->

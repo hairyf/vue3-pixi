@@ -3,9 +3,7 @@ import { renderers } from './constants'
 
 export function baseUse(options: RendererOptions) {
   const { createElement: _createElement, name } = options
-  function createElement(...args: any) {
-    // eslint-disable-next-line ts/ban-ts-comment
-    // @ts-expect-error
+  function createElement(...args: Parameters<typeof _createElement>) {
     const element = _createElement(...args)
     element._vp_name = name
     return element

@@ -12,4 +12,4 @@ declare module '@vue/runtime-core' {
   }
 }
 
-renderer.use({ name: 'AlphaFilter', createElement: props => new AlphaFilter(props.alpha) })
+renderer.use({ name: 'AlphaFilter', createElement: props => new AlphaFilter(props) })

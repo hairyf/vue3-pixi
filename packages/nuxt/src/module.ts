@@ -6,10 +6,11 @@ const components = [
   'Application',
   'AnimatedTransition',
   'AnimatedTransitionGroup',
-  'AnimatedTransition',
-  'AnimatedTransitionGroup',
-  'External',
   'Assets',
+]
+
+const clientOnlyComponents = [
+  'External',
 ]
 
 export interface ModuleOptions {}
@@ -23,6 +24,15 @@ export default defineNuxtModule({
         name,
         filePath: 'vue3-pixi',
         export: name,
+      })
+    }
+
+    for (const name of clientOnlyComponents) {
+      addComponent({
+        name,
+        filePath: 'vue3-pixi',
+        export: name,
+        mode: 'client',
       })
     }
 
