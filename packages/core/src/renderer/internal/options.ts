@@ -58,6 +58,12 @@ export function removeContainer(node: Container) {
   }
 
   try {
+    // PIXI v8 fix: Remove from parent BEFORE destroying. The batch renderer may have
+    // already collected this node for the current frame's render pass. If we destroy
+    // first (which nulls Mesh._geometry), the batch execute phase crashes with
+    // "Cannot read properties of null (reading 'geometry')". Removing from parent first
+    // ensures the node won't be in the next render pass's build phase.
+    node.parent?.removeChild(node)
     node.destroy({ children: true })
   }
   catch {

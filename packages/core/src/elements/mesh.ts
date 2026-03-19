@@ -20,7 +20,11 @@ renderer.use({
       case 'geometry':
       case 'shader':
       case 'state':
-        setters.unfirst(el, key, () => el[key] = next)
+        // Guard against null — PIXI v8's Mesh.destroy() nulls _geometry internally,
+        // and the batch renderer crashes if it encounters null geometry during execute.
+        // Only update if next is non-null; null values are handled by v-if removal.
+        if (next != null)
+          setters.unfirst(el, key, () => el[key] = next)
         break
       case 'roundPixels':
         setters.boolean(el, key, prev, next)
