@@ -46,6 +46,12 @@ const themeConfig: DefaultTheme.Config = {
         { text: 'Tiling Sprite', link: '/examples/tiling-sprite/transform_animation' },
       ],
     },
+    {
+      text: 'V1.0.0(Pixi 8)',
+      items: [
+        { text: 'V0.9(Pixi 7)', link: 'https://vue3-pixi-098.vercel.app/' },
+      ],
+    },
   ],
   sidebar: {
     '/guide/': [
@@ -361,8 +367,8 @@ export default defineConfig({
   },
   vite: {
     plugins: [
+      llmstxt() as any,
       unocss(),
-      llmstxt(),
     ],
     ssr: { noExternal: ['naive-ui', 'gsap'] },
     build: { rollupOptions: { external: ['three'] } },
