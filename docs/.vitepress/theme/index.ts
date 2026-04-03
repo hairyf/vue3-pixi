@@ -1,5 +1,6 @@
 import FloatingVue from 'floating-vue'
 import { NMessageProvider } from 'naive-ui'
+import CopyOrDownloadAsMarkdownButtons from 'vitepress-plugin-llms/vitepress-components/CopyOrDownloadAsMarkdownButtons.vue'
 import Theme from 'vitepress/theme'
 // https://vitepress.dev/guide/custom-theme
 import { h } from 'vue'
@@ -36,6 +37,7 @@ export default {
     ])
   },
   enhanceApp({ app }) {
+    app.component('CopyOrDownloadAsMarkdownButtons', CopyOrDownloadAsMarkdownButtons)
     app.component('DemoContainer', PixiJSContainer)
     app.component('StackBlitzEmbed', StackBlitzEmbed)
     app.component('DraggableCircle', DraggableCircle)

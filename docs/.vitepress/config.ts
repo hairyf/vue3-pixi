@@ -1,6 +1,7 @@
 import type { DefaultTheme } from 'vitepress'
 import unocss from 'unocss/vite'
 import { defineConfig } from 'vitepress'
+import llmstxt, { copyOrDownloadAsMarkdownButtons } from 'vitepress-plugin-llms'
 import { compilerOptions } from '../../packages/core'
 import { mdPlugin } from './plugin'
 
@@ -353,24 +354,18 @@ export default defineConfig({
   themeConfig,
 
   markdown: {
-    config: md => md.use(mdPlugin),
+    config: (md) => {
+      md.use(copyOrDownloadAsMarkdownButtons)
+      md.use(mdPlugin)
+    },
   },
   vite: {
-    plugins: [unocss() as any],
+    plugins: [
+      unocss(),
+      llmstxt(),
+    ],
     ssr: { noExternal: ['naive-ui', 'gsap'] },
-    build: {
-      rollupOptions: {
-        external: ['three'],
-      },
-    },
-    resolve: {
-      // alias: [
-      //   {
-      //     find: /^.*\/VPSwitchAppearance\.vue$/,
-      //     replacement: fileURLToPath(new URL('./theme/components/VPSwitchAppearance/index.vue', import.meta.url)),
-      //   },
-      // ],
-    },
+    build: { rollupOptions: { external: ['three'] } },
   },
 
   vue: {
