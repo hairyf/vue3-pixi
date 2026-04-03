@@ -36,6 +36,12 @@ const themeConfig: DefaultTheme.Config = {
         // { text: 'Mesh And Shaders', link: '/examples/mesh-and-shaders/instanced-geometry' },
       ],
     },
+    {
+      text: 'V0.9(Pixi 7)',
+      items: [
+        { text: 'V1.0.0(Pixi 8)', link: 'https://vue3-pixi.vercel.app/' },
+      ],
+    },
   ],
   sidebar: {
     '/guide/': [
