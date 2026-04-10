@@ -38,14 +38,13 @@ const manifest: AssetsManifest = {
       'game-screen',
     ]"
   >
-    <!-- OR use <assets entry="flowerTop"> -->
-    <assets-bundle v-slot="{ data }" entry="load-screen">
+    <assets v-slot="{ data }" entry="load-screen">
       <sprite
         :texture="data.flowerTop"
         :x="screen.width / 2"
         :y="screen.height / 2"
         :anchor="0.5"
       />
-    </assets-bundle>
+    </assets>
   </assets-bundle>
 </template>

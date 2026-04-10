@@ -13,7 +13,7 @@ const props = defineProps<{
   codesandbox?: boolean
 }>()
 
-const githubBlobURL = 'https://github.com/hairyf/vue3-pixi/blob/main/'
+const githubBlobURL = 'https://github.com/hairyf/vue3-pixi/blob/main/docs/'
 
 const message = useMessage()
 
