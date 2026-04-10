@@ -1,77 +1,54 @@
-<h1 align="center">Vue 3 Pixi Nuxt</h1>
+# Using in Nuxtjs
 
-<p align="center">
-  <strong>Nuxt for PixiJS Projection based on <a href="https://github.com/hairyf/vue3-pixi">vue3-pixi</a> </strong>
-</p>
+Repository is [here](https://github.com/hairyf/vue3-pixi/tree/main/packages/vue3-pixi-nuxt)
 
-<br />
+If you want to use it in Nuxtjs, install the following modules:
 
 ## Install
 
-```sh
-# Using pnpm
-pnpm add vue3-pixi-nuxt
+::: code-group
 
-# Using yarn
-yarn add vue3-pixi-nuxt
-
-# Using npm
-npm install vue3-pixi-nuxt
+```bash [npm]
+npm install vue3-pixi vue3-pixi-nuxt
 ```
+
+```bash [yarn]
+yarn add vue3-pixi vue3-pixi-nuxt
+```
+
+```bash [pnpm]
+pnpm add vue3-pixi vue3-pixi-nuxt
+```
+
+:::
+
+## Features
+
+- Auto-import components and composable from the vue3-pixi
+- `<Application>` client only, you don't need to add `<ClientOnly />`
+- Automatically configures `isCustomElement` for vue compiler
 
 ## Usage
 
-using `vue3-pixi-projection` requires loading the module before using `vue3-pixi`
+Add `vue3-pixi-nuxt` to the `modules` section of `nuxt.config.ts`
 
 ```ts
-import { renderer } from 'vue3-pixi'
-import ProjectionRenderer from 'vue3-pixi-projection'
-
-renderer.use(ProjectionRenderer)
+export default defineNuxtConfig({
+  modules: ['vue3-pixi-nuxt'],
+})
 ```
 
-in template use `camera-3d` and `sprite-3d` components:
+now, you can use `vue3-pixi` in your Nuxt app
 
 ```vue
+<script setup>
+</script>
+
 <template>
-  <camera-3d
-    :focus="400"
-    :near="10"
-    :far="10000"
-    :orthographic="false"
-  >
-    <sprite-3d
-      texture="https://pixijs.io/examples/examples/assets/bunny.png"
-      :anchor="0.5"
-      :width="100"
-      :position-3d-z="100"
-      :height="140"
-    />
-  </camera-3d>
+  <Application :width="240" :height="240">
+    <text :anchor="0.5" :x="120" :y="120" :style="{ fill: 'white' }">
+      Hello NuxtJS World
+    </text>
+  </Application>
 </template>
 ```
-
-## Elements
-
-- Camera3d
-- Container2d
-- Container3d
-- Sprite2d
-- Sprite2s
-- Sprite3d
-- Text2d
-- Text2s
-- Text3d
-- TilingSprite2d
-- SimpleMesh2d
-- SimpleMesh3d2d
-- Mesh2d
-- Mesh3d2d
-
-## converts
-
-conversion will cause unstable behavior of the renderer and is not recommended. Please use elements with specific suffixes
-
-## License
-
-[MIT](LICENSE) License © 2022-PRESENT [hairyf](https://github.com/hairyf)

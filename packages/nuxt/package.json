@@ -10,10 +10,6 @@
     "pixi.js",
     "vue"
   ],
-  "publishConfig": {
-    "access": "public"
-  },
-  "sideEffects": false,
   "exports": {
     ".": {
       "types": "./dist/types.d.mts",
@@ -21,13 +17,26 @@
     }
   },
   "main": "./dist/module.mjs",
-  "typesVersions": { "*": { ".": ["./dist/types.d.mts"] } },
-  "files": ["dist"],
+  "typesVersions": {
+    "*": {
+      ".": [
+        "./dist/types.d.mts"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "prepack": "nuxt-module-build build",
     "dev": "npm run dev:prepare && nuxt dev playground",
     "dev:build": "nuxt build playground",
-    "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxt prepare playground"
+    "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxt prepare playground",
+    "prepublishOnly": "npm run prepack",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "test:types": "vue-tsc --noEmit && cd playground && vue-tsc --noEmit"
   },
   "dependencies": {
     "@nuxt/kit": "catalog:nuxt",
@@ -40,25 +49,8 @@
     "@nuxt/test-utils": "catalog:nuxt",
     "@types/node": "catalog:types",
     "nuxt": "catalog:nuxt",
-    "vue-tsc": "catalog:cli"
-  },
-  "build": {
-    "externals": [
-      "node:child_process",
-      "vite-plugin-glsl",
-      "@rollup/pluginutils",
-      "vite",
-      "esbuild",
-      "rollup",
-      "estree-walker",
-      "picomatch",
-      "postcss",
-      "lightningcss",
-      "fsevents",
-      "pnpapi",
-      "picocolors",
-      "source-map-js",
-      "nanoid/non-secure"
-    ]
+    "typescript": "catalog:cli",
+    "vitest": "catalog:cli",
+    "vue-tsc": "catalog:nuxt"
   }
 }

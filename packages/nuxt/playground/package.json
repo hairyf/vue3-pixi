@@ -1,0 +1,14 @@
+{
+  "name": "vue3-pixi-nuxt-playground",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "nuxt": "catalog:nuxt",
+    "vue3-pixi-nuxt": "latest"
+  }
+}
