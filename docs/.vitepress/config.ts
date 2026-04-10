@@ -14,7 +14,7 @@ const themeConfig: DefaultTheme.Config = {
       items: [
         { text: 'Quick Start', link: '/guide/quick-start' },
         { text: 'Usage', link: '/guide/usage' },
-        // { text: 'Nuxtjs', link: '/guide/nuxtjs' },
+        { text: 'Nuxt.js', link: '/guide/nuxtjs' },
         { text: 'Migration v7', link: '/guide/migration' },
         { text: 'API Reference', link: '/guide/api-reference/renderer' },
         { text: 'Elements', link: '/guide/elements/animated-sprite' },
