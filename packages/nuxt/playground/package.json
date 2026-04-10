@@ -9,6 +9,6 @@
   },
   "dependencies": {
     "nuxt": "catalog:nuxt",
-    "vue3-pixi-nuxt": "latest"
+    "vue3-pixi-nuxt": "workspace:^"
   }
 }
