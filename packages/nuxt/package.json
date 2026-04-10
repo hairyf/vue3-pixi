@@ -5,7 +5,13 @@
   "description": "Nuxt createRenderer for PixiJS",
   "license": "MIT",
   "homepage": "https://github.com/hairyf/vue3-pixi#readme",
-  "repository": "vue3-pixi",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hairyf/vue3-pixi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hairyf/vue3-pixi/issues"
+  },
   "publishConfig": {
     "access": "public"
   },
