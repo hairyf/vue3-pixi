@@ -6,6 +6,9 @@
   "license": "MIT",
   "homepage": "https://github.com/hairyf/vue3-pixi#readme",
   "repository": "vue3-pixi",
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "pixi.js",
     "vue"
