@@ -1,7 +1,29 @@
-import type { Container, Filter } from 'pixi.js'
+import type { ContainerChild, Filter } from 'pixi.js'
+import { Container } from 'pixi.js'
 import { Empty } from './custom'
 
 const filterParentMap = new WeakMap<Filter, Container>()
+
+/** Walk a container and all descendants, destroy every filter, and clean up the parent map. */
+function destroyFilters(node: Container) {
+  const stack: Container[] = [node]
+  for (let i = 0; i < stack.length; i++) {
+    const container = stack[i]
+    const filters = container.filters
+    if (filters) {
+      const arr = Array.isArray(filters) ? filters : [filters]
+      for (const filter of arr) {
+        filterParentMap.delete(filter)
+        filter.destroy()
+      }
+    }
+    // Collect descendants for breadth-first walk
+    for (const child of container.children as ContainerChild[]) {
+      if (child instanceof Container && !child.destroyed)
+        stack.push(child)
+    }
+  }
+}
 
 export function getFilterParent(filter: Filter): Container | undefined {
   return filterParentMap.get(filter)
@@ -64,6 +86,13 @@ export function removeContainer(node: Container) {
     // "Cannot read properties of null (reading 'geometry')". Removing from parent first
     // ensures the node won't be in the next render pass's build phase.
     node.parent?.removeChild(node)
+
+    // Destroy filters on this container and all descendants. PIXI's own
+    // Container.destroy({ children: true }) only destroys child containers — it
+    // does NOT call .destroy() on attached filters. Without this, every filter
+    // instance (and its GPU resources) leaks when its parent container is removed.
+    destroyFilters(node)
+
     node.destroy({ children: true })
   }
   catch {
