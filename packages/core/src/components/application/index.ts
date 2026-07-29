@@ -1,5 +1,5 @@
 /* eslint-disable ts/no-redeclare */
-import type { ApplicationOptions, ColorSource, Container, GpuPowerPreference } from 'pixi.js'
+import type { ApplicationOptions, ColorSource, Container, DestroyOptions, GpuPowerPreference, RendererDestroyOptions } from 'pixi.js'
 import type { App, PropType } from 'vue-demi'
 import { Application as PixiApplication } from 'pixi.js'
 import { defineComponent, getCurrentInstance, h, markRaw, nextTick, onMounted, onUnmounted, ref, renderSlot, watch } from 'vue-demi'
@@ -43,7 +43,16 @@ export const Application = defineComponent({
     width: { type: [Number, String], default: undefined },
     height: { type: [Number, String], default: undefined },
     resolution: { type: Number, default: 1 },
-
+    /** First argument to `PixiApplication#destroy()` on unmount, controlling the canvas element. */
+    rendererDestroyOptions: {
+      type: [Boolean, Object] as PropType<RendererDestroyOptions>,
+      default: () => ({ removeView: true }),
+    },
+    /** Second argument to `PixiApplication#destroy()` on unmount, controlling stage/texture cleanup. */
+    destroyOptions: {
+      type: [Boolean, Object] as PropType<DestroyOptions>,
+      default: () => ({ children: true, texture: true, textureSource: true, context: true, style: true }),
+    },
   },
   setup(props, { slots, expose }) {
     const { appContext } = getCurrentInstance()!
@@ -53,10 +62,11 @@ export const Application = defineComponent({
     let app: App<Container> | undefined
 
     async function mount() {
+      const { rendererDestroyOptions: _rendererDestroyOptions, destroyOptions: _destroyOptions, ...appOptions } = props
       const inst = new PixiApplication()
       await inst.init({
         canvas: canvas.value,
-        ...props,
+        ...appOptions,
         width: props.width ? Number(props.width) : undefined,
         height: props.height ? Number(props.height) : undefined,
       })
@@ -86,16 +96,7 @@ export const Application = defineComponent({
           return
 
         try {
-          pixiApp.value.destroy(
-            { removeView: true },
-            {
-              children: true,
-              texture: true,
-              textureSource: true,
-              context: true,
-              style: true,
-            },
-          )
+          pixiApp.value.destroy(props.rendererDestroyOptions, props.destroyOptions)
         }
         finally {
           pixiApp.value = undefined

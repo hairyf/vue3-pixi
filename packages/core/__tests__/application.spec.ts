@@ -1,11 +1,25 @@
-import { describe, expect, it, vi } from 'vitest'
+import { mount } from '@vue/test-utils'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
+import { nextTick } from 'vue-demi'
 import { Application } from '../src/components/application'
+
+const { destroyMock } = vi.hoisted(() => ({ destroyMock: vi.fn() }))
 
 // Mock PixiApplication since jsdom has no WebGL
 vi.mock('pixi.js', async (importOriginal) => {
   const actual = await importOriginal() as any
   class MockPixiApplication {
-    stage = { eventMode: 'passive', hitArea: null, on: vi.fn(), children: [] }
+    stage = {
+      eventMode: 'passive',
+      hitArea: null,
+      on: vi.fn(),
+      children: [] as any[],
+      addChild(child: any) { this.children.push(child) },
+      addChildAt(child: any, index: number) { this.children.splice(index, 0, child) },
+      removeChild(child: any) { this.children = this.children.filter((c: any) => c !== child) },
+      getChildIndex(child: any) { return this.children.indexOf(child) },
+    }
+
     screen = new actual.Rectangle(0, 0, 800, 600)
     canvas = document.createElement('canvas')
     renderer = {
@@ -32,7 +46,9 @@ vi.mock('pixi.js', async (importOriginal) => {
       }
     }
 
-    destroy() {}
+    destroy(...args: any[]) {
+      destroyMock(...args)
+    }
   }
 
   return {
@@ -40,6 +56,20 @@ vi.mock('pixi.js', async (importOriginal) => {
     Application: MockPixiApplication,
   }
 })
+
+// The Application component mounts a nested pixi-renderer Vue app onto
+// pixiApp.stage; that inner renderer isn't under test here and jsdom/mocked
+// stage objects don't support it, so stub it out.
+vi.mock('../src/renderer', () => ({
+  createApp: vi.fn(() => ({
+    config: { globalProperties: {} },
+    _context: {},
+    component: vi.fn(),
+    provide: vi.fn(),
+    mount: vi.fn(),
+    unmount: vi.fn(),
+  })),
+}))
 
 describe('application component', () => {
   describe('background prop', () => {
@@ -83,5 +113,44 @@ describe('application component', () => {
       expect(props.width).toBeDefined()
       expect(props.height).toBeDefined()
     })
+  })
+
+  describe('destroy options', () => {
+    beforeEach(() => {
+      destroyMock.mockClear()
+    })
+
+    it('defaults to the previous hardcoded destroy behavior', async () => {
+      const wrapper = mount(Application)
+      await flushMountAndUnmount(wrapper)
+
+      expect(destroyMock).toHaveBeenCalledWith(
+        { removeView: true },
+        { children: true, texture: true, textureSource: true, context: true, style: true },
+      )
+    })
+
+    it('forwards custom rendererDestroyOptions/destroyOptions to PixiApplication#destroy', async () => {
+      const wrapper = mount(Application, {
+        props: {
+          rendererDestroyOptions: { removeView: false },
+          destroyOptions: { children: true, texture: false },
+        },
+      })
+      await flushMountAndUnmount(wrapper)
+
+      expect(destroyMock).toHaveBeenCalledWith(
+        { removeView: false },
+        { children: true, texture: false },
+      )
+    })
+
+    async function flushMountAndUnmount(wrapper: ReturnType<typeof mount>) {
+      // Application's mount() is async (awaits PixiApplication#init)
+      await new Promise(resolve => setTimeout(resolve))
+      wrapper.unmount()
+      // unmount() defers the actual destroy() call to nextTick
+      await nextTick()
+    }
   })
 })
