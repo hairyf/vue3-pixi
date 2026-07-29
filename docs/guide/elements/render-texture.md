@@ -4,46 +4,56 @@ Render textures allow you to render any display object to a texture, which can t
 
 ## Basic Usage
 
-Create a `RenderTexture`, render a container into it each frame, and display the result in a sprite:
+Create a `RenderTexture`, render a container into it each frame, and display the result in a sprite.
+
+::: warning Keep the render source off-stage
+`renderer.render({ container, ... })` promotes `container` into its own render group as a side effect. Doing that to a container that's *also* a normal member of the visible tree (e.g. mounted under `<Container>`/`app.stage` via a template) can corrupt both the on-stage presentation and the render-texture output — PixiJS doesn't expect a render-to-texture source to also live on-stage. Build the source with plain PixiJS calls and never add it to the template/stage; only the *output* sprite needs to be a template element.
+:::
 
 ```vue
 <script setup>
-import { Container, RenderTexture, Sprite } from 'pixi.js'
-import { onMounted, ref } from 'vue'
+import { Container, Graphics, RenderTexture, Sprite } from 'pixi.js'
+import { onMounted, onUnmounted, ref } from 'vue'
 import { onTick, useApplication } from 'vue3-pixi'
 
 const app = useApplication()
-const containerRef = ref<Container>()
 const outputRef = ref<Sprite>()
 let renderTexture: RenderTexture | null = null
+let source: Container | null = null
 
 onMounted(() => {
+  // Plain PixiJS container — deliberately never added to app.stage or any
+  // mounted <Container>, so it only ever plays the "render source" role.
+  source = new Container()
+  source.addChild(new Graphics().rect(0, 0, 60, 60).fill(0xFFFFFF))
+  source.addChild(new Graphics().rect(70, 0, 60, 60).fill(0xFFFFFF))
+  source.x = 100
+  source.y = 60
+
   renderTexture = RenderTexture.create({ width: 300, height: 300 })
   if (outputRef.value) {
     outputRef.value.texture = renderTexture
   }
 })
 
+onUnmounted(() => {
+  source?.destroy({ children: true })
+  renderTexture?.destroy(true)
+})
+
 onTick(() => {
-  if (!containerRef.value || !renderTexture || !app.value)
+  if (!source || !renderTexture || !app.value)
     return
   app.value.renderer.render({
-    container: containerRef.value,
+    container: source,
     target: renderTexture,
   })
 })
 </script>
 
 <template>
-  <assets alias="bunny" entry="https://pixijs.com/assets/bunny.png">
-    <!-- Source: rendered to texture -->
-    <Container ref="containerRef" :x="100" :y="60">
-      <Sprite texture="bunny" :x="0" :y="0" />
-      <Sprite texture="bunny" :x="30" :y="30" />
-    </Container>
-    <!-- Output: displays the render texture -->
-    <Sprite ref="outputRef" :x="450" :y="60" />
-  </assets>
+  <!-- Output: displays the render texture. No on-stage copy of the source. -->
+  <Sprite ref="outputRef" :x="450" :y="60" />
 </template>
 ```
 
