@@ -5,6 +5,8 @@ export const setters = {
   object(el: any, key: string, prevValue: any, nextValue: any) {
     const scope = effectScope()
     function update() {
+      if (el.destroyed)
+        return
       if (prevValue && nextValue !== prevValue)
         el[`__vp_scope_${key}`]?.stop()
       for (const [setKey, value] of Object.entries(nextValue))
@@ -33,9 +35,15 @@ export const setters = {
         else
           return callInstanceSetter(inst, name, nextValue)
       case `${name}X`:
-        return this.call(inst[name], 'x', () => inst[name].x = nextValue)
+        return this.call(inst[name], 'x', () => {
+          if (!inst.destroyed)
+            inst[name].x = nextValue
+        })
       case `${name}Y`:
-        return this.call(inst[name], 'y', () => inst[name].y = nextValue)
+        return this.call(inst[name], 'y', () => {
+          if (!inst.destroyed)
+            inst[name].y = nextValue
+        })
     }
 
     return false
@@ -48,6 +56,8 @@ export const setters = {
   call(inst: any, key: string, setter: () => void) {
     const initKey = `_vp_initkey_${key}`
     function update() {
+      if (inst?.destroyed)
+        return
       setter()
     }
     if (!inst[initKey]) {

@@ -106,6 +106,20 @@ describe('setters.object', () => {
 
     expect(onSpy).toHaveBeenCalledWith('destroyed', expect.any(Function))
   })
+
+  it('deferred nextTick write no-ops instead of throwing if el is destroyed first', async () => {
+    const el: any = {
+      scale: { x: 1, y: 1 },
+      on: vi.fn(),
+    }
+
+    setters.object(el, 'scale', null, { x: 2, y: 2 })
+    // simulate Container.destroy() nulling the sub-property before the microtask drains
+    el.destroyed = true
+    el.scale = null
+
+    await expect(nextTick()).resolves.not.toThrow()
+  })
 })
 
 describe('setters.call', () => {
@@ -138,6 +152,32 @@ describe('setters.call', () => {
   it('returns true', () => {
     const el: any = {}
     expect(setters.call(el, 'k', () => {})).toBe(true)
+  })
+
+  it('deferred nextTick write no-ops instead of throwing if inst is destroyed first', async () => {
+    const el: any = {}
+    const setter = vi.fn(() => {
+      throw new Error('should not run')
+    })
+
+    setters.call(el, 'myKey', setter)
+    el.destroyed = true
+
+    await expect(nextTick()).resolves.not.toThrow()
+    expect(setter).not.toHaveBeenCalled()
+  })
+})
+
+describe('setters.point (scalar X/Y branches)', () => {
+  it('deferred nextTick write no-ops instead of throwing if container is destroyed first', async () => {
+    const container: any = { scale: { x: 1, y: 1 } }
+
+    setters.point(container, 'scale', 'scaleX', undefined, 5)
+    // simulate Container.destroy() nulling `.scale` before the microtask drains
+    container.destroyed = true
+    container.scale = null
+
+    await expect(nextTick()).resolves.not.toThrow()
   })
 })
 
