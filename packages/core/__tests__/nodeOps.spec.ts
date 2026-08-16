@@ -1,7 +1,7 @@
 import { BitmapText, Container, Filter, Text } from 'pixi.js'
 import { describe, expect, it, vi } from 'vitest'
 import { Empty } from '../src/renderer/internal/custom'
-import { createComment, createElement, createText, insert, nextSibling, remove, setText } from '../src/renderer/nodeOps'
+import { createComment, createElement, createText, insert, nextSibling, parentNode, remove, setText } from '../src/renderer/nodeOps'
 import { patchs } from '../src/renderer/utils/patchs'
 
 // Register elements before testing
@@ -163,6 +163,26 @@ describe('nodeOps', () => {
 
       const sibling = nextSibling(filter1 as any)
       expect(sibling).toBe(filter2)
+    })
+
+    it('parentNode resolves a filter\'s container via filterParentMap, not node.parent', () => {
+      const parent = new Container()
+      const filter = new Filter({})
+      ;(filter as any)._vp_filter = true
+
+      insert(filter as any, parent)
+
+      // Filters aren't Containers and have no `.parent` of their own
+      expect((filter as any).parent).toBeUndefined()
+      expect(parentNode(filter as any)).toBe(parent)
+    })
+
+    it('parentNode still returns node.parent for non-filter nodes', () => {
+      const parent = new Container()
+      const child = new Container()
+      parent.addChild(child)
+
+      expect(parentNode(child)).toBe(parent)
     })
   })
 
