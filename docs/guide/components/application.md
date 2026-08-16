@@ -33,6 +33,8 @@ You can obtain the Application instance by binding a ref externally, but it is g
 | preserveDrawingBuffer | ^[boolean] | `undefined` | Whether to preserve the drawing buffer |
 | roundPixels | ^[boolean] | `undefined` | Whether to round pixel values |
 | resizeTo | ^[HTMLElement] ^[Window] | `undefined` | Element to auto-resize the renderer to |
+| rendererDestroyOptions | ^[boolean] ^[object] | `{ removeView: true }` | First argument passed to `PixiApplication#destroy()` on unmount |
+| destroyOptions | ^[boolean] ^[object] | `{ children: true, texture: true, textureSource: true, context: true, style: true }` | Second argument passed to `PixiApplication#destroy()` on unmount — set to `{ texture: false, textureSource: false }` to keep textures shared/cached elsewhere (e.g. via `Assets`) alive after this `<Application>` is destroyed |
 
 > more props in [PixiJS ApplicationOptions](https://pixijs.download/release/docs/app.Application.html)
 
