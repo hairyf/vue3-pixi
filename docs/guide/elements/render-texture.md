@@ -4,17 +4,21 @@ Render textures allow you to render any display object to a texture, which can t
 
 ## Basic Usage
 
-Create a `RenderTexture`, render a container into it each frame, and display the result in a sprite:
+Create a `RenderTexture`, render a *detached* container into it each frame, and display the result in a sprite:
 
 ```vue
 <script setup>
-import { Container, RenderTexture, Sprite } from 'pixi.js'
+import { Container, RenderTexture, Sprite, Texture } from 'pixi.js'
 import { onMounted, ref } from 'vue'
 import { onTick, useApplication } from 'vue3-pixi'
 
 const app = useApplication()
-const containerRef = ref<Container>()
 const outputRef = ref<Sprite>()
+
+// The render source: a detached container created imperatively.
+// It is never added to app.stage / the template tree, so rendering it
+// into a texture every frame cannot disturb the on-stage scene.
+const source = new Container()
 let renderTexture: RenderTexture | null = null
 
 onMounted(() => {
@@ -24,32 +28,40 @@ onMounted(() => {
   }
 })
 
+// Called by <assets> once the bunny texture is loaded
+function onBunnyLoaded(texture: Texture) {
+  source.addChild(new Sprite(texture))
+  const second = new Sprite(texture)
+  second.position.set(30, 30)
+  source.addChild(second)
+}
+
 onTick(() => {
-  if (!containerRef.value || !renderTexture || !app.value)
+  if (!renderTexture || !app.value)
     return
   app.value.renderer.render({
-    container: containerRef.value,
+    container: source,
     target: renderTexture,
   })
 })
 </script>
 
 <template>
-  <assets alias="bunny" entry="https://pixijs.com/assets/bunny.png">
-    <!-- Source: rendered to texture -->
-    <Container ref="containerRef" :x="100" :y="60">
-      <Sprite texture="bunny" :x="0" :y="0" />
-      <Sprite texture="bunny" :x="30" :y="30" />
-    </Container>
-    <!-- Output: displays the render texture -->
-    <Sprite ref="outputRef" :x="450" :y="60" />
-  </assets>
+  <assets
+    alias="bunny"
+    entry="https://pixijs.com/assets/bunny.png"
+    @loaded="onBunnyLoaded"
+  />
+  <!-- Output: displays the render texture -->
+  <Sprite ref="outputRef" :x="450" :y="60" />
 </template>
 ```
 
+> **Warning**: the container passed to `renderer.render()` must be **detached from the stage**. Every element of the template tree is mounted onto `app.stage`, so a template `Container` is already a live stage member. `renderer.render()` calls `container.enableRenderGroup()` on its source, which gives such a container two rendering identities — its regular spot in the stage's render group plus its own promoted render group — corrupting its normal on-stage presentation (solid black or flickering sprites) and triggering GL feedback-loop errors such as `GL_INVALID_OPERATION: glDrawElements: Feedback loop formed between Framebuffer and active Texture`. Always create the render source imperatively with `new Container()`, populate it in script, and never add it to `app.stage` or the template tree.
+
 ## Double-Buffering
 
-For feedback or trail effects, swap between two render textures each frame. This creates an accumulating visual where previous frames bleed into the current one:
+For feedback or trail effects, swap between two render textures each frame. This creates an accumulating visual where previous frames bleed into the current one. **This is the one deliberate exception to the "detached source" rule above: the source is `app.stage` itself.**
 
 ```vue
 <script setup>
@@ -84,7 +96,9 @@ onTick(() => {
 
   outputRef.value.texture = rtA
 
-  // Render the entire stage into the back buffer (without clearing)
+  // Render the entire stage into the back buffer (without clearing).
+  // The stage root is the deliberate exception: rendering the live scene
+  // (which already contains the output sprite) creates the feedback trail.
   app.value.renderer.render({
     container: app.value.stage,
     target: rtB,

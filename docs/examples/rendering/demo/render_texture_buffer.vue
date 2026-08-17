@@ -62,6 +62,10 @@ onTick(() => {
   stuffContainerRef.value.rotation -= 0.01
   outputSpriteRef.value.scale.set(1 + Math.sin(count) * 0.2)
 
+  // Render the entire stage into the back buffer (without clearing).
+  // The stage root is the deliberate exception to the detached-source rule:
+  // re-rendering the live scene (already containing the output sprite)
+  // creates the accumulating feedback/trail effect.
   app.value.renderer.render({
     container: app.value.stage,
     target: renderTexture2,
