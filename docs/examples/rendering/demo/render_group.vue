@@ -13,12 +13,12 @@ const trees = Array.from({ length: treeCount }, () => ({
   y: Math.random() * worldSize,
 })).sort((a, b) => a.y - b.y)
 
-let mouseX = 0
-let mouseY = 0
+const clientMouse = { x: 0, y: 0 }
+const mouse = { x: 0, y: 0 }
 
 function onMouseMove(e: MouseEvent) {
-  mouseX = e.clientX
-  mouseY = e.clientY
+  clientMouse.x = e.clientX
+  clientMouse.y = e.clientY
 }
 
 onMounted(() => {
@@ -33,11 +33,13 @@ onTick(() => {
   if (!worldContainerRef.value || !app.value)
     return
 
-  const screenWidth = app.value.renderer.width
-  const screenHeight = app.value.renderer.height
+  app.value.renderer.events.mapPositionToPoint(mouse, clientMouse.x, clientMouse.y)
+  const { width: screenWidth, height: screenHeight } = app.value.screen
+  if (screenWidth <= 0 || screenHeight <= 0 || !Number.isFinite(mouse.x) || !Number.isFinite(mouse.y))
+    return
 
-  const targetX = (mouseX / screenWidth) * (worldSize - screenWidth)
-  const targetY = (mouseY / screenHeight) * (worldSize - screenHeight)
+  const targetX = Math.max(0, Math.min(1, mouse.x / screenWidth)) * Math.max(0, worldSize - screenWidth)
+  const targetY = Math.max(0, Math.min(1, mouse.y / screenHeight)) * Math.max(0, worldSize - screenHeight)
 
   worldContainerRef.value.x += (-targetX - worldContainerRef.value.x) * 0.1
   worldContainerRef.value.y += (-targetY - worldContainerRef.value.y) * 0.1

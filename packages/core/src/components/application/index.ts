@@ -60,6 +60,7 @@ export const Application = defineComponent({
     const pixiApp = ref<PixiApplication>()
 
     let app: App<Container> | undefined
+    let unmounted = false
 
     async function mount() {
       const { rendererDestroyOptions: _rendererDestroyOptions, destroyOptions: _destroyOptions, ...appOptions } = props
@@ -70,6 +71,11 @@ export const Application = defineComponent({
         width: props.width ? Number(props.width) : undefined,
         height: props.height ? Number(props.height) : undefined,
       })
+
+      if (unmounted) {
+        inst.destroy(props.rendererDestroyOptions, props.destroyOptions)
+        return
+      }
 
       pixiApp.value = markRaw(inst)
 
@@ -88,6 +94,7 @@ export const Application = defineComponent({
     }
 
     function unmount() {
+      unmounted = true
       app?.unmount()
       app = undefined
       // Wait for Vue to finish unmounting before destroying Application to avoid accessing cleaned TexturePool during unmount

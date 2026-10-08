@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { Container as ContainerElement, Sprite as SpriteElement } from 'pixi.js'
+import type { Container as ContainerElement, FederatedPointerEvent, Sprite as SpriteElement } from 'pixi.js'
 import { useEventListener } from '@vueuse/core'
 import { gsap } from 'gsap'
 import InertiaPlugin from 'gsap/InertiaPlugin'
@@ -26,23 +26,24 @@ onReady((app) => {
   app.stage.hitArea = app.screen
 })
 
-useEventListener(stage, 'pointermove', (e: PointerEvent) => {
-  deltaX = e.clientX - oldX
-  deltaY = e.clientY - oldY
-  oldX = e.clientX
-  oldY = e.clientY
+useEventListener(stage, 'pointermove', (e: FederatedPointerEvent) => {
+  deltaX = e.global.x - oldX
+  deltaY = e.global.y - oldY
+  oldX = e.global.x
+  oldY = e.global.y
 })
 
 function onPointerover(this: ContainerElement) {
-  const tl = gsap.timeline({
-    onComplete: () => {
-      tl.kill()
-    },
+  const image = this.getChildAt(0) as SpriteElement
+  const tl = gsap.timeline()
+  const kill = () => tl.kill()
+  tl.eventCallback('onComplete', () => {
+    image.off('destroyed', kill)
+    tl.kill()
   })
+  image.once('destroyed', kill)
 
   tl.timeScale(1.2)
-
-  const image = this.getChildAt(0) as SpriteElement
 
   tl.to(image, {
     inertia: {

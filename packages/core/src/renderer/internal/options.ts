@@ -4,7 +4,7 @@ import { Empty } from './custom'
 
 const filterParentMap = new WeakMap<Filter, Container>()
 
-/** Walk a container and all descendants, destroy every filter, and clean up the parent map. */
+/** Destroy renderer-managed filters; prop/imperative filters remain owned by the caller. */
 function destroyFilters(node: Container) {
   const stack: Container[] = [node]
   for (let i = 0; i < stack.length; i++) {
@@ -13,8 +13,10 @@ function destroyFilters(node: Container) {
     if (filters) {
       const arr = Array.isArray(filters) ? filters : [filters]
       for (const filter of arr) {
-        filterParentMap.delete(filter)
-        filter.destroy()
+        if (filterParentMap.get(filter) === container) {
+          filterParentMap.delete(filter)
+          filter.destroy()
+        }
       }
     }
     // Collect descendants for breadth-first walk
@@ -87,10 +89,8 @@ export function removeContainer(node: Container) {
     // ensures the node won't be in the next render pass's build phase.
     node.parent?.removeChild(node)
 
-    // Destroy filters on this container and all descendants. PIXI's own
-    // Container.destroy({ children: true }) only destroys child containers — it
-    // does NOT call .destroy() on attached filters. Without this, every filter
-    // instance (and its GPU resources) leaks when its parent container is removed.
+    // PIXI does not destroy attached filters. Clean up declarative filter nodes,
+    // but leave externally owned filters alive: they may be shared by other containers.
     destroyFilters(node)
 
     node.destroy({ children: true })

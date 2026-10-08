@@ -105,6 +105,8 @@ onMounted(async () => {
     'https://pixijs.com/assets/helmlok.png',
     'https://pixijs.com/assets/skully.png',
   ])
+  if (root.destroyed)
+    return
 
   slotTextures.push(
     Texture.from('https://pixijs.com/assets/eggHead.png'),
@@ -150,7 +152,7 @@ onMounted(async () => {
   const top = new Graphics().rect(0, 0, sw, margin).fill({ color: 0x0 })
   const bottom = new Graphics().rect(0, SYMBOL_SIZE * 3 + margin, sw, margin).fill({ color: 0x0 })
 
-  const fill = new FillGradient(0, 0, 0, 2)
+  const fill = new FillGradient({ start: { x: 0, y: 0 }, end: { x: 0, y: 2 } })
   const colors = [0xFFFFFF, 0x00FF99].map(color => Color.shared.setValue(color).toNumber())
   colors.forEach((number, index) => {
     fill.addColorStop(index / colors.length, number)

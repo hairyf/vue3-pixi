@@ -11,8 +11,8 @@ const logs = ref<string[]>([])
 
 function onPointerEvent(event: FederatedPointerEvent) {
   const type = event.type
-  const targetName = Reflect.get(event.target, 'name')
-  const currentTargetName = Reflect.get(event.currentTarget, 'name')
+  const targetName = Reflect.get(event.target, 'label')
+  const currentTargetName = Reflect.get(event.currentTarget, 'label')
 
   // Add event to top of logs
   logs.value.push(`${currentTargetName} received ${type} event (target is ${targetName})`)
@@ -28,7 +28,7 @@ function onPointerEvent(event: FederatedPointerEvent) {
 }
 
 onReady((app) => {
-  Reflect.set(app.stage, 'name', 'stage')
+  Reflect.set(app.stage, 'label', 'stage')
   // Enable interactivity!
   app.stage.eventMode = 'static'
   app.stage.hitArea = app.screen
@@ -57,14 +57,14 @@ for (const r of [stageRef, whiteBoxRef, blackBoxRef]) {
   <graphics
     ref="blackBoxRef"
     :x="300"
-    name="black box"
+    label="black box"
     event-mode="static"
     @effect="$event.setFillStyle({ color: 0 }).rect(0, 50, 300, 300).fill()"
   >
     <!-- Mount white box inside the white one -->
     <graphics
       ref="whiteBoxRef"
-      name="white box"
+      label="white box"
       event-mode="static"
       @effect="$event.setFillStyle({ color: 0xFFFFFF }).rect(100, 150, 100, 100).fill()"
     />

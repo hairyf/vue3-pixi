@@ -1,9 +1,10 @@
-import { mount } from '@vue/test-utils'
+import { flushPromises, mount } from '@vue/test-utils'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { nextTick } from 'vue-demi'
 import { Application } from '../src/components/application'
+import { createApp } from '../src/renderer'
 
-const { destroyMock } = vi.hoisted(() => ({ destroyMock: vi.fn() }))
+const { destroyMock, initMock } = vi.hoisted(() => ({ destroyMock: vi.fn(), initMock: vi.fn() }))
 
 // Mock PixiApplication since jsdom has no WebGL
 vi.mock('pixi.js', async (importOriginal) => {
@@ -33,6 +34,7 @@ vi.mock('pixi.js', async (importOriginal) => {
     }
 
     async init(options: any) {
+      await initMock()
       if (options.width) {
         this.screen.width = options.width
         this.canvas.width = options.width
@@ -113,6 +115,26 @@ describe('application component', () => {
       expect(props.width).toBeDefined()
       expect(props.height).toBeDefined()
     })
+  })
+
+  it('destroys an application whose initialization finishes after unmount without mounting its scene', async () => {
+    let finishInit!: () => void
+    initMock.mockReturnValueOnce(new Promise<void>(resolve => finishInit = resolve))
+    destroyMock.mockClear()
+    vi.mocked(createApp).mockClear()
+    const wrapper = mount(Application)
+
+    wrapper.unmount()
+    finishInit()
+    await flushPromises()
+    await nextTick()
+
+    expect(createApp).not.toHaveBeenCalled()
+    expect(destroyMock).toHaveBeenCalledOnce()
+    expect(destroyMock).toHaveBeenCalledWith(
+      { removeView: true },
+      { children: true, texture: true, textureSource: true, context: true, style: true },
+    )
   })
 
   describe('destroy options', () => {

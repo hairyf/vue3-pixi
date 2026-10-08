@@ -4,9 +4,11 @@ import { whenever } from '@vueuse/core'
 import { gsap } from 'gsap'
 import Physics2DPlugin from 'gsap/Physics2DPlugin'
 import PixiPlugin from 'gsap/PixiPlugin'
-import { onUnmounted, ref } from 'vue'
+import * as PIXI from 'pixi.js'
+import { onBeforeUnmount, ref } from 'vue'
 import { useScreen } from 'vue3-pixi'
 
+PixiPlugin.registerPIXI(PIXI)
 gsap.registerPlugin(Physics2DPlugin, PixiPlugin)
 
 const screen = useScreen()
@@ -50,7 +52,7 @@ function random(min: number, max: number) {
 
 whenever(particles, initial)
 
-onUnmounted(() => {
+onBeforeUnmount(() => {
   animations.forEach(anim => anim.kill())
   animations = []
 })

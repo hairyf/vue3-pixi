@@ -371,7 +371,6 @@ export default defineConfig({
       unocss(),
     ],
     ssr: { noExternal: ['naive-ui', 'gsap'] },
-    build: { rollupOptions: { external: ['three'] } },
   },
 
   vue: {

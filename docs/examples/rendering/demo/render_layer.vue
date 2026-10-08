@@ -18,6 +18,7 @@ const pondContainerRef = ref<Container>()
 
 let waterOverlay: TilingSprite | null = null
 let displacementSprite: Sprite | null = null
+let displacementFilter: DisplacementFilter | null = null
 let uiLayer: RenderLayer | null = null
 
 interface FishData {
@@ -45,15 +46,17 @@ onMounted(async () => {
   ])
 
   const pondContainer = pondContainerRef.value
+  if (!app.value || !pondContainer || pondContainer.destroyed)
+    return
 
   const background = Sprite.from('https://pixijs.com/assets/pond/displacement_BG.jpg')
   pondContainer.addChild(background)
 
   const displacementMap = Assets.get('https://pixijs.com/assets/pond/displacement_map.png')
-  displacementMap.source.wrapMode = 'repeat'
+  displacementMap.source.addressMode = 'repeat'
 
   displacementSprite = Sprite.from(displacementMap)
-  const displacementFilter = new DisplacementFilter(displacementSprite, 40)
+  displacementFilter = new DisplacementFilter({ sprite: displacementSprite, scale: 40 })
 
   pondContainer.addChild(displacementSprite)
   pondContainer.filters = [displacementFilter]
@@ -149,12 +152,9 @@ onTick(() => {
 })
 
 onUnmounted(() => {
-  if (pondContainerRef.value) {
-    pondContainerRef.value.destroy({ children: true })
-  }
-  if (uiLayer) {
+  displacementFilter?.destroy()
+  if (uiLayer && !uiLayer.destroyed)
     uiLayer.destroy()
-  }
 })
 </script>
 

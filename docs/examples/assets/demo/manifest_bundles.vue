@@ -29,22 +29,12 @@ const manifest: AssetsManifest = {
 </script>
 
 <template>
-  <assets-bundle
-    :manifest="manifest"
-    :background="true"
-    :autoload="false"
-    :entry="[
-      'load-screen',
-      'game-screen',
-    ]"
-  >
-    <assets v-slot="{ data }" entry="load-screen">
-      <sprite
-        :texture="data.flowerTop"
-        :x="screen.width / 2"
-        :y="screen.height / 2"
-        :anchor="0.5"
-      />
-    </assets>
+  <assets-bundle v-slot="{ data }" :manifest="manifest" entry="load-screen">
+    <sprite
+      :texture="data.flowerTop"
+      :x="screen.width / 2"
+      :y="screen.height / 2"
+      :anchor="0.5"
+    />
   </assets-bundle>
 </template>

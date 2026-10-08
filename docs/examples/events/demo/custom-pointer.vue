@@ -63,7 +63,7 @@ onReady((app) => {
       { alias: 'buttonDown', src: 'https://pixijs.com/assets/button_down.png' },
       { alias: 'buttonOver', src: 'https://pixijs.com/assets/button_over.png' },
     ]"
-    @loaded="textures = $event"
+    @loaded="Object.assign(textures, $event)"
   >
     <!-- create a background... -->
     <sprite texture="bg" :width="screen.width" :height="screen.height" />

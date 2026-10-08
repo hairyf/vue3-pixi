@@ -4,7 +4,7 @@ import { useEventListener } from '@vueuse/core'
 import { gsap } from 'gsap'
 import Physics2DPlugin from 'gsap/Physics2DPlugin'
 import { DropShadowFilter } from 'pixi-filters'
-import { onMounted, onUnmounted, ref } from 'vue'
+import { onBeforeUnmount, onMounted, ref } from 'vue'
 import { onReady, useScreen, useStage } from 'vue3-pixi'
 
 gsap.registerPlugin(Physics2DPlugin)
@@ -75,7 +75,7 @@ async function initial(cannon: GraphicsElement, bullets: GraphicsElement[]) {
 }
 
 onMounted(() => initial(cannon.value!, bullets.value!))
-onUnmounted(() => masterTl.clear())
+onBeforeUnmount(() => masterTl.kill())
 
 onReady((app) => {
   // Enable interactivity!

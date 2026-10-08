@@ -5,86 +5,110 @@ import { onBeforeUnmount, onMounted, ref } from 'vue'
 const canvasContainer = ref<HTMLDivElement>()
 const error = ref('')
 let cleanup: (() => void) | null = null
+let unmounted = false
+let initializing = true
 
 onMounted(async () => {
-  if (!canvasContainer.value)
+  const container = canvasContainer.value
+  if (!container)
     return
 
-  // three.js is an optional dependency — gracefully handle its absence
-  let THREE: any
   try {
-    THREE = await import('three')
-  }
-  catch {
-    error.value = 'This example requires three.js. Install it with: pnpm add three'
-    return
-  }
+    const THREE = await import('three')
+    if (unmounted)
+      return
 
-  const WIDTH = canvasContainer.value.clientWidth || 600
-  const HEIGHT = canvasContainer.value.clientHeight || 400
+    const WIDTH = container.clientWidth || 600
+    const HEIGHT = container.clientHeight || 400
+    const threeRenderer = new THREE.WebGLRenderer({ antialias: true, stencil: true })
+    let animationId: number | null = null
+    let pixiInitialized = false
+    cleanup = () => {
+      threeRenderer.dispose()
+      // Pixi destroys the shared context after a successful init.
+      if (!pixiInitialized)
+        threeRenderer.forceContextLoss()
+      threeRenderer.domElement.remove()
+    }
+    threeRenderer.setSize(WIDTH, HEIGHT)
+    threeRenderer.setClearColor(0xDDDDDD, 1)
+    container.appendChild(threeRenderer.domElement)
 
-  // Three.js setup
-  const threeRenderer = new THREE.WebGLRenderer({ antialias: true, stencil: true })
-  threeRenderer.setSize(WIDTH, HEIGHT)
-  threeRenderer.setClearColor(0xDDDDDD, 1)
-  canvasContainer.value.appendChild(threeRenderer.domElement)
+    const scene = new THREE.Scene()
+    const threeCamera = new THREE.PerspectiveCamera(70, WIDTH / HEIGHT)
+    threeCamera.position.z = 50
+    scene.add(threeCamera)
 
-  const scene = new THREE.Scene()
-  const threeCamera = new THREE.PerspectiveCamera(70, WIDTH / HEIGHT)
-  threeCamera.position.z = 50
-  scene.add(threeCamera)
+    const boxGeometry = new THREE.BoxGeometry(30, 30, 30)
+    const basicMaterial = new THREE.MeshBasicMaterial({ color: 0x0095DD })
+    const cube = new THREE.Mesh(boxGeometry, basicMaterial)
+    scene.add(cube)
 
-  const boxGeometry = new THREE.BoxGeometry(30, 30, 30)
-  const basicMaterial = new THREE.MeshBasicMaterial({ color: 0x0095DD })
-  const cube = new THREE.Mesh(boxGeometry, basicMaterial)
-  scene.add(cube)
+    // Both renderers must use the same canvas as well as the same WebGL context.
+    const pixiRenderer = new WebGLRenderer()
+    const stage = new Container()
+    const disposeThree = cleanup
+    cleanup = () => {
+      if (animationId !== null)
+        cancelAnimationFrame(animationId)
+      stage.destroy({ children: true })
+      boxGeometry.dispose()
+      basicMaterial.dispose()
+      // An incomplete Pixi init has no usable view/context for destroy().
+      if (pixiInitialized)
+        pixiRenderer.destroy()
+      disposeThree()
+    }
+    await pixiRenderer.init({
+      canvas: threeRenderer.domElement,
+      context: threeRenderer.getContext(),
+      width: WIDTH,
+      height: HEIGHT,
+      clearBeforeRender: false,
+    })
+    pixiInitialized = true
+    if (unmounted) {
+      cleanup()
+      cleanup = null
+      return
+    }
 
-  // PixiJS setup sharing WebGL context
-  const pixiRenderer = new WebGLRenderer()
-  await pixiRenderer.init({
-    context: threeRenderer.getContext(),
-    width: WIDTH,
-    height: HEIGHT,
-    clearBeforeRender: false,
-  })
+    const uiLayer = new Graphics().roundRect(20, 80, 300, 60, 20).fill({ color: 0xFFFF00, alpha: 0.8 })
+    const text = new Text({
+      text: 'Pixi + Three.js',
+      style: { fontFamily: 'Arial', fontSize: 24, fill: 'black' },
+    })
+    text.position.set(30, 90)
+    stage.addChild(uiLayer, text)
 
-  const stage = new Container()
-  const uiLayer = new Graphics().roundRect(20, 80, 300, 60, 20).fill({ color: 0xFFFF00, alpha: 0.8 })
-  const text = new Text({
-    text: 'Pixi + Three.js',
-    style: { fontFamily: 'Arial', fontSize: 24, fill: 'black' },
-  })
-  text.x = 30
-  text.y = 90
-  stage.addChild(uiLayer)
-  stage.addChild(text)
-
-  let animationId: number | null = null
-
-  function loop() {
-    cube.rotation.x += 0.01
-    cube.rotation.y += 0.01
-
-    threeRenderer.resetState()
-    threeRenderer.render(scene, threeCamera)
-    pixiRenderer.resetState()
-    pixiRenderer.render({ container: stage })
-
+    function loop() {
+      cube.rotation.x += 0.01
+      cube.rotation.y += 0.01
+      threeRenderer.resetState()
+      threeRenderer.render(scene, threeCamera)
+      pixiRenderer.resetState()
+      pixiRenderer.render({ container: stage })
+      animationId = requestAnimationFrame(loop)
+    }
     animationId = requestAnimationFrame(loop)
   }
-
-  animationId = requestAnimationFrame(loop)
-
-  cleanup = () => {
-    if (animationId !== null)
-      cancelAnimationFrame(animationId)
-    threeRenderer.dispose()
-    pixiRenderer.destroy()
+  catch (e) {
+    cleanup?.()
+    cleanup = null
+    if (!unmounted)
+      error.value = `Unable to initialize the Three.js example: ${String(e)}`
+  }
+  finally {
+    initializing = false
   }
 })
 
 onBeforeUnmount(() => {
-  cleanup?.()
+  unmounted = true
+  if (!initializing) {
+    cleanup?.()
+    cleanup = null
+  }
 })
 </script>
 
