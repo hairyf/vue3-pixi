@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { Graphics as GraphicsElement } from 'pixi.js'
+import type { FederatedPointerEvent, Graphics as GraphicsElement } from 'pixi.js'
 import { useEventListener } from '@vueuse/core'
 import { gsap } from 'gsap'
 import Physics2DPlugin from 'gsap/Physics2DPlugin'
@@ -37,15 +37,15 @@ const dotFilter = new DropShadowFilter({
   offset: { x: 0, y: 5 },
 })
 
-function createConfetti(event: PointerEvent) {
+function createConfetti(event: FederatedPointerEvent) {
   const dotCount = gsap.utils.random(15, 30, 1)
 
   for (let i = 0; i < dotCount; i++) {
     const size = gsap.utils.random(20, 40)
     const dot: Dot = {
       id: dotIdCounter++,
-      x: event.clientX,
-      y: event.clientY,
+      x: event.global.x,
+      y: event.global.y,
       size,
     }
     dots.value.push(dot)
@@ -91,9 +91,7 @@ onReady((app) => {
   app.stage.hitArea = app.screen
 })
 
-useEventListener(stage, 'click', (event) => {
-  createConfetti(event as PointerEvent)
-})
+useEventListener(stage, 'click', createConfetti)
 
 onUnmounted(() => {
   dots.value = []
