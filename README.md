@@ -45,7 +45,7 @@ yarn add vue3-pixi
 
 ## Try it Online
 
-[![StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/edit/vue3-pixi)
+[![StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/hairyf/vue3-pixi/tree/main/playground?file=src/App.vue)
 
 ## Demos
 

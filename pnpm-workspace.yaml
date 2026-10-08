@@ -18,7 +18,6 @@ catalogs:
     vue-tsc: ^3.2.5
   docs:
     '@iconify/json': ^2.2.357
-    '@stackblitz/sdk': ^1.11.0
     codesandbox: ^2.2.3
     floating-vue: ^5.2.2
     gsap: ^3.14.2

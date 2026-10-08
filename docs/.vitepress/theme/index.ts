@@ -13,7 +13,6 @@ import ApiPoint from './components/Markdown/ApiPoint.md'
 import MountProvider from './components/MountProvider/index.vue'
 import PixiJSContainer from './components/PixiJSContainer/index.vue'
 import DraggableCircle from './components/Sites/DraggableCircle.vue'
-import StackBlitzEmbed from './components/StackBlitzEmbed/index.vue'
 
 import './main'
 
@@ -39,7 +38,6 @@ export default {
   enhanceApp({ app }) {
     app.component('CopyOrDownloadAsMarkdownButtons', CopyOrDownloadAsMarkdownButtons)
     app.component('DemoContainer', PixiJSContainer)
-    app.component('StackBlitzEmbed', StackBlitzEmbed)
     app.component('DraggableCircle', DraggableCircle)
     app.component('ApiTyping', ApiTyping)
     app.component('Assets', Assets)
