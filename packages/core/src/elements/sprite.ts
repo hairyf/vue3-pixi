@@ -2,6 +2,7 @@ import type { SpriteOptions } from 'pixi.js'
 import type { DefineContainerElement } from '../types'
 import { Sprite } from 'pixi.js'
 import { normalizeTexture, renderer } from '../renderer'
+import { removeContainer } from '../renderer/internal/options'
 
 export type SpriteElement = DefineContainerElement<Sprite, SpriteOptions>
 
@@ -18,5 +19,5 @@ renderer.use({
     ...props,
     texture: normalizeTexture(props.texture),
   }),
-  remove: (node: Sprite) => node.destroy(),
+  remove: removeContainer,
 })

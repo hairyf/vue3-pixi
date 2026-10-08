@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import type { FederatedPointerEvent } from 'pixi.js'
 import { useEventListener } from '@vueuse/core'
+import { Rectangle } from 'pixi.js'
 import { ref } from 'vue'
 import { onReady, useStage } from 'vue3-pixi'
 
@@ -54,19 +55,23 @@ for (const r of [stageRef, whiteBoxRef, blackBoxRef]) {
     {{ logs.join('\n') }}
   </text>
   <!-- Enable interactivity everywhere! -->
-  <graphics
+  <container
     ref="blackBoxRef"
     :x="300"
     label="black box"
     event-mode="static"
-    @effect="$event.setFillStyle({ color: 0 }).rect(0, 50, 300, 300).fill()"
+    :hit-area="new Rectangle(0, 50, 300, 300)"
   >
-    <!-- Mount white box inside the white one -->
+    <graphics
+      event-mode="none"
+      @effect="$event.setFillStyle({ color: 0 }).rect(0, 50, 300, 300).fill()"
+    />
+    <!-- Mount the white box inside the black box's container. -->
     <graphics
       ref="whiteBoxRef"
       label="white box"
       event-mode="static"
       @effect="$event.setFillStyle({ color: 0xFFFFFF }).rect(100, 150, 100, 100).fill()"
     />
-  </graphics>
+  </container>
 </template>

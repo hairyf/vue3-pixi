@@ -127,8 +127,8 @@ onMounted(async () => {
       previousPosition: 0,
       blur: new BlurFilter(),
     }
-    reel.blur.blurX = 0
-    reel.blur.blurY = 0
+    reel.blur.strengthX = 0
+    reel.blur.strengthY = 0
     rc.filters = [reel.blur]
     for (let j = 0; j < 4; j++) {
       const symbol = new Sprite(slotTextures[Math.floor(Math.random() * slotTextures.length)])
@@ -178,14 +178,14 @@ onMounted(async () => {
   const playText = new Text({ text: 'Spin the wheels!', style })
   playText.x = Math.round((bottom.width - playText.width) / 2)
   playText.y = sh - margin + Math.round((margin - playText.height) / 2)
-  bottom.addChild(playText)
+  playText.eventMode = 'none'
 
   const headerText = new Text({ text: 'PIXI MONSTER SLOTS!', style })
   headerText.x = Math.round((top.width - headerText.width) / 2)
   headerText.y = Math.round((margin - headerText.height) / 2)
-  top.addChild(headerText)
+  headerText.eventMode = 'none'
 
-  root.addChild(top, bottom)
+  root.addChild(top, bottom, headerText, playText)
 
   bottom.eventMode = 'static'
   bottom.cursor = 'pointer'
@@ -196,7 +196,7 @@ onTick(() => {
   // Update slots
   for (let i = 0; i < reels.length; i++) {
     const r = reels[i]
-    r.blur.blurY = (r.position - r.previousPosition) * 8
+    r.blur.strengthY = (r.position - r.previousPosition) * 8
     r.previousPosition = r.position
     for (let j = 0; j < r.symbols.length; j++) {
       const s = r.symbols[j]

@@ -171,7 +171,7 @@ const showBlur = ref(true)
 </script>
 
 <container>
-  <blur-filter :quality="3" :blur="5" v-if="showBlur" />
+  <blur-filter :quality="3" :strength="5" v-if="showBlur" />
 </container>
 ```
 

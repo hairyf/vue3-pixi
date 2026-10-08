@@ -56,14 +56,16 @@ function onDragEnd() {
     Drag the handle to change the scale of bunny.
   </text>
   <!-- Make the slider -->
-  <graphics
+  <container
     ref="sliderRef"
     :x="(screen.width - sliderWidth) / 2"
     :y="screen.height * 0.75"
-    @effect="graphics => graphics
-      .rect(0, 0, sliderWidth, 4)
-      .fill({ color: 0x272D37 })"
   >
+    <graphics
+      @effect="graphics => graphics
+        .rect(0, 0, sliderWidth, 4)
+        .fill({ color: 0x272D37 })"
+    />
     <!-- Draw the handle -->
     <graphics
       cursor="pointer"
@@ -76,7 +78,7 @@ function onDragEnd() {
       @pointerup="onDragEnd"
       @pointerupoutside="onDragEnd"
     />
-  </graphics>
+  </container>
 
   <!-- Add bunny whose scale can be changed by user using slider -->
   <assets

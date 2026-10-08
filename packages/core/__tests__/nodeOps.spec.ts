@@ -1,6 +1,10 @@
-import { BitmapText, Container, Filter, Text } from 'pixi.js'
+import type { VNode } from 'vue-demi'
+import { AlphaFilter, BitmapText, Container, Filter, RenderLayer, Sprite, Text } from 'pixi.js'
 import { describe, expect, it, vi } from 'vitest'
+import { createCommentVNode, Fragment, h } from 'vue-demi'
+import { render } from '../src/renderer'
 import { Empty } from '../src/renderer/internal/custom'
+import { getFilterParent } from '../src/renderer/internal/options'
 import { createComment, createElement, createText, insert, nextSibling, parentNode, remove, setText } from '../src/renderer/nodeOps'
 import { patchs } from '../src/renderer/utils/patchs'
 
@@ -184,6 +188,106 @@ describe('nodeOps', () => {
 
       expect(parentNode(child)).toBe(parent)
     })
+  })
+
+  it.each(['sprite', 'container'])('preserves conditional filters and keyed fragment order on a %s', (tag) => {
+    const root = new Container()
+    const filters = {
+      first: [new AlphaFilter(), new AlphaFilter()],
+      second: [new AlphaFilter(), new AlphaFilter()],
+    }
+    const scene = (keys: (keyof typeof filters)[], enabled: boolean) => h(tag, null, keys.map(key => h(Fragment, { key }, [
+      createCommentVNode('filter group'),
+      enabled ? h('filter', { key: 'conditional', is: filters[key][0] }) : createCommentVNode('v-if'),
+      h('filter', { key: 'always', is: filters[key][1] }),
+      ...(tag === 'container' ? [h('container', { key: 'drawing', label: key })] : []),
+    ])))
+    const initial = scene(['first', 'second'], false)
+    try {
+      render(initial, root)
+      const parent = root.children[0]
+      const fragment = (initial.children as VNode[])[0]
+      const fragmentStart = fragment.el as Empty
+      expect(fragmentStart).toBeInstanceOf(Empty)
+      expect(parentNode(fragmentStart)).toBe(parent)
+      expect(nextSibling(fragmentStart)).toBe((fragment.children as VNode[])[0].el)
+      expect(parent.filters).toEqual([filters.first[1], filters.second[1]])
+      if (tag === 'sprite') {
+        expect(parent.allowChildren).toBe(false)
+        expect(parent.children).toEqual([])
+        expect(fragmentStart.parent).toBeNull()
+      }
+
+      render(scene(['first', 'second'], true), root)
+      expect(parent.filters).toEqual([...filters.first, ...filters.second])
+      render(scene(['second', 'first'], true), root)
+      expect(parent.filters).toEqual([...filters.second, ...filters.first])
+      if (tag === 'container')
+        expect(parent.children.filter(child => !(child instanceof Empty)).map(child => child.label)).toEqual(['second', 'first'])
+      render(scene(['second', 'first'], false), root)
+      expect(parent.filters).toEqual([filters.second[1], filters.first[1]])
+      render(null, root)
+      expect(parentNode(fragmentStart)).toBeFalsy()
+      expect(getFilterParent(filters.first[1])).toBeUndefined()
+      expect(filters.first[1].resources).toBeNull()
+    }
+    finally {
+      render(null, root)
+      for (const filter of [...filters.first, ...filters.second]) {
+        if (filter.resources)
+          filter.destroy()
+      }
+    }
+  })
+
+  it('preserves native anchors and layers when mixing imperative and Vue operations', () => {
+    const parent = new Container()
+    const other = new Sprite()
+    const first = new Container()
+    const last = new Container()
+    const middle = new Container()
+    const layer = new RenderLayer()
+    const placeholder = createComment()
+    const filter = createElement(PREFIX, 'filter', undefined, undefined, { is: new Filter({}) })
+
+    insert(filter, parent)
+    insert(first, parent)
+    parent.addChild(last)
+    insert(middle, parent, last)
+    expect(parent.children).toEqual([first, middle, last])
+    parent.removeChild(middle)
+    expect(nextSibling(first)).toBe(last)
+    parent.addChildAt(middle, 0)
+    expect(nextSibling(middle)).toBe(first)
+    layer.attach(first)
+    const removed = vi.fn()
+    first.on('removed', removed)
+    insert(first, parent)
+    expect(parent.children).toEqual([middle, last, first])
+    insert(first, parent, last)
+    expect(parent.children).toEqual([middle, first, last])
+    insert(first, parent, last)
+    expect(parent.children).toEqual([middle, first, last])
+    expect(first.parentRenderLayer).toBe(layer)
+    expect(removed).not.toHaveBeenCalled()
+
+    insert(placeholder, parent)
+    insert(placeholder, other)
+    expect(placeholder.parent).toBeNull()
+    expect(parentNode(placeholder)).toBe(other)
+    expect(parent.children).not.toContain(placeholder)
+    insert(filter, parent)
+    insert(filter, other, placeholder)
+    insert(filter, other, placeholder)
+    expect(parent.filters).toEqual([])
+    expect(other.filters).toEqual([filter])
+    expect(nextSibling(filter)).toBe(placeholder)
+    remove(parent)
+    expect(parentNode(placeholder)).toBe(other)
+    remove(other)
+    expect(parentNode(placeholder)).toBeFalsy()
+    expect(getFilterParent(filter)).toBeUndefined()
+    layer.destroy()
   })
 
   describe('effect cleanup', () => {
