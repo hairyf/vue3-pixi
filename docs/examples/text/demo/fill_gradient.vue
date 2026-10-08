@@ -2,7 +2,7 @@
 import { Color, FillGradient, TextStyle } from 'pixi.js'
 
 // Create gradient fill
-const fill = new FillGradient(0, 0, 0, 10)
+const fill = new FillGradient({ start: { x: 0, y: 0 }, end: { x: 0, y: 10 } })
 const colors = [0xFFFFFF, 0x00FF99].map(color => Color.shared.setValue(color).toNumber())
 colors.forEach((number, index) => {
   const ratio = index / colors.length

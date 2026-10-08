@@ -8,6 +8,7 @@ import {
 import { camelize, markRaw, warn } from 'vue-demi'
 import {
   Empty,
+  getContainerParent,
   getFilterParent,
   insertContainer,
   insertFilter,
@@ -54,8 +55,8 @@ export function createElement(prefix: string, name: string, _?: ElementNamespace
 
 export function parentNode(node: any) {
   if (Reflect.get(node, '_vp_filter'))
-    return getFilterParent(node)
-  return node?.parent
+    return getFilterParent(node) ?? null
+  return getContainerParent(node)
 }
 
 export function createText(text: string) {

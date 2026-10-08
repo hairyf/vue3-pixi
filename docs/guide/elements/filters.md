@@ -22,7 +22,7 @@ Add a filter element as a child of the container or sprite you want to affect:
 ```vue
 <template>
   <sprite texture="myImage" :x="100" :y="100">
-    <blur-filter :blur="8" />
+    <blur-filter :strength="8" />
   </sprite>
 </template>
 ```
@@ -32,7 +32,7 @@ Add a filter element as a child of the container or sprite you want to affect:
 ```vue
 <template>
   <sprite texture="photo">
-    <blur-filter :blur="4" :quality="4" />
+    <blur-filter :strength="4" :quality="4" />
   </sprite>
 </template>
 ```
@@ -175,7 +175,7 @@ After importing, set blend modes on any element:
 
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| blur | ^[number] | `8` | The strength of the blur. |
+| strength | ^[number] | `8` | The strength of the blur. |
 | quality | ^[number] | `4` | The quality of the blur (number of passes). |
 
 ### AlphaFilter Attributes

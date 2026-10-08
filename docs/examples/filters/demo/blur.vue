@@ -30,10 +30,10 @@ onTick(() => {
   >
     <sprite :width="screen.width" :height="screen.height" texture="bg_depth_blur" />
     <sprite :x="(screen.width / 2) - 315" :y="200" texture="depth_blur_dudes">
-      <blur-filter :blur="dudeBlur" />
+      <blur-filter :strength="dudeBlur" />
     </sprite>
     <sprite :x="(screen.width / 2) - 200" :y="100" texture="depth_blur_moby">
-      <blur-filter :blur="mobyBlur" />
+      <blur-filter :strength="mobyBlur" />
     </sprite>
   </assets>
 </template>

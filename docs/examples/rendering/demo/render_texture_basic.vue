@@ -1,10 +1,11 @@
 <script lang="ts" setup>
 import type { Texture } from 'pixi.js'
 import { Container, RenderTexture, Sprite } from 'pixi.js'
-import { onMounted, ref } from 'vue'
-import { onTick, useApplication } from 'vue3-pixi'
+import { onMounted, onUnmounted, ref } from 'vue'
+import { onTick, useApplication, useScreen } from 'vue3-pixi'
 
 const app = useApplication()
+const screen = useScreen()
 
 const outputSpriteRef = ref<Sprite>()
 
@@ -32,14 +33,21 @@ onMounted(() => {
 })
 
 function onBunnyLoaded(texture: Texture) {
-  source.position.set(100, 60)
   for (const bunny of bunnies) {
     const sprite = new Sprite(texture)
     sprite.position.set(bunny.x, bunny.y)
     sprite.rotation = bunny.rotation
     source.addChild(sprite)
   }
+  const bounds = source.getLocalBounds()
+  source.pivot.set(bounds.x + bounds.width / 2, bounds.y + bounds.height / 2)
+  source.position.set(150, 150)
 }
+
+onUnmounted(() => {
+  source.destroy({ children: true })
+  renderTexture?.destroy(true)
+})
 
 onTick(() => {
   if (!renderTexture || !app.value)
@@ -58,5 +66,10 @@ onTick(() => {
     @loaded="onBunnyLoaded"
   />
   <!-- Output: displays the render texture -->
-  <Sprite ref="outputSpriteRef" :x="450" :y="60" />
+  <Sprite
+    ref="outputSpriteRef"
+    :x="screen.width / 2"
+    :y="screen.height / 2"
+    :anchor="0.5"
+  />
 </template>

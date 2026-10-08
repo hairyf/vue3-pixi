@@ -14,8 +14,8 @@ const center = computed(() => ({
 }))
 
 const logo = ref<SpriteElement>()
-let xTo: ((value: number) => void) | null = null
-let yTo: ((value: number) => void) | null = null
+let xTo: gsap.QuickToFunc | null = null
+let yTo: gsap.QuickToFunc | null = null
 
 onReady((app) => {
   app.stage.eventMode = 'static'
@@ -29,8 +29,14 @@ whenever(logo, (sprite) => {
     sprite.eventMode = 'static'
     sprite.anchor.set(0.5)
 
-    xTo = gsap.quickTo(sprite, 'x', { duration: 0.6, ease: 'power3' })
-    yTo = gsap.quickTo(sprite, 'y', { duration: 0.6, ease: 'power3' })
+    const xTween = xTo = gsap.quickTo(sprite, 'x', { duration: 0.6, ease: 'power3' })
+    const yTween = yTo = gsap.quickTo(sprite, 'y', { duration: 0.6, ease: 'power3' })
+    sprite.once('destroyed', () => {
+      xTween.tween.kill()
+      yTween.tween.kill()
+      if (xTo === xTween)
+        xTo = yTo = null
+    })
   }
 })
 

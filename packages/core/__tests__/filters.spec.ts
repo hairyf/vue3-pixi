@@ -1,5 +1,5 @@
 import { AlphaFilter, BlurFilter, Container } from 'pixi.js'
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 import { getFilterParent, insertFilter, removeContainer, removeFilter } from '../src/renderer/internal/options'
 
 describe('filter WeakMap management', () => {
@@ -82,6 +82,31 @@ describe('filter WeakMap management', () => {
 
     // Filter should be removed from parent tracking
     expect(getFilterParent(filter)).toBeUndefined()
+  })
+
+  it('should preserve shared external filters while destroying declarative filters', () => {
+    const first = new Container()
+    const second = new Container()
+    const shared = new AlphaFilter()
+    const managed = new AlphaFilter()
+    const destroyShared = vi.spyOn(shared, 'destroy')
+    const destroyManaged = vi.spyOn(managed, 'destroy')
+
+    first.filters = [shared]
+    second.filters = [shared]
+    insertFilter(managed, first, null)
+
+    removeContainer(first)
+
+    expect(destroyManaged).toHaveBeenCalledOnce()
+    expect(getFilterParent(managed)).toBeUndefined()
+    expect(destroyShared).not.toHaveBeenCalled()
+    expect(second.filters).toEqual([shared])
+    expect(shared.resources.alphaUniforms.uniforms.uAlpha).toBe(1)
+
+    removeContainer(second)
+    expect(destroyShared).not.toHaveBeenCalled()
+    shared.destroy()
   })
 
   it('should destroy filters on descendant containers too', () => {

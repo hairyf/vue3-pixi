@@ -206,6 +206,7 @@ export const assetsBundleProps = {
    * Callback for resource loading progress update, only called when `autoload` is true
    */
   onProgress: Function as PropType<(progress: number) => void>,
+  onError: assetsProps.onError,
 } as const
 
 /**
@@ -221,11 +222,12 @@ export const assetsBundleProps = {
  */
 export const AssetsBundle = defineComponent({
   props: assetsBundleProps,
-  slots: Object as SlotsType<{ default: { data: any }, fallback: { progress: number } }>,
+  slots: Object as SlotsType<{ default: { data: any }, fallback: { progress: number }, error: { error: Error } }>,
   setup(props, { slots }) {
     const loading = ref(false)
     const progress = ref(0)
     const data = ref<any>()
+    const error = ref<Error>()
     const bundles = ref<string[]>([])
 
     function onProgress(p: number) {
@@ -255,9 +257,14 @@ export const AssetsBundle = defineComponent({
         bundleNames = toArray(props.entry) as string[]
       }
 
-      // If manifest is provided, initialize it first
-      if (props.manifest)
-        await PixiAssets.init({ manifest: props.manifest })
+      // AssetManager initializes once; register each manifest's bundles even after other assets load.
+      if (props.manifest) {
+        const manifest = typeof props.manifest === 'string'
+          ? await PixiAssets.load<AssetsManifest>(props.manifest)
+          : props.manifest
+        for (const bundle of manifest.bundles)
+          PixiAssets.addBundle(bundle.name, bundle.assets)
+      }
 
       if (props.autoload)
         await loadBundles(bundleNames)
@@ -274,11 +281,16 @@ export const AssetsBundle = defineComponent({
       () => [props.manifest, props.entry, props.autoload],
       async () => {
         loading.value = true
+        error.value = undefined
         try {
           await load()
           if (props.background && bundles.value.length > 0) {
-            PixiAssets.backgroundLoadBundle(bundles.value)
+            await PixiAssets.backgroundLoadBundle(bundles.value)
           }
+        }
+        catch (e) {
+          error.value = e as Error
+          props.onError?.(e)
         }
         finally {
           loading.value = false
@@ -290,6 +302,8 @@ export const AssetsBundle = defineComponent({
     props.autounload && onBeforeUnmount(unload)
 
     return () => {
+      if (error.value)
+        return renderSlot(slots, 'error', { error: error.value })
       if (!props.autoload || props.background)
         return renderSlot(slots, 'default')
 

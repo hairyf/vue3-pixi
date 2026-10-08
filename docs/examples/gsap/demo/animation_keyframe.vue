@@ -4,7 +4,7 @@ import { whenever } from '@vueuse/core'
 import { gsap } from 'gsap'
 import { DropShadowFilter } from 'pixi-filters'
 import { DEG_TO_RAD } from 'pixi.js'
-import { onUnmounted, ref } from 'vue'
+import { onBeforeUnmount, onUnmounted, ref } from 'vue'
 import { useScreen } from 'vue3-pixi'
 
 const screen = useScreen()
@@ -46,7 +46,8 @@ function initial(boxes: GraphicsElement[]) {
 }
 
 whenever(boxes, initial)
-onUnmounted(() => animation?.kill())
+onBeforeUnmount(() => animation?.kill())
+onUnmounted(() => dropShadowFilter.destroy())
 </script>
 
 <template>

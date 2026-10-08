@@ -7,8 +7,8 @@ import * as PIXI from 'pixi.js'
 import { nextTick, ref } from 'vue'
 import { External } from 'vue3-pixi'
 
-gsap.registerPlugin(PixiPlugin)
 PixiPlugin.registerPIXI(PIXI)
+gsap.registerPlugin(PixiPlugin)
 
 function onBeforeEnter(el: GraphicsIns) {
   nextTick(() => {

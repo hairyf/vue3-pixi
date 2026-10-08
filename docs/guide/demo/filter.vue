@@ -9,6 +9,6 @@ function drawRectangle(e: Graphics) {
 
 <template>
   <graphics :x="120" :y="60" :rotation="0.5" :pivot="0" @effect="drawRectangle">
-    <blur-filter :strength="2" :blur="4" />
+    <blur-filter :strength="4" />
   </graphics>
 </template>

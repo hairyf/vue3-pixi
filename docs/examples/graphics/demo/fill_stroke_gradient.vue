@@ -12,7 +12,7 @@ let tick = 0
 const colorStops = [0xFFFFFF, 0xFF0000, 0x00FF00, 0x0000FF, 0x000000]
 
 // Create a fill gradient
-const gradientFill = new FillGradient(0, 0, 1, 1)
+const gradientFill = new FillGradient({ start: { x: 0, y: 0 }, end: { x: 1, y: 1 } })
 
 // Add the color stops to the fill gradient
 colorStops.forEach((number, index) => {
