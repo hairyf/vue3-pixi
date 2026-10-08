@@ -6,7 +6,7 @@ import { ref, watch } from 'vue'
 
 const props = withDefaults(
   defineProps<{
-    id: string
+    repo: string
     // eslint-disable-next-line vue/no-required-prop-with-default
     options: EmbedOptions
   }>(),
@@ -22,20 +22,19 @@ const props = withDefaults(
 )
 
 const embed = ref(null)
-const isSnippetLoaded = ref(false)
 
 watch(
   () => embed.value,
   (value) => {
     if (value)
-      sdk.embedProjectId(value, props.id, props.options)
+      sdk.embedGithubProject(value, props.repo, props.options)
   },
 )
 </script>
 
 <template>
   <div ref="embed" class="stackblitz-embed">
-    <div v-if="!isSnippetLoaded" class="text-gray-500 text-2xl">
+    <div class="text-gray-500 text-2xl">
       Loading...
     </div>
   </div>

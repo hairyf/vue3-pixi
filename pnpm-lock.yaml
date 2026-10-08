@@ -288,6 +288,28 @@ importers:
 
   packages/nuxt/test/fixtures/basic: {}
 
+  playground:
+    dependencies:
+      pixi-filters:
+        specifier: 6.1.5
+        version: 6.1.5(pixi.js@8.14.3)
+      pixi.js:
+        specifier: 8.14.3
+        version: 8.14.3
+      vue:
+        specifier: ^3.5.17
+        version: 3.5.30(typescript@6.0.2)
+      vue3-pixi:
+        specifier: ^1.0.2
+        version: 1.0.2(pixi-filters@6.1.5(pixi.js@8.14.3))(pixi.js@8.14.3)(vue@3.5.30(typescript@6.0.2))
+    devDependencies:
+      '@vitejs/plugin-vue':
+        specifier: 5.2.3
+        version: 5.2.3(vite@5.4.18(@types/node@25.6.0)(terser@5.43.1))(vue@3.5.30(typescript@6.0.2))
+      vite:
+        specifier: 5.4.18
+        version: 5.4.18(@types/node@25.6.0)(terser@5.43.1)
+
 packages:
 
   '@algolia/autocomplete-core@1.17.7':
@@ -8018,6 +8040,12 @@ packages:
     peerDependencies:
       typescript: '>=5.0.0'
 
+  vue3-pixi@1.0.2:
+    resolution: {integrity: sha512-0RAZQTu1BOIJ7jIYW1WZfRsLMXYOUiiGm4s8yjYdSW3c3C2H94XpRTP6xf9+UBKGP2yQItUds+6n9cAylBUjDw==}
+    peerDependencies:
+      pixi-filters: 6.1.5
+      pixi.js: 8.14.3
+
   vue@3.5.17:
     resolution: {integrity: sha512-LbHV3xPN9BeljML+Xctq4lbz2lVHCR6DtbpTf5XIO6gugpXUN49j2QQPcMj086r9+AkJ0FfUT8xjulKKBkkr9g==}
     peerDependencies:
@@ -11033,6 +11061,11 @@ snapshots:
     dependencies:
       vite: 5.4.18(@types/node@25.6.0)(terser@5.43.1)
       vue: 3.5.17(typescript@6.0.2)
+
+  '@vitejs/plugin-vue@5.2.3(vite@5.4.18(@types/node@25.6.0)(terser@5.43.1))(vue@3.5.30(typescript@6.0.2))':
+    dependencies:
+      vite: 5.4.18(@types/node@25.6.0)(terser@5.43.1)
+      vue: 3.5.30(typescript@6.0.2)
 
   '@vitejs/plugin-vue@6.0.5(vite@7.3.1(@types/node@20.19.7)(jiti@2.6.1)(terser@5.43.1)(yaml@2.8.2))(vue@3.5.30(typescript@5.9.3))':
     dependencies:
@@ -17386,6 +17419,18 @@ snapshots:
       '@vue/language-core': 3.2.6
       typescript: 6.0.2
     optional: true
+
+  vue3-pixi@1.0.2(pixi-filters@6.1.5(pixi.js@8.14.3))(pixi.js@8.14.3)(vue@3.5.30(typescript@6.0.2)):
+    dependencies:
+      '@antfu/utils': 0.7.10
+      '@vueuse/core': 10.11.1(vue@3.5.30(typescript@6.0.2))
+      nanoid: 4.0.2
+      pixi-filters: 6.1.5(pixi.js@8.14.3)
+      pixi.js: 8.14.3
+      vue-demi: 0.14.10(vue@3.5.30(typescript@6.0.2))
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
 
   vue@3.5.17(typescript@6.0.2):
     dependencies:

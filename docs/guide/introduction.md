@@ -60,7 +60,7 @@ Add Vue plugin configuration to support custom elements and prevent unknown elem
 ```ts
 import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
-import { compilerOptions } from 'vue3-pixi'
+import { compilerOptions } from 'vue3-pixi/compiler'
 
 export default defineConfig({
   plugins: [
@@ -76,6 +76,6 @@ export default defineConfig({
 
 ## Try it Online
 
-You can fork this template on [StackBlitz](https://stackblitz.com/edit/vue3-pixi?file=src/App.vue) and try it without installing anything locally.
+You can fork this template on [StackBlitz](https://stackblitz.com/github/hairyf/vue3-pixi/tree/main/playground?file=src/App.vue) and try it without installing anything locally.
 
-<stack-blitz-embed id="vue3-pixi" />
+<stack-blitz-embed repo="hairyf/vue3-pixi/tree/main/playground" />
