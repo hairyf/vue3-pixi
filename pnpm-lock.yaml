@@ -40,9 +40,6 @@ catalogs:
     '@iconify/json':
       specifier: ^2.2.357
       version: 2.2.357
-    '@stackblitz/sdk':
-      specifier: ^1.11.0
-      version: 1.11.0
     codesandbox:
       specifier: ^2.2.3
       version: 2.2.3
@@ -162,9 +159,6 @@ importers:
       '@antfu/utils':
         specifier: catalog:share
         version: 0.7.10
-      '@stackblitz/sdk':
-        specifier: catalog:docs
-        version: 1.11.0
       '@vueuse/core':
         specifier: catalog:share
         version: 10.11.1(vue@3.5.17(typescript@6.0.2))
@@ -2709,9 +2703,6 @@ packages:
 
   '@speed-highlight/core@1.2.14':
     resolution: {integrity: sha512-G4ewlBNhUtlLvrJTb88d2mdy2KRijzs4UhnlrOSRT4bmjh/IqNElZa3zkrZ+TC47TwtlDWzVLFADljF1Ijp5hA==}
-
-  '@stackblitz/sdk@1.11.0':
-    resolution: {integrity: sha512-DFQGANNkEZRzFk1/rDP6TcFdM82ycHE+zfl9C/M/jXlH68jiqHWHFMQURLELoD8koxvu/eW5uhg94NSAZlYrUQ==}
 
   '@standard-schema/spec@1.1.0':
     resolution: {integrity: sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w==}
@@ -10658,8 +10649,6 @@ snapshots:
   '@sindresorhus/merge-streams@4.0.0': {}
 
   '@speed-highlight/core@1.2.14': {}
-
-  '@stackblitz/sdk@1.11.0': {}
 
   '@standard-schema/spec@1.1.0': {}
 

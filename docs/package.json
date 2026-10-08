@@ -12,7 +12,6 @@
   },
   "dependencies": {
     "@antfu/utils": "catalog:share",
-    "@stackblitz/sdk": "catalog:docs",
     "@vueuse/core": "catalog:share",
     "gsap": "catalog:docs",
     "naive-ui": "catalog:docs",

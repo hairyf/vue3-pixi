@@ -78,4 +78,4 @@ export default defineConfig({
 
 You can fork this template on [StackBlitz](https://stackblitz.com/github/hairyf/vue3-pixi/tree/main/playground?file=src/App.vue) and try it without installing anything locally.
 
-<stack-blitz-embed repo="hairyf/vue3-pixi/tree/main/playground" />
+Open the playground in a separate tab. Embedded WebContainer previews require cross-origin isolation headers that this documentation site does not provide.
